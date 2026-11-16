@@ -245,6 +245,71 @@ A record can be structurally valid while scientifically incomplete, rights-restr
 
 ---
 
+
+## 4.3 Preliminary cross-document desk-review findings (16 November 2026)
+
+**Review type:** Repository/documentation desk review by the project assistant, using the exact GitHub revisions listed below and current public standards documentation. This is not independent expert validation and must not be recorded as a taxonomist, ecologist, biodiversity-informatics or legal sign-off.
+
+### Exact revisions inspected
+
+| PR | Document | PR head commit | Review note |
+|---|---|---|---|
+| #3 | Task 05 — Data Architecture | `3804c125192f1638e5dfff2bf013b76a9ee5286b` | Draft, based on main |
+| #4 | Task 05B — Data Dictionary | `f35e2d761017447edbb96cd874cb5b528072dc71` | Draft, based on main |
+| #5 | Task 05C — Logical Database Model | `78565f88bd3c78650944586146693e7b6103eab4` | Draft, based on main |
+| #7 | Task 05D — Validation and Readiness | `6155a87dcc92a2bd315fc6f8203a5f31012940b0` | Draft, based on PR #5 feature branch; dependent review |
+
+The content was fetched from the named feature branches. PR #7 must be reviewed as a dependent change set on top of PR #5, not as an independent document based on `main`.
+
+### Findings register
+
+| ID | Severity | Documents | Finding and required resolution |
+|---|---|---|---|
+| DR-01 | **Blocking** | 05B, 05C, 05D | **Internal occurrence validity is still coupled to export fields.** Task 05B marks `basis_of_record` required; Task 05C's Occurrence row and integrity tests require it. Task 05D correctly says GBIF publication requirements are profile-specific and must not become universal internal constraints, but the earlier documents have not yet been reconciled. Define an internal record/evidence classification independently; derive Darwin Core `basisOfRecord` only where supported. Do not invent missing values. |
+| DR-02 | **Blocking** | 05B, 05C | **Polymorphic subject references conflict with the integrity principle.** Task 05B uses `subject_type + subject_id` for ScientificAssertion and Identification. Task 05C requires typed subject links or an enforceable supertype. Reconcile the dictionary to the typed logical model, or formally define and constrain a supertype/registry. A generic pair without enforceable referential integrity is not acceptable as the canonical design. |
+| DR-03 | **Blocking** | 05B, 05C | **TCS mapping vocabulary needs exact semantic mapping.** Task 05B lists values such as “excludes” and “not congruent”. TCS requires one of `isCongruentWith`, `includes`, `isIncludedIn`, `partiallyOverlaps`, `isDisjointFrom` or `intersects`. “Not congruent” is not equivalent to “disjoint”; “intersects” is a broad relation for cases where a more precise relation is not known. Define a governed internal vocabulary and explicit mappings to the six TCS terms. |
+| DR-04 | **Blocking** | 05B, 05C | **The TCS `accordingTo` resource needs one unambiguous representation.** Task 05B requires both `according_to_treatment_id` and `concept_according_to_reference`. TCS requires exactly one `accordingTo` resource per TaxonConcept. These fields may be two representations of the same resource, but the document does not define that invariant. Specify whether TaxonomicTreatment is itself the referenced resource or whether it resolves to one canonical bibliographic/resource record. Do not permit two conflicting “according to” sources. |
+| DR-05 | **Major** | 05, 05B, 05C | **Three different taxonomy relationship families must remain separate.** Task 05 includes a broad TaxonRelationship spanning concepts/name usages and relationship labels such as synonym, basionym and accepted-name-for. Task 05B/05C make the more precise distinction: concept-to-name synonym assertion, name-to-name nomenclatural relationship, and concept-to-concept mapping. Update the conceptual Task 05 description and terminology so that it cannot be implemented as one undifferentiated relationship table. |
+| DR-06 | **Major** | 05B, 05C | **Taxonomic determination should not become a mutable occurrence fact.** Task 05B includes an optional `taxon_concept_id` on Occurrence described as the current determination target. Task 05C models Identification as a separate, revisable assertion. Define whether the occurrence's displayed taxon is a derived view from the current accepted Identification, and how the historical determination and treatment are retained. Avoid storing a mutable duplicate that can disagree with identification history. |
+| DR-07 | **Major** | 05B, 05C, 05D | **Occurrence and Event semantics need one consistent internal-to-Darwin-Core mapping.** The current Darwin Core conceptual model defines an Occurrence as an Event establishing the state of an Organism at a place and time; Organism, Occurrence and MaterialEntity are distinct. Task 05C largely follows this direction, but Task 05B describes occurrence more loosely as presence/non-detection and allows event/date to be optional. Define an internal evidence/observation state separately from an exportable Darwin Core Occurrence, and document when an organism identity is meaningful or unavailable. Non-detection must be supported by a survey protocol and effort, not inferred from an empty record. |
+| DR-08 | **Major** | 05B | **The Mango example is an apparent geographic-scale tension, not yet a demonstrated direct source contradiction.** POWO reports a native range including Assam and East Himalaya while its broad distribution list places “India” under introduced; eFlora of India says “native to: s Asia and India”. These geographic units are not equivalent. Preserve the example, but label it as a scale/resolution and source-scope reconciliation case until the claims are normalized to comparable geographic units and reviewed. Do not teach it as a proven contradiction. |
+| DR-09 | **Major** | 05, 05B, 05C | **Darwin Core release metadata is inconsistent.** Task 05 and Task 05B refer to the List of Terms as issued 2026-10-13; the current official List page identifies the list version as 2026-05-26. Individual terms can have later modification dates (including 2026-10-13). Cite the list release and individual term version separately, and record the exact version IRI used by each mapping profile. |
+| DR-10 | **Major** | 05B, 05C | **Source record identifiers need stronger canonical linkage.** Task 05B has string `source_record_id` fields on Occurrence and TaxonNameUsage. Task 05C defines SourceRecord with dataset version, ingestion run and namespace context. Use a canonical source-record reference or a formally constrained external-identifier tuple; a bare string is insufficient to guarantee uniqueness or trace lineage. |
+| DR-11 | **Major** | 05B | **The synonym mapping wording should explicitly name the TCS object type.** TCS `synonym` relates a TaxonConcept to a TaxonName, not to a TaxonNameUsage object and not to another TaxonConcept. Preserve TaxonNameUsage separately as the source's usage/record, then link the TCS synonym assertion to the reusable TaxonName. |
+| DR-12 | **Major** | 05B, 05D | **Source authority and evidence class should be recorded for the Indian examples.** IPNI, POWO, BSI and eFlora of India have different roles and authority models. eFlora of India includes community-submitted content and should not be described as equivalent in authority to a formal national flora or a nomenclatural index. Record source type, editorial/curation model, geographic scope, date and limitations; do not use a website's presence alone as a source-quality rating. |
+
+### Evidence supporting the standards-related findings
+
+1. **TCS 2025-12-11 List of Terms:** a TaxonConcept requires one `taxonName` and one `accordingTo`; `synonym` relates a TaxonConcept to a TaxonName; TaxonConceptMapping requires subject, relation and object; and the permitted mapping relations are explicitly enumerated.  
+   https://tcs.tdwg.org/terms/  
+   Version IRI: https://rs.tdwg.org/tcs/doc/terms/2025-12-11
+
+2. **Darwin Core List of Terms:** the official page identifies the current list version as 2026-05-26. Individual terms carry their own modification/version dates.  
+   https://dwc.tdwg.org/list/  
+   Version IRI: https://rs.tdwg.org/dwc/doc/list/2026-05-26
+
+3. **Darwin Core conceptual model:** the modern Occurrence semantics distinguish Organism, Occurrence and MaterialEntity; an Occurrence is an Event establishing the state of an Organism at a place and time.  
+   https://dwc.tdwg.org/cm/
+
+4. **GBIF data publishing recommendations:** requirements vary by dataset class and programme. For occurrence datasets, occurrenceID is required in the technical publishing guidance, while basisOfRecord, scientificName and eventDate are strongly recommended for the general profile and required for some managed programmes. Sampling-event datasets have a different profile.  
+   https://techdocs.gbif.org/en/data-publishing/data-quality-recommendations  
+   https://www.gbif.org/data-quality-requirements-occurrences  
+   https://www.gbif.org/data-quality-requirements-sampling-events
+
+5. **Source comparison for the Mango fixture:** POWO lists Assam and East Himalaya among native regions and India among introduced regions; eFlora of India describes the species as native to South Asia and India. This supports a test of geographic granularity and source interpretation, but not an unqualified claim that both sources make directly contradictory claims about the same geographic unit.  
+   https://powo.science.kew.org/taxon/69913-1  
+   https://efloraofindia.com/efi/mangifera-indica/
+
+### Recommended disposition
+
+- Resolve DR-01 through DR-04 before Task 05C is considered logically stable.
+- Resolve DR-05 through DR-07 before physical design; they affect scientific identity, history and interoperability.
+- Correct DR-08 through DR-12 in the documentation and source/fixture metadata before sign-off.
+- Update Task 05D's cross-document audit table with a status, owner and evidence for each item. A list of review topics is not the same as a completed reconciliation.
+- Do not mark any finding closed solely because a branch is mergeable or a document has been revised. Require a re-review against the exact new commit.
+
+**Desk-review conclusion:** the current model is directionally strong but not yet internally reconciled. No independent expert sign-off has been received. Task 05E remains blocked.
+
 ## 5. Indian botanical and ecological test coverage
 
 The model should be tested with realistic Indian data, not only generic examples. These are test dimensions, not claims about any particular taxon.
