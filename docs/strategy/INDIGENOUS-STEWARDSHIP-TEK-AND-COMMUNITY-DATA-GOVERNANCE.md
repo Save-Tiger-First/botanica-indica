@@ -5,7 +5,7 @@
 **Version:** 0.1 — Proposed for review  
 **Status:** Draft; not an approved STF policy, legal opinion or community agreement  
 **Related document:** `STF-NATURETECH-BIODIVERSITY-INTELLIGENCE-AND-CONSERVATION-IMPACT.md`  
-**Source talk:** Kiliii Yuyan, “Guardians of Life: Indigenous Wisdom, Science and Restoring the Planet”, TEDxBerkeley, published 22 April 2025  
+**Source talks:** Kiliii Yuyan, “Guardians of Life: Indigenous Wisdom, Science and Restoring the Planet”, TEDxBerkeley (22 April 2025); Marcia Turner, “Indigenous Wisdom for Meaningful Change”, TEDxRRU (17 July 2024); Albert Wiggan, “The case to recognise Indigenous knowledge as science”, TEDxSydney (15 July 2019)  
 **Video:** https://www.youtube.com/watch?v=afW-Zo8R5pU
 
 ---
@@ -68,6 +68,38 @@ Sources:
 - https://www.gov.ca.gov/2024/10/02/klamath-river-dams-fully-removed-ahead-of-schedule/
 - https://klamathrenewal.org/the-project/
 
+
+### 2.4 Marcia Turner — Four Indigenous Conditions of Systems Change
+
+Marcia Turner's talk, **“Indigenous Wisdom for Meaningful Change”**, was published by TEDx Talks on 17 July 2024. Royal Roads University's 2024 TEDxRRU speaker page identifies the four conditions in her framework as **trust, healing, self-determination and courage**. The university's description also records her emphasis on courage to dismantle white supremacy and the hard work of decolonization.
+
+Sources:
+- https://www.youtube.com/watch?v=9WDIg_QWXWU
+- https://www.royalroads.ca/news/watch-2024-tedxrru-speakers
+- Marcia Turner's own announcement describing the framework as the “Four Indigenous Conditions of Systems Change”: https://www.linkedin.com/posts/marcia-turner-dhnb_indigenous-wisdom-for-meaningful-change-activity-7219763836206075904
+
+**Interpretation for STF:** This framework adds a systems-change test to the practical safeguards in this document. Trust requires transparent commitments and accountability; healing requires acknowledging harms and allowing community-defined repair; self-determination requires real authority over priorities and decisions; courage requires institutions to change their own practices and redistribute decision power where appropriate.
+
+These explanations are an STF reflection aid, not a substitute for Turner's full framework. The framework is rooted in Turner's Gitxsan identity, ancestral teachings and professional work. STF must attribute it accurately and must not present it as a universal Indigenous framework, a generic checklist, or an STF invention. Gitxsan concepts and governance processes must not be presumed to apply to Adivasi communities or other peoples in India. The relevant people and rights holders define their own context, institutions and decision processes.
+
+**Anti-tokenism test:** STF should not cite the four conditions in a public statement while retaining unilateral control over project goals, budgets, data, interpretation and publication. If the organisation invokes the framework, it should be willing to demonstrate how trust, healing, self-determination and courage have changed its actual decisions and conduct.
+
+### 2.5 Albert Wiggan — recognizing Indigenous knowledge as science
+
+Albert Wiggan's TEDxSydney talk, **“The case to recognise Indigenous knowledge as science”**, was published on 15 July 2019. The official TEDx description identifies him as a Bardi-Kija-Nyul Nyul man from the Dampier Peninsula, working with Indigenous environmental and community organisations. He argues for recognition of Indigenous knowledge as science rather than relegating it to a lesser category.
+
+Source: https://www.youtube.com/watch?v=X5QON5l6zy8
+
+The talk challenges a hierarchy in which Indigenous knowledge is treated only as anecdote or raw material for external scientific validation. Its strategic contribution is the case for recognizing Indigenous knowledge systems as knowledge systems with their own methods, institutions, custodians, histories and standards.
+
+**Important qualification:** Recognition does not require collapsing Indigenous knowledge and academic science into one method or vocabulary. Nor should STF assume all knowledge holders use the same approach to observation, experimentation, evidence or transmission. The proper approach is respectful collaboration where invited, with clear authority, attribution, consent, context and reciprocal benefit.
+
+A peer-reviewed example of collaborative practice is Lindsay et al. (2022), which describes integrating scientific and Aboriginal knowledge, practice and priorities to conserve an endangered rainforest ecosystem in the Kimberley. It is an example from a specific place and partnership, not a template that can be transplanted without local authority and adaptation.  
+Source: https://doi.org/10.1111/emr.12535
+
+**STF implication:** In appropriate projects, community-defined knowledge and scientific evidence can be brought into dialogue without requiring one to erase or subordinate the other. The organisation must preserve provenance and context, identify who has authority to interpret or share knowledge, and avoid claiming ownership over knowledge that communities hold.
+
+
 ## 3. Critical safeguards: do not romanticize, homogenize or extract
 
 1. **Do not homogenize Indigenous Peoples.** Indigenous Peoples and local communities are diverse, contemporary societies with distinct histories, rights, governance systems, priorities and relationships with nature. TEK is dynamic and can coexist with scientific research, modern tools and changing livelihoods.
@@ -76,6 +108,7 @@ Sources:
 4. **Do not reduce TEK to scientific validation.** Community knowledge and scientific research may use different concepts, evidence practices, temporal scales and criteria. Preserve the knowledge holder's interpretation, context and provenance; scientific review must not override community authority.
 5. **Do not equate consultation with power.** Community leadership means meaningful influence over objectives, governance, methods, monitoring, interpretation, publication, benefits and decisions to stop or change a project.
 6. **Do not assume all customary practices are automatically sustainable in every current context.** Evaluate specific practices with the relevant knowledge holders and ecological evidence, without dismissing or romanticizing them.
+7. **Do not use Indigenous frameworks as institutional decoration.** If STF invokes a framework such as Turner's four conditions, it must examine how the framework changes its own governance, resource allocation, decision rights and accountability; accurate attribution and local relevance are essential.
 
 ## 4. Indigenous data governance: CARE alongside FAIR
 
@@ -128,6 +161,8 @@ This is a strategic design requirement, not a legal opinion. It does not assume 
 - Budget for participation, translation, travel, training, community monitoring and local capacity.
 - Co-design objectives and indicators. Community-defined outcomes may include livelihood security, cultural continuity, customary use, language, habitat condition and species recovery.
 - Recognize community monitoring and stewardship as conservation work, not merely as data acquisition for STF.
+- Examine STF's own institutional behaviour through trust, healing, self-determination and courage when it invokes Marcia Turner's framework; document changed decisions rather than symbolic statements.
+- Recognize Indigenous knowledge systems as knowledge systems in their own right, and create respectful, consent-based collaboration with scientific institutions only where the relevant knowledge holders wish to do so.
 - Return useful outputs in locally appropriate languages and formats and provide communities access to their own records and agreed results.
 - Support community control over sensitive knowledge, place names, locations, images, recordings and ecological observations.
 - Where appropriate, support partnerships with universities, botanists, ecologists and government bodies under agreed governance and benefit-sharing arrangements.
@@ -146,7 +181,7 @@ For the initial product:
 - Separate botanical facts from public scientific references from community-held knowledge and locally governed observations.
 - Require a separate co-design process, rights and legal assessment, governance model, benefit-sharing approach and community-approved pilot before proposing a community knowledge module.
 
-## 8. Strategic synthesis across the five talks
+## 8. Strategic synthesis across the seven talks
 
 Together, the five talks suggest a more complete STF approach:
 
@@ -155,6 +190,8 @@ Together, the five talks suggest a more complete STF approach:
 - **Forest interdependence:** recognize ecological relationships while distinguishing demonstrated mechanisms from popular simplifications.
 - **Hidden microbial biodiversity:** include below-ground life and ecosystem processes in the meaning and measurement of biodiversity.
 - **Indigenous stewardship and TEK:** recognize rights, authority, knowledge systems and community leadership as central to equitable conservation.
+- **Indigenous-led systems change:** trust, healing, self-determination and courage challenge institutions to move beyond performative commitments and change their actual distribution of power.
+- **Indigenous knowledge as science:** respect Indigenous knowledge systems on their own terms and enable ethical collaboration without collapsing different knowledge traditions into one hierarchy.
 
 Proposed STF principle:
 
@@ -165,6 +202,11 @@ This is a proposed strategic interpretation, not an approved organizational poli
 ## 9. Research references
 
 1. TEDx Talks (2025), Kiliii Yuyan, “Guardians of Life: Indigenous Wisdom, Science and Restoring the Planet”, TEDxBerkeley: https://www.youtube.com/watch?v=afW-Zo8R5pU
+2. TEDx Talks (2024), Marcia Turner, “Indigenous Wisdom for Meaningful Change”, TEDxRRU: https://www.youtube.com/watch?v=9WDIg_QWXWU
+3. Royal Roads University, “Watch: 2024 TEDxRRU speakers”: https://www.royalroads.ca/news/watch-2024-tedxrru-speakers
+4. Marcia Turner, announcement of the Four Indigenous Conditions of Systems Change: https://www.linkedin.com/posts/marcia-turner-dhnb_indigenous-wisdom-for-meaningful-change-activity-7219763836206075904
+5. TEDx Talks (2019), Albert Wiggan, “The case to recognise Indigenous knowledge as science”, TEDxSydney: https://www.youtube.com/watch?v=X5QON5l6zy8
+6. Lindsay, M. et al. (2022), “Integrating scientific and Aboriginal knowledge, practice and priorities to conserve an endangered rainforest ecosystem in the Kimberley region, northern Australia”, *Ecological Management & Restoration*, 23, 93–104. https://doi.org/10.1111/emr.12535
 2. Garnett, S.T. et al. (2018), “A spatial overview of the global importance of Indigenous lands for conservation”, *Nature Sustainability* 1, 369–374. https://doi.org/10.1038/s41893-018-0100-6
 3. Convention on Biological Diversity, Article 8(j): https://www.cbd.int/traditional
 4. Convention on Biological Diversity (2022), Kunming–Montreal Global Biodiversity Framework: https://www.cbd.int/article/cop15-final-text-kunming-montreal-gbf-221222
