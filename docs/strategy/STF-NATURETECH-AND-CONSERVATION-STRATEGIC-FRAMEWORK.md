@@ -383,6 +383,83 @@ The authorized STF governing body is invited to decide whether to:
 
 No decision should be inferred from circulation or discussion of this draft.
 
+## 18. Art × Science × Ecology: a proposed creative interpretation practice
+
+This section is informed by Rebecca Rutstein's TEDxYale talk and independent institutional research. It is a proposed practice, not an approved STF programme.
+
+### 18.1 Strategic rationale
+
+Art can provide an accessible, sensory and emotionally resonant way to encounter ecological processes that may otherwise remain abstract or invisible. Rutstein's documented practice demonstrates reciprocal collaboration with scientists: listening to the research, learning its context, selecting patterns for creative exploration, and allowing the exchange to generate questions for both artist and scientist.
+
+The National Endowment for the Arts interview describes *Shimmer* as a 64-foot interactive sculpture inspired by bioluminescent signals in deep-sea organisms. The U.S. Department of State's Art in Embassies biography documents her interdisciplinary practice and research expeditions. These sources establish the nature of the practice, not evidence that an artwork independently changes behaviour or improves ecosystems.
+
+Sources:
+- TEDxYale talk supplied for this review: https://www.youtube.com/watch?v=GglGhvJ4T0Y
+- National Endowment for the Arts interview (20 July 2023): https://www.arts.gov/stories/blog/2023/intersection-art-and-science-conversation-rebecca-rutstein
+- U.S. Department of State, Art in Embassies biography: https://art.state.gov/personnel/rebecca_rutstein/
+
+### 18.2 Ocean literacy and scientific accuracy
+
+UNESCO's Intergovernmental Oceanographic Commission describes ocean literacy as understanding the ocean's influence on people and people's influence on the ocean. This is relevant to inland audiences as well as coastal communities because watersheds, rivers, consumption, pollution and climate connect inland decisions to marine systems.
+
+Sources:
+- UNESCO-IOC Ocean Literacy: https://www.ioc.unesco.org/en/ocean-literacy
+- UNESCO Ocean Literacy Portal: https://oceanliteracy.unesco.org/about/
+
+When communicating ocean oxygen, avoid the misleading shorthand that the ocean supplies half of the oxygen humans breathe as a simple net contribution. NOAA estimates that the ocean produces roughly half of global oxygen, largely through photosynthetic plankton, algae and some bacteria, while marine organisms and decomposition consume approximately a comparable amount.
+
+Source: NOAA Ocean Service, https://oceanservice.noaa.gov/facts/ocean-oxygen.html
+
+### 18.3 Evidence limits
+
+Chen and Mao's 2026 systematic review of art–science collaboration describes a growing but weakly consolidated field, with qualitative case studies and process descriptions more common than explicit impact evaluations and cumulative outcome evidence.
+
+Reference: Chen & Mao (2026), “Art-science collaboration for sustainability challenges: a systematic review of scholarship, sustainability framings, and stakeholder participation,” https://doi.org/10.1007/s11625-026-01903-y
+
+Therefore STF should distinguish artistic experience and audience reach, curiosity and dialogue, demonstrated learning, subsequent behaviour or institutional decisions, and ecological outcomes. An exhibition or audience count is not by itself evidence of behaviour change, policy influence or ecological recovery.
+
+### 18.4 Proposed practice protocol
+
+If STF explores an Art × Ecology × Science collaboration, require:
+1. A shared question agreed by the artist, scientist and relevant community partners.
+2. A scientific briefing recording source data, methods, scale, uncertainty and limitations.
+3. Creative independence and fair compensation for the artist.
+4. Clear distinction between measured data, scientific interpretation, artistic abstraction and metaphor.
+5. Scientific review of factual captions without asking scientists to certify aesthetic meaning.
+6. Written agreements on copyright, licensing, reproduction, attribution, compensation and future reuse.
+7. Community-led consent and governance where local or Indigenous knowledge, places or cultural expression are involved.
+8. Accessible interpretation and local-language versions where feasible.
+9. Evaluation proportionate to the stated purpose.
+10. Consideration of energy, materials, travel, toxicity, waste and end-of-life impacts.
+
+### 18.5 Indian application and potential partners
+
+Potential themes include watershed connections, mangrove ecology, coastal sediment processes, soil microbial communities, pollination, seed dispersal, plant–fungus relationships, migratory routes, wetlands and seasonal ecological change.
+
+UNESCO's Ocean Literacy Portal lists India's Blue Schools national coordination within the Blue School Global Network, connecting ocean literacy to freshwater, climate, biodiversity, culture and livelihoods. The National Centre for Coastal Research describes student engagement with coastal science laboratories and researchers. These are possible institutional reference points, not existing STF partnerships or endorsements.
+
+Sources:
+- UNESCO Ocean Literacy Portal, India Blue School Network: https://oceanliteracy.unesco.org/projects/blue-school-global-network/blue-school-national-coordination-bodies/india
+- National Centre for Coastal Research: https://www.nccr.gov.in/?q=node%2F1073
+
+### 18.6 Proposed pilot: Hidden Connections
+
+A modest pilot concept is **Hidden Connections: Art, Science and the Living World**:
+- One defined ecological theme and one Indian study location or appropriately licensed dataset.
+- One research partner and one or more paid artists.
+- A co-designed visual, sound, sculpture, participatory or digital interpretation.
+- A public learning experience with a scientist-reviewed evidence guide.
+- Facilitated dialogue and proportionate audience evaluation.
+- A public project note documenting sources, interpretation, limitations, rights, environmental footprint and lessons.
+
+Treat the first project as an experiment in science communication and interdisciplinary practice. Do not promise behaviour change or ecosystem improvement in advance. Do not add this as a core Botanica Indica product feature.
+
+### 18.7 Strategic synthesis
+
+The proposed creative-interpretation dimension complements NatureTech, human–nature connectedness, ecological interdependence, hidden biodiversity, Indigenous and local stewardship, and urban biodiversity. Its role is to help people perceive ecological processes while preserving scientific accuracy, artistic independence and community rights.
+
+**Decision status: Proposed — not approved.**
+
 ## 16. Research and reference framework
 
 Primary and institutional references consulted for this proposal:
