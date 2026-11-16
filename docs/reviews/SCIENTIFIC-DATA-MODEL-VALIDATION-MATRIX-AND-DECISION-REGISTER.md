@@ -39,7 +39,7 @@ The following repository branch heads and file blob SHAs were fetched for this r
 | Source document | PR / branch | File blob SHA at preparation |
 |---|---|---|
 | Task 05 — Data Architecture | PR #3 / `docs/task-05-data-architecture` | `3c011c1256eb69f1e7170c23e8515da23323d912` |
-| Task 05B — Scientific Data Dictionary | PR #4 / `docs/task-05-data-dictionary` | `<escape>TO_BE_RECORDED_AT_REVIEW</escape>` |
+| Task 05B — Scientific Data Dictionary | PR #4 / `docs/task-05-data-dictionary` | `f7fe078fe2749d558a1e099ef45b5e5d990df558` |
 | Task 05C — Logical Database Model | PR #5 / `docs/task-05c-logical-data-model` | `e6131e867d4bc3dbc58aa1188d0fabc895429347` |
 | Task 05D — Validation and Readiness | PR #11 / `docs/task-05d-logical-model-validation-v3` | `acf446b1bf0204fa0400621711603ab23cc80ff2` |
 | Scientific Data Model Review Pack | PR #9 / `review/scientific-data-model-review-pack` | `dab7427c7c1724dbda1f375289ecde0a286e21c6` |
@@ -81,7 +81,7 @@ The scenarios below preserve Task 05C's original intent. The test IDs in Task 05
 | LDM-13 | Re-ingestion creates a new DatasetVersion/IngestionRun and preserves stable source/internal identifiers without silent duplication or overwrite. | SRC-01, SRC-03, SRC-04 | Data architect; biodiversity informatician | Two source versions, two runs, idempotency/reconciliation report, stable identifier comparison, changed source value retained verbatim, quarantine/retry evidence. |
 | LDM-14 | District boundary revision is versioned; historical location evidence is not silently rewritten when boundaries change. | GEO-05 | Geospatial architect; GIS/domain reviewer | Two boundary versions with valid-time/provenance; record query against original and current boundaries; proof that historical source geometry/administrative context remains traceable. |
 | LDM-15 | When raw source payload retention is prohibited, the payload is not stored; only specifically permitted metadata, references and provenance are retained. | SRC-02; rights review | Rights reviewer; data architect; security reviewer | Source terms/permission analysis; ingestion fixture; storage/object-store/log/backup checks; proof no prohibited payload persists; approved retention decision. |
-| LDM-16 | Defined survey does not detect a target taxon: an explicit absent/non-detected Occurrence is linked to the relevant Survey/Event, protocol, effort, target and location. Absence of an Occurrence row is never interpreted as evidence of absence. | FLD-08; Darwin Core sampling-event mapping | Ecologist; biodiversity informatician; architect | Survey fixture with target list, protocol, effort, time and location; explicit absent Occurrence; negative test showing missing row is unknown/not surveyed, not absent; profile-specific export validation. |
+| LDM-16 | Defined survey does not detect a target taxon: an explicit absent/non-detected Occurrence is linked to the relevant Survey/Event, protocol, effort, target and location. Absence of an Occurrence row is never interpreted as evidence of absence. | FLD-08; Darwin Core sampling-event mapping | Ecologist; biodiversity informatician; architect | Survey fixture with target list, protocol, effort, time and location; explicit internal non-detection state; negative test showing missing row is unknown/not surveyed, not non-detected; validate the chosen Darwin Core/GBIF profile vocabulary (Darwin Core `occurrenceStatus` recommends `detected` / `notDetected`; GBIF guidance also describes `present` / `absent` values in its sampling-event recommendations). |
 
 ### 4.1 Global acceptance rules for all LDM scenarios
 
@@ -230,7 +230,7 @@ Copy this record once per LDM test and once per blocking decision.
 Task 05E (physical database design) remains **Blocked** until all of the following are true:
 
 1. LDM-01 through LDM-16 each have an outcome and reproducible evidence, or a documented justified Not applicable outcome.
-2. All blocking decisions B01 through B18 have a documented disposition, accountable owner and evidence. Core identity/cardinality/rights/sensitive-location decisions cannot be deferred.
+2. All blocking decisions B01 through B15 in the current review pack have a documented disposition, accountable owner and evidence. Core identity/cardinality/rights/sensitive-location decisions cannot be deferred.
 3. Taxonomic identity, synonym, nomenclatural and concept-mapping semantics have been reviewed by a qualified botanical taxonomist.
 4. TCS and Darwin Core mappings have been reviewed by a biodiversity-informatics specialist against pinned current versions.
 5. Event, Occurrence and non-detection semantics have been reviewed by an ecologist/field specialist.
@@ -261,10 +261,10 @@ Attendance, silence, a positive GitHub mergeability value or an empty CI status 
 The following authoritative sources were checked during preparation. Reviewers should re-check current versions before implementation and record the version identifiers they used.
 
 1. TDWG Taxon Concept Standard, List of Terms (version 2025-12-11): https://tcs.tdwg.org/terms/
-2. TDWG Darwin Core Conceptual Model (version issued 2026-10-13): https://dwc.tdwg.org/cm/
+2. TDWG Darwin Core List of Terms (version issued 2026-10-13; `occurrenceStatus` term version modified 2026-05-26): https://dwc.tdwg.org/list/ and Darwin Core Conceptual Model: https://dwc.tdwg.org/cm/
 3. GBIF Data Quality Recommendations, including occurrence and sampling-event profiles: https://techdocs.gbif.org/en/data-publishing/data-quality-recommendations
-4. GBIF Data Quality Requirements for Occurrence Datasets: https://www.gbif.org/data-quality-requirements-occurrences
-5. PostgreSQL 18, Constraints: https://www.postgresql.org/docs/current/ddl-constraints.html
+4. GBIF Data Quality Recommendations (occurrence and sampling-event profiles, including profile-specific status vocabulary): https://techdocs.gbif.org/en/data-publishing/data-quality-recommendations
+5. PostgreSQL 18, Constraints (CHECK is row-local; use FKs/UNIQUE for referential and cardinality integrity; cross-row requirements may need transaction/trigger design): https://www.postgresql.org/docs/18/ddl-constraints.html
 6. PostGIS documentation: https://postgis.net/documentation/
 7. W3C PROV-O: https://www.w3.org/TR/prov-o/
 8. CARE Principles for Indigenous Data Governance: https://doi.org/10.5334/dsj-2020-043
@@ -273,3 +273,30 @@ The following authoritative sources were checked during preparation. Reviewers s
 ## 11. Decision status
 
 **Draft independent-review package.** The logical model is not yet approved. Task 05E remains blocked. This document must be completed by actual reviewers with evidence and decisions; it must not be populated with invented reviewer identities, assumed approvals or retrospective claims of validation.
+
+
+## 12. Additional implementation cautions identified during standards verification
+
+### 12.1 A row-local CHECK is necessary but not sufficient for total participation
+
+The Task 05C `IdentificationSubject` proposal can use a row-local CHECK to require exactly one of its three target FK columns to be non-null, with each FK enforcing target existence. A UNIQUE constraint on the Identification FK prevents multiple subject rows for one Identification. However, these constraints alone do not guarantee that every Identification has a corresponding subject row: that is a cross-table existence/cardinality requirement.
+
+PostgreSQL documentation explicitly cautions that CHECK constraints cannot safely enforce conditions depending on other table rows. The implementation must choose and test an appropriate transactionally safe design, such as creating Identification and its subject link in one controlled transaction with appropriate privileges and deferred/constraint-trigger enforcement if database-level total participation is required. The physical design reviewer must decide and prove the approach; do not claim that the CHECK alone enforces exactly one subject for every Identification.
+
+Official reference: https://www.postgresql.org/docs/18/ddl-constraints.html
+
+### 12.2 Non-detection vocabulary must be mapped, not assumed identical
+
+The current Darwin Core List of Terms was issued 2026-10-13, but the individual `occurrenceStatus` term was modified 2026-05-26. Its definition concerns detection or non-detection of an Organism during an Event and recommends `detected` and `notDetected` as default vocabulary values.
+
+GBIF's sampling-event recommendations describe `occurrenceStatus` and give `present` and `absent` as standard values in that publishing context. GBIF also explains that sampling-event datasets can support absence inference only when sampling method and effort are described.
+
+Therefore, Botanica Indica must retain a well-defined internal detection state and an explicit, profile-specific mapping. It must not silently assume `notDetected` and `absent` are interchangeable literal values across all exports. Test both the internal semantics and each target publishing profile.
+
+Official references:
+- https://dwc.tdwg.org/list/
+- https://techdocs.gbif.org/en/data-publishing/data-quality-recommendations
+
+### 12.3 Review status is not execution status
+
+The LDM matrix is a test plan until reproducible fixtures, database constraints, API/export tests, logs and reviewer outcomes are attached. At preparation time, these scenarios have been mapped to the documents but have not been executed against a physical schema. All such cases must remain **Not tested** until actual evidence exists.
