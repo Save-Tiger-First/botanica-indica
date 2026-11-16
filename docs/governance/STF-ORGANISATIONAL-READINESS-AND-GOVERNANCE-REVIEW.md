@@ -48,6 +48,12 @@ At the time of preparation, the following project materials were fetched from th
 
 The PR's mergeability flag is a GitHub integration state only. It is not evidence of legal, scientific or governance approval. The PR's status, branch and file counts must be refreshed before any later repository decision.
 
+### 2.1B Prior project-discussion record — not a legal verification
+
+Earlier STF project discussions distinguished the personal GitHub account, the GitHub organisation `Save-Tiger-First`, and a legal entity. No formal legal entity was identified in those discussions. This means the legal form remains **unestablished in the available project record**; it does not prove that no entity exists. The organisation must provide its primary registration evidence or confirm its current unincorporated status.
+
+There is also a historical-date point to reconcile: materials supplied in earlier project work were described as recording an STF origin in 2008, while a public institutional profile located during this review says Save Tiger First was started in 2012. These statements may refer to different stages (informal initiative, formal programme, or later registration), but that is only a hypothesis. STF should establish a documented chronology and use a consistent, evidence-backed founding date in public profiles and grant applications.
+
 ### 2.1A Public historical footprint — contextual evidence only
 
 A limited public-source search located historical references to Save Tiger First activity:
