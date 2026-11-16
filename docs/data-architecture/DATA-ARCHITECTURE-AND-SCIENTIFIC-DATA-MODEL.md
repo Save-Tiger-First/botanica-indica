@@ -689,11 +689,13 @@ The following is a conceptual relationship guide, not a final cardinality specif
 - A TaxonomicTreatment contains or references many TaxonNameUsage records.
 - A TaxonNameUsage refers to a TaxonName and may be associated with a TaxonConcept.
 - A TaxonConcept may be associated with multiple TaxonName records or usages across treatments.
-- TaxonConcept relationships are qualified by relationship type, source and treatment.
+- Taxonomic relationships must remain in three distinct families: (1) a TaxonConcept-to-TaxonName synonym assertion; (2) a TaxonName-to-TaxonName nomenclatural relationship such as basionym or replaced name; and (3) a TaxonConcept-to-TaxonConcept mapping with a governed relation and source. Do not collapse these into one undifferentiated TaxonRelationship table.
 - A TaxonProfile presents curated information about a selected concept or treatment.
 - ScientificAssertions describe subjects and link to one or more EvidenceItems and Citations.
 - An Observation may have multiple MediaAssets and one or more Identification records over time.
-- An Occurrence may be supported by an Observation, Specimen, Event or external source record.
+- An internal Occurrence is an evidence-backed domain record distinct from a user-submitted Observation. Its internal validity depends on the evidence and provenance actually available, not on completeness of a particular external publishing profile. A Darwin Core/GBIF export profile may require or recommend additional mapped fields; missing values must not be fabricated.
+- A taxonomic determination displayed for an Occurrence should be derived from the applicable current Identification assertion (and its taxonomic context), rather than stored as a second mutable taxon field that can drift from identification history.
+- A non-detection is not inferred from the absence of an occurrence record. It requires a defined survey/event context, protocol, effort and an explicit supported non-detection result.
 - An Event may contain multiple Occurrence records.
 - An Identification may be revised or superseded and may have multiple EvidenceRelationships.
 - An IdentificationRun may produce multiple IdentificationCandidates.
