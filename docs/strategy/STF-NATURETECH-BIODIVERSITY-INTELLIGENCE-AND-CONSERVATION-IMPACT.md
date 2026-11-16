@@ -514,7 +514,7 @@ Recommendation: include human–nature connectedness in STF's long-term educatio
 
 ### 20.1 Talk and strategic context
 
-The TEDxSeattle video supplied for STF discussion is Suzanne Simard's talk at https://www.youtube.com/watch?v=breDQqrkikM. The video framing presents her work on forest ecology and below-ground relationships. STF should retain the supplied video as the primary reference and verify the exact official talk title and event metadata from the TEDxSeattle page before using them in public-facing citation text.
+The official TEDxSeattle listing gives the title as “Nature’s internet: how trees talk to each other in a healthy forest” and identifies Simard as a Professor of Forest Ecology in the Department of Forest and Conservation Sciences at the University of British Columbia. The supplied YouTube video is the corresponding TEDxSeattle talk (published in 2017).
 
 The talk develops several connected ideas:
 - mycorrhizal fungi form symbiotic relationships with plant roots and can connect multiple plants through fungal mycelia;
