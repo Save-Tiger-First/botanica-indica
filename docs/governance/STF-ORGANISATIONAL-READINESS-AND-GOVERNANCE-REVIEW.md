@@ -48,6 +48,18 @@ At the time of preparation, the following project materials were fetched from th
 
 The PR's mergeability flag is a GitHub integration state only. It is not evidence of legal, scientific or governance approval. The PR's status, branch and file counts must be refreshed before any later repository decision.
 
+### 2.1A Public historical footprint — contextual evidence only
+
+A limited public-source search located historical references to Save Tiger First activity:
+
+- An institutional alumni profile states that Save Tiger First was started in 2012 and describes conservation-related engagement. This is a secondary biographical profile, not a registration record: https://mlacalumni.in/Team/teamdetail?teammember=MsBSPadma
+- A 2018 vulture-conservation workshop proceedings paper includes a contribution associated with Save Tiger First, Bengaluru, on Long-billed Vultures at Ramadevarabetta: https://raptors.org.in/assets/pdf/archives/SVPSI-2018-Workshop-Proceedings.pdf
+- India's National Vulture Action Plan 2020–2025 refers to Save Tiger First, Bengaluru, among organisations associated with vulture conservation work: https://save-vultures.org/wp-content/uploads/2020/11/20-11-India-National-Vulture-Action-Plan-2020-25.pdf
+- A 2017 Scroll report documents Save Tiger First's public advocacy concerning a proposed tourism development near Ramadevarabetta Vulture Sanctuary: https://scroll.in/article/837604/at-sholay-location-the-fight-is-between-movie-memories-and-vulnerable-vultures
+- The BBMP Bengaluru Climate Action and Resilience Plan partner/organisation directory includes an entry named Save Tiger First: https://apps.bbmp.gov.in/bcap/friendsofcac.html
+
+**Interpretation:** These sources are useful leads for reconstructing STF's historical programme record and potential track record. They do not establish the present legal entity, registration date, current good standing, continuity of activity, current governing body, financial controls, tax status or eligibility for CSR/FCRA. For any grant or CSR application, STF should obtain primary records: original project agreements, completion reports, publications, dated activity records, audited accounts, partner confirmations and registration documents. Verify each claimed year and the precise legal entity that carried out the activity.
+
 ### 2.2 What remains unverified
 
 No current primary evidence was available in the reviewed repository for:
