@@ -627,7 +627,7 @@ Following the preliminary desk review, proposed documentation changes were made 
 | Task 05C logical database model | #5 | `91c82b4f136a77aaa1edb02753ed49b2fbee86ed` |
 | Task 05D validation/readiness gate | #11 | `b7e0901e2483f1ef80027ecfc11242461e40c2c5` |
 
-These changes are proposed documentation revisions. PRs #3, #4, #5, #8, #9 and #10 remain open and draft; none is merged. PRs #7 and #10 were closed unmerged because each was based on an earlier Task 05C revision and became divergent after further model corrections. PR #11 replaces them and is based on the current Task 05C branch. At the latest check, GitHub reported PRs #3 and #8 as mergeable, and PRs #4, #5, #9 and #11 as not mergeable. Commit comparisons show the active branches are ahead of their respective bases and not behind; PR #11 is one commit ahead of the current Task 05C branch. The reason for the `mergeable: false` fields remains unestablished; do not infer a conflict cause.
+These changes are proposed documentation revisions. PRs #3, #4, #5, #8, #9 and #11 remain open and draft; none is merged. PRs #7 and #10 were closed unmerged because each was based on an earlier Task 05C revision and became divergent after further model corrections. PR #11 replaces them and is based on the current Task 05C branch. At the latest check, GitHub reported PRs #3, #4, #8 and #11 as mergeable, and PRs #5 and #9 as not mergeable. Commit comparisons show the active branches are ahead of their respective bases and not behind; PR #11 is one commit ahead of the current Task 05C branch. The reason for the `mergeable: false` fields on #5 and #9 remains unestablished; do not infer a conflict cause.
 
 ### Reconciliation results
 
