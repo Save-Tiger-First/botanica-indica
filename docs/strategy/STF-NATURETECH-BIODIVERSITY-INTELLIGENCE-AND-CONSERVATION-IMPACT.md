@@ -737,6 +737,42 @@ A proposed STF principle follows:
 
 This is a proposed strategic interpretation, not a scientific consensus statement or an approved conservation intervention.
 
+
+### 21.10 A second soil-biodiversity perspective: Dr. Emanga Alobwede
+
+Dr. Emanga Alobwede's TEDxWoodLaneWomen talk, **“How tiny organisms shape our planet”**, was published on 31 January 2025: https://www.youtube.com/watch?v=zuqMcNg8KLU. The official TEDx description identifies her as an interdisciplinary environmental scientist with academic, business and government experience, including work in soil science and environmental biotechnology.
+
+The talk complements the Amazon case in Section 21. It shifts the message from a particular tropical forest conversion study to the wider importance of below-ground biodiversity for food systems, soil function and ecosystem resilience.
+
+**Independent verification:** FAO's *State of Knowledge of Soil Biodiversity* explains that soil biodiversity includes organisms across microbial, microfaunal, mesofaunal, macrofaunal and megafaunal groups. Soil organisms contribute to nutrient transformations, plant productivity, carbon and nitrogen cycling, water filtration, contaminant degradation and medicine. FAO also identifies deforestation, fire, agricultural intensification, pollution and urbanization among pressures on soil biodiversity. Its guidance calls for long-term information, standardized sampling and analysis protocols, and stronger evidence on soil organism groups and their functions.  
+Sources: https://www.fao.org/interactive/soil-biodiversity/en/ and https://www.fao.org/soils-portal/soil-biodiversity/en
+
+**Critical qualifications:**
+
+- Soil microbes are not a single functional group. Bacteria, archaea, fungi, protists and other soil organisms differ in ecology, function and response to disturbance.
+- Soil carbon outcomes are not automatically positive. Soil organisms participate in carbon and nitrogen transformations that can support carbon storage or greenhouse-gas emissions, depending on environmental conditions and processes.
+- Microbial inoculants and biofertilizers are not universal substitutes for mineral fertilizers. Effectiveness depends on crop, soil, climate, strain, formulation, management and field conditions; claims require replicated, context-specific trials.
+- The talk's potential climate and agricultural benefits should not be interpreted as evidence that any microbial intervention will reliably sequester carbon or increase yields.
+- The talk's claims about particular microbial counts or universal proportions of food derived from soil should not be repeated as fixed constants without tracing the source and its methodology.
+
+**STF recommendation:** Soil biodiversity should be an explicit consideration in appropriate restoration, agriculture and landscape programmes. It should not become a new core Botanica Indica feature or a new STF laboratory programme without qualified partners, a clear ecological question, sampling design, permits, budget, long-term monitoring and data governance.
+
+### 21.11 Strategic synthesis across the soil-biodiversity talks
+
+The Jorge Rodrigues and Emanga Alobwede talks reinforce a common strategic insight: visible species inventories do not capture the full biodiversity or functioning of an ecosystem. STF should adopt an **above-ground and below-ground ecological perspective**, while distinguishing biodiversity description from functional measurement.
+
+A practical future soil-health pilot, if justified, should:
+1. Be co-designed with landholders, relevant communities and qualified soil ecologists.
+2. Define a limited question and baseline before sampling.
+3. Use validated laboratory methods, documented sample handling and metadata.
+4. Measure soil physical and chemical context alongside microbial indicators.
+5. Use repeated, comparable sampling and report uncertainty.
+6. Separate microbial composition, functional potential and measured ecosystem process rates.
+7. Publish only data and locations that are authorized and ecologically safe.
+
+**Decision status:** Proposed strategic direction; no soil-microbiome monitoring programme is approved by this document.
+
+
 ### 21.8 Research references
 
 1. TEDx Talks (2013), Jorge Rodrigues, “The incredible (endangered) biodiversity of the Amazon rainforest”, TEDxUTA: https://www.youtube.com/watch?v=oAl82gFMZis
@@ -765,7 +801,7 @@ A detailed research and governance addendum has been prepared at:
 
 `docs/strategy/INDIGENOUS-STEWARDSHIP-TEK-AND-COMMUNITY-DATA-GOVERNANCE.md`
 
-The addendum verifies and qualifies the talk's examples, corrects the interpretation of the 40% Indigenous lands statistic, discusses the CARE Principles for Indigenous Data Governance, considers India's Forest Rights Act and biodiversity legislation, and sets boundaries for Botanica Indica. It is a proposed strategic document, not an approved STF policy, legal opinion, community agreement or evidence of consultation with any Indigenous Peoples or local communities.
+The addendum verifies and qualifies Kiliii Yuyan's examples, corrects the interpretation of the 40% Indigenous lands statistic, discusses the CARE Principles for Indigenous Data Governance, considers India's Forest Rights Act and biodiversity legislation, and sets boundaries for Botanica Indica. It has now been expanded to include Marcia Turner's Four Indigenous Conditions of Systems Change and Albert Wiggan's case for recognizing Indigenous knowledge as science. These are distinct contributions: one concerns institutional conditions for meaningful systems change; the other challenges the marginalization of Indigenous knowledge systems. It is a proposed strategic document, not an approved STF policy, legal opinion, community agreement or evidence of consultation with any Indigenous Peoples or local communities.
 
 **Proposed principle:** Conservation technology must serve living ecosystems and the people who sustain relationships with them. It should strengthen community authority, protect knowledge rights, share benefits fairly and support evidence-based ecological recovery.
 
@@ -1018,3 +1054,135 @@ This complements the six existing dimensions: NatureTech, human–nature connect
 **Proposed practice and pilot concept — not an approved STF programme and not a claim that art alone produces conservation impact.**
 
 Recommendation: explore one small, paid and co-designed Art × Ecology × Science pilot only after a scientific partner, artist, clear rights arrangements, audience plan, budget and proportionate evaluation method are secured. Do not add this as a core Botanica Indica product feature.
+
+
+## 25. Indigenous-led systems change and institutional accountability
+
+Marcia Turner's TEDxRRU talk, **“Indigenous Wisdom for Meaningful Change”** (17 July 2024), adds an institutional-governance dimension to STF's Indigenous stewardship principles: commitments to reconciliation, inclusion and decolonization are not meaningful if institutions do not change how power, authority and decisions operate.
+
+The Royal Roads University description identifies four conditions in Turner's framework:
+- **Trust**
+- **Healing**
+- **Self-determination**
+- **Courage**
+
+Turner describes courage as including the willingness to dismantle white supremacy and inequitable systems. The framework is rooted in her Gitxsan identity, ancestral teachings and professional work. It must be attributed to her and not presented as a generic Indigenous framework, universal doctrine or STF invention.  
+Sources: https://www.youtube.com/watch?v=9WDIg_QWXWU and https://www.royalroads.ca/news/watch-2024-tedxrru-speakers
+
+### 25.1 STF interpretation — institutional practice, not symbolic adoption
+
+STF should treat this talk as a challenge to examine its own conduct, not as a framework to borrow decoratively. If STF works with Indigenous Peoples, Adivasi communities or other local communities in India, it must first understand the relevant local rights, identities, institutions and governance processes. Gitxsan concepts and conditions should not be assumed to map directly onto Indian contexts.
+
+Possible institutional questions for STF:
+- **Trust:** Are commitments, budgets, data uses, limitations and decisions transparent? Does STF do what it has promised? Is there a credible way to raise concerns and obtain remedy?
+- **Healing:** Does the organisation understand historical and ongoing harms relevant to the place and people involved? Is there space for community-defined repair, or does STF rush to project delivery?
+- **Self-determination:** Do relevant rights holders define priorities and hold real decision authority over participation, knowledge, data, methods, outputs and whether a project proceeds?
+- **Courage:** Is STF prepared to change its own plans, budgets, timelines, ownership assumptions and public claims when community rights or ecological evidence require it?
+
+These questions are an STF reflection tool inspired by the talk, not a substitute for the speaker's full framework or for community-defined processes.
+
+### 25.2 Anti-performative safeguards
+
+STF should not:
+- use Indigenous imagery, stories, terminology or endorsements without authorization;
+- claim a project is Indigenous-led when communities only provide consultation or data;
+- treat a single individual as speaking for an entire people without a legitimate mandate;
+- announce reconciliation, empowerment or decolonization outcomes based on attendance, workshops or memoranda alone;
+- use an Indigenous framework as a brand asset while retaining unilateral control of decisions and data.
+
+Where an Indigenous or local community partnership is proposed, the organisation should record who has authority to decide, what authority is delegated or retained, how concerns are resolved, and what resources enable participation.
+
+### 25.3 Proposed governance indicators
+
+Potential indicators include:
+- proportion of relevant decisions made by or jointly with community-designated authorities;
+- whether community-defined priorities materially changed project design or budgets;
+- timely fulfilment of commitments and remedies for missed commitments;
+- community assessment of trust, safety, influence and benefit;
+- proportion of knowledge and data assets governed under agreed access and reuse rules;
+- documented instances where a project was paused, redesigned or stopped in response to community decisions.
+
+These are proposed indicators and should be co-designed. They must not become extractive scoring systems imposed on communities.
+
+**Decision status:** Proposed institutional reflection and governance direction; not an approved STF policy or evidence of community endorsement.
+
+## 26. India's ecological crisis, public accountability and ecological leadership
+
+Two India-focused talks provide complementary lenses.
+
+### 26.1 Public accountability and civic agency — Vimlendu Jha
+
+Vimlendu Jha's talk, **“India's Environmental Crisis, Unspoken and Unheard”**, was delivered at TEDxJMC in March 2019. The official TED description frames the talk around land, water and air crises and argues that sustainability must move beyond academic discussion into practical action. The user-provided summary highlights urban lake fires, air pollution, infrastructure conflicts and the unequal burden placed on people who speak out.
+
+Source: https://www.ted.com/talks/vimlendu_jha_india_s_environmental_crisis_unspoken_and_unheard
+
+**Verification and caution:** This is a 2019 talk. Its examples and figures are historical claims from that period, not a current environmental status report. Specific statements about AQI maxima, lake conditions, proposed projects, tree numbers, water volumes or protest deaths must be checked against dated official records and reliable reporting before reuse. The talk's broad message—that recurring environmental harm can become normalized and that citizens with greater agency should participate in public accountability—is a strategic and civic argument, not a substitute for current monitoring data.
+
+For Bengaluru, the Government of India's 2026 parliamentary response confirms the city is included as a non-attainment city under the National Clean Air Programme and describes a city action plan targeting sources including road dust, construction and demolition activities and transport-related emissions. This is a more appropriate current policy reference than repeating older AQI claims from the 2019 talk.  
+Source: https://sansad.in/getFile/loksabhaquestions/annex/187/AU2639_1pjHt4.pdf?source=pqals
+
+**STF implication:** Consider urban ecological accountability a legitimate programme area, but work through documented evidence, lawful civic participation, transparent methods and credible local partnerships. STF should not make unverified allegations, publish uncontextualized pollution claims or expose individual contributors to avoidable risk.
+
+### 26.2 Forests, medicines and human survival — Srinivasulu IFS
+
+The TEDxABBS talk **“Forest Conservation is Conversation on Life”** was published on 25 September 2025. Its official description identifies Srinivasulu as a senior Indian Forest Service officer and presents forests as repositories of biodiversity, medicine, food security and genetic resources. It connects conservation to human survival and dignity rather than limiting it to charismatic species or tree cover.
+
+Source: https://www.youtube.com/watch?v=EYugido3Fu0
+
+The broad proposition is well founded: plant and microbial diversity has contributed to medicines and other useful compounds. But examples need botanical and geographic precision. Quinine is associated with *Cinchona* species native to the Americas; paclitaxel (Taxol) was first isolated from Pacific yew (*Taxus brevifolia*) in North America; vincristine derives from *Catharanthus roseus*, native to Madagascar; and digoxin is derived from *Digitalis* species. These examples demonstrate the value of biodiversity and natural-products research, but they are not all examples of medicines originating from Indian forests.  
+Sources: https://www.cancer.gov/research/progress/discovery/taxol ; https://www.kew.org/plants/pacific-yew ; https://pubmed.ncbi.nlm.nih.gov/36410328/ ; https://www.nejm.org/doi/10.1056/NEJM199412083312306
+
+The talk's broad species-count statement should not be presented as a settled count of known species or as a verified inventory of species interacting in forests. Likewise, the Green Revolution reference should be explained through crop genetic resources and crop wild relatives, with crop-specific evidence rather than a blanket claim.
+
+**India relevance:** The Ministry of Environment, Forest and Climate Change's 2026 World Wildlife Day backgrounder reports approximately 15,000 medicinal plant species in India and describes conservation measures including Medicinal Plants Conservation Areas and ex-situ accessions. These are government-reported figures and programme descriptions; they should be attributed to the source and not treated as a substitute for species-level assessment.  
+Source: https://www.pib.gov.in/PressNoteDetails.aspx?ModuleId=3&NoteId=157632&lang=1&reg=3
+
+**STF implication:** Conservation communication should connect biodiversity with livelihoods, public health, food systems, cultural knowledge and ecological resilience—without reducing nature to a pharmacy or implying that species are valuable only when they have commercial or medical utility.
+
+### 26.3 A proposed India-first accountability and stewardship approach
+
+STF may explore small, evidence-led projects that:
+1. document a clearly defined local ecological problem and its history;
+2. identify the responsible public authority and relevant legal or planning process;
+3. use reliable baseline data and disclose limitations;
+4. include affected communities and local knowledge holders in defining the problem and response;
+5. distinguish awareness, advocacy, monitoring, restoration and enforcement as different activities;
+6. protect the safety and privacy of community members and environmental defenders;
+7. report both progress and failure transparently.
+
+Potential topics include urban lakes and wetlands, native urban trees, habitat connectivity, soil health, medicinal plant conservation and protection of ecologically sensitive landscapes. These are candidate themes, not approved projects.
+
+**Decision status:** Proposed programme direction; no specific campaign, litigation, restoration intervention or monitoring project is approved.
+
+## 27. Zoos, aquariums and ex-situ conservation: a qualified role
+
+Christoph Kiessling's TEDxSOAS talk, **“Respect for the environment: Protection and Conservation”** (April 2018), argues that modern zoos and aquariums can contribute to conservation through education, research, species management and public engagement. The talk also uses population growth, habitat loss and pollution to illustrate pressures on biodiversity.
+
+Source: https://www.ted.com/talks/christoph_kiessling_respect_for_the_environment_protection_and_conservation
+
+The strategic value of this talk is the invitation to consider the full conservation toolkit, including ex-situ management. However, its claims about population growth, plastic entering the ocean and species counts per hectare are dated or lack sufficient context in the supplied summary. They should not be repeated as current global statistics.
+
+### 27.1 Independent conservation verification
+
+The IUCN Species Survival Commission's 2023 position statement recognizes that well-run botanic gardens, aquariums and zoos can contribute to species conservation through ex-situ and in-situ management, research, education, community engagement, policy, funding and species recovery. It also explicitly recognizes that not all institutions meet their conservation potential and identifies risks from poor population management, disease management, unsuitable releases and unapproved wild collection.
+
+IUCN's position supports a **One Plan Approach**: connect ex-situ and in-situ conservation rather than treating captive populations as a replacement for protecting habitats and wild populations.  
+Source: https://iucn.org/sites/default/files/2023-10/2023-position-statement-on-the-role-of-botanic-gardens-aquariums-and-zoos-in-species-conservation.pdf
+
+### 27.2 STF's position
+
+STF should neither endorse nor dismiss zoos and aquariums as a category. Any partnership should be assessed institution by institution, species by species and programme by programme.
+
+Due diligence should consider:
+- relevant national legal permissions, recognition and accreditation;
+- animal welfare, veterinary capacity, husbandry and population-management standards;
+- transparent conservation objectives and measurable contribution to wild populations or habitat protection;
+- scientific basis and risk assessment for breeding, release or translocation;
+- provenance and legality of animals and biological material;
+- public education quality, research integrity and community relationships;
+- independent reporting and willingness to disclose adverse outcomes.
+
+**No-go principle:** STF should not promote captive display as equivalent to habitat conservation, endorse a release without a scientifically justified and authorized conservation plan, or use the “Noah's Ark” metaphor to imply that ex-situ collections can preserve ecosystem function or replace wild habitats.
+
+**Decision status:** Proposed partnership-screening principle; not an endorsement of any named zoo, aquarium or wildlife facility.
+
