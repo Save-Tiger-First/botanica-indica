@@ -90,6 +90,18 @@ For each source used in scientific reconciliation, capture at minimum:
 
 Do not use one universal numeric “authority score”. Source fitness is purpose-specific: a nomenclatural index, taxonomic backbone, herbarium catalogue and community-curated flora answer different questions. Preserve the source's actual role, editorial model, scope, date and limitations. A source's content should be evaluated at assertion level.
 
+**Illustrative source-role profiles for the current Indian test cases (re-check at each ingestion/review):**
+
+| Source | Source type and appropriate use | Important qualification |
+|---|---|---|
+| International Plant Names Index (IPNI) | Global nomenclatural index for vascular plant names; useful for name publication, authorship, bibliographic details and nomenclatural identifiers. | It is not, by itself, the preferred authority for accepted taxonomic concepts or geographic distribution. See https://www.ipni.org/about. |
+| Plants of the World Online (POWO) / World Checklist of Vascular Plants (WCVP) | Global taxonomic backbone and curated taxonomic/distribution resource; useful for a source-specific accepted-name view and cited taxonomic treatment. | Kew describes the resource as dynamic and curated from contributing datasets and peer-reviewed sources where possible, but not in every case. Preserve its treatment and citations; do not treat its accepted view as the only possible taxonomy. See https://powo.science.kew.org/about and https://powo.science.kew.org/about-wcvp. |
+| Botanical Survey of India (BSI) | Indian government botanical institution; its stated mandate includes phytodiversity exploration/documentation and publication of National, State and District Floras, as well as development of national plant and herbarium databases. | Distinguish a formal BSI flora/revision, a herbarium specimen record and a general institutional webpage; they are different evidence products. See https://bsi.gov.in/page/en/Mandate. |
+| eFlora of India | Community-developed photographic and discussion-based documentation resource, built by members of the eFlora of India Google Group, with contributions from people of diverse backgrounds including subject experts. | Its own About page says identification/data correctness depends on member inputs and sometimes outside experts, and that errors cannot be ruled out. Use it as a valuable supplementary observation, photographic, discussion and regional knowledge source; assess each species page and cited evidence rather than treating the whole site as a formally edited national flora or nomenclatural index. See https://efloraofindia.com/efi/about/. |
+
+These profiles describe source purpose and self-described editorial context, not a universal ranking. A BSI publication may be highly suitable for a particular regional flora question; IPNI may be the right source for a nomenclatural publication detail; POWO may provide a useful global taxonomic view; eFlora of India may provide rich photographs and field discussion. The assertion being made determines which evidence is fit for purpose.
+
+
 ### 4.1 TaxonName
 
 **Definition:** A nomenclatural or other name string used to refer to a taxon. It is not, by itself, proof of acceptance or a complete taxon concept.
