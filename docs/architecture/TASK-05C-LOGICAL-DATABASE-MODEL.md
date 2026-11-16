@@ -132,6 +132,10 @@ erDiagram
     OBSERVATION ||--o{ OBSERVATION_IDENTIFICATION_LINK : has
     IDENTIFICATION ||--o{ OBSERVATION_IDENTIFICATION_LINK : displayed_as
     AGENT ||--o{ IDENTIFICATION : asserts
+    IDENTIFICATION ||--|| IDENTIFICATION_SUBJECT : has_subject
+    OBSERVATION o|--o{ IDENTIFICATION_SUBJECT : target_observation
+    OCCURRENCE o|--o{ IDENTIFICATION_SUBJECT : target_occurrence
+    MATERIAL_ENTITY o|--o{ IDENTIFICATION_SUBJECT : target_material_entity
     TAXON_CONCEPT o|--o{ IDENTIFICATION : proposed_concept
     TAXON_NAME o|--o{ IDENTIFICATION : provisional_name
     IDENTIFICATION ||--o{ IDENTIFICATION_EVIDENCE : supported_by
@@ -170,6 +174,8 @@ erDiagram
     TAXON_CONCEPT ||--o{ ASSERTION_SUBJECT_TAXON : subject
     SCIENTIFIC_ASSERTION ||--o{ ASSERTION_SUBJECT_OCCURRENCE : about
     OCCURRENCE ||--o{ ASSERTION_SUBJECT_OCCURRENCE : subject
+    SCIENTIFIC_ASSERTION ||--o{ ASSERTION_SUBJECT_OBSERVATION : about
+    OBSERVATION ||--o{ ASSERTION_SUBJECT_OBSERVATION : subject
     SCIENTIFIC_ASSERTION ||--o{ ASSERTION_SUBJECT_PLACE : about
     GEOGRAPHIC_UNIT ||--o{ ASSERTION_SUBJECT_PLACE : subject
     SCIENTIFIC_ASSERTION ||--o{ EXPERT_ASSESSMENT : reviewed_by
@@ -244,7 +250,7 @@ The following is the recommended canonical inventory. Names are logical labels a
 
 | Entity | Primary relationship / key rule | Important constraints |
 |---|---|---|
-| ScientificAssertion | Stable assertion ID and typed subject link | Predicate, typed value, source, agent, time and review state |
+| ScientificAssertion | Stable assertion ID and one or more approved typed subject-link rows | Predicate, typed value, source, agent, time and review state; each subject link has one real FK to an approved target type |
 | VernacularNameAssertion | TaxonConcept/TaxonName + language + script + geographic/language context | Preserve variants, spelling source and community attribution |
 | MorphologicalAssertion | Taxon concept + structure/character + typed value/unit | Do not flatten variable morphology into one species description |
 | HabitatAssertion | Taxon concept + habitat vocabulary + scope | Source, geography, time and evidence |
