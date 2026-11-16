@@ -38,7 +38,7 @@ It is deliberately a **logical model**, not an implementation schema. Physical t
 
 The current TCS terms define four central classes: Taxon Concept, Taxon Name, Taxon Concept Mapping and Nomenclatural Type.
 
-A TCS TaxonConcept MUST have exactly one taxonName and one accordingTo resource. The accordingTo resource identifies the treatment or other source establishing the concept. TCS synonymy is a relation from a TaxonConcept to a TaxonName. A TaxonConceptMapping is a separate relation between two TaxonConcepts, using mapping relations such as congruent, includes, included-in, partially-overlaps, disjoint or intersects.
+A TCS TaxonConcept MUST have exactly one taxonName and exactly one accordingTo resource. The accordingTo value is a resource/IRI identifying the treatment or other source establishing or using the concept; it is not merely a person's name. TCS synonymy is a relation from a TaxonConcept to a TaxonName. A TaxonConceptMapping is a separate relation between two TaxonConcepts and MUST use exactly one of the six TCS mapping relations: `isCongruentWith`, `includes`, `isIncludedIn`, `partiallyOverlaps`, `isDisjointFrom` or `intersects`.
 
 **Model consequence:** do not represent synonymy as a generic concept-to-concept edge. Keep name-level nomenclatural relations (such as basionym/replaced name) distinct from concept-level mappings. Preserve the TCS NomenclaturalType class and its type information as a first-class extension, even if the first public release does not expose it.
 
@@ -114,7 +114,7 @@ erDiagram
 ```
 
 **Interpretation**
-- Each TaxonConcept has one TaxonName and one TaxonomicTreatment/accordingTo reference.
+- Each TaxonConcept has exactly one TaxonName and exactly one canonical according-to resource. The resource may be a structured TaxonomicTreatment or another citable resource. If both a generic resource record and a TaxonomicTreatment record exist, the treatment must resolve to that same resource; they are not two independent according-to values.
 - A TaxonConcept may have multiple synonym TaxonName relations.
 - A TaxonConceptMapping relates two concepts and is not a synonym table.
 - TaxonNameRelationship captures name-to-name nomenclatural relations (e.g. basionym/replaced name) only where supported.
@@ -178,7 +178,7 @@ erDiagram
     SOURCE ||--o{ EVIDENCE_ITEM : originates
 ```
 
-**Important implementation rule:** avoid a single polymorphic `subject_type + subject_id` foreign-key pair where the database cannot enforce referential integrity. Use typed assertion-subject link tables or a carefully governed supertype/extension pattern. The diagram illustrates typed links for the principal subject types; the full set may expand.
+**Important implementation rule:** avoid a single polymorphic `subject_type + subject_id` foreign-key pair where the database cannot enforce referential integrity. Use typed assertion-subject link tables or a carefully governed supertype/extension pattern. For Identification, define typed subject link entities for Observation, Occurrence and MaterialEntity; each Identification must have exactly one supported subject link, and each link must carry a real FK to its target. For ScientificAssertion, use explicit typed links (e.g. TaxonConcept, Occurrence, Observation and Place); only approved target types may be added. The diagram illustrates typed links for the principal assertion subject types.
 
 ### 4.4 Source ingestion, provenance and rights
 
@@ -232,10 +232,10 @@ The following is the recommended canonical inventory. Names are logical labels a
 |---|---|---|
 | TaxonName | Stable internal ID; unique external IDs scoped by issuing namespace | Preserve verbatim name, name string, authorship and nomenclatural code separately |
 | TaxonomicTreatment | Stable ID; linked to Source and bibliographic resource | Treatment version and publication identity preserved |
-| TaxonConcept | FK to exactly one TaxonName and one according-to resource/treatment | Do not infer concept identity from name alone |
+| TaxonConcept | FK to exactly one TaxonName and exactly one canonical according-to resource/IRI | Do not infer concept identity from name alone; an optional TaxonomicTreatment record must resolve to that same resource |
 | TaxonNameUsage | FK to Treatment and TaxonName; optional resolved concept | Status belongs to source usage, not globally to name |
 | TaxonConceptSynonym | FK to TaxonConcept and TaxonName | TCS synonym semantics; retain source evidence and qualifiers |
-| TaxonConceptMapping | Subject concept + object concept + mapping relation + according-to reference | Concept-to-concept alignment; not a synonym shortcut |
+| TaxonConceptMapping | Subject concept + object concept + one of six TCS mapping relations + mapping source resource | Concept-to-concept alignment; not a synonym shortcut; no informal “not congruent” or “excludes” values |
 | TaxonNameRelationship | Subject name + object name + relationship type | Use only supported nomenclatural relations |
 | NomenclaturalType | FK to typified TaxonName and type specimen/name reference | Preserve type kind, type citation and source |
 
@@ -260,7 +260,7 @@ The following is the recommended canonical inventory. Names are logical labels a
 | ObservationMedia | Composite uniqueness for observation + media + role/order | Media may be reused only where rights and privacy allow |
 | Event | Stable ID; optional parent event and location | Date interval precision, protocol and effort |
 | Organism | Stable identity only when individual/group identity is meaningful | Do not create one automatically for every plant sighting |
-| Occurrence | Stable ID; basis-of-record; event/place/time context; organism optional | Darwin Core semantics; presence/absence and uncertainty explicit |
+| Occurrence | Stable ID; provenance; event/place/time context; organism optional; basis-of-record mapping where available | Internal occurrence validity is independent of external export completeness; do not fabricate missing basis, taxon or date |
 | OccurrenceObservationLink | Occurrence + Observation | Many observations may support an occurrence interpretation |
 | MaterialEntity | Stable physical-material identity | Specimen/sample/living collection; not image file |
 | OccurrenceMaterialLink | Occurrence + MaterialEntity + evidence role | A material entity may evidence one or more occurrence records |
@@ -490,7 +490,7 @@ Evidence quality is claim-relative. Do not create one universal quality score an
 | concept label | tcs:taxonName |
 | concept synonym name | tcs:synonym |
 | name combination relations | tcs:basionym / tcs:replacedName as applicable |
-| mapping relation | tcs:mappingRelation and subject/object concept properties |
+| mapping relation | One of `isCongruentWith`, `includes`, `isIncludedIn`, `partiallyOverlaps`, `isDisjointFrom`, `intersects` via `tcs:mappingRelation` |
 
 Mapping must preserve source-specific treatment and relation semantics. A simple accepted-name CSV is a lossy view, not the canonical data model.
 
@@ -509,7 +509,7 @@ Mapping must preserve source-specific treatment and relation semantics. A simple
 | Evidence/media | associated media and references, subject to rights |
 | source record/dataset | dataset metadata and record identifiers |
 
-GBIF occurrence publishing recommends stable occurrence identifiers, basisOfRecord, scientificName and eventDate; it strongly recommends coordinates and datum/uncertainty when available. Stable IDs must persist across dataset versions. These are export quality expectations, not a reason to force incomplete source data into fabricated values.
+Current GBIF technical guidance requires `occurrenceID` for occurrence datasets. For the general occurrence profile, `basisOfRecord`, `scientificName` and `eventDate` are strongly recommended; GBIF-managed programmes may require them. Sampling-event datasets have a separate profile, including event and sampling-protocol fields. Stable IDs must persist across dataset versions. These are export-profile expectations, not universal internal constraints and not a reason to force incomplete source data into fabricated values.
 
 ### 12.3 Mapping registry
 
@@ -583,7 +583,8 @@ The model must represent and validate each scenario without losing source contex
 - No taxon concept without exactly one name and one according-to resource.
 - No source-specific name usage without treatment and name.
 - No concept mapping without subject, object, relation and source.
-- No occurrence without basis-of-record and provenance.
+- No occurrence without provenance.
+- If a `basisOfRecord` value is supplied for an external mapping, it must use a valid Darwin Core controlled value and be supported by the record's evidence. Do not require it as a universal internal field; validate it against the selected export profile.
 - No coordinate with unknown CRS silently assigned to WGS84.
 - No negative coordinate uncertainty or impossible coordinate values.
 - No AI candidate score labelled calibrated probability without a calibration reference.
