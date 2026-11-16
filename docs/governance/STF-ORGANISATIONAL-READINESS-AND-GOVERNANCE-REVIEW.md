@@ -156,11 +156,12 @@ If a small team cannot fully segregate duties, the governing body should documen
 
 ### 6.1 Tax-law transition — important 2026 verification
 
-The Income-tax Act, 2025 came into effect from 1 April 2026. The Income Tax Department's current guidance states that fresh applications made on or after that date for provisional registration of a qualifying new non-profit use **Form 104**, corresponding to former Form 10A. Earlier registrations and pending applications are governed by the applicable transition provisions. Do not blindly reuse old Form 10A/10AB checklists or old section references without a tax professional checking the current Act and Rules.
+The Income-tax Act, 2025 received Presidential assent on 21 August 2025 and, under section 1(3), generally came into force on 1 April 2026. The Income Tax Department states that fresh applications made on or after that date for provisional registration/approval use **Form 104** under section 332/354, with Form 106 issued as the order/confirmation. Earlier registrations and pending applications are governed by transition provisions; the Department specifically says prior provisional approvals do not become invalid merely because the new Act commenced. Form 104 is not a universal substitute for every historic 12A/12AB/80G compliance step: the correct route depends on entity status, tax year, existing approvals and the new Act/Rules. Do not reuse old Form 10A/10AB checklists or old section references without a tax professional checking the transition and the specific benefit sought.
 
 Primary starting points:
-- Income Tax Department, Form 104 and 106 guidance: https://www.incometax.gov.in/iec/foportal/newformpage/forms/form104%26106
-- Income Tax Department, forms and transition FAQs: https://www.incometax.gov.in/iec/foportal/help/all-topics/e-filing-services/income-tax-forms
+- Gazette of India, Income-tax Act, 2025 (Act No. 30 of 2025; commencement 1 April 2026): https://egazette.gov.in/WriteReadData/2025/265620.pdf
+- Income Tax Department, Form 104 and 106 FAQs: https://www.incometax.gov.in/iec/foportal/newformpage/forms/form104%26106
+- Income Tax Department, forms and transition FAQs (including continuity of existing approvals and pending applications): https://www.incometax.gov.in/iec/foportal/help/all-topics/e-filing-services/income-tax-forms
 
 ### 6.2 Questions and evidence
 
@@ -192,17 +193,23 @@ Primary starting points:
 
 ## 7. Foreign contribution and international funding
 
-### 7.1 Current legal position must be checked carefully
+### 7.1 Current legal position — checked 16 November 2026
 
-The FCRA framework is not a general ban on foreign donations. Eligible entities may receive foreign contribution only through the legally permitted registration or prior-permission route and must comply with the applicable receipt, utilisation, banking and reporting conditions.
+The FCRA framework is not a general ban on foreign donations. The Ministry of Home Affairs' July 2026 explainer states that eligible associations may receive foreign contribution through registration or prior permission and must comply with the statutory receipt, utilisation, banking and reporting conditions. The exact route and eligibility must be confirmed for STF's legal form and proposed source/purpose.
 
-A significant current-law distinction: the Foreign Contribution (Regulation) Amendment Bill, 2026 was introduced in Lok Sabha on 25 March 2026 and, according to the latest parliamentary tracking located for this review, was referred to a Joint Parliamentary Committee and remained pending. It must not be described as enacted law unless a later Gazette notification confirms enactment and commencement. Separately, the Foreign Contribution (Regulation) Amendment Rules, 2026 were notified on 22 June 2026. Obtain current counsel advice on the Rules and any later legislative developments before applying or accepting funds.
+**Important distinction between the 2026 Bill and 2026 Rules:**
+
+- The Foreign Contribution (Regulation) Amendment Bill, 2026 was introduced in Lok Sabha on 25 March 2026. Parliamentary tracking records it as referred to a Joint Parliamentary Committee on 12 August 2026; PRS lists it as “In Committee”. The Bill's proposed changes must not be described as enacted law unless a later Act and commencement notification are verified.
+- The Foreign Contribution (Regulation) Amendment Rules, 2026 were notified on 22 June 2026 and are in force. They are separate from the Bill. PRS's analysis identifies changes concerning purposes and states/UTs of operation, application disclosures and evidence of reasonable activity. The precise requirements and transitional provisions should be checked against the Gazette Rules and MHA portal before relying on them.
+
+The PIB backgrounder has an internal wording inconsistency: an early FAQ answer says the Act was amended in 2026, but its later specific explanation says the Amendment Bill is still under consideration. For legal status, this review gives priority to the Gazette text, parliamentary bill tracking and the explicit PIB statement that the Bill is pending—not the ambiguous shorthand in the earlier answer.
 
 Sources:
 - PRS India, FCRA Amendment Bill 2026 status and analysis: https://prsindia.org/billtrack/the-foreign-contribution-regulation-amendment-bill-2026
-- PRS India, Joint Committee activity (latest located hearing 12 November 2026): https://prsindia.org/parliamentary-committees/joint-committee-on-the-foreign-contribution-regulation-amendment-bill-2026
+- Gazette of India, Bill No. 97 of 2026 as introduced (25 March 2026): https://egazette.gov.in/WriteReadData/2026/271301.pdf
+- PIB, FCRA backgrounder (22 July 2026), including distinction between pending Bill and notified Rules: https://www.pib.gov.in/PressReleasePage.aspx?PRID=2287897
+- PRS India, FCRA Amendment Rules 2026 analysis and text: https://prsindia.org/billtrack/foreign-contribution-regulation-amendment-rules-2026
 - MHA FCRA portal: https://fcraonline.nic.in/
-- FCRA Amendment Rules 2026 text: https://prsindia.org/files/bills_acts/bills_parliament/2026/FCRA_Rules_2026.pdf
 
 ### 7.2 Questions and safeguards
 
@@ -222,11 +229,11 @@ Sources:
 
 ## 8. CSR funding readiness
 
-CSR funding is not a general-purpose donation route. Eligibility to act as a CSR implementing agency depends on the entity category and the applicable CSR Policy Rules. The National CSR Exchange Portal describes eligibility categories, including qualifying Section 8 companies, registered public trusts and registered societies, with tax registrations and track-record conditions applying to certain categories. A valid CSR Registration Number (CRN) is required for an implementing agency to register on that portal.
+CSR funding is not a general-purpose donation route. Eligibility to act as a CSR implementing agency depends on the entity category and the applicable CSR Policy Rules. The Companies (CSR Policy) Rules, 2014, as amended, define which entities can act as implementing agencies and the conditions that apply to each category. Eligibility is not established merely by having a legal entity or a portal profile. A valid CSR Registration Number (CRN) is required for an implementing agency to register on the National CSR Exchange Portal. The portal itself states that it does not independently verify an implementing agency; corporate due diligence remains the corporate's responsibility.
 
 Sources:
 - MCA CSR FAQ: https://www.mca.gov.in/Ministry/pdf/FAQ_CSR.pdf
-- National CSR Exchange Portal FAQ: https://csrxchange.gov.in/Frontend/faq
+- National CSR Exchange Portal FAQ (including CRN requirement and portal due-diligence limitation): https://csrxchange.gov.in/Frontend/faq
 
 ### Readiness questions
 
@@ -479,15 +486,17 @@ The following official and specialist sources were checked for this version. The
 1. Ministry of Electronics and Information Technology, DPDP Rules 2025 and commencement notifications: https://www.meity.gov.in/documents/act-and-policies/digital-personal-data-protection-rules-2025-gDOxUjMtQWa
 2. Gazette notification on DPDP phased commencement, 13 November 2025: https://www.meity.gov.in/static/uploads/2025/11/c56ceae6c383460ca69577428d36828b.pdf
 3. Income Tax Department, Form 104 and 106 guidance under Income-tax Act, 2025: https://www.incometax.gov.in/iec/foportal/newformpage/forms/form104%26106
-4. PRS India, Foreign Contribution (Regulation) Amendment Bill, 2026: https://prsindia.org/billtrack/the-foreign-contribution-regulation-amendment-bill-2026
-5. PRS India, Joint Committee on the FCRA Amendment Bill, 2026: https://prsindia.org/parliamentary-committees/joint-committee-on-the-foreign-contribution-regulation-amendment-bill-2026
-6. Ministry of Home Affairs, FCRA portal: https://fcraonline.nic.in/
-7. Ministry of Corporate Affairs, CSR FAQ: https://www.mca.gov.in/Ministry/pdf/FAQ_CSR.pdf
-8. National CSR Exchange Portal, FAQ: https://csrxchange.gov.in/Frontend/faq
-9. National Biodiversity Authority, FAQs: https://nbaindia.nic.in/about-us/faqs
-10. National Biodiversity Authority, notifications and guidelines: https://nbaindia.nic.in/public-information/notification-guidelines
-11. India Code, Biological Diversity Act, 2002 as amended: https://www.indiacode.nic.in/bitstream/123456789/21545/1/the_biological_diversity_act%2C_2002.pdf
-12. Global Indigenous Data Alliance, CARE Principles: https://www.gida-global.org/care
+4. Gazette of India, FCRA Amendment Bill 2026 as introduced: https://egazette.gov.in/WriteReadData/2026/271301.pdf
+5. PRS India, FCRA Amendment Bill 2026 status: https://prsindia.org/billtrack/the-foreign-contribution-regulation-amendment-bill-2026
+6. PIB, FCRA backgrounder (22 July 2026): https://www.pib.gov.in/PressReleasePage.aspx?PRID=2287897
+7. PRS India, FCRA Amendment Rules 2026: https://prsindia.org/billtrack/foreign-contribution-regulation-amendment-rules-2026
+8. Ministry of Home Affairs, FCRA portal: https://fcraonline.nic.in/
+9. Ministry of Corporate Affairs, CSR FAQ: https://www.mca.gov.in/Ministry/pdf/FAQ_CSR.pdf
+10. National CSR Exchange Portal FAQ: https://csrxchange.gov.in/Frontend/faq
+11. National Biodiversity Authority, FAQs: https://nbaindia.nic.in/about-us/faqs
+12. National Biodiversity Authority, notifications and guidelines: https://nbaindia.nic.in/public-information/notification-guidelines
+13. India Code, Biological Diversity Act, 2002 as amended: https://www.indiacode.nic.in/bitstream/123456789/21545/1/the_biological_diversity_act%2C_2002.pdf
+14. Global Indigenous Data Alliance, CARE Principles: https://www.gida-global.org/care
 
 **Currency note:** Laws, rules, forms, commencement dates, notifications, exemptions and regulator guidance can change. Re-check the relevant official Gazette and regulator portal immediately before any filing, funding acceptance, field activity, data processing or contract. The FCRA Bill status stated above is based on parliamentary information located for 16 November 2026 and must be refreshed before reliance.
 
