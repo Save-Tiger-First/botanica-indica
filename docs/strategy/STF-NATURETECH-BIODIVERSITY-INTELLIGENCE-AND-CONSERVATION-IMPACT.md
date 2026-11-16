@@ -614,7 +614,7 @@ For any future forest, restoration or landscape programme, STF should prioritize
 
 Do not use the mother-tree narrative as the scientific justification for a restoration intervention. The case for protecting mature trees and diverse forest structure can be made using broader, better-established ecological, biodiversity, carbon, hydrological and habitat evidence.
 
-### 20.9 Strategic synthesis across the three talks
+### 20.9 Strategic synthesis across the four talks
 
 The four talks now supplied for STF discussion offer complementary but distinct lenses:
 
