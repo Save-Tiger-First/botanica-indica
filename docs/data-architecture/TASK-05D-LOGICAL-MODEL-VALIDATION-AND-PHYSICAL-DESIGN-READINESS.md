@@ -99,7 +99,7 @@ The corrections above address the identified documentation conflicts but do not 
 
 ### 4.1 Known correction: internal validity vs GBIF publishing requirements
 
-Task 05C's data-quality test list includes the statement "No occurrence without basis-of-record and provenance." This needs refinement.
+An earlier draft of Task 05C included the statement "No occurrence without basis-of-record and provenance." That statement has been revised in the current Task 05C branch: provenance remains an internal requirement, while Darwin Core `basisOfRecord` is required only when supported by the selected export mapping/profile.
 
 GBIF's current occurrence data quality guidance lists `occurrenceID` as required for publishing; `basisOfRecord`, `scientificName`, `eventDate` and coordinates are strongly recommended or conditionally required depending on the field/programme. These external publishing expectations must not be misrepresented as universal internal database constraints.
 
