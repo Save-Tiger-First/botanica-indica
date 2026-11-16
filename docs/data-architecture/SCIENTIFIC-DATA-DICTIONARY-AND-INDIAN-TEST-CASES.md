@@ -125,8 +125,8 @@ Field requirement labels:
 |---|---|---:|---|
 | taxon_concept_id | ID | R | Stable internal identifier |
 | taxon_name_id | ID | R | Name used as the concept label |
-| according_to_treatment_id | ID | R | Treatment defining the concept |
-| concept_according_to_reference | ID/URI | R | Citable source/authority for the concept |
+| according_to_resource_id | ID/URI | R | One canonical resource reference (persistent URI or resource record) establishing or using this concept; maps to TCS `accordingTo` |
+| taxonomic_treatment_id | ID | O | Optional link to the structured TaxonomicTreatment record when the according-to resource is represented as a treatment; it MUST resolve to the same resource as according_to_resource_id |
 | rank | Code | O | Rank in this treatment |
 | parent_concept_id | ID | O | Parent in this specific classification |
 | concept_status | Code | O | Status within the treatment; not global |
@@ -136,9 +136,11 @@ Field requirement labels:
 | created_at | DateTime | R | Platform timestamp |
 
 **Invariants**
-- Do not create a fully specified TCS concept without a taxon name and an according-to source.
+- Do not create a fully specified TCS concept without exactly one TaxonName and exactly one according-to resource.
+- `according_to_resource_id` is the single canonical internal representation of TCS `accordingTo`; it must resolve to a resource/IRI, not merely a person's name or an unresolvable free-text label.
+- `taxonomic_treatment_id` is optional structured metadata and must resolve to the same resource; it is not a second, competing according-to reference.
 - A concept ID identifies the concept in its according-to context; it is not interchangeable with the name ID.
-- Parent-child relations must be scoped to the same treatment or explicitly mapped across treatments.
+- Parent-child relations must be scoped to the cited classification/treatment or explicitly mapped across treatments.
 
 ### 4.4 TaxonNameUsage
 
@@ -170,15 +172,15 @@ Do not convert absent status into accepted, or unresolved into synonym. Unknown 
 | concept_mapping_id | ID | R | Stable mapping identifier |
 | subject_concept_id | ID | R | First concept |
 | object_concept_id | ID | R | Second concept |
-| mapping_relation | Code | R | E.g. congruent, includes, included in, overlaps, excludes, not congruent; use a governed vocabulary |
-| according_to_reference_id | ID | R | Source for mapping |
+| mapping_relation | Code | R | One of the six TCS mapping relations: `isCongruentWith`, `includes`, `isIncludedIn`, `partiallyOverlaps`, `isDisjointFrom`, `intersects` |
+| mapping_source_resource_id | ID/URI | R | One resource identifying the source/agent context for this mapping; maps to TCS `mappingAccordingTo` when exported |
 | mapping_agent_id | ID | O | Person/organization/system |
 | mapping_date | DateTime | O | When asserted |
 | mapping_confidence | Decimal/Code | O | Only with defined semantics |
 | review_status | Code | R | Proposed, reviewed, accepted, rejected, superseded |
 | evidence_set_id | ID | O | Supporting evidence |
 
-A mapping is not a synonym relationship. A synonym in TCS links a concept to a name; a concept mapping compares taxonomic concepts.
+A mapping is not a synonym relationship. A synonym in TCS links a concept to a TaxonName; a concept mapping compares two TaxonConcepts. Do not use informal values such as “not congruent” or “excludes”. Use `isDisjointFrom` only when non-overlap of the two taxonomic meanings is actually supported; use `intersects` when at least one member is shared but a more precise relation is not established. The six relation codes are the canonical exchange vocabulary; any UI labels must map explicitly to them.
 
 ### 4.6 ScientificAssertion
 
@@ -187,8 +189,7 @@ A mapping is not a synonym relationship. A synonym in TCS links a concept to a n
 | Field | Type | Req. | Definition / rule |
 |---|---|---:|---|
 | assertion_id | ID | R | Stable identifier |
-| subject_type | Code | R | TaxonConcept, Occurrence, Observation, etc. |
-| subject_id | ID | R | Subject identifier |
+| subject link | Typed relation | R | One or more typed subject-link records with enforceable foreign keys; no unconstrained `subject_type + subject_id` pair |
 | predicate | Code/URI | R | Controlled property or URI |
 | value_type | Code | R | Text, number, boolean, concept, geometry, etc. |
 | value | Structured value | R | Typed value, not unqualified string only |
@@ -205,6 +206,11 @@ A mapping is not a synonym relationship. A synonym in TCS links a concept to a n
 | provenance_record_id | ID | R | Provenance link |
 
 Different sources may assert different values. Preserve both and record reconciliation separately.
+
+**Typed subject-link rule for ScientificAssertion:** the logical dictionary uses explicit link entities such as `AssertionSubjectTaxon`, `AssertionSubjectOccurrence`, `AssertionSubjectObservation` and `AssertionSubjectPlace`. Each link has an assertion FK and a subject FK to the named target table. Additional target types require an explicit typed link and review. Do not store a generic subject ID without an enforceable target FK.
+
+**Typed subject-link rule for Identification:** use separate link entities such as `IdentificationObservationSubject`, `IdentificationOccurrenceSubject` and `IdentificationMaterialEntitySubject`. Exactly one supported subject link is required for each Identification. The link entity owns the foreign key to the target table. A generic `subject_type + subject_id` pair may be retained only as verbatim source payload during ingestion, never as the canonical relationship.
+
 
 ### 4.7 Observation
 
@@ -292,8 +298,7 @@ Use a common material-entity abstraction where useful, with subtype or category-
 | Field | Type | Req. | Definition / rule |
 |---|---|---:|---|
 | identification_id | ID | R | Stable identifier |
-| subject_type | Code | R | Observation, Occurrence, MaterialEntity |
-| subject_id | ID | R | Subject being identified |
+| subject link | Typed relation | R | Exactly one typed subject-link record to Observation, Occurrence or MaterialEntity; each link uses a real FK |
 | taxon_concept_id | ID | O | Proposed/selected concept |
 | taxon_name_id | ID | O | Name used if concept not resolved |
 | identifier_agent_id | ID | R | Human, expert, community or AI system |
