@@ -566,6 +566,7 @@ The model must represent and validate each scenario without losing source contex
 | LDM-13 | Dataset is re-ingested after source update | New DatasetVersion/IngestionRun; stable source/internal identifiers preserved |
 | LDM-14 | A district boundary changes | Boundary version history retained; older records keep their original location evidence |
 | LDM-15 | Raw source payload retention is not permitted | Payload not stored; permitted metadata/reference and provenance retained |
+| LDM-16 | A defined survey does not detect a target taxon | An explicit absent/non-detected Occurrence state is linked to the Survey Event, protocol, effort, target and location; no Occurrence row is never interpreted as absence |
 
 ### 14.1 Security tests
 
