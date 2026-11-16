@@ -666,10 +666,11 @@ The user's timestamped summary highlights forest conversion to pasture, fire and
 
 The central claim that Amazon forest conversion can alter and homogenize soil bacterial communities is supported by peer-reviewed research.
 
-- **Rodrigues et al. (2013), “Conversion of the Amazon rainforest to agriculture results in biotic homogenization of soil bacterial communities.”** The study found that local taxonomic and phylogenetic diversity of soil bacteria increased after conversion in the studied locations, while communities became more similar across space. The homogenization was associated with loss of forest bacteria with restricted ranges. This is a crucial nuance: local richness can rise while regional distinctiveness and overall biodiversity value decline. https://doi.org/10.1038/ismej.2012. homogenization
+- **Rodrigues et al. (2013), “Conversion of the Amazon rainforest to agriculture results in biotic homogenization of soil bacterial communities.”** The study found that local taxonomic and phylogenetic diversity of soil bacteria increased after conversion in the studied locations, while communities became more similar across space. The homogenization was associated with loss of forest bacteria with restricted ranges. This is a crucial nuance: local richness can rise while regional distinctiveness and overall biodiversity value decline. https://doi.org/10.1073/pnas.1220608110
 - **Venturini et al. (2025), “Linking soil microbial genomic features to forest-to-pasture conversion in the Amazon.”** This study compared forest and pasture soils in the Eastern Brazilian Amazon and found differences in microbial genomes and functional traits, including genes associated with biogeochemical cycling and carbohydrate-active enzymes. It also reported that many recovered genomes had low similarity to known species, highlighting how much microbial diversity remains poorly characterized. https://doi.org/10.1128/spectrum.01561-24
 - **“Community-Level Metabolic Shifts Following Land Use Change in the Amazon Rainforest Identified by a Supervised Machine Learning Approach” (2025).** Metagenomic analysis found differences between forest and long-established pasture soil communities, including microbial community structure and gene profiles associated with carbohydrate/energy metabolism and carbon and nitrogen cycling. https://pubmed.ncbi.nlm.nih.gov/40269473/
 - **Danielson & Mazza Rodrigues (2022), “Impacts of land-use change on soil microbial communities and their function in the Amazon Rainforest.”** This review chapter summarizes evidence that forest-to-pasture conversion changes microbial community composition and activity, with implications for nutrient and greenhouse-gas cycling. https://doi.org/10.1016/bs.agron.2022.04.001
+- **Jiao et al. (2024), “Land conversion to agriculture induces taxonomic homogenization of soil microbial communities globally.”** A continental survey and global meta-analysis found taxonomic and functional homogenization of soil bacterial communities following agricultural conversion. This broader evidence supports the relevance of homogenization beyond the Amazon, but does not remove the need for ecosystem- and region-specific assessment. https://doi.org/10.1038/s41467-024-47348-8
 
 The evidence supports the direction of the talk's message, but does not justify treating every Amazon soil, microbial group or land-use history as identical. Outcomes depend on soil properties, vegetation, climate, land-use duration, management, sampling depth, forest type and the microbial groups and methods being measured.
 
@@ -739,11 +740,12 @@ This is a proposed strategic interpretation, not a scientific consensus statemen
 ### 21.8 Research references
 
 1. TEDx Talks (2013), Jorge Rodrigues, “The incredible (endangered) biodiversity of the Amazon rainforest”, TEDxUTA: https://www.youtube.com/watch?v=oAl82gFMZis
-2. Rodrigues, J.L.M. et al. (2013), “Conversion of the Amazon rainforest to agriculture results in biotic homogenization of soil bacterial communities”, *The ISME Journal*. https://doi.org/10.1038/ismej.2012. homogenization
+2. Rodrigues, J.L.M. et al. (2013), “Conversion of the Amazon rainforest to agriculture results in biotic homogenization of soil bacterial communities”, *Proceedings of the National Academy of Sciences* 110(3), 988–993. https://doi.org/10.1073/pnas.1220608110
 3. Venturini, A.M. et al. (2025), “Linking soil microbial genomic features to forest-to-pasture conversion in the Amazon”, *Microbiology Spectrum*. https://doi.org/10.1128/spectrum.01561-24
 4. “Community-Level Metabolic Shifts Following Land Use Change in the Amazon Rainforest Identified by a Supervised Machine Learning Approach” (2025). https://pubmed.ncbi.nlm.nih.gov/40269473/
 5. Danielson, R.E. & Mazza Rodrigues, J.L. (2022), “Impacts of land-use change on soil microbial communities and their function in the Amazon Rainforest”. https://doi.org/10.1016/bs.agron.2022.04.001
-6. UC Davis, Jorge Mazza Rodrigues — research profile: https://microbiome.ucdavis.edu/people/jorge-rodrigues
+6. Jiao, S. et al. (2024), “Land conversion to agriculture induces taxonomic homogenization of soil microbial communities globally”, *Nature Communications* 15, 3624. https://doi.org/10.1038/s41467-024-47348-8
+7. UC Davis, Jorge Mazza Rodrigues — research profile: https://microbiome.ucdavis.edu/people/jorge-rodrigues
 
 ### 21.9 Decision status
 
