@@ -284,6 +284,36 @@ For urban work, the Convention on Biological Diversity's Kunming–Montreal Glob
 
 Obtain qualified Indian legal advice for specific projects, particularly where biological resources, associated traditional knowledge, access, research, commercial use, protected areas, forests, wildlife, personal data or community rights may be involved.
 
+
+
+### 10.1 Current Indian biodiversity instruments — verification note (16 November 2026)
+
+The legal and institutional context must be checked against the instruments in force at the time of each proposed activity. The current official-source review located:
+- Biological Diversity (Amendment) Act, 2023.
+- Biological Diversity Rules, 2024.
+- Biological Diversity (Amendment) Rules, 2025, including amendments to Rule 19 and associated forms that came into force on 1 November 2025, as reported by MoEFCC.
+- Biological Diversity (Access to Biological Resources and Knowledge Associated thereto and Fair and Equitable Sharing of Benefits) Regulations, 2025, published by the National Biodiversity Authority.
+- NBA's current notification and guidance page, including model procedures and access-and-benefit-sharing material.
+
+These instruments are not interchangeable and do not establish that every STF activity requires the same approval. The applicability analysis must identify the activity, biological resource, associated knowledge, actor category, purpose, transfer or exchange, research/commercial context, exemptions and relevant competent authority. Obtain a qualified Indian legal opinion before access, transfer, research, commercial utilization or use of associated traditional knowledge where the law may apply.
+
+Official sources:
+- MoEFCC Annual Report 2025–2026 (summarizes the 2025 ABS Regulations and 2025 Rules amendment): https://moef.gov.in/uploads/pdf-uploads/Nitin_Rev_4.pdf
+- NBA Notification & Guidelines (current listing of the 2025 ABS Regulations): https://www.nbaindia.nic.in/public-information/notification-guidelines
+- NBA FAQs on access and benefit sharing: https://www.nbaindia.nic.in/about-us/faqs?page=2
+- Biological Diversity (Amendment) Act, 2023, Gazette publication: https://moef.gov.in/storage/tender/Biological-Diversity-Amendment-Act-2023%20%283%29.pdf
+
+### 10.2 India urban biodiversity alignment — what the national indicators do and do not show
+
+India's Updated National Biodiversity Strategy and Action Plan 2024–2030 identifies urban biodiversity indicators including:
+- Indicator 12.2: number of biodiversity parks, botanical/public gardens, orchards, water bodies, heritage sites and nature learning and interpretation centres in urban areas.
+- Indicator 12.3: number of cities that have prepared a City Biodiversity Index.
+- Indicator 12.4: number of sacred trees and sacred groves in urban areas.
+
+The report identifies agencies including NIUA, MoHUA, BSI, State Forest Departments, ICLEI and State Biodiversity Boards for relevant indicators. These are national monitoring indicators and institutional responsibilities; they are not evidence that an STF pilot has improved ecological condition. STF should use the City Biodiversity Index or other established methods only with qualified local partners and clear scope.
+
+Official source: India's Updated NBSAP 2024–2030, urban biodiversity indicators, page 180: https://www.nbaindia.nic.in/sites/default/files/2026-08/NBSAB_Report.pdf
+
 ## 11. Partnership principles
 
 Prioritize reciprocal, clearly scoped partnerships with:
