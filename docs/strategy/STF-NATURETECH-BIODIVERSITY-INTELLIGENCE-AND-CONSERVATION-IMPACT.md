@@ -394,7 +394,7 @@ STF should grow through demonstrated conservation relevance, scientific credibil
 
 ### 19.1 Strategic context
 
-The TEDx talk featuring Laurence Nachin, supplied for STF discussion, introduces a complementary perspective: humans are not separate from nature, and nature should not be treated only as a destination outside everyday life.
+The TEDxGöteborg talk, “Nature Isn’t a Place – It’s Who You Are”, featuring Laurence Nachin, introduces a complementary perspective: humans are not separate from nature, and nature should not be treated only as a destination outside everyday life. The TEDx Talks video description itself summarizes this framing and specifically connects her microbiology and cell biology background with nature facilitation, organizational practice, well-being, creativity and pro-environmental behaviour. The talk was published on 17 December 2024.
 
 Nachin's official Sense in Nature profile confirms her background as a microbiologist with a PhD in microbiology and cellular biology, her experience in research and R&D, her training as a nature and forest therapy guide, and her founding of Sense in Nature in 2019. Her stated work includes integrating nature into organizational thinking and decision-making.
 
@@ -496,7 +496,10 @@ This synthesis is a proposed strategic interpretation by STF, not a quotation or
 6. "Nature, nature connection, and well-being: A review of conceptual issues and opportunities" (2026), People and Nature. https://doi.org/10.1002/pan3.70382
 7. "Nature contact, nature connectedness and associations with health, wellbeing and pro-environmental behaviours" (2020), Journal of Environmental Psychology. https://doi.org/10.1016/j.jenvp.2020.101389
 
-The TEDx talk supplied for discussion: https://www.youtube.com/watch?v=BHchwm4MVp4
+The TEDxGöteborg talk, “Nature Isn’t a Place – It’s Who You Are” (published 17 December 2024): https://www.youtube.com/watch?v=BHchwm4MVp4
+10. TEDxGöteborg, talk listing: https://tedxgoteborg.com/all-talks/
+11. University of Gothenburg, “Three voices on what the forest will look like in 50 years” (15 May 2023), including Laurence Nachin's perspective: https://www.gu.se/en/research/three-voices-on-what-the-forest-will-look-like-in-50-years
+12. Nachin, L. & Rasson, S. (2023), “Roles and impacts of the forest therapy guide: recommendations from practice”, International Journal of Spa and Wellness: https://doi.org/10.1080/24721735.2022.2145418
 
 ### 19.10 Decision status
 
