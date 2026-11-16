@@ -235,25 +235,26 @@ Different sources may assert different values. Preserve both and record reconcil
 
 ### 4.8 Occurrence
 
-**Definition:** A record of the presence or non-detection of an organism or taxon in a defined context. It may be derived from an observation, specimen, event, literature or source dataset.
+**Definition:** An evidence-backed record representing the state/presence of an Organism at a place and time, supported by one or more observations, events, material entities or imported source records. It is distinct from the platform Observation and from a taxonomic Identification. A non-detection is a separate survey result and must not be inferred from the absence of an Occurrence record.
 
 | Field | Type | Req. | Definition / rule |
 |---|---|---:|---|
 | occurrence_id | ID | R | Stable identifier |
 | basis_of_record | Code | R | Map to Darwin Core controlled values |
-| occurrence_status | Code | O | Present/absent or applicable controlled term |
+| occurrence_status | Code | O | State supported by the record; do not use this field to imply a survey non-detection without a defined protocol and effort |
 | organism_id | ID | O | Biological individual/group if modelled |
-| observation_id | ID | O | Supporting observation if applicable |
-| event_id | ID | O | Related event |
-| material_entity_id | ID | O | Specimen/material evidence |
-| taxon_concept_id | ID | O | Current determination target, if known |
+| event_id | ID | O | Related Event, where the occurrence is tied to a defined event |
+| location_id | ID | O | Location representation |
+| organism_id | ID | O | Biological individual/group if modelled |
+| evidence links | Typed relations | R | One or more provenance/evidence links to Observation, MaterialEntity or SourceRecord; use typed FK relationships |
+| current taxon determination | Derived view | — | Derive from the applicable current Identification assertion; do not store a mutable duplicate taxon_concept_id on Occurrence |
 | location_id | ID | O | Location representation |
 | event_date | DateInterval | O | Time of occurrence |
 | source_record_id | String | O | External identifier |
 | source_id | ID | C | Required for imported occurrence |
 | provenance_record_id | ID | R | Origin/lineage |
 
-Occurrence must not be treated as merely a field on Observation. Multiple evidence records can support one occurrence interpretation, and an observation may be revised or interpreted in multiple ways.
+Occurrence must not be treated as merely a field on Observation. Multiple evidence records can support one occurrence interpretation, and an observation may be revised or interpreted in multiple ways. A non-detection record belongs to a defined Survey/Event result with a protocol, effort, target taxon or taxon group, time and location; absence of an occurrence row is not evidence of absence.
 
 ### 4.9 Event
 
