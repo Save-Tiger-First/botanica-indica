@@ -153,6 +153,7 @@ erDiagram
 **Interpretation**
 - Observation is the user's submitted record and workflow container. It may exist without a taxon determination or an Occurrence record.
 - Occurrence represents the interpreted presence/state of an Organism at a place and time, following Darwin Core semantics. It may be based on one or more observations, events, material entities or imported records.
+- A non-detection is not inferred from a missing Occurrence row. Where a non-detection is represented as an Occurrence state, it must be explicit and tied to a defined survey Event with protocol, effort, target and location. Preserve the distinction between a survey that did not detect a target and a place/time for which no observation data exists.
 - Organism is optional where individual identity is unknown or not meaningful; do not invent individual identities for every plant.
 - MaterialEntity represents physical matter, such as a preserved specimen, living collection specimen or sample. A digital photograph is a MediaAsset, not a MaterialEntity.
 - Identification is a determination with its own history. A subject-specific link is required; see the key strategy below.
@@ -178,7 +179,7 @@ erDiagram
     SOURCE ||--o{ EVIDENCE_ITEM : originates
 ```
 
-**Important implementation rule:** avoid a single polymorphic `subject_type + subject_id` foreign-key pair where the database cannot enforce referential integrity. Use typed assertion-subject link tables or a carefully governed supertype/extension pattern. For Identification, define typed subject link entities for Observation, Occurrence and MaterialEntity; each Identification must have exactly one supported subject link, and each link must carry a real FK to its target. For ScientificAssertion, use explicit typed links (e.g. TaxonConcept, Occurrence, Observation and Place); only approved target types may be added. The diagram illustrates typed links for the principal assertion subject types.
+**Important implementation rule:** avoid a single polymorphic `subject_type + subject_id` foreign-key pair where the database cannot enforce referential integrity. Use typed subject links. For Identification, the recommended logical pattern is one `IdentificationSubject` row per Identification, with nullable FK columns `observation_id`, `occurrence_id` and `material_entity_id`, plus a database CHECK requiring exactly one of those three columns to be non-null (for example, PostgreSQL `num_nonnulls(...) = 1`). Each populated column is a real FK. This provides enforceable target integrity and exactly-one subject without an unconstrained polymorphic pair. If a different supertype/extension design is selected, it must demonstrate equivalent FK and exactly-one-subject enforcement. For ScientificAssertion, use explicit typed subject-link rows; each link has one real FK to an approved target type, and an assertion may have multiple links only where the domain semantics permit. Document the supported target inventory and cardinalities.
 
 ### 4.4 Source ingestion, provenance and rights
 
@@ -260,7 +261,7 @@ The following is the recommended canonical inventory. Names are logical labels a
 | ObservationMedia | Composite uniqueness for observation + media + role/order | Media may be reused only where rights and privacy allow |
 | Event | Stable ID; optional parent event and location | Date interval precision, protocol and effort |
 | Organism | Stable identity only when individual/group identity is meaningful | Do not create one automatically for every plant sighting |
-| Occurrence | Stable ID; provenance; event/place/time context; organism optional; basis-of-record mapping where available | Internal occurrence validity is independent of external export completeness; do not fabricate missing basis, taxon or date |
+| Occurrence | Stable ID; provenance; event/place/time context; organism optional; explicit occurrence state where known | Internal occurrence validity is independent of external export completeness; Darwin Core basisOfRecord is export mapping only; an absent state requires a defined survey Event/protocol/effort |
 | OccurrenceObservationLink | Occurrence + Observation | Many observations may support an occurrence interpretation |
 | MaterialEntity | Stable physical-material identity | Specimen/sample/living collection; not image file |
 | OccurrenceMaterialLink | Occurrence + MaterialEntity + evidence role | A material entity may evidence one or more occurrence records |
