@@ -68,6 +68,25 @@ The review must compare Task 05, Task 05B and Task 05C line by line and resolve 
 | DOC-13 | Vocabulary | Status, rank, basis of record, evidence role, review decision and distribution terms are versioned |
 | DOC-14 | API/export | Standards mappings do not leak internal implementation or erase source semantics |
 | DOC-15 | Retention | Deletion, anonymization, withdrawal, retention and provenance preservation are consistent |
+| DOC-16 | Internal vs export occurrence | Internal record validity is independent of Darwin Core/GBIF export-profile completeness; no unsupported values are fabricated |
+| DOC-17 | Typed scientific subjects | ScientificAssertion and Identification use typed subject links or a formally enforceable supertype; no unconstrained polymorphic FK pair |
+| DOC-18 | TCS mapping vocabulary | TaxonConceptMapping uses the six TCS mapping relations with their exact semantics |
+| DOC-19 | TCS accordingTo resource | Each TaxonConcept has exactly one canonical according-to resource; any treatment specialization resolves to that same resource |
+
+
+
+### 4.2 Reconciliation update — repository desk review, 16 November 2026
+
+The following document-level corrections have been applied on the current Task 05B and Task 05C proposal branches. This is an authoring/reconciliation pass, not an independent scientific sign-off.
+
+| Review ID | Current disposition | Evidence to re-check | Remaining condition |
+|---|---|---|---|
+| DR-01 / DOC-16 | **Revised in 05B and 05C** | Occurrence no longer requires a Darwin Core `basisOfRecord` as a universal internal field; provenance remains required. Export mapping is profile-specific. | Re-review fixtures and exact export profiles; confirm non-detection semantics and event evidence. |
+| DR-02 / DOC-17 | **Revised in 05B and 05C** | Dictionary now specifies typed subject links for ScientificAssertion and Identification; logical model requires real FKs and exactly one supported Identification subject link. | Physical model must implement enforceable FKs and subject-cardinality constraints; test all supported subject types. |
+| DR-03 / DOC-18 | **Revised in 05B and 05C** | Mapping vocabulary now names the six exact TCS relations; informal “excludes” and “not congruent” values removed from the field definition. | Review directionality and semantics with a taxonomist; test mapping export/import round trips. |
+| DR-04 / DOC-19 | **Revised in 05B and 05C** | One canonical `according_to_resource_id` represents TCS `accordingTo`; optional treatment specialization must resolve to the same resource. | Confirm resource registry semantics and uniqueness/integrity implementation with biodiversity-informatics reviewer. |
+
+The corrections above address the identified documentation conflicts but do not by themselves close the findings. The exact branch commits must be re-reviewed, and the physical constraints and test fixtures remain pending. The current GBIF profile distinctions are supported by the official technical documentation: occurrence datasets require `occurrenceID`; `basisOfRecord`, `scientificName` and `eventDate` are strongly recommended in the general profile and required in GBIF-managed programmes; sampling-event datasets have a distinct set of requirements. See https://techdocs.gbif.org/en/data-publishing/data-quality-recommendations.
 
 ### 4.1 Known correction: internal validity vs GBIF publishing requirements
 
