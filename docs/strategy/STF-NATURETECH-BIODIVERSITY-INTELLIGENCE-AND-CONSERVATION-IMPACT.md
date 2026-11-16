@@ -896,3 +896,125 @@ A proposed STF principle follows:
 **Proposed strategic and educational interpretation — not an approved urban biodiversity programme, species recovery plan or building-design standard.**
 
 Recommendation: incorporate the Beijing Swift case into STF's urban biodiversity and public engagement strategy. Explore a locally grounded Indian urban biodiversity pilot only after identifying focal species, qualified partners, permissions, baseline evidence, intervention design and monitoring capacity. Keep this outside Botanica Indica's initial product scope.
+
+
+## 24. Art–science collaboration and ocean literacy: making hidden nature perceptible
+
+### 24.1 The talk and its strategic contribution
+
+In her TEDxYale talk, multidisciplinary artist Rebecca Rutstein explores collaboration between art and ocean science, drawing on research-vessel expeditions, deep-sea exploration and the translation of scientific observations into painting, sculpture and interactive installations.
+
+Talk supplied for this review: https://www.youtube.com/watch?v=GglGhvJ4T0Y
+
+The U.S. Department of State's Art in Embassies biography independently describes Rutstein's work at the intersection of art, science and technology, including collaborations with oceanographers, ecologists, microbiologists, molecular scientists and planetary geologists, seven sea expeditions and two deep-sea dives in the Alvin submersible. Her own biography also describes the use of visual and interactive experiences to make hidden environmental processes perceptible.
+
+Sources:
+- U.S. Department of State, Art in Embassies — Rebecca Rutstein: https://art.state.gov/personnel/rebecca_rutstein/
+- National Endowment for the Arts, “At the Intersection of Art and Science: A Conversation with Rebecca Rutstein” (20 July 2023): https://www.arts.gov/stories/blog/2023/intersection-art-and-science-conversation-rebecca-rutstein
+- Rebecca Rutstein, biography and artist statement: https://rebeccarutstein.com/bio-2019/
+
+### 24.2 What the documented practice shows
+
+In the National Endowment for the Arts interview, Rutstein describes beginning collaborations by listening, learning and understanding the scientist's research. She then selects patterns or phenomena for creative exploration; the exchange can also prompt scientists to reconsider or notice aspects of their own research. This is a reciprocal process, not merely an artist illustrating finished scientific conclusions.
+
+The same interview describes *Shimmer* as a 64-foot interactive sculpture inspired by bioluminescent signals from deep-sea marine organisms. It also discusses a proposed immersive installation inspired by deep-sea coral forms. These are artistic interpretations informed by science; an artwork is not itself a scientific observation, ecological survey or validated restoration intervention.
+
+### 24.3 Ocean oxygen: communicate the science accurately
+
+NOAA estimates that roughly half of Earth's oxygen production comes from the ocean, largely through photosynthetic plankton, algae and some bacteria. NOAA also explains that approximately the same amount is consumed by marine organisms and decomposition. Avoid the oversimplified claim that the ocean supplies half of the oxygen humans breathe as a net contribution. Most oxygen humans breathe is atmospheric oxygen accumulated over geological time.
+
+NOAA source: https://oceanservice.noaa.gov/facts/ocean-oxygen.html
+
+### 24.4 Ocean literacy as an educational framework
+
+UNESCO's Intergovernmental Oceanographic Commission defines ocean literacy as understanding the ocean's influence on people and people's influence on the ocean. Its work connects understanding with communication, informed behaviour, education and co-designed solutions.
+
+Sources:
+- UNESCO-IOC Ocean Literacy: https://www.ioc.unesco.org/en/ocean-literacy
+- UNESCO Ocean Literacy Portal: https://oceanliteracy.unesco.org/about/
+
+This is relevant beyond coastal communities. Inland audiences influence ocean health through freshwater systems, watersheds, pollution, consumption, climate and policy. Any STF ocean-related education should explain these connections without implying that every inland activity has a direct or easily quantifiable marine impact.
+
+### 24.5 What art–science collaboration may contribute
+
+Potential contributions to STF include:
+- Making spatial, temporal, microscopic, deep-sea or otherwise hidden ecological processes easier to perceive.
+- Providing an accessible entry point to complex scientific subjects.
+- Supporting curiosity, dialogue, reflection and interdisciplinary learning.
+- Allowing artists and scientists to explore different questions using shared evidence.
+- Communicating scale, uncertainty and interdependence through visual, sound, tactile or participatory media.
+
+Art should complement scientific evidence, not replace it. Creative interpretation must be distinguished from measured data, scientific inference and metaphor.
+
+### 24.6 Evidence limits: do not overclaim behaviour change
+
+Chen and Mao's 2026 systematic review synthesised 97 peer-reviewed art–science collaboration publications from 2002–2024. The review found a growing but weakly consolidated field: qualitative and process-oriented case studies dominate, while explicit impact evaluations and cumulative outcome evidence are comparatively rare. It also identifies limited co-design of research questions, methods and evaluation by wider stakeholders.
+
+This supports a careful position: artistic work can plausibly create engagement, wonder, dialogue and learning opportunities, but the existence of an artwork or an audience does not prove sustained behaviour change, policy influence or ecological recovery.
+
+Reference:
+- Chen, Y. & Mao, F. (2026), “Art-science collaboration for sustainability challenges: a systematic review of scholarship, sustainability framings, and stakeholder participation,” *Sustainability Science*. https://doi.org/10.1007/s11625-026-01903-y
+
+### 24.7 Proposed STF practice: evidence-led creative interpretation
+
+Explore an Art × Ecology × Science practice as a partnership method, not a new app or permanent programme.
+
+A responsible project protocol should include:
+1. A shared question agreed by artist, scientist and relevant community partners.
+2. A scientific briefing that documents sources, methods, scale, uncertainty and limitations.
+3. Creative independence and fair compensation for the artist.
+4. Clear separation of measured data, scientific interpretation, artistic abstraction and metaphor.
+5. Factual review of captions and explanatory claims by qualified scientists, without asking scientists to certify aesthetic meaning.
+6. Written agreements covering copyright, licensing, reproduction, data/image permissions, attribution, compensation and reuse.
+7. Community-led consent and governance wherever community knowledge, places or cultural expression are involved.
+8. Accessible interpretation and relevant local-language material where feasible.
+9. Evaluation proportionate to the project's aims: experience, dialogue, learning, behaviour and ecological outcomes are separate categories.
+10. Consideration of material use, energy, travel, toxicity, waste and end-of-life impacts.
+
+### 24.8 Indian relevance and potential partners
+
+STF need not begin with a marine installation. Potential Indian themes include:
+- Watershed connections between inland ecosystems, rivers, estuaries and coasts.
+- Mangrove root systems, coastal sediment processes and nursery habitats.
+- Soil microbial communities and nutrient cycling.
+- Pollination, seed dispersal and plant–fungus relationships.
+- Migratory bird routes and connections between urban and rural habitats.
+- River health, wetlands, seasonal change and groundwater.
+
+India's Blue Schools India network, part of the UNESCO-IOC Blue School Global Network, provides a current example of ocean literacy being connected to freshwater, climate, biodiversity, culture and livelihoods for learners regardless of where they live. Its UNESCO portal entry reports that India's national coordination was established in 2026 and lists participating schools, teachers and learners; these are programme participation figures, not evidence of ecological impact.
+
+Reference: UNESCO Ocean Literacy Portal, India Blue School Network: https://oceanliteracy.unesco.org/projects/blue-school-global-network/blue-school-national-coordination-bodies/india
+
+The National Centre for Coastal Research also describes opportunities for students to visit coastal science laboratories and interact with researchers, subject to institutional approval and scheduling:
+https://www.nccr.gov.in/?q=node%2F1073
+
+Any collaboration would require direct partner engagement; these references do not imply endorsement or an existing relationship with STF.
+
+### 24.9 Modest pilot concept: Hidden Connections
+
+A possible pilot, subject to approval, is **Hidden Connections: Art, Science and the Living World**.
+
+Possible design:
+- One defined ecological theme and one Indian study location or appropriately licensed dataset.
+- One research partner and one or more paid artists.
+- A co-designed visual, sound, sculpture, participatory or digital interpretation.
+- A public exhibition or learning experience accompanied by a scientist-reviewed evidence guide.
+- A facilitated dialogue or learning activity.
+- Proportionate pre/post audience evaluation.
+- A public project note documenting evidence, artistic interpretation, limitations, rights, environmental footprint and lessons.
+
+Treat the first pilot as an experiment in science communication and interdisciplinary practice. Do not promise behaviour change or ecosystem improvement in advance.
+
+### 24.10 Strategic synthesis
+
+The Rutstein case adds a seventh dimension to the proposed STF conservation philosophy:
+
+**Creative interpretation and wonder:** use art and sensory experience to help people perceive ecological processes and relationships that conventional communication may not make tangible, while preserving scientific accuracy, artistic independence and community rights.
+
+This complements the six existing dimensions: NatureTech, human–nature connectedness, ecological interdependence, hidden biodiversity, Indigenous and local stewardship, and urban biodiversity.
+
+### 24.11 Decision status
+
+**Proposed practice and pilot concept — not an approved STF programme and not a claim that art alone produces conservation impact.**
+
+Recommendation: explore one small, paid and co-designed Art × Ecology × Science pilot only after a scientific partner, artist, clear rights arrangements, audience plan, budget and proportionate evaluation method are secured. Do not add this as a core Botanica Indica product feature.
