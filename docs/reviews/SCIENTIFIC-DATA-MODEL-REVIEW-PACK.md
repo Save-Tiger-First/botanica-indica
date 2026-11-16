@@ -624,10 +624,10 @@ Following the preliminary desk review, proposed documentation changes were made 
 |---|---:|---|
 | Task 05 conceptual data architecture | #3 | `617b1084e3c918c8b5bca744fde0b7b3fc7bab83` |
 | Task 05B scientific data dictionary | #4 | `c25be98e73b056fcd0ee696dcbc7d2dc0d187103` |
-| Task 05C logical database model | #5 | `dfdb981bccc4c1a3f6dce746b64d75ed5b54b14c` |
-| Task 05D validation/readiness gate | #10 | `79707af4245174319fafd171e48f4a7772d84fcb` |
+| Task 05C logical database model | #5 | `91c82b4f136a77aaa1edb02753ed49b2fbee86ed` |
+| Task 05D validation/readiness gate | #11 | `b7e0901e2483f1ef80027ecfc11242461e40c2c5` |
 
-These changes are proposed documentation revisions. PRs #3, #4, #5, #8, #9 and #10 remain open and draft; none is merged. PR #7 was closed unmerged because it was based on an earlier Task 05C revision and had diverged; PR #10 replaces it and is based on the current Task 05C branch. At the latest check, GitHub reported PRs #3, #8 and #10 as mergeable, and PRs #4, #5 and #9 as not mergeable. Commit comparisons show the active branches are ahead of their respective bases and not behind (PR #10 is one commit ahead of the current Task 05C branch). The reason for the `mergeable: false` fields on #4, #5 and #9 remains unestablished; do not infer a conflict cause.
+These changes are proposed documentation revisions. PRs #3, #4, #5, #8, #9 and #10 remain open and draft; none is merged. PRs #7 and #10 were closed unmerged because each was based on an earlier Task 05C revision and became divergent after further model corrections. PR #11 replaces them and is based on the current Task 05C branch. At the latest check, GitHub reported PRs #3 and #8 as mergeable, and PRs #4, #5, #9 and #11 as not mergeable. Commit comparisons show the active branches are ahead of their respective bases and not behind; PR #11 is one commit ahead of the current Task 05C branch. The reason for the `mergeable: false` fields remains unestablished; do not infer a conflict cause.
 
 ### Reconciliation results
 
