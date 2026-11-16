@@ -184,26 +184,17 @@ Potential attributes:
 - Source identifier and version
 - Validity or publication context
 
-#### TaxonRelationship
+#### Governed taxonomy relationship families
 
-Represents an explicit relationship between concepts or name usages.
+Do not implement one generic TaxonRelationship table for all taxonomic and nomenclatural relationships. Keep three semantically distinct families:
 
-Potential relationship types include:
-- Accepted name for
-- Synonym of
-- Basionym of
-- Homotypic synonym of
-- Heterotypic synonym of
-- Included in
-- Split from
-- Lumps with
-- Misapplied name for
-- Overlaps with
-- Congruent with
-- Related concept
-- Parent/child in a specified classification
+1. **TaxonConcept-to-TaxonName synonym assertion.** A source-specific taxonomic concept may identify one or more reusable TaxonName records as synonyms. Preserve the source's usage and evidence separately in TaxonNameUsage; the TCS synonym mapping target is the TaxonName, not the TaxonNameUsage.
+2. **TaxonName-to-TaxonName nomenclatural relationship.** Relationships such as basionym, replaced name, later homonym and other nomenclatural relations connect names, where supported by the applicable nomenclatural code and source evidence.
+3. **TaxonConcept-to-TaxonConcept mapping.** Concept alignments across treatments use a governed relation and mapping source. Where TCS export is intended, use the exact TCS relation vocabulary and preserve its direction and semantics.
 
-Do not encode every relationship as a generic synonym boolean. Relationship type, source, treatment and evidence matter.
+Parent/child classification placement is a treatment-scoped hierarchy, not a generic synonym or nomenclatural relationship. Misapplied-name usage, accepted-name usage and source-specific status remain source/treatment-scoped assertions.
+
+The internal vocabulary may be richer than an exchange standard, but every exported mapping must have an explicit, loss-aware mapping rule. Never translate “not congruent” automatically to “disjoint”.
 
 #### TaxonProfile
 
