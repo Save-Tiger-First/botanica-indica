@@ -616,7 +616,7 @@ Do not begin with SQL table generation. First establish scientific identity, car
 **Decision status: Draft review pack — no expert sign-off received; Task 05E is not yet authorized.**
 
 
-## 4.4 Reconciliation pass — DR-01 to DR-04 and related occurrence semantics (16 November 2026)
+## 4.4 Reconciliation pass — DR-01 to DR-07 and DR-10 to DR-12 (16 November 2026)
 
 Following the preliminary desk review, proposed documentation changes were made on the source branches. The exact current branch heads at the time of this update are:
 
@@ -624,8 +624,8 @@ Following the preliminary desk review, proposed documentation changes were made 
 |---|---:|---|
 | Task 05 conceptual data architecture | #3 | `617b1084e3c918c8b5bca744fde0b7b3fc7bab83` |
 | Task 05B scientific data dictionary | #4 | `c25be98e73b056fcd0ee696dcbc7d2dc0d187103` |
-| Task 05C logical database model | #5 | `a2290b927387655a6857cb7faa92e11c25b6d3ae` |
-| Task 05D validation/readiness gate | #7 | `5cb9dea7af33aa3b153e2f73d8531d50646aea3d` |
+| Task 05C logical database model | #5 | `dfdb981bccc4c1a3f6dce746b64d75ed5b54b14c` |
+| Task 05D validation/readiness gate | #10 | `79707af4245174319fafd171e48f4a7772d84fcb` |
 
 These changes are proposed documentation revisions. PRs #3, #4, #5, #8, #9 and #10 remain open and draft; none is merged. PR #7 was closed unmerged because it was based on an earlier Task 05C revision and had diverged; PR #10 replaces it and is based on the current Task 05C branch. At the latest check, GitHub reported PRs #3, #8 and #10 as mergeable, and PRs #4, #5 and #9 as not mergeable. Commit comparisons show the active branches are ahead of their respective bases and not behind (PR #10 is one commit ahead of the current Task 05C branch). The reason for the `mergeable: false` fields on #4, #5 and #9 remains unestablished; do not infer a conflict cause.
 
