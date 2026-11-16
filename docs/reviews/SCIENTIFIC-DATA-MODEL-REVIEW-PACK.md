@@ -527,8 +527,8 @@ The following sources inform this review framework. Reviewers should check curre
 
 1. TDWG, Darwin Core — https://dwc.tdwg.org/
 2. TDWG, Taxon Concept Standard — https://tcs.tdwg.org/
-3. GBIF, Data quality requirements for occurrence datasets — https://www.gbif.org/dataset-classes
-4. GBIF, Data quality requirements and recommendations — https://www.gbif.org/data-quality-requirements
+3. GBIF, Data quality recommendations (including occurrence and sampling-event profiles) — https://techdocs.gbif.org/en/data-publishing/data-quality-recommendations
+4. GBIF, Data quality requirements for occurrence datasets — https://www.gbif.org/data-quality-requirements-occurrences
 5. GBIF, Data publishing standards — https://techdocs.gbif.org/en/data-publishing/standards-publishing
 6. PostgreSQL documentation — https://www.postgresql.org/docs/
 7. PostGIS documentation — https://postgis.net/documentation/
