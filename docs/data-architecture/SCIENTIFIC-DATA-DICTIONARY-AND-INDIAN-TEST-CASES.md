@@ -329,7 +329,7 @@ Use a common material-entity abstraction where useful, with subtype or category-
 | Field | Type | Req. | Definition / rule |
 |---|---|---:|---|
 | identification_id | ID | R | Stable identifier |
-| subject link | Typed relation | R | Exactly one typed subject-link record to Observation, Occurrence or MaterialEntity; each link uses a real FK |
+| subject link | IdentificationSubject FK | R | Exactly one IdentificationSubject row; it contains exactly one non-null FK to Observation, Occurrence or MaterialEntity and real FKs to each supported target table |
 | taxon_concept_id | ID | O | Proposed/selected concept |
 | taxon_name_id | ID | O | Name used if concept not resolved |
 | identifier_agent_id | ID | R | Human, expert, community or AI system |
