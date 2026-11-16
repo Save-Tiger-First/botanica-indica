@@ -71,6 +71,25 @@ Field requirement labels:
 - **O** — optional.
 - **Derived** — generated from other fields and should not be treated as the sole authoritative value.
 
+### 4.0 Source and authority metadata
+
+A Source record identifies a publisher, institution, database, project or contributing community. It does not by itself establish that every assertion from that source is authoritative for every purpose.
+
+For each source used in scientific reconciliation, capture at minimum:
+
+| Field | Requirement | Meaning |
+|---|---|---|
+| source_id | Required | Stable internal source identity |
+| source_type | Required | Nomenclatural index, taxonomic backbone, national/regional flora, herbarium catalogue, research publication, community-curated flora, government dataset, etc. |
+| editorial_or_curation_model | Required | Formal editorial review, institutional curation, expert/community contribution, automated aggregation, or documented combination |
+| taxonomic_or_data_scope | Required | What the source is designed to establish (name publication, accepted taxonomy, distribution, specimen holdings, ecological assertion, etc.) |
+| geographic_scope | Optional | Geographic coverage and resolution |
+| version_or_release | Required where versioned | Exact release/version and persistent identifier where available |
+| access_date | Required for retrieved source records | Retrieval date/time |
+| limitations_and_terms | Required | Known scope limits, caveats, terms of use and reuse restrictions |
+
+Do not use one universal numeric “authority score”. Source fitness is purpose-specific: a nomenclatural index, taxonomic backbone, herbarium catalogue and community-curated flora answer different questions. Preserve the source's actual role, editorial model, scope, date and limitations. A source's content should be evaluated at assertion level.
+
 ### 4.1 TaxonName
 
 **Definition:** A nomenclatural or other name string used to refer to a taxon. It is not, by itself, proof of acceptance or a complete taxon concept.
@@ -88,7 +107,7 @@ Field requirement labels:
 | basionym_name_id | ID | O | Link to a basionym where applicable |
 | replaced_name_id | ID | O | Link to replaced name where applicable |
 | source_id | ID | C | Required for source-originated name record |
-| source_record_id | ID | C | Original source record identifier |
+| source_record_id | SourceRecord FK / ExternalID tuple | C | Canonical SourceRecord FK, or an external identifier constrained by issuing namespace and dataset/version context |
 | verbatim_name | String | O | Exact source string |
 | created_at / updated_at | DateTime | R | Platform record timestamps |
 
@@ -310,7 +329,8 @@ Use a common material-entity abstraction where useful, with subtype or category-
 | previous_identification_id | ID | O | Previous determination |
 | evidence_set_id | ID | O | Evidence set |
 | model_run_id | ID | O | AI run, if applicable |
-| according_to_treatment_id | ID | O | Taxonomic context |
+| according_to_resource_id | ID/URI | R | Canonical resource establishing/using this identification's TaxonConcept, where concept-level determination is made |
+| taxonomic_treatment_id | ID | O | Optional structured treatment record; must resolve to the same canonical according-to resource |
 
 Do not overwrite the old identification when a new identification is added. Use a history/supersession relationship.
 
@@ -745,14 +765,16 @@ Before a record is eligible for public display, export or downstream processing,
 - A fully specified TaxonConcept has a name and according-to treatment/reference.
 - TaxonName identity is not duplicated solely because a source uses different formatting.
 - Name usages preserve treatment-specific status.
-- A synonym assertion links the relevant concept and name usage with source context.
+- TaxonConcept synonym assertions target TaxonName; source-specific TaxonNameUsage remains a separate treatment-scoped record.
+- TaxonName-to-TaxonName nomenclatural relations and TaxonConcept-to-TaxonConcept mappings are distinct entity families.
+- A TCS synonym assertion links one TaxonConcept to a reusable TaxonName. Keep the source-specific TaxonNameUsage as a separate source record; it is not the TCS synonym target.
 - A taxon concept mapping has both subject and object concepts plus a mapping relation and reference.
 - Name-string equality alone does not establish concept equivalence.
 
 ### 9.2 Observation and occurrence
 - An Observation can be submitted without an identification.
 - An Identification must identify its subject and method/agent.
-- An Occurrence must have a basis-of-record and provenance.
+- An internal Occurrence must have an internal evidence classification and provenance. Darwin Core `basisOfRecord` is populated only by a supported export mapping; it is not a universal internal validity requirement.
 - A specimen record retains collection and institution context.
 - Event time and record submission time are distinct.
 
@@ -861,7 +883,7 @@ The data dictionary is ready to inform physical schema design when:
 
 ## 14. References consulted
 
-1. TDWG Darwin Core List of Terms, version issued 2026-10-13: https://dwc.tdwg.org/list/
+1. TDWG Darwin Core List of Terms, list release version 2026-05-26 (verify current version at implementation time): https://dwc.tdwg.org/list/
 2. TDWG Taxon Concept Standard terms: https://tcs.tdwg.org/terms/
 3. IPNI — Azadirachta indica A.Juss.: https://www.ipni.org/n/1213180-2
 4. Kew Plants of the World Online — Azadirachta indica: https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:1213180-2/general-information
