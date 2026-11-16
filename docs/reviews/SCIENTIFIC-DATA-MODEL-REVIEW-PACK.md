@@ -623,11 +623,11 @@ Following the preliminary desk review, proposed documentation changes were made 
 | Document | PR | Branch head commit |
 |---|---:|---|
 | Task 05 conceptual data architecture | #3 | `bb85442cfb8e4625a242fb85442d8df5cb89118a` |
-| Task 05B scientific data dictionary | #4 | `3eaeee19d4c1e99035b42f60f4fc0734bfd51625` |
+| Task 05B scientific data dictionary | #4 | `fc04dc04114be4af0097d8a778706ea50e23e62c` |
 | Task 05C logical database model | #5 | `c517c00676c3a8803507443be63d46b3d28445b0` |
 | Task 05D validation/readiness gate | #7 | `ca637022fd249b107200b7581aa76980956d2888` |
 
-These changes are proposed documentation revisions. PRs remain draft and unmerged. The GitHub connector reported `mergeable: false` for PRs #3, #4, #5 and #7 immediately after these sequential branch updates; the reason was not established and must not be inferred. Recheck PR conflict state and exact diffs before review or merge.
+These changes are proposed documentation revisions. PRs remain draft and unmerged. At the latest verification on 16 November 2026, GitHub reported PRs #3, #4, #8 and #9 as `mergeable: false`, and PRs #5 and #7 as `mergeable: true`. The reason for the false states was not established and must not be inferred. Recheck PR conflict state and exact diffs before review or merge.
 
 ### Reconciliation results
 
