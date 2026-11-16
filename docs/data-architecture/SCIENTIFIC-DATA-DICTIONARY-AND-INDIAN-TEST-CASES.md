@@ -245,12 +245,10 @@ Different sources may assert different values. Preserve both and record reconcil
 | organism_id | ID | O | Biological individual/group if modelled |
 | event_id | ID | O | Related Event, where the occurrence is tied to a defined event |
 | location_id | ID | O | Location representation |
-| organism_id | ID | O | Biological individual/group if modelled |
 | evidence links | Typed relations | R | One or more provenance/evidence links to Observation, MaterialEntity or SourceRecord; use typed FK relationships |
 | current taxon determination | Derived view | — | Derive from the applicable current Identification assertion; do not store a mutable duplicate taxon_concept_id on Occurrence |
-| location_id | ID | O | Location representation |
 | event_date | DateInterval | O | Time of occurrence |
-| source_record_id | String | O | External identifier |
+| source_record_id | SourceRecord FK / ExternalID tuple | O | Canonical source-record link, or constrained external identifier with issuing namespace and dataset/version context |
 | source_id | ID | C | Required for imported occurrence |
 | provenance_record_id | ID | R | Origin/lineage |
 
