@@ -383,6 +383,32 @@ The authorized STF governing body is invited to decide whether to:
 
 No decision should be inferred from circulation or discussion of this draft.
 
+## 16. Research and reference framework
+
+Primary and institutional references consulted for this proposal:
+
+1. Convention on Biological Diversity, Kunming–Montreal Global Biodiversity Framework, Target 12: https://www.cbd.int/gbf/targets/12
+2. Convention on Biological Diversity, full framework and targets: https://www.cbd.int/gbf/targets
+3. National Biodiversity Authority of India, India's Updated National Biodiversity Strategy and Action Plan 2024–2030: https://www.nbaindia.nic.in/sites/default/files/2026-08/NBSAB_Report.pdf
+4. Ministry of Environment, Forest and Climate Change, Biological Diversity Act, 2002: https://moef.gov.in/uploads/2024/07/SL.No.%201%20Biological%20Diversity%20Act%202002.pdf
+5. Global Indigenous Data Alliance, CARE Principles for Indigenous Data Governance: https://www.gida-global.org/care
+6. Companion STF strategy, including the six talk-based thematic sections and their scientific references: STF-NATURETECH-BIODIVERSITY-INTELLIGENCE-AND-CONSERVATION-IMPACT.md
+
+The talks by Mirella Goodrum, Laurence Nachin, Suzanne Simard, Jorge Rodrigues, Kiliii Yuyan and Terry Townshend are treated as educational and strategic prompts. Scientific claims are separately qualified against research and institutional sources in the companion strategy. The talks do not, by themselves, establish scientific consensus, authorize use of knowledge or prove conservation outcomes.
+
+## 17. Status and review requirements
+
+**Status: Proposed — not approved.**
+
+Before adoption:
+- Review by STF's governing body.
+- Independent scientific review of domain-specific claims and methods.
+- Qualified Indian legal review of applicable activities and commitments.
+- Community-led review wherever community rights, knowledge or participation are implicated.
+- Review of financial sustainability, staffing, safeguarding and operational risk.
+
+Any public-facing summary must preserve the distinction between STF's aspirations, approved commitments, active programmes and independently evidenced outcomes.
+
 ## 18. Art × Science × Ecology: a proposed creative interpretation practice
 
 This section is informed by Rebecca Rutstein's TEDxYale talk and independent institutional research. It is a proposed practice, not an approved STF programme.
@@ -459,29 +485,3 @@ Treat the first project as an experiment in science communication and interdisci
 The proposed creative-interpretation dimension complements NatureTech, human–nature connectedness, ecological interdependence, hidden biodiversity, Indigenous and local stewardship, and urban biodiversity. Its role is to help people perceive ecological processes while preserving scientific accuracy, artistic independence and community rights.
 
 **Decision status: Proposed — not approved.**
-
-## 16. Research and reference framework
-
-Primary and institutional references consulted for this proposal:
-
-1. Convention on Biological Diversity, Kunming–Montreal Global Biodiversity Framework, Target 12: https://www.cbd.int/gbf/targets/12
-2. Convention on Biological Diversity, full framework and targets: https://www.cbd.int/gbf/targets
-3. National Biodiversity Authority of India, India's Updated National Biodiversity Strategy and Action Plan 2024–2030: https://www.nbaindia.nic.in/sites/default/files/2026-08/NBSAB_Report.pdf
-4. Ministry of Environment, Forest and Climate Change, Biological Diversity Act, 2002: https://moef.gov.in/uploads/2024/07/SL.No.%201%20Biological%20Diversity%20Act%202002.pdf
-5. Global Indigenous Data Alliance, CARE Principles for Indigenous Data Governance: https://www.gida-global.org/care
-6. Companion STF strategy, including the six talk-based thematic sections and their scientific references: STF-NATURETECH-BIODIVERSITY-INTELLIGENCE-AND-CONSERVATION-IMPACT.md
-
-The talks by Mirella Goodrum, Laurence Nachin, Suzanne Simard, Jorge Rodrigues, Kiliii Yuyan and Terry Townshend are treated as educational and strategic prompts. Scientific claims are separately qualified against research and institutional sources in the companion strategy. The talks do not, by themselves, establish scientific consensus, authorize use of knowledge or prove conservation outcomes.
-
-## 17. Status and review requirements
-
-**Status: Proposed — not approved.**
-
-Before adoption:
-- Review by STF's governing body.
-- Independent scientific review of domain-specific claims and methods.
-- Qualified Indian legal review of applicable activities and commitments.
-- Community-led review wherever community rights, knowledge or participation are implicated.
-- Review of financial sustainability, staffing, safeguarding and operational risk.
-
-Any public-facing summary must preserve the distinction between STF's aspirations, approved commitments, active programmes and independently evidenced outcomes.
