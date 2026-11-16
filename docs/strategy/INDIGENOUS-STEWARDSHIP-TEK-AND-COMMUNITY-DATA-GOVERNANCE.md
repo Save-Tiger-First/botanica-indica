@@ -86,7 +86,7 @@ These explanations are an STF reflection aid, not a substitute for Turner's full
 
 ### 2.5 Albert Wiggan — recognizing Indigenous knowledge as science
 
-Albert Wiggan's TEDxSydney talk, **“The case to recognise Indigenous knowledge as science”**, was published on 15 July 2019. The official TEDx description identifies him as a Bardi-Kija-Nyul Nyul man from the Dampier Peninsula, working with Indigenous environmental and community organisations. He argues for recognition of Indigenous knowledge as science rather than relegating it to a lesser category.
+Albert Wiggan's TEDxSydney talk, **“The case to recognise Indigenous knowledge as science”**, was published on 15 July 2019 (the TED listing itself gives May 2019; TEDx/YouTube publication records give 15 July 2019). The official TEDx description identifies him as a Bardi-Kija-Nyul Nyul man from the Dampier Peninsula, working with Indigenous environmental and community organisations. He argues for recognition of Indigenous knowledge as science rather than relegating it to a lesser category.
 
 Source: https://www.youtube.com/watch?v=X5QON5l6zy8
 
