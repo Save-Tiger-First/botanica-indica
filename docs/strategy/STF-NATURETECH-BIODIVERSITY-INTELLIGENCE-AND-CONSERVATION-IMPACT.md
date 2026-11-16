@@ -722,7 +722,7 @@ These indicators should be selected with local ecologists and soil scientists. N
 
 The Amazon is a valuable case study, not a direct ecological template for India. Any application to Indian forests, grasslands, wetlands, plantations or restoration sites must be based on local ecosystem types, soil conditions, land-use history, indigenous and local knowledge, and India-specific field evidence.
 
-### 21.7 Strategic synthesis across all four talks
+### 21.7 Strategic synthesis across the first four talks
 
 Together, the four talks suggest a broader STF approach:
 
@@ -752,3 +752,21 @@ This is a proposed strategic interpretation, not a scientific consensus statemen
 **Proposed strategic and educational interpretation — not an approved scientific policy, microbial monitoring protocol or restoration prescription.**
 
 Recommendation: incorporate the talk into STF's biodiversity literacy and conservation strategy, with an explicit explanation that microbial biodiversity and ecosystem functions are important but difficult to measure. Use the Amazon literature as a case study, not as a proxy for Indian ecosystems. Keep microbial genomics outside Botanica Indica's initial scope unless a separately reviewed partnership and product case justifies it.
+
+---
+
+## 22. Indigenous stewardship, TEK and community data governance
+
+The fifth talk considered for this strategy is Kiliii Yuyan's TEDxBerkeley presentation, “Guardians of Life: Indigenous Wisdom, Science and Restoring the Planet” (22 April 2025): https://www.youtube.com/watch?v=afW-Zo8R5pU.
+
+Its central strategic contribution is that conservation must address not only what biodiversity information is collected, but also who holds the knowledge, who has authority to share it, who determines permitted uses and who benefits. Indigenous stewardship, Traditional Ecological Knowledge (TEK), community authority and Indigenous data governance should therefore be cross-cutting requirements for future STF community-facing programmes and data systems.
+
+A detailed research and governance addendum has been prepared at:
+
+`docs/strategy/INDIGENOUS-STEWARDSHIP-TEK-AND-COMMUNITY-DATA-GOVERNANCE.md`
+
+The addendum verifies and qualifies the talk's examples, corrects the interpretation of the 40% Indigenous lands statistic, discusses the CARE Principles for Indigenous Data Governance, considers India's Forest Rights Act and biodiversity legislation, and sets boundaries for Botanica Indica. It is a proposed strategic document, not an approved STF policy, legal opinion, community agreement or evidence of consultation with any Indigenous Peoples or local communities.
+
+**Proposed principle:** Conservation technology must serve living ecosystems and the people who sustain relationships with them. It should strengthen community authority, protect knowledge rights, share benefits fairly and support evidence-based ecological recovery.
+
+
