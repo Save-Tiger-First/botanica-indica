@@ -138,6 +138,7 @@ Each scenario must be tested with a source-backed fixture, expected outcome, rev
 | FLD-05 | Leaf tissue sampled from a specimen | Derived MaterialEntity links to source material and event | Derivation provenance lost |
 | FLD-06 | Field record has uncertain date | Date value, precision and uncertainty preserved | Unknown precision converted to exact timestamp |
 | FLD-07 | Observation is withdrawn by contributor | Workflow status and retention policy applied without silent provenance corruption | Record disappears without audit/retention assessment |
+| FLD-08 | Defined survey fails to detect a target taxon | Explicit absent/non-detected Occurrence state is linked to Event, protocol, effort, target and location; no row is never interpreted as absence | Non-detection inferred from missing Occurrence or stored without survey context |
 
 ### 5.3 Identification, evidence and review
 
