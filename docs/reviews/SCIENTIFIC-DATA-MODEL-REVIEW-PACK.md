@@ -207,6 +207,42 @@ Expected behaviour:
 - Model version, training data manifest, evaluation data and limitations are traceable.
 - Prohibited assets are excluded from training and derived training corpora.
 
+
+### 4.1 Mandatory reconciliation with Task 05C's original 15 integrity tests
+
+The ten review workflows above supplement—not replace—the 15 mandatory acceptance scenarios already defined in Task 05C. Reviewers must record pass/fail/needs-revision for every original scenario and preserve the original test IDs:
+
+| Task 05C test | Required model behaviour |
+|---|---|
+| LDM-01 | The same TaxonName can be used in two distinct taxonomic treatments with separate TaxonConcepts |
+| LDM-02 | Multiple synonym names can relate to one TaxonConcept; synonym relations target names, not another concept |
+| LDM-03 | Partially overlapping TaxonConcepts can be mapped with a typed relation and according-to source |
+| LDM-04 | Basionym/name relationships and nomenclatural type specimens are retained separately |
+| LDM-05 | An Observation with images but no identification remains valid without a fabricated taxon |
+| LDM-06 | One AI IdentificationRun can return multiple candidates without automatically confirming one |
+| LDM-07 | An expert's changed identification creates a new determination and preserves review history |
+| LDM-08 | One Organism can be linked to repeated Occurrences over time where individual identity is meaningful |
+| LDM-09 | An Occurrence can be supported by a MaterialEntity and multiple MediaAssets as distinct evidence paths |
+| LDM-10 | Conflicting native-range sources remain separate scoped DistributionAssertions |
+| LDM-11 | Restricted rare-plant coordinates are generalized or withheld from public API, export and search |
+| LDM-12 | Dataset rights and embedded MediaAsset rights are evaluated separately |
+| LDM-13 | Re-ingestion creates a new DatasetVersion/IngestionRun while preserving stable identifiers |
+| LDM-14 | District boundary version history is retained and does not silently rewrite older location evidence |
+| LDM-15 | When raw source payload retention is not permitted, only permitted metadata/references and provenance are retained |
+
+Task 05C also specifies security tests and data-quality integrity rules. These must be retained in the final automated test plan, not treated as optional narrative guidance.
+
+### 4.2 Task 05D's four distinct validation layers
+
+Task 05D correctly separates four validation layers. Reviewers should preserve this separation in the acceptance matrix and future implementation:
+
+1. **Structural validity:** identifiers, required fields, foreign keys, cardinalities, controlled values and geometry validity.
+2. **Scientific completeness and evidence quality:** whether a record has enough relevant evidence for the scientific claim being made; completeness is claim-relative.
+3. **Rights, privacy and governance eligibility:** whether the record or asset may be stored, displayed, shared, exported or used for a particular purpose.
+4. **External publication readiness:** whether a record meets the chosen Darwin Core / GBIF or other exchange profile.
+
+A record can be structurally valid while scientifically incomplete, rights-restricted or not ready for external publication. Do not compress these states into one global “valid” flag.
+
 ---
 
 ## 5. Indian botanical and ecological test coverage
