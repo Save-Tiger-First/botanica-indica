@@ -266,7 +266,8 @@ The following is the recommended canonical inventory. Names are logical labels a
 | MaterialEntity | Stable physical-material identity | Specimen/sample/living collection; not image file |
 | OccurrenceMaterialLink | Occurrence + MaterialEntity + evidence role | A material entity may evidence one or more occurrence records |
 | MaterialIdentification | MaterialEntity + TaxonConcept/TaxonName + determiner + date | Preserve determination history and source |
-| Identification | Typed subject link + agent + method + asserted time | Immutable assertion; new determination supersedes, not overwrites |
+| Identification | Agent + method + asserted time + taxonomic assertion | Immutable assertion; new determination supersedes, not overwrites |
+| IdentificationSubject | One row per Identification; exactly one FK to Observation, Occurrence or MaterialEntity | CHECK enforces exactly one non-null target FK; all target columns have real FKs; unique Identification FK |
 | IdentificationRun | Model/pipeline/configuration/backbone version + inputs | One reproducible execution record |
 | IdentificationCandidate | Run + rank + candidate taxon reference + score semantics | Raw score is not probability unless calibrated |
 | ExpertAssessment | Reviewer agent + target + scope + outcome + rationale | Credentials and conflict declarations governed |
