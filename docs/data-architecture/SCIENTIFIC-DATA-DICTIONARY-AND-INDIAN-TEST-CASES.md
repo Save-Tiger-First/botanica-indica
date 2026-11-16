@@ -156,7 +156,7 @@ Field requirement labels:
 | parent_name_usage_id | ID | O | Parent usage in this treatment |
 | taxonomic_status | Code | O | Source's exact status mapped to controlled vocabulary |
 | verbatim_status | String | O | Original source wording |
-| source_record_id | String | O | Original source identifier |
+| source_record_id | SourceRecord FK / ExternalID tuple | O | Canonical SourceRecord link, or constrained external identifier with issuing namespace and dataset/version context |
 | source_page_or_locator | String | O | Page, row, URL fragment or record locator |
 | evidence_reference_id | ID | O | Source evidence |
 | retrieved_at | DateTime | O | Retrieval timestamp |
@@ -240,7 +240,8 @@ Different sources may assert different values. Preserve both and record reconcil
 | Field | Type | Req. | Definition / rule |
 |---|---|---:|---|
 | occurrence_id | ID | R | Stable identifier |
-| basis_of_record | Code | R | Map to Darwin Core controlled values |
+| internal_evidence_class | Code | R | Botanica Indica's governed internal classification of the evidence/record; not a Darwin Core term |
+| basis_of_record | Code | O | Darwin Core export mapping only when the evidence supports a valid controlled value; never fabricate to satisfy an export profile |
 | occurrence_status | Code | O | State supported by the record; do not use this field to imply a survey non-detection without a defined protocol and effort |
 | organism_id | ID | O | Biological individual/group if modelled |
 | event_id | ID | O | Related Event, where the occurrence is tied to a defined event |
