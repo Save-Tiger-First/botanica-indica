@@ -514,7 +514,7 @@ Recommendation: include human–nature connectedness in STF's long-term educatio
 
 ### 20.1 Talk and strategic context
 
-The TEDxSeattle talk supplied for STF discussion is Suzanne Simard's “Nature's Internet: How Trees Talk to Each Other in a Healthy Forest”. The TEDxSeattle listing identifies Simard as a Professor of Forest Ecology at the University of British Columbia and describes the talk as an exploration of ecological relationships below the forest floor.
+The TEDxSeattle video supplied for STF discussion is Suzanne Simard's talk at https://www.youtube.com/watch?v=breDQqrkikM. The video framing presents her work on forest ecology and below-ground relationships. STF should retain the supplied video as the primary reference and verify the exact official talk title and event metadata from the TEDxSeattle page before using them in public-facing citation text.
 
 The talk develops several connected ideas:
 - mycorrhizal fungi form symbiotic relationships with plant roots and can connect multiple plants through fungal mycelia;
@@ -524,7 +524,7 @@ The talk develops several connected ideas:
 - forest composition and interactions among plants, fungi, animals, soils, water and people influence ecosystem processes;
 - the Coast Salish concept of reciprocity is presented as an ethical and relational perspective on stewardship.
 
-The talk is valuable as a way to communicate forest complexity and interdependence. It is not, by itself, a current consensus statement for every mechanism it describes.
+The talk is valuable as a way to communicate forest complexity and interdependence. It is not, by itself, a current consensus statement for every mechanism it describes. In particular, the talk's metaphorical language should not be repeated as if it were a settled mechanistic description.
 
 ### 20.2 What is well established
 
@@ -546,7 +546,7 @@ A 2023 perspective by Karst, Jones and Hoeksema, “Positive citation bias and o
 
 A 2024 article in *Trends in Plant Science*, “Mother trees, altruistic fungi, and the perils of plant personification”, further cautioned against attributing human-like motives or altruism to plants and fungi.
 
-The literature is not a simple binary. A 2024 discussion of mycoheterotrophic plants argues that these organisms provide evidence for resource transfer mediated by shared mycorrhizal fungi in particular ecological contexts. This does not establish the broad popular claim that mature trees routinely nourish their offspring or communicate warnings through a forest-wide network.
+The literature is not a simple binary. A 2024 perspective by Merckx and colleagues argues that mycoheterotrophic plants provide important natural evidence for resource transfer mediated by shared mycorrhizal fungi in particular ecological contexts. This is a substantive counterpoint to the 2023 critiques and should be represented fairly. It does not, however, establish the broad popular claim that mature trees routinely nourish their offspring or communicate warnings through a forest-wide network. A 2024–2025 systematic mapping of experimental approaches in arbuscular mycorrhiza also found substantial methodological and field-evidence gaps, underscoring that the debate concerns both the existence of fungal connections and what particular experimental designs can demonstrate about their effects.
 
 **STF communication rule:** distinguish (a) fungal symbiosis and root associations, (b) evidence of physical connectivity, (c) observed movement of labelled substances, (d) demonstrated net transfer through a particular pathway, and (e) a measured benefit to the recipient. Do not present these as interchangeable levels of evidence.
 
@@ -636,7 +636,7 @@ This synthesis is STF's proposed interpretation of the talks. It is not an endor
 4. Karst, J., Jones, M.D. & Hoeksema, J.D. (2023), “Positive citation bias and overinterpreted results lead to misinformation on common mycorrhizal networks in forests”, *Nature Ecology & Evolution*. https://doi.org/10.1038/s41559-023-01986-1
 5. Robinson, D. et al. (2024), “Mother trees, altruistic fungi, and the perils of plant personification”, *Trends in Plant Science* 29(1), 20–31. https://doi.org/10.1016/j.tplants.2023.08.010
 6. “Mycoheterotrophy in the wood-wide web” (2024), *Nature Plants*. https://doi.org/10.1038/s41477-024-01677-0
-7. “Systematic mapping of experimental approaches to studying common mycorrhizal networks in arbuscular mycorrhiza” (2024), *Plants, People, Planet*. https://doi.org/10.1002/ppp3.10618
+7. Lehmann, A. & Rillig, M.C. (2025), “Systematic mapping of experimental approaches to studying common mycorrhizal networks in arbuscular mycorrhiza”, *Plants, People, Planet* 7, 920–933. https://doi.org/10.1002/ppp3.10618
 
 The TEDxSeattle talk supplied for discussion: https://www.youtube.com/watch?v=breDQqrkikM
 
