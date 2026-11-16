@@ -254,14 +254,14 @@ Different sources may assert different values. Preserve both and record reconcil
 
 ### 4.8 Occurrence
 
-**Definition:** An evidence-backed record representing the state/presence of an Organism at a place and time, supported by one or more observations, events, material entities or imported source records. It is distinct from the platform Observation and from a taxonomic Identification. A non-detection is a separate survey result and must not be inferred from the absence of an Occurrence record.
+**Definition:** An evidence-backed record representing the state of an Organism at a particular place and time, following the Darwin Core Occurrence concept. It is distinct from the platform Observation, Event and MaterialEntity, and from a taxonomic Identification. The state may represent detection/presence or, where supported by a defined survey Event, non-detection/absence. An absent state must be explicit and supported by the survey protocol, effort, target and event context; it must never be inferred from the absence of an Occurrence record.
 
 | Field | Type | Req. | Definition / rule |
 |---|---|---:|---|
 | occurrence_id | ID | R | Stable identifier |
 | internal_evidence_class | Code | R | Botanica Indica's governed internal classification of the evidence/record; not a Darwin Core term |
 | basis_of_record | Code | O | Darwin Core export mapping only when the evidence supports a valid controlled value; never fabricate to satisfy an export profile |
-| occurrence_status | Code | O | State supported by the record; do not use this field to imply a survey non-detection without a defined protocol and effort |
+| occurrence_status | Code | O | Explicit detected/present or absent/non-detected state where supported; absent requires a defined survey Event, protocol, effort, target and location |
 | organism_id | ID | O | Biological individual/group if modelled |
 | event_id | ID | O | Related Event, where the occurrence is tied to a defined event |
 | location_id | ID | O | Location representation |
@@ -272,7 +272,7 @@ Different sources may assert different values. Preserve both and record reconcil
 | source_id | ID | C | Required for imported occurrence |
 | provenance_record_id | ID | R | Origin/lineage |
 
-Occurrence must not be treated as merely a field on Observation. Multiple evidence records can support one occurrence interpretation, and an observation may be revised or interpreted in multiple ways. A non-detection record belongs to a defined Survey/Event result with a protocol, effort, target taxon or taxon group, time and location; absence of an occurrence row is not evidence of absence.
+Occurrence must not be treated as merely a field on Observation. Multiple evidence records can support one occurrence interpretation, and an observation may be revised or interpreted in multiple ways. A non-detection is represented only as an explicit absent/non-detected Occurrence state associated with a defined Survey/Event, protocol, effort, target taxon or taxon group, time and location. Absence of an Occurrence row is not evidence of absence.
 
 ### 4.9 Event
 
@@ -883,7 +883,7 @@ The data dictionary is ready to inform physical schema design when:
 
 ## 14. References consulted
 
-1. TDWG Darwin Core List of Terms, list release version 2026-05-26 (verify current version at implementation time): https://dwc.tdwg.org/list/
+1. TDWG Darwin Core List of Terms, list release version issued 2026-10-13: https://dwc.tdwg.org/list/
 2. TDWG Taxon Concept Standard terms: https://tcs.tdwg.org/terms/
 3. IPNI — Azadirachta indica A.Juss.: https://www.ipni.org/n/1213180-2
 4. Kew Plants of the World Online — Azadirachta indica: https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:1213180-2/general-information
