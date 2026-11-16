@@ -181,3 +181,48 @@ This is a proposed strategic interpretation, not an approved organizational poli
 **Proposed strategic and governance principles — not an approved STF policy, community agreement, legal opinion or operational conservation protocol.**
 
 Recommendation: incorporate Indigenous stewardship, TEK and Indigenous data governance into STF's strategy as cross-cutting requirements for future community-facing programmes and data systems. Do not collect or publish community-held knowledge until appropriate rights holders and governance processes have determined whether, how and under what conditions this is permitted.
+
+
+## 11. Readiness gate before any STF community knowledge programme
+
+This section converts the strategic safeguards above into a practical go/no-go review. Completing a checklist does not replace community authorization, legal advice or local protocols.
+
+| Gate | Evidence required | Accountable review |
+|---|---|---|
+| Context and rights-holder identification | Community-led identification of relevant peoples, institutions, knowledge holders, rights and decision processes; terminology validated locally | Community-designated representatives and qualified local advisers |
+| Purpose and necessity | Written explanation of the conservation need, why knowledge collection is necessary, alternatives that avoid collection, and who benefits | STF programme lead with community-designated reviewers |
+| Consent and authorization | Documented free, prior and informed consent or other applicable approval/ involvement process, in locally appropriate language and form; scope and limits explicit | Relevant rights holders and legitimate community processes |
+| Knowledge classification | Community-defined public, controlled, restricted, sacred, confidential or prohibited categories; no default-public assumption | Knowledge holders / community authority |
+| Data and IP rights | Rights assessment for text, images, recordings, names, locations, biological resources and derived data; permissions separated by use | Legal adviser and community-designated authority |
+| Access and security | Role and purpose-based access, least privilege, audit logs, retention/deletion arrangements, sensitive-location controls and incident response | Data protection/security lead with community review |
+| AI and downstream use | Explicit decisions on model training, embeddings, translation, summarization, model outputs, third-party processors, redistribution and commercial use | Community authority, technical lead and legal adviser |
+| Benefit sharing and reciprocity | Agreed financial/non-financial benefits, participation compensation, capacity support, access to outputs and attribution preferences | Community-designated authority and STF leadership |
+| Interpretation and publication | Community review of context, translations, maps, summaries, public communications and any claims attributed to the community | Knowledge holders / designated reviewers |
+| Monitoring and grievance | Community-defined success indicators, accessible complaint channel, periodic review, pause/withdrawal process and remedy for misuse | Jointly agreed governance body |
+| Close-out and continuity | Agreed return, archival, transfer, deletion or continued stewardship of data; responsibilities after project funding ends | Community authority and STF programme owner |
+
+### Minimum no-go conditions
+
+STF should not collect, digitize, publish, share or use community-held knowledge for AI/ML if any of the following applies:
+
+- the relevant rights holders or legitimate decision-making process have not been identified with the community;
+- consent or authorization is absent, unclear, coerced, out of date or does not cover the proposed use;
+- the knowledge is restricted, sacred or otherwise not authorized for the intended audience or purpose;
+- rights to images, recordings, biological resources, associated knowledge or third-party materials are unresolved;
+- downstream access, model training, onward transfer or commercial use is not covered by the agreed permissions;
+- disclosure creates an unmitigated risk to people, cultural heritage, species, harvesting sites or territories;
+- the community cannot meaningfully participate in governance or access agreed benefits and outputs.
+
+A no-go decision may mean redesigning the programme so that it does not collect the knowledge. It must not be treated as a problem to overcome through broader consent wording.
+
+### Review sequence
+
+1. Conduct a desk-based legal and ecological scoping exercise without collecting community-held knowledge.
+2. Identify potential community partners through appropriate, trusted channels; do not assume a single individual speaks for an entire community.
+3. Ask whether the community wishes to explore the proposal and allow it to define its own decision process.
+4. Co-design purpose, methods, governance, permissions, benefits and indicators before any collection.
+5. Obtain legal review of the applicable Indian and other relevant legal frameworks, including the current Biological Diversity Act and rules where relevant, the Forest Rights Act where applicable, privacy and intellectual-property obligations, and any local/community protocols.
+6. Pilot only with explicit authorization and a jointly agreed monitoring and grievance mechanism.
+7. Review outcomes with the community before scaling, publishing or reusing any material.
+
+**No programme should proceed merely because this document exists or because STF has adopted internal procedures. Community authorization is specific to the relevant people, place, knowledge and proposed use.**
