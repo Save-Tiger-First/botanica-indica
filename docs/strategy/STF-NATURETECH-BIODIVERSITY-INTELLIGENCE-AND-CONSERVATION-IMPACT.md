@@ -386,3 +386,120 @@ The TEDxVitosha talk featuring Mirella Goodrum was supplied as the initial strat
 The recommended immediate course is to complete Botanica Indica's scientific architecture and validation work, establish the cross-project governance baseline, and use real operational evidence to determine which shared capabilities and future domains merit investment.
 
 STF should grow through demonstrated conservation relevance, scientific credibility, responsible partnerships and measurable outcomes—not through the number of technologies or applications it launches.
+
+
+---
+
+## 19. Human–Nature Connectedness: the human dimension of conservation
+
+### 19.1 Strategic context
+
+The TEDx talk featuring Laurence Nachin, supplied for STF discussion, introduces a complementary perspective: humans are not separate from nature, and nature should not be treated only as a destination outside everyday life.
+
+Nachin's official Sense in Nature profile confirms her background as a microbiologist with a PhD in microbiology and cellular biology, her experience in research and R&D, her training as a nature and forest therapy guide, and her founding of Sense in Nature in 2019. Her stated work includes integrating nature into organizational thinking and decision-making.
+
+Her official profile also describes how her scientific experience at cellular and molecular scales informed her understanding of interdependence, and how she seeks to bring nature connection into workplaces and everyday organizational practice.
+
+This is a strategic and educational perspective. It should not be treated as a substitute for ecological science, clinical evidence or formal evaluation.
+
+### 19.2 Proposed STF principle
+
+**People are part of nature, not visitors to it.**
+
+STF should communicate conservation not only as the protection of distant forests, wildlife reserves and charismatic species, but also as recognition of the ecological relationships that sustain everyday human life.
+
+This principle can inform:
+- public biodiversity education;
+- urban and peri-urban nature engagement;
+- schools, colleges and workplace programmes;
+- citizen-science and field observation;
+- responsible outdoor experiences;
+- sustainable organizational practices;
+- conservation communication that connects local actions to wider ecosystems.
+
+It does not mean that every human activity is ecologically beneficial, or that human well-being and ecological integrity always align without trade-offs.
+
+### 19.3 Evidence and interpretation
+
+Research supports a meaningful relationship between human–nature connectedness and several environmental and well-being outcomes, but the strength and causal interpretation of the evidence vary.
+
+A 2020 meta-analysis by Whitburn, Linklater and Abrahamse examined 37 samples involving 13,237 participants. It found a positive association between connection to nature and pro-environmental behaviour (reported pooled correlation r = 0.42, 95% CI 0.36–0.47). The authors also reported substantial heterogeneity among studies and noted the need for more longitudinal and randomized research to establish causation.
+
+A 2022 global meta-analysis by Richardson and colleagues examined 147 correlational studies and 59 experimental studies. It found that greater human–nature connectedness was associated with more pro-nature behaviours and better health, and that some interventions involving nature contact and mindfulness increased connectedness. These findings support connectedness as a potentially useful sustainability pathway; they do not establish that every intervention produces durable behaviour change.
+
+A 2025 systematic review of 29 studies reported a positive relationship between connectedness to nature and pro-environmental behaviours, while also noting variation across studies and differences between individual behaviours and activism-related behaviours.
+
+A 2025 systematic review and meta-analysis of nature-based activities reported increases in human–nature connectedness across the six activity types examined. The size of change varied by activity, with mindfulness and wildlife encounters showing larger changes than some other activity types in that analysis. This does not establish that one activity is universally best across cultures, ages, accessibility needs or ecological contexts.
+
+A 2026 review of conceptual issues in nature connection and well-being emphasizes that the field contains conceptual tensions: the idea that humans are part of nature is sometimes studied using methods that implicitly treat humans and the environment as separate. This is an important caution for STF's language and evaluation design.
+
+### 19.4 Implications for STF programmes
+
+STF may consider human–nature connectedness as a cross-cutting educational and engagement outcome, not as a substitute for conservation impact.
+
+Possible programme formats include:
+- guided biodiversity observation and nature journaling;
+- neighbourhood and campus biodiversity walks;
+- workplace biodiversity learning and reflection;
+- school-based ecological literacy activities;
+- participatory mapping of everyday biodiversity;
+- field activities linking species observations to habitat, seasonality and ecological relationships;
+- workshops that connect personal choices, organizational practices and ecosystem pressures.
+
+Programmes should be co-designed with appropriate educators, ecologists, facilitators and community partners. Nature and forest therapy activities should be led by appropriately trained practitioners and should not be marketed as clinical treatment unless delivered under the relevant professional and regulatory framework.
+
+### 19.5 Evaluation: do not collapse connection, behaviour and ecological outcome
+
+If STF pilots a human–nature connectedness programme, evaluate at least four distinct dimensions:
+
+1. **Experience and participation:** who participated, accessibility, duration, setting, facilitation and participant safety.
+2. **Connectedness and learning:** changes in participants' self-reported relationship with nature, ecological knowledge and ability to recognize local biodiversity.
+3. **Behaviour:** observed or credibly documented changes in relevant practices, participation, stewardship or organizational decisions.
+4. **Ecological outcomes:** changes in defined ecological indicators measured with suitable baselines, methods, timeframes and independent review where appropriate.
+
+Use validated measures where possible, and report the instrument, language adaptation, sampling method, baseline, follow-up period, missing data and limitations. Self-reported intention should not be presented as verified behaviour. Increased participation should not be presented as biodiversity recovery.
+
+### 19.6 Workplace and organizational implications
+
+Nachin's Sense in Nature work explicitly considers how nature connection can be integrated into organizational thinking and workplace processes. This offers STF a potential future application area: helping organizations connect biodiversity literacy with decisions about procurement, campuses, facilities, travel, landscaping, resource use and community engagement.
+
+A workplace programme should not be reduced to indoor plants, motivational messaging or a one-off outdoor event. It should connect learning to actual organizational decisions and measure whether practices change.
+
+### 19.7 Safeguards and inclusion
+
+- Do not imply that people who cannot access green spaces are less responsible or less connected to nature.
+- Include accessible, culturally appropriate and locally relevant ways to engage with nature.
+- Respect local communities, customary practices and knowledge rights.
+- Avoid disturbing wildlife or damaging habitats during facilitated activities.
+- Apply local access rules, safety planning, weather assessment and a leave-no-trace approach.
+- Avoid unsubstantiated therapeutic or health claims.
+- Recognize that nature connection is culturally and individually variable; do not prescribe a single emotional response to nature.
+
+### 19.8 Strategic synthesis
+
+The two talks supplied for STF discussion can be understood as complementary:
+
+- Mirella Goodrum's NatureTech framing: work with nature and use technology to support ecological understanding and action.
+- Laurence Nachin's human–nature connectedness framing: recognize that people are already part of natural systems and integrate this understanding into everyday life and decisions.
+
+Together they suggest a broader STF approach: **connect people with nature, build reliable knowledge about nature, support decisions that respect ecological systems, and evaluate whether those decisions produce meaningful outcomes.**
+
+This synthesis is a proposed strategic interpretation by STF, not a quotation or formal position attributed to either speaker.
+
+### 19.9 Additional research references
+
+1. Sense in Nature, About Laurence Nachin: https://senseinnature.se/en/about-us/
+2. Whitburn, J., Linklater, W. & Abrahamse, W. (2020), "Meta-analysis of human connection to nature and proenvironmental behavior", Conservation Biology. https://pubmed.ncbi.nlm.nih.gov/31251416/
+3. Richardson, M. et al. (2022), "Human–nature connectedness as a pathway to sustainability: A global meta-analysis", Conservation Letters. https://pmc.ncbi.nlm.nih.gov/articles/PMC9286792/
+4. Guazzini, A. et al. (2025), "The Relationship Between Connectedness to Nature and Pro-Environmental Behaviors: A Systematic Review", Sustainability. https://www.mdpi.com/2071-1050/17/8/3686
+5. "Nature-based activities improve human-nature connectedness: A systematic review and meta-analysis" (2025), Perspectives in Ecology and Conservation. https://doi.org/10.1016/j.pecon.2025.08.001
+6. "Nature, nature connection, and well-being: A review of conceptual issues and opportunities" (2026), People and Nature. https://doi.org/10.1002/pan3.70382
+7. "Nature contact, nature connectedness and associations with health, wellbeing and pro-environmental behaviours" (2020), Journal of Environmental Psychology. https://doi.org/10.1016/j.jenvp.2020.101389
+
+The TEDx talk supplied for discussion: https://www.youtube.com/watch?v=BHchwm4MVp4
+
+### 19.10 Decision status
+
+**Proposed strategic principle — not yet adopted as an STF programme or policy.**
+
+Recommendation: include human–nature connectedness in STF's long-term education, engagement and organizational sustainability thinking. Pilot only with appropriate partners, clear safeguards and a proportionate evaluation plan. Do not divert Botanica Indica's immediate scientific and product priorities to build a separate well-being product.
