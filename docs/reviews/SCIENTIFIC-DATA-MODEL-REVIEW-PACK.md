@@ -623,7 +623,7 @@ Following the preliminary desk review, proposed documentation changes were made 
 | Document | PR | Branch head commit |
 |---|---:|---|
 | Task 05 conceptual data architecture | #3 | `617b1084e3c918c8b5bca744fde0b7b3fc7bab83` |
-| Task 05B scientific data dictionary | #4 | `5949a86a4fe102bcb75466dbd67742796163f1d9` |
+| Task 05B scientific data dictionary | #4 | `c25be98e73b056fcd0ee696dcbc7d2dc0d187103` |
 | Task 05C logical database model | #5 | `a2290b927387655a6857cb7faa92e11c25b6d3ae` |
 | Task 05D validation/readiness gate | #7 | `5cb9dea7af33aa3b153e2f73d8531d50646aea3d` |
 
@@ -638,11 +638,11 @@ These changes are proposed documentation revisions. PRs remain draft and unmerge
 | DR-03 — TCS mapping vocabulary | Task 05B and Task 05C now identify the six exact TCS mapping relations: `isCongruentWith`, `includes`, `isIncludedIn`, `partiallyOverlaps`, `isDisjointFrom`, and `intersects`. | Taxonomist review is still needed for relation direction, interpretation and example fixtures. |
 | DR-04 — TCS accordingTo resource | Task 05B and Task 05C specify one canonical according-to resource; a structured TaxonomicTreatment record is optional and must resolve to that same resource. | Confirm resource registry identity and implement uniqueness/FK constraints. |
 | DR-06 — Taxon determination on Occurrence | Task 05B now treats the current taxonomic determination as a derived view from the applicable Identification rather than a mutable Occurrence taxon field. | Confirm that Task 05C read models/API views and all test cases follow the same rule. |
-| DR-07 — Occurrence and non-detection | Task 05B now defines Occurrence in terms of organism state and permits an explicit absent/non-detected state only with a defined survey Event, protocol, effort, target and location. | Confirm alignment with Darwin Core `occurrenceStatus`, sampling-event export profiles and field fixtures; absence of an Occurrence row must never be interpreted as absence. |
-| DR-10 — Source record identifiers | Task 05B TaxonName and TaxonNameUsage and Occurrence now use canonical SourceRecord FKs or constrained external-identifier tuples. | Confirm SourceRecord namespace, dataset version and ingestion-run uniqueness rules in physical design. |
+| DR-07 — Occurrence and non-detection | Task 05B now defines Occurrence in terms of organism state and permits an explicit absent/non-detected state only with a defined survey Event, protocol, effort, target and location. Task 05C adds LDM-16 for this case. | Confirm alignment with Darwin Core `occurrenceStatus`, sampling-event export profiles and field fixtures; absence of an Occurrence row must never be interpreted as absence. |
+| DR-10 — Source record identifiers | Task 05B TaxonName, TaxonNameUsage and Occurrence now use canonical SourceRecord FKs or constrained external-identifier tuples. | Confirm SourceRecord namespace, dataset version and ingestion-run uniqueness rules in physical design. |
 | DR-05 — Taxonomy relationship families | Task 05 separates concept-to-name synonym assertions, name-to-name nomenclatural relations and concept-to-concept mappings; Task 05C already models distinct entities. | Review all remaining generic relationship labels and fixtures; keep parent/child hierarchy treatment-scoped. |
 | DR-11 — TCS synonym target | Task 05B validation now explicitly maps a TCS synonym from TaxonConcept to TaxonName, with TaxonNameUsage retained separately. | Validate the Ficus fixture against TCS semantics and exact source treatment. |
-| DR-12 — Source roles and authority | Task 05B adds purpose-specific source type, editorial/curation model, scope, version, access date and limitations metadata. | Complete source profiles for IPNI, POWO, BSI and eFlora of India after checking each institution's current scope and reuse terms. |
+| DR-12 — Source roles and authority | Task 05B adds purpose-specific source type, editorial/curation model, scope, version, access date and limitations metadata, plus source-role examples for IPNI, POWO/WCVP, BSI and eFlora of India. | Review current source profiles and record reuse/redistribution terms separately from scientific suitability. |
 
 ### Research verification used for this pass
 
@@ -652,9 +652,9 @@ GBIF's current data-quality recommendations distinguish occurrence datasets from
 
 ### Updated disposition
 
-- DR-01 to DR-04 are **revised in the proposed documents; not yet closed**.
-- DR-06, DR-07 and DR-10 are **partially addressed; further model and fixture review required**.
-- DR-05 and DR-08 to DR-12 remain subject to their previously stated dispositions.
+- DR-01 to DR-07, DR-10 to DR-12 are **revised in the proposed documents; not yet closed**.
+- DR-08 remains an open source/geographic-resolution test case, not a demonstrated contradiction.
+- DR-09 is **withdrawn as an erroneous desk-review finding** after live verification of the official Darwin Core List release.
 - Physical design and Task 05E remain **not authorized**.
 - No external scientific expert has signed off on these changes.
 
