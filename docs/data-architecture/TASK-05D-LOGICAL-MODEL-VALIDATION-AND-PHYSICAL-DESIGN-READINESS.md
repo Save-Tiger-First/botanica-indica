@@ -72,6 +72,9 @@ The review must compare Task 05, Task 05B and Task 05C line by line and resolve 
 | DOC-17 | Typed scientific subjects | ScientificAssertion and Identification use typed subject links or a formally enforceable supertype; no unconstrained polymorphic FK pair |
 | DOC-18 | TCS mapping vocabulary | TaxonConceptMapping uses the six TCS mapping relations with their exact semantics |
 | DOC-19 | TCS accordingTo resource | Each TaxonConcept has exactly one canonical according-to resource; any treatment specialization resolves to that same resource |
+| DOC-20 | Taxonomy relationship families | Concept-to-name synonym assertions, name-to-name nomenclatural relations and concept-to-concept mappings are distinct |
+| DOC-21 | Synonym target semantics | TCS synonym target is TaxonName; source-specific TaxonNameUsage remains a separate record |
+| DOC-22 | Source role and authority | Source type, editorial/curation model, scope, version, date and limitations are recorded; source fitness is purpose-specific |
 
 
 
@@ -85,8 +88,11 @@ The following document-level corrections have been applied on the current Task 0
 | DR-02 / DOC-17 | **Revised in 05B and 05C** | Dictionary now specifies typed subject links for ScientificAssertion and Identification; logical model requires real FKs and exactly one supported Identification subject link. | Physical model must implement enforceable FKs and subject-cardinality constraints; test all supported subject types. |
 | DR-03 / DOC-18 | **Revised in 05B and 05C** | Mapping vocabulary now names the six exact TCS relations; informal “excludes” and “not congruent” values removed from the field definition. | Review directionality and semantics with a taxonomist; test mapping export/import round trips. |
 | DR-04 / DOC-19 | **Revised in 05B and 05C** | One canonical `according_to_resource_id` represents TCS `accordingTo`; optional treatment specialization must resolve to the same resource. | Confirm resource registry semantics and uniqueness/integrity implementation with biodiversity-informatics reviewer. |
+| DR-05 / DOC-20 | **Revised in Task 05 and 05C** | Concept-to-name synonym, name-to-name nomenclatural and concept-to-concept mapping families are explicitly distinguished. | Re-review all relationship tables and fixtures; ensure no generic TaxonRelationship implementation remains. |
+| DR-11 / DOC-21 | **Revised in 05B** | Validation wording now specifies that TCS synonym assertions target TaxonName; TaxonNameUsage remains separate. | Validate with Banyan/Ficus fixture and TCS mapping example. |
+| DR-12 / DOC-22 | **Revised in 05B** | Source records now require source type, editorial/curation model, scope, version, access date and limitations. | Populate and review source profiles for IPNI, POWO, BSI and eFlora of India; confirm terms and current institutional descriptions. |
 
-The corrections above address the identified documentation conflicts but do not by themselves close the findings. The exact branch commits must be re-reviewed, and the physical constraints and test fixtures remain pending. The current GBIF profile distinctions are supported by the official technical documentation: occurrence datasets require `occurrenceID`; `basisOfRecord`, `scientificName` and `eventDate` are strongly recommended in the general profile and required in GBIF-managed programmes; sampling-event datasets have a distinct set of requirements. See https://techdocs.gbif.org/en/data-publishing/data-quality-recommendations.
+The corrections above address the identified documentation conflicts but do not by themselves close the findings. The official Darwin Core List of Terms page now identifies the list release as issued 2026-10-13; individual term modification/version dates may differ and must be recorded at term level. Reference: https://dwc.tdwg.org/list/. The exact branch commits must be re-reviewed, and the physical constraints and test fixtures remain pending. The current GBIF profile distinctions are supported by the official technical documentation: occurrence datasets require `occurrenceID`; `basisOfRecord`, `scientificName` and `eventDate` are strongly recommended in the general profile and required in GBIF-managed programmes; sampling-event datasets have a distinct set of requirements. See https://techdocs.gbif.org/en/data-publishing/data-quality-recommendations.
 
 ### 4.1 Known correction: internal validity vs GBIF publishing requirements
 
