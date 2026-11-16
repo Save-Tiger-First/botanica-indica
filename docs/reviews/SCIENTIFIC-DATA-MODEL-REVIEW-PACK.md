@@ -614,3 +614,45 @@ Do not begin with SQL table generation. First establish scientific identity, car
 **The readiness gate is a quality control, not paperwork.** Its purpose is to prevent the project from turning unresolved scientific assumptions into expensive database constraints.
 
 **Decision status: Draft review pack — no expert sign-off received; Task 05E is not yet authorized.**
+
+
+## 4.4 Reconciliation pass — DR-01 to DR-04 and related occurrence semantics (16 November 2026)
+
+Following the preliminary desk review, proposed documentation changes were made on the source branches. The exact current branch heads at the time of this update are:
+
+| Document | PR | Branch head commit |
+|---|---:|---|
+| Task 05 conceptual data architecture | #3 | `bb85442cfb8e4625a242fb85442d8df5cb89118a` |
+| Task 05B scientific data dictionary | #4 | `3eaeee19d4c1e99035b42f60f4fc0734bfd51625` |
+| Task 05C logical database model | #5 | `c517c00676c3a8803507443be63d46b3d28445b0` |
+| Task 05D validation/readiness gate | #7 | `ca637022fd249b107200b7581aa76980956d2888` |
+
+These changes are proposed documentation revisions. PRs remain draft and unmerged. The GitHub connector reported `mergeable: false` for PRs #3, #4, #5 and #7 immediately after these sequential branch updates; the reason was not established and must not be inferred. Recheck PR conflict state and exact diffs before review or merge.
+
+### Reconciliation results
+
+| Finding | Proposed correction now present | What remains open |
+|---|---|---|
+| DR-01 — Internal occurrence vs export fields | Task 05B no longer requires Darwin Core `basisOfRecord` as a universal internal Occurrence field. Task 05C removes it from the core Occurrence key rule and integrity test, retaining provenance. Task 05D records the distinction. | Confirm all internal occurrence fixtures, export profiles and non-detection handling. Do not close until exact diffs and tests are reviewed. |
+| DR-02 — Polymorphic subject references | Task 05B now specifies typed FK subject links for ScientificAssertion and Identification. Task 05C states the required typed-link integrity rule. | The logical model still needs a complete subject-link inventory and a physical strategy to enforce exactly one Identification subject. A prose rule alone does not create referential integrity. |
+| DR-03 — TCS mapping vocabulary | Task 05B and Task 05C now identify the six exact TCS mapping relations: `isCongruentWith`, `includes`, `isIncludedIn`, `partiallyOverlaps`, `isDisjointFrom`, and `intersects`. | Taxonomist review is still needed for relation direction, interpretation and example fixtures. |
+| DR-04 — TCS accordingTo resource | Task 05B and Task 05C specify one canonical according-to resource; a structured TaxonomicTreatment record is optional and must resolve to that same resource. | Confirm resource registry identity and implement uniqueness/FK constraints. |
+| DR-06 — Taxon determination on Occurrence | Task 05B now treats the current taxonomic determination as a derived view from the applicable Identification rather than a mutable Occurrence taxon field. | Confirm that Task 05C read models/API views and all test cases follow the same rule. |
+| DR-07 — Occurrence and non-detection | Task 05B now defines Occurrence as an evidence-backed presence/state record and states that non-detection needs a defined survey/event, protocol and effort. | A separate logical SurveyResult/absence-result entity and fixtures still need explicit design; do not encode absence as a missing occurrence. |
+| DR-10 — Source record identifiers | Task 05B Occurrence now points to a canonical SourceRecord FK or a constrained external-identifier tuple. | Other entities, including TaxonNameUsage, must be checked for bare source-record strings and aligned. |
+
+### Research verification used for this pass
+
+The current official TCS List of Terms identifies its version as 2025-12-11. It states that a TaxonConcept requires `taxonName` and `accordingTo`; a TaxonConceptMapping requires subject, relation and object; and lists the six mapping relations used above. It also clarifies that TCS synonymy uses a TaxonConcept-to-TaxonName relation, while basionym/replaced-name relationships belong to the TaxonName vocabulary. https://tcs.tdwg.org/terms/
+
+GBIF's current data-quality recommendations distinguish occurrence datasets from sampling-event datasets. For occurrence datasets, `occurrenceID` is required; `basisOfRecord`, `scientificName` and `eventDate` are strongly recommended in the general profile and required in GBIF-managed programmes. Sampling-event datasets have a separate set of requirements, including event and sampling-protocol fields. This supports keeping export-profile validation distinct from internal data validity. https://techdocs.gbif.org/en/data-publishing/data-quality-recommendations
+
+### Updated disposition
+
+- DR-01 to DR-04 are **revised in the proposed documents; not yet closed**.
+- DR-06, DR-07 and DR-10 are **partially addressed; further model and fixture review required**.
+- DR-05 and DR-08 to DR-12 remain subject to their previously stated dispositions.
+- Physical design and Task 05E remain **not authorized**.
+- No external scientific expert has signed off on these changes.
+
+A reviewer must compare the exact branch diffs, validate the six TCS relation semantics with taxonomic examples, test typed subject integrity, and verify all occurrence/export profiles before changing any finding to “closed”.
