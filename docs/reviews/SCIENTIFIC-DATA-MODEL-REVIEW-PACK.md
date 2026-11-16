@@ -284,9 +284,9 @@ The content was fetched from the named feature branches. PR #7 must be reviewed 
    https://tcs.tdwg.org/terms/  
    Version IRI: https://rs.tdwg.org/tcs/doc/terms/2025-12-11
 
-2. **Darwin Core List of Terms:** the official page identifies the current list version as 2026-05-26. Individual terms carry their own modification/version dates.  
+2. **Darwin Core List of Terms:** the official page identifies the current list version as issued 2026-10-13; 2026-05-26 is the previous version. Individual terms carry their own modification/version dates.  
    https://dwc.tdwg.org/list/  
-   Version IRI: https://rs.tdwg.org/dwc/doc/list/2026-05-26
+   Version IRI: https://rs.tdwg.org/dwc/doc/list/2026-10-13
 
 3. **Darwin Core conceptual model:** the modern Occurrence semantics distinguish Organism, Occurrence and MaterialEntity; an Occurrence is an Event establishing the state of an Organism at a place and time.  
    https://dwc.tdwg.org/cm/
@@ -627,7 +627,7 @@ Following the preliminary desk review, proposed documentation changes were made 
 | Task 05C logical database model | #5 | `a2290b927387655a6857cb7faa92e11c25b6d3ae` |
 | Task 05D validation/readiness gate | #7 | `5cb9dea7af33aa3b153e2f73d8531d50646aea3d` |
 
-These changes are proposed documentation revisions. PRs remain draft and unmerged. At the latest verification on 16 November 2026, GitHub reported PRs #3, #4, #5 and #7 as `mergeable: false`, and PRs #8 and #9 as `mergeable: true`. Commit comparisons show the feature branches are ahead of their respective bases and not behind; the false mergeability results therefore remain unexplained by the comparison metadata alone. Do not infer a conflict cause. Recheck PR state and exact diffs before review or merge.
+These changes are proposed documentation revisions. PRs #3, #4, #5, #8, #9 and #10 remain open and draft; none is merged. PR #7 was closed unmerged because it was based on an earlier Task 05C revision and had diverged; PR #10 replaces it and is based on the current Task 05C branch. At the latest check, GitHub reported PRs #3, #8 and #10 as mergeable, and PRs #4, #5 and #9 as not mergeable. Commit comparisons show the active branches are ahead of their respective bases and not behind (PR #10 is one commit ahead of the current Task 05C branch). The reason for the `mergeable: false` fields on #4, #5 and #9 remains unestablished; do not infer a conflict cause.
 
 ### Reconciliation results
 
