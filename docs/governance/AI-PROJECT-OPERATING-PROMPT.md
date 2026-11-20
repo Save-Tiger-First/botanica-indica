@@ -105,6 +105,8 @@ Default workflow:
 
 A staging defect is fixed on a temporary branch, merged to develop, then promoted again to staging. Do not develop directly on staging.
 
+**Current project-owner directive — 20 November 2026:** No new branches are to be created during the current development period. This is stricter than the general permission for temporary task branches above. Reuse the most relevant existing branch and pull request wherever possible. If no existing branch is suitable, stop and request explicit project-owner approval before creating any branch. Actively reduce the existing branch count through preservation-first retirement of superseded or resolved task branches. Do not create successor branches merely to represent successive document versions. This directive remains in force until the project owner explicitly changes it.
+
 Do not create a third supporting long-lived branch by default. If a genuine exceptional need arises, document the reason, owner, exact expiry date, why a task branch/tag/environment cannot solve it, and obtain explicit project-owner approval. Review the exception at least every 30 days. The exception does not change the final one-branch requirement.
 
 ### 6.2 Final one-branch requirement
