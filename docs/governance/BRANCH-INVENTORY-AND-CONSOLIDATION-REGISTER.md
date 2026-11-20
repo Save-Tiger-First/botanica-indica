@@ -80,10 +80,10 @@ These branches had no corresponding open pull request in the verified snapshot. 
 
 ## 5. Critical dependency and content risks
 
-1. **Task 05C / 05D:** PR #11 is based on PR #5. The logical model must be reconciled before the validation gate is considered stable. The previously recorded DR-01 to DR-04 findings remain blocking; DR-05 to DR-12 require resolution or explicit disposition.
+1. **Task 05C / 05D:** PR #11 is based on PR #5. The current PR #9 decision register reports DR-01 to DR-07 as document-level revisions applied in proposed Task 05B/05C/05D materials, DR-08 as an open source/geographic-scope test case, DR-09 as withdrawn as erroneous, and DR-10 to DR-12 as document-level revisions still requiring specialist review. These are not validated closures: reproducible fixtures, standards round-trip tests and independent discipline review remain outstanding. Resolve the competing Task 05C document and the PR #5/#11 dependency before authorizing physical design.
 2. **NatureTech / organisational readiness:** PR #12 is based on PR #8 and includes overlapping strategy material. Review and resolve #8 before #12; compare repeated files rather than treating them as independent additions.
 3. **Bengaluru pilot:** PR #14 is related to PR #13 but currently targets `main` independently. The site-selection document must remain preliminary. Reconcile its current Kaikondrahalli-first recommendation with the proposal's non-selection status and all later partner/authority evidence before any site decision.
-4. **Scientific review pack:** PR #9 is a review instrument and should not be represented as independent expert approval.
+4. **Scientific review pack:** PR #9 is a review instrument and should not be represented as independent expert approval. Its current source revision also records Task 05E as NOT READY and requires real reviewer identities, qualifications, evidence and outcomes before sign-off.
 5. **Licensing and ecosystem governance:** PRs #1 and #2 are proposals. Do not describe them as approved policy or ADRs until reviewed and merged through the agreed governance process.
 
 ## 6. Recommended consolidation sequence
