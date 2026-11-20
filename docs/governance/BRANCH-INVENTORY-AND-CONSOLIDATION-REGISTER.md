@@ -7,17 +7,17 @@
 
 ## 1. Verified snapshot
 
-The GitHub API returned 18 branches:
+The GitHub API returned 19 branches on 20 November 2026 after creation of the repository-audit task branch:
 
 - 1 permanent branch: `main`
 - 2 intended long-lived supporting branches: `develop`, `staging`
-- 15 additional topic/governance branches, including the temporary branch carrying this policy proposal
+- 16 additional topic/governance branches, including the temporary branches carrying this policy proposal and the repository audit
 
 At audit time:
 - `main` was the default branch, marked protected by GitHub, at `f165ecb9b4d9de115c02327cf779982b7ef4bbd4`.
 - `develop` and `staging` both existed at the same commit as `main`; GitHub reported both as unprotected.
-- The repository had 11 open draft pull requests before this policy PR; PR #15 raises the open PR total to 12 (11 draft, one ready for review).
-- All 13 pre-existing topic branches were ahead of `main` and contained unique commits/files relative to `main`. None should be deleted merely because it is not one of the three long-lived branches.
+- The repository had 13 open pull requests at the latest verification: PRs #1–#5, #8, #9, #11–#16. PR #15 is ready for review; the others are drafts. PR #16 targets `develop` and carries the repository audit, AI operating prompt and initial governance automation.
+- All supporting branches contain or carried task-specific commits/files relative to `main`; none should be deleted merely because it is not one of the three long-lived branches. Re-check every branch's current unique commits before retirement.
 
 This is a dated snapshot. Re-fetch branches, pull requests and comparisons before acting on any disposition.
 
@@ -111,4 +111,4 @@ This is a preservation-first sequence, not authorization to merge:
 
 ## 8. Evidence sources
 
-This register is based on GitHub API branch and pull-request listings, branch-to-`main` comparisons, and direct retrieval of the listed repository documents on 20 November 2026. Re-run these checks immediately before any merge, retarget, archive or deletion action.
+This register is based on GitHub API branch and pull-request listings, branch-to-`main` comparisons, and direct retrieval of the listed repository documents on 20 November 2026. Latest branch snapshot: 19 branches (3 intended long-lived, 16 temporary/topic); 13 open PRs. Re-run these checks immediately before any merge, retarget, archive or deletion action.
