@@ -339,7 +339,7 @@ The following changes have been made on `docs/repository-audit-and-ai-operating-
 - Added this repository/Markdown audit report.
 - Added a closing code fence to each of ADR-001 through ADR-010, without changing diagram or prose content; all ten files were re-fetched and verified to have balanced fence markers.
 - Removed the duplicate H1 from README and updated its repository-tree example to match the files on this audit branch; added links to the permanent AI prompt and audit report.
-- Added a least-privilege GitHub Actions workflow and Python checker for Markdown fence integrity and PR branch routing. The workflow has now completed successfully on PR #16; latest run ID 44682452918 passed the Markdown integrity and branch-routing job. The workflow has not yet been merged into main.
+- Added a least-privilege GitHub Actions workflow and Python checker for Markdown fence integrity and PR branch routing. The workflow has now completed successfully on PR #16; successful run ID 44682525905 (head eddd8a012f1bdf3677271afaa02adea1714ff4f8) passed the Markdown integrity and branch-routing job. The workflow has not yet been merged into main.
 - The changes have not been merged. They require review through the project's branch workflow.
 - No existing branch was deleted, no existing PR was merged/closed/retargeted, and no branch-protection settings were changed.
 
