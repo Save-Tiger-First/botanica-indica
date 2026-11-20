@@ -215,7 +215,6 @@ New significant decisions should be documented through ADRs. Existing accepted d
 ```text
 botanica-indica/
 ├── .github/
-│   ├── pull_request_template.md
 │   └── workflows/
 │       └── repository-governance.yml
 ├── README.md
