@@ -622,12 +622,12 @@ Following the preliminary desk review, proposed documentation changes were made 
 
 | Document | PR | Branch head commit |
 |---|---:|---|
-| Task 05 conceptual data architecture | #3 | `617b1084e3c918c8b5bca744fde0b7b3fc7bab83` |
-| Task 05B scientific data dictionary | #4 | `c25be98e73b056fcd0ee696dcbc7d2dc0d187103` |
-| Task 05C logical database model | #5 | `91c82b4f136a77aaa1edb02753ed49b2fbee86ed` |
-| Task 05D validation/readiness gate | #11 | `b7e0901e2483f1ef80027ecfc11242461e40c2c5` |
+| Task 05 conceptual data architecture | #3 | `2b02ab3cd115691841889ed77d453b31ab0bed16` |
+| Task 05B scientific data dictionary | #4 | `71444caa3cee16a0c5afd33f70aabf11e90a6b37` |
+| Task 05C logical database model | #5 | `27d905c26217cc127de63449ce342d3bf2723016` |
+| Task 05D validation/readiness gate | #11 | `48e5bce0778ffa6a5a5dd120820ebe8a94d8fa6e` |
 
-These changes are proposed documentation revisions. PRs #3, #4, #5, #8, #9 and #11 remain open and draft; none is merged. PRs #7 and #10 were closed unmerged because each was based on an earlier Task 05C revision and became divergent after further model corrections. PR #11 replaces them and is based on the current Task 05C branch. At the latest check, GitHub reported PRs #3, #4, #8 and #11 as mergeable, and PRs #5 and #9 as not mergeable. Commit comparisons show the active branches are ahead of their respective bases and not behind; PR #11 is one commit ahead of the current Task 05C branch. The reason for the `mergeable: false` fields on #5 and #9 remains unestablished; do not infer a conflict cause.
+These changes are proposed documentation revisions. PRs #3, #4, #5, #8, #9 and #11 remain open and draft; none is merged. PRs #7 and #10 were closed unmerged because each was based on an earlier Task 05C revision and became divergent after further model corrections. PR #11 replaces them and is based on the current Task 05C branch. At the latest verification on 20 November 2026, PRs #3, #4, #5, #9, #11, #15 and #16 were reported mergeable; PR #15 is ready for review while the others remain drafts. Mergeability is not approval. The compare endpoint reports PR #11's head branch as two commits ahead and one behind the current Task 05C branch. It must be synchronized and the full diff re-reviewed before merge. PR #8/#12 remain a separate stacked strategy dependency.
 
 ### Reconciliation results
 
