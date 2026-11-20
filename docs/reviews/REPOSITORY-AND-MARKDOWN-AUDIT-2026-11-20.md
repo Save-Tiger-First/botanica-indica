@@ -337,7 +337,9 @@ The asset-specific licensing approach is appropriate. The root Apache-2.0 licens
 The following changes have been made on `docs/repository-audit-and-ai-operating-standard`:
 - Added a permanent AI project operating prompt.
 - Added this repository/Markdown audit report.
-- Added a closing code fence to each of ADR-001 through ADR-010, without changing diagram or prose content.
+- Added a closing code fence to each of ADR-001 through ADR-010, without changing diagram or prose content; all ten files were re-fetched and verified to have balanced fence markers.
+- Removed the duplicate H1 from README and updated its repository-tree example to match the files on this audit branch; added links to the permanent AI prompt and audit report.
+- Added a least-privilege GitHub Actions workflow and Python checker for Markdown fence integrity and PR branch routing. The workflow has not yet run, so its first execution and warnings remain unverified.
 - The changes have not been merged. They require review through the project's branch workflow.
 - No existing branch was deleted, no existing PR was merged/closed/retargeted, and no branch-protection settings were changed.
 
