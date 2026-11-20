@@ -83,6 +83,31 @@ These branches had no corresponding open pull request in the verified snapshot. 
 - This is not orphaned: it is the head branch for open PR #11.
 - Recommendation: retain until PR #11 and its dependency on PR #5 are fully resolved.
 
+## 4.5 Current branch-minimisation audit — 20 November 2026
+
+The live branch and PR inventory was re-fetched on 20 November 2026. It confirms 23 branches: the three designated long-lived branches, 17 branches serving as the head of an open PR, and three additional Task 05C/05D branches with no open PR head association. All 17 open PRs are still open and unmerged. PR #15 is not a draft; the other 16 are drafts. No branch was created during this audit.
+
+### Three branches with no open PR head association
+
+| Branch | Tip SHA | Live comparison / document evidence | Current disposition |
+|---|---|---|---|
+| `docs/task-05c-logical-database-model` | `8d4fef2d726aac79dd684856d924b171e44d0b93` | One commit ahead of `main`; contains a 648-line, approximately 35.5 KB Task 05C proposal at `docs/data-architecture/TASK-05C-LOGICAL-DATABASE-MODEL-AND-SCIENTIFIC-RELATIONSHIPS.md`. PR #5 carries a different 647-line, approximately 44.2 KB Task 05C proposal at `docs/architecture/TASK-05C-LOGICAL-DATABASE-MODEL.md`. The documents differ materially in structure and content. | **Retain temporarily / consolidation required.** Compare all entities, relationships, constraints, scientific assumptions, source mappings and test cases. Preserve unique valid content in the current Task 05C review baseline before retirement. |
+| `docs/task-05d-logical-model-validation` | `3efd80e5e28b2a916e63c85808ef3aba9d35e4ac` | No open PR. Contains an earlier Task 05C revision and a 402-line Task 05D validation document (about 29.3 KB). Its Task 05D text predates the v3 DR-02 total-participation caveat and the latest DR-09 re-verification. Its branch history diverges from v3 (v1 is six commits behind and eight commits ahead when comparing v1 to v3). | **Retirement candidate after content reconciliation.** Inspect any unique Task 05C material and retain only necessary evidence/decisions; Task 05D v1 is superseded in review status by v3, not accepted. |
+| `docs/task-05d-logical-model-validation-v2` | `76bd88980bb2536db63bbde76e3fa687503bdda1` | No open PR. Contains a 641-line Task 05C revision and a 402-line Task 05D validation document (about 29.5 KB). Its Task 05D copy records DR-09 as withdrawn/erroneous, which conflicts with the current v3 position that DR-09 remains open pending exact versioned-resource and term-IRI retrieval. The Task 05C file also differs from v3; v2 and v3 histories diverge (v2 is two commits behind and four commits ahead when comparing v2 to v3). | **Retirement candidate after content reconciliation.** Preserve any unique Task 05C material; do not carry forward the superseded DR-09 closure claim. |
+
+### Active Task 05D branch
+
+`docs/task-05d-logical-model-validation-v3` (tip `1bcbb46890788b0296884228e44c867965bc8381`) is the head of open PR #11 and must be retained while that PR remains active. The live comparison against PR #11's base `docs/task-05c-logical-data-model` reports **3 commits ahead and 1 behind**. The v3 document is the current review version because it adds the explicit IdentificationSubject/total-participation caveat and retains DR-09 as open; it remains a proposal, not an approved scientific model or physical-design authorization.
+
+### Branch-count reduction target
+
+- **Current:** 23 branches = 3 long-lived + 17 open-PR head branches + 3 unassociated Task 05C/05D branches.
+- **First safe target:** 20 branches after the three unassociated branches have been semantically reconciled, their required content preserved, and their retirement authorized and executed.
+- **Development target:** 3 long-lived branches plus only the minimum temporary branches required for unresolved, independently reviewable work. The current 17 open PRs should be consolidated or resolved in dependency order; they are not a permanent allowance for 17 task branches.
+- **No new branches:** project-owner directive dated 20 November 2026. Reuse the existing PR/workstream branches; obtain explicit owner approval before any exception.
+
+The three unassociated branches are not yet safe to delete. The review connector used for this audit does not expose a branch-deletion operation, so no deletion has been performed. This register records candidates and preservation conditions; it does not claim the live branch count has already fallen.
+
 ## 5. Critical dependency and content risks
 
 1. **Task 05C / 05D:** PR #11 is based on PR #5. The latest compare on 20 November 2026 shows the PR #11 head is **3 commits ahead and 1 behind** the PR #5 branch; synchronize and re-review the complete diff before merge. The PR #9 decision register reports DR-01 to DR-07 as document-level revisions in proposed materials, DR-08 as an open source/geographic-scope test case, DR-09 as open following a TDWG metadata retrieval conflict, and DR-10 to DR-12 as document-level revisions still requiring specialist review. These are not validated closures: reproducible fixtures, standards round-trip tests and independent discipline review remain outstanding. Resolve the competing Task 05C document and the PR #5/#11 dependency before authorizing physical design.
