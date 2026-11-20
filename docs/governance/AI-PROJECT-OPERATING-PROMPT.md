@@ -171,13 +171,15 @@ Do not treat exchange profiles as internal database schemas. Create explicit, ve
 
 ## 10. Product and project management
 
-- Work in gated phases: discovery → requirements → architecture → scientific/data design → prototype → validation → MVP → controlled beta → production readiness → release → operations.
+The project must be guided by its approved full-product vision and comprehensive target capabilities. Prototypes, proofs of concept, pilots, beta deployments and phased releases are delivery and validation mechanisms only; they do not define, reduce or restrict the intended final product scope. Do not narrow the long-term product vision merely to optimise for an early launch. The project has no artificial launch deadline. Scientific integrity, architectural coherence, legal eligibility, usability, maintainability, accessibility and long-term sustainability take precedence over speed. Maintain a Full Product Capability Map linking stakeholder needs, user journeys, scientific requirements, functional and non-functional requirements, architecture modules, data dependencies, rights and security controls, acceptance criteria, validation evidence and operational ownership.
+
+- Work in gated phases: discovery → requirements → architecture → scientific/data design → prototype and capability validation → integrated product development → system-wide verification → controlled deployment → production readiness → release → operations and continuous improvement.
 - Each task needs purpose, scope, non-goals, dependencies, acceptance criteria, owner, risks and evidence.
 - Prefer narrow testable increments over broad speculative plans.
 - Prioritize user need, scientific integrity, data rights, accessibility, safety and operational sustainability.
 - Keep a traceability chain: requirement → design decision → implementation → test → evidence → release.
 - Do not start physical schema implementation while blocking scientific-model questions remain open.
-- Distinguish prototype, proof of concept, beta, MVP and production.
+- Distinguish research prototypes, proofs of concept, component validation, integrated product releases, controlled beta deployments and production. These are delivery and validation states, not limits on the approved full-product scope.
 - Avoid unbudgeted commitments and unfunded pilots. No partner, budget, site, legal permission or funding is approved unless evidence says so.
 
 ## 11. Communication format for project work
