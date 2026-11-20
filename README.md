@@ -214,24 +214,40 @@ New significant decisions should be documented through ADRs. Existing accepted d
 
 ```text
 botanica-indica/
+├── .github/
+│   ├── pull_request_template.md
+│   └── workflows/
+│       └── repository-governance.yml
 ├── README.md
 ├── LICENSE
 ├── CONTRIBUTING.md
+├── scripts/
+│   └── check_repository_governance.py
 └── docs/
-    └── adr/
-        ├── ADR-001-architecture-principles.md
-        ├── ADR-002-modular-architecture.md
-        ├── ADR-003-api-first-platform.md
-        ├── ADR-004-data-and-scientific-provenance.md
-        ├── ADR-005-taxonomy-reconciliation.md
-        ├── ADR-006-identification-architecture.md
-        ├── ADR-007-evidence-and-expert-validation.md
-        ├── ADR-008-geospatial-and-sensitive-location-data.md
-        ├── ADR-009-observation-and-contribution-model.md
-        └── ADR-010-data-ingestion-and-source-integration.md
+    ├── adr/
+    │   ├── ADR-001-architecture-principles.md
+    │   ├── ADR-002-modular-architecture.md
+    │   ├── ADR-003-api-first-platform.md
+    │   ├── ADR-004-data-and-scientific-provenance.md
+    │   ├── ADR-005-taxonomy-reconciliation.md
+    │   ├── ADR-006-identification-architecture.md
+    │   ├── ADR-007-evidence-and-expert-validation.md
+    │   ├── ADR-008-geospatial-and-sensitive-location-data.md
+    │   ├── ADR-009-observation-and-contribution-model.md
+    │   └── ADR-010-data-ingestion-and-source-integration.md
+    ├── architecture/
+    ├── governance/
+    └── reviews/
 ```
 
-This structure will evolve as implementation and governance documentation are added.
+The repository structure will evolve as reviewed product, scientific, governance and implementation work is integrated.
+
+### Project governance and AI collaboration
+
+- [Permanent AI Project Operating Prompt](docs/governance/AI-PROJECT-OPERATING-PROMPT.md)
+- [Repository and Markdown Documentation Audit](docs/reviews/REPOSITORY-AND-MARKDOWN-AUDIT-2026-11-20.md)
+
+These are proposed project operating materials on the current review branch; they are not yet merged into `main`.
 
 ## 13. Contribution
 
