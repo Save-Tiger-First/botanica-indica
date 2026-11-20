@@ -69,6 +69,21 @@ Rules:
 8. Before deleting any branch, verify that unique commits and files are either integrated into an authoritative branch or intentionally rejected and archived where required.
 9. A temporary branch must not be protected as a long-lived branch unless an explicit, time-limited exception is approved.
 
+### 3.1 Strict branch minimisation — current owner directive
+
+**Effective instruction date: 20 November 2026.** The project owner has directed that no new branches be created during the current development period and that the existing branch count be reduced to the minimum necessary.
+
+1. Reuse an existing task/workstream branch whenever it can safely carry the next coherent change. Do not create a new branch merely because a new task, document revision or review session begins.
+2. Do not create `v2`, `v3` or other successor branches for iterative revisions of the same document. Continue on the existing review branch unless a genuine isolation/dependency need is demonstrated and the project owner explicitly authorizes an exception.
+3. Keep one active head branch per genuinely independent, open review workstream. Consolidate related proposals and duplicate PRs where this can be done without obscuring review, losing provenance or bypassing approval.
+4. A branch associated with a resolved PR should be retired promptly after verifying that all required commits and files are preserved in the intended target or in an explicitly retained archive.
+5. A branch without an open PR is not automatically disposable. Compare its unique commits and files with the current canonical/review documents, identify material scientific or governance differences, and preserve any required content before retirement.
+6. The minimum active-development target is the three designated long-lived branches plus only those temporary branches needed for unresolved, independently reviewable work. The count of open PRs is not itself a justification to retain duplicated or superseded branches.
+7. Reconcile the current inventory in dependency order. Record each branch as **retain**, **consolidate**, **retirement candidate**, or **retired**, with its tip SHA, associated PR, unique content, preservation evidence and owner-approved disposition.
+8. No branch is to be deleted solely to improve a numerical metric. Preservation, reviewability and scientific/governance integrity take precedence; branch reduction must follow those gates.
+
+This owner directive overrides the general temporary-branch permission in Section 3 while it remains in force. It does not authorize force-pushes, PR merges/closures, branch deletion or other irreversible actions without the approvals required by the project operating standard.
+
 ## 4. Standard development workflow
 
 ```text
