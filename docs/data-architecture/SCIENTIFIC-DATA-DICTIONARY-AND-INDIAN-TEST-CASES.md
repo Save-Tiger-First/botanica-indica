@@ -36,7 +36,7 @@ Reference: https://tcs.tdwg.org/terms/
 
 The current Darwin Core vocabulary also includes classes and terms relevant to Observation, Machine Observation, Identification, Event, Occurrence, Location, Material Entity, Provenance and Usage Policy. Map these deliberately rather than assuming older simplified Darwin Core field lists are complete.
 
-Reference: https://dwc.tdwg.org/list/ (version issued 2026-10-13)
+Reference: https://dwc.tdwg.org/list/ (version issued 2026-05-26)
 
 ## 3. Core identifier and data-type conventions
 
@@ -895,7 +895,7 @@ The data dictionary is ready to inform physical schema design when:
 
 ## 14. References consulted
 
-1. TDWG Darwin Core List of Terms, list release version issued 2026-10-13: https://dwc.tdwg.org/list/
+1. TDWG Darwin Core List of Terms, list release version issued 2026-05-26: https://dwc.tdwg.org/list/
 2. TDWG Taxon Concept Standard terms: https://tcs.tdwg.org/terms/
 3. IPNI — Azadirachta indica A.Juss.: https://www.ipni.org/n/1213180-2
 4. Kew Plants of the World Online — Azadirachta indica: https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:1213180-2/general-information
