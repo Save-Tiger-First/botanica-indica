@@ -18,7 +18,7 @@ The repository has a strong early documentation foundation and several sound sci
 2. The repository currently has 19 branches, including 16 supporting/topic branches; only `main`, `develop` and `staging` are intended to be long-lived.
 3. There are 12 open pull requests, no submitted PR reviews in the audit snapshot, and several dependent or divergent branches.
 4. The active `main` ruleset only blocks branch deletion and non-fast-forward updates. It does not require pull requests, approvals, status checks or conversation resolution.
-5. There are no GitHub Actions workflows, workflow runs, releases or configured commit status checks.
+5. At the audit snapshot, main had no GitHub Actions workflows, workflow runs, releases or configured commit status checks. A proposed governance workflow has since been added on this audit branch; it has not run and is not yet part of main.
 6. The ten accepted ADRs contained unclosed Markdown code fences. Narrow fixes have been committed on this audit branch; they are not yet merged.
 7. The review pack contains a stale Darwin Core version statement and a stale Task 05C source SHA. The current Darwin Core List of Terms and Conceptual Model were both issued 2026-10-13, not 2026-05-26.
 8. Task 05D still contains a non-detection wording defect and does not fully capture the IdentificationSubject total-participation caveat.
@@ -58,7 +58,7 @@ The repository has a strong early documentation foundation and several sound sci
 | Root license | Apache-2.0 |
 | Issues | Enabled; zero open/closed non-PR issues returned in the inspected list |
 | Releases | Zero |
-| GitHub Actions runs | Zero |
+| GitHub Actions runs at snapshot | Zero |
 | Commit statuses on inspected main HEAD | Zero; state pending because no statuses exist |
 | Recursive tree for main | 18 entries including directories; 13 Markdown files |
 | Source code / workflow implementation on main | None found in inspected tree |
