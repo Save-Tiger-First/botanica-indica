@@ -20,7 +20,7 @@ The repository has a strong early documentation foundation and several sound sci
 4. The active `main` ruleset only blocks branch deletion and non-fast-forward updates. It does not require pull requests, approvals, status checks or conversation resolution.
 5. At the audit snapshot, main had no GitHub Actions workflows, workflow runs, releases or configured commit status checks. A proposed governance workflow has since been added on this audit branch; it has not run and is not yet part of main.
 6. The ten accepted ADRs contained unclosed Markdown code fences. Narrow fixes have been committed on this audit branch; they are not yet merged.
-7. The review pack contained an incorrect amendment to the Darwin Core release date and a stale Task 05C source SHA. Direct checks of the official TDWG pages confirm that both the Darwin Core List of Terms and Conceptual Model were issued 2026-05-26; the List's previous version is 2025-07-10.
+7. Darwin Core version metadata requires fresh resolution: latest indexed official metadata reports 2026-10-13 for both the List of Terms and Conceptual Model, while direct HTML retrieval returned 2026-05-26 for the List. Treat DR-09 as open until exact versioned documents and term IRIs are independently verified.
 8. Task 05D still contains a non-detection wording defect and does not fully capture the IdentificationSubject total-participation caveat.
 9. The two competing Task 05C documents, PR #5 and PR #11 dependency, and PR #8/#12 strategy dependency require preservation-first reconciliation.
 10. Strategy documents are extensive but overlapping; the 1,189-line NatureTech paper has heading-order and document-structure debt.
@@ -250,7 +250,7 @@ Remaining review:
 
 ### 7.2 Event, Survey, Occurrence and Observation
 
-The official Darwin Core Conceptual Model issued 2026-05-26 treats Survey and Occurrence as specialized Event types. It is a high-level, non-normative semantic framework and does not prescribe a database schema.
+The Conceptual Model's latest indexed metadata reports 2026-10-13, while earlier direct retrieval showed 2026-05-26. Check the exact versioned content before making version-specific claims. It remains a high-level conceptual framework and does not prescribe a database schema.
 
 Task 05 was updated to state this. Task 05C still needs an explicit logical decision and cardinalities:
 - Does the internal model use an Event supertype with Survey and Occurrence specializations/extensions?
@@ -367,8 +367,8 @@ The following changes have been made on `docs/repository-audit-and-ai-operating-
 
 Checked for this audit on 20 November 2026:
 
-1. TDWG, Darwin Core List of Terms, version issued 2026-05-26; previous List version 2025-07-10: https://dwc.tdwg.org/list/
-2. TDWG, Darwin Core Conceptual Model, version issued 2026-05-26: https://dwc.tdwg.org/cm/
+1. TDWG, Darwin Core List of Terms: latest indexed metadata reports version issued 2026-10-13, previous 2026-05-26; direct HTML retrieval returned 2026-05-26: https://dwc.tdwg.org/list/
+2. TDWG, Darwin Core Conceptual Model: latest indexed metadata reports version issued 2026-10-13, previous 2026-05-26: https://dwc.tdwg.org/cm/
 3. TDWG, Taxon Concept Standard Terms: https://tcs.tdwg.org/terms/
 4. GBIF, Data Quality Recommendations: https://techdocs.gbif.org/en/data-publishing/data-quality-recommendations
 5. PostgreSQL 18, Constraints: https://www.postgresql.org/docs/18/ddl-constraints.html
@@ -381,3 +381,12 @@ Checked for this audit on 20 November 2026:
 ## 13. Standards-date correction after direct source re-verification (20 November 2026)
 
 The first amendment made during this audit incorrectly stated that the current Darwin Core List of Terms and Conceptual Model were issued 2026-10-13. Directly opening the official TDWG pages shows that both were issued **2026-05-26**. The List page identifies **2025-07-10** as its previous version. The `occurrenceStatus` term itself was modified **2026-05-26**. The earlier correction was wrong; affected Task 05, Task 05B, Task 05D and PR #9 review documents have been corrected to reflect the source pages. Sources: https://dwc.tdwg.org/list/ and https://dwc.tdwg.org/cm/.
+
+
+## 14. Subsequent standards-metadata re-verification — DR-09 remains open (20 November 2026)
+
+Latest indexed metadata for both official TDWG pages reports Date version issued: 2026-10-13, with 2026-05-26 as the previous version. However, opening the live List page through the available page retrieval returned a header showing 2026-05-26 and previous version 2025-07-10. The core namespace term list at https://rs.tdwg.org/dwc/terms.htm also reports a 2026-05-26 snapshot. Search-indexed content for the 2026-10-13 List includes individual term records modified on that date, but this does not mean every term was modified then.
+
+This is not enough to claim that the complete current versioned documents and every relevant term IRI have been verified. DR-09 remains open. Before closure, retrieve the exact versioned List, Conceptual Model, core-term and relevant term IRIs; compare their content and record each document-version date separately from term-level modification dates and namespace snapshots. Do not infer that every term changed on the document issue date. The prior Section 13 conclusion that both documents were definitively 2026-05-26 is superseded; the earlier 2026-10-13 amendment should not be labelled erroneous without resolving this retrieval conflict.
+
+Current official page references: https://dwc.tdwg.org/list/ ; https://dwc.tdwg.org/cm/ ; https://rs.tdwg.org/dwc/terms.htm .
