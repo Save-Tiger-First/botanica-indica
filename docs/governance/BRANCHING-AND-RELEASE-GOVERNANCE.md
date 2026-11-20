@@ -7,7 +7,7 @@
 
 ## 1. Mandatory branch-count policy
 
-The repository shall operate with no more than **three long-lived branches** during active product development:
+The repository shall maintain **exactly three designated long-lived branches** during active product development: `main`, `develop` and `staging`.
 
 | Branch | Role | Lifecycle |
 |---|---|---|
@@ -103,20 +103,19 @@ Required sequence:
 
 Do not routinely merge `main` back into `develop` as a substitute for controlled promotion. If an urgent production fix is needed, create a fix branch from `main`, open a pull request to `main`, and then back-port the same fix to `develop` and `staging` through reviewed pull requests.
 
-## 5. When more than two supporting branches appear necessary
+## 5. Additional parallel workstreams
 
-The two supporting long-lived branches remain the maximum. More than two supporting branches may exist temporarily only as task branches under Section 3.
+The three designated long-lived branches are fixed: `main`, `develop` and `staging`. No fourth long-lived branch is permitted during active development.
 
-A third supporting long-lived branch is not permitted by default. If a genuinely exceptional need arises:
-- document the operational or technical reason;
-- explain why a temporary branch, tag, release candidate or environment cannot solve it;
-- identify an accountable owner and exact expiry date;
-- obtain explicit repository-maintainer approval;
-- record the exception in the pull request or a governance decision record;
-- review it at least every 30 days; and
-- retire it as soon as the exception ends.
+Additional parallel workstreams must use temporary task branches under Section 3. If many workstreams are active simultaneously:
+- record the dependency graph and accountable owner for each branch;
+- use stacked pull requests only when the dependency is explicit and the diff is reviewable;
+- prefer task branches based on the latest appropriate `develop` commit;
+- use draft PRs to make work and dependencies visible;
+- archive decision records or release candidates with tags rather than creating another long-lived branch;
+- review stale, duplicated and superseded branches monthly.
 
-An exception never changes the completion invariant: exactly one branch, `main`, at project completion.
+Operational pressure, release preparation or team parallelism does not create an exception to the three-long-lived-branch rule.
 
 ## 6. Pull request requirements
 
