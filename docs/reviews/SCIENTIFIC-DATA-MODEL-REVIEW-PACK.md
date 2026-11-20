@@ -616,7 +616,7 @@ Do not begin with SQL table generation. First establish scientific identity, car
 **Decision status: Draft review pack — no expert sign-off received; Task 05E is not yet authorized.**
 
 
-## 4.4 Reconciliation pass — DR-01 to DR-07 and DR-10 to DR-12 (16 November 2026)
+## 4.4 Reconciliation pass — DR-01 to DR-07 and DR-10 to DR-12 (initial review 16 November; branch heads refreshed 20 November 2026)
 
 Following the preliminary desk review, proposed documentation changes were made on the source branches. The exact current branch heads at the time of this update are:
 
@@ -692,7 +692,7 @@ A further comparison of the current Task 05, Task 05B and Task 05D source docume
 1. Task 05's Event/Occurrence wording did not explicitly reflect the current Darwin Core Conceptual Model's Event specialization semantics. Task 05 (PR #3) has been updated to describe Survey and Occurrence as Event specializations and to distinguish a shared contextual Event from multiple Occurrences/Material Entities. The Darwin Core Conceptual Model is non-normative and does not dictate the database schema.
 2. Task 05B had inconsistent Identification subject patterns: the field table specified one `IdentificationSubject` row with exactly one populated FK, while a later paragraph proposed three separate typed link tables. Task 05B (PR #4) has been updated to use the single-row, three-real-FK pattern proposed in Task 05C, with a row-local exactly-one CHECK, unique Identification FK and a separate total-participation enforcement requirement. A CHECK alone does not guarantee that every Identification has a subject row.
 3. Task 05's GBIF paragraph overstated the status of `basisOfRecord`, `scientificName` and `eventDate` for general occurrence publishing. It has been corrected to distinguish general occurrence datasets from GBIF-managed programmes and sampling-event datasets.
-4. PR #11 is stacked on PR #5. After the LDM-16 editorial correction on PR #5, GitHub reports the two branches as diverged by one commit each. PR #11 must be synchronized with the latest PR #5 head and re-reviewed before any merge decision. Task 05D's DR-02 wording has now been updated to include the total-participation caveat; PR #11 still requires synchronization with the latest PR #5 head and a full diff re-review.
+4. PR #11 is stacked on PR #5. The latest GitHub compare reports PR #11 as two commits ahead and one behind the current PR #5 branch. Task 05D's DR-02 wording has now been updated to include the total-participation caveat, and its DR-07/FLD-08 non-detection wording has been corrected. PR #11 still requires synchronization with the latest PR #5 head and a full diff re-review before any merge decision.
 
 See the expanded [Task 05C Competing Model Reconciliation Assessment](TASK-05C-COMPETING-MODEL-RECONCILIATION.md), Sections 11–12. These edits are proposed documentation changes on PR #3 and PR #4, not merged or independently approved. Task 05E remains NOT READY.
 
