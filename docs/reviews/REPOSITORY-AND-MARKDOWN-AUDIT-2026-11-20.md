@@ -16,11 +16,11 @@ The repository has a strong early documentation foundation and several sound sci
 
 1. The three-long-lived-branch policy is proposed but not yet adopted or fully enforced.
 2. The repository currently has 19 branches, including 16 supporting/topic branches; only `main`, `develop` and `staging` are intended to be long-lived.
-3. There are 12 open pull requests, no submitted PR reviews in the audit snapshot, and several dependent or divergent branches.
+3. There were 12 open pull requests at the initial audit snapshot; after opening PR #16, the current count is 13. No submitted PR reviews were returned for the initial 12-PR snapshot. Several dependent or divergent branches remain.
 4. The active `main` ruleset only blocks branch deletion and non-fast-forward updates. It does not require pull requests, approvals, status checks or conversation resolution.
 5. At the audit snapshot, main had no GitHub Actions workflows, workflow runs, releases or configured commit status checks. A proposed governance workflow has since been added on this audit branch; it has not run and is not yet part of main.
 6. The ten accepted ADRs contained unclosed Markdown code fences. Narrow fixes have been committed on this audit branch; they are not yet merged.
-7. The review pack contains a stale Darwin Core version statement and a stale Task 05C source SHA. The current Darwin Core List of Terms and Conceptual Model were both issued 2026-10-13, not 2026-05-26.
+7. The review pack contained an incorrect amendment to the Darwin Core release date and a stale Task 05C source SHA. Direct checks of the official TDWG pages confirm that both the Darwin Core List of Terms and Conceptual Model were issued 2026-05-26; the List's previous version is 2025-07-10.
 8. Task 05D still contains a non-detection wording defect and does not fully capture the IdentificationSubject total-participation caveat.
 9. The two competing Task 05C documents, PR #5 and PR #11 dependency, and PR #8/#12 strategy dependency require preservation-first reconciliation.
 10. Strategy documents are extensive but overlapping; the 1,189-line NatureTech paper has heading-order and document-structure debt.
@@ -168,7 +168,7 @@ A GitHub workflow can validate PR routing and Markdown structure. It cannot by i
 
 ## 5. Markdown inventory — all distinct paths discovered
 
-The branch trees contained **33 distinct Markdown paths and 39 distinct file revisions**. Most revisions are identical across branches; the following register identifies the distinct document paths and their current owning/candidate branch.
+The initial pre-audit branch inventory contained **33 distinct Markdown paths and 39 distinct file revisions** across the then-existing branch trees. The audit branch subsequently added two Markdown documents (this report and the permanent AI prompt), so the current audit branch contains at least 35 distinct Markdown paths; a fresh all-branch revision count was not recomputed. Most revisions are identical across branches; the following register identifies the distinct document paths and their current owning/candidate branch.
 
 | # | Markdown path | Branch/ref | Audit observation |
 |---:|---|---|---|
@@ -228,7 +228,7 @@ The README's repository tree is incomplete compared with the live repository str
 
 ### 6.3 Version and metadata findings
 
-- The review pack's Section 4.6 says the current Darwin Core Conceptual Model was issued 2026-05-26. The official page now reports 2026-10-13.
+- A subsequent review-pack amendment incorrectly claimed the Darwin Core Conceptual Model was issued 2026-10-13. Direct inspection of the official TDWG page confirms the issued version is 2026-05-26.
 - The review pack/reconciliation report cites Task 05C Candidate A blob `e6131e867d4bc3dbc58aa1188d0fabc895429347`. The current PR #5 branch file is blob `4a21c0aa3b8ebfef319a9ea1ac6928274b0b3f5b`. The older `e6131e...` blob remains on the PR #11 dependent branch. Update the source revision table and re-review the dependency.
 - The competing Task 05C Candidate B blob remains `239d7e9974bcb81b1154b54845a7b2d69c3775d6` on its superseded branch.
 - The branch inventory register is a dated snapshot, not a live source of truth. It now needs an audit entry for this new audit branch and future refreshes.
@@ -247,7 +247,7 @@ Remaining review:
 
 ### 7.2 Event, Survey, Occurrence and Observation
 
-The official Darwin Core Conceptual Model issued 2026-10-13 treats Survey and Occurrence as specialized Event types. It is a high-level, non-normative semantic framework and does not prescribe a database schema.
+The official Darwin Core Conceptual Model issued 2026-05-26 treats Survey and Occurrence as specialized Event types. It is a high-level, non-normative semantic framework and does not prescribe a database schema.
 
 Task 05 was updated to state this. Task 05C still needs an explicit logical decision and cardinalities:
 - Does the internal model use an Event supertype with Survey and Occurrence specializations/extensions?
@@ -364,8 +364,8 @@ The following changes have been made on `docs/repository-audit-and-ai-operating-
 
 Checked for this audit on 20 November 2026:
 
-1. TDWG, Darwin Core List of Terms, version issued 2026-10-13: https://dwc.tdwg.org/list/
-2. TDWG, Darwin Core Conceptual Model, version issued 2026-10-13: https://dwc.tdwg.org/cm/
+1. TDWG, Darwin Core List of Terms, version issued 2026-05-26; previous List version 2025-07-10: https://dwc.tdwg.org/list/
+2. TDWG, Darwin Core Conceptual Model, version issued 2026-05-26: https://dwc.tdwg.org/cm/
 3. TDWG, Taxon Concept Standard Terms: https://tcs.tdwg.org/terms/
 4. GBIF, Data Quality Recommendations: https://techdocs.gbif.org/en/data-publishing/data-quality-recommendations
 5. PostgreSQL 18, Constraints: https://www.postgresql.org/docs/18/ddl-constraints.html
@@ -373,3 +373,8 @@ Checked for this audit on 20 November 2026:
 7. GitHub branch protection documentation: https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/about-protected-branches
 
 **Final audit judgement:** The repository has a credible documentation foundation, but it is not ready for implementation or external claims of scientific validation. The immediate priority is governance automation, source/version correctness, scientific-model resolution and preservation-first branch consolidation.
+
+
+## 13. Standards-date correction after direct source re-verification (20 November 2026)
+
+The first amendment made during this audit incorrectly stated that the current Darwin Core List of Terms and Conceptual Model were issued 2026-10-13. Directly opening the official TDWG pages shows that both were issued **2026-05-26**. The List page identifies **2025-07-10** as its previous version. The `occurrenceStatus` term itself was modified **2026-05-26**. The earlier correction was wrong; affected Task 05, Task 05B, Task 05D and PR #9 review documents have been corrected to reflect the source pages. Sources: https://dwc.tdwg.org/list/ and https://dwc.tdwg.org/cm/.
