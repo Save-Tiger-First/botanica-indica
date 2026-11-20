@@ -159,7 +159,7 @@ Official source: https://tcs.tdwg.org/terms/
 
 ### 7.2 Darwin Core Conceptual Model
 
-The current Darwin Core Conceptual Model page identifies version issued 2026-05-26. It describes:
+Latest indexed official page metadata reports the Darwin Core Conceptual Model version issued 2026-10-13 (previous 2026-05-26); direct retrieval of the exact versioned content remains to be verified. The earlier 2026-05-26 version was used for the semantic summary below.
 - Event as an action/process/set of circumstances at a place during an interval;
 - Survey as a type of Event;
 - Occurrence as a type of Event that can represent direct observation, indirect inference or absence of detection;
@@ -235,7 +235,7 @@ The reconciliation was extended to the exact current documents on PR #3, PR #4 a
 
 - Task 05 initially described Occurrence as evidence of presence and Event as a contextual container for occurrences, without explicitly stating that the current Darwin Core Conceptual Model treats Occurrence and Survey as specialized Event types.
 - Task 05B defines Occurrence as a state record with optional `event_id`, while Task 05C separately models Event and Occurrence.
-- The current Darwin Core Conceptual Model (issued 2026-05-26) states that Occurrence and Survey are specialized Event types, and that one contextual Event may provide shared spatio-temporal context to multiple Occurrences and Material Entities. It also expressly says the conceptual model is non-normative and does not prescribe a database schema.
+- The 2026-05-26 Darwin Core Conceptual Model version reviewed at the time states that Occurrence and Survey are specialized Event types, and that one contextual Event may provide shared spatio-temporal context to multiple Occurrences and Material Entities. Latest indexed metadata now reports a 2026-10-13 version; compare that version's exact content before treating the earlier semantic summary as current. The model does not prescribe a database schema.
 
 **Change made:** Task 05 (PR #3) was updated to clarify the Event supertype/subtype design option, Occurrence's event semantics, Survey as a specialized Event, contextual Events, and the difference between Observation and Occurrence. This is a proposed logical direction, not a finalized schema.
 
@@ -275,4 +275,7 @@ The Task 05 and Task 05B edits were committed on their existing PR branches and 
 6. Keep Task 05E blocked.
 
 
-**Standards-date correction (20 November 2026):** the live TDWG Conceptual Model page states `Date version issued: 2026-05-26`. The live List of Terms page also states `Date version issued: 2026-05-26`, with previous List version 2025-07-10. The `occurrenceStatus` term was modified 2026-05-26. A previous review-pack amendment claiming a 2026-10-13 release was erroneous and has been corrected. Official sources: https://dwc.tdwg.org/cm/ and https://dwc.tdwg.org/list/.
+**Standards metadata re-verification (20 November 2026):** latest indexed official TDWG metadata reports 2026-10-13 as the issue date for both the List and Conceptual Model, with 2026-05-26 as previous. Direct HTML retrieval of the List page returned the 2026-05-26 header, and the core term-list snapshot remains 2026-05-26. Exact current versioned resources and relevant term IRIs remain unverified. DR-09 stays open; the earlier claim that 2026-10-13 was erroneous is withdrawn pending direct versioned-resource verification. Sources: https://dwc.tdwg.org/cm/ ; https://dwc.tdwg.org/list/ ; https://rs.tdwg.org/dwc/terms.htm .
+
+
+**DR-09 source retrieval addendum (20 November 2026):** official indexed metadata now reports 2026-10-13 for both Darwin Core documents, previous 2026-05-26; direct page retrieval and core namespace term list expose 2026-05-26 metadata. Reconcile the exact versioned documents and term IRIs before asserting the current baseline or closing DR-09.
