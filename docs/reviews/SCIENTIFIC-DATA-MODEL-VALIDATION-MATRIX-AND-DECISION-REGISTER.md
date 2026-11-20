@@ -328,7 +328,7 @@ See [Task 05C Competing Model Reconciliation Assessment](TASK-05C-COMPETING-MODE
 | Event / Survey / Occurrence | Task 05 now describes Survey and Occurrence as specialized Event types, with a contextual Event capable of providing shared context to multiple Occurrences and Material Entities | Review Event supertype/subtype implementation, nested Events, Survey targets/completeness, Observation links and Darwin Core mapping with ecologist and biodiversity informatician |
 | IdentificationSubject | Task 05B and Task 05C now align on one IdentificationSubject row per Identification with three nullable real target FKs and a row-local exactly-one CHECK | Prove unique Identification FK, target FK integrity and total participation; CHECK alone does not ensure a subject row exists |
 | GBIF profiles | Task 05 now distinguishes general occurrence, GBIF-managed and sampling-event publishing profiles | Pin the exact target profile/version and execute export validation; do not convert publishing expectations into internal validity rules |
-| PR #11 stacked dependency | PR #11 branch diverges from the updated PR #5 base by one commit each | Synchronize/rebase PR #11 onto the latest PR #5 head, reconcile DR-02 and Event/Occurrence text, then re-review full diff |
+| PR #11 stacked dependency | Latest GitHub compare: PR #11 head is two commits ahead and one commit behind the current PR #5 branch | Synchronize PR #11 with the latest PR #5 head, preserve its Task 05D changes, reconcile DR-02 and Event/Occurrence text, then re-review the full diff |
 
 The Task 05 and Task 05B edits are present on their existing PR branches but are not merged. No LDM test has been executed by these documentation edits. Task 05E remains NOT READY.
 
