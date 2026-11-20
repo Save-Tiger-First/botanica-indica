@@ -107,7 +107,7 @@ At the snapshot there were 12 open PRs and three closed, unmerged PRs. All 12 op
 | #5 | Task 05C logical model | main | Open, draft | Preferred canonical review candidate; not approved |
 | #8 | NatureTech and conservation strategy | main | Open, draft | Large strategy document; governance and scope review |
 | #9 | Scientific data model review pack | main | Open, draft | Review instrument; not independent expert approval |
-| #11 | Task 05D validation | PR #5 branch | Open, draft | Stacked; base/head diverged by one commit each at audit |
+| #11 | Task 05D validation | PR #5 branch | Open, draft | Stacked; current compare is two commits ahead and one behind |
 | #12 | Organisational readiness | PR #8 branch | Open, draft | Stacked; base/head diverged (four ahead, three behind) |
 | #13 | Bengaluru pilot proposal | main | Open, draft | Proposal only; no site, budget or fieldwork approval |
 | #14 | Bengaluru site assessment | main | Open, draft | Preliminary assessment; no site selected |
@@ -122,7 +122,7 @@ No PR was merged in the inspected PR inventory.
 
 ### 3.4 Dependency graph and divergence
 
-- PR #11 is based on PR #5. Current compare result: `docs/task-05d-logical-model-validation-v3` is one commit ahead and one behind the updated `docs/task-05c-logical-data-model` base. Do not merge until the full diff is synchronized and reviewed.
+- PR #11 is based on PR #5. Current compare result: `docs/task-05d-logical-model-validation-v3` is two commits ahead and one behind `docs/task-05c-logical-data-model`. Task 05D's DR-02 total-participation caveat and FLD-08/DR-07 wording have been corrected on the PR #11 branch. Do not merge until the branch is synchronized with the latest PR #5 head and the full diff is re-reviewed.
 - PR #12 is based on PR #8. Current compare result: four commits ahead and three behind. Reconcile the overlapping strategy files and history before merging.
 - PR #14 is a separate site assessment for PR #13's pilot proposal. Review them together and preserve the no-site-selected status.
 - PR #9 is a review package and must not be treated as a scientific approval or substitute for external reviewers.
@@ -339,7 +339,7 @@ The following changes have been made on `docs/repository-audit-and-ai-operating-
 - Added this repository/Markdown audit report.
 - Added a closing code fence to each of ADR-001 through ADR-010, without changing diagram or prose content; all ten files were re-fetched and verified to have balanced fence markers.
 - Removed the duplicate H1 from README and updated its repository-tree example to match the files on this audit branch; added links to the permanent AI prompt and audit report.
-- Added a least-privilege GitHub Actions workflow and Python checker for Markdown fence integrity and PR branch routing. The workflow has now completed successfully on PR #16; latest verified run ID 44684023454 (head beef9a1938fb9c06d0f35b71355855beafede16a) passed the Markdown integrity and branch-routing job. The workflow has not yet been merged into main.
+- Added a least-privilege GitHub Actions workflow and Python checker for Markdown fence integrity and PR branch routing. The workflow has now completed successfully on PR #16; latest verified run ID 44684168599 (head dafd0629d5fc70b6e11816419edec85e7e4ac2c6) passed the Markdown integrity and branch-routing job. The workflow has not yet been merged into main.
 - The changes have not been merged. They require review through the project's branch workflow.
 - No existing branch was deleted, no existing PR was merged/closed/retargeted, and no branch-protection settings were changed.
 
