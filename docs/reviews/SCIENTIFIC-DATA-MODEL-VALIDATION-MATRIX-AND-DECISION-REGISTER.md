@@ -120,7 +120,7 @@ Reviewer implications:
 
 ### 5.2 Darwin Core Conceptual Model and non-detection
 
-The current Darwin Core Conceptual Model page identifies version issued 2026-05-26. It describes Occurrence as an Event establishing the state of an Organism at a particular place and time. The model describes an Occurrence as potentially representing direct observation, indirect inference, or absence of detection of an Organism of a given Taxon in a specified state during an Event at a Location. Events may be hierarchical and must have a location context, even if that location is unknown or withheld.
+Latest indexed official page metadata reports the Darwin Core Conceptual Model version issued 2026-10-13 (previous 2026-05-26); direct retrieval of versioned content remains to be verified. It describes Occurrence as an Event establishing the state of an Organism at a particular place and time. The model describes an Occurrence as potentially representing direct observation, indirect inference, or absence of detection of an Organism of a given Taxon in a specified state during an Event at a Location. Events may be hierarchical and must have a location context, even if that location is unknown or withheld.
 
 Official source: https://dwc.tdwg.org/cm/
 
@@ -187,7 +187,7 @@ The prior desk-review findings are not automatically closed by documentation edi
 |---|---|
 | DR-01 to DR-07 | Revised in proposed documents; require test and discipline review before closure |
 | DR-08 | Open source/geographic-resolution case; normalize geographic units and source scopes |
-| DR-09 | Re-opened after direct TDWG source check; both current documents issued 2026-05-26, previous List version 2025-07-10; `occurrenceStatus` term modified 2026-05-26 |
+| DR-09 | Open — indexed metadata reports List and Conceptual Model issue date 2026-10-13 (previous 2026-05-26); direct List HTML rendered 2026-05-26 and core term list remains 2026-05-26; exact versioned resources/term IRIs unresolved |
 | DR-10 to DR-12 | Revised in proposed documents; require source, rights and taxonomic review before closure |
 
 No finding should be marked closed solely because wording changed.
@@ -261,7 +261,7 @@ Attendance, silence, a positive GitHub mergeability value or an empty CI status 
 The following authoritative sources were checked during preparation. Reviewers should re-check current versions before implementation and record the version identifiers they used.
 
 1. TDWG Taxon Concept Standard, List of Terms (version 2025-12-11): https://tcs.tdwg.org/terms/
-2. TDWG Darwin Core List of Terms (version issued 2026-05-26; previous List version 2025-07-10; `occurrenceStatus` term modified 2026-05-26): https://dwc.tdwg.org/list/ and Darwin Core Conceptual Model: https://dwc.tdwg.org/cm/
+2. TDWG Darwin Core List of Terms and Conceptual Model: latest indexed metadata reports version issued 2026-10-13, previous 2026-05-26; direct List HTML returned 2026-05-26 and core dwc: term list reports 2026-05-26. Exact term-level metadata remains to be verified: https://dwc.tdwg.org/list/ ; https://dwc.tdwg.org/cm/ ; https://rs.tdwg.org/dwc/terms.htm
 3. GBIF Data Quality Recommendations, including occurrence and sampling-event profiles: https://techdocs.gbif.org/en/data-publishing/data-quality-recommendations
 4. GBIF Data Quality Recommendations (occurrence and sampling-event profiles, including profile-specific status vocabulary): https://techdocs.gbif.org/en/data-publishing/data-quality-recommendations
 5. PostgreSQL 18, Constraints (CHECK is row-local; use FKs/UNIQUE for referential and cardinality integrity; cross-row requirements may need transaction/trigger design): https://www.postgresql.org/docs/18/ddl-constraints.html
@@ -287,7 +287,7 @@ Official reference: https://www.postgresql.org/docs/18/ddl-constraints.html
 
 ### 12.2 Non-detection vocabulary must be mapped, not assumed identical
 
-The current Darwin Core List of Terms was issued 2026-05-26 (previous List version 2025-07-10); the individual `occurrenceStatus` term was also modified 2026-05-26. Its definition concerns detection or non-detection of an Organism during an Event and recommends `detected` and `notDetected` as default vocabulary values.
+Latest indexed List metadata reports issue date 2026-10-13 (previous 2026-05-26), while direct HTML retrieval returned 2026-05-26 (previous 2025-07-10). The occurrenceStatus term record retrieved from the prior snapshot shows 2026-05-26; verify the current term IRI and modification date in the 2026-10-13 resource. Its definition concerns detection or non-detection of an Organism during an Event and recommends `detected` and `notDetected` as default vocabulary values.
 
 GBIF's sampling-event recommendations describe `occurrenceStatus` and give `present` and `absent` as standard values in that publishing context. GBIF also explains that sampling-event datasets can support absence inference only when sampling method and effort are described.
 
@@ -333,4 +333,7 @@ See [Task 05C Competing Model Reconciliation Assessment](TASK-05C-COMPETING-MODE
 The Task 05 and Task 05B edits are present on their existing PR branches but are not merged. No LDM test has been executed by these documentation edits. Task 05E remains NOT READY.
 
 
-**Standards-date correction (20 November 2026):** a direct check of the official TDWG pages confirms that the Darwin Core List of Terms and Conceptual Model were both issued 2026-05-26. The List's previous version is 2025-07-10. The `occurrenceStatus` term modification date is 2026-05-26. An earlier review-pack amendment claiming a 2026-10-13 release was incorrect and has been corrected. See https://dwc.tdwg.org/list/ and https://dwc.tdwg.org/cm/.
+**Standards metadata re-verification (20 November 2026):** latest indexed official metadata reports 2026-10-13 for both the List and Conceptual Model (previous 2026-05-26), but direct List HTML retrieval rendered the 2026-05-26 version and the core namespace term list also reports 2026-05-26. Exact versioned resources and the current occurrenceStatus term IRI remain unverified. DR-09 stays open; do not label the 2026-10-13 amendment erroneous until the retrieval discrepancy is resolved. Sources: https://dwc.tdwg.org/list/ ; https://dwc.tdwg.org/cm/ ; https://rs.tdwg.org/dwc/terms.htm .
+
+
+**DR-09 retrieval-conflict addendum (20 November 2026):** latest indexed metadata for the official List and Conceptual Model reports 2026-10-13, previous 2026-05-26; the directly retrieved List page and core term-list snapshot returned 2026-05-26. The current versioned resources and relevant term IRIs must be retrieved directly before closure. Keep DR-09 open.
