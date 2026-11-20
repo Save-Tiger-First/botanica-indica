@@ -16,7 +16,7 @@ This recommendation is based on document structure and standards alignment, not 
 
 | Candidate | Branch | File | Blob SHA | Length |
 |---|---|---|---|---:|
-| A — PR #5 | `docs/task-05c-logical-data-model` | `docs/architecture/TASK-05C-LOGICAL-DATABASE-MODEL.md` | `e6131e867d4bc3dbc58aa1188d0fabc895429347` | 647 lines |
+| A — PR #5 | `docs/task-05c-logical-data-model` | `docs/architecture/TASK-05C-LOGICAL-DATABASE-MODEL.md` | `4a21c0aa3b8ebfef319a9ea1ac6928274b0b3f5b` | 647 lines |
 | B — no open PR in audit snapshot | `docs/task-05c-logical-database-model` | `docs/data-architecture/TASK-05C-LOGICAL-DATABASE-MODEL-AND-SCIENTIFIC-RELATIONSHIPS.md` | `239d7e9974bcb81b1154b54845a7b2d69c3775d6` | 648 lines |
 
 The files are not identical and have different section structures. Candidate A is organized around entity relationship diagrams, canonical entity inventory, keys, cardinality, temporal strategy, geospatial/privacy rules, rights/provenance, identification/evidence integrity, standards mappings, tests and open decisions. Candidate B is organized by domain and includes four end-to-end workflows.
@@ -159,7 +159,7 @@ Official source: https://tcs.tdwg.org/terms/
 
 ### 7.2 Darwin Core Conceptual Model
 
-The current Darwin Core Conceptual Model page identifies version 2026-05-26. It describes:
+The current Darwin Core Conceptual Model page identifies version issued 2026-10-13 (created 2026-05-26). It describes:
 - Event as an action/process/set of circumstances at a place during an interval;
 - Survey as a type of Event;
 - Occurrence as a type of Event that can represent direct observation, indirect inference or absence of detection;
@@ -235,7 +235,7 @@ The reconciliation was extended to the exact current documents on PR #3, PR #4 a
 
 - Task 05 initially described Occurrence as evidence of presence and Event as a contextual container for occurrences, without explicitly stating that the current Darwin Core Conceptual Model treats Occurrence and Survey as specialized Event types.
 - Task 05B defines Occurrence as a state record with optional `event_id`, while Task 05C separately models Event and Occurrence.
-- The current Darwin Core Conceptual Model (issued 2026-05-26) states that Occurrence and Survey are specialized Event types, and that one contextual Event may provide shared spatio-temporal context to multiple Occurrences and Material Entities. It also expressly says the conceptual model is non-normative and does not prescribe a database schema.
+- The current Darwin Core Conceptual Model (issued 2026-10-13; created 2026-05-26) states that Occurrence and Survey are specialized Event types, and that one contextual Event may provide shared spatio-temporal context to multiple Occurrences and Material Entities. It also expressly says the conceptual model is non-normative and does not prescribe a database schema.
 
 **Change made:** Task 05 (PR #3) was updated to clarify the Event supertype/subtype design option, Occurrence's event semantics, Survey as a specialized Event, contextual Events, and the difference between Observation and Occurrence. This is a proposed logical direction, not a finalized schema.
 
