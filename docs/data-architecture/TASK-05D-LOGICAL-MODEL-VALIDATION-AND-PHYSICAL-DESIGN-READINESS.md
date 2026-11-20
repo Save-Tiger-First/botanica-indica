@@ -76,27 +76,6 @@ The review must compare Task 05, Task 05B and Task 05C line by line and resolve 
 | DOC-21 | Synonym target semantics | TCS synonym target is TaxonName; source-specific TaxonNameUsage remains a separate record |
 | DOC-22 | Source role and authority | Source type, editorial/curation model, scope, version, date and limitations are recorded; source fitness is purpose-specific |
 
-### 4.2 Reconciliation update — repository desk review, 16 November 2026
-
-The following document-level corrections have been applied on the current Task 05B and Task 05C proposal branches. This is an authoring/reconciliation pass, not an independent scientific sign-off.
-
-| Review ID | Current disposition | Evidence to re-check | Remaining condition |
-|---|---|---|---|
-| DR-01 / DOC-16 | **Revised in 05B and 05C** | Occurrence no longer requires a Darwin Core `basisOfRecord` as a universal internal field; provenance remains required. Export mapping is profile-specific. | Re-review fixtures and exact export profiles; confirm explicit non-detection states and event evidence. |
-| DR-02 / DOC-17 | **Revised in 05B and 05C** | Dictionary specifies typed FK subject links. Task 05C proposes one IdentificationSubject row with exactly one of three real target FKs, enforced by CHECK; ScientificAssertion uses explicit typed links. | Validate supported subject inventory and PostgreSQL constraints; test exactly-one subject and FK integrity. |
-| DR-03 / DOC-18 | **Revised in 05B and 05C** | Mapping vocabulary names the six exact TCS relations; informal “excludes” and “not congruent” removed from the field definition. | Review directionality and semantics with a taxonomist; test mapping export/import round trips. |
-| DR-04 / DOC-19 | **Revised in 05B and 05C** | One canonical `according_to_resource_id` represents TCS `accordingTo`; optional treatment specialization must resolve to the same resource. | Confirm resource registry semantics and uniqueness/integrity implementation with biodiversity-informatics reviewer. |
-| DR-05 / DOC-20 | **Revised in Task 05 and 05C** | Concept-to-name synonym, name-to-name nomenclatural and concept-to-concept mapping families are explicitly distinguished. | Re-review remaining relationship labels and fixtures; ensure no generic TaxonRelationship implementation remains. |
-| DR-06 | **Revised in 05B** | Current taxonomic determination is derived from the applicable Identification assertion, not stored as a mutable duplicate on Occurrence. | Confirm all read models/API views use the same derivation and preserve historical determinations. |
-| DR-07 | **Revised in 05B, 05C and 05D** | Explicit absent/non-detected Occurrence state is permitted only with defined Survey/Event, protocol, effort, target and location; Task 05C adds LDM-16 and Task 05D adds FLD-08. | Confirm Darwin Core `occurrenceStatus` mapping and validate realistic sampling-event fixtures; no row must never imply absence. |
-| DR-08 | **Open test case** | Mango native/introduced example remains a geographic-resolution and source-scope comparison, not a proven direct contradiction. | Normalize comparable geographic units and review source-specific treatment evidence. |
-| DR-09 | **Withdrawn as erroneous** | The current official TDWG List page identifies 2026-10-13 as the current release; 2026-05-26 is the previous release. The earlier desk review used an incorrect version assumption. | Preserve the correct List release IRI and record individual term-version/modification metadata separately. |
-| DR-10 | **Revised in 05B** | TaxonName, TaxonNameUsage and Occurrence source identifiers now use canonical SourceRecord FKs or constrained external-identifier tuples. | Confirm SourceRecord namespace, dataset version and ingestion-run uniqueness rules in physical design. |
-| DR-11 / DOC-21 | **Revised in 05B** | TCS synonym assertions target TaxonName; TaxonNameUsage remains separate. | Validate against the Ficus fixture and TCS mapping semantics. |
-| DR-12 / DOC-22 | **Revised in 05B** | Source metadata captures source type, editorial/curation model, scope, version, access date and limitations, with purpose-specific examples. | Review current source profiles and terms for IPNI, POWO/WCVP, BSI and eFlora of India. |
-
-The corrections above address the identified documentation conflicts but do not by themselves close the findings. The official Darwin Core List of Terms page currently identifies the list release as issued 2026-10-13 (previous version 2026-05-26); individual term modification dates and term-version IRIs may differ. Reference: https://dwc.tdwg.org/list/. The current GBIF profile distinctions are supported by official technical documentation: occurrence datasets require `occurrenceID`; `basisOfRecord`, `scientificName` and `eventDate` are strongly recommended in the general profile and required in GBIF-managed programmes; sampling-event datasets have distinct requirements. See https://techdocs.gbif.org/en/data-publishing/data-quality-recommendations.
-
 ### 4.1 Known correction: internal validity vs GBIF publishing requirements
 
 An earlier draft of Task 05C included the statement "No occurrence without basis-of-record and provenance." That statement has been revised in the current Task 05C branch: provenance remains an internal requirement, while Darwin Core `basisOfRecord` is required only when supported by the selected export mapping/profile.
@@ -113,6 +92,27 @@ Required revision:
 Reference: https://techdocs.gbif.org/en/data-publishing/data-quality-recommendations
 
 This distinction is a mandatory correction before physical design.
+
+### 4.2 Reconciliation update — repository desk review, 16 November 2026
+
+The following document-level corrections have been applied on the current Task 05B and Task 05C proposal branches. This is an authoring/reconciliation pass, not an independent scientific sign-off.
+
+| Review ID | Current disposition | Evidence to re-check | Remaining condition |
+|---|---|---|---|
+| DR-01 / DOC-16 | **Revised in 05B and 05C** | Occurrence no longer requires a Darwin Core `basisOfRecord` as a universal internal field; provenance remains required. Export mapping is profile-specific. | Re-review fixtures and exact export profiles; confirm explicit non-detection states and event evidence. |
+| DR-02 / DOC-17 | **Revised in 05B and 05C; total participation caveat recorded** | Dictionary and Task 05C propose one IdentificationSubject row per Identification, with one of three real target FKs populated and enforced by a row-local CHECK; ScientificAssertion uses explicit typed links. | Prove a unique Identification FK, target FK integrity, exactly one target per subject row, and total participation (every Identification has a subject row). The CHECK alone does not ensure that every Identification has a subject row. Validate the supported subject inventory and transactionally safe enforcement strategy. |
+| DR-03 / DOC-18 | **Revised in 05B and 05C** | Mapping vocabulary names the six exact TCS relations; informal “excludes” and “not congruent” removed from the field definition. | Review directionality and semantics with a taxonomist; test mapping export/import round trips. |
+| DR-04 / DOC-19 | **Revised in 05B and 05C** | One canonical `according_to_resource_id` represents TCS `accordingTo`; optional treatment specialization must resolve to the same resource. | Confirm resource registry semantics and uniqueness/integrity implementation with biodiversity-informatics reviewer. |
+| DR-05 / DOC-20 | **Revised in Task 05 and 05C** | Concept-to-name synonym, name-to-name nomenclatural and concept-to-concept mapping families are explicitly distinguished. | Re-review remaining relationship labels and fixtures; ensure no generic TaxonRelationship implementation remains. |
+| DR-06 | **Revised in 05B** | Current taxonomic determination is derived from the applicable Identification assertion, not stored as a mutable duplicate on Occurrence. | Confirm all read models/API views use the same derivation and preserve historical determinations. |
+| DR-07 | **Revised in 05B, 05C and 05D** | Explicit absent/non-detected Occurrence state is permitted only with defined Survey/Event, protocol, effort, target and location; Task 05C adds LDM-16 and Task 05D adds FLD-08. | Confirm Darwin Core `occurrenceStatus` mapping and validate realistic sampling-event fixtures; the absence of an Occurrence row must never be interpreted as evidence of absence. |
+| DR-08 | **Open test case** | Mango native/introduced example remains a geographic-resolution and source-scope comparison, not a proven direct contradiction. | Normalize comparable geographic units and review source-specific treatment evidence. |
+| DR-09 | **Re-opened after source re-verification** | The official TDWG Darwin Core List of Terms and Conceptual Model pages both identify 2026-05-26 as their current issued version. The List page identifies 2025-07-10 as the previous List version. The `occurrenceStatus` term itself was modified 2026-05-26. | Correct all document/version references and record document release dates separately from term-level modification dates and term-version IRIs. Do not infer a 2026-10-13 release. |
+| DR-10 | **Revised in 05B** | TaxonName, TaxonNameUsage and Occurrence source identifiers now use canonical SourceRecord FKs or constrained external-identifier tuples. | Confirm SourceRecord namespace, dataset version and ingestion-run uniqueness rules in physical design. |
+| DR-11 / DOC-21 | **Revised in 05B** | TCS synonym assertions target TaxonName; TaxonNameUsage remains separate. | Validate against the Ficus fixture and TCS mapping semantics. |
+| DR-12 / DOC-22 | **Revised in 05B** | Source metadata captures source type, editorial/curation model, scope, version, access date and limitations, with purpose-specific examples. | Review current source profiles and terms for IPNI, POWO/WCVP, BSI and eFlora of India. |
+
+The corrections above address the identified documentation conflicts but do not by themselves close the findings. The official Darwin Core List of Terms page currently identifies the list release as issued 2026-05-26 (previous version 2025-07-10). The Darwin Core Conceptual Model page also identifies its issued version as 2026-05-26. The `occurrenceStatus` term was modified 2026-05-26; individual term modification dates and term-version IRIs must be recorded separately from document release dates. Reference: https://dwc.tdwg.org/list/. The current GBIF profile distinctions are supported by official technical documentation: occurrence datasets require `occurrenceID`; `basisOfRecord`, `scientificName` and `eventDate` are strongly recommended in the general profile and required in GBIF-managed programmes; sampling-event datasets have distinct requirements. See https://techdocs.gbif.org/en/data-publishing/data-quality-recommendations.
 
 ## 5. Domain model validation matrix
 
@@ -141,7 +141,7 @@ Each scenario must be tested with a source-backed fixture, expected outcome, rev
 | FLD-05 | Leaf tissue sampled from a specimen | Derived MaterialEntity links to source material and event | Derivation provenance lost |
 | FLD-06 | Field record has uncertain date | Date value, precision and uncertainty preserved | Unknown precision converted to exact timestamp |
 | FLD-07 | Observation is withdrawn by contributor | Workflow status and retention policy applied without silent provenance corruption | Record disappears without audit/retention assessment |
-| FLD-08 | Defined survey fails to detect a target taxon | Explicit absent/non-detected Occurrence state is linked to Event, protocol, effort, target and location; no row is never interpreted as absence | Non-detection inferred from missing Occurrence or stored without survey context |
+| FLD-08 | Defined survey fails to detect a target taxon | Explicit absent/non-detected Occurrence state is linked to Event, protocol, effort, target and location; the absence of an Occurrence row must never be interpreted as evidence of absence | Non-detection inferred from missing Occurrence or stored without survey context |
 
 ### 5.3 Identification, evidence and review
 
