@@ -159,7 +159,7 @@ Official source: https://tcs.tdwg.org/terms/
 
 ### 7.2 Darwin Core Conceptual Model
 
-The current Darwin Core Conceptual Model page identifies version issued 2026-10-13 (created 2026-05-26). It describes:
+The current Darwin Core Conceptual Model page identifies version issued 2026-05-26. It describes:
 - Event as an action/process/set of circumstances at a place during an interval;
 - Survey as a type of Event;
 - Occurrence as a type of Event that can represent direct observation, indirect inference or absence of detection;
@@ -235,7 +235,7 @@ The reconciliation was extended to the exact current documents on PR #3, PR #4 a
 
 - Task 05 initially described Occurrence as evidence of presence and Event as a contextual container for occurrences, without explicitly stating that the current Darwin Core Conceptual Model treats Occurrence and Survey as specialized Event types.
 - Task 05B defines Occurrence as a state record with optional `event_id`, while Task 05C separately models Event and Occurrence.
-- The current Darwin Core Conceptual Model (issued 2026-10-13; created 2026-05-26) states that Occurrence and Survey are specialized Event types, and that one contextual Event may provide shared spatio-temporal context to multiple Occurrences and Material Entities. It also expressly says the conceptual model is non-normative and does not prescribe a database schema.
+- The current Darwin Core Conceptual Model (issued 2026-05-26) states that Occurrence and Survey are specialized Event types, and that one contextual Event may provide shared spatio-temporal context to multiple Occurrences and Material Entities. It also expressly says the conceptual model is non-normative and does not prescribe a database schema.
 
 **Change made:** Task 05 (PR #3) was updated to clarify the Event supertype/subtype design option, Occurrence's event semantics, Survey as a specialized Event, contextual Events, and the difference between Observation and Occurrence. This is a proposed logical direction, not a finalized schema.
 
@@ -273,3 +273,6 @@ The Task 05 and Task 05B edits were committed on their existing PR branches and 
 4. Synchronize PR #11 with the latest PR #5 head and reconcile its DR-02 and Event/Occurrence wording before any merge decision.
 5. Keep all four scientific architecture PRs in draft until their blocking questions and independent discipline reviews are complete.
 6. Keep Task 05E blocked.
+
+
+**Standards-date correction (20 November 2026):** the live TDWG Conceptual Model page states `Date version issued: 2026-05-26`. The live List of Terms page also states `Date version issued: 2026-05-26`, with previous List version 2025-07-10. The `occurrenceStatus` term was modified 2026-05-26. A previous review-pack amendment claiming a 2026-10-13 release was erroneous and has been corrected. Official sources: https://dwc.tdwg.org/cm/ and https://dwc.tdwg.org/list/.
