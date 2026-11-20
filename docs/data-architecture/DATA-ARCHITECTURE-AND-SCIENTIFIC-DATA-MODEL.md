@@ -292,34 +292,35 @@ An observation may exist before a reliable taxonomic identification is available
 
 #### Occurrence
 
-Represents evidence that an organism or taxon was present at a particular place and time, or in a collection/context.
+In Darwin Core, an Occurrence is a specialized type of Event that establishes the state of an Organism at a particular place and time. It can represent direct observation, indirect inference, or an explicit absence-of-detection result for a defined target during a bounded Event/Survey. The internal model should preserve the occurrence-specific state and taxonomic/evidence context while retaining the Event semantics.
 
 An occurrence may be supported by:
-- A human observation
-- A preserved specimen
+- A human Observation
+- A preserved specimen or other MaterialEntity
 - A material sample
-- A literature record
-- A survey or monitoring record
-- An institutional collection record
+- A literature or institutional collection record
+- A survey or monitoring result
 - Another traceable source
 
-Occurrence should not be treated as synonymous with a user-generated observation.
+Occurrence is not synonymous with a user-submitted Observation. A missing Occurrence record is not evidence that the organism was absent.
 
 #### Event
 
-Represents a field event, survey, sampling activity or collection event within which one or more occurrences may be recorded.
+Represents the contextual action, process or set of circumstances at a place and during an interval. A Survey is a specialized Event. Events may be nested (for example, a monitoring programme, repeated site survey and plot visit). A contextual Event/Survey may provide shared spatio-temporal context for multiple Occurrences and MaterialEntities.
 
 Potential attributes:
-- Event identifier
+- Event identifier and event category/type
 - Parent event, where hierarchical
-- Date/time or interval
-- Location
-- Sampling protocol
-- Sampling effort
-- Responsible people/organization
-- Survey scope
+- Date/time interval and precision
+- Location or explicit withheld/unknown location state
+- Sampling protocol and version
+- Sampling effort and units
+- Survey targets and reporting-completeness state, where applicable
+- Responsible people/organization/device
 - Environmental context
-- Dataset/source
+- Dataset/source and provenance
+
+**Logical-model implication:** evaluate a shared Event identity/supertype with Survey and Occurrence specializations/extensions. A relational implementation may use separate tables with a shared primary key and foreign key, but must preserve the semantics that an Occurrence is an Event, while a contextual Survey/Event may provide context to multiple Occurrences and MaterialEntities. The Darwin Core Conceptual Model is a non-normative semantic framework, not a required database schema; record the internal-to-Darwin-Core mapping explicitly.
 
 This supports repeated surveys, transects, plots and monitoring rather than only isolated observations.
 
@@ -708,14 +709,16 @@ Darwin Core is a TDWG-maintained vocabulary intended to facilitate sharing biodi
 
 Relevant classes and terms include:
 - Taxon
+- Event (including Survey and Occurrence specializations in the current conceptual model)
 - Occurrence
 - Organism
-- MaterialSample
-- Event
+- MaterialEntity (and related material/sample terms)
 - Location
 - Identification
 - MeasurementOrFact
 - ResourceRelationship
+
+The current Darwin Core Conceptual Model (version issued 2026-05-26) describes Occurrence and Survey as specialized Event types and explicitly does not prescribe a database implementation. An internal relational design may use a shared Event supertype and subtype/extension tables, provided the mapping preserves those semantics. https://dwc.tdwg.org/cm/
 
 Use Darwin Core mappings for import/export of compatible biodiversity records, including stable identifiers, event dates, basis of record, taxon names and geographic information.
 
@@ -731,7 +734,7 @@ Evaluate TCS terms and mappings for taxonomy ingestion and exchange. Do not adop
 
 GBIF supports dataset classes including taxonomic checklists, occurrence datasets and sampling-event datasets. Darwin Core Archive (DwC-A) packages a core data table with mapped extensions and metadata. It is a practical import/export target for biodiversity data. [GBIF data publishing](https://techdocs.gbif.org/en/data-publishing/) [GBIF dataset classes](https://techdocs.gbif.org/en/data-publishing/dataset-classes)
 
-GBIF occurrence data quality guidance requires occurrence identifiers, basis of record, scientific name and event date for its publishing context, with geographic fields strongly recommended. Those are useful baseline checks, not a complete validation specification for Botanica Indica. [GBIF occurrence data quality](https://www.gbif.org/es/data-quality-requirements-occurrences)
+GBIF's current technical guidance distinguishes general occurrence datasets from sampling-event datasets. For general occurrence publishing, `occurrenceID` is required; `basisOfRecord`, `scientificName` and `eventDate` are strongly recommended, and are required for GBIF-managed programmes. Sampling-event datasets have a separate profile with event, protocol, sample-size and effort expectations. These are export-profile requirements, not universal internal database validity rules. Validate against the exact current profile and programme requirements before publication. [GBIF Data Quality Recommendations](https://techdocs.gbif.org/en/data-publishing/data-quality-recommendations)
 
 ### 7.4 Interoperability strategy
 
