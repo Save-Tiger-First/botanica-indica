@@ -218,7 +218,7 @@ The following dependencies are drawn from the Scientific Data Model Review Pack 
 | DR-06 — mutable taxon determination on Occurrence | Major; current determination proposed as derived from Identification | ID-007, OBS-002, VAL-002 | CAP-01, 04, 06 | Read-model and API consistency; determination history tests |
 | DR-07 — Occurrence/Event/non-detection semantics | Major; revised wording and LDM-16 proposed, semantic validation remains | OBS-001, OBS-002, SCI-001, GEO-001 | CAP-04, 05 | Event/Survey protocol, effort, target, location and absence-vs-no-record tests |
 | DR-08 — Mango native-range geographic scale | Major; open source/geographic-resolution case | ID-006, SCI-001A, GEO-001 | CAP-01, 05, 07 | Normalize source scopes and comparable geographic units; botanical review |
-| DR-09 — Darwin Core version metadata | Re-opened for correction; official current documents in review pack identify 2026-05-26, not 2026-10-13 | API-001, SCI-001, DATA-ING-001 | CAP-07, 14 | Recheck term/version IRIs and correct every project reference |
+| DR-09 — Darwin Core version metadata | Open — indexed TDWG metadata reports List and Conceptual Model issue date 2026-10-13 (previous 2026-05-26); direct List HTML and core term-list snapshot return 2026-05-26; exact versioned resources and term IRIs unresolved | API-001, SCI-001, DATA-ING-001 | CAP-07, 14 | Retrieve and compare exact versioned documents and relevant term IRIs; keep document, namespace and term dates distinct |
 | DR-10 — canonical source record identifiers | Major; canonical SourceRecord linkage proposed | SCI-001, DATA-ING-001 | CAP-01, 07 | Namespace, dataset version and ingestion-run uniqueness constraints |
 | DR-11 — TCS synonym target | Major; mapping clarified as TaxonConcept to TaxonName | ID-007, SCI-002 | CAP-01 | TCS mapping fixture; retain TaxonNameUsage separately |
 | DR-12 — source authority/evidence classes | Major; source metadata expanded in proposals | ID-008, SCI-001, RIGHTS-001 | CAP-01, 03, 07 | Source role, editorial model, scope, date, limitation and rights evidence |
@@ -395,3 +395,8 @@ Before a requirement is accepted, confirm it is:
 ---
 
 **End of proposed register.**
+
+
+### DR-09 source metadata update (20 November 2026)
+
+Latest indexed official TDWG metadata reports 2026-10-13 as the issue date for both the Darwin Core List of Terms and Conceptual Model, with 2026-05-26 as the previous version. Direct HTML retrieval of the List page and the core dwc: term-list snapshot returned 2026-05-26 metadata. Exact versioned resources and relevant term IRIs have not yet been verified. DR-09 remains open; do not close it on date metadata alone.
