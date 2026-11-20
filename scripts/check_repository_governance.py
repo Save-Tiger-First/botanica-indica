@@ -16,6 +16,7 @@ from urllib.parse import unquote, urlsplit
 ALLOWED_PREFIXES = (
     "feature/", "fix/", "docs/", "research/",
     "governance/", "test/", "release/",
+    "proposal/", "strategy/", "review/",
 )
 
 
