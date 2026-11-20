@@ -99,14 +99,57 @@ The live branch and PR inventory was re-fetched on 20 November 2026. It confirms
 
 `docs/task-05d-logical-model-validation-v3` (tip `1bcbb46890788b0296884228e44c867965bc8381`) is the head of open PR #11 and must be retained while that PR remains active. The live comparison against PR #11's base `docs/task-05c-logical-data-model` reports **3 commits ahead and 1 behind**. The v3 document is the current review version because it adds the explicit IdentificationSubject/total-participation caveat and retains DR-09 as open; it remains a proposal, not an approved scientific model or physical-design authorization.
 
-### Branch-count reduction target
+### Immediate seven-branch target and consolidation plan — 20 November 2026
 
-- **Current:** 23 branches = 3 long-lived + 17 open-PR head branches + 3 unassociated Task 05C/05D branches.
-- **First safe target:** 20 branches after the three unassociated branches have been semantically reconciled, their required content preserved, and their retirement authorized and executed.
-- **Development target:** 3 long-lived branches plus only the minimum temporary branches required for unresolved, independently reviewable work. The current 17 open PRs should be consolidated or resolved in dependency order; they are not a permanent allowance for 17 task branches.
-- **No new branches:** project-owner directive dated 20 November 2026. Reuse the existing PR/workstream branches; obtain explicit owner approval before any exception.
+The project owner has explicitly directed that the repository be reduced to **no more than seven branches total, including temporary branches**, immediately, with no new branch creation. The seven comprise the three long-lived branches plus at most four temporary workstream branches.
 
-The three unassociated branches are not yet safe to delete. The review connector used for this audit does not expose a branch-deletion operation, so no deletion has been performed. This register records candidates and preservation conditions; it does not claim the live branch count has already fallen.
+**Verified starting position:** 23 branches = 3 long-lived + 20 temporary. The 17 open PRs are not 17 additional branches; each has a head branch already counted in the 20 temporary branches. Three further temporary branches have no open PR head association.
+
+#### Four provisional retained workstream branches
+
+| Retained branch | Existing PR | Consolidation scope | Conditions |
+|---|---:|---|---|
+| `docs/repository-audit-and-ai-operating-standard` | #16 | AI operating prompt, repository audit, branch governance, licensing/IP policy proposal and ecosystem-boundary proposal | Keep PR #16's prompt version authoritative until PR #16 is accepted and merged. Copy/reconcile PR #15 governance documents and PRs #1/#2 proposals only after consistency review. Consolidation is not policy/ADR approval. |
+| `docs/full-system-architecture-and-repo-engineering-plan` | #20 | Full Product Blueprint, Task 03/04 source-preserving baselines, Requirements Traceability Register and system architecture | Reconcile PRs #17–#20; preserve Task 03/04 source provenance and approved ADR constraints. |
+| `review/scientific-data-model-review-pack` | #9 | Task 05 architecture, Task 05B dictionary/test cases, Task 05C competing models, Task 05D validation and scientific review/decision records | Reconcile PRs #3/#4/#5/#11 and all three unassociated Task 05C/05D branches. Do not close scientific findings or authorize physical design through consolidation. |
+| `strategy/naturetech-biodiversity-conservation-impact` | #8 | STF strategy, organisational readiness, Bengaluru feasibility proposal and site-selection research | Reconcile PRs #8/#12/#13/#14; preserve preliminary/no-site-selected/no-fieldwork-authorized status. |
+
+These are the proposed four workstream destinations that achieve the seven-branch ceiling without creating new branches. They are not approvals to merge, close or delete. If a destination cannot safely preserve the source material, stop and report the specific conflict rather than exceeding the target silently or discarding content.
+
+#### Retirement/consolidation register
+
+| Source branch | PR | Proposed destination | Retirement gate |
+|---|---:|---|---|
+| `governance/branch-lifecycle-policy` | #15 | PR #16 branch | Transfer and verify both governance documents and their complete histories/references; then resolve PR #15 and retire its head branch |
+| `docs/asset-specific-licensing-policy` | #1 | PR #16 branch | Preserve policy proposal and legal-review caveats; do not imply approval |
+| `docs/adr-011-stf-ecosystem-boundaries` | #2 | PR #16 branch | Preserve as proposed ADR; review against accepted ADRs |
+| `docs/task-05-data-architecture` | #3 | PR #9 branch | Reconcile all Task 05 architecture content and dependencies |
+| `docs/task-05-data-dictionary` | #4 | PR #9 branch | Preserve dictionary, source authority distinctions and Indian botanical test cases |
+| `docs/task-05c-logical-data-model` | #5 | PR #9 branch | Preserve current Task 05C proposal and PR #11 dependency evidence |
+| `docs/task-05d-logical-model-validation-v3` | #11 | PR #9 branch | Preserve latest validation findings and DR/LDM status; resolve stacked dependency |
+| `docs/task-05c-logical-database-model` | — | PR #9 branch | Compare competing 05C model; preserve unique valid semantics before retirement |
+| `docs/task-05d-logical-model-validation` | — | PR #9 branch | Reconcile unique validation content; superseded material must be explicitly recorded |
+| `docs/task-05d-logical-model-validation-v2` | — | PR #9 branch | Preserve any unique Task 05C content; do not carry forward withdrawn DR-09 conclusion |
+| `docs/full-product-vision-capability-blueprint` | #17 | PR #20 branch | Preserve complete capability map and product boundaries |
+| `docs/canonical-task-03-04-baselines` | #18 | PR #20 branch | Preserve exact source transcriptions and provenance |
+| `docs/requirements-traceability-register` | #19 | PR #20 branch | Reconcile identifiers and source-to-acceptance traceability |
+| `governance/stf-organisational-readiness-review` | #12 | PR #8 branch | Resolve stacked divergence; preserve findings as proposals |
+| `proposal/bengaluru-urban-biodiversity-feasibility-pilot` | #13 | PR #8 branch | Preserve feasibility-only scope and all approval gates |
+| `research/bengaluru-pilot-site-selection` | #14 | PR #8 branch | Preserve research evidence; do not declare a site selected |
+
+#### Required PR-based retirement sequence
+
+1. For each source branch, inspect its complete diff, unique commits, files and dependent PRs against the latest live target.
+2. Reconcile its required content into the specified existing destination branch. Use only the existing branch; do not create a new branch.
+3. Verify the destination contains the complete required content, citations, provenance, statuses and decision history. Fetch and compare exact file contents and SHAs.
+4. Use the source branch's existing PR where one exists. For the three unassociated Task 05C/05D branches, open preservation PRs using those existing heads and an existing retained destination only if a meaningful reviewable diff remains. Do not open an empty or cosmetic PR.
+5. Obtain review and explicit approval before merging. After merge, use GitHub's PR Delete branch action or automatic head deletion if enabled. If a branch's work is rejected/obsolete, record the reason, close its PR with approval, then delete the branch.
+6. Do not delete a head branch while any open PR references it. Resolve dependent PRs first.
+7. Re-fetch the complete live branch list after each retirement wave. Do not claim the target is achieved until exactly seven or fewer branches are verified.
+
+**Technical limitation:** GitHub does not provide a pull-request operation that directly deletes an arbitrary different branch. A PR integrates or rejects the source branch's work; after the PR is merged or closed, GitHub permits deletion of that PR's head branch when no other open PR references it. See the official GitHub documentation linked below.
+
+**Status:** Plan recorded only. No PR has been merged or closed and no branch has been deleted in this update. The live branch count remains 23 until the retirement gates are executed.
 
 ## 5. Critical dependency and content risks
 
