@@ -7,16 +7,16 @@
 
 ## 1. Verified snapshot
 
-The GitHub API returned 17 branches:
+The GitHub API returned 18 branches:
 
 - 1 permanent branch: `main`
 - 2 intended long-lived supporting branches: `develop`, `staging`
-- 14 additional topic/governance branches, including the temporary branch carrying this policy proposal
+- 15 additional topic/governance branches, including the temporary branch carrying this policy proposal
 
 At audit time:
 - `main` was the default branch, marked protected by GitHub, at `f165ecb9b4d9de115c02327cf779982b7ef4bbd4`.
 - `develop` and `staging` both existed at the same commit as `main`; GitHub reported both as unprotected.
-- The repository had 11 open draft pull requests before this policy PR; PR #15 raises that to 12.
+- The repository had 11 open draft pull requests before this policy PR; PR #15 raises the open PR total to 12 (11 draft, one ready for review).
 - All 13 pre-existing topic branches were ahead of `main` and contained unique commits/files relative to `main`. None should be deleted merely because it is not one of the three long-lived branches.
 
 This is a dated snapshot. Re-fetch branches, pull requests and comparisons before acting on any disposition.
