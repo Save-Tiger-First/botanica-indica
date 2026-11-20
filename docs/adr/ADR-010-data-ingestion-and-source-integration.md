@@ -107,6 +107,7 @@ Botanica Indica
        └── Source Adapter C
                ↓
            External Source C
+```
 
 Source-specific implementation details should remain isolated from the platform's core domain model.
 
