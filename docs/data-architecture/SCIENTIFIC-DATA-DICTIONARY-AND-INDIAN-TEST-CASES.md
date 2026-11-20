@@ -240,7 +240,7 @@ Different sources may assert different values. Preserve both and record reconcil
 
 **Typed subject-link rule for ScientificAssertion:** the logical dictionary uses explicit link entities such as `AssertionSubjectTaxon`, `AssertionSubjectOccurrence`, `AssertionSubjectObservation` and `AssertionSubjectPlace`. Each link has an assertion FK and a subject FK to the named target table. Additional target types require an explicit typed link and review. Do not store a generic subject ID without an enforceable target FK.
 
-**Typed subject-link rule for Identification:** use separate link entities such as `IdentificationObservationSubject`, `IdentificationOccurrenceSubject` and `IdentificationMaterialEntitySubject`. Exactly one supported subject link is required for each Identification. The link entity owns the foreign key to the target table. A generic `subject_type + subject_id` pair may be retained only as verbatim source payload during ingestion, never as the canonical relationship.
+**Typed subject-link rule for Identification (canonical logical pattern proposed for Task 05C):** use one `IdentificationSubject` row per Identification, with nullable `observation_id`, `occurrence_id` and `material_entity_id` columns. Each column is a real foreign key to its target table. A row-local CHECK (for example, PostgreSQL `num_nonnulls(observation_id, occurrence_id, material_entity_id) = 1`) requires exactly one populated target; a UNIQUE constraint on `identification_id` permits at most one subject row per Identification. The design must separately enforce total participation (every persisted Identification has one subject row) through a transactionally safe creation/update path and, if required by the final database design, an appropriate deferred constraint-trigger or equivalent mechanism. The CHECK alone does not guarantee that a subject row exists. Do not create three parallel subject-link tables unless a reviewed design proves equivalent exactly-one and referential-integrity guarantees. A generic `subject_type + subject_id` pair may be retained only as verbatim source payload during ingestion, never as the canonical relationship.
 
 
 ### 4.7 Observation
@@ -329,7 +329,7 @@ Use a common material-entity abstraction where useful, with subtype or category-
 | Field | Type | Req. | Definition / rule |
 |---|---|---:|---|
 | identification_id | ID | R | Stable identifier |
-| subject link | IdentificationSubject FK | R | Exactly one IdentificationSubject row; it contains exactly one non-null FK to Observation, Occurrence or MaterialEntity and real FKs to each supported target table |
+| subject link | IdentificationSubject FK | R | Exactly one subject row per Identification; unique Identification FK; three nullable target columns with real FKs; row-local CHECK requires exactly one target FK populated; total participation (no Identification without a subject row) requires separate transactional/deferred enforcement |
 | taxon_concept_id | ID | O | Proposed/selected concept |
 | taxon_name_id | ID | O | Name used if concept not resolved |
 | identifier_agent_id | ID | R | Human, expert, community or AI system |
