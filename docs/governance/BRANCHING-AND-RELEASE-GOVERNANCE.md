@@ -54,6 +54,9 @@ Permitted prefixes:
 - `governance/<short-description>`
 - `test/<short-description>`
 - `release/<version-or-short-description>` (only when a release task genuinely requires it)
+- `proposal/<short-description>`
+- `strategy/<short-description>`
+- `review/<short-description>`
 
 Rules:
 1. Every temporary branch must have a clear task, owner, intended target, and expected completion.
