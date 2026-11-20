@@ -187,7 +187,7 @@ The prior desk-review findings are not automatically closed by documentation edi
 |---|---|
 | DR-01 to DR-07 | Revised in proposed documents; require test and discipline review before closure |
 | DR-08 | Open source/geographic-resolution case; normalize geographic units and source scopes |
-| DR-09 | Withdrawn as erroneous; the earlier review misread the Darwin Core release date |
+| DR-09 | Re-opened after direct TDWG source check; both current documents issued 2026-05-26, previous List version 2025-07-10; `occurrenceStatus` term modified 2026-05-26 |
 | DR-10 to DR-12 | Revised in proposed documents; require source, rights and taxonomic review before closure |
 
 No finding should be marked closed solely because wording changed.
