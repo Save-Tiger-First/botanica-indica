@@ -300,3 +300,20 @@ Official references:
 ### 12.3 Review status is not execution status
 
 The LDM matrix is a test plan until reproducible fixtures, database constraints, API/export tests, logs and reviewer outcomes are attached. At preparation time, these scenarios have been mapped to the documents but have not been executed against a physical schema. All such cases must remain **Not tested** until actual evidence exists.
+
+
+## 13. Competing Task 05C model reconciliation
+
+A full desk comparison of the two competing Task 05C documents is recorded in [Task 05C Competing Model Reconciliation Assessment](TASK-05C-COMPETING-MODEL-RECONCILIATION.md) and summarized in Section 4.6 of the Scientific Data Model Review Pack.
+
+**Proposed canonical review candidate:** the Task 05C document in PR #5. The alternative Task 05C document is retained as a reference source; do not merge it wholesale. Its workflows and cardinality discussions may be ported selectively after semantic reconciliation.
+
+**New blocking design questions:**
+- Model Darwin Core Event as the contextual supertype and evaluate Survey and Occurrence as specialized event types/extensions. A shared contextual Event may provide time/location context to multiple Occurrences and Material Entities.
+- Define how Botanica Indica's contributor Observation relates to one or more Events/Surveys and Occurrences without equating a user submission with a scientific event.
+- Prove Identification subject total participation and exactly-one-target integrity; a row-local CHECK alone does not prove that every Identification has a subject row.
+- Define and test the complete ScientificAssertion subject-type inventory.
+
+The LDM-16 sentence in the PR #5 Task 05C document has received a narrow editorial correction to state: “the absence of an Occurrence row must never be interpreted as evidence of absence.” No scientific meaning or model cardinality was changed by that edit.
+
+These are proposed dispositions, not expert sign-off. All LDM cases remain Not tested until executable fixtures and actual implementation evidence are recorded. Task 05E remains NOT READY.
