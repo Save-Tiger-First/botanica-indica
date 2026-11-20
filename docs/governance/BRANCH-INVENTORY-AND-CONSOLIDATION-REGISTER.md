@@ -96,16 +96,18 @@ These branches had no corresponding open pull request in the verified snapshot. 
 
 This is a preservation-first sequence, not authorization to merge:
 
-1. Review and adopt the branch lifecycle policy PR #15. If accepted, the repository has a written operating rule.
-2. Review PR #3 (Task 05 architecture), then PR #4 (Task 05B), and reconcile the competing Task 05C documents before finalizing PR #5.
-3. Resolve DR-01 to DR-12 and the LDM test scenarios; update the review pack and decision register. Only then resolve PR #11.
-4. Review PR #8, then PR #12 in its stacked dependency order.
-5. Review PRs #13 and #14 together, preserving the no-site-selected/no-fieldwork-authorized position until gates are satisfied.
-6. Review PRs #1 and #2 through the appropriate legal, governance and architecture review.
-7. After each PR is merged or closed, verify that its content is on the intended integration branch and delete its temporary branch only after confirming no unique required commits remain.
-8. Promote a coherent release candidate from `develop` to `staging`, validate it, and then promote to `main` through reviewed PRs.
-9. Repeat branch inventory until only `main`, `develop` and `staging` remain as active long-lived branches, with no unnecessary topic branches.
-10. At project completion, apply the formal completion gates in the Branching and Release Governance policy and retire both supporting branches.
+1. Review PRs #15 and #16 as the connected governance baseline. PR #15 defines the exact three-long-lived-branch policy; PR #16 carries the operating prompt, audit and initial automation. Do not merge either without owner review.
+2. Review PRs #17–#20 as one connected product/architecture package: Full Product Blueprint, source-preserving Task 03/04 baselines, Requirements Traceability Register and Full System Architecture Plan. Reconcile scope, requirements, architecture and technology decision status.
+3. Review PR #3 (Task 05 architecture), then PR #4 (Task 05B), and reconcile the competing Task 05C documents before finalizing PR #5.
+4. Resolve DR-01 to DR-12 and the LDM test scenarios; update the review pack and decision register. Only then resolve PR #11, after synchronizing its 3-ahead/1-behind dependency with PR #5.
+5. Review PR #8, then PR #12 in its stacked dependency order; reconcile the current 4-ahead/3-behind divergence before merge.
+6. Review PRs #13 and #14 together, preserving the no-site-selected/no-fieldwork-authorized position until gates are satisfied.
+7. Review PRs #1 and #2 through the appropriate legal, governance and architecture review.
+8. Reconcile legacy PR routing: PRs #1–#5, #8, #9, #13 and #14 currently target `main`; retarget only after an explicit dependency/diff review and owner authorization. Do not merge these directly to make progress faster.
+9. After each PR is merged or closed, verify that its content is on the intended integration branch and delete its temporary branch only after confirming no unique required commits remain.
+10. Promote a coherent release candidate from `develop` to `staging`, validate it, and then promote to `main` through reviewed PRs.
+11. Repeat branch inventory until only `main`, `develop` and `staging` remain as active long-lived branches, with no unnecessary topic branches.
+12. At project completion, apply the formal completion gates in the Branching and Release Governance policy and retire both supporting branches.
 
 ## 7. Explicit non-actions in this audit
 
