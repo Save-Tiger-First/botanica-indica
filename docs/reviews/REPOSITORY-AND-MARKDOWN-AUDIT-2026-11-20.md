@@ -191,14 +191,14 @@ The initial pre-audit branch inventory contained **33 distinct Markdown paths an
 | 17 | `docs/data-architecture/DATA-ARCHITECTURE-AND-SCIENTIFIC-DATA-MODEL.md` | docs/task-05-data-architecture | Proposed Task 05; Event/Survey/Occurrence wording recently improved; cross-document review remains |
 | 18 | `docs/data-architecture/SCIENTIFIC-DATA-DICTIONARY-AND-INDIAN-TEST-CASES.md` | docs/task-05-data-dictionary | Proposed Task 05B; strong source-role distinctions and TCS semantics; verify examples and full subject/cardinality model |
 | 19 | `docs/data-architecture/TASK-05C-LOGICAL-DATABASE-MODEL-AND-SCIENTIFIC-RELATIONSHIPS.md` | docs/task-05c-logical-database-model | Competing Task 05C; PR #6 closed; preserve useful workflows/cardinality notes selectively; do not merge wholesale |
-| 20 | `docs/data-architecture/TASK-05D-LOGICAL-MODEL-VALIDATION-AND-PHYSICAL-DESIGN-READINESS.md` | docs/task-05d-logical-model-validation-v3 | Task 05D validation gate; still has a wording defect and incomplete total-participation caveat |
-| 21 | `docs/governance/BRANCH-INVENTORY-AND-CONSOLIDATION-REGISTER.md` | governance/branch-lifecycle-policy | Snapshot says 18 branches before this audit branch; now stale and needs refreshed inventory |
+| 20 | `docs/data-architecture/TASK-05D-LOGICAL-MODEL-VALIDATION-AND-PHYSICAL-DESIGN-READINESS.md` | docs/task-05d-logical-model-validation-v3 | Task 05D validation gate; DR-02 total-participation caveat and FLD-08 wording corrected on PR #11 branch; synchronization with PR #5 remains |
+| 21 | `docs/governance/BRANCH-INVENTORY-AND-CONSOLIDATION-REGISTER.md` | governance/branch-lifecycle-policy | Refreshed on PR #15 branch to 19 branches and 13 open PRs; continue re-verification before each disposition |
 | 22 | `docs/governance/BRANCHING-AND-RELEASE-GOVERNANCE.md` | governance/branch-lifecycle-policy | Clear three-long-lived-branch and one-branch-completion policy; proposed, not yet adopted/enforced |
 | 23 | `docs/governance/LICENSING-AND-IP-POLICY.md` | docs/asset-specific-licensing-policy | Strong asset/purpose-specific policy proposal; requires legal/maintainer approval and contributor terms |
 | 24 | `docs/governance/STF-ORGANISATIONAL-READINESS-AND-GOVERNANCE-REVIEW.md` | governance/stf-organisational-readiness-review | Strong evidence register; correctly says NOT ASSESSED; legal currency must be rechecked before reliance |
-| 25 | `docs/reviews/SCIENTIFIC-DATA-MODEL-REVIEW-PACK.md` | review/scientific-data-model-review-pack | Good review structure; stale Darwin Core version statement and stale Task 05C blob SHA require correction |
-| 26 | `docs/reviews/SCIENTIFIC-DATA-MODEL-VALIDATION-MATRIX-AND-DECISION-REGISTER.md` | review/scientific-data-model-review-pack | Good decision/test register; update Task 05D typo, DR-02 caveat and current source revisions |
-| 27 | `docs/reviews/TASK-05C-COMPETING-MODEL-RECONCILIATION.md` | review/scientific-data-model-review-pack | Useful desk assessment; source revision metadata and Darwin Core version need refresh |
+| 25 | `docs/reviews/SCIENTIFIC-DATA-MODEL-REVIEW-PACK.md` | review/scientific-data-model-review-pack | Corrected on PR #9 branch for TDWG release dates and current Task 05C blob SHA; specialist review remains outstanding |
+| 26 | `docs/reviews/SCIENTIFIC-DATA-MODEL-VALIDATION-MATRIX-AND-DECISION-REGISTER.md` | review/scientific-data-model-review-pack | Updated for current Task 05C blob, corrected TDWG release metadata and re-opened DR-09; tests remain unexecuted |
+| 27 | `docs/reviews/TASK-05C-COMPETING-MODEL-RECONCILIATION.md` | review/scientific-data-model-review-pack | Updated source revision and Darwin Core Conceptual Model issue date; still a desk assessment |
 | 28 | `docs/strategy/INDIGENOUS-STEWARDSHIP-TEK-AND-COMMUNITY-DATA-GOVERNANCE.md` | governance/stf-organisational-readiness-review and strategy branch | Two distinct revisions exist; later strategy branch expands source-talk coverage; reconcile to one canonical document |
 | 29 | `docs/strategy/STF-12-MONTH-ORGANISATIONAL-ROADMAP-AND-IMPLEMENTATION-PLAN.md` | governance/stf-organisational-readiness-review and strategy branch | Roadmap proposal; budget is indicative, not approved; preserve gates and capacity assumptions |
 | 30 | `docs/strategy/STF-NATURETECH-AND-CONSERVATION-STRATEGIC-FRAMEWORK.md` | governance/stf-organisational-readiness-review and strategy branch | Strategic framework proposal; companion long strategy overlaps; choose one canonical hierarchy |
@@ -212,26 +212,26 @@ The initial pre-audit branch inventory contained **33 distinct Markdown paths an
 
 **Ten accepted ADRs:** ADR-001 through ADR-010 each had one unclosed fenced code block. The issue was not that there were odd numbers of code markers in a simple count alone; direct inspection showed the diagram's closing fence missing, causing following prose to render as code. A narrow closing fence has been inserted in each of the ten files on this audit branch. The fixes preserve all existing prose and diagram text.
 
-**README:** two H1 headings (`# botanica-indica` and `# Botanica Indica`). Recommend one canonical title and remove the duplicate.
+**README:** the audit snapshot on main had two H1 headings (`# botanica-indica` and `# Botanica Indica`). The duplicate has been removed on the PR #16 audit branch; review/merge remains pending.
 
-**Task 05D heading order:** section 4.2 appears before 4.1; subheadings 2.1B appears before 2.1A. Reorder without changing meaning.
+**Task 05D heading order:** the audit snapshot had section 4.2 before 4.1. The sections have been reordered on the PR #11 branch. The earlier 2.1B/2.1A note was not reproduced in the latest fetched version and should not be treated as a confirmed current defect.
 
-**Task 05D non-detection wording:** FLD-08 currently says “no row is never interpreted as absence”, which is ambiguous/incorrect. Replace with “the absence of an Occurrence row must never be interpreted as evidence of absence.” The DR-07 row has similarly awkward “no row must never imply absence” wording and should be made consistent.
+**Task 05D non-detection wording:** the audit snapshot used ambiguous double-negative wording in DR-07 and FLD-08. Both have now been corrected on the PR #11 branch to state that the absence of an Occurrence row must never be interpreted as evidence of absence.
 
 **NatureTech strategy:** section 21 subheadings are out of numerical order (21.10 and 21.11 appear before 21.8 and 21.9). This is a navigation and editorial defect in a very long document. Reorder the headings and any references without changing substantive claims.
 
 ### 6.2 Link and navigation findings
 
-The inspected relative Markdown links in README, branch governance, NatureTech framework and Bengaluru site assessment resolve to companion files in their respective branch trees. However, a repository-wide automated relative-link check is not yet installed. Add one and review its first run for intentional cross-branch references.
+The inspected relative Markdown links in README, branch governance, NatureTech framework and Bengaluru site assessment resolve to companion files in their respective branch trees. A relative-link scanner has now been added to the governance script on PR #16; unresolved paths are warnings, not failures, and its first successful run does not prove every historical branch link is valid.
 
-The README's repository tree is incomplete compared with the live repository structure. Update it after canonical documentation paths are settled.
+The README's repository tree was incomplete in the audit snapshot. It has been updated on the PR #16 branch to reflect the current audit-branch structure; refresh again after canonical documentation paths are settled.
 
 ### 6.3 Version and metadata findings
 
 - A subsequent review-pack amendment incorrectly claimed the Darwin Core Conceptual Model was issued 2026-10-13. Direct inspection of the official TDWG page confirms the issued version is 2026-05-26.
-- The review pack/reconciliation report cites Task 05C Candidate A blob `e6131e867d4bc3dbc58aa1188d0fabc895429347`. The current PR #5 branch file is blob `4a21c0aa3b8ebfef319a9ea1ac6928274b0b3f5b`. The older `e6131e...` blob remains on the PR #11 dependent branch. Update the source revision table and re-review the dependency.
+- The review pack/reconciliation report previously cited Task 05C Candidate A blob `e6131e867d4bc3dbc58aa1188d0fabc895429347`. The current PR #5 branch file is blob `4a21c0aa3b8ebfef319a9ea1ac6928274b0b3f5b`. The PR #9 review pack and decision register have been updated to cite the current PR #5 blob; PR #11 remains dependent on an older base and must be synchronized and re-reviewed.
 - The competing Task 05C Candidate B blob remains `239d7e9974bcb81b1154b54845a7b2d69c3775d6` on its superseded branch.
-- The branch inventory register is a dated snapshot, not a live source of truth. It now needs an audit entry for this new audit branch and future refreshes.
+- The branch inventory register is a dated snapshot, not a live source of truth. It has been refreshed on PR #15 branch to record 19 branches and 13 open PRs.
 
 ## 7. Cross-document scientific and architecture findings
 
@@ -316,20 +316,20 @@ The asset-specific licensing approach is appropriate. The root Apache-2.0 licens
 | AUD-02 | Critical | Branch inventory exceeds intended three long-lived branches; 16 topic branches | Preservation-first branch-by-branch register, dependency reconciliation, retirement | Monthly and before release |
 | AUD-03 | Critical | No CI/workflow, no status checks, no release automation | Add Markdown/branch policy workflow now; add tests/security scans as code appears | Before merge of governance automation |
 | AUD-04 | Critical | Task 05C Event/Survey/Occurrence and Observation/Event model unresolved | Formal logical decision, cardinality and fixtures with specialist review | Before Task 05E |
-| AUD-05 | Critical | Task 05D DR-02 omits total participation; FLD-08 wording defective | Correct and synchronize PR #11 against latest PR #5 | Before Task 05D acceptance |
-| AUD-06 | Major | Review pack has stale Darwin Core version and Task 05C SHA | Refresh citations and exact blob/commit revision references | Before external review |
+| AUD-05 | Critical | Task 05D DR-02 and FLD-08 defects identified in the audit snapshot | Corrected on PR #11 branch; synchronize with latest PR #5 and independently re-review | Before Task 05D acceptance |
+| AUD-06 | Major | Review pack contained an incorrect Darwin Core date amendment and stale Task 05C SHA | Corrected on PR #9 branch using live TDWG pages and current PR #5 blob; re-review before external review | Before external review |
 | AUD-07 | Major | PR #8/#12 diverged and duplicate strategy docs exist | Compare complete file/commit history; one canonical document per subject | Before strategy consolidation |
 | AUD-08 | Major | PR #11/#5 diverged | Synchronize and full-diff review; no blind merge | Before Task 05D merge |
 | AUD-09 | Major | No PR reviews submitted | Recruit/record actual qualified reviewers; no self-approval claims | Before scientific approval |
-| AUD-10 | Major | No automated Markdown/link validation | Add workflow and fix baseline defects | Before governance PR merge |
+| AUD-10 | Major | Automated Markdown/link validation was absent from main | Workflow and scanner added on PR #16; first run passed; relative-link findings are warn-only | Before governance PR merge |
 | AUD-11 | Major | README structure and ADR list incomplete | Update after canonical docs and ADR-011 status decision | Before first public release |
 | AUD-12 | Major | Two Indigenous stewardship document versions | Preserve unique content and choose one canonical revision | Before policy approval |
 | AUD-13 | Major | 1,189-line NatureTech paper heading order/structure | Reorganize without altering evidence or claims; maintain research appendix | Before strategy approval |
 | AUD-14 | Major | No code, tests, API contracts or implementation in main | Do not represent repository as production-ready; plan implementation only after gates | Product implementation stage |
 | AUD-15 | Major | No releases/tags | Establish release/tag process after first reviewed milestone | First release |
-| AUD-16 | Moderate | PR #15 branch register is already stale after new audit branch | Refresh inventory and branch retirement status at each governance change | Monthly |
-| AUD-17 | Moderate | README has duplicate H1 | Single H1 and polished navigation | Documentation release |
-| AUD-18 | Moderate | Task 05D heading order inconsistent | Reorder headings and check internal references | Before review |
+| AUD-16 | Moderate | Branch register requires refresh as branch/PR topology changes | Refreshed on PR #15 branch to 19 branches and 13 open PRs; continue monthly | Monthly |
+| AUD-17 | Moderate | README had duplicate H1 in main snapshot | Duplicate title removed on PR #16 branch; review/merge pending | Documentation release |
+| AUD-18 | Moderate | Task 05D section 4 heading order was inconsistent | Reordered on PR #11 branch; verify all internal references | Before review |
 | AUD-19 | Moderate | No automated stale-branch age/ownership report | Add monthly inventory checklist; no auto-delete | Monthly |
 
 ## 10. Remediation work completed on this audit branch
@@ -339,7 +339,7 @@ The following changes have been made on `docs/repository-audit-and-ai-operating-
 - Added this repository/Markdown audit report.
 - Added a closing code fence to each of ADR-001 through ADR-010, without changing diagram or prose content; all ten files were re-fetched and verified to have balanced fence markers.
 - Removed the duplicate H1 from README and updated its repository-tree example to match the files on this audit branch; added links to the permanent AI prompt and audit report.
-- Added a least-privilege GitHub Actions workflow and Python checker for Markdown fence integrity and PR branch routing. The workflow has now completed successfully on PR #16; successful run ID 44682525905 (head eddd8a012f1bdf3677271afaa02adea1714ff4f8) passed the Markdown integrity and branch-routing job. The workflow has not yet been merged into main.
+- Added a least-privilege GitHub Actions workflow and Python checker for Markdown fence integrity and PR branch routing. The workflow has now completed successfully on PR #16; latest verified run ID 44684023454 (head beef9a1938fb9c06d0f35b71355855beafede16a) passed the Markdown integrity and branch-routing job. The workflow has not yet been merged into main.
 - The changes have not been merged. They require review through the project's branch workflow.
 - No existing branch was deleted, no existing PR was merged/closed/retargeted, and no branch-protection settings were changed.
 
@@ -347,10 +347,10 @@ The following changes have been made on `docs/repository-audit-and-ai-operating-
 
 1. Review this audit and permanent AI prompt.
 2. Review/adopt PR #15 branch lifecycle policy.
-3. Add branch-routing and Markdown structural validation workflow; run it and inspect results.
-4. Correct README title/tree and document index.
-5. Refresh PR #9 standards version and exact source revisions.
-6. Correct Task 05D wording and DR-02 caveat, then synchronize PR #11.
+3. Review the successful branch-routing/Markdown workflow run and determine whether to adopt its check after representative PR tests.
+4. Complete README navigation and canonical document index after architecture documents are settled.
+5. Independently re-review PR #9 standards metadata and exact source revisions after the TDWG correction.
+6. Synchronize PR #11 with the latest PR #5 head and re-review the corrected Task 05D wording and DR-02 total-participation caveat.
 7. Resolve Event/Survey/Occurrence and Observation/Event design with specialist review.
 8. Reconcile Task 05C competing document; preserve selected workflows/cardinality notes.
 9. Resolve PR #8/#12 strategy overlap and choose canonical Indigenous stewardship document.
