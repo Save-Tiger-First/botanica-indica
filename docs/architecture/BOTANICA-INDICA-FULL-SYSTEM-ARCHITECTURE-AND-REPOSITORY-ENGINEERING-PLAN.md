@@ -760,6 +760,80 @@ No availability or recovery target is invented in this proposal.
 | Orchestration | Start simple; evaluate later | Kubernetes not approved or required |
 | Vector database | Do not add initially without evidence | Not selected |
 | Additional languages | Rust/Go/Kotlin/Swift only for justified components | Not selected as general platform languages |
+| Rust specialist use | Permitted only after the adoption gate in §14.1 | Allowed by ADR-001; no component approved |
+
+## 14.1 Rust as a specialist implementation language
+
+### Policy position
+
+Rust is **permitted as a specialist implementation language under accepted ADR-001**, but it is not a core or default platform language. The core technology roles remain unchanged:
+
+- TypeScript for platform/API/application services and web.
+- Python for AI/ML, scientific computing, data science and model workflows.
+- Dart / Flutter for mobile.
+- PostgreSQL / PostGIS for the leading relational/spatial data platform.
+- Rust only for a bounded component where measured technical evidence justifies its additional language, build, testing and operational costs.
+
+This interpretation implements the existing phrase “Rust where justified” in ADR-001. It does not amend or supersede that accepted ADR, approve a Rust component, or authorize implementation.
+
+### Suitable candidate areas — subject to evidence
+
+Potential candidates include:
+
+1. **High-throughput image/media processing:** CPU-intensive decoding, transformation, feature extraction or batch processing where profiling shows the existing Python/TypeScript implementation is a material bottleneck.
+2. **Specialized scientific data processing:** parsing, normalization, validation, deduplication or streaming transformations over large datasets where memory use or throughput is demonstrably limiting.
+3. **Specialized geospatial computation:** algorithms not adequately served by PostgreSQL/PostGIS or mature existing libraries, and only where correctness, CRS semantics and reproducibility can be independently tested.
+4. **Python native extensions:** a narrow computational kernel called from the Python scientific/AI stack where a stable Python-facing interface is useful.
+5. **WebAssembly computation:** portable, bounded browser-side computation where profiling demonstrates a material benefit and browser support, download size, memory limits and accessibility are addressed.
+
+These are candidate use cases, not a commitment to use Rust in all or any of them. Existing libraries and database capabilities should be evaluated before writing a custom implementation.
+
+### Explicit non-goals
+
+Do not use Rust merely to:
+
+- replace TypeScript for ordinary API, web or business-application logic;
+- replace Python's model training, experimentation, evaluation or scientific ecosystem;
+- duplicate PostgreSQL/PostGIS capabilities or move authoritative data invariants out of their governed data layer;
+- create a separate microservice solely because a component is written in Rust;
+- pursue language novelty, benchmark vanity or speculative future scaling;
+- create an empty Rust workspace or placeholder crates before a real component is approved.
+
+### Mandatory adoption gate
+
+A Rust component may be proposed only when all of the following are documented:
+
+1. **Representative baseline:** a reproducible workload and representative data set, with rights and privacy eligibility established.
+2. **Measured problem:** profiling identifies a material CPU, memory, throughput, latency or capability bottleneck in the current design.
+3. **Comparative implementation:** a credible baseline in the existing language/library stack is compared with a Rust alternative. Include the simplest suitable optimized baseline, not an intentionally weak implementation.
+4. **Evidence:** benchmark methodology, environment, input sizes, warm-up, repeated runs, variance, correctness checks and results are recorded. Compare end-to-end performance as well as kernel performance; include serialization, copying, FFI and deployment overhead.
+5. **Total cost:** assess developer skills, build and cross-compilation, CI, packaging, debugging, observability, dependency/security updates, platform coverage and long-term maintainability.
+6. **Bounded responsibility:** the component has one clear responsibility, explicit inputs/outputs, stable versioned interfaces and a named owning module. It must not bypass module ownership or write around domain invariants.
+7. **Correctness and safety:** unit, property-based, fuzz, integration and regression tests are appropriate to the component; compare outputs against trusted reference implementations and preserve errors, uncertainty and provenance.
+8. **Operational readiness:** supported operating systems/architectures, reproducible builds, artifact provenance, dependency review, vulnerability handling and rollback/replacement are defined.
+9. **Approval:** the proposal is reviewed by the architecture owner and relevant scientific/security/operations owners before implementation is treated as an approved project decision.
+
+A performance improvement alone is not sufficient if the resulting component is harder to operate, validate or maintain than the original.
+
+### Integration and repository rules
+
+- Keep Rust behind a narrow internal interface. Do not expose Rust-specific types or implementation details in public API contracts.
+- For Python integration, evaluate PyO3 with Maturin or a process/job boundary; choose based on packaging, runtime isolation, data-copying and failure-handling requirements.
+- For browser integration, evaluate WebAssembly only for bounded computation. Keep UI, DOM interaction, authorization and sensitive-data disclosure policy in the established web application.
+- Define ownership and lifetime of buffers explicitly; avoid unnecessary copies of large image or scientific-data payloads.
+- Preserve deterministic behaviour where required, version information, source lineage, rights eligibility, error semantics and reproducible test fixtures.
+- Keep Rust crates in a clearly named location such as `native/rust/<component>/` only after an actual component is approved. Do not create speculative empty crates.
+- Pin and review toolchains and dependencies; build and test supported targets in CI. Do not assume that a successful local build proves cross-platform compatibility.
+
+### Decision record
+
+| Question | Current position |
+|---|---|
+| Is Rust a core platform language? | No |
+| Is Rust allowed by accepted architecture? | Yes, for justified performance-critical components under ADR-001 |
+| Is any Rust component approved? | No |
+| Is a Rust workspace/crate authorized now? | No |
+| What permits adoption? | Measured comparative evidence, bounded responsibility, tests, operational readiness and explicit review |
 
 ## 15. Full architecture delivery and decision plan
 
@@ -826,6 +900,9 @@ External technical references checked on 20 November 2026. These support archite
 7. OWASP — [Application Security Verification Standard 5.0.0](https://asvs.owasp.org/) for web/API verification.
 8. OWASP Mobile Application Security — [MASVS](https://mas.owasp.org/MASVS/) and [Using the MASVS](https://mas.owasp.org/MASVS/03-Using_the_MASVS/), for mobile security and privacy controls and their testing relationship.
 9. Google Engineering Practices — [Small CLs](https://github.com/google/eng-practices/blob/master/review/developer/small-cls.md) and [TypeScript style guide](https://google.github.io/styleguide/tsguide.html). These support focused reviewable changes and small functions; they do not establish a universal 200-line source-file limit.
+10. The Rust Project — [The Rust Programming Language](https://doc.rust-lang.org/book/), including ownership and compiler-checked memory management. Language capabilities are not evidence that a Rust component is needed in this product.
+11. PyO3 — [User Guide](https://pyo3.rs/main/) and [Maturin](https://github.com/PyO3/maturin). These document a supported route for exposing Rust native modules to Python; packaging and ABI/platform support still require project validation.
+12. wasm-bindgen — [Guide](https://wasm-bindgen.github.io/wasm-bindgen/). Documents Rust/WebAssembly interoperability with JavaScript; it does not remove browser compatibility, payload-size, security or performance testing requirements.
 
 ---
 
