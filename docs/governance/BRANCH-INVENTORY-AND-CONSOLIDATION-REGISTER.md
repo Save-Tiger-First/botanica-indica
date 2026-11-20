@@ -46,7 +46,8 @@ The GitHub protected flag is not a complete inspection of all effective settings
 | `governance/stf-organisational-readiness-review` | #12 | `strategy/naturetech-biodiversity-conservation-impact` | Organisational readiness review plus updated strategy materials; stacked on PR #8 | Preserve; resolve after PR #8 in dependency order; no organisational readiness conclusion is implied |
 | `proposal/bengaluru-urban-biodiversity-feasibility-pilot` | #13 | `main` | Proposed 12-week feasibility/baseline pilot; not an approved programme | Preserve; partner, authority, budget, scientific and governance gates remain |
 | `research/bengaluru-pilot-site-selection` | #14 | `main` | Preliminary site assessment; no site selected | Preserve; reconcile candidate recommendation with pilot proposal and verify current permissions/custody |
-| `governance/branch-lifecycle-policy` | #15 | `develop` | This policy and pull request template | Temporary policy branch; retain until PR #15 is reviewed and resolved, then delete after verifying merge/closure |
+| `governance/branch-lifecycle-policy` | #15 | `develop` | Branch lifecycle policy, pull request template and consolidation register | Temporary policy branch; retain until PR #15 is reviewed and resolved, then delete after verifying merge/closure |
+| `docs/repository-audit-and-ai-operating-standard` | #16 | `develop` | Repository/Markdown audit, permanent AI operating prompt, ADR Markdown fixes, README correction and governance workflow | Temporary audit branch; retain until PR #16 is reviewed and resolved, then delete after verifying merge/closure |
 
 ## 4. Orphaned or superseded branches requiring content reconciliation
 
