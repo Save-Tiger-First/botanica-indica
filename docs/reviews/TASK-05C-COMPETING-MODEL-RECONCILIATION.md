@@ -257,7 +257,7 @@ Task 05 initially stated that GBIF occurrence publishing guidance requires occur
 
 ### 11.4 Task 05D dependency and outstanding synchronization
 
-PR #11 is stacked on PR #5. After the narrow LDM-16 editorial correction was committed to PR #5, GitHub's compare endpoint reports the PR #11 head branch and updated PR #5 base branch as diverged by one commit each. The PR #11 head has not been rebased/synchronized to the latest PR #5 head in this pass. Do not merge or retarget PR #11 until its base is synchronized and its diff is re-reviewed.
+PR #11 is stacked on PR #5. After the latest PR #5 and PR #11 document updates, GitHub's compare endpoint reports the PR #11 head branch as two commits ahead and one commit behind the current PR #5 base branch. The PR #11 head has not been rebased/synchronized to the latest PR #5 head in this pass. Do not merge or retarget PR #11 until its base is synchronized and its diff is re-reviewed.
 
 The PR #11 document's DR-02 row currently describes the row-local CHECK pattern but must also be reconciled with the total-participation caveat now recorded in Task 05B, Task 05C and the validation register. Its Event/Occurrence assumptions also need to be updated after the design review.
 
