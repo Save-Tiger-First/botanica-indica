@@ -899,8 +899,8 @@ No downstream phase should be declared ready merely because its documents exist.
 
 Standards must be rechecked at the point of detailed design, mapping and release. This section records the public reference versions found during preparation on 20 November 2026.
 
-- **Darwin Core List of Terms:** the official TDWG page directly checked on 20 November 2026 reports **Date version issued: 2026-05-26**, with 2025-07-10 as the previous List version. The `occurrenceStatus` term is also marked modified 2026-05-26; a term modification date must not be mistaken for a separate List release. https://dwc.tdwg.org/list/
-- **Darwin Core Conceptual Model:** the official TDWG page directly checked on 20 November 2026 reports **Date version issued: 2026-05-26**. It is a high-level semantic reference, not a prescribed internal database schema; its sections other than the status section are marked non-normative. https://dwc.tdwg.org/cm/
+- **Darwin Core List of Terms:** the canonical TDWG List page directly fetched on 20 November 2026 reports **Date version issued: 2026-05-26**, with 2025-07-10 as the previous List version. The `occurrenceStatus` term is marked modified 2026-05-26; a term modification date is not a separate List release. https://dwc.tdwg.org/list/
+- **Darwin Core Conceptual Model:** the canonical TDWG page directly fetched on 20 November 2026 rendered version **2026-05-26**. However, a contemporaneous search-index result for the same canonical page reported **2026-10-13**, with 2026-05-26 as the previous version; the explicit 2026-10-13 dated URL could not be retrieved during this review. Therefore the current latest Conceptual Model version is **not conclusively verified** in this review. Before finalizing Event/Occurrence/Survey mappings, retrieve and inspect the exact latest version from TDWG and update the standards register. The model is a high-level semantic reference, not a prescribed internal database schema; its sections other than the status section are non-normative. https://dwc.tdwg.org/cm/
 - **Taxon Concept Standard (TCS) List of Terms:** TDWG page reports version created 2025-12-11. It provides separate TaxonConcept, TaxonName, TaxonConceptMapping and NomenclaturalType classes and explicit mapping semantics. https://tcs.tdwg.org/terms/
 - **GBIF data publishing:** GBIF publishes defined dataset classes and uses Darwin Core Archive and related profiles; occurrence and sampling-event requirements differ. These are publication requirements, not universal internal entity constraints. https://techdocs.gbif.org/en/data-publishing/ and https://techdocs.gbif.org/en/data-publishing/data-quality-recommendations
 - **Indian biodiversity law and administration:** the National Biodiversity Authority's official material records the Biological Diversity Act framework, 2023 amendments, Biological Diversity Rules 2024 and 2025 amendment, and the Biological Diversity (Access to Biological Resources and Knowledge Associated thereto and Fair and Equitable Sharing of Benefits) Regulations, 2025. Applicability depends on the resource, person, activity, transaction and jurisdiction. This blueprint is not a legal opinion. https://nbaindia.nic.in/about-us/faqs and https://www.nbaindia.nic.in/public-information/notification-guidelines
@@ -937,6 +937,61 @@ The 20 November 2026 Scientific Data Model Review Pack and Validation Matrix rec
 The Task 05C competing-model assessment recommends PR #5's document as the canonical review candidate, while preserving selected useful content from the competing document. This remains a desk-review recommendation, not an approved scientific model. PR #11 remains stacked on PR #5 and is two commits ahead and one behind the current PR #5 branch; it must be synchronized and its full diff re-reviewed before any merge decision.
 
 The current validation matrix contains **LDM-01 through LDM-16**, including the explicit survey non-detection scenario. These scenarios remain review criteria, not passed tests. Task 05D remains a proposed validation gate, and Task 05E / physical database design remains **NOT READY** pending reproducible evidence, qualified discipline review and project-owner authorization.
+
+### 18.2 Cross-document audit of Task 03 PRD and Task 04 architecture baseline (20 November 2026)
+
+The exact working documents were located and re-opened from the project Library during this review. They are not yet canonical files in the GitHub repository.
+
+| Source | Exact file | Source status and extent | How this blueprint relates |
+|---|---|---|---|
+| Task 03 | \`STF_Task_03_Product_Requirements_Document_v0.1.docx\` in Project Library \`/STF app\` | Working baseline v0.1; 16 pages; 677 extracted text lines | Product requirements source; this blueprint is a higher-level full-product capability and traceability parent, not a replacement PRD |
+| Task 04 | \`STF_Task_04_System_Architecture_and_Technology_Evaluation_v0.1.docx\` in Project Library \`/STF app\` | Working baseline v0.1; 11 pages; 431 extracted text lines | Architecture evaluation source; accepted ADR-001 through ADR-010 now govern decisions where they differ from earlier candidate recommendations |
+
+#### Task 03 — requirements that must remain traceable
+
+The source PRD contains 37 numbered sections and two appendices. Its principal requirements are represented in this blueprint, but the following detail must be retained in the canonical PRD and explicitly linked to capability IDs:
+
+1. **Separate identification confidence from evidence quality.** PRD requirement ID-005 marks evidence quality separately from AI confidence. The product result must show these as distinct dimensions; neither should be collapsed into a single score. A raw model similarity score must not be presented as a calibrated probability.
+2. **Preserve contribution and validation lifecycle states.** The PRD proposes Submitted, AI identified, User confirmed, Community reviewed, Expert reviewed, Scientifically verified, Disputed/requires review and Rejected/invalid. These are workflow states, not interchangeable scientific truth labels. The detailed state machine must define who can assign each state, transitions, evidence requirements and audit behavior.
+3. **Preserve the PRD's complete functional requirement matrix.** In particular ID-001–ID-009, OBS-001–OBS-002, VAL-001–VAL-002, SCI-001–SCI-002, SEC-001–SEC-002, API-001 and OPS-001 must be carried into the canonical requirements register and mapped to the BI-CAP capabilities.
+4. **User data rights and lifecycle.** The PRD calls for eligible user observations to be exportable or removable subject to platform policy, alongside account/data deletion and retention controls. The implementation must distinguish withdrawal, deletion, anonymization, restriction, retention obligations and preservation of scientific audit history; no universal deletion promise should be made without legal and data-governance review.
+5. **Notifications.** Identification completion, expert review, contribution status, community response, security/account and system notifications are in scope as proposed capabilities. Notification preferences, consent, delivery failure, security-critical exceptions and anti-spam behavior need detailed requirements.
+6. **Analytics and telemetry.** Preserve the PRD's named measures: identification attempts/completion, image-quality failures, confidence and evidence-quality distributions, correction/rejection, unknown/outside-coverage, expert review volume/turnaround, observation creation/retention, search behavior, offline sync success/failure, performance/errors and model/data-version performance. Define lawful purpose, minimization, access and retention before collection.
+7. **Protected contexts.** The PRD explicitly identifies privacy-aware handling of children's data and other protected contexts. The detailed privacy assessment must determine applicable law, age-assurance/consent obligations and product restrictions before any such processing.
+8. **Priority is sequencing, not final scope.** The PRD's P0/P1/P2/P3 framework must not be interpreted as excluding P2/P3 capabilities from the complete product. Numeric performance, availability and model-accuracy targets remain open until workload and representative evaluation methods exist.
+9. **Acceptance criteria and non-goals.** The PRD's Section 33 acceptance criteria and Section 34 non-goals should be retained and expanded, not replaced by the capability-level table in Section 13 of this blueprint. The non-goals include plant-care/reminder as primary scope, disease diagnosis as a core requirement, e-commerce/marketplace, generic chatbot as primary interface and unsupported accuracy claims.
+
+#### Task 04 — architecture recommendations and decision alignment
+
+Task 04 is a production-grade architecture evaluation, not an approved list of vendor selections. Its candidate technologies and recommendations must be interpreted alongside accepted ADRs:
+
+| Task 04 recommendation / proposal | Current governing position | Required follow-through |
+|---|---|---|
+| Domain-oriented modules/services; begin operationally simple | ADR-002 accepts modular architecture and a modular-monolith starting posture | Treat domain boundaries as logical ownership boundaries; do not assume one microservice per domain |
+| PostgreSQL + PostGIS as primary transactional/spatial foundation | Accepted architecture direction identifies PostgreSQL/PostGIS as the leading candidate, not a finalized physical schema | Complete scientific model reconciliation and physical-design readiness before DDL/migrations |
+| S3-compatible object storage; immutable originals, hashes, derivatives, lifecycle/versioning | Candidate architecture pattern, not provider selection | Define media asset identity, rights, upload authorization, retention, derivative provenance and recovery controls |
+| OpenSearch for lexical, semantic and hybrid search | Candidate, not selected vendor or mandatory deployment | Benchmark against PostgreSQL-first and other options using real botanical search, multilingual, geospatial and cost workloads |
+| OIDC/OAuth 2.0 identity; separate authentication from authorization; RBAC/ABAC; MFA for privileged roles | Compatible with accepted API/modular direction; detailed identity provider and policy implementation remain open | Create threat model, identity/organization model, permission matrix and a dedicated ADR before provider selection |
+| REST APIs plus asynchronous job APIs; versioned events, idempotent consumers, retries and dead-letter handling | Consistent with ADR-003 API-first and ADR-002 modular architecture | Specify job lifecycle/status, idempotency keys, retry limits, dead-letter inspection and event schema/version policy |
+| Python-centric AI/ML behind stable contracts; versioned datasets/models; do not treat user corrections as ground truth | Consistent with ADR-006, ADR-007 and provenance requirements | Define model registry, dataset manifests, rights eligibility, evaluation strata, approval and rollback controls |
+| OpenTelemetry and distinct audit/security logs | Candidate standard and instrumentation approach; audit/provenance requirements are accepted | Evaluate current SDK/backend compatibility and keep security/audit records distinct from diagnostic telemetry |
+| OCI containers; Kubernetes only if operational scale justifies it | Consistent with modular-monolith and avoid-premature-complexity principles | Evaluate deployment platform, recovery, scaling and cost before selecting orchestration |
+| React/Next.js web and React Native mobile | Technology candidates in Task 04, not accepted framework decisions | ADR-001 governs mobile as Dart/Flutter. React Native in Task 04 is a superseded/unselected candidate unless a formal ADR amendment is approved. Web framework remains open. |
+| Task 04 Section 20 proposed a new ADR-001–ADR-012 numbering list | This list predates the current accepted ADR-001–ADR-010 sequence and uses conflicting subjects/numbers | Do not import or reuse Task 04's proposed ADR numbers. Preserve current repository ADR identities; create future ADRs with the next available identifiers after checking the live inventory. |
+
+#### Reconciliation findings and actions
+
+- The full-product direction in Task 03 is consistent with this blueprint. The blueprint extends and organizes its scope; it does not authorize removal of any Task 03 requirement.
+- The Evidence Engine, Indian-first geography, taxonomy, observations, expert/community workflows, mobile/web/research/admin interfaces, APIs, privacy, accessibility, offline field use and operational requirements are common to both.
+- Task 03's confidence/evidence distinction, named workflow states, notifications, user data lifecycle, children's privacy, telemetry measures and functional requirement IDs need explicit traceability in the canonical PRD. Their presence only in a narrative blueprint is insufficient.
+- Task 04's React Native recommendation conflicts with accepted ADR-001. Flutter/Dart governs unless the project owner approves a superseding ADR. No framework change is implied by this audit.
+- Task 04's service-oriented decomposition must be read as logical domains, not a mandate to deploy independent microservices. ADR-002 and the operating prompt govern this interpretation.
+- Task 04's technology/vendor matrix is not a procurement or deployment authorization. OpenSearch, object storage provider, identity provider, cloud, queue, orchestration and web framework remain subject to measured evaluation and explicit decisions.
+- The Task 04 proposed ADR numbering list is historical proposal content, not a valid alternative to the accepted current ADR register.
+
+**Recommended document-control action:** add both DOCX working baselines to the repository as versioned source documents or migrate their complete content into canonical Markdown documents after exact content comparison, preserving original versions and change history. Then create one canonical PRD and one canonical architecture baseline. Do not silently replace, shorten or retrospectively rewrite the original v0.1 documents.
+
+**Status:** This is a desk-review crosswalk performed against the exact Library files on 20 November 2026. It is not independent product-owner, scientific, security or legal approval. Task 03 and Task 04 remain working baselines until formally reviewed and accepted.
 
 ## 19. Governance, ownership and change control
 
