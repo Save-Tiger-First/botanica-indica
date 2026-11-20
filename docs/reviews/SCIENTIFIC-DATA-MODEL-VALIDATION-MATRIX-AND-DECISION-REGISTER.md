@@ -120,7 +120,7 @@ Reviewer implications:
 
 ### 5.2 Darwin Core Conceptual Model and non-detection
 
-The current Darwin Core Conceptual Model page identifies version 2026-10-13. It describes Occurrence as an Event establishing the state of an Organism at a particular place and time. The model describes an Occurrence as potentially representing direct observation, indirect inference, or absence of detection of an Organism of a given Taxon in a specified state during an Event at a Location. Events may be hierarchical and must have a location context, even if that location is unknown or withheld.
+The current Darwin Core Conceptual Model page identifies version issued 2026-05-26. It describes Occurrence as an Event establishing the state of an Organism at a particular place and time. The model describes an Occurrence as potentially representing direct observation, indirect inference, or absence of detection of an Organism of a given Taxon in a specified state during an Event at a Location. Events may be hierarchical and must have a location context, even if that location is unknown or withheld.
 
 Official source: https://dwc.tdwg.org/cm/
 
@@ -261,7 +261,7 @@ Attendance, silence, a positive GitHub mergeability value or an empty CI status 
 The following authoritative sources were checked during preparation. Reviewers should re-check current versions before implementation and record the version identifiers they used.
 
 1. TDWG Taxon Concept Standard, List of Terms (version 2025-12-11): https://tcs.tdwg.org/terms/
-2. TDWG Darwin Core List of Terms (version issued 2026-10-13; `occurrenceStatus` term version modified 2026-05-26): https://dwc.tdwg.org/list/ and Darwin Core Conceptual Model: https://dwc.tdwg.org/cm/
+2. TDWG Darwin Core List of Terms (version issued 2026-05-26; previous List version 2025-07-10; `occurrenceStatus` term modified 2026-05-26): https://dwc.tdwg.org/list/ and Darwin Core Conceptual Model: https://dwc.tdwg.org/cm/
 3. GBIF Data Quality Recommendations, including occurrence and sampling-event profiles: https://techdocs.gbif.org/en/data-publishing/data-quality-recommendations
 4. GBIF Data Quality Recommendations (occurrence and sampling-event profiles, including profile-specific status vocabulary): https://techdocs.gbif.org/en/data-publishing/data-quality-recommendations
 5. PostgreSQL 18, Constraints (CHECK is row-local; use FKs/UNIQUE for referential and cardinality integrity; cross-row requirements may need transaction/trigger design): https://www.postgresql.org/docs/18/ddl-constraints.html
@@ -287,7 +287,7 @@ Official reference: https://www.postgresql.org/docs/18/ddl-constraints.html
 
 ### 12.2 Non-detection vocabulary must be mapped, not assumed identical
 
-The current Darwin Core List of Terms was issued 2026-10-13, but the individual `occurrenceStatus` term was modified 2026-05-26. Its definition concerns detection or non-detection of an Organism during an Event and recommends `detected` and `notDetected` as default vocabulary values.
+The current Darwin Core List of Terms was issued 2026-05-26 (previous List version 2025-07-10); the individual `occurrenceStatus` term was also modified 2026-05-26. Its definition concerns detection or non-detection of an Organism during an Event and recommends `detected` and `notDetected` as default vocabulary values.
 
 GBIF's sampling-event recommendations describe `occurrenceStatus` and give `present` and `absent` as standard values in that publishing context. GBIF also explains that sampling-event datasets can support absence inference only when sampling method and effort are described.
 
@@ -331,3 +331,6 @@ See [Task 05C Competing Model Reconciliation Assessment](TASK-05C-COMPETING-MODE
 | PR #11 stacked dependency | PR #11 branch diverges from the updated PR #5 base by one commit each | Synchronize/rebase PR #11 onto the latest PR #5 head, reconcile DR-02 and Event/Occurrence text, then re-review full diff |
 
 The Task 05 and Task 05B edits are present on their existing PR branches but are not merged. No LDM test has been executed by these documentation edits. Task 05E remains NOT READY.
+
+
+**Standards-date correction (20 November 2026):** a direct check of the official TDWG pages confirms that the Darwin Core List of Terms and Conceptual Model were both issued 2026-05-26. The List's previous version is 2025-07-10. The `occurrenceStatus` term modification date is 2026-05-26. An earlier review-pack amendment claiming a 2026-10-13 release was incorrect and has been corrected. See https://dwc.tdwg.org/list/ and https://dwc.tdwg.org/cm/.
