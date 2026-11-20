@@ -40,7 +40,7 @@ The following repository branch heads and file blob SHAs were fetched for this r
 |---|---|---|
 | Task 05 — Data Architecture | PR #3 / `docs/task-05-data-architecture` | `3c011c1256eb69f1e7170c23e8515da23323d912` |
 | Task 05B — Scientific Data Dictionary | PR #4 / `docs/task-05-data-dictionary` | `f7fe078fe2749d558a1e099ef45b5e5d990df558` |
-| Task 05C — Logical Database Model | PR #5 / `docs/task-05c-logical-data-model` | `e6131e867d4bc3dbc58aa1188d0fabc895429347` |
+| Task 05C — Logical Database Model | PR #5 / `docs/task-05c-logical-data-model` | `4a21c0aa3b8ebfef319a9ea1ac6928274b0b3f5b` |
 | Task 05D — Validation and Readiness | PR #11 / `docs/task-05d-logical-model-validation-v3` | `acf446b1bf0204fa0400621711603ab23cc80ff2` |
 | Scientific Data Model Review Pack | PR #9 / `review/scientific-data-model-review-pack` | `dab7427c7c1724dbda1f375289ecde0a286e21c6` |
 
