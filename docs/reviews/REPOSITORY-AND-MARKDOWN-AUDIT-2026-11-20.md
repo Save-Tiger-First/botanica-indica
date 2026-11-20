@@ -18,7 +18,7 @@ The repository has a strong early documentation foundation and several sound sci
 2. The repository currently has 19 branches, including 16 supporting/topic branches; only `main`, `develop` and `staging` are intended to be long-lived.
 3. There were 12 open pull requests at the initial audit snapshot; after opening PR #16, the current count is 13. No submitted PR reviews were returned for the initial 12-PR snapshot. Several dependent or divergent branches remain.
 4. The active `main` ruleset only blocks branch deletion and non-fast-forward updates. It does not require pull requests, approvals, status checks or conversation resolution.
-5. At the audit snapshot, main had no GitHub Actions workflows, workflow runs, releases or configured commit status checks. A proposed governance workflow has since been added on this audit branch; it has not run and is not yet part of main.
+5. At the initial audit snapshot, main had no GitHub Actions workflows, workflow runs, releases or configured commit status checks. The proposed repository-governance workflow has since run successfully on the audit branch at commit `9c150d90b3d8fd627be0da1550da1acf4a90f4f1` (run #17); it is still not part of `main`, and no required status check is configured.
 6. The ten accepted ADRs contained unclosed Markdown code fences. Narrow fixes have been committed on this audit branch; they are not yet merged.
 7. Darwin Core version metadata requires fresh resolution: latest indexed official metadata reports 2026-10-13 for both the List of Terms and Conceptual Model, while direct HTML retrieval returned 2026-05-26 for the List. Treat DR-09 as open until exact versioned documents and term IRIs are independently verified.
 8. Task 05D still contains a non-detection wording defect and does not fully capture the IdentificationSubject total-participation caveat.
@@ -390,3 +390,12 @@ Latest indexed metadata for both official TDWG pages reports Date version issued
 This is not enough to claim that the complete current versioned documents and every relevant term IRI have been verified. DR-09 remains open. Before closure, retrieve the exact versioned List, Conceptual Model, core-term and relevant term IRIs; compare their content and record each document-version date separately from term-level modification dates and namespace snapshots. Do not infer that every term changed on the document issue date. The prior Section 13 conclusion that both documents were definitively 2026-05-26 is superseded; the earlier 2026-10-13 amendment should not be labelled erroneous without resolving this retrieval conflict.
 
 Current official page references: https://dwc.tdwg.org/list/ ; https://dwc.tdwg.org/cm/ ; https://rs.tdwg.org/dwc/terms.htm .
+
+
+## 15. Subsequent repository state refresh (20 November 2026)
+
+A further live GitHub API check after creation of PRs #17–#20 reports **23 branches**: exactly three designated long-lived branches (`main`, `develop`, `staging`) and 20 topic/workstream branches. There are **17 open PRs**: #1–#5, #8, #9, #11–#20. No PR was merged as part of this refresh. `main`, `develop` and `staging` remain identical at `f165ecb9b4d9de115c02327cf779982b7ef4bbd4`. All 20 topic branches compare ahead of `main` with zero commits behind; however, stacked PR comparisons still show divergence: PR #11 is 3 commits ahead/1 behind PR #5, and PR #12 is 4 ahead/3 behind PR #8. Preserve these dependencies and do not retarget or delete branches without a branch-by-branch review.
+
+The active repository ruleset `Protect main branch` currently enforces only deletion prevention and non-fast-forward prevention. It does not require pull requests, approving reviews, conversation resolution or status checks. `develop` and `staging` have no active ruleset in the verified ruleset listing. The successful PR #16 workflow run validates the current script's Markdown fence and routing checks, but it does not provide merge protection because no required check is configured.
+
+The default `main` tree remains documentation/governance-led: 18 root-tree entries and no TypeScript, JavaScript, Python, Dart or SQL application source files were found. The target application structure in PR #20 remains proposed, not implemented.
