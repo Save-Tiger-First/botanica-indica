@@ -683,3 +683,15 @@ The assessment recommends Candidate A as the canonical review candidate, not as 
 **Important Darwin Core clarification:** the current Darwin Core Conceptual Model was issued 2026-05-26. It is explicitly a high-level, non-normative semantic framework (except its status section), does not prescribe a database implementation, and allows implementations to include additional entities and relationships. In that conceptual model, Occurrence and Survey are specialized types of Event; an Event can provide shared spatio-temporal context to multiple Occurrences and Material Entities. A recommended internal relational pattern to evaluate is therefore an Event supertype with Survey and Occurrence specializations/extensions, while retaining Botanica Indica Observation as a distinct contributor/workflow record. This is a design recommendation for review, not a final schema decision. Official source: https://dwc.tdwg.org/cm/
 
 The reconciliation assessment is a desk review. No external taxonomist, ecologist, biodiversity-informatics specialist or database architect has signed off. LDM scenarios remain Not tested until reproducible fixtures and implementation evidence exist. Task 05E remains NOT READY.
+
+
+### 4.7 Cross-document reconciliation — Task 05, 05B and 05D (20 November 2026)
+
+A further comparison of the current Task 05, Task 05B and Task 05D source documents found:
+
+1. Task 05's Event/Occurrence wording did not explicitly reflect the current Darwin Core Conceptual Model's Event specialization semantics. Task 05 (PR #3) has been updated to describe Survey and Occurrence as Event specializations and to distinguish a shared contextual Event from multiple Occurrences/Material Entities. The Darwin Core Conceptual Model is non-normative and does not dictate the database schema.
+2. Task 05B had inconsistent Identification subject patterns: the field table specified one `IdentificationSubject` row with exactly one populated FK, while a later paragraph proposed three separate typed link tables. Task 05B (PR #4) has been updated to use the single-row, three-real-FK pattern proposed in Task 05C, with a row-local exactly-one CHECK, unique Identification FK and a separate total-participation enforcement requirement. A CHECK alone does not guarantee that every Identification has a subject row.
+3. Task 05's GBIF paragraph overstated the status of `basisOfRecord`, `scientificName` and `eventDate` for general occurrence publishing. It has been corrected to distinguish general occurrence datasets from GBIF-managed programmes and sampling-event datasets.
+4. PR #11 is stacked on PR #5. After the LDM-16 editorial correction on PR #5, GitHub reports the two branches as diverged by one commit each. PR #11 must be synchronized with the latest PR #5 head and re-reviewed before any merge decision. Its DR-02 wording also needs the total-participation caveat.
+
+See the expanded [Task 05C Competing Model Reconciliation Assessment](TASK-05C-COMPETING-MODEL-RECONCILIATION.md), Sections 11–12. These edits are proposed documentation changes on PR #3 and PR #4, not merged or independently approved. Task 05E remains NOT READY.
