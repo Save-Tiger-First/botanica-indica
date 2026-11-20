@@ -1106,7 +1106,7 @@ The data architecture task should be considered ready for physical implementatio
 Official and primary references consulted:
 
 1. TDWG, Darwin Core standard: https://www.tdwg.org/standards/dwc/
-2. TDWG, Darwin Core List of Terms (version issued 2026-10-13): https://dwc.tdwg.org/list/
+2. TDWG, Darwin Core List of Terms (version issued 2026-05-26): https://dwc.tdwg.org/list/
 3. TDWG, Taxon Concept Standard: https://tcs.tdwg.org/
 4. GBIF, Data publishing technical documentation: https://techdocs.gbif.org/en/data-publishing/
 5. GBIF, Dataset classes: https://techdocs.gbif.org/en/data-publishing/dataset-classes
