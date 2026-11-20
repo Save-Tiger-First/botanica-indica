@@ -1,0 +1,31 @@
+name: Repository governance
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, edited]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  markdown-and-branch-policy:
+    name: Markdown integrity and branch routing
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Validate Markdown and pull-request routing
+        if: github.event_name == 'pull_request'
+        run: |
+          python scripts/check_repository_governance.py \
+            --base "${{ github.event.pull_request.base.ref }}" \
+            --head "${{ github.event.pull_request.head.ref }}" \
+            --body "${{ github.event.pull_request.body }}"
+      - name: Validate Markdown on manual run
+        if: github.event_name == 'workflow_dispatch'
+        run: python scripts/check_repository_governance.py
