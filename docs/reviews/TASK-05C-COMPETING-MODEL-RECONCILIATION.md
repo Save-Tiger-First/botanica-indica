@@ -101,16 +101,19 @@ Candidate A is the preferred review candidate, but it must not be treated as rea
 
 ### 6.1 Event and Occurrence semantics — high priority
 
-The current Darwin Core Conceptual Model treats Occurrence as a type of Event. Candidate A represents Event and Occurrence as separate internal entities with a relationship. That can be a valid internal design, but the document must explicitly explain the semantic mapping and show how the internal distinction represents the Darwin Core Event/Occurrence relationship without loss or contradiction.
+The current Darwin Core Conceptual Model treats Occurrence and Survey as specialized types of Event. Candidate A has separate logical Event and Occurrence entities with a relationship. That can be implemented relationally as a supertype/subtype or shared-identity extension pattern, but the model must make the subtype semantics explicit. The Darwin Core Conceptual Model is a high-level, non-normative framework (except its status section), not a prescribed database schema. It explicitly allows internal entities and relationships beyond the conceptual model and notes that one contextual Event may provide shared spatio-temporal context to multiple Occurrences and Material Entities.
+
+**Recommended pattern to evaluate:** an Event supertype with Survey and Occurrence specializations/extensions, plus an explicit parent/child Event relationship for nested survey structure. Keep Botanica Indica Observation as a distinct contributor/workflow record. It may link to capture Events, contextual Surveys, and/or Occurrences through explicit associations whose roles/cardinalities are defined.
 
 Required review:
-- Is internal Occurrence a specialized Event, a distinct interpretation record linked to a contextual Survey/Event, or a combination of these?
+- Is Event the shared identity/supertype for Survey and Occurrence in the internal relational model, or is there an alternative with demonstrably loss-aware Darwin Core mapping?
 - How are parent/child Events represented?
 - Can one Survey/Event report multiple Occurrences?
 - Can a single contextual Event support multiple Occurrences and MaterialEntities?
-- What does a non-detection record target and how is it bounded by survey target, protocol, effort, time and location?
+- Can one Observation refer to one capture Event, a Survey Event, multiple Events, or none where context is unavailable?
+- What does a non-detection record target and how is it bounded by survey target, protocol, effort, time, location and reporting completeness?
 
-Do not settle this by renaming tables. Add an explicit conceptual model and fixtures.
+Do not settle this by renaming tables. Add an explicit conceptual model, cardinality rules and executable fixtures.
 
 ### 6.2 Observation-to-Event linkage — high priority
 
