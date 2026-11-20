@@ -317,3 +317,17 @@ A full desk comparison of the two competing Task 05C documents is recorded in [T
 The LDM-16 sentence in the PR #5 Task 05C document has received a narrow editorial correction to state: “the absence of an Occurrence row must never be interpreted as evidence of absence.” No scientific meaning or model cardinality was changed by that edit.
 
 These are proposed dispositions, not expert sign-off. All LDM cases remain Not tested until executable fixtures and actual implementation evidence are recorded. Task 05E remains NOT READY.
+
+
+## 14. Cross-document reconciliation updates (20 November 2026)
+
+See [Task 05C Competing Model Reconciliation Assessment](TASK-05C-COMPETING-MODEL-RECONCILIATION.md), Sections 11–12, and Section 4.7 of the Scientific Data Model Review Pack.
+
+| Topic | Current proposed alignment | Remaining validation |
+|---|---|---|
+| Event / Survey / Occurrence | Task 05 now describes Survey and Occurrence as specialized Event types, with a contextual Event capable of providing shared context to multiple Occurrences and Material Entities | Review Event supertype/subtype implementation, nested Events, Survey targets/completeness, Observation links and Darwin Core mapping with ecologist and biodiversity informatician |
+| IdentificationSubject | Task 05B and Task 05C now align on one IdentificationSubject row per Identification with three nullable real target FKs and a row-local exactly-one CHECK | Prove unique Identification FK, target FK integrity and total participation; CHECK alone does not ensure a subject row exists |
+| GBIF profiles | Task 05 now distinguishes general occurrence, GBIF-managed and sampling-event publishing profiles | Pin the exact target profile/version and execute export validation; do not convert publishing expectations into internal validity rules |
+| PR #11 stacked dependency | PR #11 branch diverges from the updated PR #5 base by one commit each | Synchronize/rebase PR #11 onto the latest PR #5 head, reconcile DR-02 and Event/Occurrence text, then re-review full diff |
+
+The Task 05 and Task 05B edits are present on their existing PR branches but are not merged. No LDM test has been executed by these documentation edits. Task 05E remains NOT READY.
