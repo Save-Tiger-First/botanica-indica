@@ -84,6 +84,21 @@ Rules:
 
 This owner directive overrides the general temporary-branch permission in Section 3 while it remains in force. It does not authorize force-pushes, PR merges/closures, branch deletion or other irreversible actions without the approvals required by the project operating standard.
 
+### 3.2 Immediate seven-branch ceiling — current owner directive
+
+**Effective instruction date: 20 November 2026.** The project owner has now set a stricter, immediate target: the repository is to contain **no more than seven branches in total during active development, including temporary branches**.
+
+- The three designated long-lived branches remain `main`, `develop` and `staging`.
+- No more than **four temporary branches** may remain active. The seven-branch ceiling is a total repository branch count, not a limit that excludes task branches.
+- No new branch may be created to accomplish this reduction. Existing branches must be reused as consolidation destinations.
+- Proposed consolidation destinations, subject to content and dependency review, are: `docs/repository-audit-and-ai-operating-standard` (governance/operating prompt), `docs/full-system-architecture-and-repo-engineering-plan` (product/requirements/architecture package), `review/scientific-data-model-review-pack` (scientific data architecture, dictionary, Task 05C/05D and review findings), and `strategy/naturetech-biodiversity-conservation-impact` (STF strategy, readiness and Bengaluru feasibility/site research). These four are provisional working destinations, not approved content or decisions.
+- Rights/licensing and ecosystem-boundary proposals must be preserved within the governance review package or another existing retained workstream after cross-document review; they are not to be silently approved by consolidation.
+- Consolidation means preserving and reconciling content in an existing retained branch. It does not mean merging a PR, approving a proposal, changing an ADR or authorizing implementation.
+- A branch with an open PR cannot be deleted through the PR's Delete branch control. GitHub requires the associated PR to be merged or closed and no other open PR to reference that branch before deletion. A merged PR may offer Delete branch or automatic head-branch deletion. For an unassociated branch, use the repository's branch-management deletion workflow after preservation review.
+- Therefore, the seven-branch target is an urgent controlled cleanup target, but the count must not be represented as achieved until the live GitHub branch list is re-fetched and confirms seven or fewer branches.
+
+The project owner has explicitly requested PR-based retirement. For each branch with unique required content, use its existing PR or open a preservation/consolidation PR from that existing branch into an existing retained branch; after review and merge, delete the source head branch. For a branch whose work is rejected or obsolete, record the reason, close its associated PR, then delete the branch. Do not create a new branch for a retirement PR. These steps still require the applicable review and merge/closure/deletion approvals under the operating prompt.
+
 ## 4. Standard development workflow
 
 ```text
