@@ -273,7 +273,7 @@ The content was fetched from the named feature branches. PR #7 must be reviewed 
 | DR-06 | **Major** | 05B, 05C | **Taxonomic determination should not become a mutable occurrence fact.** Task 05B includes an optional `taxon_concept_id` on Occurrence described as the current determination target. Task 05C models Identification as a separate, revisable assertion. Define whether the occurrence's displayed taxon is a derived view from the current accepted Identification, and how the historical determination and treatment are retained. Avoid storing a mutable duplicate that can disagree with identification history. |
 | DR-07 | **Major** | 05B, 05C, 05D | **Occurrence and Event semantics need one consistent internal-to-Darwin-Core mapping.** Darwin Core defines Occurrence as an Event establishing the state of an Organism at a place and time; Organism, Occurrence and MaterialEntity are distinct. Its `occurrenceStatus` term can represent detection or non-detection during an Event. The internal model must preserve this distinction and require event/survey protocol, effort, target and location evidence for an explicit absent state; absence of an Occurrence row is not evidence of absence. |
 | DR-08 | **Major** | 05B | **The Mango example is an apparent geographic-scale tension, not yet a demonstrated direct source contradiction.** POWO reports a native range including Assam and East Himalaya while its broad distribution list places “India” under introduced; eFlora of India says “native to: s Asia and India”. These geographic units are not equivalent. Preserve the example, but label it as a scale/resolution and source-scope reconciliation case until the claims are normalized to comparable geographic units and reviewed. Do not teach it as a proven contradiction. |
-| DR-09 | **Not a valid finding — corrected 16 November 2026** | 05, 05B, 05C | The earlier desk review incorrectly stated that the current Darwin Core List of Terms release was 2026-05-26. A fresh check of the official TDWG page confirms that the current version is issued 2026-10-13, with 2026-05-26 shown as the previous version. The original Task 05B reference to 2026-10-13 was correct. Continue to distinguish the List release version from individual term modification dates and term-version IRIs. |
+| DR-09 | **Re-opened — source/version metadata corrected 20 November 2026** | 05, 05B, 05C | The official TDWG List of Terms page identifies 2026-05-26 as the current issued List version and 2025-07-10 as the previous List version. The official Darwin Core Conceptual Model also identifies 2026-05-26 as its issued version. The `occurrenceStatus` term was modified 2026-05-26. Keep document release dates distinct from individual term modification dates and term-version IRIs. |
 | DR-10 | **Major** | 05B, 05C | **Source record identifiers need stronger canonical linkage.** Task 05B has string `source_record_id` fields on Occurrence and TaxonNameUsage. Task 05C defines SourceRecord with dataset version, ingestion run and namespace context. Use a canonical source-record reference or a formally constrained external-identifier tuple; a bare string is insufficient to guarantee uniqueness or trace lineage. |
 | DR-11 | **Major** | 05B | **The synonym mapping wording should explicitly name the TCS object type.** TCS `synonym` relates a TaxonConcept to a TaxonName, not to a TaxonNameUsage object and not to another TaxonConcept. Preserve TaxonNameUsage separately as the source's usage/record, then link the TCS synonym assertion to the reusable TaxonName. |
 | DR-12 | **Major** | 05B, 05D | **Source authority and evidence class should be recorded for the Indian examples.** IPNI, POWO, BSI and eFlora of India have different roles and authority models. eFlora of India includes community-submitted content and should not be described as equivalent in authority to a formal national flora or a nomenclatural index. Record source type, editorial/curation model, geographic scope, date and limitations; do not use a website's presence alone as a source-quality rating. |
@@ -284,9 +284,9 @@ The content was fetched from the named feature branches. PR #7 must be reviewed 
    https://tcs.tdwg.org/terms/  
    Version IRI: https://rs.tdwg.org/tcs/doc/terms/2025-12-11
 
-2. **Darwin Core List of Terms:** the official page identifies the current list version as issued 2026-10-13; 2026-05-26 is the previous version. Individual terms carry their own modification/version dates.  
+2. **Darwin Core List of Terms:** the official page identifies the current List version as issued 2026-05-26; 2025-07-10 is the previous version. Individual terms carry their own modification/version dates.  
    https://dwc.tdwg.org/list/  
-   Version IRI: https://rs.tdwg.org/dwc/doc/list/2026-10-13
+   Version IRI: https://rs.tdwg.org/dwc/doc/list/2026-05-26
 
 3. **Darwin Core conceptual model:** the modern Occurrence semantics distinguish Organism, Occurrence and MaterialEntity; an Occurrence is an Event establishing the state of an Organism at a place and time.  
    https://dwc.tdwg.org/cm/
@@ -654,7 +654,7 @@ GBIF's current data-quality recommendations distinguish occurrence datasets from
 
 - DR-01 to DR-07, DR-10 to DR-12 are **revised in the proposed documents; not yet closed**.
 - DR-08 remains an open source/geographic-resolution test case, not a demonstrated contradiction.
-- DR-09 is **withdrawn as an erroneous desk-review finding** after live verification of the official Darwin Core List release.
+- DR-09 is **re-opened for correction** because a later review-pack amendment incorrectly changed the official Darwin Core release date to 2026-10-13.
 - Physical design and Task 05E remain **not authorized**.
 - No external scientific expert has signed off on these changes.
 
@@ -663,7 +663,7 @@ A reviewer must compare the exact branch diffs, validate the six TCS relation se
 
 ### 4.5 Standards verification correction and additional semantic refinements (16 November 2026)
 
-A fresh live check of the official Darwin Core List of Terms page corrected an error in the preliminary desk review. The page currently identifies **Date version issued: 2026-10-13**, and identifies 2026-05-26 as the previous version. Therefore DR-09 is withdrawn as an erroneous finding. The Task 05B citation to 2026-10-13 was correct. Individual terms may have their own modification dates and version IRIs; these must not be confused with the List release version. Official source: https://dwc.tdwg.org/list/
+A subsequent source re-verification found that the 16 November 2026 review-pack amendment was incorrect. The official Darwin Core List of Terms page identifies **Date version issued: 2026-05-26**, with 2025-07-10 as the previous List version. The official Darwin Core Conceptual Model page also identifies **Date version issued: 2026-05-26**. The `occurrenceStatus` term itself is marked **Modified: 2026-05-26**, with term-version IRI `https://rs.tdwg.org/dwc/terms/version/occurrenceStatus-2026-05-26` (and corresponding IRI-namespace term version). These are consistent dates, not evidence of a 2026-10-13 release. DR-09 is therefore re-opened to correct the erroneous amendment and re-check all project references. Official sources: https://dwc.tdwg.org/list/ and https://dwc.tdwg.org/cm/
 
 The same verification checked the current Darwin Core Occurrence and OccurrenceStatus definitions. Darwin Core describes an Occurrence as an Event establishing the state of an Organism at a place and time, and the OccurrenceStatus term can state detection or non-detection during an Event. Consequently, non-detection should not be categorically described as a separate non-Darwin-Core entity. Botanica Indica may represent an explicit absent/non-detected state on an Occurrence where the survey Event, protocol, effort, target and location support it. An absent record must never be inferred from no row being present. Official term list and conceptual model: https://dwc.tdwg.org/list/ and https://dwc.tdwg.org/cm/
 
@@ -695,3 +695,8 @@ A further comparison of the current Task 05, Task 05B and Task 05D source docume
 4. PR #11 is stacked on PR #5. After the LDM-16 editorial correction on PR #5, GitHub reports the two branches as diverged by one commit each. PR #11 must be synchronized with the latest PR #5 head and re-reviewed before any merge decision. Its DR-02 wording also needs the total-participation caveat.
 
 See the expanded [Task 05C Competing Model Reconciliation Assessment](TASK-05C-COMPETING-MODEL-RECONCILIATION.md), Sections 11–12. These edits are proposed documentation changes on PR #3 and PR #4, not merged or independently approved. Task 05E remains NOT READY.
+
+
+### 4.8 Correction to the standards-date amendment (20 November 2026)
+
+A direct re-check of the live TDWG pages shows that both the Darwin Core List of Terms and Darwin Core Conceptual Model were issued 2026-05-26. The List page identifies 2025-07-10 as the previous List version. The `occurrenceStatus` term was modified 2026-05-26. A prior amendment in this review pack incorrectly stated 2026-10-13; that amendment is corrected here. All downstream references must use the current source metadata and must not infer release dates from a term-level date or an earlier draft.
