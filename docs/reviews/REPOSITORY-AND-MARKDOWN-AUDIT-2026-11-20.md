@@ -111,6 +111,7 @@ At the snapshot there were 12 open PRs and three closed, unmerged PRs. All 12 op
 | #12 | Organisational readiness | PR #8 branch | Open, draft | Stacked; base/head diverged (four ahead, three behind) |
 | #13 | Bengaluru pilot proposal | main | Open, draft | Proposal only; no site, budget or fieldwork approval |
 | #14 | Bengaluru site assessment | main | Open, draft | Preliminary assessment; no site selected |
+| #16 | Repository audit and AI operating standard | develop | Open, draft | Adds audit, permanent prompt, ADR Markdown fixes, README correction and governance workflow; workflow passed on current branch |
 | #15 | Branching and release governance | develop | Open, ready for review | Policy proposal; should be reviewed before adoption |
 
 Closed PRs:
@@ -172,7 +173,7 @@ The initial pre-audit branch inventory contained **33 distinct Markdown paths an
 
 | # | Markdown path | Branch/ref | Audit observation |
 |---:|---|---|---|
-| 1 | `README.md` | main | Good project framing; duplicate H1; repository tree and ADR inventory need updating as docs mature |
+| 1 | `README.md` | main | Good project framing; duplicate H1 in main snapshot corrected on PR #16 branch; repository tree and ADR inventory need final review |
 | 2 | `CONTRIBUTING.md` | main | Strong scientific/provenance principles; development workflow says branching policy will evolve; align with PR #15 |
 | 3 | `.github/pull_request_template.md` | governance/branch-lifecycle-policy | Useful branch routing/evidence checklist; proposed until PR #15 adopted |
 | 4 | `docs/adr/ADR-001-architecture-principles.md` | main | Accepted; unclosed code fence fixed on audit branch |
@@ -205,6 +206,8 @@ The initial pre-audit branch inventory contained **33 distinct Markdown paths an
 | 31 | `docs/strategy/STF-NATURETECH-BIODIVERSITY-INTELLIGENCE-AND-CONSERVATION-IMPACT.md` | strategy/naturetech-biodiversity-conservation-impact and governance branch | Very long 1,189-line paper; heading numbering/order needs cleanup; keep strategic context distinct from approved programme |
 | 32 | `docs/strategy/STF-BENGALURU-URBAN-BIODIVERSITY-FEASIBILITY-PILOT-PROPOSAL.md` | proposal/bengaluru-urban-biodiversity-feasibility-pilot | Proposal only; no site selected, no permission, no partner or expenditure approval |
 | 33 | `docs/strategy/STF-BENGALURU-PILOT-SITE-SELECTION-ASSESSMENT.md` | research/bengaluru-pilot-site-selection | Preliminary desk comparison; no site selected; current authority/management must be reverified |
+| 34 | `docs/governance/AI-PROJECT-OPERATING-PROMPT.md` | docs/repository-audit-and-ai-operating-standard | Permanent project operating prompt; proposed until PR #16 is reviewed and merged |
+| 35 | `docs/reviews/REPOSITORY-AND-MARKDOWN-AUDIT-2026-11-20.md` | docs/repository-audit-and-ai-operating-standard | Repository, Markdown, branch and PR audit; dated snapshot with subsequent correction log |
 
 ## 6. Markdown quality findings
 
