@@ -57,7 +57,7 @@ def check_fences(path: Path, text: str) -> list[str]:
 
 def check_relative_links(path: Path, text: str) -> list[str]:
     warnings: list[str] = []
-    pattern = re.compile(r"!??\[[^\]]*\]\(([^)]+)\)")
+    pattern = re.compile(r"!?\[[^\]]*\]\(([^)]+)\)")
     for match in pattern.finditer(text):
         raw = match.group(1).strip().split()[0].strip("<>")
         if not raw or raw.startswith(("#", "http://", "https://", "mailto:", "data:")):
