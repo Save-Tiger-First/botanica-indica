@@ -225,3 +225,51 @@ Each fixture must record expected result, actual result, source version, impleme
 7. Keep Task 05E blocked until the documented readiness gate is passed.
 
 **No branch has been merged or deleted as part of this assessment. No expert review or model approval is claimed.**
+
+
+## 11. Cross-document consistency findings from Task 05, Task 05B and Task 05D
+
+The reconciliation was extended to the exact current documents on PR #3, PR #4 and PR #11. This revealed two additional cross-document issues and one standards-description issue.
+
+### 11.1 Event, Survey and Occurrence semantics
+
+- Task 05 initially described Occurrence as evidence of presence and Event as a contextual container for occurrences, without explicitly stating that the current Darwin Core Conceptual Model treats Occurrence and Survey as specialized Event types.
+- Task 05B defines Occurrence as a state record with optional `event_id`, while Task 05C separately models Event and Occurrence.
+- The current Darwin Core Conceptual Model (issued 2026-05-26) states that Occurrence and Survey are specialized Event types, and that one contextual Event may provide shared spatio-temporal context to multiple Occurrences and Material Entities. It also expressly says the conceptual model is non-normative and does not prescribe a database schema.
+
+**Change made:** Task 05 (PR #3) was updated to clarify the Event supertype/subtype design option, Occurrence's event semantics, Survey as a specialized Event, contextual Events, and the difference between Observation and Occurrence. This is a proposed logical direction, not a finalized schema.
+
+### 11.2 Identification subject pattern mismatch
+
+Task 05B contained two inconsistent patterns:
+- the Identification field table required one `IdentificationSubject` row with exactly one populated target FK; but
+- a later paragraph proposed three separate link entities (`IdentificationObservationSubject`, `IdentificationOccurrenceSubject`, `IdentificationMaterialEntitySubject`).
+
+Task 05C proposes one `IdentificationSubject` row with three nullable target FK columns, each a real FK, and a row-local exactly-one CHECK. This is a logical-pattern mismatch across documents and within Task 05B.
+
+**Change made:** Task 05B (PR #4) now uses one canonical `IdentificationSubject` row per Identification, with three nullable real FK columns, row-local exactly-one CHECK, unique Identification FK, and a separate total-participation enforcement requirement. It explicitly states that CHECK alone cannot guarantee every Identification has a subject row. This aligns the logical pattern with Task 05C without claiming physical implementation.
+
+### 11.3 GBIF occurrence requirements in Task 05
+
+Task 05 initially stated that GBIF occurrence publishing guidance requires occurrenceID, basisOfRecord, scientificName and eventDate without distinguishing general occurrence datasets from GBIF-managed programmes. Current GBIF technical documentation states that `occurrenceID` is required; `basisOfRecord`, `scientificName` and `eventDate` are strongly recommended in the general occurrence profile and required for GBIF-managed programmes. Sampling-event datasets have a distinct profile.
+
+**Change made:** Task 05 (PR #3) now describes the profile-specific status and explicitly says export requirements are not universal internal database constraints.
+
+### 11.4 Task 05D dependency and outstanding synchronization
+
+PR #11 is stacked on PR #5. After the narrow LDM-16 editorial correction was committed to PR #5, GitHub's compare endpoint reports the PR #11 head branch and updated PR #5 base branch as diverged by one commit each. The PR #11 head has not been rebased/synchronized to the latest PR #5 head in this pass. Do not merge or retarget PR #11 until its base is synchronized and its diff is re-reviewed.
+
+The PR #11 document's DR-02 row currently describes the row-local CHECK pattern but must also be reconciled with the total-participation caveat now recorded in Task 05B, Task 05C and the validation register. Its Event/Occurrence assumptions also need to be updated after the design review.
+
+### 11.5 Verification state of the cross-document edits
+
+The Task 05 and Task 05B edits were committed on their existing PR branches and must be reviewed in PR #3 and PR #4. They are document-level proposals only. No PR was merged, no external expert approval is claimed, and Task 05E remains NOT READY.
+
+## 12. Updated recommendation
+
+1. Retain PR #5 Task 05C as the canonical review candidate, subject to resolution of the Event/Survey/Occurrence pattern and Observation/Event cardinalities.
+2. Retain the single-row typed-FK `IdentificationSubject` pattern as the preferred logical option, with total participation treated as a separate integrity requirement.
+3. Review the Task 05 / Task 05B edits in PRs #3 and #4 for scientific and editorial correctness.
+4. Synchronize PR #11 with the latest PR #5 head and reconcile its DR-02 and Event/Occurrence wording before any merge decision.
+5. Keep all four scientific architecture PRs in draft until their blocking questions and independent discipline reviews are complete.
+6. Keep Task 05E blocked.
