@@ -45,7 +45,8 @@ This follows accepted ADR-002 and avoids turning a scientifically complex produc
 Repository: `Save-Tiger-First/botanica-indica`  
 Default branch: `main`  
 Main commit inspected: `f165ecb9b4d9de115c02327cf779982b7ef4bbd4`  
-Repository tree SHA: `f165ecb9b4d9de115c02327cf779982b7ef4bbd4`
+Main commit SHA: `f165ecb9b4d9de115c02327cf779982b7ef4bbd4`  
+Root Git tree SHA: `cc15676cd415057ed927af22fba57dc147ea1e8f`
 
 The complete `docs/governance/AI-PROJECT-OPERATING-PROMPT.md` was fetched from `docs/repository-audit-and-ai-operating-standard`; blob SHA:
 
@@ -55,8 +56,9 @@ It is followed as the working operating standard until PR #16 is accepted and me
 
 At the inspection point:
 - `main`, `develop` and `staging` were identical at the SHA above.
-- The repository had 22 branches: the three designated long-lived branches plus 19 topic branches.
-- 16 PRs were open; none of the reviewed PRs #1–#19 was merged.
+- At the time of the initial architecture-plan snapshot, the repository had 22 branches (3 designated long-lived and 19 topic branches) and 16 open PRs; this snapshot preceded the creation/opening of PR #20.
+- A fresh verification after PR #20 opened reports 23 branches (3 designated long-lived and 20 topic branches) and 17 open PRs. All 17 are currently open; no PR has been merged in the current inventory.
+- `main`, `develop` and `staging` remain identical at `f165ecb9b4d9de115c02327cf779982b7ef4bbd4`.
 - PRs #17, #18 and #19 remain proposals, not approved baselines.
 - The default-branch tree contained 18 entries and **no application source-code files**. The repository is currently documentation/governance-led; no application implementation was verified.
 - No branch was deleted, no PR merged, and no repository protection or setting changed during this work.
