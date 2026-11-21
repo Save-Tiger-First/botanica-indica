@@ -874,3 +874,52 @@ The merge base is `f165ecb9b4d9de115c02327cf779982b7ef4bbd4`. This is a real int
 - No scientific test, independent specialist review or legal review was performed or claimed.
 
 **Next recommended task:** prepare the PR #15 owner decision (close as superseded or retain) and a separate, file-level governance readiness checklist for PR #16. Do not perform either PR lifecycle action or delete the PR #15 head branch without the required explicit authorization.
+
+
+
+## 20.11 Automation-hardening implementation snapshot — 21 November 2026
+
+**Scope:** PR #16 governance automation remediation. This is an append-only current-state record; earlier snapshots above remain historical evidence.
+
+### 20.11.1 Current repository and PR state
+
+- PR #16 remains **open and draft**, targeting `develop`.
+- Current PR #16 head: `6f27e14668b4749fa1210f78c00b0d78f2b99e74`.
+- PR #16 metadata: 110 commits, 26 changed files, 4,019 additions and 19 deletions.
+- Comparison against `develop`: 110 ahead / 0 behind; merge base `f165ecb9b4d9de115c02327cf779982b7ef4bbd4`.
+- Live branch inventory remains 23; the no-new-branches and immediate seven-branch directives remain unmet.
+- Live open PR inventory remains 20.
+- PR #15 remains open and non-draft. Its head `633105210d3a6c4c8e36287ed2dc44dee23f61ef` is still an ancestor of PR #16. Fresh comparison: 92 ahead / 0 behind, merge base equal to PR #15 head.
+- `main` remains 1 commit ahead of `develop`, with the Hortus Malabaricus crosswalk as the sole main-only file.
+
+### 20.11.2 Automation changes committed on the existing PR #16 branch
+
+1. `scripts/check_repository_governance.py` now default-denies unsupported PR base branches, permits only exact existing stacked-PR number/base/head combinations, and removes PR-body text as a hotfix authorization input. The owner-approved hotfix allowlist is empty by default.
+2. The checker now has a dated 23-branch baseline, rejects unregistered branch names, verifies that `main`, `develop` and `staging` remain present, and warns while the live count exceeds seven. The seven-branch excess is deliberately a warning rather than a hard failure so the cleanup PRs can continue to run. This check detects inventory drift; it does not technically prevent an authorized GitHub user from creating a branch.
+3. Markdown fence checking now handles matching backtick/tilde fence characters, minimum closing-fence length, closing-line whitespace and the backtick info-string restriction. Relative-link checks have a documented limited scope and remain advisory.
+4. `tests/test_repository_governance.py` adds regression tests for default-deny routing, exact legacy/stacked exceptions, branch inventory, required long-lived branches, fence parsing and relative links.
+5. `.github/workflows/repository-governance.yml` sets checkout `persist-credentials: false`, retains `contents: read`, and adds a live branch-inventory step.
+
+### 20.11.3 Exact commit and blob provenance
+
+| File | Commit SHA | Resulting blob SHA |
+|---|---|---|
+| `scripts/check_repository_governance.py` | `193835b921bc4beaafd80da8de5563373fca23b8` | `7036f21a749326f27a3952504bde42b870e0b8c5` |
+| `tests/test_repository_governance.py` | `326dc559c7266025c34021de384193ea1c5a29f7` | `cc96e2b4e2bb3eae7f9b8837cea2254ad5a78dc2` |
+| `.github/workflows/repository-governance.yml` | `6f27e14668b4749fa1210f78c00b0d78f2b99e74` | `c977c8209791238da3a213caa9c8b4acf438ae01` |
+
+All three files were fetched again from the target branch after the writes and their resulting blob SHAs were verified. The final workflow commit is the current PR #16 head.
+
+### 20.11.4 Verification status and limitations
+
+- The workflow-run lookup for current head `6f27e14668b4749fa1210f78c00b0d78f2b99e74` returned no PR-triggered run. The previously inspected successful run 44901677252 is associated with the earlier commit `05bf12ec34c724ada2aec3f2631323a12878673f`, not the current head. **Do not report CI as passing on the current head.**
+- The three updated files were fetched and their content/blob SHAs verified. This is repository-write verification, not runtime test execution.
+- No local test runner or current-head workflow execution was verified in this step. The new tests and branch-inventory API call remain pending execution on the current head.
+- The branch baseline is an explicit allowlist. It detects unregistered names during workflow execution but cannot prevent branch creation itself. GitHub rulesets/permissions would be needed for stronger prevention; no such settings were changed.
+- The branch count remains 23, so the seven-branch requirement is not met.
+
+### 20.11.5 Non-actions
+
+No PR was merged, closed, marked ready or retargeted. No branch was created, renamed, deleted or force-pushed. No repository protection, ruleset, permission, default branch or repository setting was changed. No ADR, scientific model, product requirement, licensing policy or strategy was approved.
+
+**Next recommended action:** obtain a current-head workflow run and inspect all test/log output; fix any failures before treating this automation pass as validated. Then update the historical governance snapshot cross-references and request independent maintainer review. Keep PR #16 draft and PR #15 open pending explicit owner decisions.
