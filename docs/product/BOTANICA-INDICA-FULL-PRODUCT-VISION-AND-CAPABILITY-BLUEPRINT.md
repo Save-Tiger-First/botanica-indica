@@ -1058,3 +1058,36 @@ Until those decisions are recorded, this document remains **Proposed**.
 ---
 
 **End of document — STF-BI-FP-001, Version 0.1**
+
+ 
+## 21. Research-material review and standards clarification — 21 November 2026
+
+Four September 2026 working materials were reviewed: the Master Project Checklist, Task 01 Project Charter v0.1, Task 02 Problem & Opportunity Analysis, and an architecture/UI/UX/effort-estimation study. They are useful source material, not approved product, architecture, technology, budget or delivery decisions.
+
+### 21.1 Product concepts retained
+
+The material reinforces the proposed full-product direction already represented in this Blueprint and Task 03: India-first botanical intelligence; an evidence-aware identification journey; the ability to abstain or request better evidence; taxonomic and geographic context; structured observations; expert/scientific review; and a reusable but bounded STF platform layer.
+
+The “Evidence Score” concept is not adopted as one universal score. Keep model similarity/calibrated probability, evidence quality/completeness, taxonomic support, geographic plausibility and expert determination distinct. This preserves Task 03 ID-005 and Section 7.4's separation of validation dimensions.
+
+### 21.2 Updated competitive and source findings
+
+- Pl@ntNet's current developer documentation describes up to five images of the same individual, plant-organ inputs, regional/thematic floras and ranked candidates. Its current API page reports 87,000+ identifiable species and 62 languages. These figures are dynamic and are not a benchmark of India-specific accuracy.
+- A May 2026 Alberta field-survey study reported 79.2% species-level and 88.4% genus-level accuracy for Flora Incognita, and 66.5% species-level and 73.7% genus-level for iNaturalist in that study's specific 119-species, 54-plot sample. It is not an India-wide performance estimate. Reproductive structures, image quality and growth form affected results.
+- eFlora of India's own About page describes a community-developed resource and cautions that errors in identifications can occur. Its copyright page states that original text is CC BY, while posted photographs remain the intellectual property of their individual authors and require permission from those authors for reuse. Do not assume website access permits image scraping, redistribution or AI training.
+- BSI's official mandate includes National, State and District Flora publications and development of national plant/herbarium databases. This does not by itself establish a bulk-download API or reuse license for each publication, image or specimen record.
+- Plantix reports a 150M+ field-image corpus, but its research access is collaboration-based and its own page says the raw corpus is not sold. It is a field-data feedback-loop case study, not an available open botanical training dataset or a species-identification benchmark.
+- India Biodiversity Portal and related Indian biodiversity platforms are potential complementary sources and community infrastructures. Verify each dataset, contributor media, API and rights policy separately; do not assume a portal-wide license covers every third-party image or embedded source.
+
+### 21.3 Corrections to older planning material
+
+- The competitive star-rating table is subjective and must not be used as factual comparative evidence or public marketing claims. Use a common India-relevant evaluation protocol.
+- The 4,250–5,850 person-hour estimate (about 4,600 hours central estimate) is an early order-of-magnitude planning envelope, not a budget, staffing commitment or delivery schedule. Re-estimate bottom-up after scope, data rights, evaluation design, staffing, operations and cost assumptions are agreed.
+- The old checklist's task numbering differs from the current repository sequence. Do not create a duplicate “Task 04 Scientific Requirements”: current repository Task 04 is System Architecture & Technology Evaluation, and Task 05 is Data Architecture / Scientific Data Model. Scientific requirements are represented across the current product, ADR and Task 05 documents and should be crosswalked rather than renumbered informally.
+- The STF shared-platform idea remains subject to the boundary proposed in PR #17 and ADR-011; ADR-011 is not accepted. Do not turn every capability into a shared service or microservice.
+
+### 21.4 Standards publication-date correction
+
+This Blueprint's earlier Section 17 shorthand that described the Darwin Core **List of Terms document** as issued 2026-10-13 is incorrect. The direct official List page reports 2026-05-26. The core `dwc:` vocabulary snapshot is separately versioned 2026-10-13. The Darwin Core Conceptual Model's current indexed official metadata reports 2026-10-13, but the direct HTML rendering remains cached at 2026-05-26 and exact retrieval of the 2026-10-13 versioned document remains open. The `dwc:occurrenceStatus` term version remains 2026-05-26. The Humboldt hierarchy guidance is v2024-02-28, Section 3 normative. Pin exact resource and term versions separately; DR-09 remains OPEN.
+
+**Status:** research review and correction only. This section does not approve the Blueprint, PRD, architecture, source ingestion, data reuse, staffing, budget, Task 05C candidate or implementation.
