@@ -207,7 +207,6 @@ Architecture decisions are maintained under `docs/adr/`.
 | ADR-009 | Observation and contribution model |
 | ADR-010 | Data ingestion and source integration |
 | ADR-011 | STF ecosystem boundaries and shared platform (**Proposed; under review**) |
-| ADR-011 | STF ecosystem boundaries and shared platform (**Proposed; under review**) |
 
 New significant decisions should be documented through ADRs. Existing accepted decisions should be amended or superseded explicitly rather than silently contradicted.
 
@@ -223,6 +222,8 @@ botanica-indica/
 ├── CONTRIBUTING.md
 ├── scripts/
 │   └── check_repository_governance.py
+├── tests/
+│   └── test_repository_governance.py
 └── docs/
     ├── adr/
     │   ├── ADR-001-architecture-principles.md
@@ -234,10 +235,17 @@ botanica-indica/
     │   ├── ADR-007-evidence-and-expert-validation.md
     │   ├── ADR-008-geospatial-and-sensitive-location-data.md
     │   ├── ADR-009-observation-and-contribution-model.md
-    │   └── ADR-010-data-ingestion-and-source-integration.md
+    │   ├── ADR-010-data-ingestion-and-source-integration.md
+    │   └── ADR-011-stf-ecosystem-boundaries.md (proposed)
     ├── architecture/
+    │   └── STF-ECOSYSTEM-BOUNDARIES.md (proposed)
     ├── governance/
+    │   ├── AI-PROJECT-OPERATING-PROMPT.md (proposed)
+    │   ├── BRANCH-INVENTORY-AND-CONSOLIDATION-REGISTER.md
+    │   ├── BRANCHING-AND-RELEASE-GOVERNANCE.md (proposed)
+    │   └── LICENSING-AND-IP-POLICY.md (proposed)
     └── reviews/
+        └── REPOSITORY-AND-MARKDOWN-AUDIT-2026-11-20.md
 ```
 
 The repository structure will evolve as reviewed product, scientific, governance and implementation work is integrated.
