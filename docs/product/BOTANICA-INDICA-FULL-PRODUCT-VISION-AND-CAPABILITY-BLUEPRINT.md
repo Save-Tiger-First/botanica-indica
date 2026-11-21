@@ -1,16 +1,16 @@
 # Botanica Indica — Full Product Vision and Capability Blueprint
 
 **Document ID:** STF-BI-FP-001  
-**Version:** 0.1 — Proposed product and capability baseline  
+**Version:** 0.2 — Proposed controlled capability-map reconciliation  
 **Status:** Proposed for owner review; not an approved PRD, scientific model, architecture amendment or implementation authorization  
-**Prepared:** 20 November 2026  
+**Prepared:** 21 November 2026  
 **Product:** Botanica Indica  
 **Organization/ecosystem:** Save Tiger First (STF)  
 **Repository:** Save Tiger First / botanica-indica  
 **Owner/decision authority:** Save Tiger First project owner  
 **Related decisions:** Accepted ADR-001 through ADR-010  
 **Related proposals:** Task 05, Task 05B, Task 05C, Task 05D; PRs #1–#5, #9 and #11; proposed ADR-011  
-**Review basis:** Task 01 Project Charter v0.1; Task 02 Problem & Opportunity Analysis (September 2026); Task 03 full-detail Product Requirements working baseline (September 2026); Task 04 System Architecture & Technology Evaluation working baseline (September 2026); current repository documents fetched 20 November 2026.
+**Review basis:** Task 01 Project Charter v0.1; Task 02 Problem & Opportunity Analysis (September 2026); Task 03 full-detail Product Requirements working baseline (September 2026); Task 04 System Architecture & Technology Evaluation working baseline (September 2026); current repository documents fetched 21 November 2026.
 
 ---
 
@@ -808,23 +808,50 @@ This is the initial capability-level traceability structure. Each row must be ex
 
 | Capability ID | Capability domain | User/stakeholder outcome | Required design evidence | Validation evidence |
 |---|---|---|---|---|
-| BI-CAP-01 | Taxonomy and botanical knowledge | Reliable, source-aware plant information | Conceptual model, source registry, profile requirements | Taxonomic fixtures, expert review, source reconciliation tests |
-| BI-CAP-02 | Identification and Evidence Engine | Defensible candidates and honest uncertainty | Identification pipeline, score semantics, workflow states | Stratified model evaluation, abstention and failure tests |
-| BI-CAP-03 | Observations and surveys | Durable field records independent of identification | Observation/event/survey/occurrence semantics | LDM scenarios, field workflow tests |
-| BI-CAP-04 | Geography and distribution | Useful geographic context without false precision | CRS, uncertainty, boundary and sensitivity model | Spatial fixtures, restricted-location leakage tests |
-| BI-CAP-05 | Evidence and expert review | Attributable and reviewable scientific determinations | Reviewer roles, evidence relations, decision lifecycle | Disagreement, correction and audit tests |
-| BI-CAP-06 | Data ingestion and interoperability | Responsible reuse and reliable exchange | Source registry, rights matrix, mapping specifications | Re-ingestion, rights, export and provenance tests |
-| BI-CAP-07 | Search, discovery and learning | Accessible botanical exploration | Search semantics, multilingual IA, profile content model | Relevance, accessibility and source-attribution tests |
-| BI-CAP-08 | Community and stewardship | Safe, respectful and useful participation | Consent, authority, attribution and moderation policies | Permission, withdrawal, moderation and governance tests |
-| BI-CAP-09 | Mobile field client | Usable capture and field workflow | Flutter architecture, offline/sync and accessibility specs | Device, connectivity, security and usability tests |
-| BI-CAP-10 | Web and research client | Rich discovery, analysis and data access | Web IA, research workflow and export controls | Browser, accessibility, API and export tests |
-| BI-CAP-11 | Expert console | Efficient, accountable scientific review | Review queue, authority and determination workflows | Expert workflow simulation and audit verification |
-| BI-CAP-12 | Admin/data stewardship | Governed platform and data operations | Admin roles, source and rights workflows | Privilege, audit, ingestion and incident tests |
-| BI-CAP-13 | API and integrations | Safe reuse by authorized clients | Versioned OpenAPI contracts and access scopes | Contract, security, compatibility and quota tests |
-| BI-CAP-14 | AI/ML platform | Reproducible, evaluated and replaceable intelligence | Model registry, data manifests and evaluation plan | Reproducibility, calibration, drift and rights tests |
-| BI-CAP-15 | Analytics and operations | Sustainable, observable operation | Metrics, logs, traces, SLOs and cost model | Monitoring, restore, incident and cost evidence |
+| BI-CAP-01 | Botanical knowledge and taxonomic intelligence | Reliable, source-aware names, concepts, treatments and taxonomic interpretation | Taxonomic conceptual model, authority/source registry, treatment and reconciliation rules | Treatment-scoped taxonomic fixtures, expert review, source reconciliation and historical reconstruction tests |
+| BI-CAP-02 | Interactive identification and the Evidence Engine | Defensible candidate results with explicit uncertainty and abstention | Evidence Engine pipeline, score semantics, evidence requirements, candidate and review lifecycle | Stratified model evaluation, calibration where justified, abstention, failure and evidence-quality tests |
+| BI-CAP-03 | Species and botanical knowledge profiles | Sourced, interpretable and useful botanical knowledge for each supported taxon | Profile content model, claim-to-source provenance, rights and publication rules | Profile completeness, source attribution, conflicting-source and asset-rights tests |
+| BI-CAP-04 | Observation, field documentation and survey workflows | Durable field records independent of whether identification is known | Observation/event/survey/occurrence semantics, field protocol and synchronization design | LDM scenarios, non-detection semantics, field workflow and synchronization tests |
+| BI-CAP-05 | Geographic and ecological intelligence | Useful geographic context without false precision or sensitive-location leakage | CRS, uncertainty, boundary versioning, distribution assertion and sensitivity model | Spatial fixtures, source-scope checks, historical-boundary and restricted-location leakage tests |
+| BI-CAP-06 | Evidence, expert review and scientific governance | Attributable, reviewable determinations with preserved disagreement and history | Evidence relations, reviewer authority, determination lifecycle and appeal/correction rules | Disagreement, correction, authorization, provenance and audit tests |
+| BI-CAP-07 | Data acquisition, ingestion, curation and interoperability | Responsible reuse and reliable, loss-aware scientific data exchange | Source registry, rights matrix, dataset/version lineage, mapping and quarantine specifications | Re-ingestion, rights, export, validation, provenance and information-loss tests |
+| BI-CAP-08 | Search, exploration, learning and discovery | Accessible, multilingual botanical exploration | Search semantics, synonym/name resolution, multilingual information architecture and ranking design | Relevance, language/script, accessibility, sensitive-data and source-attribution tests |
+| BI-CAP-09 | Community participation and stewardship | Safe, respectful and accountable participation | Consent, authority, attribution, moderation, grievance and withdrawal policies | Permission, community authority, withdrawal, moderation and governance tests |
+| BI-CAP-10 | Mobile application | Usable public and field capture across supported devices and connectivity conditions | Flutter architecture, offline/sync, accessibility, permissions and local-data specifications | Device, connectivity, security, privacy, accessibility and usability tests |
+| BI-CAP-11 | Public web and research platform | Rich public discovery, research, analysis and controlled data access | Web information architecture, research workflows, accessibility and export controls | Browser, accessibility, API, privacy and export tests |
+| BI-CAP-12 | Expert and scientific console | Efficient, accountable scientific review and curation | Review queue, reviewer authority, source comparison and determination workflows | Expert workflow simulation, authorization and audit verification |
+| BI-CAP-13 | Administration and data stewardship console | Governed platform, source, rights and data operations | Administrative roles, source/rights workflows, retention and incident controls | Privilege, audit, ingestion, rights, retention and incident tests |
+| BI-CAP-14 | API and institutional integration platform | Safe, versioned reuse by authorized clients and institutions | Versioned API contracts, scopes, quotas, export and lifecycle specifications | Contract, security, compatibility, privacy and quota tests |
+| BI-CAP-15 | AI/ML research, evaluation and operations platform | Reproducible, evaluated, monitored and replaceable intelligence | Model registry, data manifests, rights eligibility, evaluation and release plan | Reproducibility, subgroup evaluation, calibration/abstention, drift and rights tests |
+| BI-CAP-16 | Analytics, observability and operational intelligence | Sustainable, observable operation with privacy-preserving measurement | Metrics, logs, traces, SLOs, audit, cost and data-minimization model | Monitoring, restore, incident, cost, privacy and sensitive-data leakage tests |
 
-### 13.1 Required traceability chain
+### 13.1 Canonical identifier rule and legacy crosswalk
+
+The proposed canonical capability namespace is `BI-CAP-01` through `BI-CAP-16`, aligned one-to-one with the complete capability domains in Sections 5.1–5.16. The numbering follows the order of those domain headings. These identifiers remain **proposed**, not approved, until the project owner accepts the product baseline.
+
+The earlier Section 13 table used a 15-ID scheme that combined taxonomy and botanical knowledge profiles in `BI-CAP-01`, then shifted the remaining domains because it omitted a separate profile capability. The following crosswalk preserves the earlier labels and records the scope split; it does not erase or silently reuse their historical meanings.
+
+| Legacy Section 13 identifier | Legacy scope | Canonical proposed identifier(s) | Migration treatment |
+|---|---|---|---|
+| BI-CAP-01 | Taxonomy and botanical knowledge, including profile requirements | BI-CAP-01 and BI-CAP-03 | Split the former combined scope: taxonomy remains BI-CAP-01; botanical knowledge profiles are separately BI-CAP-03 |
+| BI-CAP-02 | Identification and Evidence Engine | BI-CAP-02 | Same domain; identifier retained |
+| BI-CAP-03 | Observations and surveys | BI-CAP-04 | Renumbered to match Section 5.4 |
+| BI-CAP-04 | Geography and distribution | BI-CAP-05 | Renumbered to match Section 5.5 |
+| BI-CAP-05 | Evidence and expert review | BI-CAP-06 | Renumbered to match Section 5.6 |
+| BI-CAP-06 | Data ingestion and interoperability | BI-CAP-07 | Renumbered to match Section 5.7 |
+| BI-CAP-07 | Search, discovery and learning | BI-CAP-08 | Renumbered to match Section 5.8 |
+| BI-CAP-08 | Community and stewardship | BI-CAP-09 | Renumbered to match Section 5.9 |
+| BI-CAP-09 | Mobile field client | BI-CAP-10 | Renumbered to match Section 5.10 |
+| BI-CAP-10 | Web and research client | BI-CAP-11 | Renumbered to match Section 5.11 |
+| BI-CAP-11 | Expert console | BI-CAP-12 | Renumbered to match Section 5.12 |
+| BI-CAP-12 | Administration/data stewardship | BI-CAP-13 | Renumbered to match Section 5.13 |
+| BI-CAP-13 | API and integrations | BI-CAP-14 | Renumbered to match Section 5.14 |
+| BI-CAP-14 | AI/ML platform | BI-CAP-15 | Renumbered to match Section 5.15 |
+| BI-CAP-15 | Analytics and operations | BI-CAP-16 | Renumbered to match Section 5.16 |
+
+No original Task 03 functional requirement ID is changed by this capability reconciliation. The Requirements Traceability Register maintains the separate crosswalk from its earlier `CAP-01`–`CAP-16` labels.
+
+### 13.2 Required traceability chain
 
 Every detailed requirement must link to:
 
