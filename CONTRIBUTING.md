@@ -388,13 +388,17 @@ A separate Code of Conduct may be introduced as the community grows.
 
 ---
 
-## 20. License
+## 20. License and contributor terms
 
-By contributing to this repository, you agree that your contribution will be made available under the applicable project licensing terms.
+The repository currently contains an Apache License 2.0 file for the repository's software. Its presence must not be interpreted as licensing third-party datasets, photographs, publications, user media, trademarks or other material that STF does not own or have authority to license.
 
-Please do not contribute material that you do not have the legal right to contribute.
+**Formal contributor terms have not yet been adopted.** STF has not selected a Developer Certificate of Origin (DCO), Contributor License Agreement (CLA), or another complete contributor agreement. This guide is informational; it is not itself a copyright assignment, a complete contributor agreement, or a blanket permission for redistribution, commercial use, research use or AI/ML training.
 
-The project may use different licensing arrangements for source code, documentation, datasets, photographs, and other content. Always check the applicable licensing information before contributing external material.
+Before submitting material, ensure that you are its creator or are otherwise authorised to submit it, and identify any third-party license, permission, attribution or restriction that applies. A pull request or upload must not be treated as proof that the submitter owns all included rights.
+
+Code, documentation, datasets, photographs, scientific content and other assets may require different terms. Any permission for AI/ML training, fine-tuning or embedding use must be assessed separately and must not be inferred from a general contribution or display permission.
+
+Until formal contributor terms are approved and published, STF may request evidence of rights or defer inclusion of a contribution where the rights basis is unclear. Broad external contribution solicitation should wait for reviewed contributor terms.
 
 ---
 
