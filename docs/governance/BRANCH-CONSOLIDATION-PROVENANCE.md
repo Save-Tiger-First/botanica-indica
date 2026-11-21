@@ -159,3 +159,68 @@ Sequence, if separately authorized:
 - 20 PRs remain open; PRs #1, #2 and #15 remain unmerged, and PR #16 remains draft.
 - The PR #16 destination branch was at `69d3636b0e15254ef5973ace3b53e6816a253b37` immediately before this provenance update.
 - No new branch was created. No merge commit, PR merge, PR closure, retarget, tag, branch deletion or protection change was performed.
+
+## History-preservation technical preflight — 21 November 2026
+
+**Purpose:** establish whether the three governance source histories can be made reachable from the existing PR #16 destination branch without creating a branch, changing the destination tree, force-updating a ref, or retiring a source ref.
+
+### Snapshot re-verified for this preflight
+
+- Repository: `Save-Tiger-First/botanica-indica`.
+- Operating prompt: `docs/governance/AI-PROJECT-OPERATING-PROMPT.md`, branch `docs/repository-audit-and-ai-operating-standard`, blob `ec100aec5abc09ec04ad9f4a084a0aa95a7c7558`.
+- Destination branch before this preflight record: `docs/repository-audit-and-ai-operating-standard` at commit `136f6e045ebac42a1f6a9b4e8e7259f41a9fe325`, tree `287077e58f3e3d3d77650c7d8c8fdf822e8b319c`, parent `69d3636b0e15254ef5973ace3b53e6816a253b37`.
+- Source `governance/branch-lifecycle-policy`: head `633105210d3a6c4c8e36287ed2dc44dee23f61ef`, 18 commits in a linear chain from base `f165ecb9b4d9de115c02327cf779982b7ef4bbd4`.
+- Source `docs/asset-specific-licensing-policy`: head `15fd4edef9afa8d22df9e23f66296ef09423d8cf`, one commit parented by `f165ecb9b4d9de115c02327cf779982b7ef4bbd4`.
+- Source `docs/adr-011-stf-ecosystem-boundaries`: head `e900b64c90df08f5c98181af54bf2ab0b7096759`, one commit parented by `f165ecb9b4d9de115c02327cf779982b7ef4bbd4`.
+- Repository inventory: 23 branches and 20 open PRs. PRs #1, #2, #15 and #16 remain open and unmerged; PR #16 remains draft. The three source refs remain present.
+
+### Ancestry and divergence verification
+
+All three source branches share merge base `f165ecb9b4d9de115c02327cf779982b7ef4bbd4` with the PR #16 destination. None of the source histories is currently an ancestor of the destination.
+
+| Source | Commits unique to source relative to PR #16 | Commits unique to PR #16 relative to source | Compare status |
+|---|---:|---:|---|
+| `governance/branch-lifecycle-policy` | 18 | 43 | Diverged |
+| `docs/asset-specific-licensing-policy` | 1 | 43 | Diverged |
+| `docs/adr-011-stf-ecosystem-boundaries` | 1 | 43 | Diverged |
+
+PR #15's 18 commits are a linear chain. Per-commit file inspection confirms the sequence creates the branch lifecycle policy, PR template and consolidation register, then records subsequent scientific-status, inventory, dependency, three-long-lived-branch and seven-branch-ceiling updates. These changes are meaningful as an auditable governance evolution and should be retained intact. PR #1 and PR #2 each contain one distinct proposal-origin commit.
+
+### Tree and file preservation check
+
+The PR #16 destination tree before this preflight record was `287077e58f3e3d3d77650c7d8c8fdf822e8b319c` (33 entries; not truncated). Source and destination file checks confirmed:
+
+- `.github/pull_request_template.md`: identical blob `1b2a71bb968cb892bc229c5ce8ac5ffb4b3d1084`.
+- `docs/governance/BRANCHING-AND-RELEASE-GOVERNANCE.md`: identical blob `baf085de8baea1ec7becfc15ce3f691512e91aba`.
+- `docs/governance/LICENSING-AND-IP-POLICY.md`: identical blob `b24e479559eaa6022fdc37db7ea65ded30a7c23e`.
+- `docs/adr/ADR-011-stf-ecosystem-boundaries.md`: identical blob `92c3fb551c1b0e367d748f76ce8e835959ed3957`.
+- `docs/governance/BRANCH-INVENTORY-AND-CONSOLIDATION-REGISTER.md`: source blob `9233910471f0806435cb39c47ff074e90d382e47`; destination blob `cd8933f2dab5411c003b12505e3ddcd9f02f2f3e`. This is the deliberate Task 05D v2/v3 correction recorded above; a direct content comparison confirmed the destination is the source version with that targeted passage corrected.
+
+### Proposed integration sequence — design only, not executed
+
+GitHub's official REST API supports creating a commit with multiple parents and a specified tree, and updating an existing branch reference without force when the update is a fast-forward. See:
+
+- GitHub REST API, [Create a commit](https://docs.github.com/en/rest/git/commits): multiple parent SHAs create a merge commit; the API defaults author/committer identity and date to the authenticated user/current date when not supplied.
+- GitHub REST API, [Update a reference](https://docs.github.com/en/rest/git/refs): `force=false` requires a fast-forward update.
+- GitHub REST API, [Git database overview](https://docs.github.com/en/rest/guides/using-the-rest-api-to-interact-with-your-git-database): Git objects are created first, then a branch ref is updated to point to the commit.
+
+After a separate explicit authorization, the proposed sequence on the existing `docs/repository-audit-and-ai-operating-standard` branch is:
+
+1. Re-fetch the destination branch head and tree, all three source heads, the PR states and the relevant file blobs immediately before the first write. Abort if any ref, PR dependency or required blob has changed.
+2. Create merge commit M1 with first parent = current destination head, second parent = `633105210d3a6c4c8e36287ed2dc44dee23f61ef`, and tree = the exact current destination tree. This preserves all 18 PR #15 commits without replacing the corrected destination inventory.
+3. Update only the existing destination branch ref to M1 using a non-force fast-forward update and an expected-head lease. Re-fetch and verify both parents, unchanged tree and source ancestry reachability.
+4. Create merge commit M2 with first parent = verified M1, second parent = `15fd4edef9afa8d22df9e23f66296ef09423d8cf`, and the same destination tree; update the same existing branch non-force with an expected-head lease; verify.
+5. Create merge commit M3 with first parent = verified M2, second parent = `e900b64c90df08f5c98181af54bf2ab0b7096759`, and the same destination tree; update the same existing branch non-force with an expected-head lease; verify.
+6. Verify the final destination tree equals the pre-integration tree, all three source heads are ancestors of the destination, all 20 original source commits remain reachable, and the source branches and PRs remain open and unchanged.
+
+**Important implementation detail:** because this preflight record itself updates PR #16, the tree SHA `287077e58f3e3d3d77650c7d8c8fdf822e8b319c` is a historical preflight snapshot, not the tree to hard-code at execution. The exact then-current tree must be fetched again and used for all three merge commits. The three resulting commit SHAs cannot be truthfully precomputed: Git commit identity includes commit metadata (including author/committer and dates). The API wrapper available for this task defaults that metadata to the authenticated integration identity/current time. Original source commits and their authorship remain unchanged.
+
+### Preflight decision
+
+- **Technically feasible:** yes, using the GitHub Git database create-commit operation with two parents and the existing destination tree, followed by a non-force fast-forward update of the existing destination branch.
+- **Tree-preservation risk:** controlled by explicitly reusing the latest destination tree and verifying it after every update. Do not use the source branch tree.
+- **History-preservation result:** source commits become reachable through second-parent ancestry; no source commits are rewritten.
+- **Branch-count effect:** none. No new branch is required or proposed.
+- **Source-retirement effect:** none at this stage. All source branches and PRs remain open until separately reviewed and approved.
+- **Execution status:** not executed. No commit object was created, no branch ref was updated, no PR was merged or closed, and no branch was deleted.
+- **Approval required:** explicit authorization to create the three merge commits and advance the existing PR #16 branch. This is separate from the already approved preservation objective.
