@@ -140,10 +140,15 @@ Each executable case should have a stable test ID, preconditions, actor/authorit
 | RTM-WF-OD-09 | AC-006 species profile acceptance coverage | AC-006 | Separate profile rendering/source evidence test suite |
 | RTM-WF-OD-10 | AC-009 complete API acceptance coverage | AC-009 | Contract, compatibility, authorization and operational tests |
 | RTM-WF-OD-11 | Offline synchronization, local storage and concurrent field updates | WF-OD-10; Task 03 §§17, 20, 28; AC-004, AC-009, AC-010 | Proposed Offline and Field Synchronization Architecture & Validation Specification; OFF-001–OFF-036; owner and specialist decisions remain open |
+| RTM-WF-OD-12 | Command identity, idempotent replay, durable receipts, revision conflicts and change-feed recovery | WF-OD-10; Task 03 §§19–20; AC-004, AC-009, AC-010 | Proposed API Command, Idempotency and Conflict-Resolution Contract Design; API-SYNC-001–042; API-OD-01–20 open |
 
 ### 9.1 Offline and field synchronization specification
 
 The offline/field synchronization design and proposed validation matrix are documented separately in [STF-BI-ARCH-OFF-001 — Offline and Field Synchronization Architecture & Validation Specification](../architecture/OFFLINE-FIELD-SYNCHRONIZATION-ARCHITECTURE-AND-VALIDATION-SPECIFICATION.md). It elaborates WF-OD-10 and Task 03 §§17, 20 and 28. The specification is Proposed; it does not create an accepted ADR, authorize implementation or resolve Task 05 logical-model blockers. Its OFF-001–OFF-036 cases are not executed.
+
+### 9.2 API command and synchronization contract
+
+The server-side command contract is documented in [STF-BI-API-SYNC-001 — API Command, Idempotency and Conflict-Resolution Contract Design](../architecture/API-COMMAND-IDEMPOTENCY-AND-CONFLICT-RESOLUTION-CONTRACT-DESIGN.md). It elaborates the offline architecture and AC-004/AC-009/AC-010 dependencies. It is Proposed; endpoints, schemas, status semantics and numeric policies are not approved or implemented. API-SYNC-001–042 are proposed scenarios and have not been executed. The IETF Idempotency-Key document is an Internet-Draft, not a published RFC.
 
 ## 10. Review and approval checklist
 
