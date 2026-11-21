@@ -495,7 +495,7 @@ Task 05D cannot pass until:
 **Decision status:** Task 05D remains PROPOSED / NOT PASSED. Task 05E and physical database design remain NOT READY. No DDL, migrations, API payload freeze or implementation is authorized.
 
  
-### 14.6 Exact document baselines and stacked dependency status
+## 16. Exact document baselines and stacked dependency status
 
 The current reviewed document heads for this reconciliation are:
 
