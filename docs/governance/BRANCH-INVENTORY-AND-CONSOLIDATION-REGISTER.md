@@ -423,3 +423,35 @@ No accepted ADR, Task 05B, Task 05C, Task 05D or EVT decision was changed by thi
 - PR #16: `open`, draft `true`, base `develop`, head `docs/repository-audit-and-ai-operating-standard`, head SHA `40cbe6e8787c118eddcc5c09de4227e8e0fbb143`.
 
 The seven-branch ceiling remains unmet. No PR was merged, closed or retargeted; no branch was created, renamed or deleted. No external specialist was contacted.
+
+
+---
+
+## 14. Standards interpretation errata recorded — 21 November 2026
+
+The scientific review branch has received two verified, append-only documentation updates:
+
+1. `docs/reviews/EVT-DECISION-AND-VALIDATION-PACK.md`
+   - Commit: `4b5225dd19bda60a96018eee062c5b46afa642fb`
+   - Blob: `11e7fe930291e19ff7fb13b59d037c8d0b24cebe`
+   - Verified length: 832 lines.
+   - Adds §15 errata, qualifies Event identity/implementation, adds post-facto SurveyTarget filtering, distinguishes reporting completeness from field completeness/detectability, clarifies hierarchy no-inheritance versus explicit scope/completeness inference, records version retrieval discrepancy and adds EVT-23–EVT-26.
+
+2. `docs/reviews/TASK-05C-COMPETING-MODEL-RECONCILIATION.md`
+   - Commit: `3bde5ed8a6b7c8c65923c2cddde4aaa353ca6e8a`
+   - Blob: `a113eef540c3270f4b4c5bdd21cbbf7709dc5f9d`
+   - Verified length: 630 lines.
+   - Adds §16 with the same interpretation corrections and owner decision requirement for implicit absence in exports.
+
+Important correction: Darwin Core's conceptual model does not prescribe SQL table inheritance. The unresolved issue is faithful representation of Event identity, special Event semantics, generic contextual Event references and typed relationships. The GBIF guide's no-inheritance/no-parent-derivation rules are distinct from Humboldt's explicit scope/completeness reporting and bounded hierarchy-aware inference rules.
+
+**Status:** documentation errata only. No decision accepted, no ADR changed, no Task 05B/05C/05D candidate modified, no tests executed, no external expert approval. Task 05C remains NOT APPROVED; Task 05E remains NOT READY.
+
+### 14.1 Live repository snapshot after standards errata
+
+- Branch count: **23**.
+- Open PR count: **20**.
+- PR #9: `open`, draft `true`, base `main`, head `review/scientific-data-model-review-pack`, head SHA `3bde5ed8a6b7c8c65923c2cddde4aaa353ca6e8a`.
+- PR #16: `open`, draft `true`, base `develop`, head `docs/repository-audit-and-ai-operating-standard`, head SHA `a45c8d71b1fd0f57f402c89f8fce54396501ce16`.
+
+The seven-branch ceiling remains unmet. No PR was merged, closed or retargeted; no branch was created, renamed or deleted. No external specialist was contacted.
