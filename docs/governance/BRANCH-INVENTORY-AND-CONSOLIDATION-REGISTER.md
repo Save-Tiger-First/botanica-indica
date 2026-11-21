@@ -989,3 +989,18 @@ The workflow completed successfully on PR #16 head `63bc943ccdce3cdfde5a2af48e54
 - No `FutureWarning` appeared in the inspected job log.
 
 This validates the automation and workflow at commit `63bc943ccdce3cdfde5a2af48e549ac374f3873c`. The `create` trigger limitation remains as described in Section 20.14. The workflow is not a branch-creation prevention mechanism, and the seven-branch target remains unmet.
+
+
+## 20.16 Final verification of PR #16 documentation head — 21 November 2026
+
+The subsequent documentation-only head `8771925b6b1e8a8b590a775d36bec537da43e37b` also completed the governance workflow successfully:
+
+- Run: [44906629254](https://github.com/Save-Tiger-First/botanica-indica/actions/runs/44906629254)
+- Event: `pull_request`; job and run conclusion: **success**.
+- Unit tests: **27 passed**.
+- Markdown scan: **23 tracked Markdown files**.
+- PR #16 routing validation: passed.
+- Live branch inventory: 23 branches; seven-branch excess warning emitted.
+- No Python `FutureWarning` appeared in the job log.
+
+This verifies the PR #16 head before this append-only record. The workflow remains a monitoring/routing control, not a branch-creation prevention mechanism. No PR or branch lifecycle action was taken.
