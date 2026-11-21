@@ -606,3 +606,14 @@ The Branch Inventory and Consolidation Register was refreshed after the implemen
 - Inventory blob: `79b6bb1e32c5329a569fe931bb7cce6a856db22a`
 
 The snapshot confirms that the seven-branch ceiling remains unmet. The four proposed retained destinations remain provisional; no PR or branch was retired. After this inventory refresh, GitHub Actions run `44875638810` completed successfully on PR #16 head `dc54e5de8ed7202fae78a5f659d6a8ac2ab41f8f`; its governance regression tests and Markdown/routing checks all passed. The audit-record update that follows changes only this review document, not the workflow or checker.
+
+
+### 18.8 README cross-reference correction and final code/workflow verification
+
+A final README review found and corrected a duplicated ADR-011 row and completed the repository-tree listing for ADR-011, the proposed governance/architecture documents and the new routing test file. The README now has one ADR-011 row and reflects the files present on this review branch.
+
+- README commit: `a4814ef0879ec98fe8b9ba69c12ab69575bad209`
+- README blob: `a88f96829f9cb61260eb304eabc1a97880bac38d`
+- Verified: one ADR-011 table row; repository tree includes the ADR-011 proposal and `tests/test_repository_governance.py`.
+
+GitHub Actions run `44875791230` completed successfully on that README-corrected PR #16 head. The governance routing regression tests and Markdown/routing validation steps passed. This final audit-record update changes only this review document; it does not alter the checker, workflow, test suite or README content.
