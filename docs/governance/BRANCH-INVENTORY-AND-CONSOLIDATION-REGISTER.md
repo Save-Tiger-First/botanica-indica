@@ -1080,3 +1080,17 @@ Source-only counts are fresh compare results in the direction source branch to d
 8. Target no more than seven branches (three long-lived plus four workstream branches). At formal completion, apply the one-branch-only rule and retain only main.
 
 No consolidation merges, PR closures, branch deletions, retargeting, ruleset changes or approvals were performed in this audit.
+
+## 20.18 Latest-head verification after consolidation documentation updates — 21 November 2026
+
+PR #16 current head at this verification: 0e5d3ac070932bdbe0a98c7cc824a71d15dc1745; open/draft, base develop, 129 commits, 26 changed files, 4,428 additions and 25 deletions; 129 ahead / 0 behind develop.
+
+Workflow run 44908219565 completed successfully on this exact head:
+- 27 unit tests passed.
+- 23 tracked Markdown files scanned.
+- PR #16 routing validation passed.
+- Live branch inventory retrieved 23 branches.
+- Expected warning: 23 exceeds the seven-branch ceiling.
+- No Python FutureWarning appeared in the inspected job log.
+
+The seven-branch target remains unmet. This run verifies the current automation on the recorded head; it does not certify independent review, repository-wide branch creation prevention, scientific/legal approval or branch protection beyond the visible ruleset. No PR or branch lifecycle action was taken.
