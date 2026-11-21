@@ -323,3 +323,219 @@ This creates an unresolved semantic question in the proposed Task 05C/decision-p
 Add EVT-19–EVT-22 from the decision paper and validation matrix. Keep these scenarios Not tested until executed with fixtures. This issue is blocking for Task 05E and should be included in EVT-D03, EVT-D04, EVT-D09 and EVT-D10. It does not approve Option B or change the overall Task 05E NOT READY status.
 
 Sources: https://dwc.tdwg.org/cm/ ; https://docs.gbif.org/guide-publishing-survey-data/en/.
+
+
+---
+
+## 15. Cross-document Event–Survey–Occurrence consistency audit — 21 November 2026
+
+**Status:** Desk review completed against the exact source revisions listed below. Findings are proposed corrections and unresolved decisions, not scientific approval. No accepted ADR was changed. No specialist was contacted and no acceptance scenario was executed.
+
+### 15.1 Exact repository baseline inspected
+
+| Source | Branch | Blob SHA | Finding scope |
+|---|---|---|---|
+| AI Project Operating Prompt | \`docs/repository-audit-and-ai-operating-standard\` | \`61059c74d4d20309ff76e055059ab33f381ca4f2\` | Governing scientific rules, no-absence rule, authority and approval boundaries |
+| Task 05B — Data Architecture and Scientific Data Model | \`docs/task-05-data-architecture\` | \`a3255dcf2d1bd4dfa982b381b061051b6c2c8b0b\` | Event/Occurrence semantics and shared Event supertype recommendation |
+| Task 05C Candidate A | \`docs/task-05c-logical-data-model\` | \`4a21c0aa3b8ebfef319a9ea1ac6928274b0b3f5b\` | Event–Occurrence relationship, cardinalities and LDM-16 |
+| Task 05C Candidate B | \`docs/task-05c-logical-database-model\` | \`239d7e9974bcb81b1154b54845a7b2d69c3775d6\` | Separate Event/Occurrence records, cardinalities and acceptance tests |
+| Task 05D v3 | \`docs/task-05d-logical-model-validation-v3\` | \`cf0b9c10bcb2da7b102e52688f22bd8e8b69bb91\` | DR-07, FLD-08, physical design gate |
+| Event–Survey–Occurrence Decision Paper | \`review/scientific-data-model-review-pack\` | \`eb513cde11f3013c31102318c78e278bc274ec91\` | Option comparison and earlier EVT decision framing |
+| Scientific Data Model Validation Matrix | \`review/scientific-data-model-review-pack\` | \`5eeff39d5362a70ca43b6711062742526b733dc1\` | DR-01–DR-12 and current test register |
+| Task 05C Competing Model Reconciliation | \`review/scientific-data-model-review-pack\` | \`eeb15a19f93df5b4feaee3b2b0481b24a59d3c23\` | Existing comparison and DR status before this addendum |
+| EVT Decision and Validation Pack | \`review/scientific-data-model-review-pack\` | \`694a2b057b60036bdc961191daa94566830b7e91\` | EVT-D01–D10 and EVT-01–22 |
+| ADR-005 Taxonomy Reconciliation | \`review/scientific-data-model-review-pack\` | \`b61dcf0b9ba58fc35da5cc7ba5edfbdd5f2909e4\` | Accepted source-aware taxonomy principles |
+| ADR-007 Evidence and Expert Validation | \`review/scientific-data-model-review-pack\` | \`7ba4874b4175707b69dc3052822f8cbeb5384b0a\` | Accepted evidence provenance and history principles |
+
+### 15.2 Blocking finding: Event and Occurrence identity is not reconciled across Task 05B and Task 05C
+
+Task 05B §5.3 states that Occurrence is a specialized Event, says a Survey is a specialized Event, and recommends evaluating a shared Event identity/supertype with Survey and Occurrence specializations/extensions.
+
+Task 05C Candidate A instead presents Event → Occurrence as a 1-to-many contextual relationship and describes Event as contextualizing Occurrence. Candidate B likewise models Event → Occurrence as 1-to-many and lists them as separate field-record entities. Neither candidate currently provides a complete, explicit specialization model that demonstrates how an Occurrence is an Event while a separate generic/context Event may provide shared context.
+
+The decision paper and EVT pack recommend a shared Event identity/common properties with distinct Survey and Occurrence specializations, plus a way to represent broader context. This is a plausible direction, but it is not yet embodied consistently in either Task 05C candidate.
+
+**Required resolution before Task 05C approval:**
+1. Define the internal identity model explicitly: shared Event identity/supertype, specialization, or another justified mapping.
+2. Distinguish the contextual Event relationship from the Event specialization relationship.
+3. Show how a generic context Event may provide spatio-temporal context to multiple Occurrences and MaterialEntities without making one Event instance simultaneously an incompatible combination of Survey, Occurrence and Organism Interaction.
+4. State which attributes belong to Event generally and which belong only to Survey or Occurrence.
+5. Validate the model against casual observations, repeated surveys, collection events, specimens, multiple Occurrences from one image and one context Event shared by several activities.
+
+**Disposition:** BLOCKER. Option B in the EVT pack remains a recommendation for review, not an approved decision.
+
+### 15.3 Blocking finding: Survey and SurveyTarget are not yet fully modelled
+
+Task 05B mentions Survey targets and reporting-completeness state as potential Event attributes but does not define SurveyTarget as a first-class internal concept. Task 05C Candidate A and Candidate B do not provide a complete Survey / SurveyTarget model. Their field-record diagrams and cardinality tables do not express the full target-scope, reporting-completeness and Survey-to-Occurrence reporting semantics.
+
+The EVT pack introduces Survey, SurveyTarget, SurveyOccurrenceReport and a proposed SurveyTargetAssessment. This is an important improvement, but these are proposals and must be reconciled into one canonical Task 05C design.
+
+The current Darwin Core Conceptual Model describes SurveyTarget as the declared scope of what was sought, either through a priori intention or post facto filtering. It may combine taxonomic, environmental and organismal-trait criteria. The EVT pack should explicitly retain both target-intent and post-facto filtering use cases; it must not imply that every SurveyTarget is necessarily a pre-fieldwork target.
+
+**Required resolution:**
+- Separate Survey identity from SurveyTarget identity.
+- Define target type, value, unit, include/exclude semantics, source/taxonomic treatment context, validity period and provenance.
+- Preserve the distinction between a priori target intent and post facto filtering.
+- Allow a Survey without a target while prohibiting unsupported target-specific non-detection claims.
+- Define the typed relationship by which a Survey reports target-matching and incidental/bycatch Occurrences.
+
+**Disposition:** BLOCKER.
+
+### 15.4 Blocking finding: SurveyTargetAssessment must not duplicate standards-defined result semantics
+
+The EVT pack proposes SurveyTargetAssessment as an internal assessment/completeness record and recommends that Occurrence carry the authoritative positive or explicit negative scientific result. This is a reasonable hypothesis, but it is not a TDWG class and has not been approved.
+
+The pack currently needs a more precise boundary between:
+- SurveyTarget declaration (what was sought or filtered);
+- actual protocol and effort performed;
+- whether the target was assessed;
+- whether all detected target-matching Occurrences were reported;
+- the scientific Occurrence result (detected or explicitly not detected);
+- profile-specific implicit absence interpretation.
+
+In particular, the Humboldt term \`eco:isSurveyTargetFullyReported\` is defined in its 2026-05-26 term version as whether all counts of detected Occurrences matching a SurveyTarget were fully reported, enabling inference of absence of detection. It does **not** mean that the field search was exhaustive, that every organism was detectable, or that detection probability was 100%.
+
+Likewise, the taxonomic-scope completeness terms concern reporting of detected organisms within the stated scope. They must not be used as synonyms for protocol completion, spatial coverage, temporal coverage or ecological detectability.
+
+**Required resolution:**
+1. Retain separate, explicitly named dimensions for sampling design, protocol execution, effort, assessment status, reporting completeness and detection limitations.
+2. Define which dimensions are stored on Survey, SurveyTarget, an internal assessment record or Occurrence.
+3. Prevent one independently mutable record from contradicting another.
+4. Do not use a Boolean called simply \`complete\` to represent all these dimensions.
+5. Preserve the evidence, agent, time, target version and correction history for each assessment.
+
+**Disposition:** BLOCKER until the entity boundary and validation semantics are approved.
+
+### 15.5 Policy interpretation requiring project-owner decision: implicit absence
+
+The AI Project Operating Prompt §3.8 states: “Never infer absence from a missing record.” Task 05B, Candidate A, Task 05D FLD-08 and the validation matrix similarly prohibit treating a missing Occurrence row as evidence of absence.
+
+The EVT pack adds a profile-specific export proposal: an external DwC-A may permit implicit absence interpretation when the taxonomic scope is fully reported and the applicable target/excluded scope is declared. The GBIF survey guide v1.0.2 (2025-09-24) does describe such implicit reporting; it is not a permission to infer absence from a missing row alone.
+
+There is a wording/policy ambiguity that must not be silently resolved. The safe technical distinction is:
+- **Prohibited:** absence inferred from a missing row alone, with no explicit target/scope and completeness evidence.
+- **Potentially supportable external interpretation:** a selected, version-pinned publishing profile interprets an unreported taxon as implicitly not detected only where the explicit survey scope and the applicable reporting-completeness conditions are satisfied.
+- **Internal scientific record:** do not silently create an explicit negative Occurrence merely because an export profile derives an implicit result.
+
+**Project-owner decision required:** confirm whether the operating prompt's no-inference rule permits this tightly bounded, export-only interpretation, or whether Botanica Indica must prohibit implicit absence even in external exports and emit only explicit negative Occurrence records. Until that decision is recorded, do not implement implicit absence generation.
+
+**Disposition:** BLOCKER for export behaviour; no change to the operating prompt is made by this review.
+
+### 15.6 Major finding: Event hierarchy rules need to be strengthened in the EVT pack
+
+The current TDWG Hierarchical Events guidance, version issued 2026-10-13, states in its normative usage guidance that:
+- a child Event is linked to its broader parent through parentEventID;
+- the parent Event must spatially and temporally contain its child Events;
+- a child Event must not be assumed to inherit any property implicitly from a parent;
+- a parent property should not be populated by deriving or summarizing values from child Events.
+
+The EVT pack correctly distinguishes parent/child hierarchy from SurveyOccurrenceReport and warns against silent inheritance of protocol/effort. However, it does not yet state the full spatial-temporal containment condition or the general non-inheritance/non-derivation rule for all Event properties.
+
+**Required correction to EVT pack and Task 05C:**
+- Keep strict hierarchy cardinality (one parent at most per child) separate from contextual links.
+- Require parent spatial and temporal coverage to contain child coverage where a true hierarchy is asserted.
+- Do not silently inherit any property from parent to child, or derive parent values from children.
+- Repeat scope, protocol, effort, agent and completeness values at every Event level where they are explicitly applicable.
+- Add tests for spatial-temporal containment violations, property inheritance and parent aggregation.
+
+**Disposition:** MAJOR, blocking for Event hierarchy acceptance.
+
+### 15.7 Major finding: standards version statements are not yet reproducible
+
+The EVT pack and reconciliation materials correctly distinguish publication-version dates from term-version dates, but the version baseline still needs an exact, reproducible pinning pass.
+
+Verified during this audit:
+- TDWG's current indexed publication metadata identifies 2026-10-13 versions for the Darwin Core Conceptual Model, List of Terms, Hierarchical Events guidance and schemas.
+- Direct rendering of the Darwin Core Conceptual Model page still returned a 2026-05-26 header during this review. Therefore the exact 2026-10-13 Conceptual Model resource and its substantive diff were not independently retrieved here.
+- The 2026-10-13 Hierarchical Events guidance page is available and explicitly states the hierarchy requirements summarized above.
+- The Darwin Core \`occurrenceStatus\` term version is 2026-05-26 and its recommended default values are \`detected\` and \`notDetected\`.
+- The 2026-05-26 Humboldt term-list snapshot identifies some term versions as superseded by 2026-10-13 (including Survey and absentTaxa), while SurveyTarget and isSurveyTargetFullyReported remain at 2026-05-26 in that snapshot. Other terms, including sampling-effort and taxonomic-scope reporting terms, also have 2026-10-13 replacements.
+- The current Humboldt landing page still renders 2026-05-26 list metadata. Exact retrieval of the 2026-10-13 versioned Humboldt list and every term required by Botanica Indica remains outstanding.
+
+Consequently:
+- Task 05B's statement that the 2026-05-26 Conceptual Model is the current version needs qualification/update after exact-resource comparison.
+- The EVT pack's 2026-10-13 baseline should be labelled “publication metadata identified; exact content comparison outstanding” where appropriate.
+- Its Humboldt table must be checked term by term against the 2026-10-13 list, not treated as a complete pin set.
+- DR-09 remains OPEN. Do not close it on search-result metadata alone.
+
+### 15.8 Major finding: GBIF guide and Darwin Core term vocabularies need a profile-specific crosswalk
+
+GBIF's Guide for publishing biological survey and monitoring data to GBIF v1.0.2 (2025-09-24) describes explicit zero-count absence records using \`occurrenceStatus = absent\` and uses \`present/absent\` examples. The current Darwin Core \`occurrenceStatus\` term recommends \`detected/notDetected\`.
+
+The EVT pack recognizes this difference but has not yet supplied a reproducible profile/schema test. The guide predates the newer 2026 Humboldt term changes, so it must not be treated as a substitute for pinning the current extension terms.
+
+**Required resolution:**
+- Select the exact target GBIF dataset class and publishing package/profile.
+- Pin the exact DwC-A or DwC-DP schema and Humboldt extension version.
+- Map internal detected and explicit non-detection states to that profile with a documented, reversible or loss-declared transformation.
+- Test bycatch, unassessed, incomplete, unknown and implicit absence separately.
+- Do not make external vocabulary values universal internal enum values.
+
+**Disposition:** MAJOR; export implementation remains blocked.
+
+### 15.9 Cross-document alignment matrix
+
+| Topic | Task 05B | Task 05C A | Task 05C B | Task 05D v3 | EVT pack | Required action |
+|---|---|---|---|---|---|---|
+| Event is shared conceptual parent/supertype | Recommends evaluation | Not fully represented | Not fully represented | Inherits Candidate A baseline | Proposed Option B | Resolve identity/specialization before selecting candidate |
+| Generic contextual Event | Described | Event contextualizes Occurrence | Event context supports Occurrence | Not fully tested | Explicitly proposed | Add contextual Event and multi-activity fixtures |
+| Survey specialization | Described | Not fully modelled | Not fully modelled | No full Survey entity | Proposed | Add canonical Survey model |
+| SurveyTarget | Attributes mentioned | Not a first-class model | Not a first-class model | No target model | Proposed class | Define scope, target, version and lifecycle |
+| SurveyTargetAssessment | Not present | Not present | Not present | Not present | Proposed internal concept | Approve only if distinct lifecycle/provenance need is demonstrated |
+| Occurrence-level non-detection | Described | LDM-16 | Not sufficiently tested | FLD-08 | EVT-19–22 | Define one canonical scientific result and relationship |
+| Implicit absence | Not supported internally | Not specified | Not specified | Not supported | Proposed export interpretation | Obtain owner policy interpretation; test profile |
+| Event hierarchy | Parent event mentioned | Optional parent | Optional parent | Limited hierarchy checks | Parent/child distinction | Add spatial-temporal containment and no-inheritance tests |
+| Reporting completeness | Event attribute mentioned | No multi-dimensional model | No multi-dimensional model | Data-quality layers | Multi-dimensional proposal | Separate effort, coverage, assessment and reporting completeness |
+| External standards versions | 2026-05-26 CM statement | 2026-05-26 references | Requires current mapping | DR-09 open | 2026-10-13 metadata baseline | Pin exact documents and term IRIs; keep DR-09 open |
+
+### 15.10 Accepted ADR consistency
+
+No conflict requiring amendment to accepted ADR-005 or ADR-007 was identified in this Event-focused audit.
+
+- ADR-005 remains authoritative for source-aware, versioned taxonomy. SurveyTarget taxonomic scope must preserve the taxonomic concept/treatment and source/version used when the target was defined or assessed.
+- ADR-007 remains authoritative for evidence provenance, conflicting evidence and attributable expert assessment. A positive or negative survey result must preserve its evidence and review history.
+
+This finding does not constitute a full re-audit of every clause in either ADR. No ADR was modified.
+
+### 15.11 Candidate recommendation and next decision sequence
+
+**Recommendation:** retain Task 05C Candidate A as the current principal review candidate, consistent with the existing reconciliation recommendation, but do not approve it or treat it as the final canonical model. Preserve useful Candidate B material selectively. Neither candidate should be merged wholesale into the other.
+
+Required sequence:
+1. Resolve EVT-D01 and EVT-D02: Event identity, contextual Event and hierarchy.
+2. Resolve EVT-D03: Survey and SurveyTarget identity/scope, including post facto filtering.
+3. Resolve EVT-D04 and EVT-D05: assessment lifecycle, canonical non-detection and owner policy for implicit export interpretation.
+4. Resolve EVT-D06 to EVT-D09: reporting links, Observation/Event/Occurrence cardinalities, Organism optionality, protocol/effort/completeness and location/time.
+5. Resolve EVT-D10 and DR-09: exact term/version and publishing-profile mapping.
+6. Update one canonical Task 05C proposal and the Task 05B, Task 05D, decision paper and validation matrix references together.
+7. Execute EVT-01–EVT-22 and existing LDM/FLD scenarios using source-backed fixtures; record actual outcomes and reviewer evidence.
+8. Obtain independent field ecology/botany and biodiversity-informatics review.
+9. Reassess Task 05E readiness only after the blocking items close.
+
+### 15.12 Readiness and change control
+
+**Task 05C: NOT APPROVED. Task 05E: NOT READY.**
+
+This audit is a document-level consistency review. It does not:
+- approve Option B or any cardinality;
+- change an accepted ADR;
+- modify Task 05B, either Task 05C candidate or Task 05D v3;
+- execute any validation test;
+- constitute independent specialist sign-off;
+- authorize physical database design or DDL;
+- authorize PR merge, closure, retargeting or branch deletion.
+
+### 15.13 External authoritative sources checked 21 November 2026
+
+- Darwin Core Conceptual Model: https://dwc.tdwg.org/cm/
+- Darwin Core List of Terms: https://dwc.tdwg.org/list/
+- Darwin Core Quick Reference: https://dwc.tdwg.org/terms/
+- Hierarchical Events guidance, version 2026-10-13: https://dwc.tdwg.org/hierarchy/
+- Darwin Core schemas, version 2026-10-13: https://dwc.tdwg.org/schemas/
+- Humboldt Extension vocabulary: https://rs.tdwg.org/eco.htm
+- Humboldt Extension terms: https://rs.tdwg.org/eco/terms.htm
+- Humboldt 2026-05-26 term-list snapshot and replacement metadata: https://rs.tdwg.org/eco/version/terms/2026-05-26.htm
+- Humboldt \`isSurveyTargetFullyReported\` term version 2026-05-26: https://rs.tdwg.org/eco/terms/version/isSurveyTargetFullyReported-2026-05-26.htm
+- GBIF Guide for publishing biological survey and monitoring data to GBIF v1.0.2 (2025-09-24): https://docs.gbif.org/guide-publishing-survey-data/en/
+- GBIF sampling-event data quality requirements: https://www.gbif.org/data-quality-requirements-sampling-events
+
