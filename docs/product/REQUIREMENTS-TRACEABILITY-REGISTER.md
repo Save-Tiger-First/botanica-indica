@@ -12,6 +12,12 @@
 
 ## 1. Purpose and decision boundary
 
+## 1.1 Task 03–04 architecture and acceptance-readiness audit
+
+The cross-document audit is recorded in [Task 03–04 Cross-Document Architecture and Acceptance-Readiness Audit](../architecture/TASK-03-04-CROSS-DOCUMENT-READINESS-AUDIT.md) (STF-BI-AUD-034 v0.1). It identifies the shared-platform/domain ownership inconsistency, identity capability mapping defect, offline synchronization architecture gap, Task 04 decision-status ambiguity and documentation citation issues. Findings are proposals for owner review; the audit does not amend the original PRD, Task 04 source transcription, accepted ADRs or scientific data model.
+
+
+
 This register connects source requirements to product capabilities, scientific constraints, architecture responsibilities, accepted Architecture Decision Records (ADRs), validation scenarios and evidence required for acceptance.
 
 It is a traceability instrument, not a substitute for the source PRD, architecture document, scientific data model, ADRs, legal review or test evidence.
