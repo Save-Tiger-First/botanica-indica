@@ -1004,3 +1004,79 @@ The subsequent documentation-only head `8771925b6b1e8a8b590a775d36bec537da43e37b
 - No Python `FutureWarning` appeared in the job log.
 
 This verifies the PR #16 head before this append-only record. The workflow remains a monitoring/routing control, not a branch-creation prevention mechanism. No PR or branch lifecycle action was taken.
+
+## 20.17 Live branch consolidation audit and next-step plan — 21 November 2026
+
+Fresh GitHub reads re-verified the branch collection, PRs, refs, comparisons, changed-file lists, selected documents and active repository ruleset. Earlier snapshots remain historical.
+
+### 20.17.1 Current repository state
+
+- Repository: Save-Tiger-First/botanica-indica; default branch: main.
+- Live branches: **23** (3 long-lived + 20 temporary); ceiling: **7**; excess: **16**.
+- Live open PRs: **20**; all unmerged. PR #16 remains open/draft; PR #15 remains open/non-draft.
+- PR #16 head after documentation corrections: f6f661b97376323aba36b91725aca483af9e7d35; 125 commits, 26 changed files, 4,291 additions and 25 deletions; 125 ahead / 0 behind develop.
+- PR #15 head 633105210d3a6c4c8e36287ed2dc44dee23f61ef is an ancestor of PR #16 (105 ahead / 0 behind).
+- PR #1 head 15fd4edef9afa8d22df9e23f66296ef09423d8cf and PR #2 head e900b64c90df08f5c98181af54bf2ab0b7096759 are also ancestors of PR #16 (each 122 ahead / 0 behind).
+- main is 1 commit ahead / 0 behind develop; its sole main-only file is docs/reviews/HORTUS-MALABARICUS-VALIDATION-CROSSWALK.md. The copy on the scientific review branch has a different blob and 83 differing lines. Reconcile before treating PR #9 as merge-ready.
+- All three required long-lived branches exist. Branch API flags main protected and develop/staging unprotected.
+
+### 20.17.2 Active repository ruleset and protection limits
+
+The only active repository ruleset returned was ID 23822734, “Protect main branch”, targeting the default branch. Its visible rules are deletion and non-fast-forward protection only. It does not list required reviews or required status checks. The branch-protection endpoint for develop returned 403 “Resource not accessible by integration”; therefore full effective protection settings could not be inspected. No ruleset or protection settings were changed.
+
+Recommendation: before enabling a required-check policy, inspect all effective settings using an appropriately authorized maintainer account and design protections for develop and staging. Do not infer full protection from the GitHub branch API boolean flag.
+
+### 20.17.3 Proposed four retained workstreams and 16 source branches
+
+The four retained workstream branches remain provisional destinations. This map identifies source branches and PRs, not authorization to merge or delete.
+
+| Retained destination | Source branch / PR | Source-only commits relative to destination | Disposition / critical condition |
+|---|---|---:|---|
+| docs/repository-audit-and-ai-operating-standard | governance/branch-lifecycle-policy / #15 | 0 | Original head is already an ancestor; preserve review/owner decision before closing #15 and retiring its branch |
+| same | docs/asset-specific-licensing-policy / #1 | 0 | Original head is already an ancestor; policy remains proposed and requires qualified legal review |
+| same | docs/adr-011-stf-ecosystem-boundaries / #2 | 0 | Original head is already an ancestor; ADR-011 remains proposed |
+| docs/full-system-architecture-and-repo-engineering-plan | docs/full-product-vision-capability-blueprint / #17 | 9 | Diverged histories; preserve source history and reconcile product scope |
+| same | docs/canonical-task-03-04-baselines / #18 | 2 | Diverged histories; preserve original Task 03/04 source baselines |
+| same | docs/requirements-traceability-register / #19 | 27 | Diverged histories; preserve requirements, acceptance tests, workflow and offline-sync contracts |
+| same | docs/adr-011-stf-ecosystem-boundaries / #2 | 1 | ADR-011 history is already integrated in governance destination; architecture branch does not contain its history |
+| review/scientific-data-model-review-pack | docs/task-05-data-architecture / #3 | 5 | Preserve parent scientific architecture and reconcile with review pack |
+| same | docs/task-05-data-dictionary / #4 | 14 | Preserve Task 05B definitions and Indian test cases |
+| same | docs/task-05c-logical-data-model / #5 | 10 | Candidate A; preserve and compare with Candidate B |
+| same | docs/task-05c-logical-database-model / #21 | 1 | Candidate B; preserve as a competing model, not an approved duplicate |
+| same | docs/task-05d-logical-model-validation / #22 | 7 | Preserve v1 validation findings and its differing Task 05C file |
+| same | docs/task-05d-logical-model-validation-v2 / #23 | 7 | Preserve v2; not byte-identical to v1 or v3 |
+| same | docs/task-05d-logical-model-validation-v3 / #11 | 13 | Preserve v3 and resolve its stacked dependency on PR #5 |
+| strategy/naturetech-biodiversity-conservation-impact | governance/stf-organisational-readiness-review / #12 | 4 | Diverged histories and overlapping edits in two strategy files; reconcile line-by-line |
+| same | proposal/bengaluru-urban-biodiversity-feasibility-pilot / #13 | 1 | Preserve feasibility proposal; no programme or fieldwork approval implied |
+| same | research/bengaluru-pilot-site-selection / #14 | 1 | Preserve site assessment; no site selection or permission implied |
+
+Source-only counts are fresh compare results in the direction source branch to destination branch. They are Git ancestry counts, not unique-file counts or content approval. Inspect full commit graphs and changed-file contents before any history-preserving integration.
+
+### 20.17.4 Competing document and cross-branch conflicts
+
+1. Task 05C Candidate A (docs/architecture/TASK-05C-LOGICAL-DATABASE-MODEL.md, blob b447796e7da0d08d96400812667a8e67e0696144) and Candidate B (docs/data-architecture/TASK-05C-LOGICAL-DATABASE-MODEL-AND-SCIENTIFIC-RELATIONSHIPS.md, blob 239d7e9974bcb81b1154b54845a7b2d69c3775d6) are different documents. Neither is approved.
+2. Task 05D v1 blob a194d8ed4c98bb3cda6834c73ce73c8f6e03eb4f (29,326 characters), v2 blob acf446b1bf0204fa0400621711603ab23cc80ff2 (29,512 characters), and v3 blob 0b9a009b1c543b2450758f659c97cae3802a2f94 (44,958 characters) are different revisions. Their embedded Task 05C copies also differ. Preserve all unique decisions and test cases before selecting a canonical revision.
+3. PR #12's organisational-readiness branch modifies two strategy files also present on the strategy destination. These are not safe to overwrite wholesale.
+4. The Hortus crosswalk on main and PR #9 differ (83 changed lines; different blob SHAs). Keep the main copy reachable and reconcile it with the expanded PR #9 version.
+5. PRs #17–#20 have diverged histories. Reconcile the full-product blueprint, original Task 03/04 baselines, RTM, acceptance plan, API idempotency and offline synchronization specifications.
+
+### 20.17.5 Workflow and contributor guidance
+
+- CONTRIBUTING.md now states that the current no-new-branches directive overrides generic feature/fix branch guidance; it requires reuse of an approved existing workstream or stopping for explicit owner authorization.
+- STF-ECOSYSTEM-BOUNDARIES.md now lists ADR-011 as a related proposal while retaining Proposed status.
+- The governance workflow is still only on PR #16, not main. Treat its create event as unverified for pre-merge enforcement; regardless, it is detection, not prevention.
+- The workflow does not make the seven-branch excess a failing condition; it warns so cleanup PRs can proceed.
+- The visible main ruleset has no review/status-check requirements; full protection configuration for other branches could not be inspected.
+
+### 20.17.6 Safe consolidation sequence
+
+1. Keep the four provisional destination branches and three long-lived branches. Create no new branch.
+2. Resolve PR #16 review readiness and obtain independent maintainer review. PRs #1, #2 and #15 are already ancestors of the governance destination; retain them until their content/policy reviews and owner disposition are complete.
+3. On the existing product/architecture destination, preserve source commit ancestry for #17–#19 using owner-authorized history-preserving integrations; reconcile their documents and PR dependencies.
+4. On the existing scientific destination, preserve source histories for #3–#5, #11 and #21–#23. Compare Candidate A/B and all Task 05D revisions. Resolve scientific decision-register items and the Hortus crosswalk divergence; obtain specialist review before scientific approval.
+5. On the existing strategy destination, reconcile PR #12's overlapping edits and preserve PR #13/#14 proposal/research content. Keep no-site-selected/no-fieldwork-authorized status until gates are met.
+6. For every source PR: verify destination tree/content, source-head ancestry, no unique unpreserved commit, no other open PR dependency, and explicit owner disposition. Only then request approval to close its PR and delete its own head branch.
+7. After each authorized retirement, re-fetch branch and PR inventories; update the allowlist and provenance record only after the live ref is gone.
+8. Target no more than seven branches (three long-lived plus four workstream branches). At formal completion, apply the one-branch-only rule and retain only main.
+
+No consolidation merges, PR closures, branch deletions, retargeting, ruleset changes or approvals were performed in this audit.
