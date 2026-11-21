@@ -404,3 +404,92 @@ Task 05D does not authorize production DDL, migrations, ingestion of third-party
 ### 4.3 Further standards metadata re-verification — DR-09 remains open (20 November 2026)
 
 Latest indexed metadata on the official TDWG pages reports 2026-10-13 as the issued version of both the Darwin Core List of Terms and Conceptual Model, with 2026-05-26 as the previous version. Direct HTML retrieval of the List page returned a 2026-05-26 header (previous 2025-07-10), while the core dwc: namespace term list also reports a 2026-05-26 snapshot. This retrieval inconsistency has not been resolved by direct retrieval of the exact versioned resources. The current occurrenceStatus term IRI and modification date also require verification against the current List version. DR-09 remains open. Do not treat a document issue date, namespace snapshot date and individual term modification date as interchangeable.
+
+ 
+## 14. Event–Survey–Occurrence reconciliation and current standards correction — 21 November 2026
+
+**Status:** Proposed validation addendum. It reconciles this gate with Candidate A §18–§19 and the current official standards metadata. It does not approve Task 05C, Task 05D, ODR-01 implementation or physical design.
+
+### 14.1 Correct standards/version inventory
+
+| Resource | Current version retrieved | Required treatment |
+|---|---|---|
+| Darwin Core Conceptual Model | 2026-10-13; previous 2026-05-26 | The HTML renderer returned cached 2026-05-26 content during this review; exact versioned 2026-10-13 resource still needs direct comparison |
+| Darwin Core List of Terms | 2026-10-13; previous 2026-05-26 | Corrects the earlier §4.3 claim that the latest List document was 2026-05-26 |
+| Core Darwin Core term snapshot | 2026-10-13 | Pin individual term versions |
+| Darwin Core schemas | 2026-10-13 | DwC-A Event/Occurrence/Taxon and Humboldt Extension schema resources are listed at this version |
+| Humboldt hierarchical-event guidance | 2026-10-13; previous 2024-02-28 | Section 3 is normative; apply spatial/temporal coverage, applicability and non-derivation principles |
+| Humboldt Extension term list | 2026-10-13; previous 2026-05-26 | Check each term's current version and status separately |
+| GBIF survey guide | v1.0.2, 2025-09-24 | Treat as a publishing guide/profile, not an internal data model |
+
+The earlier §4.3 note is retained as historical audit history, but its statement that the List's latest issue date was 2026-05-26 is superseded by this correction.
+
+### 14.2 Term-level pins and open mapping questions
+
+- `dwc:occurrenceStatus-2026-05-26` recommends `detected` and `notDetected`.
+- GBIF survey guide v1.0.2 examples use `present` and `absent`. Do not assume direct literal equivalence; test a versioned export mapping.
+- `eco:isTaxonomicScopeFullyReported-2026-10-13` supersedes its 2024-02-28 term version.
+- `eco:isSurveyTargetFullyReported-2026-05-26` is target-specific and distinct; verify its status in the 2026-10-13 Humboldt term-list snapshot before using it.
+- `eco:isSamplingEffortReported-2026-10-13` supersedes its 2024-02-28 version; current `samplingEffortValue` and `samplingEffortUnit` term versions are 2026-10-13.
+- `eco:taxonCompletenessReported` and `eco:taxonCompletenessProtocols` require exact current term/version and controlled-value pins.
+
+Do not equate scope declaration, target reporting completeness, taxonomic-completeness assessment, sampling effort or detectability. ODR-01 remains export-only. Its implementation must be reassessed against current term definitions; missing or ambiguous evidence remains fail-closed.
+
+### 14.3 Model semantics that Task 05D must validate
+
+1. Event is the common semantic superclass/identity for generic Events, Surveys and Occurrences.
+2. A single Event instance is not simultaneously a Survey and an Occurrence.
+3. A generic/context Event may provide shared spatiotemporal context for multiple distinct activity Events.
+4. Survey results are expressed in the Occurrences the Survey reports; report association is distinct from Event parent-child hierarchy.
+5. Parent-child Event hierarchy requires spatial and temporal containment. Applicable properties are explicit at each applicable level; no silent inheritance or parent derivation from child summaries.
+6. Observation remains a contributor workflow record, not an automatic Event/Survey/Occurrence.
+7. MaterialEntity is physical matter and remains distinct from MediaAsset and Occurrence.
+8. A priori SurveyTarget and post-facto analytical filters must remain distinguishable.
+9. An empty Occurrence query does not create an internal non-detection result.
+10. Explicit non-detection and implicit export-only interpretation must be represented and tested separately.
+
+### 14.4 Proposed representative synthetic fixture set
+
+All fixture IDs and values below are synthetic test data, not real observations or claims about actual Indian biodiversity records.
+
+| Fixture | Synthetic setup | Expected result | Reject if |
+|---|---|---|---|
+| EVT-34 — Target detection | Survey S-01, a priori target T-01, protocol P-01, effort E-01, Occurrence O-01 matches target | SurveyOccurrenceReport records target match; evidence and provenance resolve | Target result is inferred from an unlinked occurrence |
+| EVT-35 — Bycatch | Same Survey S-01 reports Occurrence O-02 outside T-01 | Report role is incidental/bycatch; it does not satisfy target completeness or absence inference for T-01 | Bycatch is treated as a target detection or target non-detection |
+| EVT-36 — Explicit non-detection | Survey S-02 assesses target T-02; no target organism detected; protocol, effort, time/place, completeness and agent are recorded | Attributable SurveyTargetResult records explicit NOT_DETECTED; any DwC Occurrence representation is separately mapped/tested | State is inferred from an empty result set or lacks defined survey context |
+| EVT-37 — Unknown from missing row | Survey S-03 has no Occurrence row and no SurveyTargetResult | Internal state remains UNKNOWN/NOT_ASSESSED; no implicit export | Empty query becomes explicit absence or an internal negative Occurrence |
+| EVT-38 — Incomplete reporting | Survey S-04 has incomplete, unreported, ambiguous or contradictory completeness/method evidence | ODR-01 implicit output is suppressed; issue and reason are recorded | Export emits inferred non-detection |
+| EVT-39 — Repeated plot visits | Parent Event E-05 contains two distinct child visit Events with non-identical dates and extents | Parent spatial/temporal extent contains children; each applicable scope/protocol/completeness is explicit; visits remain distinct | Values silently inherited or parent completeness summarized from children |
+| EVT-40 — Post-facto target | Survey S-06 has original scope T-06A; analyst later creates filter T-06B | Origin, author, method and timestamp preserved; T-06B does not rewrite T-06A | Post-facto filter is presented as original field intent |
+| EVT-41 — Herbarium collection | Generic material-gathering Event E-07 creates MaterialEntity M-07 and a digital image | Physical material, gathering Event, MediaAsset and provenance remain distinct; no synthetic user Observation is forced | Image is treated as specimen or Observation is fabricated |
+| EVT-42 — Multiple plants in one image | Observation OB-08 has one MediaAsset showing several plants | Separate Organisms/Occurrences only where evidence supports; unresolved grouping retained | One individual or one species is assumed from image count |
+| EVT-43 — Event type exclusivity | Survey event S-09 reports Occurrence event O-09; context Event C-09 provides common site/time | S-09 and O-09 have distinct Event identities and subtypes; C-09 is generic/context; reporting and context links are explicit | One Event identity is simultaneously Survey and Occurrence |
+| EVT-44 — Hierarchy vs reporting | Survey S-10 reports O-10; O-10 is also a child Event only where true containment is documented | SurveyOccurrenceReport and parent-child relation are tested independently | One relation is inferred solely from the other |
+
+### 14.5 Fixture evidence requirements
+
+For each fixture, store:
+- fixture ID, version and synthetic-data declaration;
+- source assumptions and which values are illustrative;
+- expected entity/relationship graph;
+- expected validation and export outputs;
+- negative assertions and failure reason;
+- test implementation/version and execution environment;
+- reviewer and review date;
+- actual result, pass/fail and evidence reference.
+
+Do not mark a fixture passed until it has been executed. Do not use synthetic fixtures as evidence of real-world ecological occurrence.
+
+## 15. Updated Task 05D exit conditions
+
+Task 05D cannot pass until:
+- Candidate A §18–§19 and Task 05B §16 are reconciled with the same event semantics;
+- Task 05D is synchronized with the exact Candidate A branch head through a reviewed, non-destructive dependency plan;
+- all DOC/DR/B/LDM/FLD/EVT findings have explicit disposition and evidence;
+- current versioned TDWG resources and term metadata are pinned;
+- the ODR-01 export mapping is profile-specific and tested, or remains explicitly deferred;
+- synthetic fixtures EVT-34–EVT-44 are implemented and executed with recorded evidence;
+- required independent scientific and technical reviews are obtained;
+- all blockers are resolved or explicitly accepted by the project owner with rationale and residual risk.
+
+**Decision status:** Task 05D remains PROPOSED / NOT PASSED. Task 05E and physical database design remain NOT READY. No DDL, migrations, API payload freeze or implementation is authorized.
