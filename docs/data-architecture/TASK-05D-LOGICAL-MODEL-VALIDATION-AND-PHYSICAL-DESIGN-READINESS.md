@@ -493,3 +493,18 @@ Task 05D cannot pass until:
 - all blockers are resolved or explicitly accepted by the project owner with rationale and residual risk.
 
 **Decision status:** Task 05D remains PROPOSED / NOT PASSED. Task 05E and physical database design remain NOT READY. No DDL, migrations, API payload freeze or implementation is authorized.
+
+ 
+### 14.6 Exact document baselines and stacked dependency status
+
+The current reviewed document heads for this reconciliation are:
+
+| Document | Branch / PR | Commit SHA | File blob SHA |
+|---|---|---|---|
+| Task 05B dictionary | `docs/task-05-data-dictionary` / PR #4 | `8936fe87a2c32da861c7f6a08d52603c9e545d21` | `b6827f8149313f0e70ac6a8873108aae509eb785` |
+| Task 05C Candidate A | `docs/task-05c-logical-data-model` / PR #5 | `98741843a2ba8550e2cb744658d9291fe60b8823` | `c8bddcdfda9f76f03afd389ff9c5a307b89bd906` |
+| Task 05D v3 | `docs/task-05d-logical-model-validation-v3` / PR #11 | `9d383c4206f2d48bd31b04c6ebb5bd97bf7b87df` | `27a12b960d84b504fe915da4681d2f2511bdb086` |
+
+At the latest compare check, Candidate A is the base and Task 05D v3 the head; the branches are **diverged**, with Task 05D v3 **4 commits ahead and 3 commits behind**, merge base `91c82b4f136a77aaa1edb02753ed49b2fbee86ed`. The PR #11 base remains `docs/task-05c-logical-data-model`.
+
+This is a source-history dependency, not proof of a content conflict or a merge failure. Do not rebase, retarget, merge or force-update either branch automatically. Before any PR decision, inspect the full commit graph and file diff, confirm the Task 05D validation content against the exact Candidate A and Task 05B baselines above, and prepare a non-destructive synchronization plan for owner review. No synchronization or PR lifecycle action has been performed.
