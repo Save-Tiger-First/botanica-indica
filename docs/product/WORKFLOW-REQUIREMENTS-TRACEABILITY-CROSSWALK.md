@@ -139,6 +139,11 @@ Each executable case should have a stable test ID, preconditions, actor/authorit
 | RTM-WF-OD-08 | AC-012 STF biodiversity reuse test | AC-012 | Domain-boundary and portability acceptance case |
 | RTM-WF-OD-09 | AC-006 species profile acceptance coverage | AC-006 | Separate profile rendering/source evidence test suite |
 | RTM-WF-OD-10 | AC-009 complete API acceptance coverage | AC-009 | Contract, compatibility, authorization and operational tests |
+| RTM-WF-OD-11 | Offline synchronization, local storage and concurrent field updates | WF-OD-10; Task 03 §§17, 20, 28; AC-004, AC-009, AC-010 | Proposed Offline and Field Synchronization Architecture & Validation Specification; OFF-001–OFF-036; owner and specialist decisions remain open |
+
+### 9.1 Offline and field synchronization specification
+
+The offline/field synchronization design and proposed validation matrix are documented separately in [STF-BI-ARCH-OFF-001 — Offline and Field Synchronization Architecture & Validation Specification](../architecture/OFFLINE-FIELD-SYNCHRONIZATION-ARCHITECTURE-AND-VALIDATION-SPECIFICATION.md). It elaborates WF-OD-10 and Task 03 §§17, 20 and 28. The specification is Proposed; it does not create an accepted ADR, authorize implementation or resolve Task 05 logical-model blockers. Its OFF-001–OFF-036 cases are not executed.
 
 ## 10. Review and approval checklist
 
