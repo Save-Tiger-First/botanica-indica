@@ -201,7 +201,35 @@ Each source, dataset, asset collection or material license unit should record, a
 | Source version and retrieval date | Reproducibility |
 | Review status and reviewer | Governance evidence |
 | Review / expiry date | Reassessment trigger |
+| Jurisdiction(s) and relevant legal regime(s) | Identifies territorial/legal scope requiring assessment |
+| Legal applicability status and rationale | Not assessed, assessment required, or not applicable with documented basis |
+| Relevant authority / process | NBA, State Biodiversity Board, Union Territory Biodiversity Council, BMC or other authority where applicable |
+| ABS assessment and status | Applicability, approval/prior-intimation/registration reference, benefit-sharing status and conditions where applicable |
+| Community authority / consent evidence | Records legitimate authority, consent or consultation basis where relevant, with access controls for sensitive records |
+| Legal reviewer and review record | Traceable professional review and date |
 | Evidence of permission | License snapshot, agreement or correspondence reference |
+
+### 10.1 India-specific legal and biodiversity triage
+
+This is a governance checklist, not a legal opinion, a determination that a particular STF activity is regulated, or a substitute for qualified Indian counsel. Applicability depends on the persons and entities involved, the source and nature of the material, the activity and purpose, and applicable exemptions or later amendments.
+
+#### Digital personal data — DPDP Act and Rules
+
+The Digital Personal Data Protection Act, 2023 and Digital Personal Data Protection Rules, 2025 have phased commencement. The official commencement notifications published on 13 November 2025 provide different commencement dates for different provisions. The project must maintain a provision-level implementation register rather than describing the whole Act or Rules as wholly in force or wholly future-dated. The schedule recorded in this policy was checked on 21 November 2026: specified provisions commenced on publication; section 6(9), section 27(1)(d) and Rule 4 commenced one year later on 13 November 2026; the provisions listed for eighteen-month commencement are scheduled for 13 May 2027. Re-check the Gazette notifications, corrigenda and amendments before consequential processing or release.
+
+Inventory personal data in accounts, contributor details, observation metadata, photographs and EXIF/geolocation, communications, analytics and support records. Obtain qualified advice on roles, purposes, lawful basis, notices, security, retention and individual-rights processes.
+
+#### Biological resources, associated knowledge and access-and-benefit sharing
+
+Include the Biological Diversity Act, 2002 as amended by the Biological Diversity (Amendment) Act, 2023; Biological Diversity Rules, 2024; Biological Diversity (Amendment) Rules, 2025; and the 2025 Access and Benefit Sharing Regulations in the legal-source register.
+
+Before activity involving biological resources, derivatives, associated traditional or contemporary knowledge, bio-survey/bio-utilisation, commercial utilisation, IPR applications, international collaboration or transfer/exchange, assess the exact material and source, actor and legal status, purpose/activity, applicable provisions and exemptions, competent authority, required approval/prior intimation/registration, benefit-sharing terms, community authority/consent safeguards, evidence and review date. Relevant authorities may include the NBA, State Biodiversity Boards, Union Territory Biodiversity Councils and Biodiversity Management Committees, depending on the applicable legal framework.
+
+Do not assume that every public botanical webpage, scientific name, photograph or observation automatically requires approval. Equally, do not assume that public availability or a research label creates an exemption. Assess the actual resource/knowledge, actor, purpose and activity, and obtain qualified advice where uncertain. Do not collect or repurpose community-held knowledge as training material without legitimate authority, documented purpose and appropriate permissions and safeguards.
+
+#### Copyright and contributor rights
+
+For Indian copyright questions, include the Copyright Act, 1957, particularly first ownership (section 17) and assignment (sections 18–19). Section 19 addresses the written instrument and particulars of an assignment, including the work, rights, duration and territorial extent. Do not treat a general contribution statement as a copyright assignment or assume the uploader owns the work. Obtain qualified advice for contributor terms, commissioned/employment works, joint authorship, third-party content and cross-border rights.
 
 The registry should support source-level defaults only where the source terms genuinely apply uniformly. Record exceptions at dataset, record or asset level where required.
 
@@ -281,6 +309,18 @@ The following are starting points for policy interpretation. Always read the act
 - SPDX license identifiers and expressions: https://spdx.dev/learn/handling-license-info/
 - Intellectual Property India — Copyright basics: https://ipindia.gov.in/pages/copyright/learn/basics-of-copyright
 
+### India-specific statutory and regulatory starting points
+
+- Copyright Act, 1957, Chapter IV: https://copyright.gov.in/Copyright_Act_1957/chapter_iv.html
+- Digital Personal Data Protection Act, 2023: https://www.meity.gov.in/static/uploads/2024/06/2bf1f0e9f04e6fb4f8fef35e82c42aa5.pdf
+- DPDP Act commencement notification, G.S.R. 843(E), 13 November 2025: https://www.meity.gov.in/static/uploads/2025/11/c56ceae6c383460ca69577428d36828b.pdf
+- Digital Personal Data Protection Rules, 2025, G.S.R. 846(E), 13 November 2025: https://www.meity.gov.in/static/uploads/2025/11/53450e6e5dc0bfa85ebd78686cadad39.pdf
+- MeitY DPDP Rules 2025 listing and corrigendum: https://www.meity.gov.in/documents/act-and-policies/digital-personal-data-protection-rules-2025-gDOxUjMtQWa
+- National Biodiversity Authority, Biological Diversity Rules 2024 and Amendment Rules 2025: https://nbaindia.nic.in/acts-and-rules/rules
+- National Biodiversity Authority, ABS Regulations 2025 and notifications: https://nbaindia.nic.in/public-information/notification-guidelines
+- National Biodiversity Authority FAQs (administrative guidance, not a substitute for legislation or legal advice): https://nbaindia.nic.in/about-us/faqs
+
+These sources were checked on 21 November 2026. Re-check official Gazette notifications, consolidated statutory text, corrigenda, amendments and regulator guidance before a legal or operational decision.
 ---
 
 ## 16. Final policy position
