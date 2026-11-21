@@ -1213,3 +1213,29 @@ Required before any PR #16 merge:
 - Re-fetch all refs and checks immediately before any authorized merge.
 
 **No merge, PR state change, retarget, branch creation/deletion, protection/ruleset change or policy/ADR approval was performed.**
+
+
+## 20.22 Live-state correction and ODR-01 continuity — 21 November 2026
+
+This section supersedes Sections 20.20 and 20.21 for current PR #16 metadata. Those sections remain historical records and must not be read as current head values.
+
+### Verified current snapshot
+
+- Governing prompt on this branch: 259 lines; blob SHA `53add3894d0502827e584614c70ad09cadaa637d`.
+- Repository branch inventory: 23 branches (3 long-lived + 20 temporary/workstream); immediate owner ceiling: 7.
+- Open PR count: 20.
+- PR #16 is open/draft, base `develop), head branch `docs/repository-audit-and-ai-operating-standard`.
+- Current PR #16 head: `146ddeb6daba83f679cedb03a512c82279d21666`.
+- PR #16: 138 commits, 26 changed files, 4,637 additions, 25 deletions; 138 ahead / 0 behind `develop`.
+- GitHub reports mergeable, but there are no independent submitted reviews. Mergeability is not approval.
+- The open PR inventory still contains direct-to-main and stacked workstream targets described in Sections 20.20–20.21; no routing or lifecycle change has been made.
+
+### ODR-01 continuity
+
+The current governing prompt contains owner-authorized clarification ODR-01 (21 November 2026) to Principle 8. It permits only a tightly bounded, profile-specific external export interpretation of “not detected/reported within the stated survey scope” when all scope, completeness, provenance, hierarchy, version and mapping conditions are satisfied. Missing evidence must fail closed. It does not authorize an internal biological-absence assertion, a negative Occurrence, a final export profile, Task 05C/05D/05E, physical schema, API contract or implementation. EVT-27–EVT-30 and independent specialist review remain required. The scientific review decision register remains the authoritative decision record for ODR-01.
+
+### Current disposition
+
+PR #16 remains **NOT READY FOR MERGE** pending an independent maintainer review, resolution of findings and separate owner decisions on the proposed branch policy, licensing policy and ADR-011. The 23-branch inventory remains above the immediate seven-branch ceiling. Do not interpret the passing CI checks or GitHub's mergeable flag as satisfying these gates.
+
+No merge, PR state change, retarget, branch creation/deletion, ruleset/protection change, legal approval, policy adoption or scientific approval was performed.
