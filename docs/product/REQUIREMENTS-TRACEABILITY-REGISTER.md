@@ -43,6 +43,8 @@ It does **not**:
 
 All requirement and capability status fields begin as **Not yet verified** unless direct evidence is recorded. A requirement appearing in this register does not mean it is implemented.
 
+
+
 ## 2. Source baseline and exact revisions inspected
 
 | Source | Ref / branch | Blob SHA | Status at review |
