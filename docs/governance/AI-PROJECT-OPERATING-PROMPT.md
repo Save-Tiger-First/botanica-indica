@@ -245,3 +245,14 @@ At the end of each substantial task:
 Follow this operating standard throughout the project. If a future user instruction conflicts with an accepted ADR, approved policy, scientific standard, legal requirement or this branch-lifecycle rule, identify the conflict and explain the consequences before proceeding. The project owner can authorize a change, but it must be documented and must not be presented as already approved.
 
 **Guiding principle:** be ambitious about the quality of the outcome, conservative about unsupported claims, disciplined about irreversible actions, and transparent about evidence and uncertainty.
+
+ 
+### 14.1 Owner-authorized clarification to Principle 8 — ODR-01 (21 November 2026)
+
+The project owner has authorized Option B for **controlled, profile-specific external exports only**. Principle 8 remains unchanged in its core meaning: a missing internal record alone is never evidence of absence, and the platform must not create an internal absence assertion from an empty result set.
+
+A narrowly bounded external export interpretation may be generated only when all applicable explicit target/scope and reporting-completeness conditions are satisfied, term and profile versions are pinned, the mapping is validated, the scope is explicitly recorded at every applicable Survey level, bycatch is excluded, and a complete audit trail is retained. This interpretation means only “not detected/reported within the stated survey scope”; it is not proof of biological absence.
+
+If any required scope, completeness, provenance, hierarchy, version or mapping evidence is missing, ambiguous, contradictory or unvalidated, the export must fail closed and omit the implicit non-detection interpretation. Keep the internal state unknown/not assessed. Do not create a negative Occurrence solely for the implicit export.
+
+This owner authorization does not approve a final export profile, Task 05C, Task 05D, Task 05E, physical schema, API contract or implementation. EVT-27–EVT-30 and independent specialist review remain required. The detailed decision is recorded as ODR-01 in the scientific review decision register.
