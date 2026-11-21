@@ -399,3 +399,36 @@ Add the following tests to the EVT acceptance suite (proposed; not executed):
 Sources: TDWG Darwin Core Conceptual Model §§2.2–2.3, https://dwc.tdwg.org/cm/ ; GBIF Guide for publishing biological survey and monitoring data v1.0.2 (2025-09-24), §§5.5.3, 5.6 and 7.3, https://docs.gbif.org/guide-publishing-survey-data/en/.
 
 These are proposed acceptance tests only. No test execution or expert approval is claimed. Task 05E remains NOT READY.
+
+ 
+## 7. Owner decision record ODR-01 — 21 November 2026
+
+| Field | Record |
+|---|---|
+| Decision ID | ODR-01 |
+| Decision authority | Save Tiger First project owner |
+| Decision | Option B: controlled, profile-specific implicit non-detection interpretation in external exports only |
+| Status | Authorized; implementation and validation pending |
+| Internal rule | Missing Occurrence row alone remains unknown/not assessed; no internal absence assertion is created from an empty result |
+| Export rule | Derivation is permitted only with explicit, applicable scope and reporting-completeness evidence, pinned term/profile/mapping versions, hierarchy correctness, provenance and auditability |
+| Exclusions | Bycatch and taxa outside the declared scope; uncertain/incomplete/contradictory records |
+| Semantic wording | “Not detected/reported within the stated survey scope under documented survey conditions”; never a claim of biological absence |
+| Implementation authorization | Not granted by this decision |
+| Task 05C / Task 05E | Task 05C remains NOT APPROVED; Task 05E remains NOT READY |
+
+### 7.1 Consequences for existing blockers and tests
+
+- B16 remains open for the internal Survey/Occurrence semantics and export mapping; ODR-01 resolves the owner-policy question only.
+- LDM-16 and FLD-08 continue to require an explicit, evidence-backed internal non-detection state and a negative test proving that a missing Occurrence row is unknown, not non-detected.
+- Add export-specific EVT-27–EVT-30: eligible implicit export, fail-closed conditions, hierarchy scope recording and term/profile version changes.
+- The final external profile must distinguish Darwin Core's `detected/notDetected` recommendation from GBIF guide examples using `present/absent`; do not equate them without a versioned mapping decision and executable round-trip tests.
+- Reporting completeness is not proof of exhaustive field coverage or perfect detectability. Preserve protocol, effort, coverage, limitations and evidence separately.
+- The exact TDWG List/Conceptual Model 2026-10-13 versioned resource retrieval remains unresolved; DR-09 stays OPEN.
+
+### 7.2 Decision sources
+
+GBIF Guide v1.0.2 (2025-09-24), §§5.6 and 7.3: https://docs.gbif.org/guide-publishing-survey-data/en/  
+Humboldt hierarchical-event guidance, Principle of Inference: https://dwc.tdwg.org/hierarchy/  
+Term versions: `eco:isTaxonomicScopeFullyReported-2026-10-13`, `eco:isSurveyTargetFullyReported-2026-05-26`, and `dwc:occurrenceStatus-2026-05-26`.
+
+No test is executed or specialist approval claimed by recording ODR-01.
