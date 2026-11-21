@@ -207,6 +207,7 @@ Architecture decisions are maintained under `docs/adr/`.
 | ADR-009 | Observation and contribution model |
 | ADR-010 | Data ingestion and source integration |
 | ADR-011 | STF ecosystem boundaries and shared platform (**Proposed; under review**) |
+| ADR-011 | STF ecosystem boundaries and shared platform (**Proposed; under review**) |
 
 New significant decisions should be documented through ADRs. Existing accepted decisions should be amended or superseded explicitly rather than silently contradicted.
 
