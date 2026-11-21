@@ -664,3 +664,110 @@ No new branches are authorized. The four destinations plus main, develop and sta
 - The seven-branch target remains unmet: 23 branches are live.
 
 **Next task:** conduct a preservation-first, content-level reconciliation of the four workstreams, beginning with the governance PR #15 / #16 package and then the product/architecture PR #17–#20 package. Before any source-branch retirement, update this register with the exact source-to-destination content mapping, duplicate/collision decisions, retained provenance, PR resolution evidence and owner approval.
+
+
+## 20.8 Live baseline refresh after PR #20 roadmap commit — 21 November 2026, 17:07 IST
+
+**Purpose:** Record the latest live repository state after the master roadmap document was committed to the existing PR #20 branch. This addendum supersedes earlier current-head assertions in Sections 20.1–20.4 where the live values below differ. Prior snapshots remain historical evidence and are not silently rewritten.
+
+### 20.8.1 Repository and branch heads
+
+Direct GitHub REST reads at 17:07 IST returned a public, non-archived repository with default branch `main`. The branch collection returned **23 branches**: the three required long-lived branches and 20 temporary/workstream branches. The immediate ceiling of seven remains exceeded by 16 branches.
+
+| Branch | Current head SHA | Branch API protected flag |
+|---|---|---|
+| `develop` | `f165ecb9b4d9de115c02327cf779982b7ef4bbd4` | false |
+| `docs/adr-011-stf-ecosystem-boundaries` | `e900b64c90df08f5c98181af54bf2ab0b7096759` | false |
+| `docs/asset-specific-licensing-policy` | `15fd4edef9afa8d22df9e23f66296ef09423d8cf` | false |
+| `docs/canonical-task-03-04-baselines` | `0f908f8221ad3434cc84fe2cd41b735aad0a752a` | false |
+| `docs/full-product-vision-capability-blueprint` | `b66c16355d0ded4f20f1a84172eab8b47d133277` | false |
+| `docs/full-system-architecture-and-repo-engineering-plan` | `98f5bd498a92af5d1c9a79ad038fe33741959079` | false |
+| `docs/repository-audit-and-ai-operating-standard` | `d52dfef64cb6eee218cc2a7b02c80e6b1dcfd66c` | false |
+| `docs/requirements-traceability-register` | `b2e8728e5e725b844a41438260e3a40f77ca65db` | false |
+| `docs/task-05-data-architecture` | `2b02ab3cd115691841889ed77d453b31ab0bed16` | false |
+| `docs/task-05-data-dictionary` | `e11fd943e59c81ea8b464ef6a84ac4bcdbcccfd4` | false |
+| `docs/task-05c-logical-data-model` | `d443420d6b77815cb155f457ea262e621aabf7cb` | false |
+| `docs/task-05c-logical-database-model` | `8d4fef2d726aac79dd684856d924b171e44d0b93` | false |
+| `docs/task-05d-logical-model-validation` | `3efd80e5e28b2a916e63c85808ef3aba9d35e4ac` | false |
+| `docs/task-05d-logical-model-validation-v2` | `76bd88980bb2536db63bbde76e3fa687503bdda1` | false |
+| `docs/task-05d-logical-model-validation-v3` | `0577250c9e7cffcb3605acc782f403b7d1b422e0` | false |
+| `governance/branch-lifecycle-policy` | `633105210d3a6c4c8e36287ed2dc44dee23f61ef` | false |
+| `governance/stf-organisational-readiness-review` | `bd5b18fe5d68f50e25f0453eb792d0c44bc700d0` | false |
+| `main` | `6f2f51da093caf8183fde386dbec707cc6046d27` | true |
+| `proposal/bengaluru-urban-biodiversity-feasibility-pilot` | `7f7a3be03d68d5595465279ad22407ea983f046e` | false |
+| `research/bengaluru-pilot-site-selection` | `ee71dc0da319e7b3c69572f9c6f015298e3c8c2e` | false |
+| `review/scientific-data-model-review-pack` | `51b909accbf052426678969d0a28408356133e61` | false |
+| `staging` | `f165ecb9b4d9de115c02327cf779982b7ef4bbd4` | false |
+| `strategy/naturetech-biodiversity-conservation-impact` | `9d76328df8112922df818f01c27e297b3ee1b76a` | false |
+
+Only `main` is marked protected by the branch collection. The active repository ruleset read at this refresh is ID `23822734`, “Protect main branch”, targeting the default branch, with deletion and non-fast-forward restrictions. It does not contain a pull-request or review requirement. This is not a full claim about every classic branch-protection endpoint; no protection settings were changed.
+
+### 20.8.2 Current long-lived branch drift
+
+- `main` is at `6f2f51da093caf8183fde386dbec707cc6046d27`.
+- `develop` and `staging` remain at `f165ecb9b4d9de115c02327cf779982b7ef4bbd4`.
+- Direct compare confirms `main` is **one commit ahead** of `develop` / `staging`, with no commits behind.
+- The sole main-only commit is `6f2f51da093caf8183fde386dbec707cc6046d27`, message “docs(science): map Hortus case to model validation”; it adds `docs/reviews/HORTUS-MALABARICUS-VALIDATION-CROSSWALK.md` (187 additions, no deletions).
+- The current open PR base snapshots continue to reference the earlier `f165ecb9b4d9de115c02327cf779982b7ef4bbd4` for their main/develop targets. This is a synchronization and traceability issue, not permission to cherry-pick, rebase or merge.
+
+### 20.8.3 Current open PR metadata
+
+Twenty PRs remain open. Nineteen are drafts; PR #15 is the sole non-draft open PR. None is merged. PR #9 is currently reported by GitHub as non-mergeable; all other open PRs are currently reported mergeable. “Mergeable” is only a GitHub metadata signal and is not approval, review or proof that a PR is ready.
+
+| PR | State | Draft | Base branch | Base SHA in PR metadata | Head branch | Current head SHA | GitHub mergeable |
+|---:|---|---|---|---|---|---|---|
+| #1 | open | yes | main | `f165ecb9b4d9de115c02327cf779982b7ef4bbd4` | `docs/asset-specific-licensing-policy` | `15fd4edef9afa8d22df9e23f66296ef09423d8cf` | true |
+| #2 | open | yes | main | `f165ecb9b4d9de115c02327cf779982b7ef4bbd4` | `docs/adr-011-stf-ecosystem-boundaries` | `e900b64c90df08f5c98181af54bf2ab0b7096759` | true |
+| #3 | open | yes | main | `f165ecb9b4d9de115c02327cf779982b7ef4bbd4` | `docs/task-05-data-architecture` | `2b02ab3cd115691841889ed77d453b31ab0bed16` | true |
+| #4 | open | yes | main | `f165ecb9b4d9de115c02327cf779982b7ef4bbd4` | `docs/task-05-data-dictionary` | `e11fd943e59c81ea8b464ef6a84ac4bcdbcccfd4` | true |
+| #5 | open | yes | main | `f165ecb9b4d9de115c02327cf779982b7ef4bbd4` | `docs/task-05c-logical-data-model` | `d443420d6b77815cb155f457ea262e621aabf7cb` | true |
+| #8 | open | yes | main | `f165ecb9b4d9de115c02327cf779982b7ef4bbd4` | `strategy/naturetech-biodiversity-conservation-impact` | `9d76328df8112922df818f01c27e297b3ee1b76a` | true |
+| #9 | open | yes | main | `f165ecb9b4d9de115c02327cf779982b7ef4bbd4` | `review/scientific-data-model-review-pack` | `51b909accbf052426678969d0a28408356133e61` | false |
+| #11 | open | yes | `docs/task-05c-logical-data-model` | `91c82b4f136a77aaa1edb02753ed49b2fbee86ed` | `docs/task-05d-logical-model-validation-v3` | `0577250c9e7cffcb3605acc782f403b7d1b422e0` | true |
+| #12 | open | yes | `strategy/naturetech-biodiversity-conservation-impact` | `44b7ed4dab20c2a76c2357d284dc956baaf067a9` | `governance/stf-organisational-readiness-review` | `bd5b18fe5d68f50e25f0453eb792d0c44bc700d0` | true |
+| #13 | open | yes | main | `f165ecb9b4d9de115c02327cf779982b7ef4bbd4` | `proposal/bengaluru-urban-biodiversity-feasibility-pilot` | `7f7a3be03d68d5595465279ad22407ea983f046e` | true |
+| #14 | open | yes | main | `f165ecb9b4d9de115c02327cf779982b7ef4bbd4` | `research/bengaluru-pilot-site-selection` | `ee71dc0da319e7b3c69572f9c6f015298e3c8c2e` | true |
+| #15 | open | no | develop | `f165ecb9b4d9de115c02327cf779982b7ef4bbd4` | `governance/branch-lifecycle-policy` | `633105210d3a6c4c8e36287ed2dc44dee23f61ef` | true |
+| #16 | open | yes | develop | `f165ecb9b4d9de115c02327cf779982b7ef4bbd4` | `docs/repository-audit-and-ai-operating-standard` | `d52dfef64cb6eee218cc2a7b02c80e6b1dcfd66c` | true |
+| #17 | open | yes | develop | `f165ecb9b4d9de115c02327cf779982b7ef4bbd4` | `docs/full-product-vision-capability-blueprint` | `b66c16355d0ded4f20f1a84172eab8b47d133277` | true |
+| #18 | open | yes | develop | `f165ecb9b4d9de115c02327cf779982b7ef4bbd4` | `docs/canonical-task-03-04-baselines` | `0f908f8221ad3434cc84fe2cd41b735aad0a752a` | true |
+| #19 | open | yes | develop | `f165ecb9b4d9de115c02327cf779982b7ef4bbd4` | `docs/requirements-traceability-register` | `b2e8728e5e725b844a41438260e3a40f77ca65db` | true |
+| #20 | open | yes | develop | `f165ecb9b4d9de115c02327cf779982b7ef4bbd4` | `docs/full-system-architecture-and-repo-engineering-plan` | `98f5bd498a92af5d1c9a79ad038fe33741959079` | true |
+| #21 | open | yes | `review/scientific-data-model-review-pack` | `1be0975e457d56152ad57a1cd6bb5d941328fbda` | `docs/task-05c-logical-database-model` | `8d4fef2d726aac79dd684856d924b171e44d0b93` | true |
+| #22 | open | yes | `review/scientific-data-model-review-pack` | `1be0975e457d56152ad57a1cd6bb5d941328fbda` | `docs/task-05d-logical-model-validation` | `3efd80e5e28b2a916e63c85808ef3aba9d35e4ac` | true |
+| #23 | open | yes | `review/scientific-data-model-review-pack` | `1be0975e457d56152ad57a1cd6bb5d941328fbda` | `docs/task-05d-logical-model-validation-v2` | `76bd88980bb2536db63bbde76e3fa687503bdda1` | true |
+
+### 20.8.4 Refreshed dependency comparisons
+
+Comparisons were run using the current live branch tips rather than only the base/head SHAs stored in the original PR creation metadata:
+
+| Dependency | Current comparison | Merge base | Assessment |
+|---|---|---|---|
+| PR #11 — Candidate A → Task 05D v3 | 7 commits ahead / 4 behind | `91c82b4f136a77aaa1edb02753ed49b2fbee86ed` | Diverged; reconcile complete diff and dependency before synchronization |
+| PR #12 — NatureTech strategy → organisational readiness | 4 commits ahead / 3 behind | `44b7ed4dab20c2a76c2357d284dc956baaf067a9` | Diverged; reconcile overlapping strategy content before synchronization |
+| PR #21 — alternate Task 05C → scientific review pack | 1 commit ahead / 67 behind | `f165ecb9b4d9de115c02327cf779982b7ef4bbd4` | Severely stale/diverged preservation PR; preserve unique model content and provenance |
+| PR #22 — earlier Task 05D → scientific review pack | 7 commits ahead / 67 behind | `f165ecb9b4d9de115c02327cf779982b7ef4bbd4` | Severely stale/diverged preservation PR; preserve unique validation content |
+| PR #23 — Task 05D v2 → scientific review pack | 7 commits ahead / 67 behind | `f165ecb9b4d9de115c02327cf779982b7ef4bbd4` | Severely stale/diverged preservation PR; preserve unique v2 findings |
+
+The PR #21–#23 comparisons are now 67 commits behind the current scientific-review branch, not the 64 commits reported in the earlier snapshot. This is a history comparison, not proof of textual conflict or permission to rebase, retarget, merge or close.
+
+### 20.8.5 Consolidation assessment and next safe action
+
+The same four existing consolidation destinations remain the only permitted workstream destinations. The immediate ceiling is still 7; current total is 23. No branch retirement is safe yet because the preservation mapping, review/PR resolution and source-branch dependencies remain outstanding.
+
+**Recommendation:** start with a content-level governance reconciliation of PR #15 and PR #16, then reconcile PR #1 and #2 into the governance workstream without silently accepting proposed licensing policy or ADR-011. The main/develop/staging drift and PR #9 non-mergeable state should be tracked as separate blockers. Do not retarget or merge PRs merely to reduce the branch count.
+
+### 20.8.6 Verification and non-actions
+
+- Operating Prompt fetched from `docs/repository-audit-and-ai-operating-standard`; blob SHA `53add3894d0502827e584614c70ad09cadaa637d`. The current owner directives and ODR-01 remain unchanged.
+- Master Project Roadmap v0.1 fetched from PR #20 branch; blob SHA `60fba1bdb5d2b3fe299847225d21aee18641ad48`. It remains Proposed / owner review required; the user's “go ahead with your recommendation” is treated as authorization to continue the recommended reversible audit sequence, not as a formal acceptance of the roadmap, task numbering or architecture.
+- PR #20 remains open and draft, based on `develop`; its head is `98f5bd498a92af5d1c9a79ad038fe33741959079`.
+- PR #16 remains open and draft, based on `develop`; its head is `d52dfef64cb6eee218cc2a7b02c80e6b1dcfd66c`.
+- PR #9 remains open and draft; GitHub currently reports it non-mergeable.
+- No PR was merged, closed or retargeted.
+- No branch was created, renamed, deleted or force-pushed.
+- No repository protection, ruleset, permission or default-branch setting was changed.
+- No scientific model, ADR, product requirement, strategy, pilot or architecture proposal was approved.
+- No external party was contacted and no scientific test or independent specialist review was performed.
+
+**Next task:** perform a preservation-first content reconciliation of PR #15 against PR #16, including duplicate-path and policy-semantic comparison, and produce a file-level disposition proposal. Do not merge/close PR #15 or #16 or delete any source branch without explicit authorization.
