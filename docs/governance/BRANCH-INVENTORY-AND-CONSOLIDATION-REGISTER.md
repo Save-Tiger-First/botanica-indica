@@ -257,7 +257,6 @@ This is the latest verified inventory snapshot fetched from the GitHub API after
 ### 10.3 Governance workstream status
 
 The PR #16 governance remediation is implemented on the existing branch and the current PR #16 head passed workflow run [44875559325](https://github.com/Save-Tiger-First/botanica-indica/actions/runs/44875559325). This does not make PR #16 approved or ready for merge.
-
 The immediate seven-branch ceiling remains unmet. The live inventory still contains 23 branches, including 20 temporary/workstream branches. The four proposed retained workstream destinations remain provisional; no source PR has been merged or closed and no branch has been retired. Continue preservation-first reconciliation in dependency order and obtain the required approvals before any retirement action.
 
 
@@ -517,8 +516,7 @@ Do not treat divergence alone as a content conflict or as an instruction to reba
 
 Latest comparison:
 - Candidate A base commit: `98741843a2ba8550e2cb744658d9291fe60b8823`.
-- Task 05D v3 head / PR #11: `9d4ca85c553ef5732334322be7f598ed748d285c`.
-- Branch status: **diverged; 6 ahead / 3 behind**.
+- Task 05D v3 head / PR #11: `9d4ca85c553ef5732334322be7f598ed748d285c`.- Branch status: **diverged; 6 ahead / 3 behind**.
 - Merge base: `91c82b4f136a77aaa1edb02753ed49b2fbee86ed`.
 
 PR #11 remains open/draft and based on Candidate A. The compare result is a history relationship, not a content-conflict verdict. No rebase, retarget, merge, force-push, branch creation or deletion was performed. Any synchronization plan requires full graph and content review.
@@ -787,3 +785,92 @@ The dedicated audit `docs/governance/PR-15-PR-16-GOVERNANCE-CONTENT-RECONCILIATI
 **Proposed disposition:** PR #16 is the continuing governance review vehicle. PR #15 is a candidate for owner-authorized closure as superseded, without merging. Its source branch may be considered for deletion only after PR #15 is formally resolved, no other open PR references the branch, and the project owner explicitly authorizes deletion.
 
 This is a content/history reconciliation, not approval of the proposed branch policy, licensing policy, ADR-011 or PR #16. No PR or branch lifecycle action was taken.
+
+
+## 20.10 Live branch and PR register refresh — 21 November 2026
+
+**Purpose:** Record a fresh verification of the branch inventory, open PR set and governance ancestry after the 20.9 reconciliation. This addendum supersedes earlier current-state counts and the 20.9 ancestry count where the live comparisons below differ. Earlier snapshots remain historical evidence.
+
+### 20.10.1 Repository and branch inventory
+
+The live branch search returned **23 branches**. The seven-branch ceiling remains exceeded by **16**. The exact branch set is:
+
+| Branch | Classification |
+|---|---|
+| `main` | Long-lived canonical branch |
+| `develop` | Long-lived integration branch |
+| `staging` | Long-lived release-candidate branch |
+| `docs/adr-011-stf-ecosystem-boundaries` | Temporary governance/ADR proposal |
+| `docs/asset-specific-licensing-policy` | Temporary licensing/IP proposal |
+| `docs/canonical-task-03-04-baselines` | Temporary source-baseline workstream |
+| `docs/full-product-vision-capability-blueprint` | Temporary product-vision workstream |
+| `docs/full-system-architecture-and-repo-engineering-plan` | Temporary architecture consolidation destination |
+| `docs/repository-audit-and-ai-operating-standard` | Temporary governance consolidation destination |
+| `docs/requirements-traceability-register` | Temporary requirements workstream |
+| `docs/task-05-data-architecture` | Temporary scientific architecture workstream |
+| `docs/task-05-data-dictionary` | Temporary scientific dictionary workstream |
+| `docs/task-05c-logical-data-model` | Temporary Task 05C candidate workstream |
+| `docs/task-05c-logical-database-model` | Temporary alternate Task 05C workstream |
+| `docs/task-05d-logical-model-validation` | Temporary earlier Task 05D workstream |
+| `docs/task-05d-logical-model-validation-v2` | Temporary Task 05D v2 workstream |
+| `docs/task-05d-logical-model-validation-v3` | Temporary Task 05D v3 workstream |
+| `governance/branch-lifecycle-policy` | Temporary branch-policy workstream |
+| `governance/stf-organisational-readiness-review` | Temporary organisational-readiness workstream |
+| `proposal/bengaluru-urban-biodiversity-feasibility-pilot` | Temporary feasibility proposal |
+| `research/bengaluru-pilot-site-selection` | Temporary site-research workstream |
+| `review/scientific-data-model-review-pack` | Temporary scientific-review consolidation destination |
+| `strategy/naturetech-biodiversity-conservation-impact` | Temporary STF strategy consolidation destination |
+
+The three required long-lived branches are present. No branch was created, renamed, deleted or force-pushed during this refresh. The four proposed consolidation destinations remain proposals; their existence does not authorize retirement of source branches.
+
+### 20.10.2 Open pull requests
+
+A fresh GitHub search returned **20 open pull requests**: #1–#5, #8, #9 and #11–#23. The existing PR metadata snapshot in Section 20.8 identifies PR #15 as open/non-draft and PR #16 as open/draft; the fresh search confirms both remain in the open set. The search result did not provide a complete refreshed draft/mergeability matrix for every PR, so this addendum does not assert that all other draft flags or mergeability values remain unchanged.
+
+No PR was merged or closed in this refresh. The PR inventory still includes stacked dependencies and preservation PRs; open status alone is not evidence that a PR is current, conflict-free, reviewed or ready to merge.
+
+### 20.10.3 PR #15 / PR #16 current ancestry comparison
+
+A fresh live compare of `governance/branch-lifecycle-policy` (PR #15 head) against `docs/repository-audit-and-ai-operating-standard` (PR #16 head) returned:
+
+- Status: `ahead`
+- Ahead by: **87 commits**
+- Behind by: **0 commits**
+- Merge base: `633105210d3a6c4c8e36287ed2dc44dee23f61ef` (the PR #15 head)
+
+This confirms that the PR #15 head remains an ancestor of the current PR #16 branch. The 20.9 reconciliation recorded 85 commits ahead using an earlier PR #16 head snapshot (`6a1a5c7392610ec2f4ff5f365f084995d333bad0`). The new comparison is **87**, so the earlier 85-commit count is retained only as historical evidence and must not be reused as the current count.
+
+The content-level findings in 20.9 remain the documented file comparison: identical PR template; PR #16 branch policy retains PR #15 policy content plus a legacy-routing clarification; PR #16 register retains and extends the PR #15 register. This ancestry comparison does not approve either PR or the proposed branch policy.
+
+### 20.10.4 Long-lived branch drift
+
+A fresh comparison of `develop` to `main` returned:
+
+- `main` is **1 commit ahead** of `develop`.
+- `develop` is **0 commits ahead** of `main`.
+- The sole main-only file is `docs/reviews/HORTUS-MALABARICUS-VALIDATION-CROSSWALK.md` (187 additions).
+
+The merge base is `f165ecb9b4d9de115c02327cf779982b7ef4bbd4`. This is a real integration/traceability divergence. Do not cherry-pick, rebase, retarget or merge solely to make branch counts or PR metadata look tidy. Review the crosswalk's provenance and intended target through the normal change-control process.
+
+### 20.10.5 Consolidation assessment and recommendations
+
+1. **Do not close PR #15 yet solely because its head is contained in PR #16.** The history/content preservation case is strong, but the owner must decide whether PR #15 should be closed as superseded. Closure is an explicit lifecycle action.
+2. **Keep PR #16 as the continuing governance review vehicle, but do not mark it ready or merge it on this audit alone.** Its workflow must be rerun on the current head, and its remaining independent maintainer/legal/policy review gates must be addressed.
+3. **Do not delete `governance/branch-lifecycle-policy` as part of this refresh.** First obtain explicit authorization to close PR #15; then verify that no other open PR references its head branch; obtain separate explicit deletion authorization; only then consider deletion.
+4. **Treat the 23-to-7 reduction as a controlled sequence, not a cleanup sweep.** Preserve unique content and history, reconcile destination documents, resolve dependent PRs in order, and verify each branch's remaining references before retirement.
+5. **Track `main`/ `develop` drift separately.** The Hortus crosswalk is on main only; its presence must be reviewed rather than silently discarded or synchronized.
+
+### 20.10.6 Verification and non-actions
+
+- AI Project Operating Prompt: fetched from `docs/repository-audit-and-ai-operating-standard`; blob SHA `53add3894d0502827e584614c70ad09cadaa637d`. Owner clarification ODR-01 remains limited to controlled, profile-specific external exports; it does not authorize a final export profile, scientific model, physical schema or implementation.
+- Branch inventory: 23 live branches; exact names are listed in 20.10.1.
+- Open PR inventory: 20 open PRs; PR #15 and PR #16 remain open.
+- PR #15 head remains an ancestor of PR #16; current comparison is 87 ahead / 0 behind.
+- `main` remains 1 commit ahead of `develop`; the difference is the Hortus Malabaricus crosswalk file.
+- No PR was merged, closed, marked ready or retargeted.
+- No branch was created, renamed, deleted or force-pushed.
+- No repository protection, ruleset, permission, default branch or repository setting was changed.
+- No ADR, scientific model, product requirement, policy, strategy or pilot was approved.
+- No scientific test, independent specialist review or legal review was performed or claimed.
+
+**Next recommended task:** prepare the PR #15 owner decision (close as superseded or retain) and a separate, file-level governance readiness checklist for PR #16. Do not perform either PR lifecycle action or delete the PR #15 head branch without the required explicit authorization.
