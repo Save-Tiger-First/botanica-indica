@@ -187,3 +187,75 @@ This is a preservation-first sequence, not authorization to merge:
 ## 8. Evidence sources
 
 This register was refreshed against GitHub API branch and pull-request listings and direct document retrieval on 20 November 2026. Latest snapshot: 23 branches (3 designated long-lived, 20 topic/workstream); 20 open PRs (#1–#5, #8, #9, #11–#23), including preservation PRs #21–#23. `main`, `develop` and `staging` are identical at `f165ecb9b4d9de115c02327cf779982b7ef4bbd4`. Re-run branch, PR and comparison checks immediately before any merge, retarget, archive or deletion action.
+
+
+---
+
+## 10. Live repository snapshot — 21 November 2026, after PR #16 governance remediation
+
+This is the latest verified inventory snapshot fetched from the GitHub API after the governance remediation and its successful CI run.
+
+- **Total branches:** 23 (3 designated long-lived branches and 20 temporary/workstream branches).
+- **Open PRs:** 20 (#1–#5, #8, #9, #11–#23).
+- **PR #16:** open draft, base `develop`, head `docs/repository-audit-and-ai-operating-standard`, current head `a3b73f75ae4ff175796bbc2eb2f7c9f5c38047e3`.
+- **Long-lived branch tips:** `main`, `develop` and `staging` remain at `f165ecb9b4d9de115c02327cf779982b7ef4bbd4`.
+- **No lifecycle action:** no PR was merged, closed or retargeted; no branch was created, renamed or deleted.
+
+### 10.1 All live branch tips
+
+| Branch | Current tip SHA |
+|---|---|
+| `develop` | `f165ecb9b4d9de115c02327cf779982b7ef4bbd4` |
+| `docs/adr-011-stf-ecosystem-boundaries` | `e900b64c90df08f5c98181af54bf2ab0b7096759` |
+| `docs/asset-specific-licensing-policy` | `15fd4edef9afa8d22df9e23f66296ef09423d8cf` |
+| `docs/canonical-task-03-04-baselines` | `0f908f8221ad3434cc84fe2cd41b735aad0a752a` |
+| `docs/full-product-vision-capability-blueprint` | `234b21846db53e7dbac9b8e8f4ccad2b6c3012ff` |
+| `docs/full-system-architecture-and-repo-engineering-plan` | `b6081cafb4df8a4c2b250a0054908bcdd001f3f9` |
+| `docs/repository-audit-and-ai-operating-standard` | `a3b73f75ae4ff175796bbc2eb2f7c9f5c38047e3` |
+| `docs/requirements-traceability-register` | `5c4570df6c51bbb9c28fa826f04e57435f784761` |
+| `docs/task-05-data-architecture` | `2b02ab3cd115691841889ed77d453b31ab0bed16` |
+| `docs/task-05-data-dictionary` | `71444caa3cee16a0c5afd33f70aabf11e90a6b37` |
+| `docs/task-05c-logical-data-model` | `27d905c26217cc127de63449ce342d3bf2723016` |
+| `docs/task-05c-logical-database-model` | `8d4fef2d726aac79dd684856d924b171e44d0b93` |
+| `docs/task-05d-logical-model-validation` | `3efd80e5e28b2a916e63c85808ef3aba9d35e4ac` |
+| `docs/task-05d-logical-model-validation-v2` | `76bd88980bb2536db63bbde76e3fa687503bdda1` |
+| `docs/task-05d-logical-model-validation-v3` | `1bcbb46890788b0296884228e44c867965bc8381` |
+| `governance/branch-lifecycle-policy` | `633105210d3a6c4c8e36287ed2dc44dee23f61ef` |
+| `governance/stf-organisational-readiness-review` | `bd5b18fe5d68f50e25f0453eb792d0c44bc700d0` |
+| `main` | `f165ecb9b4d9de115c02327cf779982b7ef4bbd4` |
+| `proposal/bengaluru-urban-biodiversity-feasibility-pilot` | `7f7a3be03d68d5595465279ad22407ea983f046e` |
+| `research/bengaluru-pilot-site-selection` | `ee71dc0da319e7b3c69572f9c6f015298e3c8c2e` |
+| `review/scientific-data-model-review-pack` | `1be0975e457d56152ad57a1cd6bb5d941328fbda` |
+| `staging` | `f165ecb9b4d9de115c02327cf779982b7ef4bbd4` |
+| `strategy/naturetech-biodiversity-conservation-impact` | `9d76328df8112922df818f01c27e297b3ee1b76a` |
+
+### 10.2 All open PR relationships
+
+| PR | Base | Head | Head SHA | Draft/review state |
+|---:|---|---|---|---|
+| #1 | `main` | `docs/asset-specific-licensing-policy` | `15fd4edef9afa8d22df9e23f66296ef09423d8cf` | Draft |
+| #2 | `main` | `docs/adr-011-stf-ecosystem-boundaries` | `e900b64c90df08f5c98181af54bf2ab0b7096759` | Draft |
+| #3 | `main` | `docs/task-05-data-architecture` | `2b02ab3cd115691841889ed77d453b31ab0bed16` | Draft |
+| #4 | `main` | `docs/task-05-data-dictionary` | `71444caa3cee16a0c5afd33f70aabf11e90a6b37` | Draft |
+| #5 | `main` | `docs/task-05c-logical-data-model` | `27d905c26217cc127de63449ce342d3bf2723016` | Draft |
+| #8 | `main` | `strategy/naturetech-biodiversity-conservation-impact` | `9d76328df8112922df818f01c27e297b3ee1b76a` | Draft |
+| #9 | `main` | `review/scientific-data-model-review-pack` | `1be0975e457d56152ad57a1cd6bb5d941328fbda` | Draft |
+| #11 | `docs/task-05c-logical-data-model` | `docs/task-05d-logical-model-validation-v3` | `1bcbb46890788b0296884228e44c867965bc8381` | Draft |
+| #12 | `strategy/naturetech-biodiversity-conservation-impact` | `governance/stf-organisational-readiness-review` | `bd5b18fe5d68f50e25f0453eb792d0c44bc700d0` | Draft |
+| #13 | `main` | `proposal/bengaluru-urban-biodiversity-feasibility-pilot` | `7f7a3be03d68d5595465279ad22407ea983f046e` | Draft |
+| #14 | `main` | `research/bengaluru-pilot-site-selection` | `ee71dc0da319e7b3c69572f9c6f015298e3c8c2e` | Draft |
+| #15 | `develop` | `governance/branch-lifecycle-policy` | `633105210d3a6c4c8e36287ed2dc44dee23f61ef` | Ready for review |
+| #16 | `develop` | `docs/repository-audit-and-ai-operating-standard` | `a3b73f75ae4ff175796bbc2eb2f7c9f5c38047e3` | Draft |
+| #17 | `develop` | `docs/full-product-vision-capability-blueprint` | `234b21846db53e7dbac9b8e8f4ccad2b6c3012ff` | Draft |
+| #18 | `develop` | `docs/canonical-task-03-04-baselines` | `0f908f8221ad3434cc84fe2cd41b735aad0a752a` | Draft |
+| #19 | `develop` | `docs/requirements-traceability-register` | `5c4570df6c51bbb9c28fa826f04e57435f784761` | Draft |
+| #20 | `develop` | `docs/full-system-architecture-and-repo-engineering-plan` | `b6081cafb4df8a4c2b250a0054908bcdd001f3f9` | Draft |
+| #21 | `review/scientific-data-model-review-pack` | `docs/task-05c-logical-database-model` | `8d4fef2d726aac79dd684856d924b171e44d0b93` | Draft |
+| #22 | `review/scientific-data-model-review-pack` | `docs/task-05d-logical-model-validation` | `3efd80e5e28b2a916e63c85808ef3aba9d35e4ac` | Draft |
+| #23 | `review/scientific-data-model-review-pack` | `docs/task-05d-logical-model-validation-v2` | `76bd88980bb2536db63bbde76e3fa687503bdda1` | Draft |
+
+### 10.3 Governance workstream status
+
+The PR #16 governance remediation is implemented on the existing branch and the current PR #16 head passed workflow run [44875559325](https://github.com/Save-Tiger-First/botanica-indica/actions/runs/44875559325). This does not make PR #16 approved or ready for merge.
+
+The immediate seven-branch ceiling remains unmet. The live inventory still contains 23 branches, including 20 temporary/workstream branches. The four proposed retained workstream destinations remain provisional; no source PR has been merged or closed and no branch has been retired. Continue preservation-first reconciliation in dependency order and obtain the required approvals before any retirement action.
