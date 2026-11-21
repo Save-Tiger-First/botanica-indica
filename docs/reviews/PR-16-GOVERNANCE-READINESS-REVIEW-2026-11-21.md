@@ -227,3 +227,40 @@ This spot check supports the policy's staged-commencement framing and the existe
 Keep PR #16 open and draft. The current implementation is a good foundation, but the routing bypasses, missing branch-cap enforcement, insufficient Markdown tests, historical snapshot drift and absence of independent review prevent a responsible readiness recommendation.
 
 The next implementation task should be a **narrow automation-hardening pass on this same existing branch**, followed by a documentation-freshness pass. Do not create another branch. Do not merge PR #16 or close PR #15 until the owner-authorized review and branch-retirement gates are satisfied.
+
+
+
+## 10. Automation-hardening implementation addendum — 21 November 2026
+
+Following the review recommendation, a bounded automation-hardening pass was committed to the same existing PR #16 branch. No new branch was created.
+
+### 10.1 Changes made
+
+- Default-deny unsupported PR base branches.
+- Replace generic stacked-PR bypasses with exact PR number/base/head allowlist entries for existing PRs #11, #12 and #21–#23.
+- Remove PR-body text as hotfix authorization. The owner-approved hotfix allowlist is empty by default; any future exception requires explicit owner authorization recorded in repository state.
+- Add a dated 23-branch baseline, reject unregistered branch names, verify the three required long-lived branches, and warn when the live branch count exceeds seven. The seven-branch excess remains a warning so preservation/retirement work can proceed; this is detection, not prevention of branch creation.
+- Expand Markdown fence and relative-link regression coverage.
+- Set checkout `persist-credentials: false`; retain `contents: read`; add a live branch-inventory workflow step.
+
+### 10.2 Exact commits
+
+| File | Commit SHA | Blob SHA |
+|---|---|---|
+| `scripts/check_repository_governance.py` | `193835b921bc4beaafd80da8de5563373fca23b8` | `7036f21a749326f27a3952504bde42b870e0b8c5` |
+| `tests/test_repository_governance.py` | `326dc559c7266025c34021de384193ea1c5a29f7` | `cc96e2b4e2bb3eae7f9b8837cea2254ad5a78dc2` |
+| `.github/workflows/repository-governance.yml` | `6f27e14668b4749fa1210f78c00b0d78f2b99e74` | `c977c8209791238da3a213caa9c8b4acf438ae01` |
+
+### 10.3 Current state and verification caveat
+
+- PR #16 remains open and draft; current head `6f27e14668b4749fa1210f78c00b0d78f2b99e74`, 110 commits, 26 changed files, 4,019 additions and 19 deletions.
+- The branch comparison against `develop` is 110 ahead / 0 behind.
+- Live inventory remains 23 branches and 20 open PRs.
+- PR #15 remains open; fresh ancestry comparison is 92 ahead / 0 behind, with PR #15 head as merge base.
+- `main` remains one commit ahead of `develop` due to the Hortus Malabaricus crosswalk.
+- The workflow-run lookup for the current head returned no PR-triggered run. The previously successful run 44901677252 was on the preceding commit `05bf12ec34c724ada2aec3f2631323a12878673f`; it does **not** validate this new head.
+- The three files were fetched after writing and their blob SHAs verified. Runtime execution of the new test suite and live branch API step remains **pending**.
+
+### 10.4 Updated recommendation
+
+Keep PR #16 open and draft. Do not mark it ready or merge it. First obtain a current-head workflow run, inspect the test output and branch API step, correct any failures, and then obtain independent maintainer review. The seven-branch ceiling remains unmet; the checker reports the excess but does not itself enforce branch-creation permissions. No repository settings were changed.
