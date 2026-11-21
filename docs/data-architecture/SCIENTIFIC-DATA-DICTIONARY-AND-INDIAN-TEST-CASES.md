@@ -1,0 +1,1046 @@
+# Task 05B — Scientific Data Dictionary and Representative Indian Botanical Records
+
+- **Status:** Proposed for scientific and architecture review
+- **Version:** 0.1
+- **Date:** 2026-11-11
+- **Scope:** Botanica Indica domain model
+- **Related documents:** `docs/data-architecture/DATA-ARCHITECTURE-AND-SCIENTIFIC-DATA-MODEL.md`; ADR-004; ADR-005; ADR-007; ADR-008; ADR-009; ADR-010
+- **Purpose:** Translate the Task 05 conceptual model into a reviewable data dictionary, relationship rules and source-grounded test cases before physical SQL design.
+
+---
+
+## 1. How to read this document
+
+This document is a proposed logical data dictionary, not a physical database schema. It defines recommended meanings, fields, data types at a conceptual level, cardinalities, constraints and example records. Exact SQL types, table names, key strategies and indexes belong to the later physical-model task.
+
+The examples below are **source-grounded test fixtures**, not claims that Botanica Indica has independently verified the records, owns the content, or has permission to bulk ingest it. Facts are attributed to the specific public source that reports them. Where sources differ, both statements are preserved.
+
+### 1.1 Evidence labels
+
+Use these labels in review and future implementation:
+
+- **Source fact:** explicitly reported by the named source.
+- **Platform assertion:** a statement created or adopted by Botanica Indica.
+- **Illustrative value:** a suggested value used to explain a field, not an assertion about a real specimen or observation.
+- **Open decision:** requires domain expert, legal, policy or implementation approval.
+
+Never present an illustrative value as an actual field observation, verified distribution, herbarium accession or expert determination.
+
+## 2. Critical refinement from standards review
+
+The first Task 05 draft correctly separates names and concepts, but the detailed implementation should align more carefully with the current TDWG Taxon Concept Standard (TCS) semantics.
+
+TCS defines a Taxon Concept as an identifiable taxonomic position combining a taxon name with an `accordingTo` source. It requires both properties. TCS also models a synonym as a relationship from a Taxon Concept to a Taxon Name; combinations and nomenclatural relationships belong with Taxon Name information. Therefore, do not implement every synonym category as an unqualified relationship between two taxon concepts. Retain the source's actual assertion and map it to TCS carefully.
+
+Reference: https://tcs.tdwg.org/terms/
+
+The current Darwin Core vocabulary also includes classes and terms relevant to Observation, Machine Observation, Identification, Event, Occurrence, Location, Material Entity, Provenance and Usage Policy. Map these deliberately rather than assuming older simplified Darwin Core field lists are complete.
+
+Reference: https://dwc.tdwg.org/list/ (version issued 2026-05-26)
+
+## 3. Core identifier and data-type conventions
+
+These are proposed conventions for logical modelling:
+
+| Conceptual type | Meaning | Example |
+|---|---|---|
+| `ID` | Stable opaque internal identifier | `taxon-name:...` |
+| `ExternalID` | Identifier within a named external namespace | IPNI LSID |
+| `String` | Unicode text | `Azadirachta indica` |
+| `Text` | Long-form prose | Field notes |
+| `Code` | Controlled vocabulary value | `HUMAN_OBSERVATION` |
+| `URI` | Web URI or persistent identifier | `https://...` |
+| `Date` | Calendar date | `1830-01-01` only if source provides exact date |
+| `DateTime` | Timestamp with timezone | ISO 8601 |
+| `DateInterval` | Start/end or verbatim uncertain interval | `2025-06` |
+| `Decimal` | Numeric value with defined precision | Coordinate |
+| `Integer` | Whole-number quantity | Number of images |
+| `Boolean` | True/false only when known | Rights-cleared |
+| `JSON` | Structured source payload or extension | Verbatim API response |
+| `Geometry` | Point/line/polygon with CRS | PostGIS geometry |
+| `LanguageTag` | BCP 47 language tag where possible | `kn`, `hi`, `en` |
+| `Checksum` | Cryptographic content digest with algorithm | SHA-256 |
+
+All timestamps should be stored with timezone context. A source date that is only a year or month must not be fabricated into an exact day; preserve its precision or verbatim representation.
+
+## 4. Entity data dictionary
+
+Field requirement labels:
+- **R** — required for a valid record of this entity.
+- **C** — conditionally required when the relevant context applies.
+- **O** — optional.
+- **Derived** — generated from other fields and should not be treated as the sole authoritative value.
+
+### 4.0 Source and authority metadata
+
+A Source record identifies a publisher, institution, database, project or contributing community. It does not by itself establish that every assertion from that source is authoritative for every purpose.
+
+For each source used in scientific reconciliation, capture at minimum:
+
+| Field | Requirement | Meaning |
+|---|---|---|
+| source_id | Required | Stable internal source identity |
+| source_type | Required | Nomenclatural index, taxonomic backbone, national/regional flora, herbarium catalogue, research publication, community-curated flora, government dataset, etc. |
+| editorial_or_curation_model | Required | Formal editorial review, institutional curation, expert/community contribution, automated aggregation, or documented combination |
+| taxonomic_or_data_scope | Required | What the source is designed to establish (name publication, accepted taxonomy, distribution, specimen holdings, ecological assertion, etc.) |
+| geographic_scope | Optional | Geographic coverage and resolution |
+| version_or_release | Required where versioned | Exact release/version and persistent identifier where available |
+| access_date | Required for retrieved source records | Retrieval date/time |
+| limitations_and_terms | Required | Known scope limits, caveats, terms of use and reuse restrictions |
+
+Do not use one universal numeric “authority score”. Source fitness is purpose-specific: a nomenclatural index, taxonomic backbone, herbarium catalogue and community-curated flora answer different questions. Preserve the source's actual role, editorial model, scope, date and limitations. A source's content should be evaluated at assertion level.
+
+**Illustrative source-role profiles for the current Indian test cases (re-check at each ingestion/review):**
+
+| Source | Source type and appropriate use | Important qualification |
+|---|---|---|
+| International Plant Names Index (IPNI) | Global nomenclatural index for vascular plant names; useful for name publication, authorship, bibliographic details and nomenclatural identifiers. | It is not, by itself, the preferred authority for accepted taxonomic concepts or geographic distribution. See https://www.ipni.org/about. |
+| Plants of the World Online (POWO) / World Checklist of Vascular Plants (WCVP) | Global taxonomic backbone and curated taxonomic/distribution resource; useful for a source-specific accepted-name view and cited taxonomic treatment. | Kew describes the resource as dynamic and curated from contributing datasets and peer-reviewed sources where possible, but not in every case. Preserve its treatment and citations; do not treat its accepted view as the only possible taxonomy. See https://powo.science.kew.org/about and https://powo.science.kew.org/about-wcvp. |
+| Botanical Survey of India (BSI) | Indian government botanical institution; its stated mandate includes phytodiversity exploration/documentation and publication of National, State and District Floras, as well as development of national plant and herbarium databases. | Distinguish a formal BSI flora/revision, a herbarium specimen record and a general institutional webpage; they are different evidence products. See https://bsi.gov.in/page/en/Mandate. |
+| eFlora of India | Community-developed photographic and discussion-based documentation resource, built by members of the eFlora of India Google Group, with contributions from people of diverse backgrounds including subject experts. | Its own About page says identification/data correctness depends on member inputs and sometimes outside experts, and that errors cannot be ruled out. Use it as a valuable supplementary observation, photographic, discussion and regional knowledge source; assess each species page and cited evidence rather than treating the whole site as a formally edited national flora or nomenclatural index. See https://efloraofindia.com/efi/about/. |
+
+These profiles describe source purpose and self-described editorial context, not a universal ranking. A BSI publication may be highly suitable for a particular regional flora question; IPNI may be the right source for a nomenclatural publication detail; POWO may provide a useful global taxonomic view; eFlora of India may provide rich photographs and field discussion. The assertion being made determines which evidence is fit for purpose.
+
+
+### 4.1 TaxonName
+
+**Definition:** A nomenclatural or other name string used to refer to a taxon. It is not, by itself, proof of acceptance or a complete taxon concept.
+
+| Field | Type | Req. | Definition / rule |
+|---|---|---:|---|
+| taxon_name_id | ID | R | Stable Botanica Indica identifier |
+| name_string | String | R | Name string without authorship where the source's model distinguishes it |
+| authorship | String | O | Name authorship, kept separate from name string |
+| rank | Code | O | Rank as represented by source; use controlled mapping |
+| nomenclatural_code | Code | O | Applicable nomenclatural code if known |
+| publication_reference_id | ID | O | Link to publication/protologue |
+| publication_date_verbatim | String | O | Source's original date text |
+| publication_date | Date/DateInterval | O | Normalized date with precision retained |
+| basionym_name_id | ID | O | Link to a basionym where applicable |
+| replaced_name_id | ID | O | Link to replaced name where applicable |
+| source_id | ID | C | Required for source-originated name record |
+| source_record_id | SourceRecord FK / ExternalID tuple | C | Canonical SourceRecord FK, or an external identifier constrained by issuing namespace and dataset/version context |
+| verbatim_name | String | O | Exact source string |
+| created_at / updated_at | DateTime | R | Platform record timestamps |
+
+**Invariants**
+- A TaxonName may exist without a TaxonConcept.
+- A name may occur in several source treatments.
+- Do not make `is_accepted` a global field on TaxonName.
+- Do not strip authorship from the preserved verbatim source value.
+
+### 4.2 TaxonomicTreatment
+
+**Definition:** A source-specific classification, checklist, flora, revision or taxonomic treatment.
+
+| Field | Type | Req. | Definition / rule |
+|---|---|---:|---|
+| treatment_id | ID | R | Stable internal identifier |
+| source_id | ID | R | Publisher/authority/source |
+| dataset_version_id | ID | C | Version of dataset if distributed as a dataset |
+| bibliographic_resource_id | ID | C | Publication or treatment reference |
+| title | String | R | Treatment title |
+| treatment_type | Code | R | Checklist, flora, revision, database release, etc. |
+| publication_date | Date/DateInterval | O | Preserve precision |
+| taxonomic_scope | Text/JSON | O | Taxa or ranks covered |
+| geographic_scope_id | ID | O | Geographic coverage |
+| source_identifier | ExternalID | O | Identifier in originating system |
+| rights_record_id | ID | C | Required where rights assessment is applicable |
+| retrieved_at | DateTime | O | When retrieved by STF |
+
+### 4.3 TaxonConcept
+
+**Definition:** A taxonomic position according to a specific source or treatment. Follow TCS: a concept combines a name with an `accordingTo` reference.
+
+| Field | Type | Req. | Definition / rule |
+|---|---|---:|---|
+| taxon_concept_id | ID | R | Stable internal identifier |
+| taxon_name_id | ID | R | Name used as the concept label |
+| according_to_resource_id | ID/URI | R | One canonical resource reference (persistent URI or resource record) establishing or using this concept; maps to TCS `accordingTo` |
+| taxonomic_treatment_id | ID | O | Optional link to the structured TaxonomicTreatment record when the according-to resource is represented as a treatment; it MUST resolve to the same resource as according_to_resource_id |
+| rank | Code | O | Rank in this treatment |
+| parent_concept_id | ID | O | Parent in this specific classification |
+| concept_status | Code | O | Status within the treatment; not global |
+| circumscription_reference | URI/Text | O | Evidence or description of included material |
+| source_concept_identifier | ExternalID | O | External concept ID |
+| valid_from / valid_to | DateInterval | O | Temporal validity if known |
+| created_at | DateTime | R | Platform timestamp |
+
+**Invariants**
+- Do not create a fully specified TCS concept without exactly one TaxonName and exactly one according-to resource.
+- `according_to_resource_id` is the single canonical internal representation of TCS `accordingTo`; it must resolve to a resource/IRI, not merely a person's name or an unresolvable free-text label.
+- `taxonomic_treatment_id` is optional structured metadata and must resolve to the same resource; it is not a second, competing according-to reference.
+- A concept ID identifies the concept in its according-to context; it is not interchangeable with the name ID.
+- Parent-child relations must be scoped to the cited classification/treatment or explicitly mapped across treatments.
+
+### 4.4 TaxonNameUsage
+
+**Definition:** A source's use of a name in a particular context, including its status and source-specific interpretation.
+
+| Field | Type | Req. | Definition / rule |
+|---|---|---:|---|
+| name_usage_id | ID | R | Stable internal identifier |
+| treatment_id | ID | R | Treatment containing the usage |
+| taxon_name_id | ID | R | Name used |
+| taxon_concept_id | ID | O | Associated concept, if resolvable |
+| accepted_name_usage_id | ID | O | Source's accepted usage, if asserted |
+| parent_name_usage_id | ID | O | Parent usage in this treatment |
+| taxonomic_status | Code | O | Source's exact status mapped to controlled vocabulary |
+| verbatim_status | String | O | Original source wording |
+| source_record_id | SourceRecord FK / ExternalID tuple | O | Canonical SourceRecord link, or constrained external identifier with issuing namespace and dataset/version context |
+| source_page_or_locator | String | O | Page, row, URL fragment or record locator |
+| evidence_reference_id | ID | O | Source evidence |
+| retrieved_at | DateTime | O | Retrieval timestamp |
+
+Do not convert absent status into accepted, or unresolved into synonym. Unknown is a valid state.
+
+### 4.5 TaxonConceptMapping
+
+**Definition:** A source-supported mapping or comparison between two taxon concepts from potentially different treatments.
+
+| Field | Type | Req. | Definition / rule |
+|---|---|---:|---|
+| concept_mapping_id | ID | R | Stable mapping identifier |
+| subject_concept_id | ID | R | First concept |
+| object_concept_id | ID | R | Second concept |
+| mapping_relation | Code | R | One of the six TCS mapping relations: `isCongruentWith`, `includes`, `isIncludedIn`, `partiallyOverlaps`, `isDisjointFrom`, `intersects` |
+| mapping_source_resource_id | ID/URI | R | One resource identifying the source/agent context for this mapping; maps to TCS `mappingAccordingTo` when exported |
+| mapping_agent_id | ID | O | Person/organization/system |
+| mapping_date | DateTime | O | When asserted |
+| mapping_confidence | Decimal/Code | O | Only with defined semantics |
+| review_status | Code | R | Proposed, reviewed, accepted, rejected, superseded |
+| evidence_set_id | ID | O | Supporting evidence |
+
+A mapping is not a synonym relationship. A synonym in TCS links a concept to a TaxonName; a concept mapping compares two TaxonConcepts. Do not use informal values such as “not congruent” or “excludes”. Use `isDisjointFrom` only when non-overlap of the two taxonomic meanings is actually supported; use `intersects` when at least one member is shared but a more precise relation is not established. The six relation codes are the canonical exchange vocabulary; any UI labels must map explicitly to them.
+
+### 4.6 ScientificAssertion
+
+**Definition:** A sourced claim about a subject, property and value, with context and provenance.
+
+| Field | Type | Req. | Definition / rule |
+|---|---|---:|---|
+| assertion_id | ID | R | Stable identifier |
+| subject link | Typed relation | R | One or more typed subject-link records with enforceable foreign keys; no unconstrained `subject_type + subject_id` pair |
+| predicate | Code/URI | R | Controlled property or URI |
+| value_type | Code | R | Text, number, boolean, concept, geometry, etc. |
+| value | Structured value | R | Typed value, not unqualified string only |
+| unit | Code/URI | C | Required for measured quantities |
+| geographic_scope_id | ID | O | Geographic applicability |
+| temporal_scope | DateInterval | O | Time applicability |
+| source_id | ID | C | Required for externally sourced claim |
+| evidence_set_id | ID | O | Evidence supporting or qualifying claim |
+| asserted_by | ID | R | Person, organization, source or software agent |
+| asserted_at | DateTime | R | Assertion time |
+| certainty | Code | O | Only with documented semantics |
+| review_status | Code | R | Workflow status |
+| supersedes_assertion_id | ID | O | Prior assertion superseded |
+| provenance_record_id | ID | R | Provenance link |
+
+Different sources may assert different values. Preserve both and record reconciliation separately.
+
+**Typed subject-link rule for ScientificAssertion:** the logical dictionary uses explicit link entities such as `AssertionSubjectTaxon`, `AssertionSubjectOccurrence`, `AssertionSubjectObservation` and `AssertionSubjectPlace`. Each link has an assertion FK and a subject FK to the named target table. Additional target types require an explicit typed link and review. Do not store a generic subject ID without an enforceable target FK.
+
+**Typed subject-link rule for Identification (canonical logical pattern proposed for Task 05C):** use one `IdentificationSubject` row per Identification, with nullable `observation_id`, `occurrence_id` and `material_entity_id` columns. Each column is a real foreign key to its target table. A row-local CHECK (for example, PostgreSQL `num_nonnulls(observation_id, occurrence_id, material_entity_id) = 1`) requires exactly one populated target; a UNIQUE constraint on `identification_id` permits at most one subject row per Identification. The design must separately enforce total participation (every persisted Identification has one subject row) through a transactionally safe creation/update path and, if required by the final database design, an appropriate deferred constraint-trigger or equivalent mechanism. The CHECK alone does not guarantee that a subject row exists. Do not create three parallel subject-link tables unless a reviewed design proves equivalent exactly-one and referential-integrity guarantees. A generic `subject_type + subject_id` pair may be retained only as verbatim source payload during ingestion, never as the canonical relationship.
+
+
+### 4.7 Observation
+
+**Definition:** A record that an observer recorded an organism or plant-related evidence at a time and place. It can exist without identification.
+
+| Field | Type | Req. | Definition / rule |
+|---|---|---:|---|
+| observation_id | ID | R | Stable identifier |
+| observer_agent_id | ID | R | User, organization or anonymous/withheld agent reference |
+| observed_at | DateInterval | C | Observation time; precision may be coarse |
+| recorded_at | DateTime | R | Platform submission time |
+| observation_method | Code | O | Casual, protocol-based, camera, etc. |
+| field_notes | Text | O | Observer's notes |
+| habitat_verbatim | String | O | Observer's original habitat note |
+| place_id | ID | O | Named place, where known |
+| location_id | ID | O | Georeferenced location |
+| privacy_state | Code | R | Private, community, public, restricted |
+| publication_state | Code | R | Draft, submitted, moderated, published, withdrawn |
+| rights_record_id | ID | C | Contributor terms/permission |
+| source_id | ID | O | If imported from another platform |
+| created_at / updated_at | DateTime | R | Platform timestamps |
+
+### 4.8 Occurrence
+
+**Definition:** An evidence-backed record representing the state of an Organism at a particular place and time, following the Darwin Core Occurrence concept. It is distinct from the platform Observation, Event and MaterialEntity, and from a taxonomic Identification. The state may represent detection/presence or, where supported by a defined survey Event, non-detection/absence. An absent state must be explicit and supported by the survey protocol, effort, target and event context; it must never be inferred from the absence of an Occurrence record.
+
+| Field | Type | Req. | Definition / rule |
+|---|---|---:|---|
+| occurrence_id | ID | R | Stable identifier |
+| internal_evidence_class | Code | R | Botanica Indica's governed internal classification of the evidence/record; not a Darwin Core term |
+| basis_of_record | Code | O | Darwin Core export mapping only when the evidence supports a valid controlled value; never fabricate to satisfy an export profile |
+| occurrence_status | Code | O | Explicit detected/present or absent/non-detected state where supported; absent requires a defined survey Event, protocol, effort, target and location |
+| organism_id | ID | O | Biological individual/group if modelled |
+| event_id | ID | O | Related Event, where the occurrence is tied to a defined event |
+| location_id | ID | O | Location representation |
+| evidence links | Typed relations | R | One or more provenance/evidence links to Observation, MaterialEntity or SourceRecord; use typed FK relationships |
+| current taxon determination | Derived view | — | Derive from the applicable current Identification assertion; do not store a mutable duplicate taxon_concept_id on Occurrence |
+| event_date | DateInterval | O | Time of occurrence |
+| source_record_id | SourceRecord FK / ExternalID tuple | O | Canonical source-record link, or constrained external identifier with issuing namespace and dataset/version context |
+| source_id | ID | C | Required for imported occurrence |
+| provenance_record_id | ID | R | Origin/lineage |
+
+Occurrence must not be treated as merely a field on Observation. Multiple evidence records can support one occurrence interpretation, and an observation may be revised or interpreted in multiple ways. A non-detection is represented only as an explicit absent/non-detected Occurrence state associated with a defined Survey/Event, protocol, effort, target taxon or taxon group, time and location. Absence of an Occurrence row is not evidence of absence.
+
+### 4.9 Event
+
+**Definition:** A field event, collection event, survey or sampling activity during a time interval at a location.
+
+| Field | Type | Req. | Definition / rule |
+|---|---|---:|---|
+| event_id | ID | R | Stable identifier |
+| event_type | Code | R | Survey, collection, observation event, etc. |
+| parent_event_id | ID | O | Hierarchical event |
+| event_start / event_end | DateTime/DateInterval | O | Event interval |
+| location_id | ID | O | Event location |
+| sampling_protocol | URI/Text | O | Protocol |
+| sampling_effort | Structured value | O | Effort and unit |
+| responsible_agent_id | ID | O | Organization/person |
+| source_id | ID | O | Imported event source |
+| event_notes | Text | O | Notes |
+
+### 4.10 MaterialEntity / Specimen / MaterialSample
+
+Use a common material-entity abstraction where useful, with subtype or category-specific attributes. Do not assume every plant observation has a preserved specimen.
+
+| Field | Type | Req. | Definition / rule |
+|---|---|---:|---|
+| material_entity_id | ID | R | Stable identifier |
+| material_entity_category | Code | R | Preserved specimen, living specimen, sample, etc. |
+| institution_id | ID | O | Holding institution |
+| collection_id | ID | O | Collection |
+| catalog_number | String | O | Institution catalog number |
+| collector_agent_id | ID | O | Collector |
+| collection_event_id | ID | O | Collection event |
+| type_status | Code | O | Nomenclatural type status where applicable |
+| preparation | String | O | Preparation/preservation |
+| repository_uri | URI | O | Repository record |
+| rights_record_id | ID | O | Rights/access restrictions |
+| provenance_record_id | ID | R | Source and custody lineage |
+
+### 4.11 Identification
+
+**Definition:** A taxonomic determination about an Observation, Occurrence, MaterialEntity or other subject. It is a revisable assertion.
+
+| Field | Type | Req. | Definition / rule |
+|---|---|---:|---|
+| identification_id | ID | R | Stable identifier |
+| subject link | IdentificationSubject FK | R | Exactly one subject row per Identification; unique Identification FK; three nullable target columns with real FKs; row-local CHECK requires exactly one target FK populated; total participation (no Identification without a subject row) requires separate transactional/deferred enforcement |
+| taxon_concept_id | ID | O | Proposed/selected concept |
+| taxon_name_id | ID | O | Name used if concept not resolved |
+| identifier_agent_id | ID | R | Human, expert, community or AI system |
+| identification_method | Code | R | Human, AI-assisted, automated, literature, etc. |
+| identified_at | DateTime | R | Assertion time |
+| identification_qualifier | Code/String | O | cf., aff., genus-only, etc., where applicable |
+| identification_remarks | Text | O | Rationale |
+| identification_status | Code | R | Proposed, supported, disputed, confirmed, rejected, superseded |
+| previous_identification_id | ID | O | Previous determination |
+| evidence_set_id | ID | O | Evidence set |
+| model_run_id | ID | O | AI run, if applicable |
+| according_to_resource_id | ID/URI | R | Canonical resource establishing/using this identification's TaxonConcept, where concept-level determination is made |
+| taxonomic_treatment_id | ID | O | Optional structured treatment record; must resolve to the same canonical according-to resource |
+
+Do not overwrite the old identification when a new identification is added. Use a history/supersession relationship.
+
+### 4.12 IdentificationRun and Candidate
+
+**IdentificationRun** records a single execution of an AI or automated pipeline.
+
+Required logical fields:
+- run ID
+- input observation/media identifiers
+- pipeline and model versions
+- taxonomic backbone/release
+- context inputs used (location/date/organ)
+- configuration and preprocessing version
+- start/end time and status
+- evaluation/calibration reference
+- rights eligibility snapshot or dataset policy reference
+
+**IdentificationCandidate** records one candidate produced by that run:
+- candidate ID
+- run ID
+- rank/order
+- taxon concept or unresolved external taxon reference
+- raw score and score type
+- calibrated probability only if genuinely calibrated
+- evidence signals/features
+- geographic compatibility result
+- taxonomy mapping result
+- candidate explanation reference
+
+A score must never be labelled a probability unless the calibration method and applicable evaluation regime justify that interpretation.
+
+### 4.13 EvidenceItem and EvidenceRelationship
+
+**EvidenceItem** represents a photograph, specimen, publication, field note, measurement, expert statement or external record.
+
+Core fields:
+- evidence item ID
+- evidence type
+- creator/observer/source
+- created or collected date (with precision)
+- media/citation/material/source reference
+- rights record
+- provenance record
+- quality/limitations
+- visibility/access state
+
+**EvidenceRelationship** connects evidence to an assertion or identification:
+- relationship ID
+- evidence item ID
+- target assertion/identification ID
+- relation: supports, contradicts, qualifies, derived-from, cites
+- rationale
+- asserted by
+- asserted at
+
+Do not store one universal evidence score on EvidenceItem. Evidence quality depends on the claim being evaluated.
+
+### 4.14 ExpertAssessment
+
+Core fields:
+- assessment ID
+- target type and ID
+- reviewer agent ID
+- reviewer expertise/credential reference
+- review scope
+- outcome
+- rationale
+- evidence set
+- conflicts/dissent
+- conflict-of-interest declaration where required
+- reviewed at
+- supersedes assessment ID
+
+An expert's qualification should be validated through a governed domain workflow; a shared platform login or generic role does not prove botanical expertise.
+
+### 4.15 Place, GeographicUnit and Location
+
+**Place/GeographicUnit** represents named administrative or ecological areas with source/version context.
+
+Core fields:
+- place ID
+- place type
+- preferred name and language
+- alternative names
+- parent place ID
+- boundary geometry
+- geometry CRS
+- source and boundary version
+- valid-from/to
+- provenance
+
+**Location** represents a particular locality or geometry associated with an event, observation or occurrence.
+
+Core fields:
+- location ID
+- verbatim locality
+- original geometry/coordinates where permitted
+- CRS/geodetic datum
+- coordinate uncertainty in metres
+- georeferencing method/source/agent/date
+- restricted/public access classification
+- generalized geometry
+- generalization method and policy version
+- sensitive-location reason
+- source/provenance
+
+Never overwrite original coordinates with generalized coordinates. Keep access control at service/API/export level, not only in UI.
+
+### 4.16 DistributionAssertion
+
+Core fields:
+- distribution assertion ID
+- taxon concept ID
+- geographic unit ID
+- status code
+- source/treatment
+- temporal applicability
+- evidence
+- asserted by/at
+- review state
+- provenance
+
+Status vocabulary should distinguish native, endemic, introduced, naturalized, cultivated, invasive, extirpated/historical, uncertain and not assessed. These labels are not interchangeable, and a status must be scoped to a geography, time and source.
+
+### 4.17 MediaAsset
+
+Core fields:
+- media asset ID
+- media type and MIME type
+- object storage key or external URI
+- file checksum and algorithm
+- dimensions/duration/file size
+- creator and rights holder
+- capture date/time and precision
+- source and uploader
+- rights record
+- privacy/sensitive classification
+- derivative/parent asset
+- transformation lineage
+- moderation/visibility status
+- EXIF handling state
+
+A photograph's visibility online does not prove redistribution or AI-training rights.
+
+### 4.18 Source, Dataset, DatasetVersion and IngestionRun
+
+**Source** fields:
+- source ID, name, publisher/organization, source type
+- official URL/API/documentation
+- access method and update cadence
+- source contact
+- terms/rights references
+- geographic/taxonomic scope
+- last checked, last successful access
+- known limitations
+
+**Dataset** fields:
+- dataset ID, source ID, title, description
+- publisher, citation, persistent identifier
+- dataset class and scope
+- rights record and attribution
+- update cadence
+
+**DatasetVersion** fields:
+- dataset version ID, dataset ID
+- source version label
+- publication/release date
+- retrieved date
+- checksum/fingerprint where permitted
+- archive URI or source reference
+- rights status snapshot
+
+**IngestionRun** fields:
+- ingestion run ID
+- source and dataset version
+- adapter and mapping version
+- start/end and status
+- input/accepted/rejected/quarantined counts
+- validation results
+- operator/system
+- error report reference
+- reprocessing lineage
+
+**RawSourceRecord** fields:
+- raw record ID
+- source and source record identifier
+- dataset version and ingestion run
+- verbatim payload or lawful reference
+- content checksum
+- retrieval time
+- rights and retention status
+
+If raw payload retention is not permitted, do not store it. Retain only permitted metadata and source references.
+
+### 4.19 RightsRecord
+
+Core fields:
+- rights record ID
+- rights holder/source
+- license name and version
+- SPDX identifier where applicable
+- license URI or permission evidence
+- attribution requirements
+- redistribution/derivative/commercial-use permissions
+- AI/ML training permission (explicit yes/no/conditional/unknown)
+- permitted purpose and prohibited purpose
+- territorial/duration conditions
+- assessment status and reviewer
+- review/expiry date
+- evidence document reference
+
+Unknown or pending rights status must block the relevant operation until reviewed. A general license for one dataset must not automatically cover third-party photographs embedded in it.
+
+### 4.20 ProvenanceRecord
+
+Core fields:
+- provenance record ID
+- origin type (source, user, expert, AI, platform, transformation)
+- source/agent/software identifiers
+- source version
+- generated/retrieved time
+- derivation links
+- transformation name/version/configuration
+- input and output identifiers
+- rights snapshot
+- validation/review status
+- lineage reference
+
+Provenance should be attached to scientific assertions and important derived outputs, not merely stored as one free-text note on the top-level species record.
+
+## 5. Relationship and cardinality rules
+
+The following is the recommended baseline. Cardinalities may be refined but must not contradict the scientific meaning.
+
+| Relationship | Cardinality | Notes |
+|---|---|---|
+| TaxonomicTreatment → TaxonNameUsage | 1 to many | Each usage belongs to one treatment |
+| TaxonNameUsage → TaxonName | many to 1 | Same name can be used in multiple treatments |
+| TaxonConcept → TaxonName | many to 1 or 1 to 1 per concept | Concept has one defining name in TCS |
+| TaxonConcept → Treatment | many to 1 | A concept is defined according to a treatment |
+| TaxonConcept → TaxonConceptMapping | many to many via mapping | Mapping is explicit and source-qualified |
+| Observation → MediaAsset | many to many | An asset may be reused only when rights allow |
+| Observation → Identification | 1 to many | Multiple determinations over time |
+| IdentificationRun → Candidate | 1 to many | One run returns ranked alternatives |
+| Observation/Occurrence/MaterialEntity → Identification | 1 to many | Subject must be explicit |
+| Occurrence → EvidenceItem | many to many | Multiple supporting evidence items |
+| Event → Occurrence | 1 to many | Events may record many occurrences |
+| Event → Location | many to 1 or 1 to many via event-location | Define for complex surveys |
+| ScientificAssertion → EvidenceItem | many to many | Evidence can support or challenge multiple claims |
+| Source → Dataset | 1 to many | A source can publish multiple datasets |
+| Dataset → DatasetVersion | 1 to many | Versions are immutable snapshots where feasible |
+| DatasetVersion → IngestionRun | 1 to many | Repeated imports/reprocessing |
+| IngestionRun → RawSourceRecord | 1 to many | If retention is permitted |
+| Record → RightsRecord | many to many where exceptions apply | Resolve effective rights before use |
+| Location → Public/generalized representation | 1 to 0..many | Multiple policies/purposes may produce views |
+
+## 6. Controlled vocabularies requiring governance
+
+Do not hard-code user-facing labels as the data values. Store stable codes and localized labels.
+
+Initial vocabulary families:
+- Taxonomic rank
+- Taxonomic name usage status
+- Taxon concept mapping relation
+- Identification method
+- Identification status
+- Evidence type and evidence relationship
+- Observation method and publication/privacy status
+- Basis of record
+- Event type/category
+- Occurrence status
+- Establishment means and degree of establishment
+- Distribution status
+- Habitat and growth form
+- Life form and plant habit
+- Plant organ/structure
+- Phenological stage
+- Measurement type and unit
+- Coordinate reference system
+- Sensitive-location classification
+- Rights assessment status and permitted purpose
+- Expert assessment outcome
+
+Each vocabulary should include:
+- code
+- preferred label
+- definition
+- language
+- source/authority
+- version
+- broader/narrower/related mappings where applicable
+- deprecated/replaced-by metadata
+- effective dates
+
+## 7. Source-grounded Indian botanical test cases
+
+These examples are deliberately small and illustrate different modelling problems. They are not a proposed taxonomic backbone and must not be bulk-ingested solely from these pages.
+
+### 7.1 Case A — Neem: nomenclatural identity vs taxonomic acceptance
+
+**Source facts**
+- IPNI records the name `Azadirachta indica A.Juss.`, with LSID `urn:lsid:ipni.org:names:1213180-2`, and publication details in *Mémoires du Museum d'Histoire Naturelle* 19:221 (1830). IPNI also links the nomenclatural name `Melia azadirachta L.`.
+- POWO presents `Azadirachta indica A.Juss.` as an accepted species and reports a native range from Assam to Indo-China.
+
+Sources:
+- https://www.ipni.org/n/1213180-2
+- https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:1213180-2/general-information
+
+**Modelling**
+- Create a TaxonName for the scientific name using IPNI's name identifier.
+- Create a separate TaxonomicTreatment for the POWO taxonomic backbone/version context.
+- Create a TaxonConcept according to that treatment.
+- Record the link to `Melia azadirachta L.` according to the source's nomenclatural relationship semantics; do not infer the complete relationship graph from a short page excerpt.
+- Preserve the original publication date text and any normalized date separately; the source presentation of 1830 vs publication issuance nuance must not be silently rewritten.
+
+**Do not infer**
+- A specific wild occurrence in a particular Indian district.
+- That every Neem tree is wild/native at its observation location.
+- Rights to copy the IPNI or POWO dataset at scale.
+
+### 7.2 Case B — Mango: source disagreement in native/introduced distribution
+
+**Source facts**
+- POWO presents `Mangifera indica L.` as accepted and reports a native range of Assam to southern Yunnan; its displayed distribution lists India among introduced areas.
+- eFlora of India presents `Mangifera indica L.`, lists Indian-language common names including Kannada `ಮಾವು`, and describes it as native to southern Asia and India.
+
+Sources:
+- https://powo.science.kew.org/taxon/69913-1
+- https://efloraofindia.com/efi/mangifera-indica/
+
+**Modelling**
+- Store the scientific name and source-specific treatment records separately.
+- Store POWO's geographic assertion with its source and treatment context.
+- Store eFlora of India's geographic assertion separately with its source and context.
+- Do not force a single global `native = true` field on the taxon.
+- Model Kannada common name as a vernacular-name assertion with language tag `kn`, source and provenance. Verify spelling and regional usage with a qualified language/botanical reviewer before treating it as a canonical common name.
+- Keep the difference visible for scientific review; do not decide which source is correct based only on these pages.
+
+**Why this case matters**
+This is a practical test of the ADR-004 provenance and ADR-005 source-aware reconciliation decisions. It demonstrates why geographic status belongs in scoped assertions rather than a universal species attribute.
+
+### 7.3 Case C — Banyan: a name treated as a synonym
+
+**Source facts**
+- POWO presents `Ficus benghalensis L.` as accepted, reports the native range as the Indian Subcontinent, and lists `Ficus indica L.` among its heterotypic synonyms.
+- POWO's page for `Ficus indica L.` says the name is a synonym of `Ficus benghalensis` and names the taxonomic sources it follows for that treatment.
+
+Sources:
+- https://powo.science.kew.org/taxon/852482-1
+- https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:853013-1
+
+**Modelling**
+- Create distinct TaxonName records for `Ficus benghalensis L.` and `Ficus indica L.`.
+- Create the POWO treatment and its source-specific concept.
+- Record the synonym relation as a concept-to-name usage in a way consistent with TCS, rather than assuming it is simply a relationship between two biological entities.
+- Retain the source and cited taxonomic treatment supporting the synonym assertion.
+- Do not globally delete or merge the `Ficus indica` name record.
+
+**Why this case matters**
+It tests synonymy, accepted-name presentation, historical search and preservation of source name identity.
+
+### 7.4 Case D — Herbarium specimen record: specimen is not an observation photo
+
+**Source facts**
+The Botanical Survey of India's Indian Virtual Herbarium describes specimen records that can include family, genus, species, author citation, infraspecific information, collector, collection number, collection date, herbarium region, locality, plant description, habitat and comments.
+
+Source:
+- https://ivh.bsi.gov.in/
+- https://bsi.gov.in/page/en/Virtual-Herbarium
+
+**Modelling**
+- Represent the specimen as a MaterialEntity/PreservedSpecimen.
+- Represent collector, collection event, collection date and locality distinctly.
+- Represent the specimen's determinations as one or more Identification records.
+- Link digitized specimen images as MediaAssets with their own rights and access conditions.
+- Do not represent a herbarium specimen as a casual citizen Observation without retaining its specimen and collection context.
+
+**Important limitation**
+This source description establishes the types of specimen label information available in the system; it does not provide a specific accession record in this example. Do not invent an accession number, collector, date or locality.
+
+### 7.5 Case E — Flora publication as structured scientific source
+
+**Source facts**
+The Botanical Survey of India describes a flora as a systematic enumeration for a geographic area and says floras may include scientific/common names, literature references, taxonomic descriptions, habit, habitat, distribution, flowering/fruiting times, uses, notes and illustrations. BSI describes national, state, district and special-habitat flora work.
+
+Source:
+- https://www.bsi.gov.in/page/en/flora
+
+**Modelling**
+- Treat a flora publication as a bibliographic resource and/or TaxonomicTreatment, depending on the content.
+- Extract individual taxon usages, assertions and citations with page-level locators.
+- Scope distribution and phenology assertions to the geographic area and taxonomic treatment.
+- Do not flatten the flora into one list of names without retaining page, publication, treatment and evidence references.
+
+## 8. Sample record representation (illustrative JSON)
+
+The following is a logical example for a source-scoped Mango distribution assertion. The IDs are illustrative and the object is not a real imported record.
+
+```json
+{
+  "assertion_id": "assertion-example-001",
+  "subject": {
+    "type": "TaxonConcept",
+    "id": "taxon-concept-mangifera-powo-example"
+  },
+  "predicate": "distribution.nativeRange",
+  "value": {
+    "geographicText": "Assam to southern Yunnan",
+    "status": "native"
+  },
+  "according_to": {
+    "source": "Plants of the World Online",
+    "uri": "https://powo.science.kew.org/taxon/69913-1"
+  },
+  "asserted_at": "2026-11-11",
+  "review_status": "source-reported-not-independently-validated",
+  "provenance": {
+    "origin_type": "external-source",
+    "source_record_identifier": "69913-1"
+  }
+}
+```
+
+A production representation should use controlled geography identifiers and structured relations rather than relying on a free-text range string.
+
+## 9. Validation and integrity rules
+
+Before a record is eligible for public display, export or downstream processing, apply the relevant validations:
+
+### 9.1 Taxonomy
+- A fully specified TaxonConcept has a name and according-to treatment/reference.
+- TaxonName identity is not duplicated solely because a source uses different formatting.
+- Name usages preserve treatment-specific status.
+- TaxonConcept synonym assertions target TaxonName; source-specific TaxonNameUsage remains a separate treatment-scoped record.
+- TaxonName-to-TaxonName nomenclatural relations and TaxonConcept-to-TaxonConcept mappings are distinct entity families.
+- A TCS synonym assertion links one TaxonConcept to a reusable TaxonName. Keep the source-specific TaxonNameUsage as a separate source record; it is not the TCS synonym target.
+- A taxon concept mapping has both subject and object concepts plus a mapping relation and reference.
+- Name-string equality alone does not establish concept equivalence.
+
+### 9.2 Observation and occurrence
+- An Observation can be submitted without an identification.
+- An Identification must identify its subject and method/agent.
+- An internal Occurrence must have an internal evidence classification and provenance. Darwin Core `basisOfRecord` is populated only by a supported export mapping; it is not a universal internal validity requirement.
+- A specimen record retains collection and institution context.
+- Event time and record submission time are distinct.
+
+### 9.3 Evidence and assertions
+- An external scientific assertion has source/provenance.
+- Evidence relationships specify whether evidence supports, contradicts or qualifies a claim.
+- Expert review retains reviewer, time, scope and outcome.
+- AI output is distinguishable from user and expert determinations.
+
+### 9.4 Geography
+- Coordinates include CRS/datum and uncertainty where known.
+- Original and generalized locations are distinct.
+- A distribution assertion is scoped by taxon concept, geography, source and time.
+- Unknown geographic precision remains unknown, not zero.
+
+### 9.5 Rights
+- An asset or dataset used in an operation has an effective rights decision.
+- AI-training permission is explicit; unknown does not mean yes.
+- Attribution requirements are machine-readable where possible.
+- Third-party media embedded in a source dataset can have different rights from the dataset itself.
+
+## 10. Recommended initial controlled values
+
+These are proposed starting codes, not final vocabulary standards.
+
+### Identification method
+- `HUMAN_FIELD`
+- `HUMAN_EXPERT`
+- `COMMUNITY_SUGGESTION`
+- `AI_ASSISTED`
+- `AI_AUTOMATED`
+- `LITERATURE_DETERMINATION`
+- `INSTITUTIONAL_DETERMINATION`
+
+### Identification status
+- `PROPOSED`
+- `SUPPORTED`
+- `DISPUTED`
+- `CONFIRMED`
+- `REJECTED`
+- `SUPERSEDED`
+- `UNRESOLVED`
+
+### Rights assessment
+- `CLEARED`
+- `CLEARED_WITH_CONDITIONS`
+- `PERMISSION_REQUIRED`
+- `PROHIBITED`
+- `UNKNOWN`
+- `EXPIRED_REVIEW_REQUIRED`
+
+### Review state
+- `UNREVIEWED`
+- `IN_REVIEW`
+- `REVIEWED`
+- `ACCEPTED`
+- `REJECTED`
+- `NEEDS_MORE_EVIDENCE`
+- `SUPERSEDED`
+
+Controlled vocabularies must be versioned and have definitions. These labels should not be treated as interchangeable with Darwin Core or TCS terms without explicit mappings.
+
+## 11. Open scientific and policy decisions
+
+1. Which taxonomic authority or combination of authorities should Botanica Indica use for each purpose (name nomenclature, accepted checklist, species concepts, Indian distribution)?
+2. Should the platform expose one default treatment for casual users while preserving alternate treatments for researchers?
+3. Which flora publications and Indian institutional datasets can be licensed for ingestion, redistribution and derivative extraction?
+4. How should source disagreements about native/introduced status be reviewed and presented?
+5. Which vernacular names require region/dialect/script variants and community attribution?
+6. Which herbarium specimen metadata can be retained and republished, and under what terms?
+7. What is the domain review workflow for expert credentials and taxonomic disputes?
+8. What sensitive-location policy applies to rare, threatened, endemic or commercially targeted taxa?
+9. Which occurrence/observation export profile is required for GBIF/Darwin Core compatibility?
+10. Which TCS mappings can be represented natively in JSON and which require richer graph relationships?
+
+## 12. Recommended review exercise before SQL design
+
+Use the following test scenarios to review the model with botanists, taxonomists, herbarium staff and data engineers:
+
+1. Same scientific name, different taxonomic treatments.
+2. One name treated as synonym by one source and accepted by another.
+3. A common cultivated plant with disagreement about native/introduced status.
+4. An observation with three photographs and no identification.
+5. An AI identification with three candidates and no expert confirmation.
+6. A herbarium specimen with collector, collection number, date, locality and multiple determinations.
+7. A district flora assertion with a page-level citation.
+8. A rare plant observation whose precise coordinates must not be public.
+9. A source dataset containing records and images with different rights.
+10. A taxonomic correction that must preserve the old identification and prior public page history.
+
+The model should pass these scenarios without overwriting source facts, losing uncertainty or conflating evidence with conclusions.
+
+## 13. Acceptance criteria
+
+The data dictionary is ready to inform physical schema design when:
+- Domain experts approve or amend entity definitions and relationships.
+- TCS and Darwin Core mappings are documented at term level.
+- The Mango source disagreement example is represented without forced global consensus.
+- The Ficus synonym example is modelled without deleting the name record.
+- The Neem nomenclatural example preserves publication and identifier provenance.
+- Herbarium specimen and casual observation records remain distinct.
+- Controlled vocabularies have owners and versioning.
+- Rights and sensitive-location constraints are demonstrably enforceable.
+- All sample data clearly distinguishes source facts from illustrative values.
+- The ten review scenarios can be represented and validated.
+
+## 14. References consulted
+
+1. TDWG Darwin Core List of Terms, list release version issued 2026-05-26: https://dwc.tdwg.org/list/
+2. TDWG Taxon Concept Standard terms: https://tcs.tdwg.org/terms/
+3. IPNI — Azadirachta indica A.Juss.: https://www.ipni.org/n/1213180-2
+4. Kew Plants of the World Online — Azadirachta indica: https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:1213180-2/general-information
+5. Kew Plants of the World Online — Mangifera indica: https://powo.science.kew.org/taxon/69913-1
+6. eFlora of India — Mangifera indica: https://efloraofindia.com/efi/mangifera-indica/
+7. Kew Plants of the World Online — Ficus benghalensis: https://powo.science.kew.org/taxon/852482-1
+8. Kew Plants of the World Online — Ficus indica: https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:853013-1
+9. Botanical Survey of India — Virtual Herbarium: https://bsi.gov.in/page/en/Virtual-Herbarium
+10. Indian Virtual Herbarium: https://ivh.bsi.gov.in/
+11. Botanical Survey of India — Flora programme: https://www.bsi.gov.in/page/en/flora
+
+---
+
+## 15. Recommendation
+
+Proceed to a reviewed logical schema only after the scientific test cases are approved. The most important correction is to implement TCS semantics precisely: a taxon concept is according to a source, a taxon name is a separate reusable nomenclatural object, and synonymy is not simply an equivalence edge between two taxon concepts.
+
+Use the Mango distribution disagreement as a mandatory test fixture. It demonstrates that Botanica Indica must preserve source-scoped geographic assertions rather than compressing complex botanical knowledge into a single global field.
+
+ 
+## 16. Event, Survey, Occurrence and target-result semantic correction — 21 November 2026
+
+**Status:** Proposed dictionary clarification; not an approved scientific model or physical schema. This section supplements and, where inconsistent, supersedes the simplified Event definition in §4.9 and the generic `Event → Occurrence` cardinality row in §5. It must be reconciled with Task 05C §18–§19 and Task 05D before approval.
+
+### 16.1 Distinguish the concepts
+
+- **Event:** an action, process or set of circumstances at a place during an interval. It has stable identity and shared temporal/spatial/agent context.
+- **Survey:** a special type of Event representing a biotic survey or inventory. It has survey-specific purpose, targets, protocol, effort, scope and completeness attributes.
+- **Occurrence:** a special type of Event representing the state of an Organism at a place and time, including a supported detection or non-detection state. It is not simply a child row that belongs to every generic Event.
+- **Observation:** Botanica Indica's contributor-submitted workflow record. It is not automatically an Event, Survey or Occurrence.
+- **Organism:** an individual or defined taxonomically homogeneous group with identity/life history where supported.
+- **MaterialEntity:** physical matter collected or sampled; distinct from digital MediaAsset and distinct from Occurrence.
+
+A logical relational implementation may use one Event identity with subtype records for Survey and Occurrence. Each event identity must have one event category: generic/context, Survey, Occurrence or another explicitly modelled special type. A single Event instance must not be both a Survey and an Occurrence. This is a proposed logical representation, not a mandate for SQL inheritance.
+
+A generic context Event may provide shared spatiotemporal context for multiple distinct activities, including a Survey, one or more Occurrences and material gathering. The context Event is not itself silently converted into those special Event types.
+
+### 16.2 Keep three relationships distinct
+
+1. **Event parent-child hierarchy:** a child Event has zero or one parent Event; a parent may have many children. A parent must spatially and temporally encompass each child. This is a containment/hierarchy relationship.
+2. **Survey reports Occurrence:** a Survey may report many Occurrences through a proposed `SurveyOccurrenceReport` association. The association records target match, incidental/bycatch or another justified reporting role.
+3. **Context Event association:** a generic context Event may be related to distinct activity Events where they share documented context. This is not automatically a parent-child relationship.
+
+A Survey reporting an Occurrence does not, by itself, prove that the Occurrence is a child Event. Where both relationships apply, represent both independently and test their separate meanings.
+
+### 16.3 Proposed SurveyTarget and SurveyTargetResult dictionary entries
+
+These are internal Botanica Indica concepts proposed to preserve richer semantics; they are not claims that Darwin Core defines a class with the same internal schema.
+
+**SurveyTarget** — a versioned declaration or analytical filter defining what a Survey sought or selected for analysis. Required semantics:
+- target identity and version;
+- scope type and structured/verbatim scope;
+- inclusion/exclusion criteria;
+- origin: `A_PRIORI` or `POST_FACTO`;
+- author/agent, declaration/application time and method;
+- source/provenance and effective Event/Survey scope;
+- whether the target was in force during field activity or applied later for analysis.
+
+**SurveyTargetResult** — an attributable assessment for a Survey, target, defined scope and period. It must not be a Boolean alone. Preserve:
+- whether the target was assessed;
+- result state: `DETECTED`, `NOT_DETECTED_EXPLICIT`, `INCONCLUSIVE`, `NOT_ASSESSED` or another governed state;
+- whether the relevant detected Occurrences were fully reported;
+- taxonomic-completeness assessment and method, separately;
+- protocol and sampling effort, with units and method;
+- temporal and spatial bounds;
+- supporting/reported Occurrences and evidence;
+- bycatch status where applicable;
+- author, agent, timestamp, source, provenance, corrections and supersession.
+
+Do not collapse `NOT_DETECTED_EXPLICIT` into the absence of a row. Do not use a post-facto filter to rewrite original survey intent. Do not equate reporting completeness with detectability or true ecological absence.
+
+### 16.4 Proposed relationship/cardinality refinements
+
+| Relationship | Proposed cardinality | Rule |
+|---|---|---|
+| Event → Survey subtype | 0..1 subtype per Event; each Survey exactly 1 Event identity | Survey is a special Event, not an unrelated record |
+| Event → Occurrence subtype | 0..1 subtype per Event; each Occurrence exactly 1 Event identity | Occurrence is a special Event, not a generic child row |
+| Survey → SurveyTarget | 0..* | Preserve target version and a priori/post-facto origin |
+| SurveyTarget → SurveyTargetResult | 0..* | Repeated assessments/periods remain distinct |
+| Survey → reported Occurrence | 0..* through SurveyOccurrenceReport | Report role is explicit; may be target match or bycatch |
+| Event → parent Event | Child 0..1 parent; parent 0..* children | Hierarchy only where spatiotemporal containment and dependent connection exist |
+| Observation → Event / Occurrence | 0..* typed links | Observation remains a separate workflow record |
+| Context Event → activity Event | 0..* typed links | Use only where common context is documented |
+
+The current `Occurrence.event_id` field in §4.8 must be interpreted as the Occurrence's own Event identity if the shared-identity subtype pattern is selected. It must not be reused as an ambiguous foreign key to a Survey. Survey-to-Occurrence reporting requires its own typed association. The final relational mapping remains open.
+
+### 16.5 Occurrence status and export mapping
+
+The current Darwin Core `dwc:occurrenceStatus` term version retrieved for this review is 2026-05-26 and recommends `detected` and `notDetected`. The GBIF survey guide v1.0.2 uses `present` and `absent` in its publishing examples. Preserve the internal governed state and use a versioned, tested export mapping; do not assume the literals are interchangeable.
+
+A missing internal Occurrence row means unknown/not assessed. An explicit non-detection requires an attributable SurveyTargetResult and its defined scope/context. Any optional Darwin Core Occurrence representation for explicit non-detection must be tested against the current Conceptual Model and selected publishing profile. No implicit export result may be generated until ODR-01 conditions are independently validated.
+
+### 16.6 Current standards pins to carry forward
+
+- Darwin Core Conceptual Model: 2026-10-13.
+- Darwin Core List of Terms: 2026-10-13.
+- Core Darwin Core term snapshot: 2026-10-13.
+- Darwin Core schemas: 2026-10-13.
+- Humboldt hierarchical-event guidance: 2026-10-13; Section 3 normative.
+- Humboldt Extension term list: 2026-10-13; pin individual term versions.
+- GBIF survey guide: v1.0.2, 2025-09-24.
+
+Term-level version pins must be recorded individually. In particular, `eco:isTaxonomicScopeFullyReported-2026-10-13` supersedes the 2024-02-28 term version; `eco:isSurveyTargetFullyReported-2026-05-26` is a separate target-specific term whose current status must be checked in the 2026-10-13 term list; and `dwc:occurrenceStatus-2026-05-26` recommends `detected/notDetected`.
+
+**Open items:** DR-07 and DR-09 remain open; B01/B02/B16 and FLD-08 require review; EVT-31 onward are proposed and unexecuted. Candidate A and Task 05B remain proposed. No physical schema or API payload is authorized.
+
+ 
+## 17. Cross-document consistency audit and standards-version correction — 21 November 2026
+
+**Status:** Proposed audit clarification only. This section does not approve the dictionary, Task 05C, a scientific model, an export profile or a physical schema.
+
+### 17.1 Standards version correction
+
+The standards inventory must distinguish a document issue date, a vocabulary/list snapshot, and each individual term version.
+
+| Resource | What was directly verified | Required treatment |
+|---|---|---|
+| Darwin Core Conceptual Model | The directly retrieved official page identifies version 2026-05-26 and IRI `http://rs.tdwg.org/dwc/doc/cm/2026-05-26`. Search-indexed metadata previously suggested 2026-10-13, but the exact 2026-10-13 Conceptual Model resource was not retrieved in this audit. | Pin 2026-05-26 as the inspected document. Keep DR-09 open; do not call 2026-10-13 the verified current Conceptual Model until its exact resource is fetched and compared. |
+| Darwin Core hierarchical-event guidance | Official metadata identifies 2026-10-13, previous 2024-02-28; the current search result identifies Section 3 as normative. | Correct earlier references to 2024-02-28 as the current version. Preserve exact resource and content in the standards evidence bundle. |
+| Core Darwin Core term snapshot | Search-indexed official metadata identifies a 2026-10-13 snapshot, while direct HTML retrieval displayed 2026-05-26. | Record the metadata/rendering discrepancy. Pin individual term-version IRIs independently. |
+| `dwc:occurrenceStatus` | Term version 2026-05-26; recommended values `detected` and `notDetected`. | Do not silently substitute GBIF guide example values `present` and `absent`; use a tested, profile-specific mapping. |
+| Humboldt Extension terms | The 2026-05-26 snapshot is marked superseded by a 2026-10-13 snapshot in its version metadata. Individual terms have different version dates. | Pin each term and current status. In particular, `eco:isSurveyTargetFullyReported-2026-05-26` is distinct from `eco:isTaxonomicScopeFullyReported-2026-10-13`. |
+| DwC-A schemas | Official schema page lists Event, Occurrence, Taxon and Humboldt Extension schemas at 2026-10-13. | Treat these as non-normative exchange-schema resources, not the internal logical model. |
+| GBIF survey guide | v1.0.2, 2025-09-24. | Treat as publishing guidance/profile input, not an internal database specification. |
+
+### 17.2 Unresolved naming and duplicate-state issue
+
+The current documents do not use one consistent name for the proposed target-assessment concept:
+
+- This dictionary's §16 proposes **SurveyTargetResult** and includes outcome states such as `DETECTED` and `NOT_DETECTED_EXPLICIT`.
+- The EVT validation pack and competing-model reconciliation use **SurveyTargetAssessment** for an attributable assessment/completeness record.
+- The Event–Survey–Occurrence decision paper and Task 05C proposal must be checked against both usages before one term is selected.
+
+This is a substantive modelling issue. Darwin Core describes Survey results as Occurrences reported by a Survey, and Occurrence can represent a supported detection or non-detection. A separately mutable target-result state could duplicate or contradict the Occurrence state.
+
+**Recommendation for review, not an approved decision:** use a target-assessment record (working name: `SurveyTargetAssessment`) for assessment lifecycle, scope, protocol, effort, completeness, limitations and provenance. Represent the taxon/organism-level detected or explicit non-detected scientific result through the canonical Occurrence and its typed Survey reporting association. If `SurveyTargetResult` is retained, define it explicitly as either that same canonical result or a derived/non-authoritative view; do not maintain two independently editable outcome states.
+
+### 17.3 Required reconciliation
+
+Before approval:
+1. Resolve the canonical term and lifecycle of the target-assessment record.
+2. Define the single authoritative location for detected/non-detected state.
+3. Ensure SurveyTarget, assessment, Occurrence and SurveyOccurrenceReport have distinct, non-duplicative responsibilities.
+4. Test one detected target, one bycatch detection, one explicit non-detection, one not-assessed target and an empty Occurrence set.
+5. Retain ODR-01 as an owner-authorized external-export policy only; it does not authorize internal inference from missing rows.
+6. Keep B16 and DR-09 open until semantic decisions, exact term versions and selected-profile mappings are evidenced.
+
+**Disposition:** The proposed dictionary clarification remains under review. No scientific model, cardinality, export mapping or physical design is approved by this addendum.
