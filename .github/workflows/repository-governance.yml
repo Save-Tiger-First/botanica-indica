@@ -15,9 +15,12 @@ jobs:
     timeout-minutes: 5
     steps:
       - name: Check out repository
-        uses: actions/checkout@v4
+        # actions/checkout v7.0.1; full verified commit SHA.
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
       - name: Set up Python
-        uses: actions/setup-python@v5
+        # actions/setup-python v7.1.0; full verified commit SHA.
+        # Both selected action releases use Node.js 24.
+        uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0
         with:
           python-version: "3.12"
       - name: Validate Markdown and pull-request routing
@@ -26,11 +29,13 @@ jobs:
           PR_BASE: ${{ github.event.pull_request.base.ref }}
           PR_HEAD: ${{ github.event.pull_request.head.ref }}
           PR_BODY: ${{ github.event.pull_request.body }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
         run: |
           python scripts/check_repository_governance.py \
             --base "$PR_BASE" \
             --head "$PR_HEAD" \
-            --body "$PR_BODY"
+            --body "$PR_BODY" \
+            --number "$PR_NUMBER"
       - name: Validate Markdown on manual run
         if: github.event_name == 'workflow_dispatch'
         run: python scripts/check_repository_governance.py
