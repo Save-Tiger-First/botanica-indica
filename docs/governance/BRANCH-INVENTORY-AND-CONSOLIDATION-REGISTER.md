@@ -468,3 +468,20 @@ The project owner authorized Option B: controlled, profile-specific implicit non
 The operating prompt on this branch has an appended §14.1 clarification. The original Principle 8 is retained: a missing internal record alone never proves absence. The authorized exception is export-only, requires explicit scope/completeness and pinned, validated mappings, excludes bycatch, fails closed, and does not create an internal negative Occurrence.
 
 EVT-27–EVT-30 are proposed and untested. No Task 05C candidate or Task 05D validation document was modified. Task 05C remains NOT APPROVED; Task 05E remains NOT READY. No branch or PR was created, merged, closed, deleted or retargeted.
+
+ 
+## 16. Task 05C reconciliation proposal added — 21 November 2026
+
+A proposed Event–Survey–Occurrence reconciliation section was appended to Candidate A on its existing branch:
+- File: `docs/architecture/TASK-05C-LOGICAL-DATABASE-MODEL.md`
+- Branch / PR: `docs/task-05c-logical-data-model` / PR #5
+- Commit: `ded43eea96bcaf1cb57c0689ff2b2217da2f9764`
+- Blob: `2efc627683182b370fb11ab14e056aa31f894180`
+- Section: §18, “Event–Survey–Occurrence reconciliation proposal”
+- Status: Proposed; not accepted; no physical schema or implementation authorized.
+
+The proposal retains Candidate A's original content and recommends a shared Event identity with distinct Survey and Occurrence specializations, separate Observation workflow records, explicit SurveyTarget/SurveyTargetResult, a SurveyOccurrenceReport link separate from parent-child Event hierarchy, and typed Observation links. It selectively incorporates Candidate B's useful workflow/cardinality cases. It records ODR-01 and EVT-27–EVT-33 as validation requirements. Neither Candidate A nor Candidate B is approved.
+
+**Stacked dependency warning:** PR #11 (Task 05D v3) remains open/draft and is based on Candidate A. After the Candidate A update, the GitHub compare result is **diverged**, with Task 05D v3 **3 commits ahead and 2 commits behind** Candidate A; merge base `91c82b4f136a77aaa1edb02753ed49b2fbee86ed`. Do not merge, rebase, retarget or otherwise alter this dependency automatically. Reconcile the Task 05D diff and synchronize it through an explicit, reviewed plan before any PR decision.
+
+No branch or PR was created, merged, closed, deleted or retargeted. The seven-branch ceiling remains unmet.
