@@ -388,3 +388,38 @@ The artifact distinguishes shared contextual Event records from Survey and Occur
 - PR #16: `open`, draft `true`, base `develop`, head `docs/repository-audit-and-ai-operating-standard`, head SHA `4082edffef2b04a765fa57a0f1af7f77ddd852d3`.
 
 No PR was merged, closed or retargeted. No branch was created, renamed or deleted. No external specialist was contacted.
+
+
+---
+
+## 13. Cross-document Event–Survey–Occurrence audit recorded — 21 November 2026
+
+The scientific review branch now contains the append-only cross-document audit in:
+
+- `docs/reviews/TASK-05C-COMPETING-MODEL-RECONCILIATION.md`
+- Review branch: `review/scientific-data-model-review-pack`
+- Commit: `e782d4c86b341da194e27130bc3de14826e96d89`
+- Blob: `888643133a7ae8c6c9f10b9279d7347310c8ce27`
+- Verified file length: 542 lines.
+
+The addendum records the exact source blob SHAs inspected and the consistency findings across Task 05B, Task 05C Candidates A/B, Task 05D v3, the EVT pack, the decision paper, the validation matrix and accepted ADR-005/ADR-007.
+
+Key findings recorded:
+- Task 05B recommends a shared Event identity/supertype with Survey and Occurrence specializations, but neither Task 05C candidate fully implements this identity/specialization semantics.
+- Survey and SurveyTarget are not yet first-class, fully specified concepts in either Task 05C candidate.
+- The proposed SurveyTargetAssessment boundary and its relationship to canonical Occurrence results remain unresolved.
+- The operating prompt's no-inference rule requires owner clarification before implicit absence is implemented in exports.
+- The EVT pack must add parent-child spatial/temporal containment and general no-inheritance/no-derivation rules from the current Hierarchical Events guidance.
+- DR-09 remains open pending exact, reproducible standards/term-version pinning.
+- GBIF and Darwin Core occurrence-status mappings remain profile-specific and require executable tests.
+
+No accepted ADR, Task 05B, Task 05C, Task 05D or EVT decision was changed by this audit. No test was executed and no external specialist approval is claimed. Task 05C remains NOT APPROVED; Task 05E remains NOT READY.
+
+### 13.1 Live repository snapshot after audit write
+
+- Branch count: **23**.
+- Open PR count: **20**.
+- PR #9: `open`, draft `true`, base `main`, head `review/scientific-data-model-review-pack`, head SHA `e782d4c86b341da194e27130bc3de14826e96d89`.
+- PR #16: `open`, draft `true`, base `develop`, head `docs/repository-audit-and-ai-operating-standard`, head SHA `40cbe6e8787c118eddcc5c09de4227e8e0fbb143`.
+
+The seven-branch ceiling remains unmet. No PR was merged, closed or retargeted; no branch was created, renamed or deleted. No external specialist was contacted.
