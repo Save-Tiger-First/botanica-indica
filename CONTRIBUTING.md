@@ -239,19 +239,30 @@ Technology choices should be justified by requirements rather than preference al
 
 ## 11. Development Workflow
 
-For code contributions:
+**Current project-owner directive:** no new branches may be created during the current development period, and the repository must be reduced to no more than seven branches in total. Until the project owner explicitly lifts this directive:
 
-1. Create a feature or fix branch.
+1. Do not create a feature, fix, research, review or other new branch.
+2. Use an existing workstream branch only when the work genuinely belongs to that workstream and the project owner has directed or approved its use.
+3. Do not place unrelated work on a shared branch merely to avoid creating a branch.
+4. If no existing branch is suitable, stop and request explicit project-owner authorization before creating one.
+5. Preserve the source branch, PR and commit provenance for any consolidation work.
+
+This current directive takes precedence over the general workflow below. The live branch inventory and approved consolidation destinations are recorded in `docs/governance/BRANCH-INVENTORY-AND-CONSOLIDATION-REGISTER.md`. The project operating instructions are in `docs/governance/AI-PROJECT-OPERATING-PROMPT.md`.
+
+Once the project owner formally lifts the no-new-branches directive, the normal code-contribution workflow is:
+
+1. Create a temporary task branch from `develop`, using an approved prefix and the repository's current branch policy.
 2. Make the smallest coherent change possible.
 3. Add or update tests where appropriate.
 4. Update relevant documentation.
 5. Review your own changes.
-6. Open a pull request.
-7. Describe the purpose and impact of the change.
+6. Open a pull request to the approved target branch.
+7. Describe the purpose and impact of the change, evidence, tests and known limitations.
 8. Address review feedback.
 9. Merge only after the required checks and reviews have been completed.
+10. Retire the temporary branch safely after verifying that required content and history are preserved.
 
-The exact branching, review, CI/CD, and release policies will evolve as the project develops.
+The branch policy document remains proposed for adoption; this current no-new-branches instruction is an explicit project-owner directive and is already binding for this work.
 
 ---
 
