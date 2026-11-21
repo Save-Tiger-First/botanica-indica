@@ -321,3 +321,44 @@ The workflow's `create` trigger remains inactive as a pre-merge branch-creation 
 The PR #16 documentation head `8771925b6b1e8a8b590a775d36bec537da43e37b` completed [workflow run 44906629254](https://github.com/Save-Tiger-First/botanica-indica/actions/runs/44906629254) successfully. The job passed all **27 unit tests**, scanned **23 tracked Markdown files**, passed PR #16 routing validation, and fetched the live 23-branch inventory. It emitted the expected warning that 23 exceeds the seven-branch ceiling. No Python `FutureWarning` appeared.
 
 This is a successful CI result for the reviewed code and the PR head before this append-only note. It does not change the readiness conclusion: independent maintainer review is still absent, the seven-branch target remains unmet, and repository-level branch-creation prevention has not been configured or verified.
+
+## 15. Expanded repository and consolidation review — 21 November 2026
+
+### 15.1 Live state re-verification
+
+The complete operating prompt was re-fetched from the required branch (259 lines; blob SHA 53add3894d0502827e584614c70ad09cadaa637d). PR #16 remains open/draft, targeting develop; its head after the two documentation corrections is f6f661b97376323aba36b91725aca483af9e7d35 (125 commits, 26 changed files, 4,291 additions, 25 deletions; 125 ahead / 0 behind develop). The live repository still has 23 branches and 20 open PRs.
+
+The source heads of PRs #15, #1 and #2 are already ancestors of PR #16. This preserves history; it does not mean those PRs have been reviewed, accepted, merged or closed.
+
+### 15.2 Newly verified governance findings
+
+- CONTRIBUTING.md previously said “Create a feature or fix branch”, contradicting the active owner directive. It has now been corrected on PR #16: no new branch, use an existing approved workstream, or stop and request authorization. The ordinary task-branch workflow is conditional on the owner lifting the restriction.
+- STF-ECOSYSTEM-BOUNDARIES.md listed ADR-001 through ADR-010 but omitted companion proposal ADR-011. Metadata now lists ADR-011 explicitly as Proposed, not Accepted.
+- The active repository ruleset returned by GitHub is ID 23822734, “Protect main branch”, targeting the default branch and containing only deletion and non-fast-forward rules. No required review or status-check rule is visible. The branch-protection endpoint for develop returned 403 to this integration; effective protection settings for all branches are not certified.
+- The workflow on PR #16 is not yet on main. Its create trigger must not be relied upon as a branch-creation control before the workflow exists on the default branch; even then it is post-creation detection, not prevention. The workflow's current branch ceiling is a warning, not a failing condition.
+- The 23-branch inventory remains 16 over the immediate seven-branch ceiling.
+
+### 15.3 Consolidation destination assessment
+
+Four existing workstream destinations remain the most practical way to meet the seven-branch ceiling without creating branches:
+
+1. Governance: docs/repository-audit-and-ai-operating-standard
+2. Product/architecture: docs/full-system-architecture-and-repo-engineering-plan
+3. Scientific review: review/scientific-data-model-review-pack
+4. STF strategy and feasibility: strategy/naturetech-biodiversity-conservation-impact
+
+The 16 other temporary branches have a proposed mapping in Branch Inventory and Consolidation Register Section 20.17. The mapping is provisional. PR #15, #1 and #2 are already ancestry-contained in the governance destination. The remaining 13 source branches have source-only commits relative to their destination ranging from 1 to 27; their history must be preserved and their files reconciled before any retirement.
+
+### 15.4 Critical source conflicts
+
+- Candidate A and Candidate B Task 05C are different scientific models; preserve both and compare invariants/relationships rather than selecting by date or length.
+- Task 05D v1, v2 and v3 are different revisions; preserve distinct validation findings and embedded Task 05C versions.
+- PR #12 and the strategy destination both edit two common strategy files; line-by-line reconciliation is required.
+- The Hortus crosswalk on main and PR #9 differ by 83 lines. Preserve the main copy and reconcile before scientific review or merge.
+- PRs #17–#19 and the product/architecture destination have diverged histories; preserve the full-product vision, original Task 03/04 source baselines, requirements traceability, acceptance, idempotency and offline synchronization content.
+
+### 15.5 Recommendation and readiness status
+
+Keep PR #16 open and draft. The automation changes passed CI on earlier code-bearing heads, but the latest contribution/architecture metadata corrections changed the PR head. A new workflow run must be inspected before reporting the latest head as CI-verified. Obtain independent maintainer review; separate the branch-policy, licensing and ADR-011 approval tracks. Do not change repository protection settings without explicit authorization.
+
+No PR was merged or closed, no branch was deleted or created, no ruleset changed, and no scientific or policy proposal was approved.
