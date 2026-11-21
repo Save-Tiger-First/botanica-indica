@@ -150,7 +150,7 @@ This is not a reduced long-term product vision. It is a bounded, testable delive
 
 **D. Durable outbox**
 - Stores logical commands and dependency relationships until server acknowledgement or explicit resolution.
-- Each command has a stable client-generated opaque command/idempotency key, command type/version, target reference if one exists, base server revision where applicable, local sequence/dependency, creation time, payload reference, media references, retry state and last error classification.
+- Each command has a stable client-generated opaque **client command ID** that identifies the logical user action for its full offline lifecycle. The HTTP `Idempotency-Key` is a separate request-retry identity with its own scope, fingerprint and retention policy. The client may reuse the same opaque value for both only if the server enforces their distinct semantics. Store command type/version, target reference if one exists, base server revision, local sequence/dependency, creation time, payload reference, media references, retry state and last error classification.
 - Client wall-clock time is evidence metadata, not a trusted ordering or authorization source.
 - A retry resends the same logical command with the same idempotency key. A materially changed user action is a new command with a new key.
 
@@ -199,18 +199,22 @@ A successful media upload alone is not observation acceptance. A successful HTTP
 
 ## 6. Command identity, ordering and idempotency
 
-### 6.1 Idempotency
+### 6.1 Command identity and idempotency
 
-- Generate a cryptographically random, opaque idempotency key for each logical command.
-- Reuse the same key for retries of that command.
-- Server scope must include authenticated principal/tenant and operation context as appropriate; exact uniqueness scope and retention period are API decisions.
-- Server stores the key, request fingerprint, processing state and durable result.
-- Reuse of a key with a different request fingerprint must be rejected as a client/protocol error.
-- Concurrent duplicate requests must converge to one domain effect and a consistent result.
-- The server's deduplication record and domain mutation must be coordinated transactionally or by a recoverable command-processing design.
-- Expired deduplication records must not silently make an old queued command unsafe. API must define expiry handling, command age limits and reconciliation behavior.
+The client and API contract distinguish two identities:
+
+- **Client command ID:** generate once for each logical user action and persist it across offline storage, app restart, retry, upload recovery and long disconnection. It supports long-lived reconciliation after the HTTP idempotency window expires.
+- **HTTP `Idempotency-Key`:** reuse for retries of the same HTTP operation. Its scope, request fingerprint and retention are server contract decisions. It does not replace the client command ID.
+
+The server must scope command identity to the authenticated principal and the relevant installation/tenant context without treating a client-supplied device identifier as authentication. Account switching must not expose or replay another account's receipts. A same-ID/different-command replay must be rejected and audited without disclosing another principal's receipt.
+
+A changed user action is a new command with a new client command ID and a new HTTP idempotency key. A transport retry retains both identities. The server must return/reconcile the prior result for a duplicate request rather than repeat the domain effect.
+
+The server's deduplication record and domain mutation must be coordinated transactionally or by a recoverable command-processing design. Expired HTTP idempotency records must not silently make an old queued command unsafe; the durable command-ID reconciliation/tombstone policy and client-visible expiry behavior remain open API-OD-03/API-OD-04 decisions.
 
 **Do not promise exactly-once transport.** The design target is at-least-once retry delivery with idempotent server-side effects and observable acknowledgement.
+
+The detailed server contract is proposed in [STF-BI-API-SYNC-001](API-COMMAND-IDEMPOTENCY-AND-CONFLICT-RESOLUTION-CONTRACT-DESIGN.md).
 
 ### 6.2 Ordering and dependencies
 
@@ -231,7 +235,7 @@ A successful media upload alone is not observation acceptance. A successful HTTP
 | Authentication expired | Pause queue; refresh/re-authenticate; do not change command identity |
 | Authorization denied (403) | Mark blocked; no automatic retry loop; explain required account/role action |
 | Validation failure (4xx domain validation) | Mark rejected/action required; preserve draft and show field-level explanation |
-| Revision conflict (409/412 or documented equivalent) | Stop automatic mutation; enter conflict-resolution flow |
+| Stale HTTP precondition (412) or domain-state conflict (409) | Stop automatic mutation; reconcile the receipt and enter the appropriate conflict-resolution flow; never treat the two status codes as interchangeable |
 | Unsupported command/schema version | Block; require compatible client or safe migration; never reinterpret payload silently |
 | Media checksum mismatch/incomplete upload | Re-stage/retry safely; do not attach unverified bytes |
 | Rights unknown/revoked or location policy blocks use | Block relevant operation; preserve local record under policy; no repeated blind retry |
@@ -433,7 +437,8 @@ The following are proposed client command states. They are **not** Observation, 
 | `blocked_policy` | Rights, privacy, sensitivity or authorization requires review/action |
 | `conflict` | Server revision differs; user or authorized workflow must resolve |
 | `rejected_validation` | Server rejected the command; local draft remains recoverable |
-| `accepted` | Server returned durable acceptance and canonical reference/revision |
+| `server_received` | Server durably recorded the command and returned a receipt; domain processing may still be pending |
+| `applied` | Server receipt confirms the defined platform domain operation committed and returns the canonical reference/revision |
 | `cancelled_locally` | User cancelled eligible pending operation; no implication that server data was deleted |
 
 A command's client sync state must not be copied into the Observation lifecycle or shown as scientific status.
@@ -445,7 +450,8 @@ Use explicit language:
 - “Waiting for connection.”
 - “Uploading media.”
 - “Submitted — awaiting server confirmation.”
-- “Accepted by Botanica Indica.”
+- “Received by Botanica Indica — processing may continue.”
+- “Applied — the platform operation has committed.”
 - “Needs your attention — server version changed.”
 - “Blocked — permission or policy review required.”
 - “Could not submit — your local draft is still saved.”
@@ -589,6 +595,10 @@ Do not begin production implementation of offline synchronization until all of t
 10. A qualified review covers scientific integrity, privacy, security, accessibility and rights.
 
 A prototype may validate technical feasibility earlier, but it must use synthetic or appropriately authorized test data and must not be represented as production-ready.
+
+### API contract alignment note — 21 November 2026
+
+This specification is aligned with the proposed server-side contract in [STF-BI-API-SYNC-001](API-COMMAND-IDEMPOTENCY-AND-CONFLICT-RESOLUTION-CONTRACT-DESIGN.md). The client command ID and HTTP `Idempotency-Key` are distinct identities; a durable `server_received` receipt is not the same as an `applied` domain operation. HTTP `412` denotes a failed conditional request; `409` denotes a domain-state conflict under the API's documented semantics. These changes clarify the proposed design only and do not approve implementation or close OFF-OD-06/OFF-OD-07.
 
 ## 18. Risks and mitigations
 
