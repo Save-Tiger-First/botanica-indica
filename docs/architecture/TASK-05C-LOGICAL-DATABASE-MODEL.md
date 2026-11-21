@@ -772,3 +772,68 @@ All EVT/LDM/FLD scenarios remain proposed until reproducible fixtures are execut
 6. Execute tests, record actual outputs and resolve contradictions before Task 05E readiness review.
 
 **Decision status:** Proposed for owner and discipline review. Candidate A remains unapproved. Candidate B remains an alternative source document. Task 05C is NOT APPROVED. Task 05E / physical database design remains NOT READY. No physical schema, DDL, API payload freeze or implementation is authorized.
+
+ 
+## 19. Standards-version and Event/Survey/Occurrence term correction — 21 November 2026
+
+**Status:** Research correction and proposed mapping safeguard. This section supersedes any conflicting version statements or term-version assumptions in §18. It does not approve Task 05C, ODR-01 implementation, an export profile or physical design.
+
+### 19.1 Current official resource versions retrieved
+
+| Resource | Current official version metadata | Review consequence |
+|---|---|---|
+| Darwin Core Conceptual Model | 2026-10-13; version IRI `http://rs.tdwg.org/dwc/doc/cm/2026-10-13`; previous 2026-05-26 | Use 2026-10-13 as current metadata baseline. The human-readable HTML renderer still returned 2026-05-26 during this review; exact versioned resource retrieval is still required for a byte/content comparison. |
+| Darwin Core List of Terms | 2026-10-13; version IRI `http://rs.tdwg.org/dwc/doc/list/2026-10-13`; previous 2026-05-26 | The earlier assumption that 2026-05-26 remained the latest List document is superseded. |
+| Core Darwin Core term snapshot | 2026-10-13; `http://rs.tdwg.org/dwc/version/terms/2026-10-13` | Pin individual term versions separately. |
+| Darwin Core schemas | 2026-10-13; `http://rs.tdwg.org/dwc/doc/schemas/2026-10-13` | DwC-A core Event, Occurrence and Taxon schemas and Humboldt Extension schema are listed at 2026-10-13. These are schema support resources, not the conceptual model. |
+| Humboldt hierarchical-event guidance | 2026-10-13; `http://rs.tdwg.org/dwc/doc/hierarchy/2026-10-13`; previous 2024-02-28 | Section 3 is normative. The previous statement that the current hierarchy guidance itself was v2024-02-28 is incorrect. |
+| Humboldt Extension term list | 2026-10-13; previous 2026-05-26 | Pin each term version and its current status; do not infer term versions from the document issue date. |
+| GBIF survey and monitoring guide | v1.0.2, 2025-09-24 | GBIF publishing guidance is an external profile/guide, not the internal schema. |
+
+The current Conceptual Model describes Survey and Occurrence as special Event types with their own characteristics. It explicitly warns that the Event connections do not mean one Event instance is a combination of Survey, Occurrence and OrganismInteraction. It separately allows a generic/context Event to provide shared spatiotemporal context for multiple distinct activities. A Survey's results are expressed in the Occurrences it reports; those Occurrences may be target matches or bycatch. The Event parent-child hierarchy is a separate containment relationship.
+
+### 19.2 Term-level correction relevant to ODR-01
+
+The following term metadata has changed or needs exact version pinning:
+
+- `dwc:occurrenceStatus`: term version `2026-05-26`; recommended values are `detected` and `notDetected`. The GBIF survey guide examples use `present` and `absent`; do not copy those literals into a Darwin Core mapping without a versioned, tested profile-specific mapping.
+- `eco:isTaxonomicScopeFullyReported`: the 2024-02-28 term version is superseded by `2026-10-13`. The current version IRI is `http://rs.tdwg.org/eco/terms/version/isTaxonomicScopeFullyReported-2026-10-13`.
+- `eco:isSurveyTargetFullyReported`: the retrieved term version is `2026-05-26`, with a target-specific definition concerning whether all detected Occurrences matching a SurveyTarget were fully reported. Confirm its status in the 2026-10-13 Humboldt term-list snapshot before selecting it for an export mapping.
+- `eco:isSamplingEffortReported`: the 2024-02-28 version is superseded by `2026-10-13`.
+- `eco:samplingEffortValue` and `eco:samplingEffortUnit`: current replacement term versions are listed as 2026-10-13.
+- `eco:taxonCompletenessReported` and `eco:taxonCompletenessProtocols`: pin their current term versions and the 2026-10-13 Taxon Completeness Reported controlled-value release independently.
+
+The term `eco:isTaxonomicScopeFullyReported`, the target-specific `eco:isSurveyTargetFullyReported`, the taxonomic-completeness assessment and its method, and sampling effort/detectability are not interchangeable. The precise combination required by a chosen export profile remains an open mapping decision.
+
+### 19.3 ODR-01 impact and required re-evaluation
+
+The owner's ODR-01 authorization remains limited to controlled, profile-specific external exports. It does not approve any internal inference from missing records and does not create a negative internal Occurrence.
+
+However, the earlier §18.7 formulation relied too heavily on the older `eco:isTaxonomicScopeFullyReported` term version. Before implementing ODR-01, re-evaluate the GBIF guide's taxonomic-scope conditions against the current 2026-10-13 Humboldt terms and the target-specific `eco:isSurveyTargetFullyReported` semantics. Determine whether both scope-level and target-level reporting evidence are required for the selected profile. Do not infer that a term's superseding version is semantically identical without checking its current definition and notes.
+
+The following remain mandatory:
+- explicitly declared scope/target and its origin (a priori or post-facto);
+- explicit completeness and method evidence at every applicable Event level;
+- protocol and effort recorded independently of completeness;
+- no bycatch inference;
+- fail-closed handling of missing, ambiguous, incomplete or contradictory values;
+- no inheritance of scope/completeness across Event hierarchy;
+- no child-to-parent summary derivation;
+- no inference from an empty internal Occurrence query;
+- exact, pinned versions of the Conceptual Model, List, schemas, Humboldt terms, controlled values and GBIF profile/guide mapping.
+
+### 19.4 Required correction to validation fixtures
+
+Task 05D must test separately:
+1. a detected target Occurrence reported by a Survey;
+2. an incidental/bycatch Occurrence reported by the same Survey;
+3. an explicit internal target non-detection result;
+4. an empty Occurrence set with no explicit result (unknown/not assessed);
+5. incomplete or unreported scope/completeness suppressing implicit export;
+6. the difference between taxonomic-scope completeness and target-level reporting completeness;
+7. a priori versus post-facto SurveyTarget;
+8. a Survey-to-Occurrence report link independently of Event parent-child hierarchy;
+9. Event identity/subtype exclusivity and a generic context Event shared by distinct activities;
+10. explicit term/profile mapping from DwC `detected/notDetected` to any GBIF-specific `present/absent` values.
+
+**Disposition:** DR-09 remains OPEN until exact versioned resources and term definitions are retrieved and compared. ODR-01 remains export-only and not implemented. Candidate A remains NOT APPROVED; Task 05E remains NOT READY.
