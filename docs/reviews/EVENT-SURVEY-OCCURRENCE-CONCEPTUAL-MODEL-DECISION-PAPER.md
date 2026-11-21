@@ -698,3 +698,84 @@ classDiagram
 
 **Prepared by:** AI project adviser, for owner and discipline review.  
 **No independent reviewer approval is represented or implied.**
+
+
+---
+
+## 16. Standards currency and mapping addendum — 21 November 2026
+
+### 16.1 Current TDWG publication baseline
+
+A fresh standards check on 21 November 2026 identifies 13 October 2026 as the current issue date in TDWG's official publication metadata for the following resources:
+
+| Resource | Current version IRI | Previous version |
+|---|---|---|
+| Darwin Core Conceptual Model | `http://rs.tdwg.org/dwc/doc/cm/2026-10-13` | `http://rs.tdwg.org/dwc/doc/cm/2026-05-26` |
+| Darwin Core List of Terms | `http://rs.tdwg.org/dwc/doc/list/2026-10-13` | `http://rs.tdwg.org/dwc/doc/list/2026-05-26` |
+| Hierarchical Events guidance | `http://rs.tdwg.org/dwc/doc/hierarchy/2026-10-13` | `http://rs.tdwg.org/dwc/doc/hierarchy/2024-02-28` |
+| Darwin Core schemas | `http://rs.tdwg.org/dwc/doc/schemas/2026-10-13` | Refer to the version history maintained by TDWG |
+
+The 2026-10-13 schema publication lists Event, Occurrence and Taxon core schemas and the Humboldt Ecological Inventory extension among its maintained resources. TDWG's 19 October 2026 announcement records ratification of the July additions by the TDWG Executive Committee on 13 October 2026.
+
+**Retrieval qualification:** the current official search-indexed publication metadata and TDWG announcement identify 2026-10-13, while direct page rendering in this review session returned cached 2026-05-26 headers for the Conceptual Model/List pages. The current version-specific IRIs are recorded above, but the complete versioned resources should still be fetched and compared directly before any production mapping is frozen. Do not describe a stale cached rendering as proof that the October release does not exist.
+
+### 16.2 Document version dates are not individual term version dates
+
+The List of Terms publication date and the modification/version date of an individual term are separate metadata.
+
+For example, the current indexed List publication is 2026-10-13, while the `dwc:occurrenceStatus` term metadata reports a modification date of 2026-05-26 and the term-version IRI:
+
+`http://rs.tdwg.org/dwc/terms/version/occurrenceStatus-2026-05-26`
+
+Its definition concerns detection or non-detection of an Organism during an Event. Its notes recommend `detected` and `notDetected` as default values, with justified extensions possible. Pin the term IRI/version independently of the containing List document version.
+
+### 16.3 Clarification to Section 7.4 — non-detection export values
+
+The internal result vocabulary must remain scientifically explicit and must not be selected merely to match an export profile. In particular:
+
+- Internal `not_detected` means that a defined target was assessed under a bounded Survey/Event, method, effort, place, interval and reporting-completeness context, and was not detected.
+- Internal `not_assessed`, `incomplete`, `indeterminate`, unknown and missing results are not interchangeable with non-detection.
+- The current Darwin Core term guidance recommends `detected` / `notDetected`.
+- GBIF's biological survey and monitoring guide v1.0.2 (2025-09-24) describes explicit absence records using `dwc:occurrenceStatus = absent` in its DwC-A sampling-event publishing guidance.
+
+Therefore, the sentence in Section 7.4 describing an internal `not_detected` result mapping to `occurrenceStatus = notDetected` is a **candidate mapping only**, not an approved universal export rule. Before implementation, pin the exact GBIF dataset profile, Darwin Core Archive or Data Package schema, extension version and term versions; execute positive, negative, incomplete and round-trip fixtures; document any value conversion and information loss. Never silently convert `notDetected` to `absent` or vice versa without a profile-specific mapping decision.
+
+### 16.4 Semantic guardrails reaffirmed
+
+The current TDWG Conceptual Model metadata and content continue to support these design constraints:
+
+1. The Conceptual Model is a high-level semantic reference, not a prescribed database schema or implementation blueprint; its relationship sections are non-normative.
+2. Survey and Occurrence are special types of Event with distinct additional characteristics. They must not be conflated as one multi-specialization Event instance.
+3. Event parent/child hierarchy expresses spatial-temporal containment; it is not the same relationship as a Survey reporting an Occurrence.
+4. A Survey's results are expressed through the Occurrences it reports. Survey Targets can cover taxa, environmental conditions and organismal traits.
+5. Protocol, effort, target scope and reporting completeness are necessary context for interpreting non-detection. Do not infer non-detection from an empty result set.
+6. A single contextual Event may provide shared spatial-temporal context to multiple activities where the implementation makes that context explicit and avoids conflating the distinct Events.
+
+The 2026-10-13 hierarchical-event guidance must be read alongside the Conceptual Model when validating parent/child semantics and Humboldt SurveyTarget structures.
+
+### 16.5 DR-09 disposition
+
+**DR-09: PARTIALLY RESOLVED — publication metadata refreshed; exact-resource and mapping verification remains open.**
+
+The prior statement that the current publication baseline was necessarily 2026-05-26 is superseded by the current TDWG metadata and October ratification announcement. However, direct retrieval of the exact 2026-10-13 versioned documents, a substantive comparison against 2026-05-26, and exact export-profile/term mapping verification remain outstanding. Do not close DR-09 or mark standards mapping production-ready until those checks are recorded.
+
+### 16.6 Required next actions
+
+1. Retrieve and archive the exact 2026-10-13 Conceptual Model, List of Terms, Hierarchical Events guidance and schemas using their version-specific IRIs.
+2. Compare the 2026-10-13 documents with their previous versions and record changes relevant to Event, Survey, Occurrence, SurveyTarget, completeness and non-detection.
+3. Pin the exact Darwin Core term versions and Humboldt controlled vocabularies used by each export mapping.
+4. Select the target GBIF publishing profile(s) and verify their current accepted values and requirements separately from internal validity rules.
+5. Add executable fixtures for internal `not_detected`, explicit non-detection, incomplete assessment, not assessed, bycatch and round-trip export/import.
+6. Update the validation matrix, Task 05D and API mapping notes only after the evidence and profile-specific decisions are recorded.
+
+### 16.7 Standards references checked 21 November 2026
+
+- TDWG, Darwin Core Conceptual Model: https://dwc.tdwg.org/cm/
+- TDWG, Darwin Core List of Terms: https://dwc.tdwg.org/list/
+- TDWG, Properties of hierarchical events in the Humboldt Extension: https://dwc.tdwg.org/hierarchy/
+- TDWG, Darwin Core schemas: https://dwc.tdwg.org/schemas/
+- TDWG, Taxon Completeness Reported vocabulary: https://dwc.tdwg.org/tcr/
+- TDWG, Darwin Core announcement of October 2026 ratification: https://www.tdwg.org/news/2026/dwc-oct-nov-announcement/
+- GBIF, Guide for publishing biological survey and monitoring data, v1.0.2, 2025-09-24: https://docs.gbif.org/guide-publishing-survey-data/en/
+
+This addendum updates standards currency and identifies mapping work still required. It does not approve Option B, close the scientific review questions, authorize API/database implementation or change the Task 05E readiness status.
