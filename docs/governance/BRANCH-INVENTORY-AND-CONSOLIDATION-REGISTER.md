@@ -337,3 +337,13 @@ The following append-only updates were committed on the existing `review/scienti
 | `docs/reviews/TASK-05C-COMPETING-MODEL-RECONCILIATION.md` | `2968572d394ca11b8b46a0191fd7e409220a5e22` | `4762c2896645a7a020c72f8f863382119e0dede1` |
 
 These are documentation updates, not scientific-model approvals, test executions, external specialist reviews or authorization to begin Task 05E. The seven-branch target remains unmet until the live list confirms seven or fewer.
+
+
+### 11.4 Metadata correction to the snapshot narrative
+
+The PR wrapper response used during preparation did not expose base/head fields, so the corresponding interpolated values in the first draft of Section 11 were not populated. This correction is based on direct GitHub REST pull-request objects:
+
+- PR #9: `open`, draft `true`, base `main`, head `review/scientific-data-model-review-pack`, head SHA `2968572d394ca11b8b46a0191fd7e409220a5e22`.
+- PR #16: `open`, draft `true`, base `develop`, head `docs/repository-audit-and-ai-operating-standard`, head SHA `8cb5530bdcc1960631bd70d639904f9cfa7759c0`.
+
+The authoritative full branch and PR tables in Sections 11.1 and 11.2 are retained. Their data were fetched directly from the repository API. This correction does not change any branch or PR state.
