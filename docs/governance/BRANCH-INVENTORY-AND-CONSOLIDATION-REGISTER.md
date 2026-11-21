@@ -1038,7 +1038,6 @@ The four retained workstream branches remain provisional destinations. This map 
 | docs/full-system-architecture-and-repo-engineering-plan | docs/full-product-vision-capability-blueprint / #17 | 9 | Diverged histories; preserve source history and reconcile product scope |
 | same | docs/canonical-task-03-04-baselines / #18 | 2 | Diverged histories; preserve original Task 03/04 source baselines |
 | same | docs/requirements-traceability-register / #19 | 27 | Diverged histories; preserve requirements, acceptance tests, workflow and offline-sync contracts |
-| same | docs/adr-011-stf-ecosystem-boundaries / #2 | 1 | ADR-011 history is already integrated in governance destination; architecture branch does not contain its history |
 | review/scientific-data-model-review-pack | docs/task-05-data-architecture / #3 | 5 | Preserve parent scientific architecture and reconcile with review pack |
 | same | docs/task-05-data-dictionary / #4 | 14 | Preserve Task 05B definitions and Indian test cases |
 | same | docs/task-05c-logical-data-model / #5 | 10 | Candidate A; preserve and compare with Candidate B |
