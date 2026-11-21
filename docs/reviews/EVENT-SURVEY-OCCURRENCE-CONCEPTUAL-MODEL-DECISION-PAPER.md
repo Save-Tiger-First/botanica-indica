@@ -779,3 +779,46 @@ The prior statement that the current publication baseline was necessarily 2026-0
 - GBIF, Guide for publishing biological survey and monitoring data, v1.0.2, 2025-09-24: https://docs.gbif.org/guide-publishing-survey-data/en/
 
 This addendum updates standards currency and identifies mapping work still required. It does not approve Option B, close the scientific review questions, authorize API/database implementation or change the Task 05E readiness status.
+
+
+---
+
+## 17. Additional semantic issue: non-detection must be reconciled with Occurrence — 21 November 2026
+
+### 17.1 Direct standards evidence
+
+The current TDWG Conceptual Model describes an Occurrence as an Event that establishes the state of an Organism at a particular place and time. It further states that an Occurrence may represent (a) direct observation of an Organism, (b) indirect inference that an Organism existed, or (c) absence of detection of any Organism of a given Taxon in a particular state during a defined interval at a Location (DwC-CM §2.3). The Survey section says Survey results are expressed in the Occurrences it reports, including incidental/bycatch Occurrences and target-matching Occurrences (DwC-CM §2.2).
+
+The GBIF survey guide v1.0.2 likewise describes explicit non-detection/absence at the Occurrence level, with dwc:occurrenceStatus = absent in its DwC-A guidance, and states that absences must only be asserted for taxa within the declared taxonomic/organismal survey scope; absence cannot be asserted for bycatch.
+
+### 17.2 Consequence for the proposed internal model
+
+The proposed SurveyTargetResult is useful as an internal assessment object for target scope, whether the target was assessed, completeness, protocol/effort, evidence and provenance. However, the current paper's wording that it maps to a Darwin Core Occurrence/event representation is too loose to settle the internal domain semantics.
+
+The model must explicitly decide whether a valid taxon-specific non-detection:
+1. is itself represented by an Occurrence Event (with the appropriate taxon/target and non-detection status), reported by the Survey; or
+2. is represented by a separate internal assessment object that has a governed one-to-one or one-to-zero/one derivation/representation relationship to an Occurrence Event for exchange.
+
+**Recommendation:** treat the taxon-specific non-detection as an Occurrence-level scientific result, because that is the semantics described by DwC-CM and GBIF. Retain SurveyTargetResult only if it represents the distinct assessment/completeness workflow, and define exactly how it creates, supports or relates to the corresponding Occurrence. Do not store two independent, contradictory status values for the same target/survey/scope. If the same internal object is intended to represent both assessment and Occurrence, prove that the model can preserve the distinct identities and lifecycle semantics without conflation.
+
+### 17.3 Required rules
+
+- A non-detection Occurrence must be bounded by a Survey/Event, a declared target/scope, place, interval, relevant protocol/effort, reporting completeness and evidence/provenance.
+- A non-detection is not an Organism instance. The Occurrence may legitimately have no identified individual/group Organism, while still identifying the Taxon/target whose detection was assessed.
+- A missing Occurrence remains unknown unless a specific publishing profile permits implicit inference and its scope/completeness prerequisites are demonstrably satisfied. The internal system should preserve explicit assessment evidence rather than infer from a blank result set.
+- Do not report an absence for bycatch or for a taxon outside the declared target scope.
+- Keep explicit non-detection, incomplete, not assessed, indeterminate, unknown and missing distinct.
+- The external representation must follow the pinned profile. GBIF guide v1.0.2 uses absent; the current DwC term notes recommend detected and notDetected. Do not normalize these values into one universal export literal.
+
+### 17.4 New acceptance scenarios
+
+| ID | Scenario | Required result |
+|---|---|---|
+| EVT-19 | A target was assessed and not detected during a complete Survey | One authoritative taxon-specific non-detection result is represented; its relationship to an Occurrence Event is explicit and no duplicate contradictory result exists. |
+| EVT-20 | SurveyTargetResult assessment is incomplete or not assessed | No non-detection Occurrence is created; assessment state remains incomplete/not assessed. |
+| EVT-21 | A bycatch taxon was incidentally recorded but not searched for | Positive incidental Occurrence may be reported; no absence/non-detection claim is generated for that taxon. |
+| EVT-22 | Explicit non-detection exported to the selected GBIF profile | Export follows the pinned guide/profile vocabulary and required Event/Occurrence/Humboldt fields; source semantics and provenance remain traceable. |
+
+### 17.5 Decision required
+
+Add this question to EVT-D03, EVT-D04, EVT-D09 and EVT-D10: what is the canonical internal identity of a target-specific non-detection, and how does it relate to the SurveyTarget assessment and the Darwin Core Occurrence Event? This is a blocking semantic question for Task 05E.
