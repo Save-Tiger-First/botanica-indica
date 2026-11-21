@@ -914,3 +914,73 @@ EVT-27–EVT-33 remain proposed, unexecuted tests. No independent review or impl
 - Humboldt Extension term versions: https://rs.tdwg.org/eco/terms.htm
 - Taxon Completeness Reported values v2026-10-13: https://rs.tdwg.org/ecotcr/version/values/2026-10-13.htm
 - GBIF survey guide v1.0.2: https://docs.gbif.org/guide-publishing-survey-data/en/
+
+ 
+## 18. Current standards verification and representative field fixtures — 21 November 2026
+
+**Status:** Proposed addendum. This section extends the existing validation inventory; it does not mark any test passed or any scientific decision approved.
+
+### 18.1 Current standards evidence
+
+The official TDWG indexed metadata checked for this review reports:
+- Darwin Core Conceptual Model 2026-10-13, version IRI `http://rs.tdwg.org/dwc/doc/cm/2026-10-13`;
+- Darwin Core List of Terms 2026-10-13, version IRI `http://rs.tdwg.org/dwc/doc/list/2026-10-13`;
+- core `dwc:` term snapshot 2026-10-13;
+- Humboldt hierarchical-event guidance 2026-10-13, replacing the 2024-02-28 version;
+- Humboldt Extension term list 2026-10-13, replacing the 2026-05-26 snapshot;
+- Taxon Completeness Reported controlled values 2026-10-13.
+
+The public HTML renderers for the Conceptual Model and List still displayed 2026-05-26 during this review, despite newer indexed version metadata. Preserve this retrieval discrepancy and obtain exact versioned resources before final mapping approval.
+
+Term versions checked:
+- `dwc:occurrenceStatus-2026-05-26`: recommended values `detected` and `notDetected`;
+- `eco:isTaxonomicScopeFullyReported-2026-10-13`;
+- `eco:isSurveyTargetFullyReported-2026-05-26` (distinct target-level term);
+- `eco:isSamplingEffortReported-2026-10-13`;
+- `eco:samplingEffortValue-2026-10-13`;
+- `eco:samplingEffortUnit-2026-10-13`;
+- `eco:taxonCompletenessProtocols-2026-10-13`;
+- `ecotcr` controlled values `tcr00`, `tcr01`, `tcr02` at 2026-10-13.
+
+Do not equate reporting completeness, target-level completeness, sampling effort, taxonomic completeness or detectability. Pin the exact term versions and selected GBIF profile independently.
+
+### 18.2 Conceptual-model correction
+
+The Conceptual Model describes Event as an action, process or set of circumstances at a place and interval. Occurrence, Survey and OrganismInteraction are distinct special Event types. The connections to Event do not mean one Event instance is a combination of those types. A generic/context Event may provide shared spatiotemporal context for multiple distinct activities.
+
+A Survey is a biotic survey or inventory. Its results are expressed in the Occurrences it reports. Reported Occurrences may match SurveyTargets or be incidental/bycatch. An Occurrence represents direct observation, indirect inference or a supported non-detection state for an Organism/taxon in a defined place and interval. MaterialEntity remains physical matter and distinct from both Occurrence and digital MediaAsset.
+
+The conceptual model is a semantic reference and does not mandate a relational inheritance implementation. The proposed shared Event identity/subtype representation is one implementation candidate only.
+
+### 18.3 Additional proposed fixtures — EVT-34 to EVT-44 (not executed)
+
+| ID | Scenario | Expected validation |
+|---|---|---|
+| EVT-34 | A priori target detection | SurveyOccurrenceReport records a target match with evidence/provenance |
+| EVT-35 | Incidental/bycatch report | Bycatch remains distinct and cannot satisfy target completeness |
+| EVT-36 | Explicit target non-detection | Attributable SurveyTargetResult with defined scope, method, effort, place/time and agent |
+| EVT-37 | Empty Occurrence set without explicit result | Unknown/not assessed; no internal absence assertion |
+| EVT-38 | Incomplete/unreported/ambiguous completeness | ODR-01 implicit export fails closed |
+| EVT-39 | Repeated visits under parent Event | Parent spatial/temporal containment; explicit applicable scope/protocol/completeness |
+| EVT-40 | Post-facto target filter | Origin, author, method and time preserved; no rewriting original survey intent |
+| EVT-41 | Herbarium collection | MaterialEntity, collection Event, MediaAsset and provenance remain distinct |
+| EVT-42 | Several plants in one image | Separate organisms/occurrences only where supported; uncertainty preserved |
+| EVT-43 | Shared generic context Event | Context Event is distinct from Survey and Occurrence activity Events |
+| EVT-44 | Survey reporting and Event hierarchy both present | SurveyOccurrenceReport and parent-child relation validated independently |
+
+Fixtures must be synthetic, versioned, reproducible and include negative assertions. Do not claim they are executed or use them as real occurrence data.
+
+### 18.4 Required changes to the readiness gate
+
+Task 05D must explicitly validate:
+1. the exact 2026-10-13 versioned TDWG resources and current term versions;
+2. the Event class/special-type semantics and distinct context Event pattern;
+3. Survey-to-Occurrence reporting independently of parent-child Event hierarchy;
+4. direct observation, indirect inference and explicit non-detection Occurrence semantics;
+5. target match and bycatch distinctions;
+6. internal unknown/not-assessed state versus explicit non-detection;
+7. ODR-01's export-only conditions and profile-specific mapping;
+8. a priori versus post-facto target origin;
+9. scope, completeness and effort semantics without inheritance or conflation.
+
+**Disposition:** EVT-27–EVT-44 are proposed and unexecuted. DR-09 remains open. ODR-01 remains export-only and not implemented. Task 05C remains NOT APPROVED and Task 05E remains NOT READY.
