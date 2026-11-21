@@ -264,3 +264,24 @@ Following the review recommendation, a bounded automation-hardening pass was com
 ### 10.4 Updated recommendation
 
 Keep PR #16 open and draft. Do not mark it ready or merge it. First obtain a current-head workflow run, inspect the test output and branch API step, correct any failures, and then obtain independent maintainer review. The seven-branch ceiling remains unmet; the checker reports the excess but does not itself enforce branch-creation permissions. No repository settings were changed.
+
+
+## 11. Automation-hardening verification addendum — 21 November 2026
+
+<badge> </badge>
+
+The updated governance workflow completed successfully on PR #16 head `c037c66865a5b576ef3a74717d803b941fb0a878`.
+
+- Run: [44906508756](https://github.com/Save-Tiger-First/botanica-indica/actions/runs/44906508756)
+- Result: success
+- Unit tests: **27 passed**
+- Markdown scan: **23 tracked Markdown files**
+- PR #16 routing validation: passed
+- Live GitHub branch API: returned 23 branches
+- Seven-branch ceiling: correctly emitted a warning; it remains unmet.
+
+The previous statement that current-head CI was pending applied to the earlier snapshot. This run closes that verification gap for commit `c037c66865a5b576ef3a74717d803b941fb0a878`.
+
+**Important limits:** the successful run does not prove that branch creation is prevented, that the workflow is configured as a required check, or that repository rulesets are adequate. It also does not replace independent maintainer review. The seven-branch target is still unmet.
+
+Recommendation remains: keep PR #16 open and draft until independent review and owner disposition. No PR was merged/closed or branch deleted.
