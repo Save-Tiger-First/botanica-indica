@@ -837,3 +837,45 @@ Task 05D must test separately:
 10. explicit term/profile mapping from DwC `detected/notDetected` to any GBIF-specific `present/absent` values.
 
 **Disposition:** DR-09 remains OPEN until exact versioned resources and term definitions are retrieved and compared. ODR-01 remains export-only and not implemented. Candidate A remains NOT APPROVED; Task 05E remains NOT READY.
+
+ 
+## 20. Cross-document consistency audit — target assessment and standards correction — 21 November 2026
+
+**Status:** Proposed reconciliation addendum. It does not approve Candidate A, supersede Candidate B, amend an accepted ADR or authorize physical design.
+
+### 20.1 Standards baseline correction
+
+The directly retrieved official Darwin Core Conceptual Model page identifies the inspected version as 2026-05-26 (`http://rs.tdwg.org/dwc/doc/cm/2026-05-26`). Search-indexed metadata previously suggested 2026-10-13, but the exact 2026-10-13 Conceptual Model resource was not retrieved and compared. Therefore the project must not state that 2026-10-13 is the verified current Conceptual Model. Record 2026-05-26 as the inspected version and keep DR-09 open until the metadata discrepancy is resolved.
+
+The official hierarchical-event guidance is listed at 2026-10-13, previous 2024-02-28. The core Darwin Core term snapshot and Humboldt term snapshot also have 2026-10-13 metadata, but individual term versions remain independently dated. In particular:
+- `dwc:occurrenceStatus-2026-05-26` recommends `detected` and `notDetected`;
+- `eco:isSurveyTargetFullyReported-2026-05-26` is target-level reporting completeness;
+- `eco:isTaxonomicScopeFullyReported-2026-10-13` is taxonomic-scope reporting completeness;
+- sampling-effort terms have their own version IRIs.
+Do not conflate these terms or assume that a vocabulary snapshot date is the version date of every term.
+
+### 20.2 Target assessment naming conflict
+
+Task 05B §16 and this Candidate A proposal §18 use `SurveyTargetResult`. The EVT pack and competing-model reconciliation use `SurveyTargetAssessment`. The former currently includes a result state, while the latter is described as an assessment/completeness lifecycle record. This overlaps with the authoritative detected/non-detected state proposed for Occurrence.
+
+**Recommendation, not decision:** reserve the assessment entity for whether and how a target was assessed (scope, protocol, effort, completeness, detectability limitations, period, agent and provenance). Keep the taxon/organism-level detection or explicit non-detection as the canonical Occurrence-level scientific result, connected to the Survey through `SurveyOccurrenceReport`. Do not persist a second independently mutable result status in a parallel target-result entity. If a `SurveyTargetResult` term is retained, define it as a derived view or explicitly make it the single canonical result representation and remove duplicate Occurrence state; the two patterns must not coexist ambiguously.
+
+The owner has authorized ODR-01 for controlled, profile-specific external exports only. ODR-01 does not resolve this internal entity/cardinality question, does not authorize absence inference from a missing Occurrence row and does not approve Candidate A.
+
+### 20.3 Candidate A is not yet reconciled into one coherent ERD
+
+Candidate A's earlier ERD and cardinality summary still express Event-to-Occurrence as a one-to-many contextual relationship. §18 proposes a shared Event identity with distinct Survey and Occurrence specializations, but expressly states that it does not supersede the preceding Candidate A content. These are alternative logical patterns until the canonical ERD, keys, foreign-key participation, relationship labels and cardinalities are reconciled together.
+
+The Darwin Core Conceptual Model is a semantic reference, not a mandated SQL inheritance strategy. The implementation may use shared identity/subtype tables or another enforceable design, but it must preserve the distinctions and pass the fixtures. Do not describe the §18 proposal as already integrated into Candidate A.
+
+### 20.4 Required gate
+
+Resolve together:
+1. SurveyTargetAssessment versus SurveyTargetResult and the authoritative outcome state;
+2. Event identity/specialization versus the existing Event-to-Occurrence contextual link;
+3. Survey-to-Occurrence reporting versus Event parent-child hierarchy;
+4. Observation-to-Event and Observation-to-Occurrence participation/cardinality;
+5. B01, B02, B16, DR-07 and DR-09, including exact term/profile mapping;
+6. Task 05D v3's dependency on this exact Candidate A revision.
+
+**Disposition:** Candidate A remains the preferred review starting point, not an approved model. Candidate B remains a separate alternative document. Task 05C remains NOT APPROVED; Task 05E remains NOT READY.
