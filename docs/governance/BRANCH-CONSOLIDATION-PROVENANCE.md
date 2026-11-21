@@ -278,3 +278,17 @@ The historical snapshots above remain unchanged and should be read as records of
 - The three automation files were updated and verified by blob SHA as recorded in Section 20.11.3 of the branch register.
 - Current-head CI is not verified. The earlier successful run 44901677252 belongs to commit `05bf12ec34c724ada2aec3f2631323a12878673f`, not the current head.
 - No PR lifecycle or branch lifecycle action was taken. No policy/ADR was approved.
+
+## Live consolidation ancestry refresh — 21 November 2026
+
+The historical provenance records above remain intact. Current branch inventory and source/destination ancestry are recorded in Branch Inventory and Consolidation Register Section 20.17.
+
+Fresh source-to-destination comparisons show:
+- PR #15, #1 and #2 source heads are already ancestors of the governance destination; no further ancestry integration is needed for those three.
+- Product/architecture sources #17, #18 and #19 have respectively 9, 2 and 27 source-only commits relative to the existing architecture destination.
+- Scientific sources #3, #4, #5, #11, #21, #22 and #23 have respectively 5, 14, 10, 13, 1, 7 and 7 source-only commits relative to the existing scientific review destination.
+- Strategy sources #12, #13 and #14 have respectively 4, 1 and 1 source-only commits relative to the strategy destination; PR #12 is diverged and overlaps two destination files.
+
+These counts describe Git ancestry, not unique file counts or content approval. Before any history-preserving integration, inspect full commit graphs and diffs. Preserve the main-only Hortus crosswalk separately; its current main blob is a3758743e090121a31cda9e6876f43ceb3caa3a0, and the review-branch copy is 6b7fd454795607b3e93cc590e7ffa562884c0a9e. The two copies differ and require reconciliation.
+
+The latest PR #16 head at this audit was f6f661b97376323aba36b91725aca483af9e7d35. PR #16 remains open/draft; no PR was merged or closed and no source branch was deleted. No content approval or scientific sign-off is implied.
