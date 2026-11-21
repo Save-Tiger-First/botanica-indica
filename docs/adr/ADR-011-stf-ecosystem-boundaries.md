@@ -5,7 +5,7 @@
 - **Decision Type:** Architecture / Governance
 - **Scope:** Save Tiger First technology ecosystem and all current/future STF domain applications
 - **Related document:** `docs/architecture/STF-ECOSYSTEM-BOUNDARIES.md`
-- **Related ADRs:** ADR-001, ADR-002, ADR-003, ADR-004, ADR-008, ADR-009, ADR-010
+- **Related ADRs:** ADR-001, ADR-002, ADR-003, ADR-004, ADR-005, ADR-006, ADR-007, ADR-008, ADR-009, ADR-010
 
 ---
 
