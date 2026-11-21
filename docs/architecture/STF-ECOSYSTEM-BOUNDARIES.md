@@ -627,7 +627,7 @@ Shared infrastructure being open source does not make every dataset or domain re
 
 A domain application may share software components while retaining restrictions on particular data assets.
 
-The ecosystem must follow the approved STF Licensing and Intellectual Property Policy.
+The ecosystem should follow the STF Licensing and Intellectual Property Policy once it has been formally approved. The policy currently exists as a proposal under review and requires maintainer and qualified legal review. Until then, no blanket contributor, dataset, media, redistribution, commercial-use or AI-training permission should be inferred.
 
 ## 13. Operational ownership
 
