@@ -1175,3 +1175,41 @@ These are ancestry comparisons, not content approval. Divergence means both side
 11. At formal project completion only, verify all work is on `main`, resolve all PRs, archive/tag the final state and obtain owner approval; then retire `develop`, `staging` and all remaining workstream branches. Re-fetch the branch list and verify exactly one branch remains: `main`.
 
 **No merge, retarget, PR closure, branch deletion, protection change or scientific/policy approval was performed while preparing this baseline.**
+
+
+## 20.21 Current PR #16 pre-integration gate — 21 November 2026
+
+This is the latest live snapshot and supersedes earlier “current” values in Sections 20.20 and prior appendices where they differ. Historical snapshots are retained for provenance.
+
+### Verified repository and PR state
+
+- Repository: `Save-Tiger-First/botanica-indica`.
+- Governing prompt: `docs/governance/AI-PROJECT-OPERATING-PROMPT.md`, branch `docs/repository-audit-and-ai-operating-standard`, blob `53add3894d0502827e584614c70ad09cadaa637d`, 259 lines.
+- Branch count: 23 (3 long-lived + 20 temporary/workstream); immediate ceiling: 7.
+- Open PR count: 20.
+- PR #16: open, draft, base `develop`, head branch `docs/repository-audit-and-ai-operating-standard`, head `053e82c0fe4fc9a2bb5f03d94f464d76322433b8`; 136 commits, 26 changed files, 4,559 additions, 25 deletions; 136 ahead / 0 behind `develop`.
+- PR #16 reports `mergeable=true`, but it is still draft and has zero submitted reviews, zero review threads and zero comments. Mergeability is not approval.
+- PR #15 remains open and non-draft. PRs #1–#5, #8–#14 and #16–#23 remain open/draft.
+- PR #16's latest check run on the exact head is successful: [workflow run 44909118926](https://github.com/Save-Tiger-First/botanica-indica/actions/runs/44909118926). The workflow passed 27 tests, scanned 23 tracked Markdown files, passed routing validation and retrieved the 23-branch live inventory. It emitted the expected warning that 23 exceeds the seven-branch ceiling.
+
+### Governance-control findings
+
+1. The active repository ruleset `Protect main branch` applies only to the default branch and contains deletion and non-fast-forward protections. It does not require pull requests, reviews or status checks, and does not cover `develop` or `staging`.
+2. Branch-protection API reads for `develop` and `staging` returned 403, so any additional classic protection configuration is not independently verified. Do not infer required reviews/checks.
+3. The governance script's seven-branch ceiling is warning-only while the repository has 23 branches. It rejects branch names outside the dated allowlist, but the `create` workflow event runs after a branch has been created; this workflow is not a preventive branch-creation control. The no-new-branches directive is documented, but effective permission/ruleset enforcement is not verified.
+4. The register's earlier Section 20.20 and readiness review Section 18 contain historical head/count values. This Section 20.21 records the latest snapshot; update the readiness review with the same values before any merge-readiness decision.
+5. The PR #16 review has no independent maintainer review submission. Its open/draft status must remain unchanged until independent review and owner decision.
+
+### Integration gate decision
+
+**Status: NOT READY FOR MERGE.** This is a governance readiness recommendation, not a rejection of the work.
+
+Required before any PR #16 merge:
+- Independent maintainer review of the full 26-file diff, including the governance workflow/script, branch policy, proposed licensing policy and proposed ADR-011.
+- Review and resolve any findings, with the reviewer decision recorded in GitHub.
+- Owner decision on the branch-policy proposal, licensing-policy proposal and ADR-011 as separate matters; merging proposed documents must not silently mark them accepted.
+- A documented decision on whether the seven-branch ceiling is a release gate or an active transition target, plus an enforceable and safe retirement plan. No protection/ruleset change is made here.
+- Reconcile the main-only Hortus crosswalk before eventual develop/staging/main promotion; this is a later integration blocker, not a reason to discard the crosswalk.
+- Re-fetch all refs and checks immediately before any authorized merge.
+
+**No merge, PR state change, retarget, branch creation/deletion, protection/ruleset change or policy/ADR approval was performed.**
