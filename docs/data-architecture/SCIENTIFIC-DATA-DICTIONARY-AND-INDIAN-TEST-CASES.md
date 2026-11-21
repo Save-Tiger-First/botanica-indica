@@ -914,3 +914,90 @@ The data dictionary is ready to inform physical schema design when:
 Proceed to a reviewed logical schema only after the scientific test cases are approved. The most important correction is to implement TCS semantics precisely: a taxon concept is according to a source, a taxon name is a separate reusable nomenclatural object, and synonymy is not simply an equivalence edge between two taxon concepts.
 
 Use the Mango distribution disagreement as a mandatory test fixture. It demonstrates that Botanica Indica must preserve source-scoped geographic assertions rather than compressing complex botanical knowledge into a single global field.
+
+ 
+## 16. Event, Survey, Occurrence and target-result semantic correction — 21 November 2026
+
+**Status:** Proposed dictionary clarification; not an approved scientific model or physical schema. This section supplements and, where inconsistent, supersedes the simplified Event definition in §4.9 and the generic `Event → Occurrence` cardinality row in §5. It must be reconciled with Task 05C §18–§19 and Task 05D before approval.
+
+### 16.1 Distinguish the concepts
+
+- **Event:** an action, process or set of circumstances at a place during an interval. It has stable identity and shared temporal/spatial/agent context.
+- **Survey:** a special type of Event representing a biotic survey or inventory. It has survey-specific purpose, targets, protocol, effort, scope and completeness attributes.
+- **Occurrence:** a special type of Event representing the state of an Organism at a place and time, including a supported detection or non-detection state. It is not simply a child row that belongs to every generic Event.
+- **Observation:** Botanica Indica's contributor-submitted workflow record. It is not automatically an Event, Survey or Occurrence.
+- **Organism:** an individual or defined taxonomically homogeneous group with identity/life history where supported.
+- **MaterialEntity:** physical matter collected or sampled; distinct from digital MediaAsset and distinct from Occurrence.
+
+A logical relational implementation may use one Event identity with subtype records for Survey and Occurrence. Each event identity must have one event category: generic/context, Survey, Occurrence or another explicitly modelled special type. A single Event instance must not be both a Survey and an Occurrence. This is a proposed logical representation, not a mandate for SQL inheritance.
+
+A generic context Event may provide shared spatiotemporal context for multiple distinct activities, including a Survey, one or more Occurrences and material gathering. The context Event is not itself silently converted into those special Event types.
+
+### 16.2 Keep three relationships distinct
+
+1. **Event parent-child hierarchy:** a child Event has zero or one parent Event; a parent may have many children. A parent must spatially and temporally encompass each child. This is a containment/hierarchy relationship.
+2. **Survey reports Occurrence:** a Survey may report many Occurrences through a proposed `SurveyOccurrenceReport` association. The association records target match, incidental/bycatch or another justified reporting role.
+3. **Context Event association:** a generic context Event may be related to distinct activity Events where they share documented context. This is not automatically a parent-child relationship.
+
+A Survey reporting an Occurrence does not, by itself, prove that the Occurrence is a child Event. Where both relationships apply, represent both independently and test their separate meanings.
+
+### 16.3 Proposed SurveyTarget and SurveyTargetResult dictionary entries
+
+These are internal Botanica Indica concepts proposed to preserve richer semantics; they are not claims that Darwin Core defines a class with the same internal schema.
+
+**SurveyTarget** — a versioned declaration or analytical filter defining what a Survey sought or selected for analysis. Required semantics:
+- target identity and version;
+- scope type and structured/verbatim scope;
+- inclusion/exclusion criteria;
+- origin: `A_PRIORI` or `POST_FACTO`;
+- author/agent, declaration/application time and method;
+- source/provenance and effective Event/Survey scope;
+- whether the target was in force during field activity or applied later for analysis.
+
+**SurveyTargetResult** — an attributable assessment for a Survey, target, defined scope and period. It must not be a Boolean alone. Preserve:
+- whether the target was assessed;
+- result state: `DETECTED`, `NOT_DETECTED_EXPLICIT`, `INCONCLUSIVE`, `NOT_ASSESSED` or another governed state;
+- whether the relevant detected Occurrences were fully reported;
+- taxonomic-completeness assessment and method, separately;
+- protocol and sampling effort, with units and method;
+- temporal and spatial bounds;
+- supporting/reported Occurrences and evidence;
+- bycatch status where applicable;
+- author, agent, timestamp, source, provenance, corrections and supersession.
+
+Do not collapse `NOT_DETECTED_EXPLICIT` into the absence of a row. Do not use a post-facto filter to rewrite original survey intent. Do not equate reporting completeness with detectability or true ecological absence.
+
+### 16.4 Proposed relationship/cardinality refinements
+
+| Relationship | Proposed cardinality | Rule |
+|---|---|---|
+| Event → Survey subtype | 0..1 subtype per Event; each Survey exactly 1 Event identity | Survey is a special Event, not an unrelated record |
+| Event → Occurrence subtype | 0..1 subtype per Event; each Occurrence exactly 1 Event identity | Occurrence is a special Event, not a generic child row |
+| Survey → SurveyTarget | 0..* | Preserve target version and a priori/post-facto origin |
+| SurveyTarget → SurveyTargetResult | 0..* | Repeated assessments/periods remain distinct |
+| Survey → reported Occurrence | 0..* through SurveyOccurrenceReport | Report role is explicit; may be target match or bycatch |
+| Event → parent Event | Child 0..1 parent; parent 0..* children | Hierarchy only where spatiotemporal containment and dependent connection exist |
+| Observation → Event / Occurrence | 0..* typed links | Observation remains a separate workflow record |
+| Context Event → activity Event | 0..* typed links | Use only where common context is documented |
+
+The current `Occurrence.event_id` field in §4.8 must be interpreted as the Occurrence's own Event identity if the shared-identity subtype pattern is selected. It must not be reused as an ambiguous foreign key to a Survey. Survey-to-Occurrence reporting requires its own typed association. The final relational mapping remains open.
+
+### 16.5 Occurrence status and export mapping
+
+The current Darwin Core `dwc:occurrenceStatus` term version retrieved for this review is 2026-05-26 and recommends `detected` and `notDetected`. The GBIF survey guide v1.0.2 uses `present` and `absent` in its publishing examples. Preserve the internal governed state and use a versioned, tested export mapping; do not assume the literals are interchangeable.
+
+A missing internal Occurrence row means unknown/not assessed. An explicit non-detection requires an attributable SurveyTargetResult and its defined scope/context. Any optional Darwin Core Occurrence representation for explicit non-detection must be tested against the current Conceptual Model and selected publishing profile. No implicit export result may be generated until ODR-01 conditions are independently validated.
+
+### 16.6 Current standards pins to carry forward
+
+- Darwin Core Conceptual Model: 2026-10-13.
+- Darwin Core List of Terms: 2026-10-13.
+- Core Darwin Core term snapshot: 2026-10-13.
+- Darwin Core schemas: 2026-10-13.
+- Humboldt hierarchical-event guidance: 2026-10-13; Section 3 normative.
+- Humboldt Extension term list: 2026-10-13; pin individual term versions.
+- GBIF survey guide: v1.0.2, 2025-09-24.
+
+Term-level version pins must be recorded individually. In particular, `eco:isTaxonomicScopeFullyReported-2026-10-13` supersedes the 2024-02-28 term version; `eco:isSurveyTargetFullyReported-2026-05-26` is a separate target-specific term whose current status must be checked in the 2026-10-13 term list; and `dwc:occurrenceStatus-2026-05-26` recommends `detected/notDetected`.
+
+**Open items:** DR-07 and DR-09 remain open; B01/B02/B16 and FLD-08 require review; EVT-31 onward are proposed and unexecuted. Candidate A and Task 05B remain proposed. No physical schema or API payload is authorized.
