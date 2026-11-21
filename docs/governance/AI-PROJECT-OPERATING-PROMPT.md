@@ -99,6 +99,11 @@ Temporary task branches are permitted when they provide isolation, review or par
 - `governance/`
 - `test/`
 - `release/` only for a justified release task.
+- `proposal/` for a bounded feasibility or programme proposal.
+- `strategy/` for a strategic workstream that is not yet an approved programme.
+- `review/` for an evidence, assurance or cross-document review pack.
+
+These additional prefixes are recognised because they are already used by existing workstreams and are included in the branch policy and governance checker. Their inclusion does not authorize new branch creation while the current no-new-branches directive remains in force.
 
 Default workflow:
 `temporary task branch → PR to develop → reviewed promotion PR develop to staging → acceptance checks → reviewed promotion PR staging to main → version tag/release`.
