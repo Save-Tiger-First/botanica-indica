@@ -220,3 +220,14 @@ The TDWG TCS semantics reinforce the need to keep the Task 05 taxonomy model and
 The most important immediate task is a controlled product-baseline reconciliation across PRs #17, #18 and #19. PR #20 should remain a proposed architecture plan until that work and the Task 05 scientific-model gates are sufficiently mature.
 
 This review does not approve any proposal, amend an ADR, accept a PRD, authorize implementation, close DR findings, approve physical database design, or authorize any branch/PR lifecycle action.
+
+
+## 13. Verification boundary and CI status
+
+- The audit file was re-fetched from the PR #20 head after creation; its content and blob were verified.
+- PR #20 now contains two files: the existing full-system architecture plan and this audit report. No other file was changed by this review.
+- The PR #20 base branch `develop` does not currently contain `.github/workflows/repository-governance.yml`. That workflow exists on the separate PR #16 branch, so it cannot be claimed as a CI check for PR #20.
+- No check runs were returned for the PR #20 audit commit. The audit is therefore **API/readback-verified, not CI-verified**. The previous successful PR #16 governance workflow runs apply only to their own PR #16 commit SHAs and must not be represented as validation of this report.
+- No application code, executable product tests, security scans or scientific-model tests were run or claimed.
+
+This review is a desk audit and proposal. Its findings should be independently reviewed by the appropriate product, architecture and scientific reviewers before any owner decision.
