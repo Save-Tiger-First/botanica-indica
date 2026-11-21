@@ -627,3 +627,16 @@ The EVT pack now contains EVT-23–EVT-26. The complete proposed suite is EVT-01
 - Humboldt hierarchical-event guidance: https://dwc.tdwg.org/hierarchy/
 
 No accepted ADR or Task 05B/05C/05D proposal was changed. No model decision was approved. No test was executed. Task 05C remains NOT APPROVED; Task 05E remains NOT READY.
+
+ 
+## 17. Owner decision ODR-01 — 21 November 2026
+
+The project owner authorized Option B: controlled, profile-specific implicit non-detection interpretation in external exports only.
+
+This resolves the owner-policy question raised in §16.6; it does not resolve the underlying scientific-model or mapping blockers. The internal rule remains that a missing Occurrence row alone is unknown/not assessed and must not create an internal absence assertion. An external export may derive “not detected/reported within the stated survey scope” only with explicit scope and applicable completeness, correct Survey hierarchy, attributable evidence/provenance, pinned term/profile/mapping versions, and a reproducible audit trail. Bycatch and taxa outside scope are excluded. Any missing, ambiguous, contradictory or unvalidated condition causes the export to fail closed.
+
+For the GBIF DwC-A taxonomic-scope pattern, GBIF Guide v1.0.2 §7.3 requires `eco:isTaxonomicScopeFullyReported=true` and either `eco:targetTaxonomicScope` or `eco:excludedTaxonomicScope`; its implicit pattern does not create Occurrence rows for implicitly absent taxa and uses `eco:isAbsenceReported=false` for the relevant Events. This must not be confused with explicit Occurrence-level non-detection.
+
+EVT-27–EVT-30 are added as proposed, unexecuted export tests. B16 remains open for scientific semantics and mapping. LDM-16/FLD-08 remain required for explicit internal non-detection and missing-row negative tests. DR-09 remains open. No Task 05C candidate was modified or approved; Task 05E remains NOT READY.
+
+Sources: GBIF Guide v1.0.2 (2025-09-24), §§5.6 and 7.3 (https://docs.gbif.org/guide-publishing-survey-data/en/); TDWG List of Terms (https://dwc.tdwg.org/list/); Humboldt hierarchy guidance (https://dwc.tdwg.org/hierarchy/).
