@@ -381,3 +381,20 @@ This closes the CI verification gap for this recorded head. It does not close th
 The documentation head 32b5fa0f5f192fa3d3948038a79a10ae41b5c630 completed [workflow run 44908268217](https://github.com/Save-Tiger-First/botanica-indica/actions/runs/44908268217) successfully. It passed all 27 unit tests, scanned 23 tracked Markdown files, passed PR #16 routing validation, retrieved 23 live branches and emitted the expected seven-branch-ceiling warning. No Python FutureWarning appeared in the inspected job log.
 
 The seven-branch ceiling remains unmet, and independent maintainer review remains outstanding. This CI run does not approve branch governance, ADR-011, licensing policy or any scientific model.
+
+
+## 18. Branch-to-main consolidation route — current-state review, 21 November 2026
+
+The live state and source/destination comparisons are recorded in Branch Inventory and Consolidation Register Section 20.20. The key verified facts are:
+
+- 23 branches remain (3 long-lived + 20 temporary); the immediate ceiling is 7.
+- 20 PRs remain open; PR #16 is open/draft to develop.
+- PR #16 head is `5797330bac2735b5f35054d39a7ade4243de84ec`; workflow run 44908360788 passed on that exact head (27 tests, 23 Markdown files, routing checks and branch inventory).
+- PR routing is inconsistent: nine PRs target main directly, six target develop, and five are stacked on workstream branches.
+- PRs #17–#19, #3–#5, #11, #21–#23 and #12–#14 have source-only commits relative to their proposed destinations; these are not safe to retire without history-preserving integration and content reconciliation.
+- Main is one commit ahead of develop because of the Hortus crosswalk; staging currently equals develop. The main-only crosswalk must be reconciled with the different scientific-review copy before promotion.
+- The active main ruleset only protects against deletion and non-fast-forward updates; branch-protection reads for develop/staging were not available to this integration. Do not assume required reviews or status checks are configured.
+
+Recommendation: do not merge all 23 branch heads directly into main. Consolidate into the four existing workstream branches, integrate accepted work into develop, validate through staging, then promote to main. Keep the seven-branch interim ceiling and one-branch final requirement distinct.
+
+No merge, retarget, PR closure, branch deletion, protection change or scientific/policy approval was performed.
