@@ -370,3 +370,15 @@ These updates preserve earlier content and remain proposals. No fixture was exec
 The exact current TDWG indexed metadata reports 2026-10-13 for the Conceptual Model, List of Terms, core term snapshot and hierarchy guide. However, the public Conceptual Model and List HTML renderers still returned 2026-05-26 during the review. DR-09 therefore remains open for exact versioned-resource capture and comparison. Individual terms have independent versions, including `dwc:occurrenceStatus-2026-05-26`, `eco:isTaxonomicScopeFullyReported-2026-10-13`, `eco:isSurveyTargetFullyReported-2026-05-26`, and the current 2026-10-13 sampling-effort/completeness-method term versions.
 
 **PR #11 remains a stacked dependency.** Candidate A and Task 05D v3 remain diverged; do not merge, rebase or retarget automatically. The current compare baseline must be refreshed before any dependency synchronization proposal. The seven-branch ceiling remains unmet; no branch or PR lifecycle action was taken.
+
+ 
+## 18. Latest Task 05D dependency comparison — 21 November 2026
+
+After the latest append-only updates, GitHub compare reports Candidate A `docs/task-05c-logical-data-model` as base and Task 05D v3 `docs/task-05d-logical-model-validation-v3` as head: **diverged, 4 commits ahead / 3 commits behind**, merge base `91c82b4f136a77aaa1edb02753ed49b2fbee86ed`. PR #11 remains open/draft, based on Candidate A.
+
+Current document commits:
+- Task 05B PR #4: `8936fe87a2c32da861c7f6a08d52603c9e545d21`.
+- Candidate A PR #5: `98741843a2ba8550e2cb744658d9291fe60b8823`.
+- Task 05D v3 PR #11: `9d383c4206f2d48bd31b04c6ebb5bd97bf7b87df`.
+
+The divergence is a commit-history relationship and does not by itself prove a content conflict. PR #11's current changed-file view is the Task 05D document. No merge, rebase, retarget, force-push or branch deletion was performed. Before a PR decision, review the complete commit graph and three-way file/content relationship and prepare a preservation-first synchronization plan for owner approval.
