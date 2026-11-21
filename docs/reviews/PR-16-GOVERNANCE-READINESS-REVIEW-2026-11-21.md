@@ -285,3 +285,18 @@ The previous statement that current-head CI was pending applied to the earlier s
 **Important limits:** the successful run does not prove that branch creation is prevented, that the workflow is configured as a required check, or that repository rulesets are adequate. It also does not replace independent maintainer review. The seven-branch target is still unmet.
 
 Recommendation remains: keep PR #16 open and draft until independent review and owner disposition. No PR was merged/closed or branch deleted.
+
+
+## 12. Workflow activation limitation — 21 November 2026
+
+The repository governance workflow is present on the PR #16 branch, not on `main`. Its pull-request run successfully executed the live branch inventory check on code-bearing commit `c037c66865a5b576ef3a74717d803b941fb0a878` (run 44906508756; 27 tests passed). However, the workflow's `create` event must not be represented as an active pre-merge branch-creation control while the workflow is absent from the default branch.
+
+The current implementation:
+- validates the PR's base/head routing;
+- fetches and checks the live branch inventory during PR workflow runs;
+- rejects branch names outside the dated known-branch allowlist;
+- warns, rather than blocks, while branch count exceeds seven.
+
+It does **not** prevent a repository user from creating a branch. The `create` trigger becomes useful only after the workflow is present on the default branch, and even then it is detection after creation, not prevention. Prevention would require appropriately configured repository permissions/rulesets or another trusted control. Those settings have not been inspected or changed here.
+
+Keep PR #16 open and draft. Do not merge it solely to activate the workflow. Obtain independent review and owner authorization for any repository protection changes.
