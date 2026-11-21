@@ -32,7 +32,7 @@ All requirement and capability status fields begin as **Not yet verified** unles
 | Permanent AI Project Operating Prompt, STF-AI-OPS-001 v1.0 | `docs/repository-audit-and-ai-operating-standard` | `61059c74d4d20309ff76e055059ab33f381ca4f2` | Proposed standard; user instruction requires adherence |
 | Task 03 PRD v0.1 transcription | `docs/canonical-task-03-04-baselines` | `8b1ca0be04b3f4ad3b543c2f9fc48d46eb37faf8` | Working baseline; not accepted |
 | Task 04 architecture evaluation v0.1 transcription | `docs/canonical-task-03-04-baselines` | `abc7b721fae8d4f4adede4dd0bf5d6a32098c5a3` | Working baseline; not accepted |
-| Full Product Vision and Capability Blueprint v0.2 | `docs/full-product-vision-capability-blueprint` | `d11d948d01fe8db49a00f3bb1967d292d3f1106c` | Proposed in PR #17; not accepted |
+| Full Product Vision and Capability Blueprint v0.2 | `docs/full-product-vision-capability-blueprint` | `905455233d11fc750ba3a485d5c516e01f8426ee` | Proposed in PR #17; not accepted |
 | Scientific Data Model Review Pack | `review/scientific-data-model-review-pack` | `f8ce8caab31d02a38e2f3deb957b67af77decad6` | Review proposal; findings remain subject to validation |
 | Scientific Data Model Validation Matrix and Decision Register | `review/scientific-data-model-review-pack` | `f1d8c927b54c74fc33be9eedcdf2b8dfc533dda7` | Proposed reviewer/test framework |
 
@@ -437,7 +437,9 @@ Before a requirement is accepted, confirm it is:
 | Task 04 architecture evaluation | Working baseline; not accepted |
 | Full Product Blueprint v0.2 | Proposed in PR #17; capability identifiers aligned with Sections 5.1–5.16; not accepted |
 | DR-01–DR-12 | Review findings; not all closed |
-| Task 03 explicit non-goals NG-01–NG-07 | Transcribed as scope guardrails; any change remains subject to owner approval |\n| Lifecycle state machine | Gap recorded; transition rules not yet specified or approved |\n| LDM-01–LDM-16 | Validation obligations; execution evidence not established by this register |
+| Task 03 explicit non-goals NG-01–NG-07 | Transcribed as scope guardrails; any change remains subject to owner approval |
+| Lifecycle state machine | Gap recorded; transition rules not yet specified or approved |
+| LDM-01–LDM-16 | Validation obligations; execution evidence not established by this register |
 | Implementation status | Not assessed / not claimed |
 | Physical database design readiness | Not ready pending scientific-model gates and review |
 
