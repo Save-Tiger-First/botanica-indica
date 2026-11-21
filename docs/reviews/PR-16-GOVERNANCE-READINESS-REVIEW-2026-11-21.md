@@ -314,3 +314,10 @@ A subsequent run completed successfully on commit `63bc943ccdce3cdfde5a2af48e549
 - No Python `FutureWarning` appeared in the inspected job log.
 
 The workflow's `create` trigger remains inactive as a pre-merge branch-creation control while the workflow is absent from the default branch. The current automation detects unregistered branches when its PR inventory step runs; it does not prevent branch creation. The seven-branch ceiling remains unmet.
+
+
+## 14. Final verification of documentation head — 21 November 2026
+
+The PR #16 documentation head `8771925b6b1e8a8b590a775d36bec537da43e37b` completed [workflow run 44906629254](https://github.com/Save-Tiger-First/botanica-indica/actions/runs/44906629254) successfully. The job passed all **27 unit tests**, scanned **23 tracked Markdown files**, passed PR #16 routing validation, and fetched the live 23-branch inventory. It emitted the expected warning that 23 exceeds the seven-branch ceiling. No Python `FutureWarning` appeared.
+
+This is a successful CI result for the reviewed code and the PR head before this append-only note. It does not change the readiness conclusion: independent maintainer review is still absent, the seven-branch target remains unmet, and repository-level branch-creation prevention has not been configured or verified.
