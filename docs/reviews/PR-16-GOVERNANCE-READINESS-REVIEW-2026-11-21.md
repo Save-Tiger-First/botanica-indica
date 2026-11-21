@@ -362,3 +362,16 @@ The 16 other temporary branches have a proposed mapping in Branch Inventory and 
 Keep PR #16 open and draft. The automation changes passed CI on earlier code-bearing heads, but the latest contribution/architecture metadata corrections changed the PR head. A new workflow run must be inspected before reporting the latest head as CI-verified. Obtain independent maintainer review; separate the branch-policy, licensing and ADR-011 approval tracks. Do not change repository protection settings without explicit authorization.
 
 No PR was merged or closed, no branch was deleted or created, no ruleset changed, and no scientific or policy proposal was approved.
+
+## 16. Latest-head CI verification — 21 November 2026
+
+After the contribution, architecture metadata, branch inventory, readiness review, provenance and reconciliation records were updated, PR #16 head is 0e5d3ac070932bdbe0a98c7cc824a71d15dc1745. It remains open/draft, targeting develop; 129 commits, 26 changed files, 4,428 additions and 25 deletions; 129 ahead / 0 behind develop.
+
+[Workflow run 44908219565](https://github.com/Save-Tiger-First/botanica-indica/actions/runs/44908219565) completed successfully on this exact head:
+- 27 unit tests passed.
+- 23 tracked Markdown files scanned.
+- PR #16 routing validation passed.
+- Live branch inventory returned 23 branches and emitted the expected warning that the seven-branch ceiling is exceeded.
+- No Python FutureWarning appeared in the inspected job log.
+
+This closes the CI verification gap for this recorded head. It does not close the governance readiness blockers: the seven-branch ceiling is unmet, independent maintainer review is absent, and effective protections for develop/staging and branch creation are not verified. Keep PR #16 open and draft.
