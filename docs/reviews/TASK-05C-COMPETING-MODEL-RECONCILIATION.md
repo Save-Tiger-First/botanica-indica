@@ -308,3 +308,18 @@ Sources:
 - https://dwc.tdwg.org/schemas/
 - https://www.tdwg.org/news/2026/dwc-oct-nov-announcement/
 - https://docs.gbif.org/guide-publishing-survey-data/en/
+
+
+---
+
+## 14.1 Additional semantic reconciliation: non-detection as an Occurrence-level result — 21 November 2026
+
+The current TDWG Conceptual Model §2.3 describes Occurrence as an Event that may represent direct observation, indirect inference, or absence of detection of an Organism of a given Taxon/state during a bounded time interval and Location. Section 2.2 says Survey results are expressed in the Occurrences it reports. GBIF's survey guide v1.0.2 likewise places explicit absence records at Occurrence level and says absence cannot be asserted for bycatch.
+
+This creates an unresolved semantic question in the proposed Task 05C/decision-paper pattern: is SurveyTargetResult itself the internal representation of a target-specific non-detection, or is it an assessment/completeness record that relates to a distinct Occurrence Event representing that non-detection?
+
+**Recommended disposition:** model the target assessment/completeness process separately only where it has distinct lifecycle/provenance needs; make the taxon-specific non-detection an Occurrence-level scientific result or define a rigorously governed assessment-to-Occurrence relation. Prevent two independently mutable records from asserting contradictory outcomes for the same Survey/target/scope. A non-detection has no positive Organism instance merely by virtue of being an Occurrence; it refers to the Taxon/target assessed. Do not assert absence for bycatch or outside the declared target scope.
+
+Add EVT-19–EVT-22 from the decision paper and validation matrix. Keep these scenarios Not tested until executed with fixtures. This issue is blocking for Task 05E and should be included in EVT-D03, EVT-D04, EVT-D09 and EVT-D10. It does not approve Option B or change the overall Task 05E NOT READY status.
+
+Sources: https://dwc.tdwg.org/cm/ ; https://docs.gbif.org/guide-publishing-survey-data/en/.
