@@ -399,3 +399,126 @@ A further live GitHub API check after creation of PRs #17–#20 reports **23 bra
 The active repository ruleset `Protect main branch` currently enforces only deletion prevention and non-fast-forward prevention. It does not require pull requests, approving reviews, conversation resolution or status checks. `develop` and `staging` have no active ruleset in the verified ruleset listing. The successful PR #16 workflow run validates the current script's Markdown fence and routing checks, but it does not provide merge protection because no required check is configured.
 
 The default `main` tree remains documentation/governance-led: 18 root-tree entries and no TypeScript, JavaScript, Python, Dart or SQL application source files were found. The target application structure in PR #20 remains proposed, not implemented.
+
+
+---
+
+## 16. PR #16 governance and cross-document review — 21 November 2026
+
+### 16.1 Review scope and repository snapshot
+
+This follow-up review was performed against the live repository and the PR #16 review branch, not against the earlier 20 November snapshot.
+
+- Repository: `Save-Tiger-First/botanica-indica`.
+- Review branch: `docs/repository-audit-and-ai-operating-standard`.
+- PR #16 head before this review record: `0a4162224ca7696a179e25054944f424b976fcfb`.
+- Operating prompt: `docs/governance/AI-PROJECT-OPERATING-PROMPT.md`, proposed version 1.0, blob `ec100aec5abc09ec04ad9f4a084a0aa95a7c7558`.
+- Branches: 23 (3 designated long-lived branches and 20 temporary/workstream branches).
+- Open PRs: 20.
+- PR #16: open, draft, base `develop`, head `docs/repository-audit-and-ai-operating-standard`; 68 commits, 21 changed files, 2,294 additions and 13 deletions at review time. GitHub reported it as mergeable, but it has no submitted reviews, no conversation comments and no inline review threads. Mergeability is not approval.
+- PRs #1, #2 and #15 remain open and unmerged. Their original source branches remain present.
+- No PR was merged or closed, no branch was deleted or created, and no ruleset or repository setting was changed during this review.
+
+The current branch inventory remains a dated 20 November snapshot. Its count and open-PR count still match the live totals, but its branch heads and PR #16 commit history need a dated refresh before any branch-retirement action.
+
+### 16.2 Accepted ADR preservation check
+
+The ten accepted ADRs, ADR-001 through ADR-010, were compared between `main` and the PR #16 branch individually.
+
+**Verified:** each file differs only by one inserted closing Markdown fence at the previously unclosed diagram. No prose, architecture decision, technology direction, scientific principle or status text was changed. This is an appropriate narrow correction and does not amend the accepted decisions.
+
+ADR-001 continues to specify Dart/Flutter for mobile, TypeScript for suitable platform/API services, Python for AI/ML and scientific computing, PostgreSQL/PostGIS as the database direction, and Rust only where justified. ADR-011 correctly describes Dart/Flutter as subject to ADR-001. No mobile-framework conflict was found in the reviewed ADR-011 text.
+
+### 16.3 Findings and required remediation
+
+| ID | Severity | Finding | Required action |
+|---|---|---|---|
+| GOV-01 | Major | Branch-prefix lists disagree. The operating prompt lists feature, fix, docs, research, governance, test and release. The Branching and Release Governance policy and Python checker additionally permit proposal, strategy and review. Existing live branches use all three additional prefixes. | Align the operating prompt, branch policy and checker. Do not rename existing branches as part of this correction. |
+| GOV-02 | Major | The routing checker rejects every direct-to-main PR except `staging` promotion or a documented `fix/*` emergency hotfix. Nine currently open PRs target `main`: #1–#5, #8, #9, #13 and #14. | Define a controlled legacy-PR migration/grandfathering plan before the workflow is promoted to `main` or made a required check. Do not silently retarget or close those PRs. |
+| GOV-03 | Major | `CONTRIBUTING.md` section 20 says that contributing means the contributor agrees their contribution will be made available under applicable project licensing terms. The proposed Licensing and IP Policy says contributor terms are not yet approved and explicitly warns against treating the current wording as a complete contributor agreement. | Clarify the contribution wording and establish reviewed contributor terms before broad external solicitation. Do not infer a transfer of ownership or a blanket AI-training grant. |
+| GOV-04 | Major | The companion `STF-ECOSYSTEM-BOUNDARIES.md` says the ecosystem must follow the “approved” STF Licensing and Intellectual Property Policy, while that policy's own status is Proposed and requires maintainer/legal review. | Change the companion wording to refer to the proposed policy until it is formally approved. Do not change the policy's status by editorial implication. |
+| GOV-05 | Major | README omits ADR-011 from its ADR table and repository tree. It says licensing policy documentation will be available “when established”, although a proposed policy already exists on this branch. The companion architecture document metadata lists ADR-001 through ADR-010 but does not identify ADR-011 as its companion decision. | Update navigation and status language after the governance content is reconciled. Distinguish proposed documents on this branch from accepted material on `main`. |
+| GOV-06 | Major | The Licensing and IP Policy has useful asset-by-asset controls but its official reference list does not yet include the current Indian privacy and biodiversity legal framework relevant to personal data, biological resources and associated knowledge. | Add a jurisdiction-aware legal triage and current official source register. Obtain qualified legal review; this desk review is not a legal opinion. |
+| GOV-07 | Moderate | The policy's Data and Rights Registry is a good governance concept, but the proposed fields do not explicitly require a jurisdiction/legal-basis assessment or a biodiversity access-and-benefit-sharing (ABS) review outcome where relevant. | Add fields or linked assessments for jurisdiction, applicable legal instrument, ABS applicability/approval/benefit-sharing status, community authority/consent evidence where relevant, and legal review record. Do not assume every public botanical record triggers an ABS approval. |
+| GOV-08 | Moderate | The workflow checks Markdown fence balance and branch routing, but it is not a full CommonMark/GFM validator, link checker, license scanner, security scan or test suite. Relative-link findings are warnings only. | Describe the check's limited scope accurately. Add separate validators only when their behavior and maintenance are justified and tested. |
+| GOV-09 | Moderate | The workflow is not configured as a required status check. The active repository ruleset `Protect main branch` currently contains only deletion and non-fast-forward protections; it does not require PRs, approving reviews, conversation resolution or status checks. No active ruleset was returned for `develop` or `staging`. | Treat the workflow as informational until representative tests and a separate ruleset review are completed. Do not change repository protection without explicit approval. |
+| GOV-10 | Minor | The successful current workflow run emitted a Node.js 20 deprecation warning because it uses `actions/checkout@v4` and `actions/setup-python@v5`, which were forced to Node.js 24 by the runner. | Upgrade to maintained Node.js 24-compatible action releases and pin actions to verified full commit SHAs before relying on the workflow for governance enforcement. |
+| GOV-11 | Minor | ADR-011 lists only ADR-001, 002, 003, 004, 008, 009 and 010 as related decisions. ADR-005 through ADR-007 are also relevant to domain ownership, taxonomy, identification and evidence boundaries. | Confirm the intended relationship and include omitted ADRs where they materially inform the boundary decision. |
+
+### 16.4 Workflow validation evidence
+
+The current PR #16 head was associated with GitHub Actions run `44871101691` (workflow: Repository governance). Its job `136745610207` completed successfully on 21 November 2026.
+
+The log confirms:
+- 21 tracked Markdown files were checked.
+- The Markdown fence and PR-routing checks passed for PR #16 from `docs/repository-audit-and-ai-operating-standard` to `develop`.
+- The job used `actions/checkout@v4` and `actions/setup-python@v5`; the runner emitted a Node.js 20 deprecation warning and forced those actions to Node.js 24.
+
+This is evidence that the current script passed on PR #16. It is not evidence that all current PR routes are compliant, that the workflow is a required status check, or that the repository has comprehensive Markdown, security or application test coverage.
+
+The checker currently permits `proposal/`, `strategy/` and `review/` prefixes. The operating prompt's shorter list is inconsistent with that implementation. The checker also rejects direct-to-main PRs other than staging promotions or documented fix hotfixes. This will affect the nine existing direct-to-main PRs listed in GOV-02 if the workflow becomes active on `main` without a migration exception.
+
+### 16.5 Indian legal and rights research — desk review only
+
+The following official sources were checked on 21 November 2026. This section identifies governance implications, not legal conclusions about a particular dataset or proposed STF activity.
+
+**Copyright and contributor ownership**
+
+The Copyright Act, 1957 should be included in the policy's primary legal references. The Copyright Office's Chapter IV summary records section 17 (first ownership), section 18 (assignment) and section 19 (mode and particulars of assignment). In particular, an assignment must be in writing and identify the work and rights, duration and territorial extent. The actual statutory text and any applicable exceptions must be reviewed for each arrangement. The current policy's position that STF must not assume contributor ownership is appropriate.
+
+Official reference: https://copyright.gov.in/Copyright_Act_1957/chapter_iv.html
+
+**Digital personal data**
+
+The Digital Personal Data Protection Act, 2023 and Digital Personal Data Protection Rules, 2025 must be added to the legal-source register and connected to a separate privacy/data-governance process. The Act's commencement notification is phased: certain provisions commenced on publication, specified provisions after one year, and the main provisions in sections 3–17 and other listed provisions after eighteen months from 13 November 2025. The Rules also have phased commencement; Rule 4 has a one-year commencement period and Rules 3, 5–16, 22 and 23 have an eighteen-month period from publication on 14 November 2025. Therefore, do not describe the entire substantive framework as already in force on this review date; maintain a dated implementation-readiness schedule and re-check the official notifications before launch or processing personal data at scale.
+
+Official sources:
+- Act, 2023: https://www.meity.gov.in/static/uploads/2024/06/2bf1f0e9f04e6fb4f8fef35e82c42aa5.pdf
+- Commencement notification, G.S.R. 843(E), 13 November 2025: https://www.meity.gov.in/static/uploads/2025/11/c56ceae6c383460ca69577428d36828b.pdf
+- MeitY official DPDP Rules, 2025 listing and corrigendum: https://www.meity.gov.in/documents/act-and-policies/digital-personal-data-protection-rules-2025-gDOxUjMtQWa
+
+**Biological resources and associated knowledge**
+
+The policy should include a biodiversity-law triage for activities involving access to biological resources or associated knowledge, research and commercial utilisation, transfers/exchanges and international collaboration. The official National Biodiversity Authority materials identify the Biological Diversity Act, 2002 as amended in 2023, the Biological Diversity Rules, 2024, the 2025 Amendment Rules and the Biological Diversity (Access to Biological Resources and Knowledge Associated thereto and Fair and Equitable Sharing of Benefits) Regulations, 2025. The NBA states that the 2024 Rules came into force on 21 December 2024 and the 2025 amendment rules on 1 November 2025.
+
+This does **not** establish that merely reading or linking to every publicly accessible botanical database requires NBA approval. Applicability depends on the actual biological resource, associated knowledge, persons, purpose, activity, exemptions and current statutory/regulatory text. STF should obtain a qualified case-specific assessment before collecting biological material, accessing or using associated traditional/community knowledge, transferring biological resources/information internationally, or commercialising outputs that may fall within the regime.
+
+Official sources:
+- NBA, Acts/Rules: https://nbaindia.nic.in/acts-and-rules/rules
+- NBA, Notifications and ABS Regulations: https://nbaindia.nic.in/public-information/notification-guidelines
+- NBA, FAQs and implementation dates: https://nbaindia.nic.in/about-us/faqs
+
+### 16.6 Technical reference verification
+
+ADR-011's reference to OpenAPI Specification 3.2.1 is current and accurate as checked on 21 November 2026. The official OpenAPI Initiative specification identifies version 3.2.1 as issued on 10 September 2026. No correction is required for that reference.
+
+Official source: https://spec.openapis.org/oas/v3.2.1.html
+
+### 16.7 Overall PR #16 review judgement
+
+**Recommendation: retain PR #16 as Draft / Under Review; do not mark it ready or merge it yet.**
+
+The audit branch has valuable and verified work: the accepted ADR fence repairs are narrow, the operating prompt captures the project-owner's branch and quality constraints, the governance workflow has least-privilege read-only permissions, and the three governance source histories have been preserved through ancestry-preserving commits.
+
+However, PR #16 is not yet review-ready because its own governance materials are not fully consistent, the contributor wording is ambiguous against the licensing policy, the branch-routing checker needs a legacy migration strategy, and the legal source register needs Indian privacy and biodiversity coverage. It also has no independent PR review. The workflow passing and GitHub reporting the PR as mergeable do not resolve these issues.
+
+Recommended order:
+1. Align the operating prompt, branch policy and checker prefix lists.
+2. Define the transition treatment for existing direct-to-main PRs before routing enforcement reaches `main`.
+3. Correct the proposed/approved licensing-policy wording and clarify contributor terms with qualified counsel.
+4. Update README and companion-document navigation/status references.
+5. Add current Indian legal references and a legal/ABS triage to the licensing and rights-governance materials.
+6. Upgrade and SHA-pin the GitHub Actions dependencies; test routing behavior against representative current PRs.
+7. Obtain independent maintainer review, and legal review for the rights policy, before changing PR #16 from draft.
+
+### 16.8 Non-actions and approval boundaries
+
+- No accepted ADR was changed.
+- No policy or ADR was marked Accepted.
+- No contributor agreement, DCO or CLA was selected.
+- No legal opinion, compliance certification, biodiversity approval or privacy compliance conclusion was issued.
+- No PR was marked ready, merged, closed or retargeted.
+- No branch was created or deleted.
+- No ruleset, branch protection, repository permission or default branch was changed.
+- `CONTRIBUTING.md`, `README.md`, the licensing policy, ADR-011 and the companion architecture document were inspected but not edited as part of this review record.
+
