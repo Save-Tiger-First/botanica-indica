@@ -893,3 +893,62 @@ EVT-27–EVT-33 are proposed validation obligations. They have not been executed
 - GBIF Guide v1.0.2 (2025-09-24), §§5.6 and 7.3: https://docs.gbif.org/guide-publishing-survey-data/en/
 
 The exact term-version IRIs used in a production mapping must be pinned from the official term metadata at implementation time.
+
+ 
+## 16. Event-class semantics, current standards metadata and fixture extension — 21 November 2026
+
+**Status:** Research clarification and proposed review requirements. This does not approve the conceptual model or Task 05C.
+
+### 16.1 Current official version metadata
+
+The official TDWG indexed metadata checked for this review reports:
+- Darwin Core Conceptual Model: 2026-10-13; version IRI `http://rs.tdwg.org/dwc/doc/cm/2026-10-13`;
+- Darwin Core List of Terms: 2026-10-13; version IRI `http://rs.tdwg.org/dwc/doc/list/2026-10-13`;
+- core `dwc:` term snapshot: 2026-10-13;
+- Humboldt hierarchical-event guidance: 2026-10-13, previous 2024-02-28;
+- Humboldt Extension term list: 2026-10-13, replacing the 2026-05-26 snapshot;
+- Taxon Completeness Reported controlled-value list: 2026-10-13.
+
+The human-readable Conceptual Model and List pages returned cached 2026-05-26 content during this review. The indexed metadata reports 2026-10-13, but exact versioned resource content still needs to be captured and compared. Do not describe the discrepancy as resolved.
+
+Relevant term pins:
+- `dwc:occurrenceStatus-2026-05-26`, recommended values `detected` and `notDetected`;
+- `eco:isTaxonomicScopeFullyReported-2026-10-13`;
+- `eco:isSurveyTargetFullyReported-2026-05-26`, a distinct target-level term;
+- `eco:isSamplingEffortReported-2026-10-13`;
+- `eco:samplingEffortValue-2026-10-13`;
+- `eco:samplingEffortUnit-2026-10-13`;
+- `eco:taxonCompletenessProtocols-2026-10-13`;
+- `ecotcr` controlled-value release 2026-10-13.
+
+### 16.2 More precise reading of the Event model
+
+The Conceptual Model states:
+- Event is an action, process or set of circumstances occurring at a place during an interval.
+- Occurrence, Survey and OrganismInteraction are distinct special types of Event with their own characteristics.
+- One Event instance must not be interpreted as a combination of those special types.
+- A generic/context Event may provide shared spatiotemporal context for several distinct activities.
+- An Event hierarchy is containment: a child is entirely within its parent in space and time and has a dependent connection; a child has only one parent.
+- Survey results are expressed in the Occurrences it reports. Those reports may be target matches or bycatch.
+- An Occurrence may represent direct observation, indirect inference or non-detection of an Organism/taxon in a defined state, place and interval.
+- MaterialEntity represents physical matter and is distinct from Occurrence and MediaEntity.
+
+This supports the proposed semantic distinction but does not prescribe a relational inheritance strategy. Candidate A's shared Event identity/subtype proposal remains an implementation candidate and must be validated against distinct activity identities and the context-Event use case.
+
+### 16.3 Clarified cardinality and relationship tests
+
+The review must independently test:
+1. one Survey Event reports multiple Occurrence Events;
+2. one Occurrence may be reported by more than one Survey only where the reporting context is legitimate and traceable;
+3. a generic/context Event provides shared context for distinct Survey, Occurrence or material-gathering Events without being treated as one of those special types;
+4. a child Event belongs to at most one parent and is fully contained in parent space/time;
+5. Survey-to-Occurrence reporting does not imply parent-child containment;
+6. a Survey may report target detections and bycatch with distinct roles;
+7. explicit non-detection is not the same as no Occurrence row;
+8. a post-facto target filter does not rewrite original sampling intent.
+
+### 16.4 Additional fixture requirements
+
+EVT-34–EVT-44 in the associated validation pack and Task 05D are proposed synthetic fixtures. They cover target detection, bycatch, explicit non-detection, unknown from a missing row, incomplete reporting, repeated visits, post-facto filters, herbarium collection, multiple plants in one image, shared context Event and separate reporting/hierarchy links.
+
+These tests are not executed. ODR-01 remains an export-only policy decision; current term/profile mappings must be pinned and validated before implementation. DR-09 remains open pending exact versioned resource retrieval. Task 05C remains not approved; Task 05E remains not ready.
