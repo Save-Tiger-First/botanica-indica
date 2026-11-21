@@ -539,3 +539,91 @@ This audit is a document-level consistency review. It does not:
 - GBIF Guide for publishing biological survey and monitoring data to GBIF v1.0.2 (2025-09-24): https://docs.gbif.org/guide-publishing-survey-data/en/
 - GBIF sampling-event data quality requirements: https://www.gbif.org/data-quality-requirements-sampling-events
 
+
+---
+
+## 16. Further TDWG/Humboldt interpretation correction — 21 November 2026
+
+**Purpose:** refine Sections 15.2–15.8 in light of direct retrieval of the current Darwin Core Conceptual Model, List of Terms, Humboldt term definitions and GBIF survey guidance. This addendum supersedes any broader wording in Section 15 that could be read as prohibiting all hierarchy-aware interpretation or requiring a particular SQL inheritance implementation.
+
+### 16.1 Conceptual specialization is not a mandated SQL inheritance pattern
+
+The directly retrieved Darwin Core Conceptual Model page displays 2026-05-26 as its version and states that the model does not prescribe a technology or strict implementation blueprint. It distinguishes Occurrence, Organism Interaction, Survey and generic Event as Event types. It also explains that a single generic/context Event may provide shared spatio-temporal context to multiple activities. A single Event instance must not be treated as a combination of the special classes merely because the conceptual diagram connects them to Event.
+
+Therefore, Task 05C does not have to implement SQL table inheritance. It must demonstrate a semantically faithful implementation. A separate Event table and Occurrence table may be appropriate if:
+- the Occurrence's Event nature and distinct occurrence-specific state are represented;
+- the separate contextual Event identity is not confused with the Occurrence's own Event identity;
+- Survey is modelled with its own distinct characteristics;
+- contextual and reporting relationships are explicitly typed; and
+- no contradictory or duplicated event facts are created.
+
+The existing Candidate A and Candidate B 1-to-many Event→Occurrence relationship is not, by itself, proof that the design is wrong. The unresolved issue is whether that link means contextualization, hierarchy, specialization or reporting. The candidates must state and enforce the intended semantics rather than leave the relationship label ambiguous.
+
+### 16.2 SurveyTarget supports both a priori intention and post-facto filtering
+
+Directly retrieved Darwin Core Conceptual Model §2.2 states that a SurveyTarget may declare what was sought either through a priori intention or through post-facto filtering. The same section says Survey results are expressed through reported Occurrences, which may match target criteria or be incidental/bycatch.
+
+Consequences:
+- EVT-D03 must not restrict SurveyTarget to pre-fieldwork intention.
+- Preserve target origin/mode (a priori intent, post-facto filter, or other explicitly justified mode), criteria, author/agent, time and provenance.
+- Never rewrite a post-facto filter as original field intent.
+- Do not retrospectively invent a scope to justify an absence inference.
+- Include target include/exclude criteria and combinations of taxonomic, environmental and organismal scope where relevant.
+
+### 16.3 Reporting completeness, sampling completeness and detectability are distinct
+
+Directly retrieved List of Terms definitions confirm:
+- eco:isSurveyTargetFullyReported (term version 2026-05-26): whether all counts of detected Occurrences matching an eco:SurveyTarget were fully reported.
+- eco:isTaxonomicScopeFullyReported (term version 2026-10-13): whether every detected Occurrence within the stated taxonomic scope was reported.
+- dwc:occurrenceStatus (term version 2026-05-26): a statement about detection or non-detection of an Organism during an Event; recommended default values are detected and notDetected.
+
+These reporting-completeness terms do not establish exhaustive field coverage, perfect protocol execution, detectability or 100% detection probability. The logical model must distinguish target intent, protocol selected, protocol performed, effort expended, assessment status, spatial/temporal coverage, reporting completeness, detectability limitations and explicit Occurrence result.
+
+### 16.4 Hierarchy rules: no implicit property inheritance, but explicit scope propagation and bounded inference
+
+The GBIF survey guide v1.0.2 §3.2.2 says:
+- child Event values must not be assumed to inherit from parent Events;
+- parent Event values must not be derived or summarized from child Events;
+- values applicable at multiple levels should be explicitly reported at each level.
+
+The Humboldt hierarchical-event guidance's Principle of Inference separately says that scope/completeness terms can support interpretation across a hierarchy. Such terms MUST be populated at the highest-level Survey to which they apply and at every descendant Survey to which the same scope/completeness statement applies. Scope terms must be populated whenever the scope was in effect and must not be inferred retrospectively.
+
+These are compatible rules:
+- no silent copying of parent values into child records;
+- no calculation of parent values from child records;
+- explicit repeated reporting of scope/completeness at each applicable Survey level;
+- profile- and scope-bounded inference only when the exact conditions are satisfied.
+
+The TDWG hierarchy guidance also defines a child Event as wholly contained within its single parent in both space and time, with a dependent connection. Add a test for containment violations.
+
+### 16.5 Standards publication version discrepancy remains unresolved
+
+Direct retrieval of the current Darwin Core Conceptual Model and List pages displays 2026-05-26 as the current page version. Search-indexed metadata in this review session has also surfaced 2026-10-13 publication dates for TDWG resources. Direct retrieval of exact 2026-10-13 versioned Conceptual Model/List resources was unavailable, and the hierarchy landing page retrieval returned a cache miss. Do not state that the 2026-10-13 Conceptual Model or List publication is verified.
+
+At the same time, the directly retrieved List contains individual Humboldt term versions dated 2026-10-13, including eco:isTaxonomicScopeFullyReported, eco:protocolDescriptions, eco:protocolReferences and several organismal-scope completeness terms. Other terms remain at 2026-05-26, including eco:isSurveyTargetFullyReported and dwc:occurrenceStatus. This confirms that publication date and individual term-version date must not be conflated.
+
+**DR-09 remains OPEN.** Pin the exact resource and term-version IRIs only after reproducible retrieval. The direct page display and search-index metadata discrepancy must be recorded, not guessed away.
+
+### 16.6 Owner policy decision still required: implicit absence in external exports
+
+GBIF guide v1.0.2 explicitly describes implicit absence in DwC-A when eco:isTaxonomicScopeFullyReported is true and a target or excluded taxonomic scope is specified. It explains that an unreported taxon within the fully reported scope can then be interpreted as not detected. The guide also states that absence cannot be asserted for bycatch.
+
+This is not inference from a missing row alone: it depends on explicit scope and reporting-completeness metadata. Nevertheless, the permanent AI Project Operating Prompt says “Never infer absence from a missing record.”
+
+**Project-owner clarification is still required:** does the no-inference rule prohibit implicit absence even in a strictly scoped, profile-specific export, or may Botanica Indica support that external interpretation when all Humboldt/GBIF prerequisites are explicitly satisfied? No implementation of implicit absence export should begin until the owner decision is recorded. This review does not change the operating prompt.
+
+### 16.7 Validation suite extension
+
+The EVT pack now contains EVT-23–EVT-26. The complete proposed suite is EVT-01–EVT-26. All remain **Not tested** until executable fixtures, expected results, implementation revision and reviewer evidence are recorded.
+
+### 16.8 Source references
+
+- Darwin Core Conceptual Model, direct page: https://dwc.tdwg.org/cm/
+- Darwin Core List of Terms, direct page: https://dwc.tdwg.org/list/
+- Darwin Core occurrenceStatus term: http://rs.tdwg.org/dwc/terms/version/occurrenceStatus-2026-05-26
+- Humboldt isSurveyTargetFullyReported term: http://rs.tdwg.org/eco/terms/version/isSurveyTargetFullyReported-2026-05-26
+- Humboldt isTaxonomicScopeFullyReported term: http://rs.tdwg.org/eco/terms/version/isTaxonomicScopeFullyReported-2026-10-13
+- GBIF Guide for publishing biological survey and monitoring data v1.0.2 (2025-09-24): https://docs.gbif.org/guide-publishing-survey-data/en/
+- Humboldt hierarchical-event guidance: https://dwc.tdwg.org/hierarchy/
+
+No accepted ADR or Task 05B/05C/05D proposal was changed. No model decision was approved. No test was executed. Task 05C remains NOT APPROVED; Task 05E remains NOT READY.
