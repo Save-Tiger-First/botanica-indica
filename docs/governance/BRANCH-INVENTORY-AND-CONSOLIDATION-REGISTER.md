@@ -485,3 +485,20 @@ The proposal retains Candidate A's original content and recommends a shared Even
 **Stacked dependency warning:** PR #11 (Task 05D v3) remains open/draft and is based on Candidate A. After the Candidate A update, the GitHub compare result is **diverged**, with Task 05D v3 **3 commits ahead and 2 commits behind** Candidate A; merge base `91c82b4f136a77aaa1edb02753ed49b2fbee86ed`. Do not merge, rebase, retarget or otherwise alter this dependency automatically. Reconcile the Task 05D diff and synchronize it through an explicit, reviewed plan before any PR decision.
 
 No branch or PR was created, merged, closed, deleted or retargeted. The seven-branch ceiling remains unmet.
+
+ 
+## 17. Scientific model and validation documentation updates — 21 November 2026
+
+Append-only documentation updates were verified on existing branches:
+
+- Task 05C Candidate A / PR #5: commit `98741843a2ba8550e2cb744658d9291fe60b8823`, blob `c8bddcdfda9f76f03afd389ff9c5a307b89bd906`.
+- Task 05B dictionary / PR #4: commit `8936fe87a2c32da861c7f6a08d52603c9e545d21`, blob `b6827f8149313f0e70ac6a8873108aae509eb785`.
+- Task 05D v3 / PR #11: commit `9d383c4206f2d48bd31b04c6ebb5bd97bf7b87df`, blob `27a12b960d84b504fe915da4681d2f2511bdb086`.
+
+The new sections clarify Event special types, generic/context Event use, Survey reporting of Occurrences, bycatch, explicit non-detection, target origin and current standards metadata. Synthetic fixtures EVT-34–EVT-44 are proposed only; none has been executed.
+
+Current repository audit at the start of this work found 23 branches and 20 open PRs. The long-lived branches remain `main`, `develop` and `staging`. The immediate ceiling of seven total branches is not met. No branch was created, deleted, renamed or retargeted; no PR was merged or closed; no protection setting was changed.
+
+PR #11 remains based on Candidate A and has diverged from its updated branch. Its dependency requires a full diff review and a separately approved synchronization plan. Do not merge, rebase or retarget it blindly.
+
+No scientific model, ADR, physical schema, API contract, export profile or implementation was approved by these documentation updates.
