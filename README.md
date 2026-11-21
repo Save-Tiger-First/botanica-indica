@@ -168,7 +168,7 @@ Licensing will be determined by asset and component type. Software, shared infra
 
 Each repository, component and dataset release must clearly identify its applicable license and third-party obligations.
 
-See the licensing policy documentation when established. No third-party material may be assumed to be freely reusable merely because it is publicly accessible.
+A proposed [Licensing and Intellectual Property Policy](docs/governance/LICENSING-AND-IP-POLICY.md) is available for review on this branch. It is not yet approved and requires maintainer and qualified legal review. No third-party material may be assumed to be freely reusable merely because it is publicly accessible.
 
 ## 10. Current project status
 
@@ -206,6 +206,7 @@ Architecture decisions are maintained under `docs/adr/`.
 | ADR-008 | Geospatial and sensitive location data |
 | ADR-009 | Observation and contribution model |
 | ADR-010 | Data ingestion and source integration |
+| ADR-011 | STF ecosystem boundaries and shared platform (**Proposed; under review**) |
 
 New significant decisions should be documented through ADRs. Existing accepted decisions should be amended or superseded explicitly rather than silently contradicted.
 
@@ -242,7 +243,11 @@ The repository structure will evolve as reviewed product, scientific, governance
 
 ### Project governance and AI collaboration
 
-- [Permanent AI Project Operating Prompt](docs/governance/AI-PROJECT-OPERATING-PROMPT.md)
+- [Permanent AI Project Operating Prompt](docs/governance/AI-PROJECT-OPERATING-PROMPT.md) — proposed operating standard
+- [Branching and Release Governance](docs/governance/BRANCHING-AND-RELEASE-GOVERNANCE.md) — proposed policy
+- [Branch Inventory and Consolidation Register](docs/governance/BRANCH-INVENTORY-AND-CONSOLIDATION-REGISTER.md)
+- [Licensing and Intellectual Property Policy](docs/governance/LICENSING-AND-IP-POLICY.md) — proposed policy
+- [STF Ecosystem Boundaries](docs/architecture/STF-ECOSYSTEM-BOUNDARIES.md) — proposed architecture
 - [Repository and Markdown Documentation Audit](docs/reviews/REPOSITORY-AND-MARKDOWN-AUDIT-2026-11-20.md)
 
 These are proposed project operating materials on the current review branch; they are not yet merged into `main`.
