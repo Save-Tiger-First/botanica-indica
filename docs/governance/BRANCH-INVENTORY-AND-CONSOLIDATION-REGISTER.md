@@ -974,3 +974,18 @@ The successful run 44906508756 validated the code-bearing commit `c037c66865a5b5
 **Activation limitation:** the workflow file is proposed on PR #16 and is not yet present on `main`. Therefore the `create` event cannot be relied upon to detect standalone branch creation until a copy of this workflow exists on the default branch. The pull-request run did execute the live inventory check, so an unregistered branch used by a PR is detected. This is not branch-creation prevention and does not enforce the seven-branch ceiling. Do not merge PR #16 merely to activate this trigger; repository protections and owner authorization remain separate decisions.
 
 No PR or branch lifecycle action was taken; no repository settings were changed.
+
+
+## 20.15 Workflow verification after workflow-activation clarification — 21 November 2026
+
+The workflow completed successfully on PR #16 head `63bc943ccdce3cdfde5a2af48e549ac374f3873c`.
+
+- Run: [44906587030](https://github.com/Save-Tiger-First/botanica-indica/actions/runs/44906587030)
+- Event: `pull_request`; conclusion: **success**.
+- Unit tests: **27 passed**.
+- Markdown scan: **23 tracked Markdown files**.
+- PR #16 routing validation: passed.
+- Live GitHub branch inventory: 23 branches; the seven-branch ceiling warning was emitted as designed.
+- No `FutureWarning` appeared in the inspected job log.
+
+This validates the automation and workflow at commit `63bc943ccdce3cdfde5a2af48e549ac374f3873c`. The `create` trigger limitation remains as described in Section 20.14. The workflow is not a branch-creation prevention mechanism, and the seven-branch target remains unmet.
