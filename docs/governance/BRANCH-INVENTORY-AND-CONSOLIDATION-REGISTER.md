@@ -502,3 +502,12 @@ Current repository audit at the start of this work found 23 branches and 20 open
 PR #11 remains based on Candidate A and has diverged from its updated branch. Its dependency requires a full diff review and a separately approved synchronization plan. Do not merge, rebase or retarget it blindly.
 
 No scientific model, ADR, physical schema, API contract, export profile or implementation was approved by these documentation updates.
+
+ 
+## 18. Latest Task 05D dependency comparison — 21 November 2026
+
+Latest compare for Candidate A `docs/task-05c-logical-data-model` → Task 05D v3 `docs/task-05d-logical-model-validation-v3` is **diverged: 4 ahead / 3 behind**, merge base `91c82b4f136a77aaa1edb02753ed49b2fbee86ed`. PR #11 remains open/draft with Candidate A as its base.
+
+The updated document commits are Candidate A `98741843a2ba8550e2cb744658d9291fe60b8823`, Task 05D `9d383c4206f2d48bd31b04c6ebb5bd97bf7b87df`, and Task 05B `8936fe87a2c32da861c7f6a08d52603c9e545d21`.
+
+Do not treat divergence alone as a content conflict or as an instruction to rebase. Full graph and content review is required before a synchronization plan. No branch or PR lifecycle action has occurred. Branch count remains 23; seven-branch ceiling remains unmet.
