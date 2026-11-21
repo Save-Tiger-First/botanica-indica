@@ -463,3 +463,64 @@ EVT-32: hierarchical Event scope, spatiotemporal containment, applicability and 
 EVT-33: a priori and post-facto SurveyTarget origin is preserved; no retrospective scope invention.
 
 EVT-27–EVT-33 are proposed and not executed. DR-09 remains OPEN until exact versioned resources are compared. ODR-01 remains an export-only policy decision; no model, profile or implementation is approved by these additions.
+
+ 
+## 9. Current standards verification and Event/Survey fixture extension — 21 November 2026
+
+**Status:** Desk-research correction and proposed validation additions. No test execution or specialist sign-off is claimed.
+
+### 9.1 Versioned source inventory
+
+| Resource | Latest version metadata checked | Important caveat |
+|---|---|---|
+| Darwin Core Conceptual Model | 2026-10-13; version IRI `http://rs.tdwg.org/dwc/doc/cm/2026-10-13` | Search-indexed official metadata reports this version; HTML page rendering during this review still displayed 2026-05-26. Exact versioned content comparison remains outstanding. |
+| Darwin Core List of Terms | 2026-10-13; version IRI `http://rs.tdwg.org/dwc/doc/list/2026-10-13` | Indexed metadata reports 2026-10-13; direct HTML rendering displayed 2026-05-26. Do not conflate document issue date with individual term versions. |
+| Core `dwc:` term snapshot | 2026-10-13; `http://rs.tdwg.org/dwc/version/terms/2026-10-13` | Individual term version IRIs remain independently dated. |
+| Humboldt hierarchical-event guidance | 2026-10-13; `http://rs.tdwg.org/dwc/doc/hierarchy/2026-10-13`; previous 2024-02-28 | Search-indexed official metadata; exact versioned document retrieval should be retained in the standards evidence bundle. |
+| Humboldt Extension term list | 2026-10-13; 2026-05-26 snapshot is marked superseded and replaced by 2026-10-13 | Pin term-level versions, not just the list snapshot. |
+| Taxon Completeness Reported controlled values | 2026-10-13; `http://rs.tdwg.org/ecotcr/version/values/2026-10-13` | The controlled-value list is a separate resource from the Humboldt term list and from the property term itself. |
+| GBIF survey and monitoring guide | v1.0.2, 2025-09-24 | External publishing guidance, not an internal schema. |
+
+### 9.2 Term-level pins confirmed in current-version metadata
+
+- `dwc:occurrenceStatus-2026-05-26` remains the retrieved term version; its definition concerns detection/non-detection of a `dwc:Organism` during a `dwc:Event`, with recommended default values `detected` and `notDetected`.
+- `eco:isTaxonomicScopeFullyReported-2026-10-13` replaces the 2024-02-28 version.
+- `eco:isSurveyTargetFullyReported-2026-05-26` is a distinct target-level term. Its definition concerns whether all detected Occurrences matching a SurveyTarget were fully reported; do not equate it with taxonomic-scope completeness.
+- `eco:isSamplingEffortReported-2026-10-13` replaces the 2024-02-28 version.
+- `eco:samplingEffortValue-2026-10-13` replaces the 2024-02-28 version.
+- `eco:samplingEffortUnit-2026-10-13` replaces the 2025-07-10 version.
+- `eco:taxonCompletenessProtocols-2026-10-13` replaces the 2025-07-10 version.
+- `eco:taxonCompletenessReported` and its method term must be pinned separately from the `ecotcr` controlled-value release.
+- `ecotcr:tcr00`, `ecotcr:tcr01` and `ecotcr:tcr02` have 2026-10-13 value versions for not reported, reported complete and reported incomplete respectively.
+
+### 9.3 Conceptual semantics that must be tested
+
+The current Darwin Core Conceptual Model describes Event as an action, process or set of circumstances at a place and interval. Occurrence, Survey and OrganismInteraction are special Event types with distinct properties; a single Event instance must not be interpreted as simultaneously being those different special types. A generic/context Event may, however, provide shared spatiotemporal context to multiple distinct activities.
+
+A Survey is a biotic survey or inventory. Its results are expressed in the Occurrences it reports; those may be target matches or bycatch. An Occurrence is an Event representing direct observation, indirect inference or a supported non-detection state for an Organism/taxon in a defined place and interval. MaterialEntity remains physical matter and is not an Occurrence or MediaAsset.
+
+The Conceptual Model is a semantic reference, not a mandated SQL inheritance pattern. Its non-normative model sections are guidance, not prescriptive implementation constraints.
+
+### 9.4 Additional proposed synthetic fixtures — not executed
+
+| ID | Fixture | Required result |
+|---|---|---|
+| EVT-34 | A priori SurveyTarget with one detected target Occurrence | Explicit SurveyOccurrenceReport target-match link and provenance |
+| EVT-35 | Same Survey reports an incidental/bycatch Occurrence | Bycatch role retained; does not satisfy target reporting completeness |
+| EVT-36 | Survey explicitly assesses a target and records non-detection with scope, method, effort, time/place and agent | Explicit attributable internal result; export mapping evaluated separately |
+| EVT-37 | No Occurrence row and no explicit SurveyTargetResult | Unknown/not assessed; no absence inference |
+| EVT-38 | Incomplete, unreported or ambiguous completeness/method evidence | ODR-01 implicit export suppressed |
+| EVT-39 | Repeated visits under a parent Event | Parent spatial/temporal containment; no silent property inheritance or child-derived parent completeness |
+| EVT-40 | A post-facto analytical target filter | Origin, author, method and timestamp retained; original scope unchanged |
+| EVT-41 | Herbarium collection Event creates physical MaterialEntity and digital MediaAsset | Material, Event, media and provenance remain distinct; no synthetic Observation forced |
+| EVT-42 | One image depicts several plants | Multiple Organism/Occurrence records only where evidence supports; grouping uncertainty retained |
+| EVT-43 | Generic context Event shared by distinct Survey and Occurrence Events | Distinct Event identities/subtypes; context association explicit |
+| EVT-44 | Survey reports an Occurrence and a separate parent-child relation is also asserted | Both relationships independently justified and tested |
+
+All fixture records must be explicitly synthetic, include expected graphs and negative assertions, and retain test-run evidence. None may be counted as real biodiversity observations.
+
+### 9.5 ODR-01 disposition
+
+ODR-01 remains an owner-authorized, export-only policy. Its conditions must be reassessed against the current Humboldt terms and the selected export profile. Internal absence is never inferred from an empty result set. Do not assume `dwc:detected/notDetected` and GBIF guide examples `present/absent` are interchangeable without a versioned mapping.
+
+**DR-09 remains OPEN** until the exact versioned Conceptual Model, List, hierarchy document, term snapshots and term definitions are captured and compared. EVT-27–EVT-44 remain proposed and unexecuted. Task 05C remains unapproved; Task 05E remains NOT READY.
