@@ -197,35 +197,35 @@ These are register-level identifiers derived from the narrative requirements in 
 
 | Proposed ID | Source basis | Requirement intent | Capability mapping | ADR / dependency | Acceptance evidence needed |
 |---|---|---|---|---|---|
-| NFR-PERF-001 | Task 03 §28 Performance | Define measurable latency budgets for each user journey and background workflow; avoid unsupported universal targets | BI-CAP-02, 08, 10, 11, 14, 15 | ADR-002, 003, 006 | Workload model, percentile latency, field-network profile, repeatable benchmark |
-| NFR-SCALE-001 | Task 03 §28 Scalability | Scale expensive workloads independently where evidence justifies it; do not infer microservices as a requirement | BI-CAP-07, 14, 15, 16 | ADR-001, 002 | Load model, capacity test, measured bottleneck and extraction rationale |
+| NFR-PERF-001 | Task 03 §28 Performance | Define measurable latency budgets for each user journey and background workflow; avoid unsupported universal targets | BI-CAP-02, BI-CAP-08, BI-CAP-10, BI-CAP-11, BI-CAP-14, BI-CAP-15 | ADR-002, 003, 006 | Workload model, percentile latency, field-network profile, repeatable benchmark |
+| NFR-SCALE-001 | Task 03 §28 Scalability | Scale expensive workloads independently where evidence justifies it; do not infer microservices as a requirement | BI-CAP-07, BI-CAP-14, BI-CAP-15, BI-CAP-16 | ADR-001, 002 | Load model, capacity test, measured bottleneck and extraction rationale |
 | NFR-AVAIL-001 | Task 03 §28 Availability | Define capability-specific availability and recovery objectives before production | BI-CAP-10–BI-CAP-16 | ADR-002, 003 | Approved SLO/SLA objectives, monitoring and recovery exercise |
-| NFR-REL-001 | Task 03 §28 Reliability | Use appropriate idempotency, retry, durable job handling and recovery for asynchronous workflows | BI-CAP-02, 07, 10, 14, 15 | ADR-002, 003, 010 | Failure injection, retry/idempotency tests, queue recovery and reconciliation |
-| NFR-OBS-001 | Task 03 §28 Observability | Provide useful logs, metrics, traces, model telemetry and audit events with privacy/retention safeguards | BI-CAP-13, 15, 16 | ADR-002, 004 | Traceable request/job, model version and actor; redaction and retention tests |
+| NFR-REL-001 | Task 03 §28 Reliability | Use appropriate idempotency, retry, durable job handling and recovery for asynchronous workflows | BI-CAP-02, BI-CAP-07, BI-CAP-10, BI-CAP-14, BI-CAP-15 | ADR-002, 003, 010 | Failure injection, retry/idempotency tests, queue recovery and reconciliation |
+| NFR-OBS-001 | Task 03 §28 Observability | Provide useful logs, metrics, traces, model telemetry and audit events with privacy/retention safeguards | BI-CAP-13, BI-CAP-15, BI-CAP-16 | ADR-002, 004 | Traceable request/job, model version and actor; redaction and retention tests |
 | NFR-MAINT-001 | Task 03 §28 Maintainability | Preserve clear modules, documented contracts and automated tests | All capabilities | ADR-001, 002, 003 | Architecture conformance, test coverage strategy, change-impact and dependency review |
-| NFR-PORT-001 | Task 03 §28 Portability | Prefer open contracts and replaceable components; avoid unsupported vendor lock-in claims | BI-CAP-07, 14, 15, 16 | ADR-001, 003, 010 | Portability assessment and tested export/rebuild/replacement paths |
-| NFR-COST-001 | Task 03 §28 Cost control | Measure storage, inference, bandwidth, data acquisition and expert-review costs | BI-CAP-02, 06, 07, 10, 15, 16 | ADR-002, 010 | Cost model based on measured workload and unit-cost telemetry |
+| NFR-PORT-001 | Task 03 §28 Portability | Prefer open contracts and replaceable components; avoid unsupported vendor lock-in claims | BI-CAP-07, BI-CAP-14, BI-CAP-15, BI-CAP-16 | ADR-001, 003, 010 | Portability assessment and tested export/rebuild/replacement paths |
+| NFR-COST-001 | Task 03 §28 Cost control | Measure storage, inference, bandwidth, data acquisition and expert-review costs | BI-CAP-02, BI-CAP-06, BI-CAP-07, BI-CAP-10, BI-CAP-15, BI-CAP-16 | ADR-002, 010 | Cost model based on measured workload and unit-cost telemetry |
 | NFR-SEC-001 | Task 03 §28 Security; §25 | Apply security-by-design and continuous security testing across clients, APIs, data, media and operations | All capabilities | ADR-002, 003, 008 | Threat model, security test plan, dependency/secrets scanning and remediation evidence |
 | NFR-ACC-001 | Task 03 §28 Accessibility; §22 | Define measurable accessibility requirements for supported web/mobile interfaces; status and confidence cannot rely on color alone | BI-CAP-08–BI-CAP-13 | ADR-001, 003 | Manual and automated accessibility assessment, assistive-technology test records |
-| NFR-DATA-001 | Task 03 §28 Data integrity; §26 | Preserve versioning, provenance, controlled mutation and scientific history | BI-CAP-01, 04, 06, 07 | ADR-004, 005, 007, 009, 010 | Data integrity suite, lineage checks, historical reconstruction and migration tests |
-| UX-MOB-001 | Task 03 §17, §20 | Support camera/gallery capture, multiple images, guided prompts, permission explanations, field usability, offline queues and sync status | BI-CAP-02, 04, 10 | ADR-006, 008, 009 | Device and low-connectivity tests; permission denial; interrupted upload/sync recovery |
-| UX-WEB-001 | Task 03 §18 | Support responsive public exploration, search, maps, accounts, expert/admin and research interfaces with appropriate access | BI-CAP-03, 08, 11–14 | ADR-002, 003 | Journey tests across roles, devices and accessibility modes |
+| NFR-DATA-001 | Task 03 §28 Data integrity; §26 | Preserve versioning, provenance, controlled mutation and scientific history | BI-CAP-01, BI-CAP-04, BI-CAP-06, BI-CAP-07 | ADR-004, 005, 007, 009, 010 | Data integrity suite, lineage checks, historical reconstruction and migration tests |
+| UX-MOB-001 | Task 03 §17, §20 | Support camera/gallery capture, multiple images, guided prompts, permission explanations, field usability, offline queues and sync status | BI-CAP-02, BI-CAP-04, BI-CAP-10 | ADR-006, 008, 009 | Device and low-connectivity tests; permission denial; interrupted upload/sync recovery |
+| UX-WEB-001 | Task 03 §18 | Support responsive public exploration, search, maps, accounts, expert/admin and research interfaces with appropriate access | BI-CAP-03, BI-CAP-08, BI-CAP-11–14 | ADR-002, 003 | Journey tests across roles, devices and accessibility modes |
 | API-CON-001 | Task 03 §19 | Document authentication, authorization, rate limiting, structured endpoints, machine-readable contracts and compatibility policy | BI-CAP-14 | ADR-003 | Contract tests, security tests, API lifecycle policy |
-| OFFLINE-001 | Task 03 §20 | Define offline reference-data caching, queued observations, sync conflict handling, storage limits and privacy | BI-CAP-04, 10 | ADR-008, 009 | Offline/online transition tests; duplicate prevention; conflict resolution; local data protection |
-| I18N-001 | Task 03 §21 | Separate language content from scientific identifiers; model common names with language and source; support localization architecture | BI-CAP-01, 03, 08–11 | ADR-004, 005 | Language metadata tests, script/search tests, reviewed translations for scientific claims |
-| NOTIF-001 | Task 03 §23 | Make notifications consent-aware, configurable and tied to meaningful workflow/security events | BI-CAP-06, 09, 10, 13 | ADR-002, 003, 009 | Preference, consent, delivery, unsubscribe and duplicate-notification tests |
-| ANALYTICS-001 | Task 03 §24 | Measure identification failures, uncertainty, corrections, expert review, observation, sync and model/data performance with minimization | BI-CAP-02, 04, 06, 15, 16 | ADR-004, 006, 007, 009 | Metric definitions, privacy review, data minimization, cohort/coverage reporting |
-| PRIV-001 | Task 03 §25; Blueprint §8 | Define account/data lifecycle, consent, location precision, children's data and retention/deletion policy by applicable legal context | BI-CAP-04, 05, 09–14 | ADR-008, 009; legal review | Data inventory, lawful-basis/consent analysis where applicable, lifecycle and access tests |
-| DER-SCI-001 | Task 03 §26 | Record taxonomic sources, geographic assertion provenance, versioned taxonomy and source-vs-inference distinctions | BI-CAP-01, 03, 05, 07 | ADR-004, 005, 010 | Provenance completeness and treatment-version tests |
-| RIGHTS-001 | Task 03 §26; Blueprint §8 | Track rights at asset and purpose level, including source dataset, embedded media and AI use; unknown rights must not be treated as permission | BI-CAP-02, 03, 07, 09, 15 | ADR-004, 010; licensing policy review | Asset-level rights fixtures and denied-use tests; LDM-12, LDM-15 |
-| AI-001 | Task 03 §27 | Keep AI modular and replaceable; retain model/pipeline/version and training/evaluation provenance | BI-CAP-02, 15 | ADR-001, 006, 007 | Model registry, reproducible inference and rollback/replacement test |
-| AI-002 | Task 03 §27 | Evaluate across India-relevant geography, taxonomic groups, plant organs and field image conditions; monitor false confidence | BI-CAP-02, 15 | ADR-006, 007; dataset rights gate | Representative dataset protocol, subgroup report, calibration/abstention analysis |
-| AI-003 | Task 03 §27 | Human feedback must not automatically become scientific ground truth; controlled model/data release required | BI-CAP-06, 09, 12, 15 | ADR-004, 006, 007, 009 | Feedback provenance, reviewer workflow, release approval and rollback evidence |
-| ADMIN-001 | Task 03 §16, §29 | Separate user/role administration, moderation, source/taxonomy curation, publishing, audit, data quality and security visibility | BI-CAP-12, 13, 16 | ADR-002, 003, 004 | Role-based admin acceptance tests and complete privileged-action audit |
-| DATA-ING-001 | Task 03 §26; Task 04 §§3–4 | Preserve source identity, dataset version, ingestion run, transformation and source-specific limitations | BI-CAP-01, 07 | ADR-004, 005, 010 | LDM-13, LDM-15; idempotent ingestion and lineage tests |
-| GEO-001 | Task 03 §17, §25, §26 | Preserve location precision, source geography, boundary versions and public disclosure policy | BI-CAP-04, 05, 10, 11 | ADR-008, 009 | LDM-10, LDM-11, LDM-14; API/search/export/log/media tests |
+| OFFLINE-001 | Task 03 §20 | Define offline reference-data caching, queued observations, sync conflict handling, storage limits and privacy | BI-CAP-04, BI-CAP-10 | ADR-008, 009 | Offline/online transition tests; duplicate prevention; conflict resolution; local data protection |
+| I18N-001 | Task 03 §21 | Separate language content from scientific identifiers; model common names with language and source; support localization architecture | BI-CAP-01, BI-CAP-03, BI-CAP-08–11 | ADR-004, 005 | Language metadata tests, script/search tests, reviewed translations for scientific claims |
+| NOTIF-001 | Task 03 §23 | Make notifications consent-aware, configurable and tied to meaningful workflow/security events | BI-CAP-06, BI-CAP-09, BI-CAP-10, BI-CAP-13 | ADR-002, 003, 009 | Preference, consent, delivery, unsubscribe and duplicate-notification tests |
+| ANALYTICS-001 | Task 03 §24 | Measure identification failures, uncertainty, corrections, expert review, observation, sync and model/data performance with minimization | BI-CAP-02, BI-CAP-04, BI-CAP-06, BI-CAP-15, BI-CAP-16 | ADR-004, 006, 007, 009 | Metric definitions, privacy review, data minimization, cohort/coverage reporting |
+| PRIV-001 | Task 03 §25; Blueprint §8 | Define account/data lifecycle, consent, location precision, children's data and retention/deletion policy by applicable legal context | BI-CAP-04, BI-CAP-05, BI-CAP-09–14 | ADR-008, 009; legal review | Data inventory, lawful-basis/consent analysis where applicable, lifecycle and access tests |
+| DER-SCI-001 | Task 03 §26 | Record taxonomic sources, geographic assertion provenance, versioned taxonomy and source-vs-inference distinctions | BI-CAP-01, BI-CAP-03, BI-CAP-05, BI-CAP-07 | ADR-004, 005, 010 | Provenance completeness and treatment-version tests |
+| RIGHTS-001 | Task 03 §26; Blueprint §8 | Track rights at asset and purpose level, including source dataset, embedded media and AI use; unknown rights must not be treated as permission | BI-CAP-02, BI-CAP-03, BI-CAP-07, BI-CAP-09, BI-CAP-15 | ADR-004, 010; licensing policy review | Asset-level rights fixtures and denied-use tests; LDM-12, LDM-15 |
+| AI-001 | Task 03 §27 | Keep AI modular and replaceable; retain model/pipeline/version and training/evaluation provenance | BI-CAP-02, BI-CAP-15 | ADR-001, 006, 007 | Model registry, reproducible inference and rollback/replacement test |
+| AI-002 | Task 03 §27 | Evaluate across India-relevant geography, taxonomic groups, plant organs and field image conditions; monitor false confidence | BI-CAP-02, BI-CAP-15 | ADR-006, 007; dataset rights gate | Representative dataset protocol, subgroup report, calibration/abstention analysis |
+| AI-003 | Task 03 §27 | Human feedback must not automatically become scientific ground truth; controlled model/data release required | BI-CAP-06, BI-CAP-09, BI-CAP-12, BI-CAP-15 | ADR-004, 006, 007, 009 | Feedback provenance, reviewer workflow, release approval and rollback evidence |
+| ADMIN-001 | Task 03 §16, §29 | Separate user/role administration, moderation, source/taxonomy curation, publishing, audit, data quality and security visibility | BI-CAP-12, BI-CAP-13, BI-CAP-16 | ADR-002, 003, 004 | Role-based admin acceptance tests and complete privileged-action audit |
+| DATA-ING-001 | Task 03 §26; Task 04 §§3–4 | Preserve source identity, dataset version, ingestion run, transformation and source-specific limitations | BI-CAP-01, BI-CAP-07 | ADR-004, 005, 010 | LDM-13, LDM-15; idempotent ingestion and lineage tests |
+| GEO-001 | Task 03 §17, §25, §26 | Preserve location precision, source geography, boundary versions and public disclosure policy | BI-CAP-04, BI-CAP-05, BI-CAP-10, BI-CAP-11 | ADR-008, 009 | LDM-10, LDM-11, LDM-14; API/search/export/log/media tests |
 
-**Identifier note:** `DER-SCI-001` is deliberately distinct from original `SCI-001`; the suffix avoids reusing the source requirement ID. The proposed derived requirements must be normalized during PRD revision to avoid overlapping or duplicate obligations.
+**Identifier note:** `DER-SCI-001` is deliberately distinct from original `SCI-001`; the `DER-` prefix marks it as a derived proposal and avoids reusing the source requirement ID. The proposed derived requirements must be normalized during PRD revision to avoid overlapping or duplicate obligations.
 
 ## 7. Task 04 architecture responsibility crosswalk
 
@@ -234,17 +234,17 @@ Task 04 v0.1 proposes architecture domains and technologies. The mapping below r
 | Architecture responsibility in Task 04 | Capability mapping | Relevant requirements | Governing ADRs | Decision status / guardrail |
 |---|---|---|---|---|
 | Identity, authentication, roles and permissions | BI-CAP-09–BI-CAP-14 | SEC-001, PRIV-001, ADMIN-001 | ADR-002, 003 | Detailed identity provider and authorization model open |
-| Taxonomy and species knowledge | BI-CAP-01, 03 | ID-007, SCI-001, SCI-002, DER-SCI-001 | ADR-004, 005, 010 | Scientific model blockers remain |
-| Geography and spatial intelligence | BI-CAP-04, 05 | ID-006, SEC-002, GEO-001 | ADR-008, 009 | Sensitive location and historical boundary requirements |
-| Media storage and processing | BI-CAP-02, 04, 07, 10 | ID-001, SEC-002, RIGHTS-001 | ADR-004, 008, 010 | Rights per asset/purpose; original/derivative distinction |
-| Evidence | BI-CAP-02, 06, 15 | ID-002, ID-003, ID-005, ID-008 | ADR-006, 007 | Evidence is a domain object; no conflation with confidence |
-| Identification and AI orchestration | BI-CAP-02, 15 | ID-002–ID-009, AI-001–AI-003 | ADR-006, 007 | Model/provider replaceability; evaluation and abstention |
-| Observations and field records | BI-CAP-04, 09, 10 | OBS-001, OBS-002, OFFLINE-001 | ADR-008, 009 | Task 05 Event/Occurrence/Observation semantics remain under review |
-| Community and expert validation | BI-CAP-06, 09, 12 | VAL-001, VAL-002 | ADR-007, 009 | Expert governance and contribution states open |
-| Search and discovery | BI-CAP-08, 11, 14 | API-001, I18N-001, GEO-001 | ADR-002, 003, 005 | Search index is derived/rebuildable; engine not selected |
-| Data ingestion and integrations | BI-CAP-07, 14 | SCI-001, SCI-002, RIGHTS-001, DATA-ING-001 | ADR-004, 005, 010 | Source rights, provenance and mapping are gating |
-| Notifications | BI-CAP-09, 10, 13 | NOTIF-001 | ADR-002, 003, 009 | Provider and event taxonomy open |
-| Audit and observability | BI-CAP-13, 16 | OPS-001, NFR-OBS-001 | ADR-002, 003, 004 | Telemetry must not leak personal/sensitive location data |
+| Taxonomy and species knowledge | BI-CAP-01, BI-CAP-03 | ID-007, SCI-001, SCI-002, DER-SCI-001 | ADR-004, 005, 010 | Scientific model blockers remain |
+| Geography and spatial intelligence | BI-CAP-04, BI-CAP-05 | ID-006, SEC-002, GEO-001 | ADR-008, 009 | Sensitive location and historical boundary requirements |
+| Media storage and processing | BI-CAP-02, BI-CAP-04, BI-CAP-07, BI-CAP-10 | ID-001, SEC-002, RIGHTS-001 | ADR-004, 008, 010 | Rights per asset/purpose; original/derivative distinction |
+| Evidence | BI-CAP-02, BI-CAP-06, BI-CAP-15 | ID-002, ID-003, ID-005, ID-008 | ADR-006, 007 | Evidence is a domain object; no conflation with confidence |
+| Identification and AI orchestration | BI-CAP-02, BI-CAP-15 | ID-002–ID-009, AI-001–AI-003 | ADR-006, 007 | Model/provider replaceability; evaluation and abstention |
+| Observations and field records | BI-CAP-04, BI-CAP-09, BI-CAP-10 | OBS-001, OBS-002, OFFLINE-001 | ADR-008, 009 | Task 05 Event/Occurrence/Observation semantics remain under review |
+| Community and expert validation | BI-CAP-06, BI-CAP-09, BI-CAP-12 | VAL-001, VAL-002 | ADR-007, 009 | Expert governance and contribution states open |
+| Search and discovery | BI-CAP-08, BI-CAP-11, BI-CAP-14 | API-001, I18N-001, GEO-001 | ADR-002, 003, 005 | Search index is derived/rebuildable; engine not selected |
+| Data ingestion and integrations | BI-CAP-07, BI-CAP-14 | SCI-001, SCI-002, RIGHTS-001, DATA-ING-001 | ADR-004, 005, 010 | Source rights, provenance and mapping are gating |
+| Notifications | BI-CAP-09, BI-CAP-10, BI-CAP-13 | NOTIF-001 | ADR-002, 003, 009 | Provider and event taxonomy open |
+| Audit and observability | BI-CAP-13, BI-CAP-16 | OPS-001, NFR-OBS-001 | ADR-002, 003, 004 | Telemetry must not leak personal/sensitive location data |
 | Mobile client | BI-CAP-10 | UX-MOB-001, OFFLINE-001, I18N-001 | ADR-001, 003, 006, 008, 009 | **Flutter governs under accepted ADR-001.** Task 04 React Native recommendation is historical candidate material only. |
 | Web client | BI-CAP-11–BI-CAP-13 | UX-WEB-001, NFR-ACC-001 | ADR-001, 002, 003 | React/Next.js remains a candidate unless separately accepted |
 | API platform | BI-CAP-14 | API-001, API-CON-001, SEC-001 | ADR-003 | API-first accepted; specific API gateway/provider open |
@@ -259,18 +259,18 @@ The following dependencies are drawn from the Scientific Data Model Review Pack 
 
 | Finding | Severity / current disposition | Requirement groups affected | Capability impact | Required closure evidence |
 |---|---|---|---|---|
-| DR-01 — internal Occurrence validity coupled to export fields | Blocking; proposed documents revised, tests still required | OBS-001, OBS-002, SCI-001, GEO-001 | BI-CAP-04, 05, 07 | Internal occurrence fixtures independent of Darwin Core export; valid loss-aware export mapping |
-| DR-02 — polymorphic subject references vs typed subject links | Blocking; proposed typed pattern exists, enforcement needs validation | ID-008, VAL-002, SCI-001 | BI-CAP-01, 04, 06 | Referential-integrity design and total-participation enforcement tests |
-| DR-03 — TCS mapping relation vocabulary | Blocking; six relation terms now specified, taxonomist review remains | ID-007, SCI-002 | BI-CAP-01, 07 | Relation direction, semantics, fixture and round-trip mapping review |
-| DR-04 — TCS accordingTo resource | Blocking; canonical resource approach proposed | ID-007, SCI-001, SCI-002 | BI-CAP-01, 07 | Single canonical resource invariant, uniqueness/FK and treatment resolution tests |
+| DR-01 — internal Occurrence validity coupled to export fields | Blocking; proposed documents revised, tests still required | OBS-001, OBS-002, SCI-001, GEO-001 | BI-CAP-04, BI-CAP-05, BI-CAP-07 | Internal occurrence fixtures independent of Darwin Core export; valid loss-aware export mapping |
+| DR-02 — polymorphic subject references vs typed subject links | Blocking; proposed typed pattern exists, enforcement needs validation | ID-008, VAL-002, SCI-001 | BI-CAP-01, BI-CAP-04, BI-CAP-06 | Referential-integrity design and total-participation enforcement tests |
+| DR-03 — TCS mapping relation vocabulary | Blocking; six relation terms now specified, taxonomist review remains | ID-007, SCI-002 | BI-CAP-01, BI-CAP-07 | Relation direction, semantics, fixture and round-trip mapping review |
+| DR-04 — TCS accordingTo resource | Blocking; canonical resource approach proposed | ID-007, SCI-001, SCI-002 | BI-CAP-01, BI-CAP-07 | Single canonical resource invariant, uniqueness/FK and treatment resolution tests |
 | DR-05 — taxonomy relationship families | Major; revised in proposals, review still needed | ID-007, SCI-002 | BI-CAP-01 | Separate concept-to-name synonym, name-to-name nomenclatural and concept-to-concept mapping tests |
-| DR-06 — mutable taxon determination on Occurrence | Major; current determination proposed as derived from Identification | ID-007, OBS-002, VAL-002 | BI-CAP-01, 04, 06 | Read-model and API consistency; determination history tests |
-| DR-07 — Occurrence/Event/non-detection semantics | Major; revised wording and LDM-16 proposed, semantic validation remains | OBS-001, OBS-002, SCI-001, GEO-001 | BI-CAP-04, 05 | Event/Survey protocol, effort, target, location and absence-vs-no-record tests |
-| DR-08 — Mango native-range geographic scale | Major; open source/geographic-resolution case | ID-006, DER-SCI-001, GEO-001 | BI-CAP-01, 05, 07 | Normalize source scopes and comparable geographic units; botanical review |
-| DR-09 — Darwin Core version metadata | Open — indexed TDWG metadata reports List and Conceptual Model issue date 2026-10-13 (previous 2026-05-26); direct List HTML and core term-list snapshot return 2026-05-26; exact versioned resources and term IRIs unresolved | API-001, SCI-001, DATA-ING-001 | BI-CAP-07, 14 | Retrieve and compare exact versioned documents and relevant term IRIs; keep document, namespace and term dates distinct |
-| DR-10 — canonical source record identifiers | Major; canonical SourceRecord linkage proposed | SCI-001, DATA-ING-001 | BI-CAP-01, 07 | Namespace, dataset version and ingestion-run uniqueness constraints |
+| DR-06 — mutable taxon determination on Occurrence | Major; current determination proposed as derived from Identification | ID-007, OBS-002, VAL-002 | BI-CAP-01, BI-CAP-04, BI-CAP-06 | Read-model and API consistency; determination history tests |
+| DR-07 — Occurrence/Event/non-detection semantics | Major; revised wording and LDM-16 proposed, semantic validation remains | OBS-001, OBS-002, SCI-001, GEO-001 | BI-CAP-04, BI-CAP-05 | Event/Survey protocol, effort, target, location and absence-vs-no-record tests |
+| DR-08 — Mango native-range geographic scale | Major; open source/geographic-resolution case | ID-006, DER-SCI-001, GEO-001 | BI-CAP-01, BI-CAP-05, BI-CAP-07 | Normalize source scopes and comparable geographic units; botanical review |
+| DR-09 — Darwin Core version metadata | Open — indexed TDWG metadata reports List and Conceptual Model issue date 2026-10-13 (previous 2026-05-26); direct List HTML and core term-list snapshot return 2026-05-26; exact versioned resources and term IRIs unresolved | API-001, SCI-001, DATA-ING-001 | BI-CAP-07, BI-CAP-14 | Retrieve and compare exact versioned documents and relevant term IRIs; keep document, namespace and term dates distinct |
+| DR-10 — canonical source record identifiers | Major; canonical SourceRecord linkage proposed | SCI-001, DATA-ING-001 | BI-CAP-01, BI-CAP-07 | Namespace, dataset version and ingestion-run uniqueness constraints |
 | DR-11 — TCS synonym target | Major; mapping clarified as TaxonConcept to TaxonName | ID-007, SCI-002 | BI-CAP-01 | TCS mapping fixture; retain TaxonNameUsage separately |
-| DR-12 — source authority/evidence classes | Major; source metadata expanded in proposals | ID-008, SCI-001, RIGHTS-001 | BI-CAP-01, 03, 07 | Source role, editorial model, scope, date, limitation and rights evidence |
+| DR-12 — source authority/evidence classes | Major; source metadata expanded in proposals | ID-008, SCI-001, RIGHTS-001 | BI-CAP-01, BI-CAP-03, BI-CAP-07 | Source role, editorial model, scope, date, limitation and rights evidence |
 
 ### 8.2 LDM-01 to LDM-16 coverage
 
@@ -280,20 +280,20 @@ The review pack's 16 logical-model scenarios are validation obligations, not tes
 |---|---|---|---|
 | LDM-01 — same TaxonName in two treatments | ID-007, SCI-002 | BI-CAP-01 | Distinct treatment-scoped concepts; no name-string merge |
 | LDM-02 — multiple synonym names | ID-007, SCI-002 | BI-CAP-01 | Synonym targets are TaxonName; usages retained |
-| LDM-03 — partially overlapping concepts | ID-007, SCI-002 | BI-CAP-01, 07 | Typed mapping, direction, according-to source |
+| LDM-03 — partially overlapping concepts | ID-007, SCI-002 | BI-CAP-01, BI-CAP-07 | Typed mapping, direction, according-to source |
 | LDM-04 — basionym and nomenclatural type | ID-007, SCI-002 | BI-CAP-01 | Separate name relation and type-specimen structure |
 | LDM-05 — observation without identification | OBS-001, OBS-002 | BI-CAP-04 | Valid observation/media without fabricated taxon |
-| LDM-06 — multiple AI candidates | ID-004, ID-009 | BI-CAP-02, 15 | Multiple candidates; no automatic confirmation |
-| LDM-07 — expert changes identification | VAL-002, OBS-002, ID-008 | BI-CAP-06, 12 | New determination; old AI/expert history retained |
+| LDM-06 — multiple AI candidates | ID-004, ID-009 | BI-CAP-02, BI-CAP-15 | Multiple candidates; no automatic confirmation |
+| LDM-07 — expert changes identification | VAL-002, OBS-002, ID-008 | BI-CAP-06, BI-CAP-12 | New determination; old AI/expert history retained |
 | LDM-08 — repeated Occurrences for one Organism | OBS-001, OBS-002 | BI-CAP-04 | Identity evidence and valid cardinality |
-| LDM-09 — MaterialEntity and multiple MediaAssets | ID-001, SCI-001, RIGHTS-001 | BI-CAP-04, 07 | Distinct evidence paths and media rights |
-| LDM-10 — conflicting native-range sources | ID-006, DER-SCI-001 | BI-CAP-01, 05, 07 | Separate scoped DistributionAssertions |
-| LDM-11 — sensitive rare-plant locality | SEC-002, GEO-001, PRIV-001 | BI-CAP-05, 10–14 | Generalization/withholding across API, export, search, logs, media and backups |
-| LDM-12 — dataset and media rights differ | SCI-001, RIGHTS-001 | BI-CAP-07, 15 | Independent asset/purpose rights decision and denied-use tests |
+| LDM-09 — MaterialEntity and multiple MediaAssets | ID-001, SCI-001, RIGHTS-001 | BI-CAP-04, BI-CAP-07 | Distinct evidence paths and media rights |
+| LDM-10 — conflicting native-range sources | ID-006, DER-SCI-001 | BI-CAP-01, BI-CAP-05, BI-CAP-07 | Separate scoped DistributionAssertions |
+| LDM-11 — sensitive rare-plant locality | SEC-002, GEO-001, PRIV-001 | BI-CAP-05, BI-CAP-10–14 | Generalization/withholding across API, export, search, logs, media and backups |
+| LDM-12 — dataset and media rights differ | SCI-001, RIGHTS-001 | BI-CAP-07, BI-CAP-15 | Independent asset/purpose rights decision and denied-use tests |
 | LDM-13 — re-ingestion and stable identifiers | SCI-001, DATA-ING-001 | BI-CAP-07 | New DatasetVersion/IngestionRun; idempotency and lineage |
-| LDM-14 — district boundary history | ID-006, GEO-001 | BI-CAP-05, 07 | Versioned boundary; historic evidence not rewritten |
-| LDM-15 — restricted raw payload | SCI-001, RIGHTS-001, PRIV-001 | BI-CAP-07, 13 | No prohibited payload in storage, logs, backups; permitted metadata only |
-| LDM-16 — explicit survey non-detection | OBS-001, OBS-002, GEO-001 | BI-CAP-04, 05 | Defined survey/event, protocol, effort, target, time and place; missing record remains unknown |
+| LDM-14 — district boundary history | ID-006, GEO-001 | BI-CAP-05, BI-CAP-07 | Versioned boundary; historic evidence not rewritten |
+| LDM-15 — restricted raw payload | SCI-001, RIGHTS-001, PRIV-001 | BI-CAP-07, BI-CAP-13 | No prohibited payload in storage, logs, backups; permitted metadata only |
+| LDM-16 — explicit survey non-detection | OBS-001, OBS-002, GEO-001 | BI-CAP-04, BI-CAP-05 | Defined survey/event, protocol, effort, target, time and place; missing record remains unknown |
 
 ### 8.3 Mandatory validation rule
 
@@ -313,18 +313,18 @@ Task 03 Section 33 includes twelve product-baseline acceptance criteria. These s
 
 | AC ID (proposed) | Task 03 acceptance criterion | Requirement links | Capability | Evidence |
 |---|---|---|---|---|
-| AC-001 | User completes guided identification from image capture/upload to a result or explicit unknown/insufficient-evidence state | ID-001–ID-004, ID-009 | BI-CAP-02, 10 | End-to-end journey tests including failure and abstention |
-| AC-002 | System does not represent AI confidence as scientific certainty | ID-004, ID-005, ID-008 | BI-CAP-02, 06, 15 | UI/API semantic review and model score documentation |
-| AC-003 | Results show alternatives and supporting evidence | ID-004, ID-005, ID-008 | BI-CAP-02, 06 | Multi-candidate/evidence fixtures |
-| AC-004 | User can create a structured observation from an identification | OBS-001 | BI-CAP-04, 10 | Observation workflow test |
-| AC-005 | Observation can enter review without automatically changing authoritative species record | VAL-001, VAL-002, OBS-002 | BI-CAP-04, 06, 12 | Authorization and determination separation tests |
-| AC-006 | Species information displays accepted name, taxonomy, distribution and provenance when data exists | ID-007, ID-008, SCI-001, SCI-002 | BI-CAP-01, 03, 05 | Source-backed profile fixtures and provenance completeness |
+| AC-001 | User completes guided identification from image capture/upload to a result or explicit unknown/insufficient-evidence state | ID-001–ID-004, ID-009 | BI-CAP-02, BI-CAP-10 | End-to-end journey tests including failure and abstention |
+| AC-002 | System does not represent AI confidence as scientific certainty | ID-004, ID-005, ID-008 | BI-CAP-02, BI-CAP-06, BI-CAP-15 | UI/API semantic review and model score documentation |
+| AC-003 | Results show alternatives and supporting evidence | ID-004, ID-005, ID-008 | BI-CAP-02, BI-CAP-06 | Multi-candidate/evidence fixtures |
+| AC-004 | User can create a structured observation from an identification | OBS-001 | BI-CAP-04, BI-CAP-10 | Observation workflow test |
+| AC-005 | Observation can enter review without automatically changing authoritative species record | VAL-001, VAL-002, OBS-002 | BI-CAP-04, BI-CAP-06, BI-CAP-12 | Authorization and determination separation tests |
+| AC-006 | Species information displays accepted name, taxonomy, distribution and provenance when data exists | ID-007, ID-008, SCI-001, SCI-002 | BI-CAP-01, BI-CAP-03, BI-CAP-05 | Source-backed profile fixtures and provenance completeness |
 | AC-007 | Taxonomic changes are versioned | SCI-002 | BI-CAP-01 | Treatment and version history test |
-| AC-008 | Admin/expert permissions differ from ordinary user permissions | SEC-001, VAL-001, ADMIN-001 | BI-CAP-12, 13 | Role matrix and negative authorization tests |
+| AC-008 | Admin/expert permissions differ from ordinary user permissions | SEC-001, VAL-001, ADMIN-001 | BI-CAP-12, BI-CAP-13 | Role matrix and negative authorization tests |
 | AC-009 | Core APIs are versioned and documented | API-001 | BI-CAP-14 | OpenAPI and compatibility tests |
-| AC-010 | Location, media and account data have defined privacy controls | SEC-002, PRIV-001, RIGHTS-001, GEO-001 | BI-CAP-04, 05, 07, 10–14 | End-to-end privacy/rights tests and approved policy |
-| AC-011 | Architecture supports replacing AI model without redesigning the entire product | AI-001, AI-003 | BI-CAP-02, 15 | Model adapter/contract test and replacement exercise |
-| AC-012 | Data model can support future STF biodiversity projects | NFR-MAINT-001, NFR-PORT-001, SCI-001 | BI-CAP-01, 07, 14 | Domain boundary review; no assumption that Botanica domain semantics become universal STF schema |
+| AC-010 | Location, media and account data have defined privacy controls | SEC-002, PRIV-001, RIGHTS-001, GEO-001 | BI-CAP-04, BI-CAP-05, BI-CAP-07, BI-CAP-10–14 | End-to-end privacy/rights tests and approved policy |
+| AC-011 | Architecture supports replacing AI model without redesigning the entire product | AI-001, AI-003 | BI-CAP-02, BI-CAP-15 | Model adapter/contract test and replacement exercise |
+| AC-012 | Data model can support future STF biodiversity projects | NFR-MAINT-001, NFR-PORT-001, SCI-001 | BI-CAP-01, BI-CAP-07, BI-CAP-14 | Domain boundary review; no assumption that Botanica domain semantics become universal STF schema |
 
 ## 10. Open decisions and requirement gaps
 
