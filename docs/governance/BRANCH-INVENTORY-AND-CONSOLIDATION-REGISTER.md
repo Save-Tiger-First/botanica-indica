@@ -74,9 +74,9 @@ The following three branches had no associated open PR before the current cleanu
 ### 4.3 `docs/task-05d-logical-model-validation-v2`
 
 - Commit: `76bd88980bb2536db63bbde76e3fa687503bdda1`
-- The retrieved Task 05D file is byte-for-byte identical to the v3 Task 05D file.
-- However, comparison of v2 and v3 reports divergent branch histories (two commits ahead and two behind) and a difference in the separate Task 05C model file.
-- Recommendation: compare the Task 05C file and commit history against v3. Preserve any unique required decisions; otherwise mark v2 superseded by v3.
+- **Correction from the earlier inventory:** the retrieved Task 05D v2 and v3 files are not byte-for-byte identical. Their blob SHAs differ: v2 `acf446b1bf0204fa0400621711603ab23cc80ff2` (29,512 characters) and v3 `cf0b9c10bcb2da7b102e52688f22bd8e8b69bb91` (31,197 characters).
+- Their Task 05C model files also differ: v2 `71d682da0c495b4497b6e01895ca2b75fccc3824` (43,627 characters) and v3 `e6131e867d4bc3dbc58aa1188d0fabc895429347` (44,118 characters).
+- Therefore, v2 must not be classified as a byte-identical duplicate or retired on that assumption. Compare both Task 05C and Task 05D content section by section, preserve unique findings and decision provenance, and only then determine whether v2 can be marked superseded.
 
 ### 4.4 `docs/task-05d-logical-model-validation-v3`
 
