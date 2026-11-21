@@ -398,3 +398,43 @@ The live state and source/destination comparisons are recorded in Branch Invento
 Recommendation: do not merge all 23 branch heads directly into main. Consolidate into the four existing workstream branches, integrate accepted work into develop, validate through staging, then promote to main. Keep the seven-branch interim ceiling and one-branch final requirement distinct.
 
 No merge, retarget, PR closure, branch deletion, protection change or scientific/policy approval was performed.
+
+
+## 19. Latest live pre-integration review — 21 November 2026
+
+### 19.1 Exact state inspected
+
+- Governing prompt: branch `docs/repository-audit-and-ai-operating-standard`, blob `53add3894d0502827e584614c70ad09cadaa637d`, 259 lines.
+- PR #16 head: `053e82c0fe4fc9a2bb5f03d94f464d76322433b8`; open/draft; base `develop); 136 commits, 26 changed files, 4,559 additions, 25 deletions; 136 ahead / 0 behind `develop`.
+- Branch inventory: 23 branches; 20 open PRs.
+- PR #16 has zero submitted reviews, zero review threads and zero comments. GitHub reports it mergeable, but that does not constitute review approval.
+- Exact-head check [44909118926](https://github.com/Save-Tiger-First/botanica-indica/actions/runs/44909118926) passed: 27 tests, 23 tracked Markdown files, routing validation and live branch inventory retrieval. The expected warning that the seven-branch ceiling is exceeded was emitted.
+
+### 19.2 Governance and workflow findings
+
+- The active `Protect main branch` ruleset applies only to the default branch and protects against deletion and non-fast-forward updates. It does not require pull requests, reviews or status checks, and does not cover `develop` or `staging`.
+- The branch-protection API returned 403 for `develop` and `staging`; effective classic protection settings therefore remain unverified.
+- The repository governance script rejects unknown branch names against a dated allowlist, but the seven-branch excess is a warning, not a failing gate. The `create` event runs after branch creation, so this workflow does not prevent creation. Effective prevention through repository permissions or rulesets is not verified.
+- The workflow uses read-only repository contents permission and disables checkout credential persistence. The inspected configuration does not grant write permissions to the job token.
+- The workflow validates Markdown fences and a limited class of inline relative links; its own documentation correctly describes this as a lightweight check, not a complete CommonMark parser.
+- The PR's 26-file scope includes proposed governance and licensing material, ADR-011 (Proposed), historical branch provenance, the AI operating prompt, a repository audit and automation. Their inclusion in the PR does not adopt the proposals.
+- The current branch register's Section 20.20 and this review's earlier Section 18 are historical snapshots and are superseded by register Section 20.21 and this Section 19.
+
+### 19.3 Readiness decision
+
+<text>**NOT READY FOR MERGE.**</text>
+
+Reasons:
+1. No independent maintainer review has been submitted.
+2. PR #16 remains draft.
+3. The branch ceiling remains unmet (23 versus 7), and branch-creation prevention is not verified.
+4. The main-only Hortus crosswalk still needs scientific content reconciliation before later integration into develop.
+5. Governance policy, licensing policy and ADR-011 remain proposals requiring separate owner decisions; qualified legal review remains outstanding for the licensing/contributor matters.
+
+The passing workflow is positive evidence of automation integrity, not a substitute for the above review and approval gates.
+
+### 19.4 Recommended next step
+
+Complete an independent maintainer review of the full PR #16 diff. Keep the PR open and draft until findings are resolved and the owner separately decides whether to adopt the proposed governance, licensing and ecosystem-boundary documents. Do not merge PR #16 merely because GitHub reports it mergeable.
+
+No PR was merged, closed, marked ready or retargeted. No branch was created or deleted. No protection/ruleset changed. No policy, ADR or scientific model was approved.
