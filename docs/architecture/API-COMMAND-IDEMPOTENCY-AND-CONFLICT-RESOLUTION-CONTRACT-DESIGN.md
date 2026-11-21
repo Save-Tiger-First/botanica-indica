@@ -35,7 +35,7 @@ The terms below must not be collapsed into a single “synced” or “accepted�
 |---|---|
 | Locally saved | The client durably stored a draft on the device. No server receipt exists. |
 | Queued | The client has a durable outbox command awaiting transmission or a prerequisite. |
-| Received | The server durably recorded the command envelope/receipt. |
+| `server_received` | The server durably recorded the command envelope/receipt; domain processing may still be pending. |
 | Processing | The server is validating or applying the command. |
 | Applied | The defined domain operation committed successfully. |
 | Rejected | The server refused the command; the response includes a stable reason code. |
@@ -312,7 +312,7 @@ The IETF Idempotency-Key header document is an Internet-Draft, not a published R
   "clientCommandId": "0194f5b2-opaque-example",
   "commandType": "observation.create",
   "commandSchemaVersion": "1",
-  "state": "received",
+  "state": "server_received",
   "receivedAt": "2026-11-21T09:31:12Z",
   "updatedAt": "2026-11-21T09:31:12Z",
   "result": null,
@@ -326,7 +326,7 @@ The IETF Idempotency-Key header document is an Internet-Draft, not a published R
 ### 8.2 State machine
 
 ```text
-received
+server_received
    |
    v
 processing ----------------------+
@@ -709,7 +709,7 @@ The following are **recommendations, not approved decisions**. They are intended
 | API-OD-03 | Generate a cryptographically random opaque client command ID once per logical action; persist it through app restart and long disconnection. Scope reconciliation to authenticated principal plus installation/account context. Treat installation IDs as identifiers, never credentials. Preserve a durable deduplication/tombstone strategy independent of the shorter HTTP idempotency cache. | Threat model for installation reset, account deletion, shared devices, restore-from-backup and long-offline clients. Decide tombstone retention only after privacy, legal and operational review. |
 | API-OD-04 | Keep HTTP `Idempotency-Key` distinct from client command identity. Bind it to authenticated principal and operation scope; fingerprint the semantic command payload and schema version while excluding volatile trace metadata. Reuse it only for retries of the same HTTP operation. | Recheck the IETF draft at contract freeze; define syntax, concurrency, replay and expiry behavior. Set retention from measured maximum supported offline/retry windows and risk, not an invented fixed number. |
 | API-OD-05 | Prefer a durable receipt plus recoverable asynchronous processing. Where receipt and domain mutation share a transaction, commit atomically. Where work is asynchronous, use a transactional outbox or equivalent recoverable dispatch and idempotent consumer. Keep one domain mutation path. | Backend failure model, selected persistence technology and transaction boundaries; verify crash/replay scenarios with executable tests. |
-| API-OD-06 | Use a small receipt lifecycle such as `received`, `processing`, `applied`, `rejected`, `conflict`, `blocked` and `retryable_failure`, with documented allowed transitions and terminal/resumable behavior. Use `202` only when durable receipt and asynchronous processing are confirmed. | Map each command type to response semantics; reconcile with the separate Observation, Identification, review, rights and publication state machines. Do not let a receipt imply scientific validation. |
+| API-OD-06 | Use a small receipt lifecycle such as `server_received`, `processing`, `applied`, `rejected`, `conflict`, `blocked` and `retryable_failure`, with documented allowed transitions and terminal/resumable behavior. Use `202` only when durable receipt and asynchronous processing are confirmed. | Map each command type to response semantics; reconcile with the separate Observation, Identification, review, rights and publication state machines. Do not let a receipt imply scientific validation. |
 | API-OD-07 | Use strong opaque ETags for mutable shared representations and require `If-Match` for updates where lost-update protection is needed. Prefer revision scope aligned to validated domain aggregates, not individual database columns. | Task 05C relationship/aggregate validation. Missing required precondition should have a documented response (recommended `428`); stale precondition `412`; semantic domain conflict `409`. |
 | API-OD-08 | Default to explicit conflict for concurrent scientific, location, time, taxonomic, rights, review and determination changes. Consider automatic merging only for demonstrably independent, non-scientific fields with deterministic semantics, auditability and tests. | Scientific and product reviewers must approve each merge-eligible field class. No generic last-write-wins. |
 | API-OD-09 | Use opaque, authorization-bound cursors over a consistent change sequence/snapshot. Filter by current authorization and sensitivity policy on every page. Provide explicit cursor-expiry recovery using a fresh snapshot plus tombstones or equivalent deletion/restriction markers. | Data-volume and query-plan evidence; prove no missed/duplicated changes under concurrent writes, policy changes, pagination and cursor expiry. Define retention after operational testing. |
