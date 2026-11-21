@@ -335,3 +335,21 @@ DR-09 remains open for exact versioned-resource retrieval and term-by-term compa
 ### 15.5 Status boundary
 
 This is a desk-research and source-reconciliation update. It does not approve a product baseline, Task 04 technology, vendor, data source ingestion, image rights, budget, staffing, PR, Task 05C candidate, physical schema or implementation. No independent specialist review or application test is claimed.
+
+ 
+## 16. Candidate A reconciliation proposal and stacked Task 05D dependency — 21 November 2026
+
+A source-preserving proposed reconciliation section was appended to Candidate A:
+- `docs/architecture/TASK-05C-LOGICAL-DATABASE-MODEL.md`
+- Branch `docs/task-05c-logical-data-model`, PR #5
+- Commit `ded43eea96bcaf1cb57c0689ff2b2217da2f9764`
+- Blob `2efc627683182b370fb11ab14e056aa31f894180`
+- Section 18, Event–Survey–Occurrence reconciliation proposal.
+
+This is a proposal only. It does not approve Candidate A or B, change accepted ADRs, authorize physical schema or implementation, or close DR/B/LDM/EVT findings.
+
+The proposal recommends Candidate A as the starting document for its stronger typed relationship and provenance treatment, selectively incorporating Candidate B workflow/cardinality strengths. It proposes a shared Event identity with distinct Survey and Occurrence specializations; Observation remains a separate contributor/workflow record; SurveyTarget/SurveyTargetResult and SurveyOccurrenceReport are explicit; Event hierarchy remains separate from Survey reporting.
+
+**PR #11 dependency status:** after Candidate A moved, comparison of base `docs/task-05c-logical-data-model` and head `docs/task-05d-logical-model-validation-v3` is `diverged`, **3 commits ahead / 2 behind**, merge base `91c82b4f136a77aaa1edb02753ed49b2fbee86ed`. PR #11 must not be merged/rebased/retargeted blindly. A full diff and reviewed synchronization plan are required.
+
+No PR or branch lifecycle action was taken. The 23-branch count and 20-open-PR count remain unchanged.
