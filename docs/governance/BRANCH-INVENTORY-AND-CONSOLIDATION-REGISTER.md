@@ -1094,3 +1094,9 @@ Workflow run 44908219565 completed successfully on this exact head:
 - No Python FutureWarning appeared in the inspected job log.
 
 The seven-branch target remains unmet. This run verifies the current automation on the recorded head; it does not certify independent review, repository-wide branch creation prevention, scientific/legal approval or branch protection beyond the visible ruleset. No PR or branch lifecycle action was taken.
+
+## 20.19 Final current-head CI confirmation — 21 November 2026
+
+The documentation head 32b5fa0f5f192fa3d3948038a79a10ae41b5c630 completed workflow run 44908268217 successfully. The run verified 27 unit tests, 23 tracked Markdown files, PR #16 routing, and live branch inventory retrieval (23 branches). The expected warning that 23 exceeds the seven-branch ceiling appeared. No Python FutureWarning appeared in the inspected job log.
+
+This result applies to head 32b5fa0f5f192fa3d3948038a79a10ae41b5c630, before this final append-only record. The seven-branch target remains unmet; no PR or branch lifecycle action was taken.
