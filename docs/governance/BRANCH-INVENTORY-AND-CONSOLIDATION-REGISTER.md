@@ -347,3 +347,19 @@ The PR wrapper response used during preparation did not expose base/head fields,
 - PR #16: `open`, draft `true`, base `develop`, head `docs/repository-audit-and-ai-operating-standard`, head SHA `8cb5530bdcc1960631bd70d639904f9cfa7759c0`.
 
 The authoritative full branch and PR tables in Sections 11.1 and 11.2 are retained. Their data were fetched directly from the repository API. This correction does not change any branch or PR state.
+
+
+### 11.5 Scientific-model addendum refresh — 21 November 2026
+
+After Section 11.3 was first recorded, three further append-only updates were made to the scientific review documents to capture an additional blocking semantic issue: Darwin Core Conceptual Model §§2.2–2.3 describe Survey results through Occurrences reported by the Survey and allow an Occurrence to represent a taxon-specific non-detection; the GBIF survey guide places explicit absences at Occurrence level and prohibits absence assertions for bycatch. The new EVT-19–EVT-22 scenarios are proposals and remain Not tested.
+
+Verified latest document blobs:
+- Decision paper: `eb513cde11f3013c31102318c78e278bc274ec91`
+- Validation matrix/decision register: `5eeff39d5362a70ca43b6711062742526b733dc1`
+- Task 05C competing-model reconciliation: `eeb15a19f93df5b4feaee3b2b0481b24a59d3c23`
+
+Current live repository counts: **23 branches** and **20 open PRs**.
+- PR #9: `open`, draft `true`, base `main`, head `review/scientific-data-model-review-pack`, head SHA `5bc19c190687ffcfa602d8862edca58201b37ace`.
+- PR #16: `open`, draft `true`, base `develop`, head `docs/repository-audit-and-ai-operating-standard`, head SHA `3e42ec6cd2021526663090b7419457893ddde87a`.
+
+The seven-branch ceiling remains unmet. No PR was merged, closed or retargeted; no branch was created, renamed or deleted. No external specialist review or test execution is claimed.
