@@ -438,3 +438,24 @@ The passing workflow is positive evidence of automation integrity, not a substit
 Complete an independent maintainer review of the full PR #16 diff. Keep the PR open and draft until findings are resolved and the owner separately decides whether to adopt the proposed governance, licensing and ecosystem-boundary documents. Do not merge PR #16 merely because GitHub reports it mergeable.
 
 No PR was merged, closed, marked ready or retargeted. No branch was created or deleted. No protection/ruleset changed. No policy, ADR or scientific model was approved.
+
+
+## 20. Live-state correction and ODR-01 continuity — 21 November 2026
+
+This section supersedes the earlier PR #16 head/count metadata in Sections 18 and 19. Earlier values are retained as historical snapshots.
+
+- Governing prompt: 259 lines, blob SHA `53add3894d0502827e584614c70ad09cadaa637d`.
+- Current PR #16 head: `146ddeb6daba83f679cedb03a512c82279d21666`.
+- PR #16 remains open/draft, targets `develop`, has 138 commits, 26 changed files, 4,637 additions and 25 deletions; comparison is 138 ahead / 0 behind.
+- Repository inventory remains 23 branches and 20 open PRs.
+- GitHub reports PR #16 mergeable, but independent review is still absent. Keep **NOT READY FOR MERGE**.
+- The current prompt records ODR-01, owner-authorized on 21 November 2026. It is limited to controlled, profile-specific external exports and does not approve the scientific model, final export profile, physical schema or implementation. Missing scope/completeness/provenance/mapping evidence must fail closed; EVT-27–EVT-30 and independent specialist review remain outstanding.
+- No PR lifecycle action, branch retirement, ruleset change, policy adoption or scientific approval was performed.
+
+### Maintainer review brief
+
+The next review must be performed by a maintainer other than the author of the PR changes. The reviewer should inspect the exact current 26-file diff and record a GitHub review. At minimum, the review should cover: (1) policy and prompt consistency, including the immediate seven-branch/no-new-branches directives and final one-branch requirement; (2) least-privilege workflow permissions, event timing and whether branch controls actually prevent prohibited actions; (3) governance script/test correctness, false positives/negatives and failure modes; (4) branch register provenance and ancestry accuracy; (5) compatibility of proposed ADR-011 with accepted ADR-001–010; (6) licensing/IP claims and need for qualified legal review; (7) ODR-01 wording and explicit non-authorization of scientific implementation; (8) sensitive data/secrets and public-disclosure risks; and (9) document status labels, links, dates and cross-references.
+
+A reviewer must distinguish blocking defects from recommendations, identify exact files/lines, and state whether the PR is approved, changes requested or merely commented on. A GitHub review is evidence of review, not a substitute for owner approval of policy/ADR decisions or qualified legal/scientific review.
+
+**No independent review has been performed or represented by this document.**
