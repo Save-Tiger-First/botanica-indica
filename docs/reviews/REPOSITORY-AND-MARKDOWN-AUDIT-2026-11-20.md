@@ -596,3 +596,13 @@ At the latest API check before this record:
 4. Obtain qualified Indian legal review of contributor terms, copyright, DPDP and biodiversity/ABS applicability before external contribution solicitation or regulated activity.
 5. Review the proposed policies and ADR-011 independently. CI success and GitHub mergeability are not approval.
 6. Update the branch inventory again before any retirement wave; preserve all source histories and dependencies.
+
+
+### 18.7 Final inventory refresh — 21 November 2026
+
+The Branch Inventory and Consolidation Register was refreshed after the implementation and CI checks. Its new Section 10 records all 23 live branch names and tip SHAs and all 20 open PR base/head relationships as fetched from GitHub. The update was committed on the same existing PR #16 branch:
+
+- Inventory commit: `8931ff62075ddc07fd31c57a76f4a90e2aa894c0`
+- Inventory blob: `79b6bb1e32c5329a569fe931bb7cce6a856db22a`
+
+The snapshot confirms that the seven-branch ceiling remains unmet. The four proposed retained destinations remain provisional; no PR or branch was retired. The next final-head CI run should be checked after this inventory and audit report are committed.
