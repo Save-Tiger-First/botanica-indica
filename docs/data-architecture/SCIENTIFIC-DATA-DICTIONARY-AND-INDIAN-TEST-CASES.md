@@ -1001,3 +1001,46 @@ A missing internal Occurrence row means unknown/not assessed. An explicit non-de
 Term-level version pins must be recorded individually. In particular, `eco:isTaxonomicScopeFullyReported-2026-10-13` supersedes the 2024-02-28 term version; `eco:isSurveyTargetFullyReported-2026-05-26` is a separate target-specific term whose current status must be checked in the 2026-10-13 term list; and `dwc:occurrenceStatus-2026-05-26` recommends `detected/notDetected`.
 
 **Open items:** DR-07 and DR-09 remain open; B01/B02/B16 and FLD-08 require review; EVT-31 onward are proposed and unexecuted. Candidate A and Task 05B remain proposed. No physical schema or API payload is authorized.
+
+ 
+## 17. Cross-document consistency audit and standards-version correction — 21 November 2026
+
+**Status:** Proposed audit clarification only. This section does not approve the dictionary, Task 05C, a scientific model, an export profile or a physical schema.
+
+### 17.1 Standards version correction
+
+The standards inventory must distinguish a document issue date, a vocabulary/list snapshot, and each individual term version.
+
+| Resource | What was directly verified | Required treatment |
+|---|---|---|
+| Darwin Core Conceptual Model | The directly retrieved official page identifies version 2026-05-26 and IRI `http://rs.tdwg.org/dwc/doc/cm/2026-05-26`. Search-indexed metadata previously suggested 2026-10-13, but the exact 2026-10-13 Conceptual Model resource was not retrieved in this audit. | Pin 2026-05-26 as the inspected document. Keep DR-09 open; do not call 2026-10-13 the verified current Conceptual Model until its exact resource is fetched and compared. |
+| Darwin Core hierarchical-event guidance | Official metadata identifies 2026-10-13, previous 2024-02-28; the current search result identifies Section 3 as normative. | Correct earlier references to 2024-02-28 as the current version. Preserve exact resource and content in the standards evidence bundle. |
+| Core Darwin Core term snapshot | Search-indexed official metadata identifies a 2026-10-13 snapshot, while direct HTML retrieval displayed 2026-05-26. | Record the metadata/rendering discrepancy. Pin individual term-version IRIs independently. |
+| `dwc:occurrenceStatus` | Term version 2026-05-26; recommended values `detected` and `notDetected`. | Do not silently substitute GBIF guide example values `present` and `absent`; use a tested, profile-specific mapping. |
+| Humboldt Extension terms | The 2026-05-26 snapshot is marked superseded by a 2026-10-13 snapshot in its version metadata. Individual terms have different version dates. | Pin each term and current status. In particular, `eco:isSurveyTargetFullyReported-2026-05-26` is distinct from `eco:isTaxonomicScopeFullyReported-2026-10-13`. |
+| DwC-A schemas | Official schema page lists Event, Occurrence, Taxon and Humboldt Extension schemas at 2026-10-13. | Treat these as non-normative exchange-schema resources, not the internal logical model. |
+| GBIF survey guide | v1.0.2, 2025-09-24. | Treat as publishing guidance/profile input, not an internal database specification. |
+
+### 17.2 Unresolved naming and duplicate-state issue
+
+The current documents do not use one consistent name for the proposed target-assessment concept:
+
+- This dictionary's §16 proposes **SurveyTargetResult** and includes outcome states such as `DETECTED` and `NOT_DETECTED_EXPLICIT`.
+- The EVT validation pack and competing-model reconciliation use **SurveyTargetAssessment** for an attributable assessment/completeness record.
+- The Event–Survey–Occurrence decision paper and Task 05C proposal must be checked against both usages before one term is selected.
+
+This is a substantive modelling issue. Darwin Core describes Survey results as Occurrences reported by a Survey, and Occurrence can represent a supported detection or non-detection. A separately mutable target-result state could duplicate or contradict the Occurrence state.
+
+**Recommendation for review, not an approved decision:** use a target-assessment record (working name: `SurveyTargetAssessment`) for assessment lifecycle, scope, protocol, effort, completeness, limitations and provenance. Represent the taxon/organism-level detected or explicit non-detected scientific result through the canonical Occurrence and its typed Survey reporting association. If `SurveyTargetResult` is retained, define it explicitly as either that same canonical result or a derived/non-authoritative view; do not maintain two independently editable outcome states.
+
+### 17.3 Required reconciliation
+
+Before approval:
+1. Resolve the canonical term and lifecycle of the target-assessment record.
+2. Define the single authoritative location for detected/non-detected state.
+3. Ensure SurveyTarget, assessment, Occurrence and SurveyOccurrenceReport have distinct, non-duplicative responsibilities.
+4. Test one detected target, one bycatch detection, one explicit non-detection, one not-assessed target and an empty Occurrence set.
+5. Retain ODR-01 as an owner-authorized external-export policy only; it does not authorize internal inference from missing rows.
+6. Keep B16 and DR-09 open until semantic decisions, exact term versions and selected-profile mappings are evidenced.
+
+**Disposition:** The proposed dictionary clarification remains under review. No scientific model, cardinality, export mapping or physical design is approved by this addendum.
