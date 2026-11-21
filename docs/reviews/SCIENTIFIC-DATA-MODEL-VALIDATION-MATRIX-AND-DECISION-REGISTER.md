@@ -337,3 +337,43 @@ The Task 05 and Task 05B edits are present on their existing PR branches but are
 
 
 **DR-09 retrieval-conflict addendum (20 November 2026):** latest indexed metadata for the official List and Conceptual Model reports 2026-10-13, previous 2026-05-26; the directly retrieved List page and core term-list snapshot returned 2026-05-26. The current versioned resources and relevant term IRIs must be retrieved directly before closure. Keep DR-09 open.
+
+
+---
+
+## 15. Standards currency refresh — 21 November 2026
+
+### 15.1 TDWG document versions
+
+Current official TDWG publication metadata and the 19 October 2026 ratification announcement identify 2026-10-13 versions for the Darwin Core Conceptual Model, List of Terms, Hierarchical Events guidance and maintained schemas. Record the following version IRIs in standards baselines:
+
+- Conceptual Model: `http://rs.tdwg.org/dwc/doc/cm/2026-10-13`
+- List of Terms: `http://rs.tdwg.org/dwc/doc/list/2026-10-13`
+- Hierarchical Events: `http://rs.tdwg.org/dwc/doc/hierarchy/2026-10-13`
+- Schemas: `http://rs.tdwg.org/dwc/doc/schemas/2026-10-13`
+
+Direct page rendering during this check still returned cached 2026-05-26 headers for the Conceptual Model/List pages. The current metadata and ratification announcement support recording 2026-10-13 as the newer publication baseline, but exact versioned-resource retrieval and substantive diff verification remain open.
+
+### 15.2 Term-level version pinning
+
+Do not infer an individual term's version date from the containing List publication date. The current indexed List metadata is 2026-10-13, while `dwc:occurrenceStatus` reports its own modification/version date as 2026-05-26, with term-version IRI `http://rs.tdwg.org/dwc/terms/version/occurrenceStatus-2026-05-26`. The term recommends `detected` and `notDetected` as default values.
+
+### 15.3 Non-detection mapping clarification
+
+The GBIF biological survey guide v1.0.2 (2025-09-24) describes explicit absence records using `occurrenceStatus = absent` in its DwC-A sampling-event guidance, while the current Darwin Core term notes recommend `detected` and `notDetected`. Treat this as a profile-specific export mapping question, not a contradiction to resolve by choosing one universal internal value.
+
+Internal states must distinguish detected, not detected after a valid assessment, not assessed, incomplete, indeterminate, unknown and missing. Pin the exact GBIF publishing profile, schema, extension and term versions before export implementation; test conversions and information loss. No internal result may be inferred from the absence of an Occurrence row.
+
+### 15.4 DR-09 status
+
+**DR-09 remains open, with publication metadata partially resolved.** The 2026-10-13 publication baseline supersedes the former assumption that 2026-05-26 is necessarily the latest issue. Exact versioned-resource retrieval, comparison against the previous release, term-level pinning and profile-specific non-detection mapping still require evidence. The LDM acceptance scenarios remain Not tested unless actual executable test evidence is recorded. Task 05E remains NOT READY.
+
+### 15.5 Sources
+
+- https://dwc.tdwg.org/cm/
+- https://dwc.tdwg.org/list/
+- https://dwc.tdwg.org/hierarchy/
+- https://dwc.tdwg.org/schemas/
+- https://dwc.tdwg.org/tcr/
+- https://www.tdwg.org/news/2026/dwc-oct-nov-announcement/
+- https://docs.gbif.org/guide-publishing-survey-data/en/
