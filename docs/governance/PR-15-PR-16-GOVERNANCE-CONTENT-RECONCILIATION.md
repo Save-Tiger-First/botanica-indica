@@ -134,3 +134,9 @@ The exact values in Sections 1–4 above are historical snapshots and are not ov
 - No PR was merged or closed, no branch was created or deleted, and no policy or ADR was approved.
 
 For current review findings and next actions, see `docs/reviews/PR-16-GOVERNANCE-READINESS-REVIEW-2026-11-21.md` Section 10. Preserve the earlier source SHAs and counts above as historical provenance.
+
+## Current governance ancestry refresh — 21 November 2026
+
+A fresh compare confirms the source heads of PR #15 (633105210d3a6c4c8e36287ed2dc44dee23f61ef), PR #1 (15fd4edef9afa8d22df9e23f66296ef09423d8cf) and PR #2 (e900b64c90df08f5c98181af54bf2ab0b7096759) are all ancestors of the current PR #16 branch. The respective destination comparisons are 105, 122 and 122 commits ahead / 0 behind.
+
+This ancestry preservation does not resolve the source PRs. PR #15 remains open/non-draft; PRs #1 and #2 remain open/draft. The licensing policy and ADR-011 remain proposals, not approvals. Their PR closure and source-branch retirement require separate owner authorization after review.
