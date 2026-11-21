@@ -508,3 +508,46 @@ The current reviewed document heads for this reconciliation are:
 At the latest compare check, Candidate A is the base and Task 05D v3 the head; the branches are **diverged**, with Task 05D v3 **4 commits ahead and 3 commits behind**, merge base `91c82b4f136a77aaa1edb02753ed49b2fbee86ed`. The PR #11 base remains `docs/task-05c-logical-data-model`.
 
 This is a source-history dependency, not proof of a content conflict or a merge failure. Do not rebase, retarget, merge or force-update either branch automatically. Before any PR decision, inspect the full commit graph and file diff, confirm the Task 05D validation content against the exact Candidate A and Task 05B baselines above, and prepare a non-destructive synchronization plan for owner review. No synchronization or PR lifecycle action has been performed.
+
+ 
+## 17. Cross-document consistency gate — 21 November 2026
+
+**Status:** Proposed validation-gate clarification. No test execution, specialist approval or Task 05E authorization is claimed.
+
+### 17.1 Standards-version correction
+
+The directly retrieved Darwin Core Conceptual Model page identifies the inspected document as 2026-05-26. Search-indexed metadata previously suggested 2026-10-13, but the exact 2026-10-13 Conceptual Model resource was not retrieved and compared. Pin the inspected 2026-05-26 document and keep DR-09 open until the discrepancy is resolved.
+
+The official hierarchical-event guidance is listed at 2026-10-13 (previous 2024-02-28). The core and Humboldt term snapshots have separate version histories, and individual term IRIs must be pinned independently. `dwc:occurrenceStatus-2026-05-26` recommends `detected/notDetected`; the GBIF guide's `present/absent` examples require an explicit, tested profile mapping. Do not treat the DwC-A schemas as an internal database schema.
+
+### 17.2 Cross-document entity naming and result ownership
+
+Task 05B §16 and Task 05C §18 use `SurveyTargetResult`; the EVT pack and competing-model reconciliation use `SurveyTargetAssessment`. This conflict is unresolved. The proposed `SurveyTargetResult` currently includes detected/non-detected states, which may duplicate the Occurrence-level scientific state.
+
+Task 05D must not treat either name as approved. The readiness fixtures must establish one canonical representation:
+- an attributable target-assessment lifecycle record for assessment, scope, protocol, effort, completeness, limitations and provenance; and
+- a single authoritative Occurrence-level detected or explicit non-detected result, linked to the Survey through a typed report association.
+
+This is the recommended testable separation, not an approved model decision. If the project selects another pattern, it must still prevent independently mutable duplicate outcomes.
+
+### 17.3 Mandatory consistency tests
+
+Add or retain explicit checks for:
+1. one target detection with exactly one canonical Occurrence outcome;
+2. bycatch reported by the Survey without satisfying target completeness;
+3. explicit non-detection supported by attributable assessment evidence;
+4. empty Occurrence set with no assessment remains unknown/not assessed;
+5. incomplete, unreported or ambiguous scope/completeness/method fails closed;
+6. a priori versus post-facto SurveyTarget origin remains distinguishable;
+7. SurveyOccurrenceReport and Event parent-child hierarchy are independent relations;
+8. one Event identity cannot be both Survey and Occurrence specializations;
+9. the selected export profile maps `detected/notDetected` to its required vocabulary without silently copying `present/absent`;
+10. all term, profile and mapping versions are pinned and reproducible.
+
+EVT-34–EVT-44 and the LDM/FLD cases remain proposed synthetic fixtures until executable records, expected graphs, negative assertions, actual run outputs and review evidence are committed. No test may be counted as executed merely because its specification exists.
+
+### 17.4 Readiness consequence
+
+B01, B02, B16 and DR-09 remain open until their required evidence and accountable review are recorded. ODR-01 is owner-authorized as an export-only policy; its implementation and profile validation remain pending. Candidate A and Candidate B are not approved by this addendum.
+
+**Task 05E remains NOT READY.** Do not begin physical schema/DDL, freeze API payloads or claim standards conformance until the scientific model, mappings, tests and independent review pass the documented gate.
