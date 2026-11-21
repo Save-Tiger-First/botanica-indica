@@ -136,6 +136,26 @@ Required sequence:
 
 Do not routinely merge `main` back into `develop` as a substitute for controlled promotion. If an urgent production fix is needed, create a fix branch from `main`, open a pull request to `main`, and then back-port the same fix to `develop` and `staging` through reviewed pull requests.
 
+### 4.1 Temporary grandfathering of existing direct-to-main PRs
+
+The following nine PRs already targeted `main` when routing checks were introduced. They are grandfathered only so informational CI can report their legacy status without failing. This is not merge approval, not a precedent for new PRs, and not a waiver of review or owner-approval requirements.
+
+| PR | Exact head branch |
+|---:|---|
+| #1 | `docs/asset-specific-licensing-policy` |
+| #2 | `docs/adr-011-stf-ecosystem-boundaries` |
+| #3 | `docs/task-05-data-architecture` |
+| #4 | `docs/task-05-data-dictionary` |
+| #5 | `docs/task-05c-logical-data-model` |
+| #8 | `strategy/naturetech-biodiversity-conservation-impact` |
+| #9 | `review/scientific-data-model-review-pack` |
+| #13 | `proposal/bengaluru-urban-biodiversity-feasibility-pilot` |
+| #14 | `research/bengaluru-pilot-site-selection` |
+
+The checker allowlist is keyed by both PR number and exact head branch. A different PR number or changed head does not inherit the exception. Remove an entry when its PR is retargeted or closed. Do not add exceptions without a separately documented, owner-approved policy amendment.
+
+The preferred disposition is a dependency-aware, owner-approved retargeting plan to `develop`. Do not retarget, merge or close any listed PR without required explicit authorization. A successful grandfathered CI result means only that the routing check recognizes the pre-existing exception.
+
 ## 5. Additional parallel workstreams
 
 The three designated long-lived branches are fixed: `main`, `develop` and `staging`. No fourth long-lived branch is permitted during active development.
