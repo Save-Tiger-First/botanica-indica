@@ -375,3 +375,9 @@ After the contribution, architecture metadata, branch inventory, readiness revie
 - No Python FutureWarning appeared in the inspected job log.
 
 This closes the CI verification gap for this recorded head. It does not close the governance readiness blockers: the seven-branch ceiling is unmet, independent maintainer review is absent, and effective protections for develop/staging and branch creation are not verified. Keep PR #16 open and draft.
+
+## 17. Final current-head CI confirmation — 21 November 2026
+
+The documentation head 32b5fa0f5f192fa3d3948038a79a10ae41b5c630 completed [workflow run 44908268217](https://github.com/Save-Tiger-First/botanica-indica/actions/runs/44908268217) successfully. It passed all 27 unit tests, scanned 23 tracked Markdown files, passed PR #16 routing validation, retrieved 23 live branches and emitted the expected seven-branch-ceiling warning. No Python FutureWarning appeared in the inspected job log.
+
+The seven-branch ceiling remains unmet, and independent maintainer review remains outstanding. This CI run does not approve branch governance, ADR-011, licensing policy or any scientific model.
