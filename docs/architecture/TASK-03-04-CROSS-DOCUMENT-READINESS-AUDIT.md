@@ -391,3 +391,20 @@ The next technical task should then be a focused offline/field synchronization a
 
 **Audit status:** Findings recorded; owner review required.  
 **End of audit — STF-BI-AUD-034 v0.1.**
+
+## 11. Follow-up status — offline and API synchronization architecture
+
+**Checked:** 21 November 2026  
+**Working branch:** `docs/requirements-traceability-register`
+
+The architecture gap recorded under AUD-034-03 has now been addressed at the proposal/documentation level by two linked specifications:
+
+- [STF-BI-ARCH-OFF-001 — Offline and Field Synchronization Architecture & Validation Specification](OFFLINE-FIELD-SYNCHRONIZATION-ARCHITECTURE-AND-VALIDATION-SPECIFICATION.md), proposing local drafts/outbox, retry/recovery, conflict handling, cache/privacy controls and OFF-001–OFF-036.
+- [STF-BI-API-SYNC-001 — API Command, Idempotency and Conflict-Resolution Contract Design](API-COMMAND-IDEMPOTENCY-AND-CONFLICT-RESOLUTION-CONTRACT-DESIGN.md), proposing server command identity, HTTP idempotency, durable receipts, revisions, conflict responses, media staging, change-feed recovery and API-SYNC-001–042.
+
+A consistency pass also clarified the distinction between client synchronization state, Observation lifecycle and scientific/review/rights/publication state; separated persistent client-command identity from HTTP request-retry idempotency; and distinguished HTTP 412 conditional-precondition failure from HTTP 409 domain/idempotency conflict. The generic command endpoint and synchronous resource-write façades are required to share one domain mutation control path.
+
+**Disposition:** AUD-034-03 is **partially remediated — proposed design documented; owner and specialist review outstanding**. It is not closed. The two specifications remain Proposed; their scenarios have not been executed. API-OD-01–20 and OFF-OD-01–16 remain open. Task 05C/05D blockers, authorization, rights, privacy, sensitive-location policy and implementation-readiness gates remain in force.
+
+No accepted ADR, original Task 03/04 baseline, scientific model or product requirement was amended. No API schema, code, physical database design or implementation was created. No tests or external reviews were performed.
+
