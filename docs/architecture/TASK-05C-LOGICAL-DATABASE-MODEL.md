@@ -644,3 +644,131 @@ Resolve the open decisions and update Task 05B/05C where required. Only then pro
 9. PostGIS — Database Management and Spatial Reference Systems: https://postgis.net/docs/manual-dev/en/using_postgis_dbmanagement.html
 
 All standards and technical references above were consulted as modelling guidance. The logical model is a proposed Botanica Indica design and is not itself certified as compliant with TCS, Darwin Core or GBIF publishing requirements.
+
+
+---
+
+## 18. Event–Survey–Occurrence reconciliation proposal — 21 November 2026
+
+**Status:** Proposed logical-model reconciliation for scientific and owner review. This section does not approve Task 05C, alter an accepted ADR, authorize SQL/DDL, or supersede the preceding Candidate A content. It records the recommended direction following comparison of Candidate A, Candidate B, Task 05B, Task 05D v3, the Event–Survey–Occurrence Decision Paper, the EVT validation pack and the current proposed ODR-01 policy.
+
+### 18.1 Why this reconciliation is required
+
+Candidate A currently represents Event as a contextual entity linked one-to-many to Occurrence. Candidate B makes Observation-to-Event grouping and MaterialEntity derivation more explicit, but also keeps Event and Occurrence as separate linked records. Neither candidate fully represents the Darwin Core Conceptual Model's semantics that Survey and Occurrence are distinct special types of Event.
+
+The Conceptual Model is a semantic reference, not a mandated relational schema or SQL inheritance strategy. Its current official indexed metadata reports 2026-10-13, while direct HTML rendering remains cached at 2026-05-26; exact versioned retrieval remains an open DR-09 action. The design must express the semantic distinction and preserve provenance without assuming that a particular database inheritance mechanism is required.
+
+**Recommendation:** retain Candidate A as the starting document because of its stronger typed-subject, relational-integrity, taxonomy, provenance and rights treatment. Incorporate Candidate B's useful workflow and cardinality cases selectively. Do not merge Candidate B wholesale.
+
+### 18.2 Terminology: avoid a naming collision
+
+There are two different uses of “Option B” in the review history:
+- **Task 05C Candidate B:** the alternate logical-model document on PR #21.
+- **Event–Survey–Occurrence Decision Paper Option B:** a proposed shared Event identity with Survey and Occurrence specializations.
+
+They are not the same design. Future review records should use the explicit names above rather than “Option B” without qualification.
+
+### 18.3 Recommended logical pattern
+
+The preferred review pattern is a shared Event identity with distinct specializations and typed relationships:
+
+1. **Event:** stable identity and common temporal, spatial, agent and contextual attributes for an action, process or set of circumstances. Generic contextual Events may represent a project activity, site visit, deployment or collection context.
+2. **Survey:** a distinct specialization of exactly one Event identity, with survey-specific purpose, method, protocol, effort, target scope and reporting-completeness information.
+3. **Occurrence:** a distinct specialization of exactly one Event identity, representing the state/detection context of an Organism or taxon-target at a place and interval. It is not merely an ordinary child row of a generic Event.
+4. **Observation:** remains Botanica Indica's contributor-submitted record and workflow container. It is not automatically an Event, Survey or Occurrence. It may document or support one or more of them through explicit, role-bearing links.
+5. **Organism:** remains a distinct real-world individual or defined group where identity is meaningful and supported. Do not create an Organism for every photograph or observation.
+6. **MaterialEntity:** remains physical material (specimen, sample, plant part or collection object), distinct from MediaAsset and from Occurrence.
+7. **SurveyTarget:** records what a Survey sought or later analysed, including taxonomic, organismal, trait, habitat or environmental targets where supported. Preserve whether it was declared a priori or selected post-facto, and record author, time, method and source.
+8. **SurveyTargetResult:** a proposed internal, attributable result for one Survey, target and defined scope/period. It must preserve whether the target was assessed, the outcome, reporting completeness, protocol/effort evidence, limitations and provenance. It is not a Darwin Core core class.
+9. **SurveyOccurrenceReport:** an explicit association stating that a Survey reports an Occurrence, including target-matching versus incidental/bycatch role. This is not the Event parent-child hierarchy.
+10. **ObservationEventLink / ObservationOccurrenceLink:** explicit, typed associations preserving the Observation's role, contribution, source and provenance.
+11. **Event parent-child hierarchy:** a separate relationship for genuine nested programme/site/plot/visit/collection structures. A child has at most one parent in the core hierarchy; parent and child extents must be semantically compatible.
+
+The implementation may use shared-primary-key subtype tables, another enforceable supertype/extension pattern or a different representation, provided it preserves one Event identity per Survey/Occurrence specialization, enforces subtype constraints and passes the fixtures. Choosing the physical representation is out of scope.
+
+### 18.4 Proposed cardinalities and invariants
+
+These are logical review proposals, not approved database constraints.
+
+| Relationship | Proposed cardinality | Invariant / qualification |
+|---|---|---|
+| Event → parent Event | Child 0..1 parent; parent 0..* children | Parent-child containment is genuine hierarchy, not a Survey report link |
+| Event → Survey specialization | Event 0..1 Survey specialization; each Survey exactly 1 Event identity | Survey-specific attributes belong to the specialization |
+| Event → Occurrence specialization | Event 0..1 Occurrence specialization; each Occurrence exactly 1 Event identity | Survey and Occurrence are distinct specializations; one Event instance is not both |
+| Survey → SurveyTarget | 0..* targets; each target belongs to 1 Survey | A priori and post-facto origin must be distinguishable |
+| Survey → SurveyTargetResult | 0..* results; each result identifies 1 Survey, 1 target/scope and defined period | Repeated visits/periods must not be collapsed if they represent separate assessments |
+| Survey → reported Occurrence | 0..* via SurveyOccurrenceReport | Includes target detections and incidental/bycatch; report role is explicit |
+| Occurrence → reporting Survey | 0..* via SurveyOccurrenceReport | Multiple reports only where the same occurrence is legitimately reportable in each context |
+| Observation → Event | 0..* via ObservationEventLink | Do not force every Observation to create an Event |
+| Observation → Occurrence | 0..* via ObservationOccurrenceLink | Do not force every Observation to create an Occurrence |
+| Event → MaterialEntity | 0..* collection/context relationship | Preserve material derivation and collection provenance |
+| Occurrence → MaterialEntity | 0..* via typed evidence link | MaterialEntity is evidence, not a substitute for Occurrence |
+| Organism → Occurrence | 0..* | Optional Organism identity; identity evidence required where used |
+
+### 18.5 SurveyTargetResult semantics and duplicate-state prevention
+
+A Boolean `detected` field is insufficient. The logical result must distinguish at least:
+
+- target/scope definition and version;
+- whether the target was assessed;
+- whether the assessment is complete, incomplete, inconclusive or not assessed;
+- explicit detection versus explicit non-detection;
+- whether every detected organism within the declared taxonomic scope was reported;
+- whether taxonomic completeness was assessed and which method/protocol/reference was used;
+- field protocol, effort, time, location and relevant limitations;
+- supporting Occurrences and evidence;
+- author/agent, timestamp, source, provenance and supersession history.
+
+Positive detections should be linked to the relevant Occurrence(s) through SurveyOccurrenceReport. The target-level result and its report links must be transactionally consistent and must not become two independently editable contradictory claims. If the chosen logical pattern stores a summary state, define how it is derived/reconciled from the report links and how corrections are audited.
+
+Explicit non-detection is a positive, attributable survey result, not an inference from an empty query. It requires a defined target/scope, evidence that the target was assessed, relevant method/protocol and effort information, bounded time/location, completeness context and recorded limitations. It does not prove ecological absence or perfect detectability.
+
+### 18.6 Event hierarchy is not Survey reporting
+
+Keep these relationships separate:
+
+- **Parent Event → child Event:** hierarchical containment of a nested activity, site visit, plot survey or other Event.
+- **Survey → reported Occurrence:** a Survey's reporting relationship to Occurrence records.
+- **Event context → Occurrence:** shared contextual relation only where supported by the selected Event/Occurrence representation.
+
+For the Humboldt hierarchical-event guidance, parent spatial and temporal extents must encompass child extents. Applicable scope/completeness must be explicit at every Event level to which it applies. Do not silently inherit scope or completeness from parent to child, and do not derive parent completeness from child summaries. The hierarchy guidance is version 2024-02-28, Section 3 normative; it is not a 2026-10-13 document.
+
+### 18.7 ODR-01 — internal and external non-detection boundary
+
+The project owner's ODR-01 authorizes controlled, profile-specific implicit non-detection interpretation in external exports only. It does not authorize internal inference from a missing Occurrence row and does not create an internal negative Occurrence.
+
+For the GBIF Guide v1.0.2 taxonomic-scope pattern, implicit output requires `eco:isTaxonomicScopeFullyReported=true` and an explicit `eco:targetTaxonomicScope` or `eco:excludedTaxonomicScope`, with the taxon inside the declared scope and bycatch excluded. This term is not interchangeable with `eco:taxonCompletenessReported`, `eco:taxonCompletenessProtocols` or `eco:isSurveyTargetFullyReported`. Reporting completeness, sampling effort and detectability are separate dimensions.
+
+Under the project fail-closed policy:
+- `reportedIncomplete`, `isTaxonomicScopeFullyReported=false`, missing/unreported/ambiguous required completeness, missing required method evidence, unpinned versions or unvalidated mappings suppress implicit output;
+- post-facto target filters must not be represented as original a priori sampling scope or used to invent historical scope;
+- missing internal Occurrence rows remain unknown/not assessed;
+- the derived export wording must mean only “not detected/reported within the stated survey scope under documented survey conditions”, never biological absence.
+
+Pin exact profile, term, vocabulary, taxonomic treatment and mapping versions and retain a reproducible audit trail.
+
+### 18.8 Reconciliation with existing validation obligations
+
+The proposal must be validated against, not substituted for, the existing review inventory:
+
+- **B01:** Observation–Occurrence cardinality and ownership.
+- **B02:** Event, Survey, plot and sampling hierarchy.
+- **B16:** internal non-detection semantics and external sampling-event mapping.
+- **DR-07:** Observation/Event/Occurrence semantics.
+- **DR-09:** exact standards-resource and term-version retrieval.
+- **LDM-05–LDM-09:** observation, identification, organism, material and evidence workflows.
+- **LDM-16 / FLD-08:** explicit internal non-detection and the negative test proving that a missing Occurrence row is unknown.
+- **EVT-27–EVT-33:** export eligibility, fail-closed behavior, hierarchy, completeness and a priori/post-facto target origin.
+
+All EVT/LDM/FLD scenarios remain proposed until reproducible fixtures are executed and evidence is reviewed. The proposal does not close any finding.
+
+### 18.9 Required next actions
+
+1. Produce a clean consolidated Candidate A revision only after review of this proposal and the source-preserving candidate history.
+2. Update Task 05B's conceptual dictionary to use the same Event/Survey/Occurrence terms and result distinctions, retaining the source history.
+3. Reconcile Task 05D v3 to the exact Candidate A head and all EVT/LDM/FLD tests; PR #11's stacked dependency must be rechecked after any Candidate A update.
+4. Build representative field fixtures: single plant, multiple plants in one image, repeated plot visit, targeted survey with detection, explicit non-detection, incomplete survey, bycatch, post-facto filter, herbarium collection, and nested Event hierarchy.
+5. Obtain qualified field ecology, botanical taxonomy, biodiversity-informatics and database review. Reviewer competence and scope must be recorded; no independent approval is implied by this desk proposal.
+6. Execute tests, record actual outputs and resolve contradictions before Task 05E readiness review.
+
+**Decision status:** Proposed for owner and discipline review. Candidate A remains unapproved. Candidate B remains an alternative source document. Task 05C is NOT APPROVED. Task 05E / physical database design remains NOT READY. No physical schema, DDL, API payload freeze or implementation is authorized.
