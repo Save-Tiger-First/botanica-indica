@@ -264,3 +264,17 @@ Each source head is therefore an ancestor of the integrated PR #16 head. The com
 ### Remaining work
 
 These integrations preserve ancestry; they do **not** constitute approval or merge of the licensing policy, ADR-011, branch lifecycle policy, or PR #16 into `develop`. The content and decisions still require review under the operating prompt. The source PRs and branches must not be closed or deleted until the owner separately authorizes those actions and all relevant PR dependencies, review requirements and preservation gates have been resolved.
+
+
+
+## Current-state addendum — 21 November 2026, automation-hardening pass
+
+The historical snapshots above remain unchanged and should be read as records of their respective audit dates. Current live state is recorded in `docs/governance/BRANCH-INVENTORY-AND-CONSOLIDATION-REGISTER.md` Section 20.11 and `docs/reviews/PR-16-GOVERNANCE-READINESS-REVIEW-2026-11-21.md` Section 10.
+
+- PR #16 current head: `6f27e14668b4749fa1210f78c00b0d78f2b99e74`; open, draft, base `develop`.
+- PR #16 vs `develop`: 110 ahead / 0 behind.
+- PR #15 head remains an ancestor of PR #16: 92 ahead / 0 behind.
+- Live inventory: 23 branches; 20 open PRs.
+- The three automation files were updated and verified by blob SHA as recorded in Section 20.11.3 of the branch register.
+- Current-head CI is not verified. The earlier successful run 44901677252 belongs to commit `05bf12ec34c724ada2aec3f2631323a12878673f`, not the current head.
+- No PR lifecycle or branch lifecycle action was taken. No policy/ADR was approved.
