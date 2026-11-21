@@ -751,6 +751,77 @@ This contract does not resolve Task 05 scientific-model findings. In particular:
 
 The API can be designed at a stable boundary before the physical schema, but command payloads and canonical representations cannot be frozen until their scientific meaning and aggregate boundaries are validated. No Task 05E physical database design or migration is authorized by this document.
 
+### 19.1 Scientific-model dependency crosswalk — review status, not closure
+
+The following crosswalk translates the current Task 05C/05D and scientific review findings into API design constraints. It does not approve the scientific model, close a DR/LDM finding, or authorize physical schema work. Status labels below describe the evidence visible in the reviewed documents as of 21 November 2026.
+
+| Scientific finding | Current document-level position | API contract consequence | Gate before payload/representation freeze |
+|---|---|---|---|
+| DR-01 — internal Occurrence validity vs Darwin Core export fields | Revised in proposed Task 05B/05C; profile-specific export mapping remains to be tested. | Do not make `basisOfRecord` a universal required field in internal Observation/Occurrence commands. Preserve internal evidence/provenance and derive export fields only where the selected profile supports them. Never invent a value to satisfy an export validator. | Validate internal record classes and profile-pinned export fixtures, including non-exportable but internally valid records. |
+| DR-02 — typed scientific subject integrity | Proposed typed IdentificationSubject row with real target FKs and a row-local exactly-one check; total participation is explicitly unresolved. ScientificAssertion uses typed links, but its full target inventory remains open. | Do not expose an unconstrained `subject_type + subject_id` pair as a trusted canonical API reference. Use a server-validated discriminated reference only after the allowed target inventory is approved. Do not accept an Identification command whose subject cannot be validated. | Prove target FK integrity, exactly-one target, one subject row per Identification, and predicate-specific ScientificAssertion target rules. |
+| DR-03 — TCS mapping vocabulary | The six exact TCS mapping relations have been adopted in the proposed model; taxonomic review and round-trip tests remain. | API schemas must not accept informal values such as `excludes` or `not_congruent` as TCS relations. Preserve relation direction and map only to the six TCS properties: `isCongruentWith`, `includes`, `isIncludedIn`, `partiallyOverlaps`, `isDisjointFrom`, `intersects`. | Taxonomist review plus import/export round-trip tests against the versioned TCS vocabulary. |
+| DR-04 — canonical TCS `accordingTo` | Proposed single canonical according-to resource; optional TaxonomicTreatment specialization must resolve to that resource. | A TaxonConcept API representation must not carry two independent competing sources for `accordingTo`. Expose a stable resource reference and any treatment view as a resolvable specialization, not a second authority. | Confirm resource registry identity, resolution and uniqueness semantics. |
+| DR-05 — relationship families | Proposed model separates concept-to-name synonym, name-to-name nomenclatural and concept-to-concept mapping relationships. | Do not implement a generic untyped `taxonRelationship` command as a shortcut. Use distinct typed operations/representations and preserve the correct subject/object classes. | Reconcile all relationship labels and fixtures; ensure no generic relationship implementation reintroduces ambiguity. |
+| DR-06 — determination history | Current determination is proposed to be derived from the applicable Identification assertion, not stored as a mutable duplicate on Occurrence. | Do not accept a direct mutable `Occurrence.taxon` or `verified` write as a substitute for a versioned Identification/determination. Read models must expose the applicable determination with scope and history. | Confirm the derivation rule across read models, API projections and historical determination scenarios. |
+| DR-07 — Event/Survey/Occurrence semantics | Revised non-detection wording and test scenarios exist, but the internal Event/Survey/Occurrence pattern remains a blocking design question. | Do not infer non-detection from an absent Occurrence record. Do not freeze Observation-to-Event or Survey-to-Occurrence payload cardinalities yet. A dedicated survey/non-detection command is not ready for contract freeze. | Resolve Event supertype/specialization or an explicitly loss-aware alternative; define parent/child Event, Observation/Event roles and cardinalities; test multiple occurrences/material entities and explicit non-detection. |
+| DR-08 — geographic scope of distribution assertions | Open comparison; the mango example is not established as a direct contradiction. | Distribution APIs must retain source, geographic unit/scale, temporal scope and assertion status. Do not collapse native/introduced status into one global Boolean or silently reconcile differing source scopes. | Normalize comparable geographies and review the underlying source/treatment evidence. |
+| DR-09 — Darwin Core version retrieval conflict | Open. Indexed metadata reports 2026-10-13 while direct page rendering and the term-list snapshot returned 2026-05-26. Exact versioned resources and term IRIs are not yet reconciled. | Every export/schema mapping must pin the exact Darwin Core document, term-list and profile version actually used. Do not label a mapping “current Darwin Core” without a verified version reference. | Retrieve and compare the exact versioned List, Conceptual Model, relevant term IRIs and target export schemas. Keep the version discrepancy visible until resolved. |
+| DR-10 — source record identity | Proposed canonical SourceRecord reference or constrained external-identifier tuple; physical uniqueness rules remain. | API source references must preserve namespace, dataset/version context and source record identity. A bare source ID or source URL must not be assumed globally unique. | Define namespace, dataset version, ingestion-run and uniqueness/replay rules in the physical model. |
+| DR-11 — TCS synonym target | Proposed synonym relation targets TaxonName; TaxonNameUsage remains separate. | Synonym endpoints/representations must identify the target TaxonName, not silently substitute a TaxonNameUsage or another TaxonConcept. Preserve the treatment/source usage separately. | Validate against the Ficus fixture and TCS semantics. |
+| DR-12 — source authority and evidence class | Proposed source metadata captures type, editorial/curation model, scope, version, access date and limitations. Source-specific review remains. | API source records must expose source identity and scope/provenance; avoid a universal source ranking or treating every source as the same kind of nomenclatural, taxonomic, floristic or community authority. | Review current profiles and terms for IPNI, POWO/WCVP, BSI and eFlora of India; document permitted use and limits. |
+
+### 19.2 API command readiness consequences
+
+The current command list is a proposal, not an approved allow-list. On the evidence presently available, I recommend the following classifications:
+
+| Proposed operation | Current classification | Reason |
+|---|---|---|
+| `observation.create` | **Candidate for a narrow contract slice, payload still constrained** | Must permit an observation without an identification or forced Occurrence. It must not invent Event/Occurrence links or imply scientific acceptance. |
+| `observation.update` | **Defer payload freeze** | Revision/aggregate boundaries and Observation-to-Event relationships are unresolved. |
+| `observation.withdrawal.request` | **Candidate as a request-only operation** | Must remain distinct from physical deletion, retention, moderation, publication withdrawal and scientific record history. |
+| `media.attach` | **Defer final command schema** | Requires validated target relationship, asset-specific rights and purpose eligibility, integrity verification and attachment authorization. Staged upload can be specified separately. |
+| `identification.request` | **Defer domain payload freeze** | The request may be modelled as a service invocation, but its target subject, resulting Identification relationship, candidate lifecycle and authority boundaries must follow the resolved Task 05 model. It must not create a confirmed determination by implication. |
+| Survey creation / survey result / non-detection | **Not yet in allow-list** | Event/Survey/Occurrence semantics, protocol/effort/target and reporting-completeness rules remain unresolved. |
+| Expert determination, publication approval, rights grant, sensitive-location override, administrative action | **Excluded from ordinary offline commands** | Require separate authority, evidence, policy, audit, conflict and revocation design. |
+
+A provisional API may define transport-independent principles, authentication boundaries, receipt handling, error structure and synchronization safety. It must not freeze scientific command payloads, aggregate revision boundaries or canonical entity representations while their underlying model is unresolved.
+
+### 19.3 Required API validation scenarios derived from Task 05
+
+Before API contract acceptance, add or map executable scenarios for at least:
+
+1. Observation with media and no identification is accepted as an observation without a fabricated taxon or forced Occurrence.
+2. An Observation with unavailable/uncertain event context does not receive a fabricated timestamp, location or Event association.
+3. A multi-plant Observation and a repeated plot Survey can represent multiple distinct Occurrences without assuming one plant per submission.
+4. An explicit non-detection is linked to a defined Survey/Event, target, protocol, effort, time, location and reporting completeness; a missing Occurrence remains unknown/not surveyed.
+5. Identification subject with zero targets or multiple targets is rejected; an unsupported subject type or predicate-target pairing is rejected.
+6. A changed expert determination creates a new attributable assertion; previous AI candidates and determinations remain traceable.
+7. TaxonConcept mapping preserves one canonical `accordingTo` resource and one of the six exact TCS mapping relations.
+8. TaxonConcept synonym targets TaxonName; nomenclatural name relations remain separate.
+9. Conflicting source distribution assertions remain separately scoped by geography, source and time.
+10. Sensitive coordinates remain protected across API, change feed, search, export, logs, media metadata and offline cache.
+11. Dataset rights and embedded MediaAsset rights are evaluated separately for each requested purpose.
+12. Re-ingestion preserves source namespace, dataset version, source record identity and ingestion provenance without silent overwrite.
+13. A profile-specific export may reject an internally valid record without invalidating or deleting the internal record.
+14. Command receipt state, Observation lifecycle, Identification lifecycle, review, rights and publication lifecycle remain independent.
+
+These are acceptance scenarios to implement and execute later, not test results. The Task 05D validation matrix and review pack remain the controlling scientific review artifacts; this API crosswalk does not duplicate or supersede them.
+
+### 19.4 Current standards verification relevant to this crosswalk
+
+Checked 21 November 2026 against official sources:
+
+- **Darwin Core Conceptual Model:** the directly opened TDWG page reports version issued 2026-05-26, while indexed metadata reported 2026-10-13. The opened page states that the conceptual model is a non-normative framework, does not prescribe a particular implementation technology, and allows implementations to add entities/relationships. Its current rendered Section 2 describes Event hierarchies including Occurrences and Surveys. The version discrepancy remains unresolved; use the exact versioned resource and do not silently select the indexed date as authoritative.
+- **Taxon Concept Standard:** the current List of Terms page reports version 2025-12-11. It requires `taxonName` and one `accordingTo` resource for a TaxonConcept; TCS synonym is a TaxonConcept-to-TaxonName relationship; TaxonConceptMapping requires subject, mappingRelation and object, with one of six defined mapping relations.
+- **GBIF data quality recommendations:** occurrence datasets require `occurrenceID`; `basisOfRecord` is strongly recommended in the general occurrence profile and required for GBIF-managed programmes. Sampling-event datasets have distinct event, protocol, sample-size and effort recommendations/requirements. These are publishing-profile rules, not universal internal database constraints.
+- **PostgreSQL constraints:** the current documentation warns that CHECK constraints cannot safely enforce conditions that depend on other table rows. The physical design must not claim a row-local CHECK alone guarantees that every Identification has a subject row.
+
+Official sources:
+- https://dwc.tdwg.org/cm/
+- https://tcs.tdwg.org/terms/
+- https://techdocs.gbif.org/en/data-publishing/data-quality-recommendations
+- https://www.postgresql.org/docs/current/ddl-constraints.html
+
 ## 20. Recommended implementation sequence after approval
 
 1. Approve the command/receipt vocabulary and domain command boundaries.
