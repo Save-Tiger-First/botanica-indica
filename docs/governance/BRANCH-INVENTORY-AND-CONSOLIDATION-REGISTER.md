@@ -963,3 +963,14 @@ The current automation implementation was executed successfully on PR #16 head `
 The job log and step conclusions were inspected. This verifies the current code and workflow on commit `c037c66865a5b576ef3a74717d803b941fb0a878`; it does not certify branch-creation prevention, repository ruleset configuration, independent review, legal compliance or scientific correctness.
 
 The workflow remains a monitoring/routing control. The live branch count remains 23. No PR or branch lifecycle action was taken.
+
+
+## 20.14 Workflow activation and latest PR metadata clarification — 21 November 2026
+
+At the time of this addendum, PR #16 remained open/draft with head `a7284da4e2b8910d57e98ca7c7beb7124c0817a1`, 117 commits, 26 changed files, 4,196 additions and 19 deletions. It was 117 commits ahead / 0 behind `develop`. PR #15's head remained an ancestor (99 ahead / 0 behind). Live repository inventory remained 23 branches and 20 open PRs.
+
+The successful run 44906508756 validated the code-bearing commit `c037c66865a5b576ef3a74717d803b941fb0a878`: 27 tests passed, 23 Markdown files scanned, PR routing passed, and the live branch API returned 23 branches with the expected seven-branch warning. Later commits were documentation-only.
+
+**Activation limitation:** the workflow file is proposed on PR #16 and is not yet present on `main`. Therefore the `create` event cannot be relied upon to detect standalone branch creation until a copy of this workflow exists on the default branch. The pull-request run did execute the live inventory check, so an unregistered branch used by a PR is detected. This is not branch-creation prevention and does not enforce the seven-branch ceiling. Do not merge PR #16 merely to activate this trigger; repository protections and owner authorization remain separate decisions.
+
+No PR or branch lifecycle action was taken; no repository settings were changed.
