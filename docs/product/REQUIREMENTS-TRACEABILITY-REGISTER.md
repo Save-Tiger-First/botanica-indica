@@ -479,3 +479,31 @@ Before a requirement is accepted, confirm it is:
 ### DR-09 source metadata update (20 November 2026)
 
 Latest indexed official TDWG metadata reports 2026-10-13 as the issue date for both the Darwin Core List of Terms and Conceptual Model, with 2026-05-26 as the previous version. Direct HTML retrieval of the List page and the core dwc: term-list snapshot returned 2026-05-26 metadata. Exact versioned resources and relevant term IRIs have not yet been verified. DR-09 remains open; do not close it on date metadata alone.
+
+ 
+## 15. Attached research review and standards-source correction — 21 November 2026
+
+The September 2026 Master Checklist, Task 01 Charter v0.1, Task 02 Problem & Opportunity Analysis and architecture/UI/UX/effort-estimation study were reviewed as working inputs. They do not add approved requirements. Their useful concepts map to existing proposed requirements/capabilities:
+- India-first botanical intelligence and taxonomic knowledge: BI-CAP-01 / BI-CAP-03.
+- Evidence Engine, photo guidance, uncertainty and abstention: BI-CAP-02; preserve Task 03 ID-005's separation of identification confidence from evidence quality.
+- Observation, field documentation and community participation: BI-CAP-04 / BI-CAP-09.
+- Geography and ecological context: BI-CAP-05.
+- Expert review and scientific governance: BI-CAP-06.
+- Rights-aware ingestion and interoperability: BI-CAP-07 / BI-CAP-14 and RIGHTS-001.
+- Mobile, web, expert/admin and APIs: BI-CAP-10–BI-CAP-14.
+- AI/ML evaluation and operations: BI-CAP-15.
+- Analytics/observability: BI-CAP-16.
+
+The proposed “Evidence Score” must not become one universal scalar. Preserve separate model-score/calibration, evidence-quality/completeness, taxonomic support, geographic plausibility and expert-determination states. The 4,250–5,850 hour estimate is not a budget or schedule. The legacy task numbering must not be used to create a duplicate Task 04; current repository Task 04 is System Architecture & Technology Evaluation and Task 05 is Data Architecture/Scientific Data Model.
+
+### DR-09 source correction
+
+- Darwin Core Conceptual Model: current official indexed metadata reports 2026-10-13; direct HTML page remains cached at 2026-05-26; exact versioned document retrieval remains open.
+- Darwin Core List of Terms document: direct official page reports 2026-05-26.
+- Core `dwc:` vocabulary snapshot: 2026-10-13.
+- `dwc:occurrenceStatus`: term version 2026-05-26; recommended `detected` / `notDetected`.
+- Humboldt hierarchy guidance: v2024-02-28, Section 3 normative.
+- Humboldt Extension terms and controlled values have individual version dates; `eco:isTaxonomicScopeFullyReported` and `eco:isSurveyTargetFullyReported` are distinct; `eco:taxonCompletenessReported` and `eco:taxonCompletenessProtocols` must be version-pinned separately.
+- For ODR-01, incomplete or unreported completeness and absent method evidence must fail closed under the project policy; scope, reporting completeness, sampling effort and detectability remain distinct.
+
+DR-09 remains OPEN pending exact versioned-resource retrieval and term-by-term comparison. No requirements are approved or tests executed by this research review.
