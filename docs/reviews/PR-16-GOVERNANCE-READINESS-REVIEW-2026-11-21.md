@@ -300,3 +300,17 @@ The current implementation:
 It does **not** prevent a repository user from creating a branch. The `create` trigger becomes useful only after the workflow is present on the default branch, and even then it is detection after creation, not prevention. Prevention would require appropriately configured repository permissions/rulesets or another trusted control. Those settings have not been inspected or changed here.
 
 Keep PR #16 open and draft. Do not merge it solely to activate the workflow. Obtain independent review and owner authorization for any repository protection changes.
+
+
+## 13. Latest workflow evidence — 21 November 2026
+
+A subsequent run completed successfully on commit `63bc943ccdce3cdfde5a2af48e549ac374f3873c`:
+
+- [GitHub Actions run 44906587030](https://github.com/Save-Tiger-First/botanica-indica/actions/runs/44906587030)
+- 27 unit tests passed.
+- 23 tracked Markdown files scanned.
+- PR #16 routing validation passed.
+- Live branch inventory retrieved 23 branches and emitted the expected warning that the seven-branch ceiling is exceeded.
+- No Python `FutureWarning` appeared in the inspected job log.
+
+The workflow's `create` trigger remains inactive as a pre-merge branch-creation control while the workflow is absent from the default branch. The current automation detects unregistered branches when its PR inventory step runs; it does not prevent branch creation. The seven-branch ceiling remains unmet.
