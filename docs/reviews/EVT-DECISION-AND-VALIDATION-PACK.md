@@ -984,3 +984,26 @@ Task 05D must explicitly validate:
 9. scope, completeness and effort semantics without inheritance or conflation.
 
 **Disposition:** EVT-27–EVT-44 are proposed and unexecuted. DR-09 remains open. ODR-01 remains export-only and not implemented. Task 05C remains NOT APPROVED and Task 05E remains NOT READY.
+
+ 
+## 19. Cross-document target-assessment and standards correction — 21 November 2026
+
+**Status:** Review clarification; all fixture scenarios remain proposals unless execution evidence is recorded.
+
+### 19.1 Corrected standards baseline
+
+The directly retrieved official Darwin Core Conceptual Model page identifies the inspected version as 2026-05-26. Search-indexed metadata previously suggested 2026-10-13, but the exact 2026-10-13 Conceptual Model resource was not retrieved and compared. Record 2026-05-26 as the inspected document and keep DR-09 open.
+
+The official hierarchical-event guidance is listed as 2026-10-13, previous 2024-02-28. The core and Humboldt term snapshots have their own version histories; individual term versions must be pinned independently. `dwc:occurrenceStatus-2026-05-26` recommends `detected/notDetected`. GBIF Guide v1.0.2 (2025-09-24) uses `present/absent` in examples; these values must be reconciled through an explicit, tested mapping for the selected publishing profile.
+
+### 19.2 Resolve SurveyTargetAssessment versus SurveyTargetResult
+
+This pack uses `SurveyTargetAssessment`; Task 05B §16 and Task 05C §18 use `SurveyTargetResult`. The names currently overlap, and the latter includes a result state that may duplicate the Occurrence-level detection/non-detection.
+
+**Recommendation, not decision:** use the assessment record for assessment lifecycle, scope, method, effort, completeness, limitations and provenance. Keep the taxon/organism-level detection or explicit non-detection as the single canonical Occurrence-level outcome, with `SurveyOccurrenceReport` linking it to the Survey. Alternatively, if a result entity is selected as the canonical outcome, remove the duplicate mutable Occurrence state. Do not maintain both without a formal derivation and correction policy.
+
+### 19.3 Decision and validation boundary
+
+ODR-01 is already authorized by the project owner for controlled, profile-specific implicit non-detection interpretation in external exports only. It does not authorize internal inference from missing Occurrence rows, approve a target-assessment entity, settle B16 or DR-09, or approve Task 05C/05D/05E.
+
+EVT-34–EVT-44 remain proposed and unexecuted. Their expected results must be updated after the canonical assessment/outcome pattern is selected. B16 remains open; Task 05C remains NOT APPROVED and Task 05E remains NOT READY.
