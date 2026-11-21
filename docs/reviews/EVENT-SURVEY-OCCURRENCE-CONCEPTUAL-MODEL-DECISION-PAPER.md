@@ -835,3 +835,61 @@ The derived meaning is **“not detected/reported within the stated survey scope
 ODR-01 is an owner policy decision, not approval of a final export profile, Task 05C, Task 05D, Task 05E, physical schema or API contract. EVT-27–EVT-30 and specialist review remain required; export implementation remains NOT IMPLEMENTED / NOT VALIDATED.
 
 See the complete ODR-01 safeguards and term-version references in the EVT Decision and Validation Pack and the AI Project Operating Prompt clarification.
+
+ 
+## 15. Standards version and survey-inference correction — 21 November 2026
+
+This section supersedes any earlier shorthand that treated the Darwin Core List document, the core vocabulary snapshot, individual term versions and the Humboldt hierarchy document as if they shared one publication date.
+
+### 15.1 Verified publication/version distinctions
+
+| Resource | Version evidence checked | Interpretation |
+|---|---|---|
+| Darwin Core Conceptual Model | Official current TDWG metadata identifies version issued **2026-10-13**, IRI `http://rs.tdwg.org/dwc/doc/cm/2026-10-13`; direct HTML rendering remained cached at 2026-05-26 and the exact 2026-10-13 resource could not be opened in this browser review | Treat 2026-10-13 as the latest indexed official release, but retain exact-document retrieval as an open DR-09 action |
+| Darwin Core List of Terms document | Direct official page reports **2026-05-26** | This document's issue date is not the same as the main `dwc:` vocabulary snapshot |
+| Darwin Core core `dwc:` terms snapshot | Official TDWG metadata reports **2026-10-13**, IRI `http://rs.tdwg.org/dwc/version/terms/2026-10-13` | Pin this vocabulary snapshot separately from the List document |
+| `dwc:occurrenceStatus` | Term version IRI `http://rs.tdwg.org/dwc/terms/version/occurrenceStatus-2026-05-26` | Its recommended literal values are `detected` and `notDetected`; the term did not become a 2026-10-13 term merely because the vocabulary snapshot did |
+| Humboldt hierarchy guidance | Direct official page reports version **2024-02-28**; Section 3 is normative | Do not cite 2026-10-13 as the hierarchy document version |
+| Humboldt Extension terms | A 2026-10-13 term-list version supersedes the 2026-05-26 snapshot; individual terms retain their own version dates | Pin each term IRI/version independently |
+| Taxon Completeness Reported controlled values | Official 2026-10-13 version | Pin the controlled-value vocabulary version separately from the property-term versions |
+
+DR-09 is **partially resolved but remains OPEN**: the publication-date confusion is now separated into the correct resource/version categories, but exact retrieval and comparison of the 2026-10-13 Conceptual Model document and all relevant term-version IRIs is still required before production mapping. Do not state that every term was modified on 2026-10-13.
+
+### 15.2 Corrected Event, Survey and Occurrence interpretation
+
+The Darwin Core Conceptual Model is a non-normative semantic reference (only its document-status section is normative), not a relational database blueprint. It states that Survey and Occurrence have Event properties plus distinct characteristics. A single Event instance must not be interpreted as simultaneously being a Survey and an Occurrence. It also permits a contextual Event to provide shared spatio-temporal context to multiple activities, where the implementation preserves the distinct identities and relationships.
+
+A Survey Target may be based on a priori intent or post-facto filtering. That does **not** authorize a provider to retrospectively invent the original scope of a survey. Preserve whether a target was predeclared or applied as a post-facto filter, its author/time/method, and the distinction between an analytical filter and scope that was genuinely in effect during the Event.
+
+### 15.3 ODR-01 — additional safeguards for completeness and hierarchy
+
+ODR-01 remains an export-only policy decision. Apply the following clarifications:
+
+1. For the GBIF Guide v1.0.2 taxonomic-scope implicit pattern, the relevant Event must have `eco:isTaxonomicScopeFullyReported=true` and an explicit `eco:targetTaxonomicScope` or `eco:excludedTaxonomicScope`; never infer scope retrospectively and never infer non-detection for bycatch.
+2. Do not equate `eco:isTaxonomicScopeFullyReported` with `eco:taxonCompletenessReported`. The former states that every detected organism within the declared taxonomic scope was reported. The latter records whether taxonomic completeness was assessed, and `eco:taxonCompletenessProtocols` records the method/reference used to assess it.
+3. If `eco:taxonCompletenessReported` is `reportedIncomplete`, or `eco:isTaxonomicScopeFullyReported` is `false`, the Humboldt Principle of Inference says downstream users SHOULD NOT make assumptions about absences. Botanica Indica's fail-closed policy must suppress implicit non-detection in those cases. If completeness is `notReported`, missing, ambiguous or lacks its required method evidence under the chosen export profile, fail closed unless a separately approved profile-specific rule establishes otherwise.
+4. Sampling effort and detectability are separate from reporting completeness. Preserve protocol, effort, duration, area, observers/devices and limitations where available. Do not translate a reporting-completeness flag into a probability of detection or a claim of true ecological absence.
+5. Under the Humboldt hierarchy guidance, parent Event spatial and temporal extents must encompass child Events. Applicable scope/completeness terms must be explicitly populated at the highest Event level to which they apply and at each child Event to which they apply. Do not silently inherit values from parent to child, and do not derive/summarize parent values from children.
+6. The Humboldt term `eco:isSurveyTargetFullyReported` is distinct from `eco:isTaxonomicScopeFullyReported`. Do not substitute one for the other. Pin the exact term version and use only where the declared SurveyTarget semantics and selected export profile require it.
+7. A post-facto SurveyTarget/filter must be preserved as such. It is not evidence that the same scope was the original sampling intent, and must not be used to reconstruct unrecorded scope for implicit absence inference.
+
+### 15.4 New proposed acceptance scenarios — not executed
+
+- **EVT-31 — Completeness semantics:** `reportedIncomplete` or `isTaxonomicScopeFullyReported=false` blocks implicit non-detection; `notReported`, missing method evidence or ambiguous values fail closed under ODR-01 unless a reviewed profile-specific rule says otherwise. The test must distinguish reporting completeness from sampling effort and detectability.
+- **EVT-32 — Hierarchical Event scope:** verify spatial/temporal containment, explicit scope/completeness at every applicable Event level, no parent-to-child inheritance and no child-to-parent derivation.
+- **EVT-33 — A priori versus post-facto target:** retain target origin, method, author and time; a post-facto filter must not be represented as predeclared survey scope or used to invent missing scope for implicit inference.
+
+EVT-27–EVT-33 are proposed validation obligations. They have not been executed. ODR-01 does not approve a final export profile, Task 05C, Task 05D, Task 05E, physical schema, API contract or implementation.
+
+### 15.5 Authoritative references checked 21 November 2026
+
+- TDWG Darwin Core Conceptual Model current metadata: https://dwc.tdwg.org/cm/
+- TDWG Darwin Core List of Terms: https://dwc.tdwg.org/list/
+- TDWG core `dwc:` term snapshot: https://rs.tdwg.org/dwc/terms.htm
+- TDWG `dwc:occurrenceStatus` definition and term version: https://dwc.tdwg.org/list/#dwc:occurrenceStatus
+- TDWG Humboldt hierarchical-event guidance v2024-02-28: https://eco.tdwg.org/hierarchy/
+- TDWG Humboldt Extension terms: https://rs.tdwg.org/eco/terms.htm
+- TDWG Taxon Completeness Reported values v2026-10-13: https://rs.tdwg.org/ecotcr/version/values/2026-10-13.htm
+- GBIF Guide v1.0.2 (2025-09-24), §§5.6 and 7.3: https://docs.gbif.org/guide-publishing-survey-data/en/
+
+The exact term-version IRIs used in a production mapping must be pinned from the official term metadata at implementation time.
