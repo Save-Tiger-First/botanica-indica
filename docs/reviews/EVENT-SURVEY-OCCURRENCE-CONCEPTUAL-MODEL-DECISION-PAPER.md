@@ -822,3 +822,16 @@ The model must explicitly decide whether a valid taxon-specific non-detection:
 ### 17.5 Decision required
 
 Add this question to EVT-D03, EVT-D04, EVT-D09 and EVT-D10: what is the canonical internal identity of a target-specific non-detection, and how does it relate to the SurveyTarget assessment and the Darwin Core Occurrence Event? This is a blocking semantic question for Task 05E.
+
+ 
+## 14. Project-owner decision ODR-01 — 21 November 2026
+
+**Decision:** The project owner authorized Option B: controlled, profile-specific implicit non-detection interpretation in external exports only.
+
+This decision does not weaken the internal scientific rule that a missing Occurrence row alone is unknown, not absence. It permits an external export to express implicit non-detection only when the declared taxonomic/organismal scope and applicable reporting-completeness evidence are explicit, version-pinned, validated and attributable. For the GBIF DwC-A taxonomic-scope pattern, the GBIF Guide v1.0.2 §7.3 requires `eco:isTaxonomicScopeFullyReported=true` and either `eco:targetTaxonomicScope` or `eco:excludedTaxonomicScope`; taxa outside scope and bycatch must never be treated as absent. Applicable scope/completeness must be explicitly recorded at every Survey level where it applies; it must not be silently inherited.
+
+The derived meaning is **“not detected/reported within the stated survey scope under documented survey conditions”**, never biological absence from the area. No internal negative Occurrence is created solely for this export interpretation. If any scope, completeness, hierarchy, provenance, term-version or mapping evidence is missing or uncertain, the export fails closed and retains unknown/not assessed.
+
+ODR-01 is an owner policy decision, not approval of a final export profile, Task 05C, Task 05D, Task 05E, physical schema or API contract. EVT-27–EVT-30 and specialist review remain required; export implementation remains NOT IMPLEMENTED / NOT VALIDATED.
+
+See the complete ODR-01 safeguards and term-version references in the EVT Decision and Validation Pack and the AI Project Operating Prompt clarification.
