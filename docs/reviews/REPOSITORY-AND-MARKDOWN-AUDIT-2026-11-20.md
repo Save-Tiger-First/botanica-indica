@@ -605,4 +605,4 @@ The Branch Inventory and Consolidation Register was refreshed after the implemen
 - Inventory commit: `8931ff62075ddc07fd31c57a76f4a90e2aa894c0`
 - Inventory blob: `79b6bb1e32c5329a569fe931bb7cce6a856db22a`
 
-The snapshot confirms that the seven-branch ceiling remains unmet. The four proposed retained destinations remain provisional; no PR or branch was retired. The next final-head CI run should be checked after this inventory and audit report are committed.
+The snapshot confirms that the seven-branch ceiling remains unmet. The four proposed retained destinations remain provisional; no PR or branch was retired. After this inventory refresh, GitHub Actions run `44875638810` completed successfully on PR #16 head `dc54e5de8ed7202fae78a5f659d6a8ac2ab41f8f`; its governance regression tests and Markdown/routing checks all passed. The audit-record update that follows changes only this review document, not the workflow or checker.
