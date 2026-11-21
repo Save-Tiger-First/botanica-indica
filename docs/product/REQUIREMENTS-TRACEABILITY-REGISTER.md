@@ -16,6 +16,12 @@
 
 ## 1.2 Offline and field synchronization architecture specification
 
+## 1.3 API command, idempotency and conflict-resolution contract
+
+The proposed server-side synchronization contract is documented in [STF-BI-API-SYNC-001 — API Command, Idempotency and Conflict-Resolution Contract Design](../architecture/API-COMMAND-IDEMPOTENCY-AND-CONFLICT-RESOLUTION-CONTRACT-DESIGN.md). It elaborates Task 03 §§19–20 and AC-004/AC-009/AC-010 dependencies through a versioned command envelope, durable command receipts, separate client-command and HTTP idempotency identities, conditional updates, conflict handling, media staging and cursor-based change recovery. The document is Proposed; it does not approve API routes, schemas, authentication, database design, retention periods or implementation. API-SYNC-001–042 are proposed validation scenarios and have not been executed. API-OD-01–20 remain open.
+
+
+
 The proposed offline/field synchronization design is recorded in [STF-BI-ARCH-OFF-001 — Offline and Field Synchronization Architecture & Validation Specification](../architecture/OFFLINE-FIELD-SYNCHRONIZATION-ARCHITECTURE-AND-VALIDATION-SPECIFICATION.md). It elaborates Task 03 §§17, 20 and 28, WF-OD-10, and AC-004/AC-009/AC-010 dependencies. The document proposes a local draft/outbox, idempotent server command processing, version-aware conflict handling, rights/sensitivity revalidation and 36 validation scenarios (OFF-001–OFF-036). It remains Proposed; no ADR, API contract, physical schema, legal policy or implementation is approved by its creation. Tests are not run.
 
 
