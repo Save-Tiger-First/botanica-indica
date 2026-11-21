@@ -524,3 +524,17 @@ All fixture records must be explicitly synthetic, include expected graphs and ne
 ODR-01 remains an owner-authorized, export-only policy. Its conditions must be reassessed against the current Humboldt terms and the selected export profile. Internal absence is never inferred from an empty result set. Do not assume `dwc:detected/notDetected` and GBIF guide examples `present/absent` are interchangeable without a versioned mapping.
 
 **DR-09 remains OPEN** until the exact versioned Conceptual Model, List, hierarchy document, term snapshots and term definitions are captured and compared. EVT-27–EVT-44 remain proposed and unexecuted. Task 05C remains unapproved; Task 05E remains NOT READY.
+
+ 
+## 10. Cross-document semantic consistency and standards correction — 21 November 2026
+
+**Status:** Proposed audit finding. No scientific-model approval or test execution is implied.
+
+1. **Target assessment naming conflict:** Task 05B §16 and Task 05C §18 use `SurveyTargetResult`; the EVT pack and competing-model reconciliation use `SurveyTargetAssessment`. This must be resolved before B16 can close.
+2. **Duplicate outcome risk:** the proposed `SurveyTargetResult` currently contains detection/non-detection outcome states, while Occurrence is also proposed as the authoritative detection/non-detection record. Select one canonical outcome representation and prohibit independently mutable duplicate states.
+3. **Recommended separation, not an approved decision:** the assessment record describes whether/how a target was assessed (scope, method, effort, completeness, limitations and provenance); Occurrence represents the taxon/organism-level scientific result; SurveyOccurrenceReport links the Survey to reported Occurrences.
+4. **Candidate A remains internally unreconciled:** its original Event-to-Occurrence 1:M relation and §18 shared Event identity/specialization proposal have not yet been reconciled into one ERD, key strategy and cardinality set.
+5. **ODR-01 is authorized but bounded:** external export interpretation only; no internal inference from a missing Occurrence row. Implementation and selected-profile validation remain pending.
+6. **Standards correction:** the directly retrieved Darwin Core Conceptual Model is version 2026-05-26; search-indexed metadata suggesting 2026-10-13 remains unverified at the exact resource level. The hierarchical-event guidance is listed as 2026-10-13. Individual term versions must be pinned separately; `dwc:occurrenceStatus-2026-05-26` recommends `detected/notDetected`.
+
+**Disposition:** B01, B02, B16 and DR-09 remain open. Candidate A and Candidate B remain unapproved. EVT/LDM/FLD cases remain unexecuted unless run evidence is recorded. Task 05E remains NOT READY.
