@@ -148,7 +148,11 @@ The offline/field synchronization design and proposed validation matrix are docu
 
 ### 9.2 API command and synchronization contract
 
-The server-side command contract is documented in [STF-BI-API-SYNC-001 — API Command, Idempotency and Conflict-Resolution Contract Design](../architecture/API-COMMAND-IDEMPOTENCY-AND-CONFLICT-RESOLUTION-CONTRACT-DESIGN.md). It elaborates the offline architecture and AC-004/AC-009/AC-010 dependencies. It is Proposed; endpoints, schemas, status semantics and numeric policies are not approved or implemented. API-SYNC-001–042 are proposed scenarios and have not been executed. The IETF Idempotency-Key document is an Internet-Draft, not a published RFC.
+The server-side command contract is documented in [STF-BI-API-SYNC-001 — API Command, Idempotency and Conflict-Resolution Contract Design](../architecture/API-COMMAND-IDEMPOTENCY-AND-CONFLICT-RESOLUTION-CONTRACT-DESIGN.md). It elaborates the offline architecture and AC-004/AC-009/AC-010 dependencies. It is Proposed; endpoints, schemas, status semantics and numeric policies are not approved or implemented. API-SYNC-001–042 are proposed scenarios and have not been executed.
+
+Keep three state domains separate: (1) client synchronization states such as queued, uploading, server_received and applied; (2) the Observation lifecycle in the Workflow Lifecycle specification; and (3) scientific identification, expert-review, rights and publication decisions. A server receipt or applied command is not scientific validation, public acceptance or publication. The offline and API proposals distinguish durable server receipt from committed domain effect, and persistent client-command identity from HTTP request-retry idempotency. HTTP 412 is a failed conditional precondition; HTTP 409 is a documented domain/idempotency conflict, not an interchangeable synonym.
+
+The generic command endpoint and any synchronous resource-write façade must share the same domain command processor, authorization, idempotency, revision, audit and receipt controls. The route choice remains open. API-OD-01–20 and OFF-OD-01–16 remain open pending owner and specialist review. The IETF Idempotency-Key document is an active Internet-Draft, not a published RFC.
 
 ## 10. Review and approval checklist
 
