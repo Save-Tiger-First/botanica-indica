@@ -377,3 +377,25 @@ Internal states must distinguish detected, not detected after a valid assessment
 - https://dwc.tdwg.org/tcr/
 - https://www.tdwg.org/news/2026/dwc-oct-nov-announcement/
 - https://docs.gbif.org/guide-publishing-survey-data/en/
+
+
+---
+
+## 16. Additional blocking Event/Survey/Occurrence validation — 21 November 2026
+
+The current TDWG Conceptual Model explicitly includes absence of detection of an Organism of a given Taxon/state as one possible meaning of an Occurrence Event. It also says Survey results are expressed in Occurrences reported by the Survey. GBIF's survey guide v1.0.2 likewise represents explicit absence at Occurrence level and prohibits absence assertions for bycatch.
+
+Add the following tests to the EVT acceptance suite (proposed; not executed):
+
+| ID | Scenario | Required result |
+|---|---|---|
+| EVT-19 | Complete target assessment yields taxon-specific non-detection | The canonical non-detection is represented as an Occurrence-level result or a formally defined assessment-to-Occurrence relation; no duplicate conflicting status is permitted. |
+| EVT-20 | Survey target was incomplete/not assessed | No not-detected Occurrence is created; preserve incomplete/not-assessed assessment. |
+| EVT-21 | Incidental/bycatch taxon was not specifically searched for | Record incidental detection if supported; never infer/report its absence. |
+| EVT-22 | Explicit non-detection exported to GBIF | Follow pinned GBIF/Humboldt profile and its absent convention, while retaining internal semantics and traceability. |
+
+**New blocking question:** define the canonical identity of a target-specific non-detection and its relation to SurveyTargetResult, Occurrence, SurveyOccurrenceReport and target scope. A standalone SurveyTargetResult must not silently substitute for the Occurrence-level semantics described by the standards, nor duplicate it with an independently mutable status.
+
+Sources: TDWG Darwin Core Conceptual Model §§2.2–2.3, https://dwc.tdwg.org/cm/ ; GBIF Guide for publishing biological survey and monitoring data v1.0.2 (2025-09-24), §§5.5.3, 5.6 and 7.3, https://docs.gbif.org/guide-publishing-survey-data/en/.
+
+These are proposed acceptance tests only. No test execution or expert approval is claimed. Task 05E remains NOT READY.
