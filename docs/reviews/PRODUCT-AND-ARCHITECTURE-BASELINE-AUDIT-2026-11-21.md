@@ -353,3 +353,20 @@ The proposal recommends Candidate A as the starting document for its stronger ty
 **PR #11 dependency status:** after Candidate A moved, comparison of base `docs/task-05c-logical-data-model` and head `docs/task-05d-logical-model-validation-v3` is `diverged`, **3 commits ahead / 2 behind**, merge base `91c82b4f136a77aaa1edb02753ed49b2fbee86ed`. PR #11 must not be merged/rebased/retargeted blindly. A full diff and reviewed synchronization plan are required.
 
 No PR or branch lifecycle action was taken. The 23-branch count and 20-open-PR count remain unchanged.
+
+ 
+## 17. Task 05B/05C/05D scientific-model reconciliation update — 21 November 2026
+
+A further append-only consistency pass was completed across the existing scientific-model branches:
+
+| Document | Branch / PR | Commit | Verified blob | Change |
+|---|---|---|---|---|
+| Task 05C Candidate A | `docs/task-05c-logical-data-model` / PR #5 | `98741843a2ba8550e2cb744658d9291fe60b8823` | `c8bddcdfda9f76f03afd389ff9c5a307b89bd906` | §19 standards-version and Event/Survey/Occurrence term correction |
+| Task 05B Scientific Data Dictionary | `docs/task-05-data-dictionary` / PR #4 | `8936fe87a2c32da861c7f6a08d52603c9e545d21` | `b6827f8149313f0e70ac6a8873108aae509eb785` | §16 Event/Survey/Occurrence and SurveyTarget/SurveyTargetResult clarification |
+| Task 05D v3 | `docs/task-05d-logical-model-validation-v3` / PR #11 | `9d383c4206f2d48bd31b04c6ebb5bd97bf7b87df` | `27a12b960d84b504fe915da4681d2f2511bdb086` | §14 current standards correction and synthetic EVT-34–EVT-44 fixtures |
+
+These updates preserve earlier content and remain proposals. No fixture was executed; no independent specialist sign-off was obtained; no ADR or accepted scientific model was changed.
+
+The exact current TDWG indexed metadata reports 2026-10-13 for the Conceptual Model, List of Terms, core term snapshot and hierarchy guide. However, the public Conceptual Model and List HTML renderers still returned 2026-05-26 during the review. DR-09 therefore remains open for exact versioned-resource capture and comparison. Individual terms have independent versions, including `dwc:occurrenceStatus-2026-05-26`, `eco:isTaxonomicScopeFullyReported-2026-10-13`, `eco:isSurveyTargetFullyReported-2026-05-26`, and the current 2026-10-13 sampling-effort/completeness-method term versions.
+
+**PR #11 remains a stacked dependency.** Candidate A and Task 05D v3 remain diverged; do not merge, rebase or retarget automatically. The current compare baseline must be refreshed before any dependency synchronization proposal. The seven-branch ceiling remains unmet; no branch or PR lifecycle action was taken.
