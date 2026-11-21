@@ -1099,3 +1099,79 @@ The seven-branch target remains unmet. This run verifies the current automation 
 The documentation head 32b5fa0f5f192fa3d3948038a79a10ae41b5c630 completed workflow run 44908268217 successfully. The run verified 27 unit tests, 23 tracked Markdown files, PR #16 routing, and live branch inventory retrieval (23 branches). The expected warning that 23 exceeds the seven-branch ceiling appeared. No Python FutureWarning appeared in the inspected job log.
 
 This result applies to head 32b5fa0f5f192fa3d3948038a79a10ae41b5c630, before this final append-only record. The seven-branch target remains unmet; no PR or branch lifecycle action was taken.
+
+
+## 20.20 Current branch-to-main consolidation baseline — 21 November 2026
+
+This section supersedes earlier live-state snapshots (including 20.18 and 20.19) for the values below. The complete governing prompt was re-fetched from this branch: 259 lines, blob SHA `53add3894d0502827e584614c70ad09cadaa637d`.
+
+### 20.20.1 Current refs and inventory
+
+- Repository: `Save-Tiger-First/botanica-indica`.
+- Branch count: **23** — exactly 3 long-lived branches and 20 temporary/workstream branches. The immediate owner ceiling is 7, so 16 branches must be safely retired after preservation and approval.
+- `main`: `6f2f51da093caf8183fde386dbec707cc6046d27` (protected).
+- `develop`: `f165ecb9b4d9de115c02327cf779982b7ef4bbd4` (API reports unprotected).
+- `staging`: `f165ecb9b4d9de115c02327cf779982b7ef4bbd4` (API reports unprotected; identical to develop at this snapshot).
+- `docs/repository-audit-and-ai-operating-standard`: `5797330bac2735b5f35054d39a7ade4243de84ec`.
+- PR #16 is open/draft, targets `develop`, and has head `5797330bac2735b5f35054d39a7ade4243de84ec`; 134 commits, 26 changed files, 4,466 additions, 25 deletions; compare to develop is 134 ahead / 0 behind.
+- Workflow run 44908360788 completed successfully on that exact PR #16 head. It passed 27 tests, checked 23 tracked Markdown files, passed routing validation and retrieved the live branch count; the expected warning for 23 branches exceeding the seven-branch ceiling appeared.
+- PR #15 remains open/non-draft. PRs #1–#5, #8–#14, and #16–#23 remain open/draft. No PR has been merged in this consolidation exercise.
+
+### 20.20.2 Current PR routing
+
+The 20 open PRs do not yet follow the operating prompt's default promotion flow consistently:
+
+| Current base | PRs | Assessment |
+|---|---|---|
+| `develop` | #15, #16, #17, #18, #19, #20 | Correct integration destination in principle; still requires review and acceptance |
+| `main` | #1, #2, #3, #4, #5, #8, #9, #13, #14 | Direct-to-main routing conflicts with the documented task → develop → staging → main workflow; do not merge directly |
+| Stacked on another workstream | #11 (base #5 branch), #12 (strategy branch), #21, #22, #23 (scientific review branch) | Dependencies must be resolved in order; do not flatten or retarget blindly |
+
+Any PR retargeting requires an explicit owner decision. Draft PRs cannot be merged under GitHub's normal pull-request workflow. PR #16 must remain draft until its governance content has independent review and the owner approves the next state.
+
+### 20.20.3 Fresh source-to-workstream comparisons
+
+Current comparisons were run from each existing source branch to its proposed existing workstream destination. “Ahead” is source-only commit count; “behind” is destination-only commit count.
+
+| PR | Source branch | Existing destination | Ahead | Behind | Status |
+|---|---|---|---:|---:|---|
+| #15 | `governance/branch-lifecycle-policy` | governance | 0 | 116 | source head already contained |
+| #1 | `docs/asset-specific-licensing-policy` | governance | 0 | 133 | source head already contained |
+| #2 | `docs/adr-011-stf-ecosystem-boundaries` | governance | 0 | 133 | source head already contained |
+| #17 | `docs/full-product-vision-capability-blueprint` | product/architecture | 9 | 12 | diverged |
+| #18 | `docs/canonical-task-03-04-baselines` | product/architecture | 2 | 12 | diverged |
+| #19 | `docs/requirements-traceability-register` | product/architecture | 27 | 12 | diverged |
+| #3 | `docs/task-05-data-architecture` | scientific review | 5 | 67 | diverged |
+| #4 | `docs/task-05-data-dictionary` | scientific review | 14 | 67 | diverged |
+| #5 | `docs/task-05c-logical-data-model` | scientific review | 10 | 67 | diverged |
+| #21 | `docs/task-05c-logical-database-model` | scientific review | 1 | 67 | diverged |
+| #22 | `docs/task-05d-logical-model-validation` | scientific review | 7 | 67 | diverged |
+| #23 | `docs/task-05d-logical-model-validation-v2` | scientific review | 7 | 67 | diverged |
+| #11 | `docs/task-05d-logical-model-validation-v3` | scientific review | 13 | 67 | diverged |
+| #12 | `governance/stf-organisational-readiness-review` | STF strategy | 4 | 3 | diverged |
+| #13 | `proposal/bengaluru-urban-biodiversity-feasibility-pilot` | STF strategy | 1 | 24 | diverged |
+| #14 | `research/bengaluru-pilot-site-selection` | STF strategy | 1 | 24 | diverged |
+
+These are ancestry comparisons, not content approval. Divergence means both sides contain unique commits. Preserve all unique source commits and reconcile changed files before integration. The three governance source heads being contained does not mean their PRs are approved or may be closed.
+
+### 20.20.4 Main/develop/staging synchronization
+
+- `main` is 1 commit ahead and 0 behind `develop`; its only main-only file is `docs/reviews/HORTUS-MALABARICUS-VALIDATION-CROSSWALK.md` (187 additions).
+- The scientific review branch contains a different version of that crosswalk. Preserve both and reconcile the scientific content before any scientific-workstream promotion.
+- `staging` and `develop` currently point to the same commit. They are not yet a tested release-candidate promotion.
+
+### 20.20.5 Recommended route to a single main branch
+
+1. Freeze branch creation and preserve a verified inventory/backup of all refs.
+2. Complete PR #16 governance review; resolve its draft status only after independent review and owner decision. Resolve the already-contained PRs #15, #1 and #2 through separate documented decisions; do not close them merely because their commits are ancestors.
+3. Preserve and reconcile the product sources #17–#19 on the existing product/architecture destination.
+4. Preserve and reconcile scientific sources #3–#5, #11 and #21–#23 on the existing scientific review destination. Keep competing Task 05C and Task 05D versions visible until scientific review resolves them. Reconcile the Hortus crosswalk.
+5. Preserve and reconcile strategy sources #12–#14 on the existing strategy destination; no pilot/site/fieldwork approval is implied.
+6. Once each workstream is coherent and reviewed, integrate its accepted content into `develop` via reviewed PRs. Resolve the current direct-to-main and stacked-PR routing conflicts through explicit owner-approved PR handling; do not bypass review.
+7. Reconcile the main-only Hortus crosswalk into the integration history without losing its provenance; confirm `develop` is the complete integration baseline.
+8. Promote `develop` to `staging` through a release-candidate PR and run full integrated, scientific, security, rights, privacy, accessibility and operational acceptance checks.
+9. Promote the accepted `staging` release to `main) through a reviewed PR. Verify the exact resulting main tree and release record.
+10. Retire temporary workstream/source branches only after every source commit and unique file is preserved, dependent PRs are resolved, and the owner explicitly authorizes each retirement. During active development, stop at the seven-branch ceiling (3 long-lived + 4 workstreams).
+11. At formal project completion only, verify all work is on `main`, resolve all PRs, archive/tag the final state and obtain owner approval; then retire `develop`, `staging` and all remaining workstream branches. Re-fetch the branch list and verify exactly one branch remains: `main`.
+
+**No merge, retarget, PR closure, branch deletion, protection change or scientific/policy approval was performed while preparing this baseline.**
