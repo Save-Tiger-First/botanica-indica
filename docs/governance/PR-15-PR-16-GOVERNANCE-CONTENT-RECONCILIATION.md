@@ -118,3 +118,19 @@ The governance workflow's successful historical runs do not automatically verify
 - No legal opinion, compliance certification or independent review is claimed.
 
 **Final assessment:** PR #15's content and complete head ancestry are preserved in PR #16. PR #15 is now a reasonable candidate for owner-authorized closure as superseded, but not for merge merely to retire the branch. PR #16 remains the active governance review vehicle and must pass its own review gates.
+
+
+
+## Current-state addendum — 21 November 2026, after automation hardening
+
+The exact values in Sections 1–4 above are historical snapshots and are not overwritten. Current state has been re-fetched and is recorded in the Branch Inventory and Consolidation Register Section 20.11.
+
+- PR #16 remains open and draft, base `develop`, current head `6f27e14668b4749fa1210f78c00b0d78f2b99e74`; 110 commits, 26 changed files, 4,019 additions and 19 deletions.
+- PR #16 compares 110 ahead / 0 behind `develop`.
+- PR #15 remains open, non-draft, unmerged; its head remains an ancestor of PR #16 (fresh compare 92 ahead / 0 behind).
+- Live inventory remains 23 branches and 20 open PRs.
+- `main` remains one commit ahead of `develop` due to `docs/reviews/HORTUS-MALABARICUS-VALIDATION-CROSSWALK.md`.
+- The PR #16 branch now contains the automation-hardening commits and a dated 23-branch baseline. Current-head CI is not yet verified; the previous successful workflow run belongs to an earlier head.
+- No PR was merged or closed, no branch was created or deleted, and no policy or ADR was approved.
+
+For current review findings and next actions, see `docs/reviews/PR-16-GOVERNANCE-READINESS-REVIEW-2026-11-21.md` Section 10. Preserve the earlier source SHAs and counts above as historical provenance.
