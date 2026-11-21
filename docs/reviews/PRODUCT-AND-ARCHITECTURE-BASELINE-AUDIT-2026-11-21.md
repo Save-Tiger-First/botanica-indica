@@ -284,3 +284,54 @@ The two updated files were read back from GitHub and checked for:
 These are document/readback consistency checks, not CI, application tests, scientific validation, legal review or independent expert approval.
 
 No PR was merged, closed or retargeted. No branch was created, renamed or deleted. No repository setting, protection or permission was changed. The 23-branch count and seven-branch ceiling remain unchanged.
+
+ 
+## 15. Review of September 2026 research and planning materials — 21 November 2026
+
+### 15.1 Material inspected
+
+Four uploaded working documents, all named `Create Master Checklist.txt`, were reviewed in full/available continuation ranges:
+1. Save Tiger First Master Project Checklist (15 September 2026).
+2. Task 01 — Project Charter v0.1 (15 September 2026).
+3. Task 02 — Problem & Opportunity Analysis (September 2026).
+4. Architecture, UI/UX and effort-estimation study (15 September 2026).
+
+They are working research/planning material, not approved repository baselines. Their useful concepts are largely represented in the proposed Full Product Vision (PR #17), Task 03/04 source-preserving baselines (PR #18), RTM (PR #19) and full architecture plan (PR #20). No duplicate Task 01/02 document was created in this review.
+
+### 15.2 Findings and required treatment
+
+| Topic | Assessment | Recommended treatment |
+|---|---|---|
+| India-first botanical intelligence | Strong strategic direction; broader and more defensible than “Indian Google Lens” | Retain as product hypothesis, with measurable evidence and no unsupported superiority claim |
+| Evidence Engine | Strong first-class capability; photo guidance, morphology, organ, geography, taxonomy and abstention matter | Keep confidence/probability, evidence quality, taxonomic support, geographic plausibility and expert determination as distinct dimensions; do not create one universal Evidence Score |
+| Community/data flywheel | Strategically promising, but not automatic | User contributions are not automatically eligible for redistribution, derivative use or AI training; rights, consent, attribution, provenance and review are purpose-specific |
+| Shared STF platform | Useful direction, but over-generalization risk | Apply proposed PR #17 boundary and ADR governance; keep domain ownership in Botanica Indica; do not create one microservice per capability |
+| Competitive star table | Subjective, no common benchmark or sampling protocol | Do not use as factual ranking or public claim; build a reproducible India-relevant benchmark |
+| 4,250–5,850 person-hour estimate | Early order-of-magnitude estimate only | Do not treat as budget, staffing commitment or schedule; bottom-up re-estimate after approved scope and workload/cost assumptions |
+| Legacy task numbering | Conflicts with current repository numbering | Use current repository Task 03 PRD, Task 04 System Architecture & Technology Evaluation and Task 05 Data Architecture; crosswalk older checklist items rather than create duplicate tasks |
+
+### 15.3 Updated external research
+
+- **Pl@ntNet:** current official API documentation supports up to five images of the same individual, plant-organ inputs, project/flora-specific identification and ranked candidate results. Its current API landing page reports 87,000+ identifiable species and 62 languages. These are provider-reported, dynamic platform metrics, not independent India-specific accuracy evidence. Sources: https://my.plantnet.org/doc/api/identify and https://my.plantnet.org/
+- **Flora Incognita / iNaturalist:** a May 2026 Alberta plot-survey study using 5,291 images of 119 species in 54 plots reported 79.2% species and 88.4% genus accuracy for Flora Incognita, and 66.5% species and 73.7% genus accuracy for iNaturalist. This is a specific Alberta study, not a prediction of India performance. It supports stratified field evaluation and attention to reproductive structures, growth form and image quality. Source: https://doi.org/10.1093/aobpla/plag020
+- **eFlora of India:** its own About page describes a community-developed resource and warns that identification errors cannot be ruled out. Its copyright page says original text is CC BY, but member photographs remain the intellectual property of individual authors and require author permission for reuse. Do not bulk-scrape or use images for training without asset-specific permission. Sources: https://efloraofindia.com/efi/about/ and https://efloraofindia.com/efi/copyrights-permissions-credits-etc/
+- **Botanical Survey of India:** the official mandate includes National, State and District Floras and development of national plant/herbarium databases. This does not establish an open API or blanket reuse rights for every publication, image or specimen record. Source: https://bsi.gov.in/page/en/Mandate
+- **Plantix:** its own research page reports 150M+ field images and says research access is collaboration-based and the raw corpus is not sold. It is a crop-health data feedback-loop example, not an open botanical training set or plant-species-ID benchmark. Source: https://plantix.net/en/plantix-intelligence/research/
+
+Portal statistics and source availability change. The India Biodiversity Portal and other Indian biodiversity platforms should be treated as complementary infrastructures, with dataset-, record- and asset-level rights checks rather than assumptions based on public access or a portal-wide “open data” statement.
+
+### 15.4 Darwin Core / Humboldt version correction
+
+The previous shorthand that treated the Darwin Core List document, core vocabulary snapshot and Conceptual Model as one 2026-10-13 release is inaccurate:
+- Conceptual Model: current official indexed metadata reports 2026-10-13; direct HTML rendering remained cached at 2026-05-26; exact versioned document retrieval remains open.
+- List of Terms document: direct official page reports 2026-05-26.
+- Core `dwc:` vocabulary snapshot: official metadata reports 2026-10-13.
+- `dwc:occurrenceStatus`: term version 2026-05-26; recommended literal values `detected` and `notDetected`.
+- Humboldt hierarchy guidance: v2024-02-28, Section 3 normative.
+- Humboldt Extension terms have their own term-version dates; `eco:isTaxonomicScopeFullyReported`, `eco:isSurveyTargetFullyReported`, `eco:taxonCompletenessReported` and `eco:taxonCompletenessProtocols` must not be conflated. Relevant 2026-10-13 term/value versions exist; pin each exact IRI for mapping.
+
+DR-09 remains open for exact versioned-resource retrieval and term-by-term comparison. Sources: https://dwc.tdwg.org/cm/ ; https://dwc.tdwg.org/list/ ; https://rs.tdwg.org/dwc/terms.htm ; https://eco.tdwg.org/hierarchy/ ; https://rs.tdwg.org/eco/terms.htm ; https://rs.tdwg.org/ecotcr/version/values/2026-10-13.htm
+
+### 15.5 Status boundary
+
+This is a desk-research and source-reconciliation update. It does not approve a product baseline, Task 04 technology, vendor, data source ingestion, image rights, budget, staffing, PR, Task 05C candidate, physical schema or implementation. No independent specialist review or application test is claimed.
