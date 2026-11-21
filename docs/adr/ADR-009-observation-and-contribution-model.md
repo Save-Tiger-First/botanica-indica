@@ -48,6 +48,7 @@ Observation
     ├── Community Contributions
     │
     └── Expert Reviews
+```
 
 1. Observation as the Core Record
 

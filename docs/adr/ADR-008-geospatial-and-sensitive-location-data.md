@@ -87,6 +87,7 @@ District
 State / Region
       ↓
 Country
+```
 
 The appropriate precision may depend on:
 

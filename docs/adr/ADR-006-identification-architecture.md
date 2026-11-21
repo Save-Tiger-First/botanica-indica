@@ -35,6 +35,7 @@ Confidence & Explanation
 User Validation
         ↓
 Expert Review / Scientific Validation
+```
 
 Each stage will have a defined responsibility and contract.
 

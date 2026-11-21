@@ -106,6 +106,7 @@ Observation
     ├── Evidence B → supports Taxon A
     ├── Evidence C → supports Taxon B
     └── Expert Assessment → unresolved
+```
 
 The platform should make such conflicts visible where appropriate.
 

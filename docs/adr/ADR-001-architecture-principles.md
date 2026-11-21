@@ -39,6 +39,7 @@ Contracts
 Services
    ↓
 Clients
+```
 
 1. Contracts
 

@@ -1,4 +1,3 @@
-# botanica-indica
 India's botanical knowledge is distributed across many scientific databases, floras, observation platforms and institutional resources.
 # Botanica Indica
 
@@ -169,7 +168,7 @@ Licensing will be determined by asset and component type. Software, shared infra
 
 Each repository, component and dataset release must clearly identify its applicable license and third-party obligations.
 
-See the licensing policy documentation when established. No third-party material may be assumed to be freely reusable merely because it is publicly accessible.
+A proposed [Licensing and Intellectual Property Policy](docs/governance/LICENSING-AND-IP-POLICY.md) is available for review on this branch. It is not yet approved and requires maintainer and qualified legal review. No third-party material may be assumed to be freely reusable merely because it is publicly accessible.
 
 ## 10. Current project status
 
@@ -207,6 +206,7 @@ Architecture decisions are maintained under `docs/adr/`.
 | ADR-008 | Geospatial and sensitive location data |
 | ADR-009 | Observation and contribution model |
 | ADR-010 | Data ingestion and source integration |
+| ADR-011 | STF ecosystem boundaries and shared platform (**Proposed; under review**) |
 
 New significant decisions should be documented through ADRs. Existing accepted decisions should be amended or superseded explicitly rather than silently contradicted.
 
@@ -214,24 +214,52 @@ New significant decisions should be documented through ADRs. Existing accepted d
 
 ```text
 botanica-indica/
+├── .github/
+│   └── workflows/
+│       └── repository-governance.yml
 ├── README.md
 ├── LICENSE
 ├── CONTRIBUTING.md
+├── scripts/
+│   └── check_repository_governance.py
+├── tests/
+│   └── test_repository_governance.py
 └── docs/
-    └── adr/
-        ├── ADR-001-architecture-principles.md
-        ├── ADR-002-modular-architecture.md
-        ├── ADR-003-api-first-platform.md
-        ├── ADR-004-data-and-scientific-provenance.md
-        ├── ADR-005-taxonomy-reconciliation.md
-        ├── ADR-006-identification-architecture.md
-        ├── ADR-007-evidence-and-expert-validation.md
-        ├── ADR-008-geospatial-and-sensitive-location-data.md
-        ├── ADR-009-observation-and-contribution-model.md
-        └── ADR-010-data-ingestion-and-source-integration.md
+    ├── adr/
+    │   ├── ADR-001-architecture-principles.md
+    │   ├── ADR-002-modular-architecture.md
+    │   ├── ADR-003-api-first-platform.md
+    │   ├── ADR-004-data-and-scientific-provenance.md
+    │   ├── ADR-005-taxonomy-reconciliation.md
+    │   ├── ADR-006-identification-architecture.md
+    │   ├── ADR-007-evidence-and-expert-validation.md
+    │   ├── ADR-008-geospatial-and-sensitive-location-data.md
+    │   ├── ADR-009-observation-and-contribution-model.md
+    │   ├── ADR-010-data-ingestion-and-source-integration.md
+    │   └── ADR-011-stf-ecosystem-boundaries.md (proposed)
+    ├── architecture/
+    │   └── STF-ECOSYSTEM-BOUNDARIES.md (proposed)
+    ├── governance/
+    │   ├── AI-PROJECT-OPERATING-PROMPT.md (proposed)
+    │   ├── BRANCH-INVENTORY-AND-CONSOLIDATION-REGISTER.md
+    │   ├── BRANCHING-AND-RELEASE-GOVERNANCE.md (proposed)
+    │   └── LICENSING-AND-IP-POLICY.md (proposed)
+    └── reviews/
+        └── REPOSITORY-AND-MARKDOWN-AUDIT-2026-11-20.md
 ```
 
-This structure will evolve as implementation and governance documentation are added.
+The repository structure will evolve as reviewed product, scientific, governance and implementation work is integrated.
+
+### Project governance and AI collaboration
+
+- [Permanent AI Project Operating Prompt](docs/governance/AI-PROJECT-OPERATING-PROMPT.md) — proposed operating standard
+- [Branching and Release Governance](docs/governance/BRANCHING-AND-RELEASE-GOVERNANCE.md) — proposed policy
+- [Branch Inventory and Consolidation Register](docs/governance/BRANCH-INVENTORY-AND-CONSOLIDATION-REGISTER.md)
+- [Licensing and Intellectual Property Policy](docs/governance/LICENSING-AND-IP-POLICY.md) — proposed policy
+- [STF Ecosystem Boundaries](docs/architecture/STF-ECOSYSTEM-BOUNDARIES.md) — proposed architecture
+- [Repository and Markdown Documentation Audit](docs/reviews/REPOSITORY-AND-MARKDOWN-AUDIT-2026-11-20.md)
+
+These are proposed project operating materials on the current review branch; they are not yet merged into `main`.
 
 ## 13. Contribution
 
