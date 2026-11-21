@@ -640,3 +640,33 @@ For the GBIF DwC-A taxonomic-scope pattern, GBIF Guide v1.0.2 §7.3 requires `ec
 EVT-27–EVT-30 are added as proposed, unexecuted export tests. B16 remains open for scientific semantics and mapping. LDM-16/FLD-08 remain required for explicit internal non-detection and missing-row negative tests. DR-09 remains open. No Task 05C candidate was modified or approved; Task 05E remains NOT READY.
 
 Sources: GBIF Guide v1.0.2 (2025-09-24), §§5.6 and 7.3 (https://docs.gbif.org/guide-publishing-survey-data/en/); TDWG List of Terms (https://dwc.tdwg.org/list/); Humboldt hierarchy guidance (https://dwc.tdwg.org/hierarchy/).
+
+ 
+## 18. Research and standards reconciliation — 21 November 2026
+
+### 18.1 Review of the attached September 2026 material
+
+The four uploaded working materials (Master Project Checklist, Task 01 Project Charter v0.1, Task 02 Problem & Opportunity Analysis, and architecture/UI/UX/effort-estimation study) reinforce the product-level rationale for evidence-aware botanical intelligence. They do not resolve the scientific Event–Survey–Occurrence design and do not approve either Task 05C candidate.
+
+Product-level concepts already reflected in the current proposed PR #17–#19 baselines include the Evidence Engine, uncertainty/abstention, geographic context, scientific provenance, observation contribution, expert review and asset/purpose-specific rights. The attached “Evidence Score” idea must not become one universal scalar: keep model score/calibrated probability, evidence quality/completeness, taxonomic support, geographic plausibility and expert determination distinct. The old competitive star table is subjective and is not a comparative benchmark.
+
+### 18.2 Candidate recommendation remains unchanged
+
+- Candidate A remains the better **starting document** because it has stronger typed-subject and relational-integrity treatment, and better-developed taxonomy/evidence/provenance structures.
+- Candidate B remains a valuable source of workflow/cardinality cases, particularly around Observation–Event associations and MaterialEntity derivation.
+- The shared Event identity with Survey and Occurrence specializations described as **Option B in the separate decision paper is not the same as Task 05C Candidate B**. Avoid this naming collision in future documents.
+- Neither Task 05C candidate is approved. No candidate was modified by this research review.
+
+The canonical reconciliation must continue to evaluate a shared Event identity with mutually distinct Survey and Occurrence specializations, a separate contributor/workflow Observation, explicit SurveyTarget and SurveyTargetResult, a separate Survey-to-reported-Occurrence relationship, and a separate Event parent/child hierarchy. The hierarchy is valid only where parent spatial and temporal extents contain the child; Survey reporting is not a substitute for parent/child containment.
+
+### 18.3 Standards correction affecting the model
+
+The Darwin Core Conceptual Model is a semantic reference, not a mandated SQL design. It describes Survey and Occurrence as special Event types with distinct characteristics and warns against treating one Event instance as both. It permits a contextual Event to provide shared spatio-temporal context to multiple activities. The model's official current metadata reports 2026-10-13, while the direct HTML page remains cached at 2026-05-26; the exact 2026-10-13 resource remains to be retrieved.
+
+The directly rendered List of Terms document is dated 2026-05-26, while the core `dwc:` vocabulary snapshot is 2026-10-13. The `dwc:occurrenceStatus` term version is 2026-05-26 and recommends `detected` / `notDetected`. The Humboldt hierarchy document is v2024-02-28 (Section 3 normative), not 2026-10-13. Relevant Humboldt term versions are individually versioned; in particular `eco:isTaxonomicScopeFullyReported` is distinct from `eco:isSurveyTargetFullyReported`.
+
+ODR-01 is refined by the separate Decision Paper §15 and EVT Pack §17: reporting completeness is distinct from scope, sampling effort and detectability; incomplete/unreported/ambiguous conditions fail closed; parent-child hierarchy rules do not imply property inheritance; post-facto targets must not be treated as original survey scope. EVT-31–EVT-33 are proposed and unexecuted.
+
+### 18.4 Current disposition
+
+This is a desk-research and document-reconciliation update only. It does not close DR-01–DR-12 or B01/B02/B16, does not execute LDM/EVT/FLD fixtures, does not approve Candidate A or B, and does not make Task 05E ready. Qualified botanical, field ecology, biodiversity-informatics and database review remains required.
