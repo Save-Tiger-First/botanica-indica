@@ -952,3 +952,30 @@ The review must independently test:
 EVT-34–EVT-44 in the associated validation pack and Task 05D are proposed synthetic fixtures. They cover target detection, bycatch, explicit non-detection, unknown from a missing row, incomplete reporting, repeated visits, post-facto filters, herbarium collection, multiple plants in one image, shared context Event and separate reporting/hierarchy links.
 
 These tests are not executed. ODR-01 remains an export-only policy decision; current term/profile mappings must be pinned and validated before implementation. DR-09 remains open pending exact versioned resource retrieval. Task 05C remains not approved; Task 05E remains not ready.
+
+ 
+## 17. Cross-document assessment-result ownership and standards correction — 21 November 2026
+
+**Status:** Proposed decision-paper correction; Option B remains a proposed logical direction, not an approved model or implementation.
+
+### 17.1 Standards baseline
+
+The directly retrieved official Darwin Core Conceptual Model page identifies the inspected version as 2026-05-26. Earlier indexed metadata suggested 2026-10-13, but the exact 2026-10-13 Conceptual Model resource was not retrieved and compared. The official hierarchical-event guidance is listed as 2026-10-13, previous 2024-02-28. Keep DR-09 open until the exact resources and relevant term versions are captured in a reproducible evidence bundle.
+
+The core and Humboldt vocabulary snapshots are distinct from the Conceptual Model document. Individual term versions remain independently dated. In particular, `dwc:occurrenceStatus-2026-05-26` recommends `detected/notDetected`; GBIF guide examples `present/absent` require a versioned profile-specific mapping.
+
+### 17.2 One target assessment, one authoritative outcome
+
+The current cross-document vocabulary is inconsistent:
+- Task 05B §16 and Task 05C §18 propose `SurveyTargetResult`.
+- The EVT pack and competing-model reconciliation propose `SurveyTargetAssessment`.
+
+The first currently carries detected/non-detected states; the second is framed as an assessment/completeness lifecycle. Occurrence is also proposed as the authoritative taxon/organism-level detection or non-detection record.
+
+**Recommendation:** use the assessment record to preserve whether/how a target was assessed, the target/scope version, protocol, effort, completeness, limitations, time/place, agent and provenance. Represent the scientific detected or explicit non-detected result once, as an Occurrence-level record, linked to the Survey through `SurveyOccurrenceReport`. Do not create a second independently mutable target-result status. This is a recommendation for owner and specialist review, not a decision.
+
+### 17.3 Decision boundary
+
+ODR-01 remains an owner-authorized policy for controlled, profile-specific external exports only. It does not authorize internal absence inference from missing rows, does not resolve the assessment/result entity design and does not approve Option B, Candidate A, Task 05D or Task 05E.
+
+EVT-34–EVT-44 remain proposed and unexecuted. Update their expected graphs and negative assertions only after the assessment/outcome ownership decision is formally recorded.
