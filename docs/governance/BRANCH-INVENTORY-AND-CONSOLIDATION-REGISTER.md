@@ -771,3 +771,19 @@ The same four existing consolidation destinations remain the only permitted work
 - No external party was contacted and no scientific test or independent specialist review was performed.
 
 **Next task:** perform a preservation-first content reconciliation of PR #15 against PR #16, including duplicate-path and policy-semantic comparison, and produce a file-level disposition proposal. Do not merge/close PR #15 or #16 or delete any source branch without explicit authorization.
+
+
+## 20.9 PR #15 / PR #16 governance content and history reconciliation — 21 November 2026
+
+The dedicated audit `docs/governance/PR-15-PR-16-GOVERNANCE-CONTENT-RECONCILIATION.md` was added on this branch and verified after commit.
+
+**Verified file-level result:**
+- `.github/pull_request_template.md`: PR #15 and PR #16 have identical blob SHA `1b2a71bb968cb892bc229c5ce8ac5ffb4b3d1084`.
+- `docs/governance/BRANCHING-AND-RELEASE-GOVERNANCE.md`: PR #16 retains PR #15's policy content and adds the exact legacy direct-to-main PR/head grandfathering section. PR #15 blob: `baf085de8baea1ec7becfc15ce3f691512e91aba`; PR #16 blob: `34113278067336572529fe61e647d9c28bdf4042`.
+- `docs/governance/BRANCH-INVENTORY-AND-CONSOLIDATION-REGISTER.md`: PR #16 retains the PR #15 register, corrects its earlier Task 05D v2/v3 byte-identity error and adds subsequent audit snapshots. PR #15 blob: `9233910471f0806435cb39c47ff074e90d382e47`; PR #16 blob: `2d5bec2b22fb7f14edf8243ce3473f2e00b1d140`.
+
+**Verified Git history:** comparing PR #15 head `633105210d3a6c4c8e36287ed2dc44dee23f61ef` to PR #16 head `6a1a5c7392610ec2f4ff5f365f084995d333bad0` returns 85 commits ahead and 0 behind, with PR #15 head as merge base. PR #15's entire head ancestry is therefore contained in PR #16.
+
+**Proposed disposition:** PR #16 is the continuing governance review vehicle. PR #15 is a candidate for owner-authorized closure as superseded, without merging. Its source branch may be considered for deletion only after PR #15 is formally resolved, no other open PR references the branch, and the project owner explicitly authorizes deletion.
+
+This is a content/history reconciliation, not approval of the proposed branch policy, licensing policy, ADR-011 or PR #16. No PR or branch lifecycle action was taken.
