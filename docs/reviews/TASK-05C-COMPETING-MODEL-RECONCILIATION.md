@@ -279,3 +279,32 @@ The Task 05 and Task 05B edits were committed on their existing PR branches and 
 
 
 **DR-09 source retrieval addendum (20 November 2026):** official indexed metadata now reports 2026-10-13 for both Darwin Core documents, previous 2026-05-26; direct page retrieval and core namespace term list expose 2026-05-26 metadata. Reconcile the exact versioned documents and term IRIs before asserting the current baseline or closing DR-09.
+
+
+---
+
+## 13. Standards metadata and non-detection mapping refresh — 21 November 2026
+
+The prior Sections 7.2 and 11–12 recorded a retrieval conflict between 2026-10-13 indexed metadata and direct 2026-05-26 page rendering. A fresh check of TDWG's official publication metadata and its 19 October 2026 ratification announcement identifies 2026-10-13 as the newer publication version for the Darwin Core Conceptual Model and List of Terms. The current Hierarchical Events guidance and maintained schemas are also dated 2026-10-13.
+
+Version IRIs to pin:
+- Conceptual Model: `http://rs.tdwg.org/dwc/doc/cm/2026-10-13`
+- List of Terms: `http://rs.tdwg.org/dwc/doc/list/2026-10-13`
+- Hierarchical Events: `http://rs.tdwg.org/dwc/doc/hierarchy/2026-10-13`
+- Schemas: `http://rs.tdwg.org/dwc/doc/schemas/2026-10-13`
+
+**Retrieval qualification:** direct page rendering in this review session still exposed cached 2026-05-26 headers for the Conceptual Model/List pages. The current official metadata and ratification announcement support the 2026-10-13 publication baseline, but the exact versioned resources and their substantive differences must still be retrieved and compared before the standards gate is closed.
+
+The individual `dwc:occurrenceStatus` term has its own version metadata: modification date 2026-05-26 and term-version IRI `http://rs.tdwg.org/dwc/terms/version/occurrenceStatus-2026-05-26`. The current term notes recommend `detected` and `notDetected`. This term-level date is not evidence that the containing List document remains at its previous publication version.
+
+GBIF's biological survey guide v1.0.2 (2025-09-24) describes explicit non-detection/absence using `occurrenceStatus = absent` in its DwC-A sampling-event guidance. Therefore, the current internal result state must not be equated automatically with either external literal. Select and test the mapping against the exact GBIF profile, DwC-A/DwC-DP schema, extension and term versions. Preserve the internal assessment, completeness, protocol, effort and provenance even if the external representation is less expressive.
+
+**DR-09 disposition: partially resolved, not closed.** Publication metadata has been refreshed; exact versioned-resource comparison, term pinning and profile-specific export mapping remain open. This update does not approve either Task 05C candidate, close any scientific-model decision, represent an external expert review or change Task 05E's NOT READY status.
+
+Sources:
+- https://dwc.tdwg.org/cm/
+- https://dwc.tdwg.org/list/
+- https://dwc.tdwg.org/hierarchy/
+- https://dwc.tdwg.org/schemas/
+- https://www.tdwg.org/news/2026/dwc-oct-nov-announcement/
+- https://docs.gbif.org/guide-publishing-survey-data/en/
