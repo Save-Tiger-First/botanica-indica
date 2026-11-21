@@ -829,3 +829,51 @@ Update the validation count from EVT-01–EVT-22 to EVT-01–EVT-26 wherever the
 - Humboldt hierarchical-event guidance: https://dwc.tdwg.org/hierarchy/
 
 No EVT decision is accepted by this errata. No tests are executed. Task 05C remains NOT APPROVED and Task 05E remains NOT READY.
+
+ 
+## 16. Project-owner decision ODR-01 and export validation — 21 November 2026
+
+**Decision authority:** Save Tiger First project owner  
+**Decision:** Option B authorized — controlled, profile-specific implicit non-detection interpretation in external exports only.  
+**Status:** Owner decision recorded; implementation and validation pending.
+
+### 16.1 Decision boundary
+
+A missing internal Occurrence row alone remains unknown/not assessed, never absence. Botanica Indica may derive implicit non-detection only in a version-pinned external export when the applicable survey scope and reporting-completeness evidence are explicit, validated and attributable.
+
+For the GBIF DwC-A taxonomic-scope pattern, GBIF Guide v1.0.2 §7.3 requires `eco:isTaxonomicScopeFullyReported=true` and either `eco:targetTaxonomicScope` or `eco:excludedTaxonomicScope`. The inferred taxon must be within the declared scope. Bycatch is excluded. The guide's implicit pattern creates no Occurrence row for the implicitly absent taxon and sets `eco:isAbsenceReported=false` for the relevant Event because no absences are explicitly reported.
+
+The result means only **“not detected/reported within the stated survey scope under documented survey conditions”**. It is not proof of biological absence, nor a claim that the survey had perfect detectability. Reporting completeness is distinct from field coverage, protocol performance, effort and detection probability.
+
+### 16.2 Mandatory controls
+
+- Keep explicit Occurrence-level non-detection separate from derived implicit export interpretation.
+- Do not create an internal negative Occurrence solely for implicit export.
+- Never infer or reconstruct scope retrospectively.
+- Report applicable scope and completeness explicitly at every relevant Survey level; do not silently inherit values up or down the Event hierarchy.
+- Use only taxa within the declared target/organismal scope; never infer bycatch.
+- Pin the exact term-version IRIs, export profile/guide version, mapping implementation and taxonomic treatment version.
+- Fail closed if scope, completeness, hierarchy applicability, provenance, versions or mapping is missing, ambiguous, contradictory or unvalidated.
+- Preserve a reproducible export audit trail, including Survey/Event IDs, scope declaration, completeness method/evidence, taxonomy version, term/profile/mapping versions, timestamp/agent and the taxa or query interpreted as not detected.
+- A consumer-facing label must not say “species absent from this location”; use “not detected within the stated survey scope” and expose the survey limitations.
+
+### 16.3 Proposed acceptance scenarios — not yet executed
+
+| ID | Scenario | Required result |
+|---|---|---|
+| EVT-27 | Valid GBIF-style implicit taxonomic non-detection: explicit scope, fully reported scope, supported Survey, applicable hierarchy metadata and validated pinned mapping | Export derives the scoped non-detection interpretation; no internal negative Occurrence is created; audit record reproduces the rule and result |
+| EVT-28 | Scope or applicable completeness missing/false/ambiguous; taxon is bycatch/outside scope; provenance or mapping version unavailable | Fail closed; no implicit non-detection is emitted; internal state remains unknown/not assessed |
+| EVT-29 | Scope/completeness applies to parent and descendant Surveys | Values are explicitly recorded at each applicable Survey level; no automatic inheritance or retrospective scope invention |
+| EVT-30 | Term/profile/mapping version changes or is unpinned | Export is blocked until the mapping and fixtures are revalidated against the exact versioned terms/profile |
+
+EVT-01–EVT-30 are proposed validation scenarios; none is claimed executed by this decision record. Task 05C remains NOT APPROVED and Task 05E remains NOT READY.
+
+### 16.4 Source and version controls
+
+- GBIF Guide v1.0.2 (2025-09-24), §§5.6 and 7.3: https://docs.gbif.org/guide-publishing-survey-data/en/
+- `eco:isTaxonomicScopeFullyReported`, term version 2026-10-13: http://rs.tdwg.org/eco/terms/version/isTaxonomicScopeFullyReported-2026-10-13
+- `eco:isSurveyTargetFullyReported`, term version 2026-05-26: http://rs.tdwg.org/eco/terms/version/isSurveyTargetFullyReported-2026-05-26
+- `dwc:occurrenceStatus`, term version 2026-05-26: http://rs.tdwg.org/dwc/terms/version/occurrenceStatus-2026-05-26
+- Humboldt hierarchical-event guidance: https://dwc.tdwg.org/hierarchy/
+
+The List/Conceptual Model 2026-10-13 indexed metadata versus directly retrieved cached HTML discrepancy remains DR-09 OPEN. Pin exact versioned resources before implementing a mapping.
