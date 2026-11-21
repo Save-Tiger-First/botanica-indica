@@ -165,6 +165,12 @@ The Blueprint and Task 03 describe several distinct contribution and review stat
 
 The current documents do not yet establish a complete, approved state machine. Before workflow implementation, specify allowed transitions, actors and authority, required evidence, correction and appeal paths, withdrawal/restriction behavior, publication consequences and audit history. This register records the gap; it does not invent or approve transition rules.
 
+### 4.4 Workflow-to-requirements traceability crosswalk
+
+The lifecycle gap is now elaborated in the proposed companion artifact [Workflow-to-Requirements Traceability Crosswalk](WORKFLOW-REQUIREMENTS-TRACEABILITY-CROSSWALK.md) (STF-BI-RTM-WF-001 v0.1). It maps all 16 proposed workflow scenarios to original Task 03 requirements, the 12 acceptance criteria, proposed capability IDs, accepted ADRs and relevant Task 05 dependencies.
+
+The crosswalk is a proposal, not an approval or test report. It explicitly identifies partial and absent coverage, including separate acceptance obligations for AC-011 (AI model replacement) and AC-012 (future STF biodiversity reuse). The original Task 03 requirements and acceptance criteria remain unchanged and authoritative pending owner approval.
+
 ## 5. Original Task 03 functional requirements — controlled traceability
 
 The requirement statements and priorities below are transcribed from Task 03 Section 32. Wording is normalized only for table readability; the original PRD remains authoritative until the project owner approves a canonical revision.
