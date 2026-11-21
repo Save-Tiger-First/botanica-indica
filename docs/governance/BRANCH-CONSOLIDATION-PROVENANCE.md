@@ -83,12 +83,12 @@ PRs #1 and #2 each contain one source commit, respectively the head SHAs shown i
 
 ### Content-preservation verification
 
-The current source and destination file blob SHAs match exactly:
+Four of the five current source and destination files have identical blob SHAs. The branch inventory file is the deliberate exception: its original source blob remains intact on `governance/branch-lifecycle-policy`, while the PR #16 destination version replaces the inaccurate Task 05D v2/v3 comparison with a verified correction. A direct comparison confirmed that the destination is exactly the source file with only that specific passage corrected:
 
 | Source PR | File | Verified blob SHA | Result |
 |---|---|---|---|
 | #15 | `.github/pull_request_template.md` | `1b2a71bb968cb892bc229c5ce8ac5ffb4b3d1084` | Exact match on PR #16 branch |
-| #15 | `docs/governance/BRANCH-INVENTORY-AND-CONSOLIDATION-REGISTER.md` | `9233910471f0806435cb39c47ff074e90d382e47` | Exact match on PR #16 branch |
+| #15 | `docs/governance/BRANCH-INVENTORY-AND-CONSOLIDATION-REGISTER.md` | `9233910471f0806435cb39c47ff074e90d382e47` | Source version retained on source branch; destination intentionally corrected (blob `cd8933f2dab5411c003b12505e3ddcd9f02f2f3e`) |
 | #15 | `docs/governance/BRANCHING-AND-RELEASE-GOVERNANCE.md` | `baf085de8baea1ec7becfc15ce3f691512e91aba` | Exact match on PR #16 branch |
 | #1 | `docs/governance/LICENSING-AND-IP-POLICY.md` | `b24e479559eaa6022fdc37db7ea65ded30a7c23e` | Exact match on PR #16 branch |
 | #2 | `docs/adr/ADR-011-stf-ecosystem-boundaries.md` | `92c3fb551c1b0e367d748f76ce8e835959ed3957` | Exact match on PR #16 branch |
@@ -97,7 +97,7 @@ Git comparison against the current PR #16 branch reports PR #15 as 18 commits ah
 
 ### What is and is not preserved
 
-- **Verified:** the final contents of all five governance files are preserved exactly on the PR #16 branch.
+- **Verified:** four governance files remain byte-identical between source and destination. The fifth (branch inventory) is preserved in its original form on the source branch and intentionally corrected on the PR #16 destination; the destination differs only by the documented Task 05D v2/v3 correction.
 - **Verified:** source commit SHAs and the linear PR #15 commit sequence are now recorded in this register.
 - **Not transferred:** the original source commit ancestry is not part of PR #16's commit graph merely because file contents were copied. This register records commit identifiers and provenance; it does not itself retain the underlying Git objects.
 - **Review status:** none of PRs #1, #2, #15 or #16 has recorded issue comments, submitted reviews or inline review threads in the retrieved GitHub records. No independent legal, governance or architecture approval is evidenced.
@@ -106,3 +106,56 @@ Git comparison against the current PR #16 branch reports PR #15 as 18 commits ah
 ### Retirement recommendation
 
 Do not close or delete any of the three source branches on the strength of file equality alone. If complete Git history must remain directly reachable, retain the source ref until the owner approves a specific history-preservation method (for example, integrating the source history into the existing governance review destination or creating an approved archival ref). If the owner accepts content-level preservation plus the recorded commit-SHA provenance as sufficient, document that decision before resolving the source PR and deleting its own head branch. No retargeting, merge, closure, tag creation or branch deletion was performed in this audit.
+
+## Owner-selected original-history preservation — 21 November 2026
+
+**Owner direction:** The project owner selected Option A: preserve original Git history wherever it contains meaningful decisions. Use existing branches only. No new branches are authorized. The owner has expressly retained the requirement for separate approval before any merge, PR closure, branch deletion or other irreversible action.
+
+### Current reachability of governance source histories
+
+| Source branch | Current head | Original history | Current preservation state |
+|---|---|---|---|
+| `governance/branch-lifecycle-policy` | `633105210d3a6c4c8e36287ed2dc44dee23f61ef` | 18 linear commits from `f165ecb9b4d9de115c02327cf779982b7ef4bbd4` | Reachable through the existing source branch ref; PR #15 remains open |
+| `docs/asset-specific-licensing-policy` | `15fd4edef9afa8d22df9e23f66296ef09423d8cf` | 1 original policy commit from `f165ecb9b4d9de115c02327cf779982b7ef4bbd4` | Reachable through the existing source branch ref; PR #1 remains open |
+| `docs/adr-011-stf-ecosystem-boundaries` | `e900b64c90df08f5c98181af54bf2ab0b7096759` | 1 original ADR proposal commit from `f165ecb9b4d9de115c02327cf779982b7ef4bbd4` | Reachable through the existing source branch ref; PR #2 remains open |
+
+These source refs currently keep the original commit objects reachable. The source branches must not be deleted until their ancestry has been made reachable from an approved retained ref and the relevant PR/branch retirement gates are satisfied.
+
+### Assessment of meaningful history
+
+**PR #15 — retain all 18 commits in the ancestry.** The sequence is not merely 18 interchangeable snapshots:
+
+- Commits 1–3 establish three distinct governance artifacts: branch lifecycle policy, PR template and consolidation register.
+- Commits 4–8 record successive corrections to the inventory, scientific-review status and PR dependency record.
+- Commits 9–14 refine the branch model, long-lived-branch rule, branch inventory, dependency routing and minimisation policy.
+- Commits 15–18 record the seven-branch ceiling, consolidation plan and current retirement register.
+
+Some later commits are inventory refreshes rather than new standalone policies, but they record the evolution of verified repository state and owner-directed constraints. Preserve the complete 18-commit ancestry; use the commit messages and this register to explain the sequence rather than attempting to squash it.
+
+**PR #1 — retain its one original commit.** It is the origin of the proposed asset-specific licensing/IP policy. The policy's proposed status and lack of independent legal approval remain explicit.
+
+**PR #2 — retain its one original commit.** It is the origin of proposed ADR-011 on STF ecosystem boundaries. It remains proposed and must be checked against existing accepted ADRs before acceptance.
+
+### Proposed history-preserving integration method — not yet authorized
+
+The existing PR #16 branch already contains the source documents. Four source/destination file blobs match exactly. The branch inventory file was intentionally corrected on PR #16; its original form remains on the source branch, and the destination's only difference from the source file is the verified Task 05D v2/v3 correction.
+
+After a separate explicit authorization, the technically cleanest candidate is to preserve each source head as a parent of a merge commit on the **existing** `docs/repository-audit-and-ai-operating-standard` branch, retaining the destination tree as the canonical tree. This is equivalent to an ancestry-preserving 'ours' integration: it records the original source history as reachable ancestry without reverting the destination's reconciled content. It does not require creating a new branch. The operation must be tested/reviewed against the exact current tree and parent SHAs immediately before execution.
+
+Sequence, if separately authorized:
+
+1. Re-fetch PR #16 head, source branch heads, destination tree SHA and all five source/destination file blobs.
+2. Confirm no source branch has advanced and no new PR depends on a different source state.
+3. Create a two-parent history-preserving merge commit for one source branch at a time on the existing PR #16 branch, with the current destination commit as first parent, source head as second parent, and the reconciled destination tree unchanged.
+4. Verify the merge commit has both expected parents, the expected tree, and the complete original source ancestry is reachable from the destination branch.
+5. Repeat for the other two source branches, re-fetching and verifying after each write.
+6. Only after PR #16 is reviewed and its integration is separately approved may the source PRs be resolved. Branch deletion remains a separate approval and must wait until no open PR references the branch.
+
+**Approval boundary:** The owner's selection of Option A authorizes the preservation objective and the planning work. It does not authorize creation of merge commits, PR merges/closures, retargeting, or branch deletion. No history-integration merge has been performed.
+
+### Verified repository state after this decision
+
+- 23 branches remain, including all three governance source refs and the PR #16 destination ref.
+- 20 PRs remain open; PRs #1, #2 and #15 remain unmerged, and PR #16 remains draft.
+- The PR #16 destination branch was at `69d3636b0e15254ef5973ace3b53e6816a253b37` immediately before this provenance update.
+- No new branch was created. No merge commit, PR merge, PR closure, retarget, tag, branch deletion or protection change was performed.
