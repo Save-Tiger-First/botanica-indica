@@ -231,3 +231,56 @@ This review does not approve any proposal, amend an ADR, accept a PRD, authorize
 - No application code, executable product tests, security scans or scientific-model tests were run or claimed.
 
 This review is a desk audit and proposal. Its findings should be independently reviewed by the appropriate product, architecture and scientific reviewers before any owner decision.
+
+
+## 14. Follow-up reconciliation completed — 21 November 2026
+
+The initial capability-identifier blocker in Section 6 has been addressed at the **proposed-document level** through source-preserving updates on the two existing product workstream branches. This resolves the direct inconsistency between the current Blueprint and RTM working copies; it does not constitute owner approval or acceptance of either document.
+
+### 14.1 Current reconciled document revisions
+
+| Document | Existing branch / PR | Latest commit | Latest blob SHA | State |
+|---|---|---|---|---|
+| Full Product Vision and Capability Blueprint v0.2 | `docs/full-product-vision-capability-blueprint` / PR #17 | `d07bf52e0c6d4fd5c089e828b0f5b9af33dcd300` | `905455233d11fc750ba3a485d5c516e01f8426ee` | Proposed; open draft |
+| Requirements Traceability Register v0.2 | `docs/requirements-traceability-register` / PR #19 | `d2277d3680f828ada403632a4f30ea4e9b940f90` | `5f6862d6ece8d428714588daff54992ccaabfdf2` | Proposed; open draft |
+
+Both revisions were fetched back from GitHub and their blob SHAs matched the write results. PR #17 and PR #19 remain open drafts, based on `develop`, with no commits behind `develop`; the GitHub API reported both as mergeable/clean at the last check. Neither has review submissions, review threads or issue comments. No check runs were returned for either head commit. Mergeability is not approval.
+
+### 14.2 Capability map reconciliation
+
+- Both documents now contain the same **16 unique proposed canonical identifiers**, `BI-CAP-01` through `BI-CAP-16`.
+- The identifiers follow Blueprint Sections 5.1–5.16 one-to-one.
+- The Blueprint's earlier 15-ID table is preserved as a historical crosswalk. Its former combined taxonomy/profile scope is explicitly split between `BI-CAP-01` (underlying taxonomy and source-attributed botanical knowledge assertions) and `BI-CAP-03` (user-facing botanical knowledge profile synthesis).
+- The RTM's former `CAP-01`–`CAP-16` IDs are preserved as legacy aliases and mapped one-to-one to the new `BI-CAP` namespace.
+- RTM capability references are now fully qualified; no abbreviated comma-list references remain.
+- Blueprint Sections 5.1 and 5.3 now clarify that the first owns underlying source-attributed taxonomic/botanical assertions and structured diagnostic attributes, while the third owns the user-facing synthesis and organization of those records. This avoids creating a second taxonomic authority.
+
+### 14.3 Derived requirement and scope guardrails
+
+- Original Task 03 functional requirement IDs and priorities remain unchanged.
+- The RTM's former derived identifier `SCI-001A` is now `DER-SCI-001`; the former label is retained as a legacy alias. The original `SCI-001` remains unchanged.
+- Task 03 Section 34's seven explicit non-goals are transcribed as `NG-01`–`NG-07` scope guardrails in the RTM. They are not converted into feature requirements or permanent prohibitions. Any future change requires explicit owner approval and relevant product/requirements review.
+- The Task 03 and Task 04 source documents were not modified.
+- Accepted ADR-001–ADR-010 were not modified. Proposed ADR-011 remains proposed and is not treated as an accepted boundary decision.
+
+### 14.4 Remaining product-baseline gaps
+
+1. The project owner has not yet approved the proposed 16-domain map, the new namespace or either document as a canonical baseline.
+2. The lifecycle-state machine remains an explicit gap. Allowed transitions, actors/authority, evidence requirements, appeals/corrections, withdrawal/restriction, publication effects and audit rules remain to be specified and approved. The documents do not invent transition rules.
+3. Derived requirements still require overlap/duplication review during canonical PRD revision.
+4. Task 04 architecture has not yet been fully crosswalked to the reconciled 16-domain namespace; this should follow owner review of the product map and the shared STF/Botanica boundary.
+5. Task 05 DR-01–DR-12 and LDM-01–LDM-16 gates remain open or subject to validation. No physical database design or implementation readiness is conferred.
+
+### 14.5 Verification and action boundary
+
+The two updated files were read back from GitHub and checked for:
+- all 16 unique `BI-CAP` identifiers in each document;
+- 16 capability rows in each capability table;
+- the seven Task 03 non-goal guardrails in the RTM;
+- the legacy capability crosswalks;
+- the derived requirement identifier and original Task 03 requirement IDs;
+- the updated source blob SHA in the RTM.
+
+These are document/readback consistency checks, not CI, application tests, scientific validation, legal review or independent expert approval.
+
+No PR was merged, closed or retargeted. No branch was created, renamed or deleted. No repository setting, protection or permission was changed. The 23-branch count and seven-branch ceiling remain unchanged.
