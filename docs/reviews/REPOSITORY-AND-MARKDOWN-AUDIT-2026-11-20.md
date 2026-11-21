@@ -522,3 +522,77 @@ Recommended order:
 - No ruleset, branch protection, repository permission or default branch was changed.
 - `CONTRIBUTING.md`, `README.md`, the licensing policy, ADR-011 and the companion architecture document were inspected but not edited as part of this review record.
 
+
+
+---
+
+## 18. PR #16 governance remediation — implementation record, 21 November 2026
+
+### 18.1 Repository and branch context
+
+- Repository: `Save-Tiger-First/botanica-indica`.
+- Work branch: `docs/repository-audit-and-ai-operating-standard`.
+- Base PR: #16, still open and draft, base `develop`.
+- Operating prompt used: `docs/governance/AI-PROJECT-OPERATING-PROMPT.md`, v1.0 proposed; original reviewed blob `ec100aec5abc09ec04ad9f4a084a0aa95a7c7558`.
+- No branch was created, renamed or deleted. No PR was merged, closed or retargeted. No ruleset, permission, default branch or repository setting was changed.
+
+### 18.2 Changes implemented on the existing PR #16 branch
+
+| File | Change |
+|---|---|
+| `docs/governance/AI-PROJECT-OPERATING-PROMPT.md` | Aligned the permitted prefix list with existing `proposal/`, `strategy/` and `review/` workstreams; the no-new-branches directive remains unchanged. |
+| `docs/governance/BRANCHING-AND-RELEASE-GOVERNANCE.md` | Added a nine-PR exact legacy direct-to-main routing compatibility section. This is not merge permission. |
+| `scripts/check_repository_governance.py` | Added exact PR-number/head allowlisting for PRs #1–#5, #8, #9, #13 and #14; requires PR number; rejects new direct-to-main task PRs; recognizes all existing workstream prefixes. |
+| `.github/workflows/repository-governance.yml` | Pins `actions/checkout` v7.0.1 to commit `3d3c42e5aac5ba805825da76410c181273ba90b1` and `actions/setup-python` v7.1.0 to `6d4fd22b20465ccc0f7354476588e8df7c9ca0e0`, both verified against their GitHub tag refs. |
+| `CONTRIBUTING.md` | Replaced ambiguous contribution licensing wording. States no DCO, CLA or complete contributor agreement has yet been adopted and that this guide is not an assignment or blanket grant. |
+| `README.md` | Updated licensing-policy status, ADR-011 navigation and governance-document links. |
+| `docs/governance/LICENSING-AND-IP-POLICY.md` | Added India-specific copyright, DPDP and biodiversity/ABS triage; expanded the Data and Rights Registry with jurisdiction, legal applicability, authority, ABS, community consent and legal-review fields; refined copyright section 19 and exemption wording. |
+| `docs/adr/ADR-011-stf-ecosystem-boundaries.md` | Added ADR-005, ADR-006 and ADR-007 to related-decision metadata. ADR-011 remains Proposed. |
+| `docs/architecture/STF-ECOSYSTEM-BOUNDARIES.md` | Corrected wording that had described the proposed licensing policy as already approved. |
+| `tests/test_repository_governance.py` | Added regression tests for all allowed prefixes, exact grandfathered PR/head pairs, new direct-to-main rejection, staging promotion, hotfix rule and long-lived branch restrictions. |
+
+### 18.3 CI validation
+
+GitHub Actions run **44875418039** was triggered by PR #16 at commit `ac8c897d46092abcc039e4e39723afdecd2bdcd4` and completed successfully on 21 November 2026.
+
+The job `Markdown integrity and branch routing` completed with conclusion `success`. The following steps passed:
+- Checkout
+- Python setup
+- Governance routing regression tests
+- Markdown integrity and PR routing checks
+
+This verifies the workflow and test suite at the run's head commit. The subsequent copyright wording refinement in the licensing policy is documentation-only and occurred after that run; a new workflow run should verify the latest final head before PR #16 is considered review-ready.
+
+The workflow is still **not a required status check**. No ruleset change was made. Its Markdown validation remains a limited fence/relative-link check, not a complete CommonMark/GFM validator, license scanner, security scan or application test suite.
+
+### 18.4 Legal-source verification and qualifications
+
+On 21 November 2026, direct official-source retrieval confirmed:
+
+- G.S.R. 843(E), 13 November 2025, sets phased commencement for the DPDP Act. Section 6(9) and section 27(1)(d) commence one year after publication; provisions listed in clause (c), including sections 3–5, 7–17 and other specified sections, commence eighteen months after publication. Official Gazette PDF: https://www.meity.gov.in/static/uploads/2025/11/c56ceae6c383460ca69577428d36828b.pdf
+- G.S.R. 846(E), 13 November 2025, sets phased commencement for the DPDP Rules. Rules 1, 2 and 17–21 commenced on publication; Rule 4 after one year; Rules 3, 5–16, 22 and 23 after eighteen months. Official Gazette PDF: https://www.meity.gov.in/static/uploads/2025/11/53450e6e5dc0bfa85ebd78686cadad39.pdf
+- The Copyright Office's Chapter IV text confirms first ownership (section 17), assignment (section 18) and the written form and particulars of assignment (section 19), including consideration and default rules. Official source: https://copyright.gov.in/Copyright_Act_1957/chapter_iv.html
+- NBA official search-indexed materials list the Biological Diversity Rules 2024 and Amendment Rules 2025, the 2025 ABS Regulations, and current FAQ information on exemptions and authority roles. Sources: https://nbaindia.nic.in/index.php/acts-and-rules/rules ; https://www.nbaindia.nic.in/public-information/notification-guidelines ; https://www.nbaindia.nic.in/about-us/faqs
+
+The MeitY Gazette PDFs and Copyright Office Chapter IV page were directly opened. NBA pages were surfaced by official-domain search results; direct page retrieval returned cache-miss errors in this session. Their links are retained as official starting points, but the exact consolidated legal text and case-specific applicability must be verified with qualified counsel before action.
+
+The biodiversity triage intentionally avoids a blanket claim that all public botanical information requires NBA approval. The amended law and current NBA guidance describe exemptions with eligibility conditions; the actual resource, actor, activity, purpose and applicable exemption must be assessed. No legal opinion, DPDP compliance certification, NBA approval, ABS determination or community consent is claimed.
+
+### 18.5 Current repository lifecycle state at review
+
+At the latest API check before this record:
+- 23 branches remained.
+- 20 PRs remained open.
+- PR #16 remained open, draft, targeting `develop`.
+- No branch was created, renamed or deleted.
+- No PR was merged, closed or retargeted.
+- The immediate seven-branch ceiling remains unmet.
+
+### 18.6 Outstanding review gates
+
+1. Re-run and verify the governance workflow on the final PR #16 head after the latest documentation-only changes.
+2. Review the grandfathered legacy PR allowlist whenever one of those PRs is retargeted or closed; remove its exact entry at that point.
+3. Decide and document a separate owner-approved retargeting plan for the nine legacy direct-to-main PRs. No retargeting has been done.
+4. Obtain qualified Indian legal review of contributor terms, copyright, DPDP and biodiversity/ABS applicability before external contribution solicitation or regulated activity.
+5. Review the proposed policies and ADR-011 independently. CI success and GitHub mergeability are not approval.
+6. Update the branch inventory again before any retirement wave; preserve all source histories and dependencies.
