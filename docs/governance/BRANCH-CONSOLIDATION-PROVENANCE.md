@@ -224,3 +224,43 @@ After a separate explicit authorization, the proposed sequence on the existing `
 - **Source-retirement effect:** none at this stage. All source branches and PRs remain open until separately reviewed and approved.
 - **Execution status:** not executed. No commit object was created, no branch ref was updated, no PR was merged or closed, and no branch was deleted.
 - **Approval required:** explicit authorization to create the three merge commits and advance the existing PR #16 branch. This is separate from the already approved preservation objective.
+
+
+## Governance history-preserving integrations — completed 21 November 2026
+
+**Status: Implemented and verified on the existing PR #16 branch.** The project owner explicitly authorized three ancestry-preserving, two-parent commits on `docs/repository-audit-and-ai-operating-standard`, retaining the destination tree and leaving all PRs and source branches open.
+
+### Integration commits
+
+| Order | Source PR / branch | Destination merge commit | First parent | Second parent (original source head) |
+|---|---|---|---|---|
+| 1 | PR #15 — `governance/branch-lifecycle-policy` | `0dbde2a31c4c8c0dd24e84789aee7f690237465e` | `0086c739379a5b8d6c107780e314ef8fb0d1f98f` | `633105210d3a6c4c8e36287ed2dc44dee23f61ef` |
+| 2 | PR #1 — `docs/asset-specific-licensing-policy` | `8822e8e6690e7959e8226ae338ff04205c55d1ec` | `0dbde2a31c4c8c0dd24e84789aee7f690237465e` | `15fd4edef9afa8d22df9e23f66296ef09423d8cf` |
+| 3 | PR #2 — `docs/adr-011-stf-ecosystem-boundaries` | `8118f633d026fe05573160562e3d76defa3e6ea7` | `8822e8e6690e7959e8226ae338ff04205c55d1ec` | `e900b64c90df08f5c98181af54bf2ab0b7096759` |
+
+All three commits were created with the exact same destination tree `590689102dc583fe16a0fa7c5aae4cb36d6d5eef`. Each existing destination ref update used `force=false` and an expected-head SHA. After each write, the destination head, tree and exact two-parent ordering were fetched and verified.
+
+### Ancestry verification
+
+GitHub compare checks were run with each source head as the base and the final integrated PR #16 head as the comparison target:
+
+| Source head | Compare result | Ahead from source | Behind from destination |
+|---|---|---:|---:|
+| PR #15 `633105210d3a6c4c8e36287ed2dc44dee23f61ef` | `ahead` | 49 | 0 |
+| PR #1 `15fd4edef9afa8d22df9e23f66296ef09423d8cf` | `ahead` | 66 | 0 |
+| PR #2 `e900b64c90df08f5c98181af54bf2ab0b7096759` | `ahead` | 66 | 0 |
+
+Each source head is therefore an ancestor of the integrated PR #16 head. The complete 18-commit PR #15 sequence and the original one-commit PR #1 and PR #2 histories remain reachable without rewriting those source commits.
+
+### Scope and safety verification
+
+- PR #16 remains open and draft; its head is `8118f633d026fe05573160562e3d76defa3e6ea7` at the time of this record.
+- PRs #1, #2 and #15 remain open and unmerged, with their original head SHAs unchanged.
+- The three source branches remain present at their original source head SHAs.
+- Repository branch count remains 23; open PR count remains 20.
+- No branch was created or deleted. No PR was merged or closed. No PR was retargeted. No branch protection, ruleset, repository permission or default-branch setting was changed.
+- The exact destination tree was preserved across all three history integrations. This statement concerns the integration commits themselves; this provenance update is a subsequent documentation commit and will create a new tree.
+
+### Remaining work
+
+These integrations preserve ancestry; they do **not** constitute approval or merge of the licensing policy, ADR-011, branch lifecycle policy, or PR #16 into `develop`. The content and decisions still require review under the operating prompt. The source PRs and branches must not be closed or deleted until the owner separately authorizes those actions and all relevant PR dependencies, review requirements and preservation gates have been resolved.
