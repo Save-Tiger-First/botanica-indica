@@ -171,6 +171,8 @@ The lifecycle gap is now elaborated in the proposed companion artifact [Workflow
 
 The crosswalk is a proposal, not an approval or test report. It explicitly identifies partial and absent coverage, including separate acceptance obligations for AC-011 (AI model replacement) and AC-012 (future STF biodiversity reuse). The original Task 03 requirements and acceptance criteria remain unchanged and authoritative pending owner approval.
 
+The twelve original Task 03 acceptance criteria have also been decomposed into 66 proposed test cases in [Task 03 Product-Baseline Acceptance Test Plan](TASK-03-ACCEPTANCE-TEST-PLAN.md) (STF-BI-ATP-001 v0.1). All cases are **Proposed / Not run**; the plan identifies prerequisite scientific, policy, architecture, rights and privacy decisions. It is a test-design artifact, not evidence of implementation, test execution, scientific validation or release acceptance.
+
 ## 5. Original Task 03 functional requirements — controlled traceability
 
 The requirement statements and priorities below are transcribed from Task 03 Section 32. Wording is normalized only for table readability; the original PRD remains authoritative until the project owner approves a canonical revision.
