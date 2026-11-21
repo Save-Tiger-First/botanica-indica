@@ -229,7 +229,7 @@ Do not assume that every public botanical webpage, scientific name, photograph o
 
 #### Copyright and contributor rights
 
-For Indian copyright questions, include the Copyright Act, 1957, particularly first ownership (section 17) and assignment (sections 18–19). Section 19 addresses the written instrument and particulars of an assignment, including the work, rights, duration and territorial extent. Do not treat a general contribution statement as a copyright assignment or assume the uploader owns the work. Obtain qualified advice for contributor terms, commissioned/employment works, joint authorship, third-party content and cross-border rights.
+For Indian copyright questions, include the Copyright Act, 1957, particularly first ownership (section 17) and assignment (sections 18–19). Section 19(1) requires a written instrument signed by the assignor or an authorised agent; section 19(2) requires identification of the work and the rights, duration and territorial extent; section 19(3) addresses royalty and other consideration; and sections 19(5)–(6) provide default rules where duration or territorial extent is not specified. The full Act, amendments, exceptions and relevant facts must be reviewed. Do not treat a general contribution statement as a copyright assignment or assume the uploader owns the work. Obtain qualified advice for contributor terms, commissioned/employment works, joint authorship, third-party content and cross-border rights.
 
 The registry should support source-level defaults only where the source terms genuinely apply uniformly. Record exceptions at dataset, record or asset level where required.
 
