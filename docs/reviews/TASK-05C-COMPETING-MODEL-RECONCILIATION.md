@@ -670,3 +670,90 @@ ODR-01 is refined by the separate Decision Paper §15 and EVT Pack §17: reporti
 ### 18.4 Current disposition
 
 This is a desk-research and document-reconciliation update only. It does not close DR-01–DR-12 or B01/B02/B16, does not execute LDM/EVT/FLD fixtures, does not approve Candidate A or B, and does not make Task 05E ready. Qualified botanical, field ecology, biodiversity-informatics and database review remains required.
+
+ 
+## 19. Consolidated cross-document audit — 21 November 2026
+
+**Status:** Desk audit and proposed corrective actions. No accepted ADR, scientific model or product requirement has been changed. No PR was merged, closed or retargeted. No test or external specialist review is claimed.
+
+### 19.1 Exact documents inspected
+
+| Source | Branch / PR | Current file blob SHA at audit |
+|---|---|---|
+| Task 05B Scientific Data Dictionary | `docs/task-05-data-dictionary` / PR #4 | `b6827f8149313f0e70ac6a8873108aae509eb785` |
+| Task 05C Candidate A | `docs/task-05c-logical-data-model` / PR #5 | `c8bddcdfda9f76f03afd389ff9c5a307b89bd906` |
+| Task 05C Candidate B | `docs/task-05c-logical-database-model` / PR #21 | `239d7e9974bcb81b1154b54845a7b2d69c3775d6` |
+| Task 05D v3 | `docs/task-05d-logical-model-validation-v3` / PR #11 | `4bf00f4981091ea9336c9c34fde77628d1dfd7fd` |
+| EVT Decision and Validation Pack | `review/scientific-data-model-review-pack` / PR #9 | `0987d6aead532ef691ad7f3b5c239b95401d6476` |
+| Scientific Data Model Validation Matrix | `review/scientific-data-model-review-pack` / PR #9 | `cfa71507aa41ad90342240bd889128e61e901a88` |
+| Event–Survey–Occurrence Decision Paper | `review/scientific-data-model-review-pack` / PR #9 | `49594a939b3649928823c9f58bd9224f12077ef7` |
+| Task 05C Competing Model Reconciliation | `review/scientific-data-model-review-pack` / PR #9 | `4ff03def70dc55b6da66ac7edb0d8697fafb1272` |
+
+These are file blob SHAs, not branch-head or commit SHAs. Branch and PR heads must be re-fetched before any subsequent write or lifecycle action.
+
+### 19.2 Findings ranked by severity
+
+| ID | Severity | Finding | Evidence / impact | Recommended disposition |
+|---|---|---|---|---|
+| XCA-01 | **Blocker** | `SurveyTargetResult` vs `SurveyTargetAssessment` naming conflict | Task 05B §16 and Task 05C §18 use Result; EVT and this reconciliation use Assessment. The proposed Result includes outcome states, while Assessment is framed as lifecycle/completeness. | Select one canonical assessment concept and define its lifecycle and links. |
+| XCA-02 | **Blocker** | Duplicate scientific outcome risk | A target-result status and an Occurrence-level detected/non-detected status could become independently mutable claims. | Select one authoritative outcome representation. Recommended: assessment record for process/completeness; Occurrence for taxon/organism-level result; SurveyOccurrenceReport for Survey reporting. |
+| XCA-03 | **Blocker** | Candidate A ERD not reconciled with its own §18 proposal | Earlier Candidate A content uses Event→Occurrence 1:M contextual association; §18 proposes one Event identity with distinct Survey/Occurrence specializations and expressly does not supersede earlier Candidate A content. | Reconcile ERD, keys, foreign keys, participation and cardinalities in one reviewed revision. Do not call the proposal already integrated. |
+| XCA-04 | **Major** | Standards version claims are inconsistent | Direct Conceptual Model page identifies 2026-05-26; indexed metadata previously suggested 2026-10-13. Hierarchy guidance is listed at 2026-10-13. Core/Humboldt snapshots and term IRIs have separate dates. | Pin exact retrieved documents and term IRIs; keep DR-09 open until discrepancy resolved. |
+| XCA-05 | **Major** | ODR-01 status is not consistently reflected in historical sections | ODR-01 is owner-authorized for export-only interpretation; some earlier text says owner policy decision still required. | Treat earlier wording as historical/superseded; current status is authorized policy, implementation and validation pending. |
+| XCA-06 | **Major** | Task 05D fixtures and entity names need alignment | EVT-34–EVT-44 are proposed; they do not settle the Result/Assessment ownership question until expected graphs and negative assertions are made consistent. | Revise fixture specifications after XCA-01–03 decisions; execute and retain evidence. |
+| XCA-07 | **Major** | Candidate B remains a distinct alternative, not a partial implementation of Event Option B | Candidate B is a separate document/PR #21; “Option B” in the Event decision paper refers to shared Event identity with Survey/Occurrence specializations. | Use full labels and retain Candidate B history without wholesale merge. |
+| XCA-08 | **Observation** | Current project working note is not an engineering baseline | The available `Create Master Checklist.txt` contains consolidated product, architecture, UX and effort-planning material. It is useful as historical intent but contains conceptual diagrams and rough estimates, not approved architecture or a bottom-up estimate. | Preserve as input; use current operating prompt, approved ADRs and traceable Task documents as controlling sources. |
+
+### 19.3 Standards correction — do not overstate version certainty
+
+The official Darwin Core Conceptual Model page directly retrieved during this audit states:
+- Date version issued: 2026-05-26;
+- this version IRI: `http://rs.tdwg.org/dwc/doc/cm/2026-05-26`;
+- latest-version pointer: `http://rs.tdwg.org/dwc/doc/cm/`.
+
+Earlier indexed search metadata suggested a 2026-10-13 Conceptual Model version, but the exact 2026-10-13 resource could not be retrieved and compared in this audit. Therefore 2026-05-26 is the inspected version; 2026-10-13 is an unresolved metadata claim, not a verified document baseline.
+
+The official hierarchical-event guidance is listed at 2026-10-13, previous 2024-02-28. The official core Darwin Core and Humboldt vocabularies have their own snapshot histories. Term-version dates are not interchangeable with the document or vocabulary snapshot date. For example:
+- `dwc:occurrenceStatus-2026-05-26` recommends `detected/notDetected`;
+- `eco:isSurveyTargetFullyReported-2026-05-26` is a target-level reporting-completeness term;
+- `eco:isTaxonomicScopeFullyReported-2026-10-13` replaces the 2024-02-28 term version;
+- Humboldt Survey and sampling-effort terms have their own replacements.
+
+The GBIF Guide v1.0.2 (2025-09-24) uses `present/absent` in examples and specifies the taxonomic-scope conditions for its implicit-absence pattern. It is a publishing guide, not a substitute for the Darwin Core term definitions or the project's internal model. The selected profile mapping must be exact, versioned and tested. DR-09 remains OPEN.
+
+### 19.4 Recommended target-assessment/outcome pattern
+
+**Recommendation, not decision:**
+1. `SurveyTarget` declares an a priori target or records a post-facto analytical filter, preserving origin, version, author and time.
+2. A single target-assessment lifecycle record (working name `SurveyTargetAssessment`) records whether and how the target was assessed, including method, effort, scope, completeness, limitations, time/place and provenance.
+3. `Occurrence` carries the canonical taxon/organism-level detected or explicit non-detected scientific result.
+4. `SurveyOccurrenceReport` links the Survey to the Occurrence and records target-match, bycatch or another governed reporting role.
+5. No missing Occurrence row creates an internal negative assertion. ODR-01 permits only a controlled, profile-specific external export interpretation when its explicit conditions and pinned mapping are satisfied.
+
+This design is not approved. If specialists recommend a different structure, it must demonstrate that outcome state cannot be duplicated or contradicted and that the export mapping remains loss-aware.
+
+### 19.5 Attached planning material — assessment and limits
+
+The available `Create Master Checklist.txt` was read as a consolidated working note. It is valuable for the full-product intent: mobile and web interfaces, botanical knowledge, AI/ML, geography, expert review, community contribution, multilingual and low-connectivity considerations, and shared infrastructure.
+
+It must not be treated as an approved technical baseline:
+- The approximately 4,620 person-hour total is an early top-down planning placeholder, not a bottom-up estimate. The separate phase ranges do not reconcile transparently to that total, and role allocation, data acquisition rights, dataset preparation, model evaluation, deployment cost, operations and ongoing scientific curation need explicit assumptions.
+- The architecture sketches imply multiple independently deployed services and separate vector/search infrastructure. The current operating standard prefers a modular monolith and evidence-based extraction; the sketches must not override that.
+- The sketch places taxonomy and observation capabilities in the shared STF platform layer. The current platform boundary keeps botanical taxonomy, botanical observations and domain-specific scientific governance in Botanica Indica. Shared platform services should be generic and reusable (identity/access, media infrastructure, geography primitives, search infrastructure, notifications, audit, observability and integration) where justified.
+- The “Evidence Score” idea must not become one universal scalar. Model score/calibrated probability, evidence quality, taxonomic support, geographic plausibility, completeness and expert determination are separate dimensions.
+- Competitive comparisons and accuracy claims in the working note are hypotheses/context, not a reproducible benchmark.
+
+**Recommendation:** retain the full-product ambition, but replace the early effort and architecture sketches with traceable bottom-up work-package estimates and the approved modular architecture/ADR boundaries when those tasks are ready.
+
+### 19.6 Current status and next actions
+
+- Candidate A remains the preferred review starting point, not an approved model.
+- Candidate B remains a separate alternative preserved under PR #21.
+- ODR-01 is owner-authorized for external export interpretation only; implementation and validation pending.
+- XCA-01–03 are blocking for a coherent Task 05C logical model.
+- B01, B02, B16 and DR-09 remain open.
+- EVT-34–EVT-44 and related LDM/FLD fixtures remain proposed and unexecuted.
+- Task 05C remains NOT APPROVED; Task 05E remains NOT READY.
+- No independent specialist review has been obtained.
+
+**Next gate:** agree the assessment/result ownership and Event identity pattern, then reconcile one canonical Candidate A ERD and update the fixture suite. Do not start physical database design before this gate is passed.
