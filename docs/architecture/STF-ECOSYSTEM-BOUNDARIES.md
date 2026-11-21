@@ -4,7 +4,8 @@
 **Version:** 0.1  
 **Scope:** Save Tiger First technology ecosystem  
 **Initial domain application:** Botanica Indica  
-**Related decisions:** ADR-001 through ADR-010
+**Related decisions:** ADR-001 through ADR-010  
+**Related proposal:** ADR-011 — STF Ecosystem Boundaries (Proposed; not accepted)
 
 ---
 
