@@ -363,3 +363,28 @@ Current live repository counts: **23 branches** and **20 open PRs**.
 - PR #16: `open`, draft `true`, base `develop`, head `docs/repository-audit-and-ai-operating-standard`, head SHA `3e42ec6cd2021526663090b7419457893ddde87a`.
 
 The seven-branch ceiling remains unmet. No PR was merged, closed or retargeted; no branch was created, renamed or deleted. No external specialist review or test execution is claimed.
+
+
+---
+
+## 12. EVT decision-and-validation pack added — 21 November 2026
+
+A new review artifact was created on the existing branch `review/scientific-data-model-review-pack` and fetched again to verify its contents:
+
+- File: `docs/reviews/EVT-DECISION-AND-VALIDATION-PACK.md`
+- Commit: `15efc472095d94a5540f4655bbb66b196e6842ab`
+- Blob: `694a2b057b60036bdc961191daa94566830b7e91`
+- Verified length: 725 lines
+- Includes EVT-D01–EVT-D10, EVT-01–EVT-22, ten worked workflows, source/document SHAs, standards/version baseline, candidate model gap analysis, explicit/implicit non-detection safeguards and Task 05E readiness gate.
+- Status: proposed for specialist review; no decision accepted; no test executed; Task 05E NOT READY.
+
+The artifact distinguishes shared contextual Event records from Survey and Occurrence specializations and proposes (for review only) a SurveyTargetAssessment separate from the canonical Occurrence-level result. It also records that implicit absence may be a profile-specific export inference only when target scope and completeness requirements are met.
+
+### 12.1 Live repository state after pack creation
+
+- Branch count: **23**.
+- Open PR count: **20**.
+- PR #9: `open`, draft `true`, base `main`, head `review/scientific-data-model-review-pack`, head SHA `15efc472095d94a5540f4655bbb66b196e6842ab`.
+- PR #16: `open`, draft `true`, base `develop`, head `docs/repository-audit-and-ai-operating-standard`, head SHA `4082edffef2b04a765fa57a0f1af7f77ddd852d3`.
+
+No PR was merged, closed or retargeted. No branch was created, renamed or deleted. No external specialist was contacted.
