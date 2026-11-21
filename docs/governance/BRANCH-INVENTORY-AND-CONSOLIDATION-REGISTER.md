@@ -259,3 +259,81 @@ This is the latest verified inventory snapshot fetched from the GitHub API after
 The PR #16 governance remediation is implemented on the existing branch and the current PR #16 head passed workflow run [44875559325](https://github.com/Save-Tiger-First/botanica-indica/actions/runs/44875559325). This does not make PR #16 approved or ready for merge.
 
 The immediate seven-branch ceiling remains unmet. The live inventory still contains 23 branches, including 20 temporary/workstream branches. The four proposed retained workstream destinations remain provisional; no source PR has been merged or closed and no branch has been retired. Continue preservation-first reconciliation in dependency order and obtain the required approvals before any retirement action.
+
+
+---
+
+## 11. Live repository snapshot — 21 November 2026, after standards-currentness updates
+
+Fetched from the GitHub API after the three scientific review documents were updated and verified.
+
+- Total branches: **23**.
+- Open pull requests: **20**.
+- PR #9: open, draft, base `undefined`, head `undefined`, head SHA `undefined`.
+- PR #16: open, draft, base `undefined`, head `undefined`, head SHA `undefined`.
+- No branch was created, deleted or renamed. No PR was merged, closed or retargeted.
+
+### 11.1 Live branch tips
+
+| Branch | Current tip SHA |
+|---|---|
+| `develop` | `f165ecb9b4d9de115c02327cf779982b7ef4bbd4` |
+| `docs/adr-011-stf-ecosystem-boundaries` | `e900b64c90df08f5c98181af54bf2ab0b7096759` |
+| `docs/asset-specific-licensing-policy` | `15fd4edef9afa8d22df9e23f66296ef09423d8cf` |
+| `docs/canonical-task-03-04-baselines` | `0f908f8221ad3434cc84fe2cd41b735aad0a752a` |
+| `docs/full-product-vision-capability-blueprint` | `d07bf52e0c6d4fd5c089e828b0f5b9af33dcd300` |
+| `docs/full-system-architecture-and-repo-engineering-plan` | `9fb57b9aabe526808352a51fa9c87ecdbf2cd585` |
+| `docs/repository-audit-and-ai-operating-standard` | `33a4a1d7d1c8264187b2aa0840c8c18029b8ce7b` |
+| `docs/requirements-traceability-register` | `01ec0d356fa5db2da5469b89955764eb9e11b0f6` |
+| `docs/task-05-data-architecture` | `2b02ab3cd115691841889ed77d453b31ab0bed16` |
+| `docs/task-05-data-dictionary` | `71444caa3cee16a0c5afd33f70aabf11e90a6b37` |
+| `docs/task-05c-logical-data-model` | `27d905c26217cc127de63449ce342d3bf2723016` |
+| `docs/task-05c-logical-database-model` | `8d4fef2d726aac79dd684856d924b171e44d0b93` |
+| `docs/task-05d-logical-model-validation` | `3efd80e5e28b2a916e63c85808ef3aba9d35e4ac` |
+| `docs/task-05d-logical-model-validation-v2` | `76bd88980bb2536db63bbde76e3fa687503bdda1` |
+| `docs/task-05d-logical-model-validation-v3` | `1bcbb46890788b0296884228e44c867965bc8381` |
+| `governance/branch-lifecycle-policy` | `633105210d3a6c4c8e36287ed2dc44dee23f61ef` |
+| `governance/stf-organisational-readiness-review` | `bd5b18fe5d68f50e25f0453eb792d0c44bc700d0` |
+| `main` | `f165ecb9b4d9de115c02327cf779982b7ef4bbd4` |
+| `proposal/bengaluru-urban-biodiversity-feasibility-pilot` | `7f7a3be03d68d5595465279ad22407ea983f046e` |
+| `research/bengaluru-pilot-site-selection` | `ee71dc0da319e7b3c69572f9c6f015298e3c8c2e` |
+| `review/scientific-data-model-review-pack` | `2968572d394ca11b8b46a0191fd7e409220a5e22` |
+| `staging` | `f165ecb9b4d9de115c02327cf779982b7ef4bbd4` |
+| `strategy/naturetech-biodiversity-conservation-impact` | `9d76328df8112922df818f01c27e297b3ee1b76a` |
+
+### 11.2 Live open PR relationships
+
+| PR | Base | Head | Head SHA | Review state |
+|---:|---|---|---|---|
+| #23 | `review/scientific-data-model-review-pack` | `docs/task-05d-logical-model-validation-v2` | `76bd88980bb2536db63bbde76e3fa687503bdda1` | Draft |
+| #22 | `review/scientific-data-model-review-pack` | `docs/task-05d-logical-model-validation` | `3efd80e5e28b2a916e63c85808ef3aba9d35e4ac` | Draft |
+| #21 | `review/scientific-data-model-review-pack` | `docs/task-05c-logical-database-model` | `8d4fef2d726aac79dd684856d924b171e44d0b93` | Draft |
+| #20 | `develop` | `docs/full-system-architecture-and-repo-engineering-plan` | `9fb57b9aabe526808352a51fa9c87ecdbf2cd585` | Draft |
+| #19 | `develop` | `docs/requirements-traceability-register` | `01ec0d356fa5db2da5469b89955764eb9e11b0f6` | Draft |
+| #18 | `develop` | `docs/canonical-task-03-04-baselines` | `0f908f8221ad3434cc84fe2cd41b735aad0a752a` | Draft |
+| #17 | `develop` | `docs/full-product-vision-capability-blueprint` | `d07bf52e0c6d4fd5c089e828b0f5b9af33dcd300` | Draft |
+| #16 | `develop` | `docs/repository-audit-and-ai-operating-standard` | `33a4a1d7d1c8264187b2aa0840c8c18029b8ce7b` | Draft |
+| #15 | `develop` | `governance/branch-lifecycle-policy` | `633105210d3a6c4c8e36287ed2dc44dee23f61ef` | Ready for review |
+| #14 | `main` | `research/bengaluru-pilot-site-selection` | `ee71dc0da319e7b3c69572f9c6f015298e3c8c2e` | Draft |
+| #13 | `main` | `proposal/bengaluru-urban-biodiversity-feasibility-pilot` | `7f7a3be03d68d5595465279ad22407ea983f046e` | Draft |
+| #12 | `strategy/naturetech-biodiversity-conservation-impact` | `governance/stf-organisational-readiness-review` | `bd5b18fe5d68f50e25f0453eb792d0c44bc700d0` | Draft |
+| #11 | `docs/task-05c-logical-data-model` | `docs/task-05d-logical-model-validation-v3` | `1bcbb46890788b0296884228e44c867965bc8381` | Draft |
+| #9 | `main` | `review/scientific-data-model-review-pack` | `2968572d394ca11b8b46a0191fd7e409220a5e22` | Draft |
+| #8 | `main` | `strategy/naturetech-biodiversity-conservation-impact` | `9d76328df8112922df818f01c27e297b3ee1b76a` | Draft |
+| #5 | `main` | `docs/task-05c-logical-data-model` | `27d905c26217cc127de63449ce342d3bf2723016` | Draft |
+| #4 | `main` | `docs/task-05-data-dictionary` | `71444caa3cee16a0c5afd33f70aabf11e90a6b37` | Draft |
+| #3 | `main` | `docs/task-05-data-architecture` | `2b02ab3cd115691841889ed77d453b31ab0bed16` | Draft |
+| #2 | `main` | `docs/adr-011-stf-ecosystem-boundaries` | `e900b64c90df08f5c98181af54bf2ab0b7096759` | Draft |
+| #1 | `main` | `docs/asset-specific-licensing-policy` | `15fd4edef9afa8d22df9e23f66296ef09423d8cf` | Draft |
+
+### 11.3 Standards-review documentation commits
+
+The following append-only updates were committed on the existing `review/scientific-data-model-review-pack` branch and fetched again to verify the new blob SHA and addendum heading:
+
+| File | Commit | Verified blob |
+|---|---|---|
+| `docs/reviews/EVENT-SURVEY-OCCURRENCE-CONCEPTUAL-MODEL-DECISION-PAPER.md` | `d39e244c16ee472d5ff09433e0e0eeeed7c63dd7` | `0feb63649328e438959a8e8b2927697aea7cbdab` |
+| `docs/reviews/SCIENTIFIC-DATA-MODEL-VALIDATION-MATRIX-AND-DECISION-REGISTER.md` | `eb96a0d0e061a70f033b49ad334af7ce233b24b6` | `d890dce836f9694d8472c380f3ac617a1a75cd32` |
+| `docs/reviews/TASK-05C-COMPETING-MODEL-RECONCILIATION.md` | `2968572d394ca11b8b46a0191fd7e409220a5e22` | `4762c2896645a7a020c72f8f863382119e0dede1` |
+
+These are documentation updates, not scientific-model approvals, test executions, external specialist reviews or authorization to begin Task 05E. The seven-branch target remains unmet until the live list confirms seven or fewer.
