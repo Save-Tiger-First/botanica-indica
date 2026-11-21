@@ -942,3 +942,24 @@ This snapshot was taken after the automation implementation and four append-only
 **No lifecycle action:** no PR was merged, closed, marked ready or retargeted; no branch was created, renamed, deleted or force-pushed; no repository protection, ruleset, permission or setting was changed; no ADR, policy, scientific model or product requirement was approved.
 
 **Next gate:** obtain and inspect a successful current-head workflow run, then request independent maintainer review. Keep PR #16 draft and PR #15 open until the relevant owner decisions are made.
+
+
+## 20.13 Current-head automation verification — 21 November 2026
+
+The current automation implementation was executed successfully on PR #16 head `c037c66865a5b576ef3a74717d803b941fb0a878`.
+
+- Workflow run: [44906508756](https://github.com/Save-Tiger-First/botanica-indica/actions/runs/44906508756)
+- Event: `pull_request`
+- Workflow: Repository governance
+- Job: Markdown integrity and branch routing
+- Conclusion: **success**
+- Unit tests: **27 passed**, including routing, exact legacy/stacked exceptions, branch inventory, fenced-code parsing and relative-link checks.
+- Markdown scan: **23 tracked Markdown files**.
+- Routing check: passed for PR #16 targeting `develop`.
+- Live branch API check: successfully retrieved **23 branches**.
+- Branch-count output: warning that 23 exceeds the seven-branch ceiling; this is expected and correctly non-blocking during preservation-first cleanup.
+- No Python regex FutureWarning appeared in the inspected job output.
+
+The job log and step conclusions were inspected. This verifies the current code and workflow on commit `c037c66865a5b576ef3a74717d803b941fb0a878`; it does not certify branch-creation prevention, repository ruleset configuration, independent review, legal compliance or scientific correctness.
+
+The workflow remains a monitoring/routing control. The live branch count remains 23. No PR or branch lifecycle action was taken.
