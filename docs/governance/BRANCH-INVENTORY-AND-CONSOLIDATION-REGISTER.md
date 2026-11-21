@@ -923,3 +923,22 @@ All three files were fetched again from the target branch after the writes and t
 No PR was merged, closed, marked ready or retargeted. No branch was created, renamed, deleted or force-pushed. No repository protection, ruleset, permission, default branch or repository setting was changed. No ADR, scientific model, product requirement, licensing policy or strategy was approved.
 
 **Next recommended action:** obtain a current-head workflow run and inspect all test/log output; fix any failures before treating this automation pass as validated. Then update the historical governance snapshot cross-references and request independent maintainer review. Keep PR #16 draft and PR #15 open pending explicit owner decisions.
+
+
+## 20.12 Follow-up live snapshot after governance record addenda — 21 November 2026
+
+This snapshot was taken after the automation implementation and four append-only documentation updates recorded in Section 20.11. It supersedes earlier counts for current-state reporting while preserving those entries as dated snapshots.
+
+- PR #16 remained open and draft, base `develop`, head `71f9c4ade8fce1eb140f825fa858cc88fd0a1f56` at the start of this snapshot.
+- PR #16 metadata at that point: 114 commits, 26 changed files, 4,135 additions and 19 deletions.
+- PR #16 vs `develop`: 114 ahead / 0 behind; merge base `f165ecb9b4d9de115c02327cf779982b7ef4bbd4`.
+- PR #15 remained open, non-draft and unmerged. Its head remained an ancestor of PR #16: 96 ahead / 0 behind, merge base `633105210d3a6c4c8e36287ed2dc44dee23f61ef`.
+- Live branch count: 23. Live open PR count: 20.
+- `main` remained one commit ahead of `develop`; the sole main-only file remained `docs/reviews/HORTUS-MALABARICUS-VALIDATION-CROSSWALK.md`.
+- The complete operating prompt was re-fetched; blob SHA remains `53add3894d0502827e584614c70ad09cadaa637d`.
+- Workflow-run lookup for head `71f9c4ade8fce1eb140f825fa858cc88fd0a1f56` returned no PR-triggered workflow run. The successful run 44901677252 belongs to earlier commit `05bf12ec34c724ada2aec3f2631323a12878673f`; it is not evidence of a successful run on the current head.
+- The automation files and the four documentation addenda were fetched after their writes and blob SHAs verified. Runtime execution of the newly expanded tests and branch inventory step remains pending.
+
+**No lifecycle action:** no PR was merged, closed, marked ready or retargeted; no branch was created, renamed, deleted or force-pushed; no repository protection, ruleset, permission or setting was changed; no ADR, policy, scientific model or product requirement was approved.
+
+**Next gate:** obtain and inspect a successful current-head workflow run, then request independent maintainer review. Keep PR #16 draft and PR #15 open until the relevant owner decisions are made.
