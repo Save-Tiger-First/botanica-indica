@@ -455,3 +455,16 @@ Important correction: Darwin Core's conceptual model does not prescribe SQL tabl
 - PR #16: `open`, draft `true`, base `develop`, head `docs/repository-audit-and-ai-operating-standard`, head SHA `a45c8d71b1fd0f57f402c89f8fce54396501ce16`.
 
 The seven-branch ceiling remains unmet. No PR was merged, closed or retargeted; no branch was created, renamed or deleted. No external specialist was contacted.
+
+ 
+## 15. Owner decision ODR-01 recorded — 21 November 2026
+
+The project owner authorized Option B: controlled, profile-specific implicit non-detection interpretation in external exports only. The complete decision and safeguards are recorded in:
+- `docs/reviews/SCIENTIFIC-DATA-MODEL-VALIDATION-MATRIX-AND-DECISION-REGISTER.md`, ODR-01;
+- `docs/reviews/EVT-DECISION-AND-VALIDATION-PACK.md`, §16;
+- `docs/reviews/EVENT-SURVEY-OCCURRENCE-CONCEPTUAL-MODEL-DECISION-PAPER.md`, §14; and
+- `docs/reviews/TASK-05C-COMPETING-MODEL-RECONCILIATION.md`, §17.
+
+The operating prompt on this branch has an appended §14.1 clarification. The original Principle 8 is retained: a missing internal record alone never proves absence. The authorized exception is export-only, requires explicit scope/completeness and pinned, validated mappings, excludes bycatch, fails closed, and does not create an internal negative Occurrence.
+
+EVT-27–EVT-30 are proposed and untested. No Task 05C candidate or Task 05D validation document was modified. Task 05C remains NOT APPROVED; Task 05E remains NOT READY. No branch or PR was created, merged, closed, deleted or retargeted.
