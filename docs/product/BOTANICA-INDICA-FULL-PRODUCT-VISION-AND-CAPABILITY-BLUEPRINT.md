@@ -176,7 +176,7 @@ The following capability map describes the intended product. Each domain require
 - Record source, authority, publication/release version, retrieval time and taxonomic context.
 - Represent competing treatments and unresolved reconciliation without manufacturing consensus.
 - Maintain taxonomic hierarchy and rank, including higher-rank identifications where species-level determination is not justified.
-- Support botanical descriptions, diagnostic morphology, growth form, phenology and relevant habitat information with source attribution.
+- Maintain the underlying source-attributed botanical knowledge assertions and structured diagnostic attributes (including morphology, growth form, phenology and relevant habitat). The user-facing synthesis and organization of these records into botanical knowledge profiles belongs to Capability 5.3.
 - Curate common, vernacular and regional names with language, script, geography, source and confidence/provenance.
 - Record distribution assertions with geographic and temporal scope and source-specific native/introduced/cultivated status.
 - Preserve taxonomic history so earlier identifications and published records remain interpretable.
@@ -204,7 +204,7 @@ The Evidence Engine is a first-class product capability. It connects image acqui
 
 ### 5.3 Species and botanical knowledge profiles
 
-A botanical profile should be a source-aware synthesis, not an unqualified static encyclopedia page.
+A botanical profile should be a source-aware synthesis, not an unqualified static encyclopedia page. Capability 5.3 owns the presentation, organization and user-facing synthesis of botanical knowledge records; it consumes the underlying taxonomic and source-attributed assertions governed by Capability 5.1 rather than creating a duplicate taxonomic authority.
 
 Potential profile sections:
 
