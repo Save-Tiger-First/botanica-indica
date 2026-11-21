@@ -14,6 +14,12 @@
 
 ## 1.1 Task 03–04 architecture and acceptance-readiness audit
 
+## 1.2 Offline and field synchronization architecture specification
+
+The proposed offline/field synchronization design is recorded in [STF-BI-ARCH-OFF-001 — Offline and Field Synchronization Architecture & Validation Specification](../architecture/OFFLINE-FIELD-SYNCHRONIZATION-ARCHITECTURE-AND-VALIDATION-SPECIFICATION.md). It elaborates Task 03 §§17, 20 and 28, WF-OD-10, and AC-004/AC-009/AC-010 dependencies. The document proposes a local draft/outbox, idempotent server command processing, version-aware conflict handling, rights/sensitivity revalidation and 36 validation scenarios (OFF-001–OFF-036). It remains Proposed; no ADR, API contract, physical schema, legal policy or implementation is approved by its creation. Tests are not run.
+
+
+
 The cross-document audit is recorded in [Task 03–04 Cross-Document Architecture and Acceptance-Readiness Audit](../architecture/TASK-03-04-CROSS-DOCUMENT-READINESS-AUDIT.md) (STF-BI-AUD-034 v0.1). It identifies the shared-platform/domain ownership inconsistency, identity capability mapping defect, offline synchronization architecture gap, Task 04 decision-status ambiguity and documentation citation issues. Findings are proposals for owner review; the audit does not amend the original PRD, Task 04 source transcription, accepted ADRs or scientific data model.
 
 
