@@ -432,3 +432,34 @@ Humboldt hierarchical-event guidance, Principle of Inference: https://dwc.tdwg.o
 Term versions: `eco:isTaxonomicScopeFullyReported-2026-10-13`, `eco:isSurveyTargetFullyReported-2026-05-26`, and `dwc:occurrenceStatus-2026-05-26`.
 
 No test is executed or specialist approval claimed by recording ODR-01.
+
+ 
+## 8. Standards/version reconciliation and ODR-01 test extensions — 21 November 2026
+
+### 8.1 Correct version inventory
+
+| Resource | Verified version state | Required treatment |
+|---|---|---|
+| Darwin Core Conceptual Model | Official current metadata reports 2026-10-13; direct page render is cached at 2026-05-26; exact 2026-10-13 document could not be fetched directly | Keep DR-09 open pending exact-resource comparison |
+| Darwin Core List of Terms document | Direct page reports 2026-05-26 | Do not label the List document 2026-10-13 |
+| Core Darwin Core `dwc:` term snapshot | Official metadata reports 2026-10-13 | Pin separately from the List document |
+| `dwc:occurrenceStatus` | Term version 2026-05-26; recommended values `detected` / `notDetected` | Map to GBIF profile examples `present` / `absent` only through a versioned, tested mapping |
+| Humboldt hierarchy guidance | v2024-02-28; Section 3 normative | Apply spatiotemporal coverage, applicability, non-derivation and inference principles |
+| Humboldt terms / controlled values | Relevant term versions include 2026-10-13; `eco:isSurveyTargetFullyReported` has a distinct 2026-05-26 term version | Pin term-by-term; never substitute target completeness for taxonomic-scope completeness |
+
+### 8.2 ODR-01 semantic controls
+
+- `eco:isTaxonomicScopeFullyReported` means every organism within the declared taxonomic scope that was detected during the Event was reported. It is not a measure of survey effort, detectability or perfect sampling.
+- `eco:taxonCompletenessReported` is a separate assessment state; `eco:taxonCompletenessProtocols` records the method/reference. `reportedIncomplete` or `isTaxonomicScopeFullyReported=false` blocks inference. Under the project fail-closed policy, `notReported`, missing or ambiguous completeness/method evidence also blocks inference unless a separately approved profile-specific rule says otherwise.
+- `eco:isSurveyTargetFullyReported` is a separate target-level term and must not be used as a synonym for `eco:isTaxonomicScopeFullyReported`.
+- The parent Event must spatially and temporally encompass children. Scope/completeness must be explicit at every applicable level; no silent inheritance or summary derivation is allowed.
+- A post-facto SurveyTarget/filter must remain identifiable as post-facto. It must not be used to invent the original survey scope.
+- Sampling effort/detectability remains a separate dimension. An implicit export interpretation is not a claim of biological absence.
+
+### 8.3 Added proposed tests
+
+EVT-31: incomplete/unreported/ambiguous completeness or missing method evidence fails closed.  
+EVT-32: hierarchical Event scope, spatiotemporal containment, applicability and non-derivation rules are enforced.  
+EVT-33: a priori and post-facto SurveyTarget origin is preserved; no retrospective scope invention.
+
+EVT-27–EVT-33 are proposed and not executed. DR-09 remains OPEN until exact versioned resources are compared. ODR-01 remains an export-only policy decision; no model, profile or implementation is approved by these additions.
