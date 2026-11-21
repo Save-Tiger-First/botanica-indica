@@ -522,3 +522,145 @@ Latest comparison:
 - Merge base: `91c82b4f136a77aaa1edb02753ed49b2fbee86ed`.
 
 PR #11 remains open/draft and based on Candidate A. The compare result is a history relationship, not a content-conflict verdict. No rebase, retarget, merge, force-push, branch creation or deletion was performed. Any synchronization plan requires full graph and content review.
+
+
+---
+
+## 20. Live repository baseline refresh and preservation-first consolidation status — 21 November 2026
+
+**Audit method:** Direct GitHub REST reads of the repository branch collection, individual branch refs, pull-request metadata, current file contents and compare endpoints. This section supersedes earlier branch/PR counts and current-head assertions where they conflict with the live records below. Earlier dated records are retained as history, not silently rewritten.
+
+### 20.1 Repository and branch baseline
+
+- Repository: Save-Tiger-First/botanica-indica
+- Default branch: main
+- Repository archived: false
+- Branches returned by the live GitHub branch collection: **23**
+- Required long-lived branches: main, develop, staging — all present.
+- Temporary/workstream branches: **20**
+- Immediate owner-authorized ceiling: **7 total branches** (3 long-lived + no more than 4 temporary/workstream branches).
+- Current excess over the ceiling: **16 branches**.
+- The target is **not met**.
+
+| Branch | Live head SHA | GitHub branch API protected flag |
+|---|---|---|
+| develop | f165ecb9b4d9de115c02327cf779982b7ef4bbd4 | false |
+| docs/adr-011-stf-ecosystem-boundaries | e900b64c90df08f5c98181af54bf2ab0b7096759 | false |
+| docs/asset-specific-licensing-policy | 15fd4edef9afa8d22df9e23f66296ef09423d8cf | false |
+| docs/canonical-task-03-04-baselines | 0f908f8221ad3434cc84fe2cd41b735aad0a752a | false |
+| docs/full-product-vision-capability-blueprint | b66c16355d0ded4f20f1a84172eab8b47d133277 | false |
+| docs/full-system-architecture-and-repo-engineering-plan | b478add74f277daaedd555fcc58670ebd2059601 | false |
+| docs/repository-audit-and-ai-operating-standard | ff960523be4fbeae98d7aed33a155f05a682d5ba | false |
+| docs/requirements-traceability-register | b2e8728e5e725b844a41438260e3a40f77ca65db | false |
+| docs/task-05-data-architecture | 2b02ab3cd115691841889ed77d453b31ab0bed16 | false |
+| docs/task-05-data-dictionary | e11fd943e59c81ea8b464ef6a84ac4bcdbcccfd4 | false |
+| docs/task-05c-logical-data-model | d443420d6b77815cb155f457ea262e621aabf7cb | false |
+| docs/task-05c-logical-database-model | 8d4fef2d726aac79dd684856d924b171e44d0b93 | false |
+| docs/task-05d-logical-model-validation | 3efd80e5e28b2a916e63c85808ef3aba9d35e4ac | false |
+| docs/task-05d-logical-model-validation-v2 | 76bd88980bb2536db63bbde76e3fa687503bdda1 | false |
+| docs/task-05d-logical-model-validation-v3 | 0577250c9e7cffcb3605acc782f403b7d1b422e0 | false |
+| governance/branch-lifecycle-policy | 633105210d3a6c4c8e36287ed2dc44dee23f61ef | false |
+| governance/stf-organisational-readiness-review | bd5b18fe5d68f50e25f0453eb792d0c44bc700d0 | false |
+| main | f165ecb9b4d9de115c02327cf779982b7ef4bbd4 | true |
+| proposal/bengaluru-urban-biodiversity-feasibility-pilot | 7f7a3be03d68d5595465279ad22407ea983f046e | false |
+| research/bengaluru-pilot-site-selection | ee71dc0da319e7b3c69572f9c6f015298e3c8c2e | false |
+| review/scientific-data-model-review-pack | b9a5a7a0b93a448c392dff4db19fd8d02ed7dfc4 | false |
+| staging | f165ecb9b4d9de115c02327cf779982b7ef4bbd4 | false |
+| strategy/naturetech-biodiversity-conservation-impact | 9d76328df8112922df818f01c27e297b3ee1b76a | false |
+
+main, develop and staging currently point to the same commit. The GitHub branch API marks only main as protected. This flag is not a complete statement of all effective protection: the only active repository ruleset retrieved is ID 23822734, “Protect main branch”, targeting the default branch, with deletion and non-fast-forward rules. It has no pull-request or review requirement. No ruleset targeting develop or staging was returned. No protection setting was changed.
+
+### 20.2 Live pull-request inventory
+
+The live PR search and individual PR metadata reads returned **20 open PRs** and **3 closed, unmerged PRs**. Of the open PRs, **19 are drafts** and **PR #15 is open and not draft (ready for review)**. No PR is merged.
+
+| PR | State | Draft | Base branch | Head branch | Current head SHA |
+|---:|---|---|---|---|---|
+| #1 | open | yes | main | docs/asset-specific-licensing-policy | 15fd4edef9afa8d22df9e23f66296ef09423d8cf |
+| #2 | open | yes | main | docs/adr-011-stf-ecosystem-boundaries | e900b64c90df08f5c98181af54bf2ab0b7096759 |
+| #3 | open | yes | main | docs/task-05-data-architecture | 2b02ab3cd115691841889ed77d453b31ab0bed16 |
+| #4 | open | yes | main | docs/task-05-data-dictionary | e11fd943e59c81ea8b464ef6a84ac4bcdbcccfd4 |
+| #5 | open | yes | main | docs/task-05c-logical-data-model | d443420d6b77815cb155f457ea262e621aabf7cb |
+| #6 | closed, unmerged | — | main | docs/task-05c-logical-database-model | 8d4fef2d726aac79dd684856d924b171e44d0b93 |
+| #7 | closed, unmerged | — | docs/task-05c-logical-data-model | docs/task-05d-logical-model-validation | 3efd80e5e28b2a916e63c85808ef3aba9d35e4ac |
+| #8 | open | yes | main | strategy/naturetech-biodiversity-conservation-impact | 9d76328df8112922df818f01c27e297b3ee1b76a |
+| #9 | open | yes | main | review/scientific-data-model-review-pack | b9a5a7a0b93a448c392dff4db19fd8d02ed7dfc4 |
+| #10 | closed, unmerged | — | docs/task-05c-logical-data-model | docs/task-05d-logical-model-validation-v2 | 76bd88980bb2536db63bbde76e3fa687503bdda1 |
+| #11 | open | yes | docs/task-05c-logical-data-model | docs/task-05d-logical-model-validation-v3 | 0577250c9e7cffcb3605acc782f403b7d1b422e0 |
+| #12 | open | yes | strategy/naturetech-biodiversity-conservation-impact | governance/stf-organisational-readiness-review | bd5b18fe5d68f50e25f0453eb792d0c44bc700d0 |
+| #13 | open | yes | main | proposal/bengaluru-urban-biodiversity-feasibility-pilot | 7f7a3be03d68d5595465279ad22407ea983f046e |
+| #14 | open | yes | main | research/bengaluru-pilot-site-selection | ee71dc0da319e7b3c69572f9c6f015298e3c8c2e |
+| #15 | open | no | develop | governance/branch-lifecycle-policy | 633105210d3a6c4c8e36287ed2dc44dee23f61ef |
+| #16 | open | yes | develop | docs/repository-audit-and-ai-operating-standard | ff960523be4fbeae98d7aed33a155f05a682d5ba |
+| #17 | open | yes | develop | docs/full-product-vision-capability-blueprint | b66c16355d0ded4f20f1a84172eab8b47d133277 |
+| #18 | open | yes | develop | docs/canonical-task-03-04-baselines | 0f908f8221ad3434cc84fe2cd41b735aad0a752a |
+| #19 | open | yes | develop | docs/requirements-traceability-register | b2e8728e5e725b844a41438260e3a40f77ca65db |
+| #20 | open | yes | develop | docs/full-system-architecture-and-repo-engineering-plan | b478add74f277daaedd555fcc58670ebd2059601 |
+| #21 | open | yes | review/scientific-data-model-review-pack | docs/task-05c-logical-database-model | 8d4fef2d726aac79dd684856d924b171e44d0b93 |
+| #22 | open | yes | review/scientific-data-model-review-pack | docs/task-05d-logical-model-validation | 3efd80e5e28b2a916e63c85808ef3aba9d35e4ac |
+| #23 | open | yes | review/scientific-data-model-review-pack | docs/task-05d-logical-model-validation-v2 | 76bd88980bb2536db63bbde76e3fa687503bdda1 |
+
+The three closed PRs (#6, #7 and #10) were not merged. Their source branches remain live and are now also heads of preservation PRs #21, #22 and #23 respectively. Do not delete those branches while the preservation PRs remain open or before their unique content and provenance have been reconciled.
+
+### 20.3 Current dependency comparisons
+
+Direct compare results were refreshed against the current branch refs:
+
+| Dependency | Current comparison | Merge base | Assessment |
+|---|---|---|---|
+| PR #11: Candidate A → Task 05D v3 | Head has 7 commits not in base; base has 4 commits not in head | 91c82b4f136a77aaa1edb02753ed49b2fbee86ed | Diverged; reconcile complete diff and dependency before any synchronization |
+| PR #12: NatureTech strategy → organisational readiness | Head has 4 commits not in base; base has 3 commits not in head | 44b7ed4dab20c2a76c2357d284dc956baaf067a9 | Diverged; reconcile overlapping strategy content before any synchronization |
+| PR #21: scientific review pack → alternate Task 05C | Head has 1 commit not in base; base has 64 commits not in head | f165ecb9b4d9de115c02327cf779982b7ef4bbd4 | Severely stale/diverged preservation PR; inspect current diff and preserve unique model content |
+| PR #22: scientific review pack → earlier Task 05D | Head has 7 commits not in base; base has 64 commits not in head | f165ecb9b4d9de115c02327cf779982b7ef4bbd4 | Severely stale/diverged preservation PR; inspect current diff and preserve unique validation content |
+| PR #23: scientific review pack → Task 05D v2 | Head has 7 commits not in base; base has 64 commits not in head | f165ecb9b4d9de115c02327cf779982b7ef4bbd4 | Severely stale/diverged preservation PR; inspect current diff and preserve unique v2 content |
+
+“Ahead” and “behind” are relative to the comparison's base and head refs. Divergence is a history relationship, not proof of a textual conflict and not permission to rebase, retarget or merge.
+
+### 20.4 Current document and decision-status verification
+
+The following current file blobs were fetched from the live refs during this refresh:
+
+| Document | Branch | Current blob SHA | Verified status |
+|---|---|---|---|
+| docs/governance/AI-PROJECT-OPERATING-PROMPT.md | docs/repository-audit-and-ai-operating-standard | 53add3894d0502827e584614c70ad09cadaa637d | Governing prompt; includes ODR-01 clarification |
+| docs/governance/BRANCH-INVENTORY-AND-CONSOLIDATION-REGISTER.md | docs/repository-audit-and-ai-operating-standard | 83ad24642eb632e95b3000eafa331e902b5f09c0 | This register, before this refresh addendum |
+| docs/governance/BRANCHING-AND-RELEASE-GOVERNANCE.md | docs/repository-audit-and-ai-operating-standard | 34113278067336572529fe61e647d9c28bdf4042 | Proposed branch policy; not yet adopted by merge |
+| docs/architecture/TASK-05C-LOGICAL-DATABASE-MODEL.md | docs/task-05c-logical-data-model | b447796e7da0d08d96400812667a8e67e0696144 | Candidate A remains proposed and unreconciled; Task 05C NOT APPROVED |
+| docs/data-architecture/TASK-05D-LOGICAL-MODEL-VALIDATION-AND-PHYSICAL-DESIGN-READINESS.md | docs/task-05d-logical-model-validation-v3 | 0b9a009b1c543b2450758f659c97cae3802a2f94 | Draft validation gate; Task 05E NOT READY |
+| docs/reviews/SCIENTIFIC-DATA-MODEL-VALIDATION-MATRIX-AND-DECISION-REGISTER.md | review/scientific-data-model-review-pack | 3a33dfe47657a96456f56f2c12a0b7d355b6c6a5 | Proposed review package; no external review/sign-off recorded |
+| docs/reviews/EVT-DECISION-AND-VALIDATION-PACK.md | review/scientific-data-model-review-pack | 4a317c4c83317e10663ba374e9e6be3100a53431 | Proposed for specialist review; EVT decisions remain open and scenarios unexecuted |
+
+The live Task 05C Candidate A still states that its earlier Event-to-Occurrence relationship and its later shared Event identity/specialization proposal are not yet reconciled into one coherent ERD, key strategy and cardinality set. Task 05D still identifies unresolved assessment/result semantics and validation cases. ODR-01 remains owner-authorized for bounded, profile-specific external exports only; it does not approve Candidate A/B, Task 05C, Task 05D, Task 05E, a physical schema, an API contract or implementation. Internal absence is not inferred from a missing Occurrence. Task 05C remains NOT APPROVED and Task 05E remains NOT READY.
+
+### 20.5 Historical inventory discrepancies requiring provenance reconciliation
+
+Earlier Sections 14–19 record several commit IDs as later/current PR heads. Those identifiers do not match the live branch refs and PR head SHAs returned in this refresh. Examples include:
+
+- Sections 17–19 record Candidate A / Task 05D commits 98741843a2ba8550e2cb744658d9291fe60b8823 and 9d4ca85c553ef5732334322be7f598ed748d285c; current PR #5 / #11 heads are d443420d6b77815cb155f457ea262e621aabf7cb and 0577250c9e7cffcb3605acc782f403b7d1b422e0.
+- Section 14.1 records PR #9 head 3bde5ed8a6b7c8c65923c2cddde4aaa353ca6e8a; current PR #9 head is b9a5a7a0b93a448c392dff4db19fd8d02ed7dfc4.
+- Section 14.1 records PR #16 head a45c8d71b1fd0f57f402c89f8fce54396501ce16; current PR #16 head is ff960523be4fbeae98d7aed33a155f05a682d5ba.
+
+These earlier SHAs may be historical commits, but this refresh does not establish that they are current branch tips or that all associated changes are present in the live PR heads. Do not rely on them as current head identifiers. Preserve the historical statements and investigate commit reachability/provenance before classifying them as erroneous, superseded or abandoned. The live refs and PR metadata in Sections 20.1–20.4 are the current baseline for subsequent work.
+
+### 20.6 Recommended consolidation routing — reaffirmed, not an approval to merge
+
+Retain the four existing workstream destinations:
+
+1. Governance: docs/repository-audit-and-ai-operating-standard (PR #16). Reconcile PR #15 and the licensing / proposed ADR material from PRs #1–#2 without implying policy or ADR approval.
+2. Product and architecture: docs/full-system-architecture-and-repo-engineering-plan (PR #20). Reconcile PRs #17–#19 and #20 while preserving Task 03/04 source provenance and accepted ADR constraints.
+3. Scientific review: review/scientific-data-model-review-pack (PR #9). Preserve and reconcile PRs #3–#5, #11 and #21–#23. Resolve the Task 05C/05D dependency and competing models before any physical-design gate.
+4. STF strategy: strategy/naturetech-biodiversity-conservation-impact (PR #8). Reconcile PRs #12–#14 in dependency order; retain feasibility-only, no-site-selected and no-fieldwork-authorized status.
+
+No new branches are authorized. The four destinations plus main, develop and staging are the only seven branches intended to remain after the preservation, review and retirement gates have been satisfied. The sequence is not to delete source branches first: reconcile unique content, review and resolve the relevant PR, confirm no open PR references the source branch, then retire that branch with explicit authorization.
+
+### 20.7 Actions and non-actions in this refresh
+
+- This addendum records a fresh live baseline; it does not approve any PR, ADR, scientific model, policy, pilot or architecture decision.
+- No branch was created, renamed, deleted or moved.
+- No PR was merged, closed or retargeted.
+- No ruleset, branch protection, permission or repository setting was changed.
+- No external expert, institution, partner or legal adviser was contacted.
+- No scientific test was executed and no independent specialist review is claimed.
+- The seven-branch target remains unmet: 23 branches are live.
+
+**Next task:** conduct a preservation-first, content-level reconciliation of the four workstreams, beginning with the governance PR #15 / #16 package and then the product/architecture PR #17–#20 package. Before any source-branch retirement, update this register with the exact source-to-destination content mapping, duplicate/collision decisions, retained provenance, PR resolution evidence and owner approval.
