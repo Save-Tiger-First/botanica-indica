@@ -178,6 +178,8 @@ These paths are **illustrative proposals**, not deployed endpoints or a final ro
 
 Do not expose a generic endpoint that lets clients write arbitrary database entities or bypass domain workflows. Do not create a universal “sync all local tables” API.
 
+**Important contract-coherence gate:** the proposed generic command endpoint and the illustrative direct `PATCH /observations/{id}` route must not become two independent mutation pipelines. Before OpenAPI freeze, choose one of two patterns: (a) route all offline-queueable writes through the command endpoint; or (b) allow synchronous resource routes as façades that invoke the same domain command processor, idempotency, authorization, revision, audit and receipt semantics. No write route may bypass those controls. This choice remains API-OD-01/API-OD-05 and is not decided here.
+
 ## 6. Command envelope
 
 ### 6.1 Proposed request
