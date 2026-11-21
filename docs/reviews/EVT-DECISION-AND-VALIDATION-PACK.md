@@ -877,3 +877,40 @@ EVT-01–EVT-30 are proposed validation scenarios; none is claimed executed by t
 - Humboldt hierarchical-event guidance: https://dwc.tdwg.org/hierarchy/
 
 The List/Conceptual Model 2026-10-13 indexed metadata versus directly retrieved cached HTML discrepancy remains DR-09 OPEN. Pin exact versioned resources before implementing a mapping.
+
+ 
+## 17. Standards/version correction and extended survey-inference tests — 21 November 2026
+
+The exact version distinction and ODR-01 refinements in the Event–Survey–Occurrence Decision Paper §15 apply to this validation pack. In particular:
+- Darwin Core Conceptual Model current indexed metadata: 2026-10-13; exact versioned document retrieval remains open.
+- Darwin Core List of Terms document: 2026-05-26.
+- Core `dwc:` vocabulary snapshot: 2026-10-13.
+- `dwc:occurrenceStatus` term version: 2026-05-26, recommended literal values `detected` / `notDetected`.
+- Humboldt hierarchy guidance: v2024-02-28, Section 3 normative.
+- Humboldt Extension terms include individual 2026-10-13 versions; `eco:isSurveyTargetFullyReported` remains a distinct term/version from `eco:isTaxonomicScopeFullyReported`.
+
+### 17.1 Required semantics for ODR-01
+
+Do not equate `eco:isTaxonomicScopeFullyReported` (all detected organisms within declared scope were reported) with `eco:taxonCompletenessReported` (whether taxonomic completeness was assessed) or with sampling effort/detectability. Preserve the method using `eco:taxonCompletenessProtocols`. If completeness is reported incomplete or scope fully reported is false, no implicit non-detection may be emitted. Under the project fail-closed policy, missing/not-reported/ambiguous completeness or method evidence also blocks implicit output unless a separately reviewed profile-specific rule permits it.
+
+For hierarchical Events, the parent spatial/temporal extent must encompass its children. Applicable scope/completeness must be explicit at the highest level where it applies and at each applicable child. No implicit parent-to-child inheritance or child-to-parent derivation is permitted. SurveyTarget origin (a priori versus post-facto filter) must be preserved; a post-facto filter must not be treated as retrospectively discovered original survey scope.
+
+### 17.2 Additional proposed scenarios — not executed
+
+| ID | Scenario | Required result |
+|---|---|---|
+| EVT-31 | `taxonCompletenessReported=reportedIncomplete`, `isTaxonomicScopeFullyReported=false`, completeness `notReported`, or required method evidence missing/ambiguous | Suppress implicit non-detection under the ODR-01 fail-closed policy; do not reinterpret the result as explicit non-detection |
+| EVT-32 | Parent/child Event hierarchy with scope and completeness applying at multiple levels | Verify spatial/temporal containment and explicit values at every applicable level; reject inherited child values and parent summaries derived from children |
+| EVT-33 | SurveyTarget created a priori versus selected post-facto | Preserve origin, method, author and timestamp; never retrospectively invent original survey scope; do not use a post-facto filter as an absence-inference scope unless the selected profile and evidence explicitly support it |
+
+EVT-27–EVT-33 remain proposed, unexecuted tests. No independent review or implementation is claimed. DR-09 remains open pending exact versioned-resource retrieval. Task 05C remains NOT APPROVED; Task 05E remains NOT READY.
+
+### 17.3 Official sources checked
+
+- Darwin Core Conceptual Model: https://dwc.tdwg.org/cm/
+- Darwin Core List of Terms: https://dwc.tdwg.org/list/
+- Core Darwin Core terms snapshot: https://rs.tdwg.org/dwc/terms.htm
+- Humboldt hierarchy guidance v2024-02-28: https://eco.tdwg.org/hierarchy/
+- Humboldt Extension term versions: https://rs.tdwg.org/eco/terms.htm
+- Taxon Completeness Reported values v2026-10-13: https://rs.tdwg.org/ecotcr/version/values/2026-10-13.htm
+- GBIF survey guide v1.0.2: https://docs.gbif.org/guide-publishing-survey-data/en/
