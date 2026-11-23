@@ -396,9 +396,12 @@ After the Task 05D section-numbering correction, the latest branch comparison is
 The increase in ahead count reflects additional Task 05D documentation commits on the existing head branch. It does not by itself establish a content conflict. No rebase, retarget, merge, force-push or branch lifecycle action was performed. Full commit-graph and content review remains a prerequisite to any proposed synchronization.
 
 
-## 20. PR #17–#20 static integration rehearsal and PR #9 mergeability investigation — 23 November 2026
+## 20. Historical PR #17–#20 static integration rehearsal and PR #9 mergeability investigation — 23 November 2026 (superseded for PR #9 by §21)
 
-**Status:** Read-only integration rehearsal and mergeability diagnosis, recorded append-only. No PR was merged, closed or retargeted. No branch was created, deleted or renamed. No scientific or product decision was approved.
+**Status:** Historical read-only integration rehearsal and mergeability diagnosis. The PR #9 branch was subsequently synchronized as recorded in §21.
+
+
+> **Historical snapshot notice:** This section records the state before the PR #9 branch synchronization. Its PR #9 head SHA, behind count, mergeability diagnosis and next-action statements are superseded by §21 below. The PR #17–#20 static rehearsal findings remain a historical snapshot and must be refreshed before any later integration action.
 
 ### 20.1 Governing baseline and repository snapshot
 
@@ -492,3 +495,82 @@ The existing Branch Inventory and Preservation-First Consolidation Register on `
 - No scientific, legal or institutional expert approval is claimed.
 
 **Next gate:** reconcile PR #9's two crosswalk versions, then obtain the required independent review of PRs #17–#20 and prepare a genuinely tested integration rehearsal without violating the seven-branch ceiling or performing an unauthorized merge.
+
+
+## 21. PR #9 preservation-first synchronization with main — 23 November 2026
+
+**Status:** Implemented and verified on the existing PR #9 head branch. This is a base-to-head branch synchronization only. PR #9 itself remains open and draft; it has not been merged into `main`, approved or marked ready.
+
+### 21.1 Governing prompt and pre-write verification
+
+The complete AI Project Operating Prompt was re-fetched from `docs/repository-audit-and-ai-operating-standard`, blob SHA `53add3894d0502827e584614c70ad09cadaa637d`. Its no-new-branches directive, seven-branch ceiling, preservation-first reconciliation and explicit prohibition on merging PRs were followed.
+
+Immediately before synchronization, the following were re-fetched:
+- `main` head: `6f2f51da093caf8183fde386dbec707cc6046d27`.
+- PR #9 head: `1783dea458a72b3210136a259e76e74fd5fa1f14`.
+- PR #9 crosswalk blob: `b263fc3a45dfa6e53383463d8989454c9096ff7d`.
+- `main` crosswalk blob: `a3758743e090121a31cda9e6876f43ceb3caa3a0`.
+- PR #9 base ancestor: `f165ecb9b4d9de115c02327cf779982b7ef4bbd4`.
+
+The `main` head was exactly one commit ahead of the common ancestor. Its only changed path was `docs/reviews/HORTUS-MALABARICUS-VALIDATION-CROSSWALK.md`. The PR #9 branch already contained the reconciled 255-line version of this path, including the reconciliation record and current-law currency note. No other main-only file change needed to be carried over.
+
+### 21.2 Synchronization method and result
+
+A two-parent merge commit was created using the existing PR #9 tree, with:
+- First parent (previous PR #9 head): `1783dea458a72b3210136a259e76e74fd5fa1f14`.
+- Second parent (main head): `6f2f51da093caf8183fde386dbec707cc6046d27`.
+- Tree retained from reconciled PR #9 head: `f9ab4813c3fd60d5a78123e88fa3b731f3ff9f5a`.
+
+The existing branch was advanced with a non-force, expected-SHA-guarded ref update. No new branch was created and no force push was used.
+
+**Synchronization commit:** `78d247730b8bfcf7d1e61b73d8e6882d70365af8`
+
+The resulting commit has exactly the two parents above and retains the PR #9 reconciled tree. This records both histories while preserving the reviewed content. The synchronization did not modify `main`.
+
+### 21.3 Post-write verification
+
+| Check | Verified result |
+|---|---|
+| PR #9 state | Open |
+| PR #9 draft | True |
+| PR #9 merged | False |
+| PR #9 base | `main` |
+| Current main SHA | `6f2f51da093caf8183fde386dbec707cc6046d27` |
+| PR #9 head | `78d247730b8bfcf7d1e61b73d8e6882d70365af8` |
+| PR #9 mergeability | `true` |
+| Compare main → PR #9 branch | Ahead 69, behind 0 |
+| Merge base | `6f2f51da093caf8183fde386dbec707cc6046d27` |
+| Changed files in PR | 8 |
+| Crosswalk blob | `b263fc3a45dfa6e53383463d8989454c9096ff7d` |
+| Crosswalk lines | 255 |
+| Crosswalk reconciliation section | Present |
+| Current-law currency note | Present |
+
+The comparison now reports the crosswalk as modified relative to `main`, with the reconciled additions preserved. The other seven scientific review-pack documents remain present.
+
+GitHub initially returned a stale/non-mergeable result immediately after the ref update; a subsequent fresh PR read returned `mergeable=true`. The final status above is from that subsequent read.
+
+### 21.4 What mergeability does and does not establish
+
+The branch is now synchronized with `main` and GitHub reports it individually mergeable. This does **not** mean:
+- the draft PR is approved or ready to merge;
+- the scientific data model is approved;
+- Candidate A or Candidate B has been accepted;
+- HMF-01–HMF-08 have been executed;
+- any independent expert review or CI validation has passed;
+- Task 05E or physical schema work is authorized.
+
+At the latest check, PR #9 still had zero submitted reviews, zero inline review threads, no combined status contexts and no PR workflow runs associated with its new head commit.
+
+### 21.5 Repository and decision boundary
+
+- The branch count remains 23, exceeding the seven-branch ceiling by 16.
+- `main` remains unchanged at `6f2f51da093caf8183fde386dbec707cc6046d27`.
+- PR #9 remains open/draft and unmerged.
+- No branch was created, deleted or renamed.
+- No PR was merged, closed, retargeted or marked ready.
+- No branch protection, ruleset, permission or repository setting was changed.
+- No accepted ADR, product requirement or scientific model was amended.
+- No physical schema, application code or production implementation was started.
+
+**Next gate:** conduct the required independent review of the scientific review pack and execute the proposed synthetic validation fixtures in a controlled, rights-safe test environment. Keep Task 05C NOT APPROVED and Task 05E NOT READY until their evidence and approval gates are satisfied.
