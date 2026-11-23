@@ -217,7 +217,7 @@ Default branch: `main`
 
 ### 7.2 Open pull requests
 
-Nineteen PRs are currently open: #1–#5, #8, #9, #11–#14 and #16–#23. All 19 are drafts. PR #15 was closed unmerged on 23 November 2026. Mergeability is volatile and not an acceptance signal. At the post-update live check on 23 November 2026, PR #19 is reported mergeable and PR #20 is reported non-mergeable; both remain open drafts and their documentation changes are proposals, not approvals. Mergeability is not review approval, owner acceptance or scientific sign-off. Re-fetch immediately before any authorized integration.
+Nineteen PRs are currently open: #1–#5, #8, #9, #11–#14 and #16–#23. All 19 are drafts. PR #15 was closed unmerged on 23 November 2026. Mergeability is volatile and not an acceptance signal. At the live check on 23 November 2026, PRs #17, #18, #19 and #20 are all reported mergeable; all remain open drafts and their documentation changes are proposals, not approvals. Mergeability is volatile and is not review approval, owner acceptance or scientific sign-off. Mergeability is not review approval, owner acceptance or scientific sign-off. Re-fetch immediately before any authorized integration.
 
 The main consolidation routes recorded in the branch inventory are:
 
@@ -369,7 +369,7 @@ The following are decisions requested, not presumed approvals:
 The Graphify assessment on this same PR #20 branch has been updated with a release/provenance and connected-workspace recheck. Its current blob SHA is `3face0ee6ec84aa4b90ded193938eb65eea7590e`. The proposal now distinguishes the Graphify v8 branch head from the latest PyPI 0.9.115 attested source commit, records the package artifact checksum and exact-version security policy, adds local query-log and semantic-backend controls, and records the connected Free workspace's README-only indexing and lack of PR #19/#20 review records. This remains a local-only tooling proposal; no CLI installation, extraction, MCP service, cloud connection or CI integration is claimed.
 
 
-### 7.6 Product/architecture consolidation dependency check — 23 November 2026
+### 7.6 Earlier product/architecture comparison snapshot — superseded by Section 7.7
 
 Fresh commit comparisons were run on 23 November 2026 using current source heads PR #17 `b66c16355d0ded4f20f1a84172eab8b47d133277`, PR #18 `0f908f8221ad3434cc84fe2cd41b735aad0a752a`, PR #19 `d40f9c4d2e97e68d6b55bd86b1cb0df046136f2a` and PR #20 `bbf2e95a4efc95029f266a7da06da5adedbe604a`.
 
@@ -392,6 +392,22 @@ The changed-file inventories also show that PR #20 currently contains its own ar
 
 This check does not approve the PR #20 architecture, the PR #17 Blueprint, the PR #18 Task 03/04 baselines or the PR #19 RTM. It does not authorize any PR or branch lifecycle action.
 
+
+### 7.7 Current PR #17–#20 comparison and changed-file check — 23 November 2026
+
+**Live PR heads checked:** PR #17 `b66c16355d0ded4f20f1a84172eab8b47d133277` (9 commits; 1 changed file); PR #18 `0f908f8221ad3434cc84fe2cd41b735aad0a752a` (2 commits; 2 changed files); PR #19 `dc97f578eeab26f97ac09c8060403b770fbdcfa7` (53 commits; 8 changed files); PR #20 `d1b9fc38fdc4777d7c522f8959437cc2e9171018` (25 commits; 4 changed files). All four PRs are open drafts and were reported mergeable at the live metadata check.
+
+| Comparison | Merge base | PR #20-only commits | Source-branch-only commits | Status |
+|---|---|---:|---:|---|
+| PR #17 vs PR #20 | `f165ecb9b4d9de115c02327cf779982b7ef4bbd4` (`develop`) | 25 | 9 | Diverged |
+| PR #18 vs PR #20 | same | 25 | 2 | Diverged |
+| PR #19 vs PR #20 | same | 25 | 53 | Diverged |
+
+**Changed-file overlap check:** PR #17 changes only the product Blueprint; PR #18 changes the Task 03 PRD and Task 04 architecture baseline; PR #19 changes its eight traceability/workflow/API/offline/audit documents; PR #20 changes its architecture plan, Graphify assessment, roadmap and baseline audit. No changed paths overlap among PRs #17–#20 in the inventories checked.
+
+**Interpretation:** These are parallel, diverged workstreams sharing `develop` as their merge base, not a linear stack. PR #19 has the largest source-only history (53 commits) and requires the most careful preservation review. No-path-overlap reduces direct file collision risk but does not establish semantic compatibility or safe merge order.
+
+**Recommendation:** Continue treating PR #20 as the existing documentation-integration destination, but do not merge PRs #17–#19 based on these comparisons alone. Preserve source provenance, inspect semantic dependencies, verify each destination change and obtain the required authorization. Keep all PRs draft until review and acceptance gates are met.
 ### 12.1 PR #19 / PR #20 integration revalidation — 23 November 2026
 
 This follow-up revalidates the current product/requirements/architecture documentation after the PR #19 traceability reconciliation and Graphify tooling assessment update. The source SHAs in Section 12's original table remain the historical revisions inspected when v0.1 was prepared; the following table records the newer revisions re-fetched for this follow-up.
@@ -408,7 +424,7 @@ This follow-up revalidates the current product/requirements/architecture documen
 | Graphify Repository Intelligence Tooling Assessment | `docs/full-system-architecture-and-repo-engineering-plan` | `3face0ee6ec84aa4b90ded193938eb65eea7590e` | Proposed local-only tooling pilot; not executed |
 | Scientific Data Model Validation Matrix | `review/scientific-data-model-review-pack` | `3a33dfe47657a96456f56f2c12a0b7d355b6c6a5` | ODR-01 authorized; EVT-27–EVT-44 proposed and unexecuted |
 
-**Integration interpretation:** PR #17–#20 remain parallel workstreams, not a safe linear stack. The live comparison shows PR #20 has 20 commits not present in each source branch; source-only commits are 9 for PR #17, 2 for PR #18 and 51 for PR #19. PR #19's larger divergence reflects its accumulated traceability and audit revisions. Preserve unique content and provenance; do not merge, retarget or close PRs based on commit counts alone.
+**Integration interpretation:** PR #17–#20 remain parallel workstreams, not a safe linear stack. The comparison counts recorded in this earlier follow-up are historical and superseded by the fresh PR #17–#20 comparison in Section 7.7. PR #19's larger divergence reflects its accumulated traceability and audit revisions. Preserve unique content and provenance; do not merge, retarget or close PRs based on commit counts alone.
 
 **Graphify interpretation:** the connected Graphify Free workspace currently indexes only README.md for this documentation-led repository (17 nodes, 29 edges) and has no automated review record for PR #19 or PR #20. A local CLI evaluation remains the recommended way to test document-rich graphing, but it is not yet approved or executed.
 
