@@ -247,8 +247,8 @@ def check_branch_inventory(branches: list[str]) -> tuple[list[str], list[str]]:
     return errors, warnings
 
 
-def fetch_repository_branches(repository: str, token: str | None = None) -> list[str]:
-    """Fetch every branch from the public GitHub repository API."""
+def fetch_repository_branches(repository: str) -> list[str]:
+    """Fetch every branch from the public GitHub API without a credential."""
     if not repository or "/" not in repository:
         raise ValueError("GITHUB_REPOSITORY must be in owner/repository form.")
 
@@ -263,15 +263,18 @@ def fetch_repository_branches(repository: str, token: str | None = None) -> list
                 "Accept": "application/vnd.github+json",
                 "X-GitHub-Api-Version": "2022-11-28",
                 "User-Agent": "botanica-indica-repository-governance",
-                **({"Authorization": f"Bearer {token}"} if token else {}),
             },
         )
         with urlopen(request, timeout=20) as response:
             payload = json.loads(response.read().decode("utf-8"))
         if not isinstance(payload, list):
             raise RuntimeError("GitHub branches API returned an unexpected response.")
-        names = [item["name"] for item in payload if isinstance(item, dict) and "name" in item]
-        branches.extend(names)
+        if any(
+            not isinstance(item, dict) or not isinstance(item.get("name"), str) or not item["name"]
+            for item in payload
+        ):
+            raise RuntimeError("GitHub branches API returned a malformed branch entry.")
+        branches.extend(item["name"] for item in payload)
         if len(payload) < 100:
             break
         page += 1
@@ -302,9 +305,8 @@ def main() -> int:
 
     if args.check_branch_inventory:
         repository = os.environ.get("GITHUB_REPOSITORY", "")
-        token = os.environ.get("GITHUB_TOKEN")
         try:
-            branches = fetch_repository_branches(repository, token)
+            branches = fetch_repository_branches(repository)
             inventory_errors, inventory_warnings = check_branch_inventory(branches)
             errors.extend(inventory_errors)
             warnings.extend(inventory_warnings)
