@@ -394,3 +394,101 @@ After the Task 05D section-numbering correction, the latest branch comparison is
 - PR #11 remains open/draft and based on Candidate A. The changed-file view remains the Task 05D validation document.
 
 The increase in ahead count reflects additional Task 05D documentation commits on the existing head branch. It does not by itself establish a content conflict. No rebase, retarget, merge, force-push or branch lifecycle action was performed. Full commit-graph and content review remains a prerequisite to any proposed synchronization.
+
+
+## 20. PR #17–#20 static integration rehearsal and PR #9 mergeability investigation — 23 November 2026
+
+**Status:** Read-only integration rehearsal and mergeability diagnosis, recorded append-only. No PR was merged, closed or retargeted. No branch was created, deleted or renamed. No scientific or product decision was approved.
+
+### 20.1 Governing baseline and repository snapshot
+
+The complete AI Project Operating Prompt was re-fetched from `docs/repository-audit-and-ai-operating-standard`, blob SHA `53add3894d0502827e584614c70ad09cadaa637d`. PR #16 remains open, draft and unmerged; this branch version remains the governing working prompt.
+
+The repository has 23 branches: `main`, `develop`, `staging` and 20 temporary/workstream branches. This exceeds the owner-authorized seven-branch ceiling by 16. No new branch was created for this rehearsal.
+
+Long-lived branch tips at this check:
+- `main`: `6f2f51da093caf8183fde386dbec707cc6046d27`
+- `develop`: `f165ecb9b4d9de115c02327cf779982b7ef4bbd4`
+- `staging`: `f165ecb9b4d9de115c02327cf779982b7ef4bbd4`
+
+The main-only Hortus crosswalk must be preserved; do not reset `main` to `develop`.
+
+### 20.2 Current PR #17–#20 metadata
+
+All four PRs are open drafts, based on `develop` at `f165ecb9b4d9de115c02327cf779982b7ef4bbd4), and were reported individually mergeable at this check.
+
+| PR | Head branch | Head SHA | Commits | Changed files | Individual mergeability |
+|---|---|---|---:|---:|---|
+| #17 | `docs/full-product-vision-capability-blueprint` | `b66c16355d0ded4f20f1a84172eab8b47d133277` | 9 | 1 | Mergeable into develop |
+| #18 | `docs/canonical-task-03-04-baselines` | `0f908f8221ad3434cc84fe2cd41b735aad0a752a` | 2 | 2 | Mergeable into develop |
+| #19 | `docs/requirements-traceability-register` | `58f31a510029685d9c3447d22ec5e2a499aa13c6` | 56 | 8 | Mergeable into develop |
+| #20 | `docs/full-system-architecture-and-repo-engineering-plan` | `30c07fe496fbc229933ec13ad22662e861d5927e` | 30 | 4 | Mergeable into develop |
+
+Current file blobs re-fetched:
+- Blueprint (PR #17): `d3ec150524dda4928503f43556a97cd766b71312`.
+- Task 03 PRD (PR #18): `8b1ca0be04b3f4ad3b543c2f9fc48d46eb37faf8`.
+- Task 04 architecture evaluation (PR #18): `abc7b721fae8d4f4adede4dd0bf5d6a32098c5a3`.
+- Requirements Traceability Register v0.3 (PR #19): `95bcf2161f917b8ff824e8a075a908b090a880c7`.
+- Full System Architecture Plan v0.2 (PR #20): `bcba1d052a27d7f56cc46f74f9ba87b41025bdce`.
+
+### 20.3 Static integration rehearsal — PRs #17–#20
+
+The branch comparisons show all four task branches diverged from the same `develop` ancestor. Comparisons of PR #18, #17 and #19 against PR #20 each report the expected source-only document additions; no changed path overlaps were found among PRs #17–#20.
+
+| Source workstream | Files introduced | Path collision with PR #20 |
+|---|---:|---|
+| PR #18 — source-preserving Task 03/04 baselines | 2 | None found |
+| PR #17 — Full Product Blueprint | 1 | None found |
+| PR #19 — RTM and supporting specifications | 8 | None found |
+
+**Path-level rehearsal result: PASS.** The checked changed-file inventories do not show direct path collisions among PRs #17–#20.
+
+**Semantic integration result: CONDITIONAL.** The files are related and must be reviewed together:
+1. PR #18 preserves the original Task 03 and Task 04 source text. The historical React Native candidate in Task 04 is explicitly unselected; accepted ADR-001 and the Blueprint/PR #20 plan retain Dart/Flutter. Do not rewrite the source transcription to erase history or let it override ADR-001.
+2. PR #17 defines 16 proposed capability domains and explicitly preserves the full-product scope. The identifiers remain proposed until owner acceptance.
+3. PR #19 maps the original Task 03 requirement IDs and proposed capability IDs to architecture, workflows and validation evidence. Its lifecycle, API and offline documents remain proposals, not approved contracts.
+4. PR #20 provides the architecture destination and retains the physical-schema gate pending scientific-model approval.
+
+**Recommended integration order remains:** PR #18 → PR #17 → PR #19 into the existing PR #20 branch, with a full readback and cross-document check after each step. This is a proposed sequence, not a completed integration.
+
+**Important limitation:** GitHub's `mergeable` field reports a test merge of an individual PR into that PR's base branch; it does not test merging one diverged task branch into another. GitHub documents this behavior at https://docs.github.com/en/rest/pulls/pulls. The repository comparison API compares refs and changed files, but does not by itself execute the proposed branch-to-branch merge; see https://docs.github.com/en/rest/commits/commits#compare-two-commits. No actual merge simulation or merge commit was performed. A true rehearsal would require a temporary integration ref/worktree or an authorized update to an existing branch. The current no-new-branches directive and lack of merge authorization mean this audit stops at static path/dependency analysis.
+
+### 20.4 Review and automated-validation status
+
+At this check, PRs #17–#20 each had zero submitted reviews and zero inline review threads. Their current head commits returned no combined status contexts and no workflow runs through the available GitHub endpoints.
+
+This means no independent review or CI pass can be claimed from the inspected evidence. It does not prove that no off-platform review exists; none was supplied in the repository records inspected here.
+
+### 20.5 PR #9 — concrete mergeability finding
+
+PR #9 remains open/draft and is currently reported non-mergeable. Its base is `main`; its head is `review/scientific-data-model-review-pack` at `51b909accbf052426678969d0a28408356133e61`. The comparison against `main` is diverged, 67 commits ahead and 1 behind, with common ancestor `f165ecb9b4d9de115c02327cf779982b7ef4bbd4`.
+
+A concrete same-path divergence was found:
+- `main` contains `docs/reviews/HORTUS-MALABARICUS-VALIDATION-CROSSWALK.md`, blob `a3758743e090121a31cda9e6876f43ceb3caa3a0`.
+- PR #9's review branch contains the same path, blob `6b7fd454795607b3e93cc590e7ffa562884c0a9e`.
+- Both versions contain 188 lines, but their contents differ materially. Each side has content not present in the other.
+- The other seven PR #9 changed paths are review-pack documents; this crosswalk is the identified same-path collision with the main-only commit.
+
+**Assessment:** This independently added, divergent same-path file is a concrete add/add collision and is the leading explanation for PR #9's non-mergeable status. The connector did not expose GitHub's detailed merge-conflict reason, so the exact merge-state cause is not asserted as conclusively diagnosed.
+
+**Recommendation:** reconcile the two crosswalk versions into one source-aware canonical document on the existing PR #9 branch, preserving unique content and provenance from both. Re-fetch the main and review-branch blobs immediately before that work. Then re-check PR #9's mergeability and complete diff. Do not delete or overwrite the main-only crosswalk, and do not merge, retarget or close PR #9 without explicit authorization.
+
+PR #9 also has zero submitted reviews and zero inline review threads. Its scientific review pack remains a review instrument, not independent expert approval.
+
+### 20.6 Branch-inventory freshness
+
+The existing Branch Inventory and Preservation-First Consolidation Register on `governance/branch-lifecycle-policy` was re-fetched at blob `9233910471f0806435cb39c47ff074e90d382e47`. Its audit date is 20 November 2026. It remains useful for proposed dispositions but is not a current 23 November PR/branch snapshot. Refresh it before any branch retirement, PR retargeting or consolidation action.
+
+### 20.7 Decision and action boundary
+
+- PR #17–#20 path-level integration rehearsal: completed, static only.
+- Actual branch-to-branch merge simulation: not performed.
+- PR #9 same-path crosswalk divergence: identified; canonical reconciliation still required.
+- No PR was merged, closed, retargeted or marked ready.
+- No branch was created, deleted or renamed.
+- No repository ruleset, protection or permission was changed.
+- No accepted ADR, product requirement or scientific model was changed.
+- No physical schema, application code or production implementation was started.
+- No scientific, legal or institutional expert approval is claimed.
+
+**Next gate:** reconcile PR #9's two crosswalk versions, then obtain the required independent review of PRs #17–#20 and prepare a genuinely tested integration rehearsal without violating the seven-branch ceiling or performing an unauthorized merge.
