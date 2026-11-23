@@ -89,7 +89,7 @@ Out of scope:
 | ADR-006 / ADR-007 | Accepted | Identification outputs, evidence and expert determinations remain distinct, attributable and historically preserved. |
 | ADR-008 / ADR-009 | Accepted | Sensitive geographic information and observation/contribution lifecycles require explicit protection and provenance. |
 | ADR-010 | Accepted | External source integrations remain source-aware and provenance-preserving. |
-| STF-BI-ARCH-OFF-001 | v0.2 Proposed; blob `fb64011722c32999c255a083be24adde73765207` | Durable outbox, idempotent processing, version-aware reconciliation, media staging, cache invalidation and ODR-01 offline safeguards. |
+| STF-BI-ARCH-OFF-001 | v0.2 Proposed; blob `93d92851b5dcdc3235ed3b315a3a79ac6b309922` | Durable outbox, idempotent processing, version-aware reconciliation, media staging, cache invalidation and ODR-01 offline safeguards. |
 | Task 05C / 05D | Proposed; review gates open | Logical scientific model is not approved for physical schema implementation. |
 
 ### 3.2 Compatibility findings
