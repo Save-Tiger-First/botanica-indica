@@ -367,3 +367,27 @@ The following are decisions requested, not presumed approvals:
 ### 7.5 Graphify tooling assessment update — 23 November 2026
 
 The Graphify assessment on this same PR #20 branch has been updated with a release/provenance recheck. Its current blob SHA is `89a8ccab652ec0a560bd1fcd1ec2c11a12f7359d`. The proposal now distinguishes the Graphify v8 branch head from the latest PyPI 0.9.115 attested source commit, records the package artifact checksum and exact-version security policy, and adds local query-log and semantic-backend controls. This remains a local-only tooling proposal; no CLI installation, extraction, MCP service, cloud connection or CI integration is claimed.
+
+
+### 7.6 Product/architecture consolidation dependency check — 23 November 2026
+
+Fresh commit comparisons were run using the current source heads of PRs #17, #18 and #19 against the current PR #20 head `4477bfa46184725c7f086b2fcaf0e198dee75e83`.
+
+| Comparison | Common ancestor | PR #20-only commits | Source-branch-only commits | Result |
+|---|---|---:|---:|---|
+| PR #17 vs PR #20 | `f165ecb9b4d9de115c02327cf779982b7ef4bbd4` (`develop`) | 16 | 9 | Diverged |
+| PR #18 vs PR #20 | same | 16 | 2 | Diverged |
+| PR #19 vs PR #20 | same | 16 | 27 | Diverged |
+
+**Interpretation:** PR #17, #18, #19 and #20 are parallel workstreams, not a linear stack. Their heads share `develop` as the merge base, but none of the three source heads is an ancestor of PR #20. PR #19 has the largest source-only history and must receive particular care.
+
+The changed-file inventories also show that PR #20 currently contains its own architecture plan, Graphify assessment, roadmap and baseline audit; it does not yet contain the Task 03/04, Blueprint or RTM files carried by PRs #17–#19.
+
+**Required preservation-first route:**
+1. Compare the source commits and file-level diffs of PR #17, #18 and #19 with PR #20's target architecture and audit.
+2. Identify genuinely shared paths, unique files, and content already reproduced or superseded in PR #20.
+3. Preserve original source documents and their provenance; reconcile only with explicit crosswalks and status labels.
+4. Prepare a sequenced integration proposal for the project owner. Do not retarget, merge, cherry-pick or close any of these PRs merely because the roadmap groups them into one workstream.
+5. Re-run commit comparisons and changed-file inventories immediately before any authorized integration or source-branch retirement.
+
+This check does not approve the PR #20 architecture, the PR #17 Blueprint, the PR #18 Task 03/04 baselines or the PR #19 RTM. It does not authorize any PR or branch lifecycle action.
