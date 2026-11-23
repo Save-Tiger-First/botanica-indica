@@ -448,6 +448,9 @@ The project owner remains the decision authority. This report is an audit recomm
 | PR #20 architecture plan v0.2 | `docs/full-system-architecture-and-repo-engineering-plan` | `33c42ead0d32f24530d28fdbcfd1024c2495a5eb` | Proposed; correction required |
 | PR #20 roadmap v0.2 | `docs/full-system-architecture-and-repo-engineering-plan` | `2ec317a01a2d295b073c95ee8427d4e2d865635c` | Proposed; correction required |
 
+
+**Post-documentation-edit status check:** GitHub subsequently reported PR #19 open/draft at head `8cd93df79fa39d48d540c79df2c4b8898b7c0c5b` (55 commits) and PR #20 open/draft at head `25410e94ccf6a1fd54557fba7ee0810d96ccf61c` (29 commits); both were reported non-mergeable at that check. This is a later status snapshot than the pre-update mergeability observation in the table below. The cause has not been established; inspect the live merge state and changed-file diffs before any integration. This audit update itself adds a further commit to PR #19, so the recorded head is explicitly a pre-audit-update snapshot.
+
 ### 10.2 Current repository and readiness boundary
 
 - At the pre-update metadata check for this addendum, PR #19 was open, draft and mergeable at head `af33c3ce6ad445fb7e98b4a5aea92cf4d8e1bda7` (54 commits); PR #20 was open, draft and mergeable at head `fe8760bb2f55b3d5aa00abcbdb8155d9ec96cb66` (27 commits). This audit update itself adds a PR #19 commit; re-fetch live PR metadata before any subsequent integration decision.
