@@ -439,7 +439,7 @@ The project owner remains the decision authority. This report is an audit recomm
 | Document | Ref | Current blob SHA | Status |
 |---|---|---|---|
 | Operating prompt v1.0 | `docs/repository-audit-and-ai-operating-standard` | `53add3894d0502827e584614c70ad09cadaa637d` | Governing working prompt under user instruction; PR #16 remains open draft |
-| RTM v0.3 | `docs/requirements-traceability-register` | `c4b4ef1a5adfd367edcf982c1f9b115fa5d8aad6` | Proposed; lifecycle and crosswalk sections require this follow-up correction |
+| RTM v0.3 | `docs/requirements-traceability-register` | `95bcf2161f917b8ff824e8a075a908b090a880c7` | Proposed; lifecycle and crosswalk sections require this follow-up correction |
 | Workflow lifecycle v0.2 | `docs/requirements-traceability-register` | `498af08ec60e3626e8b60ab5047acae1a8861eb5` | Proposed; `record_created` / `server_received` distinction not approved |
 | Workflow crosswalk v0.2 | `docs/requirements-traceability-register` | `61d2111ace5c408eaf503bdf17b2ccb822f90978` | Proposed; ODR-01 and EVT-27–EVT-44 mapped |
 | Offline specification v0.2 | `docs/requirements-traceability-register` | `a46c7cc1de9d1ea5c5faed7574d23de1d1a48e13` | Proposed; validation unexecuted |
@@ -450,7 +450,7 @@ The project owner remains the decision authority. This report is an audit recomm
 
 ### 10.2 Current repository and readiness boundary
 
-- PR #19 remains open, draft and mergeable at head `d40f9c4d2e97e68d6b55bd86b1cb0df046136f2a`; PR #20 remains open, draft and mergeable at head `d1b9fc38fdc4777d7c522f8959437cc2e9171018`.
+- At the pre-update metadata check for this addendum, PR #19 was open, draft and mergeable at head `af33c3ce6ad445fb7e98b4a5aea92cf4d8e1bda7` (54 commits); PR #20 was open, draft and mergeable at head `fe8760bb2f55b3d5aa00abcbdb8155d9ec96cb66` (27 commits). This audit update itself adds a PR #19 commit; re-fetch live PR metadata before any subsequent integration decision.
 - The live repository has 23 branches against the seven-branch ceiling. No branch retirement is claimed in this addendum.
 - Accepted ADR-001 through ADR-010 remain unchanged. ADR-011 remains Proposed.
 - DR-01–DR-12 and LDM-01–LDM-16 remain scientific review/validation obligations. Task 05C remains unapproved; Task 05E remains not ready.
