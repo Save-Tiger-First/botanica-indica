@@ -59,7 +59,7 @@ All requirement and capability status fields begin as **Not yet verified** unles
 | Workflow-to-Requirements Crosswalk v0.2 | `docs/requirements-traceability-register` | `61d2111ace5c408eaf503bdf17b2ccb822f90978` | Proposed WF/requirement and ODR-01/EVT-27–EVT-44 traceability |
 | Offline and Field Synchronization Specification v0.2 | `docs/requirements-traceability-register` | `a46c7cc1de9d1ea5c5faed7574d23de1d1a48e13` | Proposed offline design and ODR-01 offline safeguards |
 | API Command and Idempotency Contract v0.2 | `docs/requirements-traceability-register` | `bc0f3e93ec6ef2d2c2039b56739db38296c03281` | Proposed API design; ODR-01 export-only constraints; IETF draft v09 |
-| Task 03–04 Cross-Document Readiness Audit v0.1 with 23 November follow-up | `docs/requirements-traceability-register` | `4c4c66d6c0600c0a856ce09698769eff84e5a1c3` | Proposed findings; follow-up reconciliation recorded separately |
+| Task 03–04 Cross-Document Readiness Audit v0.1 with 23 November follow-up | `docs/requirements-traceability-register` | `d01ec7041ca2571ae8c11c4a0d95816c7d2daa7c` | Proposed findings; follow-up reconciliation recorded separately |
 
 Original source artifacts preserved in the Project Library:
 - `STF_Task_03_Product_Requirements_Document_v0.1.docx` — 16 pages / 677 extracted text lines.
