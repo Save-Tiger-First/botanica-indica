@@ -507,3 +507,53 @@ This desk check does not determine applicability to STF or replace qualified Ind
 **NOT READY FOR MERGE.** Passing CI does not substitute for independent review, owner decisions, effective branch controls or qualified legal review.
 
 No PR lifecycle action, branch lifecycle action, repository protection change, code change, policy adoption or scientific approval was performed as part of this pre-review.
+
+
+## 22. API credential minimisation and current-head verification — 23 November 2026
+
+**Status:** Implemented on the existing PR #16 branch and verified by a successful current-head GitHub Actions run. This remains an adviser-led remediation, not independent maintainer approval.
+
+### 22.1 Changes made
+
+The branch-inventory check queries the public GitHub branches endpoint. Authentication was unnecessary for this public repository, so the checker no longer accepts or sends a GitHub token. The workflow no longer passes `secrets.GITHUB_TOKEN` into PR-controlled Python code.
+
+Additional regression tests cover:
+- branch API pagination across multiple pages;
+- absence of an Authorization header;
+- rejection of non-list API responses;
+- rejection of malformed branch entries;
+- propagation of API/network failures; and
+- fail-closed behaviour when live branch inventory cannot be retrieved.
+
+### 22.2 Exact file content and commit verification
+
+| File | Latest commit | Verified blob SHA |
+|---|---|---|
+| `scripts/check_repository_governance.py` | `b3af9c17c0f2f889f2d8139c5d83e40e8069e3ac` | `d06d88a2cfd3c49913d4eb2ed24559331f069907` |
+| `tests/test_repository_governance.py` | `1da1edc4b970acf2c4b6f200e80c6cb0541ea1d3` | `c1332f04b5e3f23e64bc9907457a9fabc603075e` |
+| `.github/workflows/repository-governance.yml` | `7016138ec46da96f70e760a28c648c7c921f711a` | `415d79202c1ea76e91bd09f0390763763b71340c` |
+
+### 22.3 Current-head CI evidence
+
+The workflow run associated with PR #16 head `1da1edc4b970acf2c4b6f200e80c6cb0541ea1d3` completed successfully:
+
+- Run: [45123034416](https://github.com/Save-Tiger-First/botanica-indica/actions/runs/45123034416)
+- Conclusion: `success`
+- Unit tests: **32 passed**
+- Markdown files scanned: **23**
+- PR routing validation: passed
+- Live GitHub branch inventory: **23 branches retrieved**
+- Seven-branch ceiling: reported as a warning because the repository remains above the owner-directed ceiling.
+
+The test suite deliberately exercises an unavailable-network case; that test emits an expected error message while asserting that the checker exits non-zero. The workflow itself then successfully performed the real public branch inventory request and passed. Do not mistake that test's expected diagnostic output for a failed CI step.
+
+### 22.4 Remaining limitations
+
+- The seven-branch ceiling remains warning-only. The check detects but does not prevent branch creation or reduce the branch count.
+- The workflow is present on PR #16, not yet on `main`; it is not a trusted repository-wide preventive control.
+- The current 23-branch inventory remains 16 above the immediate ceiling.
+- No independent maintainer review has been recorded.
+- PR #16 remains open and draft; this successful run does not approve or merge the PR.
+- No branch, PR, protection rule, permission or repository setting was changed.
+
+**Disposition:** the credential-minimisation and regression-test remediation is implemented and current-head CI verified. Retain the existing NOT READY FOR MERGE recommendation until independent review, owner decisions and branch-lifecycle remediation are complete.
