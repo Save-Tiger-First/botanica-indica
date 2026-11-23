@@ -1328,3 +1328,36 @@ No other currently open PR uses `governance/branch-lifecycle-policy` as its head
 **Recommendation:** close PR #15 as superseded by PR #16, without merging it, only after the project owner explicitly authorizes that action. Then re-fetch the open-PR list and branch ref immediately before deleting `governance/branch-lifecycle-policy`; delete that branch only if PR #15 is confirmed closed/unmerged, no open PR references the branch, and the preservation evidence above remains valid.
 
 This record does not itself authorize closing PR #15 or deleting its branch. Until authorization is received, retain both PR #15 and its head branch. The seven-branch ceiling remains unmet; no claim of compliance is made.
+
+
+## 20.12 PR #15 closure and branch-retirement execution record — 23 November 2026
+
+**Owner authorization:** Explicit authorization received in the project conversation on 23 November 2026 to close PR #15 as superseded by PR #16 without merging it, and to delete its source branch only after fresh preservation and reference checks.
+
+### PR closure — completed and verified
+
+- PR #15: [Governance: define three-branch workflow and one-branch completion](https://github.com/Save-Tiger-First/botanica-indica/pull/15)
+- State: `closed`
+- Merged: `false`
+- Closed at: `2026-11-23T06:24:01Z`
+- Head branch: `governance/branch-lifecycle-policy`
+- Head SHA: `633105210d3a6c4c8e36287ed2dc44dee23f61ef`
+
+Immediately before closure, a fresh GitHub comparison showed PR #15's head was an ancestor of PR #16's then-current head (131 commits ahead, 0 behind); all three PR #15 changed paths were present in PR #16. The PR #15 head and preservation evidence are recorded in Section 20.11.
+
+### Post-closure retirement checks — completed
+
+A fresh check after closure confirmed:
+- PR #15 is closed and unmerged.
+- No open PR references `governance/branch-lifecycle-policy` as its head or base.
+- The source branch still exists at the exact expected SHA `633105210d3a6c4c8e36287ed2dc44dee23f61ef`.
+- Repository branch count remains **23**.
+- Open PR count is now **19**.
+
+### Branch deletion — not executed
+
+The connected GitHub action set available for this session does not expose a branch/ref deletion operation. The available GitHub fetch operation is read-only; using it cannot delete a ref. No unsupported or improvised mutation was attempted.
+
+**Required remaining action:** delete `governance/branch-lifecycle-policy` through GitHub's repository branch-management interface (or an authorized Git client) after confirming the branch SHA remains `633105210d3a6c4c8e36287ed2dc44dee23f61ef`. The owner has authorized this specific deletion, but it has not been completed by this assistant.
+
+Do not mark this branch `retired` until a fresh branch-list check confirms it is absent. The repository remains at 23 branches and therefore exceeds the immediate seven-branch ceiling.
