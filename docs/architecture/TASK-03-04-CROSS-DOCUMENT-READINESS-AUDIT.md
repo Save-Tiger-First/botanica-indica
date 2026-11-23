@@ -429,12 +429,12 @@ No accepted ADR, original Task 03/04 baseline, scientific model or product requi
 
 | Document | Ref | Current blob SHA | Status |
 |---|---|---|---|
-| RTM v0.3 | `docs/requirements-traceability-register` | `6925f077352fa3547e4458fc876901ba5f66ec5b` | Proposed |
-| Workflow crosswalk v0.2 | `docs/requirements-traceability-register` | `02728b9f18a3672b9bc5ad3a950cb68dd3a15ec1` | Proposed |
+| RTM v0.3 | `docs/requirements-traceability-register` | `5011d95b5c39f519d9b4fa116470f4ff10d62cf2` | Proposed |
+| Workflow crosswalk v0.2 | `docs/requirements-traceability-register` | `61d2111ace5c408eaf503bdf17b2ccb822f90978` | Proposed |
 | Workflow lifecycle v0.2 | `docs/requirements-traceability-register` | `498af08ec60e3626e8b60ab5047acae1a8861eb5` | Proposed |
-| Offline specification v0.2 | `docs/requirements-traceability-register` | `93d92851b5dcdc3235ed3b315a3a79ac6b309922` | Proposed |
-| API contract v0.2 | `docs/requirements-traceability-register` | `d65ca32a6ebb2939ac95d0dce5dd82811f27e0e7` | Proposed |
-| PR #20 architecture plan v0.2 | `docs/full-system-architecture-and-repo-engineering-plan` | `e63536d799cb110b64c2b7da23955f9f90398b27` | Proposed |
+| Offline specification v0.2 | `docs/requirements-traceability-register` | `a46c7cc1de9d1ea5c5faed7574d23de1d1a48e13` | Proposed |
+| API contract v0.2 | `docs/requirements-traceability-register` | `bc0f3e93ec6ef2d2c2039b56739db38296c03281` | Proposed |
+| PR #20 architecture plan v0.2 | `docs/full-system-architecture-and-repo-engineering-plan` | `e63536d799cb110b64c2b7da23955f9f90398b27` | Snapshot referenced by this follow-up; PR #20 subsequently refreshed its source inventory |
 | Operating prompt v1.0 | `docs/repository-audit-and-ai-operating-standard` | `53add3894d0502827e584614c70ad09cadaa637d` | Governing working prompt under user instruction |
 
 ### 10.3 Remaining issues and readiness
