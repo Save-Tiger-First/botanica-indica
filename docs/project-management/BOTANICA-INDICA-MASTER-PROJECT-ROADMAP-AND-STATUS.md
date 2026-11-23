@@ -1,7 +1,7 @@
 # Botanica Indica — Master Project Roadmap and Status
 
 - **Document ID:** STF-BI-PMO-001
-- **Version:** 0.1 — Reconciled master roadmap
+- **Version:** 0.2 — Reconciled master roadmap and 23 November source/status update
 - **Status:** Proposed project-control document; owner review required
 - **Prepared:** 21 November 2026
 - **Decision authority:** Save Tiger First project owner
@@ -87,8 +87,8 @@ The full-system architecture plan and full-product blueprint are additional prop
 | Task 03 — Product Requirements Document v0.1 | PR #18, `docs/product/TASK-03-PRODUCT-REQUIREMENTS-DOCUMENT.md` | Complete source-preserving transcription; working baseline, not accepted | Owner review; resolve traceability gaps and complete acceptance-test design |
 | Task 04 — System Architecture & Technology Evaluation v0.1 | PR #18, `docs/architecture/TASK-04-SYSTEM-ARCHITECTURE-AND-TECHNOLOGY-EVALUATION.md` | Complete source-preserving transcription plus governance overlay; working baseline, not accepted | Owner/architecture review; reconcile with PR #20 target architecture and accepted ADRs |
 | Full Product Vision and Capability Blueprint v0.2 | PR #17, `docs/product/BOTANICA-INDICA-FULL-PRODUCT-VISION-AND-CAPABILITY-BLUEPRINT.md` | Proposed; owner review required | Confirm full-product boundaries, capability scope, success measures and capability ownership |
-| Requirements Traceability Register v0.2 | PR #19, `docs/product/REQUIREMENTS-TRACEABILITY-REGISTER.md` | Proposed; not approved requirements baseline | Review requirement provenance, capability mapping, acceptance criteria and open decisions |
-| Workflow Lifecycle and State-Machine Specification v0.1 | PR #19, `docs/product/WORKFLOW-LIFECYCLE-AND-STATE-MACHINE-SPECIFICATION.md` | Proposed; not approved workflow policy or implementation | Validate each lifecycle with product, scientific, rights, privacy and operational owners |
+| Requirements Traceability Register v0.3 | PR #19, `docs/product/REQUIREMENTS-TRACEABILITY-REGISTER.md` | Proposed; not approved requirements baseline | Review identity/shared-platform mapping, ODR-01/EVT-27–EVT-44 traceability, source SHAs and acceptance criteria |
+| Workflow Lifecycle and State-Machine Specification v0.2 | PR #19, `docs/product/WORKFLOW-LIFECYCLE-AND-STATE-MACHINE-SPECIFICATION.md` | Proposed; not approved workflow policy or implementation; `record_created` versus `server_received` is a proposed clarification | Validate lifecycle terminology with product, scientific, API, rights, privacy and operational reviewers |
 
 **Important:** The current inspected repository tree on the PR #16 branch does not contain canonical Task 01 or Task 02 files. PR #17 references those materials as inputs, so they should not be treated as nonexistent; their original source versions and exact provenance must be retrieved and reconciled before a formal baseline is declared.
 
@@ -119,9 +119,9 @@ ODR-01 authorizes only a narrow, profile-specific external export interpretation
 | Work item | Evidence / location | Status | Required next action |
 |---|---|---|---|
 | Task 04 architecture baseline | PR #18 | Working baseline, not accepted | Owner/architecture review |
-| Full System Architecture and Repository Engineering Plan v0.1 | PR #20, `docs/architecture/BOTANICA-INDICA-FULL-SYSTEM-ARCHITECTURE-AND-REPOSITORY-ENGINEERING-PLAN.md` | Proposed target architecture; not accepted or implementation authorization | Review modular-monolith recommendation, module boundaries, repository plan, security and operations controls |
-| API command/idempotency/conflict-resolution design | PR #19 | Proposed design and validation scenarios; not implemented | Review command semantics, identity, concurrency, authorization and failure recovery |
-| Offline/field synchronization architecture | PR #19 | Proposed design and validation scenarios; not implemented | Review offline security, conflict handling, sensitive data and rights revalidation |
+| Full System Architecture and Repository Engineering Plan v0.2 | PR #20, `docs/architecture/BOTANICA-INDICA-FULL-SYSTEM-ARCHITECTURE-AND-REPOSITORY-ENGINEERING-PLAN.md` | Proposed target architecture and refreshed source inventory; not accepted or implementation authorization | Review modular-monolith recommendation, module boundaries, repository plan, security and operations controls |
+| API command/idempotency/conflict-resolution design v0.2 | PR #19 | Proposed design; ODR-01 export-only constraints and IETF draft v09 recorded; not implemented | Review command semantics, identity, concurrency, authorization, export gates and failure recovery |
+| Offline/field synchronization architecture v0.2 | PR #19 | Proposed design; ODR-01 offline safeguards recorded; not implemented | Review offline security, conflict handling, sensitive data and rights revalidation |
 | Technology decisions | Accepted ADRs and proposed Task 04/PR #20 | Mixed: some accepted, many remain candidates | Preserve ADR-001 Flutter direction; evaluate open candidates with explicit evidence |
 | Repository engineering structure | PR #20 | Proposed; not implemented | Do not create multiple repositories or deployable services before approved ownership and dependency boundaries |
 
@@ -217,7 +217,7 @@ Default branch: `main`
 
 ### 7.2 Open pull requests
 
-Nineteen PRs are currently open: #1–#5, #8, #9, #11–#14 and #16–#23. All 19 are drafts. PR #15 was closed unmerged on 23 November 2026. PR #9's mergeability must be checked again before any lifecycle decision; mergeability is not approval.
+Nineteen PRs are currently open: #1–#5, #8, #9, #11–#14 and #16–#23. All 19 are drafts. PR #15 was closed unmerged on 23 November 2026. PR #19 and PR #20 remain open drafts and non-mergeable at the latest check; their documentation changes are proposals, not approvals. PR #9's mergeability must be checked again before any lifecycle decision; mergeability is not approval.
 
 The main consolidation routes recorded in the branch inventory are:
 
@@ -346,7 +346,7 @@ The following are decisions requested, not presumed approvals:
 - `develop`: `f165ecb9b4d9de115c02327cf779982b7ef4bbd4`
 - `staging`: `f165ecb9b4d9de115c02327cf779982b7ef4bbd4`
 - Branch count: 23.
-- Open PRs: 20 (#1–#5, #8, #9, #11–#23); 19 drafts, PR #15 non-draft.
+- Open PRs: 19 (#1–#5, #8, #9, #11–#14, #16–#23); all 19 are drafts; PR #15 is closed unmerged.
 - PR #20 remains open and draft; this document is added to its existing head branch.
 - No application source code was found in the inspected `main` tree.
 - No external expert review, test execution, physical schema, application implementation, production deployment, funding, institutional partnership or fieldwork authorization is claimed.
@@ -366,18 +366,18 @@ The following are decisions requested, not presumed approvals:
 
 ### 7.5 Graphify tooling assessment update — 23 November 2026
 
-The Graphify assessment on this same PR #20 branch has been updated with a release/provenance recheck. Its current blob SHA is `89a8ccab652ec0a560bd1fcd1ec2c11a12f7359d`. The proposal now distinguishes the Graphify v8 branch head from the latest PyPI 0.9.115 attested source commit, records the package artifact checksum and exact-version security policy, and adds local query-log and semantic-backend controls. This remains a local-only tooling proposal; no CLI installation, extraction, MCP service, cloud connection or CI integration is claimed.
+The Graphify assessment on this same PR #20 branch has been updated with a release/provenance and connected-workspace recheck. Its current blob SHA is `3face0ee6ec84aa4b90ded193938eb65eea7590e`. The proposal now distinguishes the Graphify v8 branch head from the latest PyPI 0.9.115 attested source commit, records the package artifact checksum and exact-version security policy, adds local query-log and semantic-backend controls, and records the connected Free workspace's README-only indexing and lack of PR #19/#20 review records. This remains a local-only tooling proposal; no CLI installation, extraction, MCP service, cloud connection or CI integration is claimed.
 
 
 ### 7.6 Product/architecture consolidation dependency check — 23 November 2026
 
-Fresh commit comparisons were run using the current source heads of PRs #17, #18 and #19 against the current PR #20 head `4477bfa46184725c7f086b2fcaf0e198dee75e83`.
+Fresh commit comparisons were run on 23 November 2026 using current source heads PR #17 `b66c16355d0ded4f20f1a84172eab8b47d133277`, PR #18 `0f908f8221ad3434cc84fe2cd41b735aad0a752a`, PR #19 `d40f9c4d2e97e68d6b55bd86b1cb0df046136f2a` and PR #20 `bbf2e95a4efc95029f266a7da06da5adedbe604a`.
 
 | Comparison | Common ancestor | PR #20-only commits | Source-branch-only commits | Result |
 |---|---|---:|---:|---|
-| PR #17 vs PR #20 | `f165ecb9b4d9de115c02327cf779982b7ef4bbd4` (`develop`) | 16 | 9 | Diverged |
-| PR #18 vs PR #20 | same | 16 | 2 | Diverged |
-| PR #19 vs PR #20 | same | 16 | 27 | Diverged |
+| PR #17 vs PR #20 | `f165ecb9b4d9de115c02327cf779982b7ef4bbd4` (`develop`) | 20 | 9 | Diverged |
+| PR #18 vs PR #20 | same | 20 | 2 | Diverged |
+| PR #19 vs PR #20 | same | 20 | 51 | Diverged |
 
 **Interpretation:** PR #17, #18, #19 and #20 are parallel workstreams, not a linear stack. Their heads share `develop` as the merge base, but none of the three source heads is an ancestor of PR #20. PR #19 has the largest source-only history and must receive particular care.
 
