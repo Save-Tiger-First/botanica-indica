@@ -399,8 +399,8 @@ This check does not approve the PR #20 architecture, the PR #17 Blueprint, the P
 
 | Comparison | Merge base | PR #20-only commits | Source-branch-only commits | Status |
 |---|---|---:|---:|---|
-| PR #17 vs PR #20 | `f165ecb9b4d9de115c02327cf779982b7ef4bbd4` (`develop`) | 25 | 9 | Diverged |
-| PR #18 vs PR #20 | same | 25 | 2 | Diverged |
+| PR #17 vs PR #20 | `f165ecb9b4d9de115c02327cf779982b7ef4bbd4` (`develop`) | 27 | 9 | Diverged |
+| PR #18 vs PR #20 | same | 27 | 2 | Diverged |
 | PR #19 vs PR #20 | same | 25 | 53 | Diverged |
 
 **Changed-file overlap check:** PR #17 changes only the product Blueprint; PR #18 changes the Task 03 PRD and Task 04 architecture baseline; PR #19 changes its eight traceability/workflow/API/offline/audit documents; PR #20 changes its architecture plan, Graphify assessment, roadmap and baseline audit. No changed paths overlap among PRs #17–#20 in the inventories checked.
