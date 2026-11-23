@@ -81,7 +81,7 @@ Out of scope:
 
 | Source | Version / branch | Relevant constraint |
 |---|---|---|
-| Permanent AI Operating Prompt | v1.0, `docs/repository-audit-and-ai-operating-standard` | No new branches; preserve ADRs; no physical design while scientific blockers remain. |
+| Permanent AI Operating Prompt | v1.0, `docs/repository-audit-and-ai-operating-standard`, blob `53add3894d0502827e584614c70ad09cadaa637d` | No new branches; preserve ADRs; no physical design while scientific blockers remain. |
 | Task 03 PRD | Current preserved baseline, `docs/canonical-task-03-04-baselines` | Offline workflows, safe queued observation synchronization, visible sync status/failures, versioned APIs, media upload/reference and privacy controls. |
 | Task 04 architecture | Current preserved baseline, `docs/canonical-task-03-04-baselines` | API-first contracts, REST/HTTP for ordinary resource operations, asynchronous job APIs for long-running work, asynchronous processing and Flutter governing ADR correction. |
 | ADR-003 | Accepted | API-first platform, contract-first where practical, OpenAPI, versioning, authorization, predictable errors, provenance and security. |
@@ -89,7 +89,7 @@ Out of scope:
 | ADR-006 / ADR-007 | Accepted | Identification outputs, evidence and expert determinations remain distinct, attributable and historically preserved. |
 | ADR-008 / ADR-009 | Accepted | Sensitive geographic information and observation/contribution lifecycles require explicit protection and provenance. |
 | ADR-010 | Accepted | External source integrations remain source-aware and provenance-preserving. |
-| STF-BI-ARCH-OFF-001 | v0.1 Proposed | Durable outbox, idempotent processing, version-aware reconciliation, media staging, cache invalidation and policy-aware behavior. |
+| STF-BI-ARCH-OFF-001 | v0.2 Proposed; blob `fb64011722c32999c255a083be24adde73765207` | Durable outbox, idempotent processing, version-aware reconciliation, media staging, cache invalidation and ODR-01 offline safeguards. |
 | Task 05C / 05D | Proposed; review gates open | Logical scientific model is not approved for physical schema implementation. |
 
 ### 3.2 Compatibility findings
