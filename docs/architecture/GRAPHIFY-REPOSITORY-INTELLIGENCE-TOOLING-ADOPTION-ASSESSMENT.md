@@ -35,7 +35,7 @@ The supplied URLs have different purposes and should not be treated as three sof
 | Repository | Verified purpose | Current inspected revision | Recommended use |
 |---|---|---|---|
 | [Graphify-Labs/graphify](https://github.com/Graphify-Labs/graphify) | Open-source Python package/CLI and agent skill that builds and queries a knowledge graph | Default branch v8; branch commit a3db62f680cde2cf516642bbfef1e3ab33fd30d8; repository metadata reports Apache-2.0 | Install as optional developer tooling; do not copy its implementation into Botanica Indica |
-| [Graphify-Labs/docs](https://github.com/Graphify-Labs/docs) | Source for the official Graphify documentation site | main commit 1b5c264c6447d6b0d20199221e8e13391650401a; repository metadata reports MIT | Use as the operational reference for installation, CLI, ignore rules, local model providers and MCP |
+| [Graphify-Labs/docs](https://github.com/Graphify-Labs/docs) | Source for the official Graphify documentation site | main commit 152286cfd3be6432af10ae6c9ef41e23166e7afb; repository metadata reports MIT | Use as the operational reference for installation, CLI, ignore rules, local model providers and MCP |
 | [Graphify-Labs/.github](https://github.com/Graphify-Labs/.github) | Organization profile repository | main commit c5e95a8edd645d44f44be7421fa433db8e05b08a | No integration required; inspected tree contains the profile README and image assets, not reusable workflows or project tooling |
 
 The Graphify source repository's default branch is v8, not main. Pin and record the installed CLI version during evaluation. The official Python package name is graphifyy (two trailing y characters); the installed command is graphify. Avoid similarly named packages that are not published by Graphify Labs.
@@ -132,7 +132,7 @@ Install uv if it is not already available:
 
 Install the official package in an isolated tool environment:
 
-    uv tool install --python 3.12 graphifyy
+    uv tool install --python 3.12 "graphifyy[ollama]"
     graphify --version
 
 Install Ollama separately, obtain a suitable local model, and verify that Ollama is running. Graphify's documentation currently gives this example:
@@ -276,14 +276,14 @@ No Graphify installation, local extraction, MCP configuration, CI integration, h
 **Botanica Indica sources checked:**
 
 - Accepted ADR-001, main, blob a7d3b5c6ec55278c8af70d2e25521153f7f766ad.
-- Full System Architecture and Repository Engineering Plan, PR #20 branch, blob 91fb02be87b42df51f92106f90fd536a01a5b902.
-- Master Project Roadmap and Status, PR #20 branch, blob 60fba1bdb5d2b3fe299847225d21aee18641ad48.
+- Full System Architecture and Repository Engineering Plan, PR #20 branch, blob 33c42ead0d32f24530d28fdbcfd1024c2495a5eb.
+- Master Project Roadmap and Status, PR #20 branch, blob 9ffe2b444daa47610c316102d02bd2689f30bdc8.
 - Product and Architecture Baseline Audit, PR #20 branch, blob 0405e8e4ab331c4987f6b28c3cb4ccb57c733adf.
 - Current Graphify-connected Botanica Indica graph, indexed at main commit 6f2f51da093caf8183fde386dbec707cc6046d27, 17 nodes / 29 edges / one source file (README.md).
 
 ---
 
-**Status summary:** This is a tooling adoption proposal. The local pilot is recommended but not yet executed. No product architecture, scientific decision, repository setting or branch lifecycle decision is changed.
+**Status summary:** This is a tooling adoption proposal. The local pilot is recommended but not yet executed. Connected workspace capability and plan limits were rechecked on 23 November 2026. No product architecture, scientific decision, repository setting or branch lifecycle decision is changed.
 
 
 ## 12. Connected Graphify workspace capability check — 23 November 2026
@@ -300,6 +300,7 @@ The connected Graphify workspace reports:
 - Indexed nodes: **17**
 - Indexed source coverage: `README.md` only
 - Workspace plan note: on the Free plan, only `README.md` is indexed from a repository's documents; a documentation-only repository is therefore indexed from its README alone.
+- Workspace limits rechecked 23 November 2026: up to 3 indexed repositories, 1 cross-repository graph, 25,000 graph nodes, README-only document indexing and 10 automated PR reviews per month (UTC). Current usage: 1 of 3 repositories, 0 of 1 cross-repository graphs, largest graph 17 nodes.
 
 This explains why querying the connected Graphify workspace cannot yet provide a meaningful graph of the ADRs, PRD, architecture, scientific-model review pack or requirements register. The limitation is workspace-plan coverage, not evidence that those repository documents are absent.
 
@@ -309,7 +310,7 @@ The Graphify review-status query returned no review record for PR #16 or PR #20.
 
 - No Graphify automated review of either PR is verified.
 - Do not claim Graphify has reviewed, approved, rejected or commented on either PR.
-- The connected Graphify workspace's code-context tools and its optional automated PR-review feature are distinct capabilities; availability of the former does not prove the latter is enabled or active.
+- The connected Graphify workspace's code-context tools and its optional automated PR-review feature are distinct capabilities; availability of the former does not prove the latter is enabled or active. The 10-review monthly quota is a workspace limit, not a reason to spend reviews on a README-only index.
 
 ### 12.3 Revised operational recommendation
 
@@ -388,6 +389,29 @@ Retain the local CLI pilot proposal, but make reproducibility and source-provena
 10. Stop the pilot if excluded material appears in any generated artifact or if the backend, version, provenance or processing path cannot be established.
 
 **Decision status:** local Graphify evaluation remains a proposal and has not been executed. No Graphify software has been installed on the project owner's device; no repository graph, MCP server, CI integration, cloud connection or production dependency has been created.
+
+## 13.7 Connected Graphify workspace — live recheck 23 November 2026
+
+The connected Graphify workspace was queried directly after the earlier assessment.
+
+| Item | Live result |
+|---|---|
+| Workspace repository | `Save-Tiger-First/botanica-indica` |
+| Repository ID | `1ccf13f8-9f81-4ee6-a82c-3f6370c23fe3` |
+| Queryable | Yes |
+| Indexed commit | `6f2f51da093caf8183fde386dbec707cc6046d27` |
+| Graph build ID | `2942539f-b5d1-464f-bf08-963f9f50ea19` |
+| Nodes / edges / communities | 17 / 29 / 4 |
+| Indexed source coverage | README.md only under the current Free-plan document limit |
+| Index timestamp | 23 November 2026, 05:50:06 UTC |
+| PR #19 automated Graphify review | No review record |
+| PR #20 automated Graphify review | No review record |
+
+The plan's current limits are 3 indexed repositories, 1 cross-repository graph, 25,000 graph nodes, README-only document indexing and 10 PR reviews per month (UTC). Current usage is 1 repository, 0 cross-repository graphs and a largest graph of 17 nodes.
+
+**Interpretation:** the connected workspace is usable for README-level questions and repository metadata, but it is not presently a meaningful knowledge graph of Botanica Indica's requirements, ADRs, scientific model or architecture documents. No automated review of PR #19 or PR #20 has occurred. Do not treat an absent review record as a successful review.
+
+The local CLI pilot remains the appropriate route for document-rich analysis, provided the local processing, version pinning and exclusion controls in this proposal are followed. The connected workspace's PR-review quota should be reserved until the repository contains meaningful code and the graph has sufficient relevant coverage.
 
 ### 13.6 External sources checked
 
