@@ -46,7 +46,7 @@ Repository: `Save-Tiger-First/botanica-indica`
 Default branch: `main`  
 Main commit inspected: `6f2f51da093caf8183fde386dbec707cc6046d27`  
 Main commit SHA: `6f2f51da093caf8183fde386dbec707cc6046d27`  
-Root Git tree SHA: `cc15676cd415057ed927af22fba57dc147ea1e8f`
+Root Git tree SHA: `279636be6cdee1f9ac2e6127fc31ce255799adee`
 
 The complete `docs/governance/AI-PROJECT-OPERATING-PROMPT.md` was fetched from `docs/repository-audit-and-ai-operating-standard`; blob SHA:
 
@@ -74,13 +74,14 @@ The branch count is not itself a violation: only three branches are designated l
 | Task 03 PRD v0.1 | `docs/canonical-task-03-04-baselines` | `8b1ca0be04b3f4ad3b543c2f9fc48d46eb37faf8` | Complete extracted source transcription; working baseline |
 | Task 04 architecture evaluation v0.1 | `docs/canonical-task-03-04-baselines` | `abc7b721fae8d4f4adede4dd0bf5d6a32098c5a3` | Complete extracted source transcription plus governance overlay; working baseline |
 | Full Product Vision and Capability Blueprint v0.2 | `docs/full-product-vision-capability-blueprint` | `d3ec150524dda4928503f43556a97cd766b71312` | Proposed in PR #17; not accepted |
-| Requirements Traceability Register v0.3 | `docs/requirements-traceability-register` | `1c799a2ae2f4580e216f8b03be369f15d62e224c` | Proposed in PR #19; not accepted |
+| Requirements Traceability Register v0.3 | `docs/requirements-traceability-register` | `079667d16b51499c81e343c990eecfddeaa82fb0` | Proposed in PR #19; not accepted |
 | Scientific Data Model Review Pack | `review/scientific-data-model-review-pack` | `c11f4b58d0908742474d3e58b4ec0aa3739f7b99` | Review proposal; not scientific sign-off |
 | Workflow Lifecycle Specification v0.2 | `docs/requirements-traceability-register` | `498af08ec60e3626e8b60ab5047acae1a8861eb5` | Proposed workflow; record_created/receipt distinction remains under review |
-| Workflow-to-Requirements Crosswalk v0.2 | `docs/requirements-traceability-register` | `f65b64ff7ad64772a8c73449dfe77983c89770b2` | Proposed workflow/requirements and ODR-01 traceability |
-| Offline and Field Synchronization Specification v0.2 | `docs/requirements-traceability-register` | `fb64011722c32999c255a083be24adde73765207` | Proposed offline design; ODR-01 export-only safeguards |
-| API Command and Idempotency Contract v0.2 | `docs/requirements-traceability-register` | `d65ca32a6ebb2939ac95d0dce5dd82811f27e0e7` | Proposed API design; ODR-01 export-only constraints; IETF draft v09 |
+| Workflow-to-Requirements Crosswalk v0.2 | `docs/requirements-traceability-register` | `61d2111ace5c408eaf503bdf17b2ccb822f90978` | Proposed workflow/requirements and ODR-01 traceability |
+| Offline and Field Synchronization Specification v0.2 | `docs/requirements-traceability-register` | `a46c7cc1de9d1ea5c5faed7574d23de1d1a48e13` | Proposed offline design; ODR-01 export-only safeguards |
+| API Command and Idempotency Contract v0.2 | `docs/requirements-traceability-register` | `bc0f3e93ec6ef2d2c2039b56739db38296c03281` | Proposed API design; ODR-01 export-only constraints; IETF draft v09 |
 | Scientific Data Model Validation Matrix and Decision Register | `review/scientific-data-model-review-pack` | `3a33dfe47657a96456f56f2c12a0b7d355b6c6a5` | ODR-01 authorized; EVT-27–EVT-44 proposed and unexecuted |
+| Workflow Lifecycle Specification v0.2 | `docs/requirements-traceability-register` | `498af08ec60e3626e8b60ab5047acae1a8861eb5` | Proposed state machines; Observation creation is distinct from `server_received` command receipt |
 
 Accepted ADR-001 through ADR-010 were also fetched from `main`; all ten report Accepted. This plan does not amend them.
 
@@ -88,7 +89,7 @@ Accepted ADR-001 through ADR-010 were also fetched from `main`; all ten report A
 
 The inventory above was refreshed against the current named refs. Historical SHAs in the 20 November snapshot remain useful as a record of the sources originally inspected, but must not be used as current revision identifiers. The updated PR #19 workstream now carries identity/authentication as an STF shared-platform cross-cutting concern without assigning it a BI-CAP identifier, maps ODR-01 and EVT-27–EVT-44 into the RTM/workflow/API/offline proposals, and distinguishes the proposed Observation `record_created` state from API `server_received` command receipt. These are proposed documentation reconciliations, not accepted product/architecture decisions or implementation approvals.
 
-The source inventory does not establish that PR #17–#19 are approved. Their content remains proposed until owner and discipline review. Task 05C remains unapproved; Task 05E remains not ready; physical schema work remains gated.
+The source inventory does not establish that PR #17–#19 are approved. Their content remains proposed until owner and discipline review. The RTM, workflow crosswalk, workflow lifecycle, offline and API SHAs above are the exact revisions re-fetched for this architecture update on 23 November 2026. The crosswalk's RTM source row deliberately identifies the historical snapshot it used, not a later RTM metadata-only update. Task 05C remains unapproved; Task 05E remains not ready; physical schema work remains gated.
 
 ### 2.3 Consistency audit — findings
 
