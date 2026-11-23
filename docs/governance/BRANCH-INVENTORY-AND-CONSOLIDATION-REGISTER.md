@@ -1297,3 +1297,34 @@ This section records an AI-assisted technical pre-review by the project adviser.
 6. Obtain separate owner decisions on the branch policy and ADR-011. Do not conflate document consolidation with adoption.
 
 No code or workflow was changed by this review record. No PR was merged, closed, marked ready or retargeted. No branch was created or deleted. No ruleset/protection changed. No legal, scientific or policy approval is claimed.
+
+
+## 20.11 Live inventory and PR #15 preservation re-verification — 23 November 2026
+
+**Status:** Read-only verification snapshot. No PR or branch lifecycle action was taken.
+
+### Live repository snapshot
+
+- Branch count: **23** (3 required long-lived branches and 20 temporary/workstream branches).
+- Open pull requests: **20**.
+- PR #16: open, draft, base `develop`, head `2bb1e4f6ed1acf1c9f06460dad02d6c8429f5ba6`.
+- PR #20: open, draft, base `develop`, head `40992987dd17a66cfa258a126eee290cdbb5e0a7`.
+- PR #9: open, draft, base `main`, head `51b909accbf052426678969d0a28408356133e61`.
+- PR #15: open, non-draft, unmerged, base `develop`, head `633105210d3a6c4c8e36287ed2dc44dee23f61ef`.
+
+### PR #15 preservation check
+
+A fresh Git comparison of PR #15 head `633105210d3a6c4c8e36287ed2dc44dee23f61ef` against PR #16 head `2bb1e4f6ed1acf1c9f06460dad02d6c8429f5ba6` returned:
+
+- **130 commits ahead, 0 behind**.
+- PR #15 head is the merge base and therefore an ancestor of PR #16 head.
+- PR #15 changes exactly three paths: `.github/pull_request_template.md`, `docs/governance/BRANCH-INVENTORY-AND-CONSOLIDATION-REGISTER.md`, and `docs/governance/BRANCHING-AND-RELEASE-GOVERNANCE.md`.
+- All three paths are present in PR #16's changed-file set. The PR #16 pull-request template is byte-identical to PR #15's version; the governance policy and inventory are carried forward with later additions/corrections and dated audit history.
+
+No other currently open PR uses `governance/branch-lifecycle-policy` as its head or base branch. PR #15 is therefore a well-supported **retirement candidate after explicit owner authorization**.
+
+### Required authorization and safe disposition
+
+**Recommendation:** close PR #15 as superseded by PR #16, without merging it, only after the project owner explicitly authorizes that action. Then re-fetch the open-PR list and branch ref immediately before deleting `governance/branch-lifecycle-policy`; delete that branch only if PR #15 is confirmed closed/unmerged, no open PR references the branch, and the preservation evidence above remains valid.
+
+This record does not itself authorize closing PR #15 or deleting its branch. Until authorization is received, retain both PR #15 and its head branch. The seven-branch ceiling remains unmet; no claim of compliance is made.
