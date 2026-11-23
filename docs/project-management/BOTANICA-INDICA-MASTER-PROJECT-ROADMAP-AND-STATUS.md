@@ -138,7 +138,7 @@ Current technology posture:
 | Workstream | Evidence / PR | Status | Required next action |
 |---|---|---|---|
 | Permanent AI operating standard and repository audit | PR #16 | Open draft; user instruction requires adherence to its branch version | Owner review; retain as governing working standard until accepted and merged |
-| Branch lifecycle policy | PR #15 | Open, non-draft, unmerged | Review against the more extensive PR #16 policy; do not merge/close without authorization |
+| Branch lifecycle policy | PR #15 | **Closed 23 November 2026, unmerged, as superseded by PR #16** | Source branch `governance/branch-lifecycle-policy` remains present at `633105210d3a6c4c8e36287ed2dc44dee23f61ef`; delete only after fresh preservation/reference checks. Owner authorization was given; deletion has not yet been completed. |
 | Asset-specific licensing/IP policy | PR #1 | Proposed | Reconcile duplicates and obtain qualified legal/licensing review |
 | STF ecosystem boundaries / proposed ADR-011 | PR #2 and related architecture documents | Proposed; ADR-011 not accepted | Keep STF shared capabilities separate from Botanica domain ownership until owner decision |
 | STF NatureTech/conservation impact strategy | PR #8 | Strategic proposal, not an approved Botanica requirement | Preserve as a separate STF strategic workstream |
@@ -192,7 +192,7 @@ The proposed capability identifiers and legacy crosswalk in PR #17/PR #19 must r
 
 ## 7. Repository and branch governance status
 
-### 7.1 Verified live baseline — 21 November 2026
+### 7.1 Verified live baseline — 23 November 2026
 
 Repository: `Save-Tiger-First/botanica-indica`  
 Default branch: `main`
@@ -204,6 +204,8 @@ Default branch: `main`
 | `staging` | `f165ecb9b4d9de115c02327cf779982b7ef4bbd4` |
 
 - Live branch count: **23**.
+- Open PR count: **19**.
+- PR #15 is closed without merge; its source branch still exists and remains pending authorized retirement.
 - Owner's immediate ceiling: **7 branches total**.
 - Intended final seven: three long-lived branches plus four existing consolidation destinations.
 - No new branches are authorized.
@@ -215,7 +217,7 @@ Default branch: `main`
 
 ### 7.2 Open pull requests
 
-Twenty PRs are currently open: #1–#5, #8, #9, #11–#23. Nineteen are drafts; PR #15 is non-draft but remains open and unmerged. PR #9 is currently reported non-mergeable. Mergeability is not approval.
+Nineteen PRs are currently open: #1–#5, #8, #9, #11–#14 and #16–#23. All 19 are drafts. PR #15 was closed unmerged on 23 November 2026. PR #9's mergeability must be checked again before any lifecycle decision; mergeability is not approval.
 
 The main consolidation routes recorded in the branch inventory are:
 
@@ -234,7 +236,7 @@ This is a real branch-synchronization and provenance issue to reconcile. The com
 
 ### 7.4 Branch retirement controls
 
-The seven-branch ceiling is **not met**. Preserve unique content and provenance first; resolve or formally reject/close the relevant PR; confirm no open PR references the source branch; then obtain the required authorization before deleting that PR's own head branch. No branch has been deleted as part of this roadmap.
+The seven-branch ceiling is **not met**. PR #15 has been closed unmerged after a 131-commit ancestry and changed-file preservation check against PR #16. A post-closure check found no other open PR referencing `governance/branch-lifecycle-policy`; the branch still exists at SHA `633105210d3a6c4c8e36287ed2dc44dee23f61ef`. The owner authorized its deletion, but the available connected GitHub actions did not expose a branch/ref deletion operation, so deletion remains pending and must not be reported as complete. For all other branches, preserve unique content and provenance first; resolve or formally reject/close the relevant PR; confirm no open PR references the source branch; then obtain the required authorization before deleting that PR's own head branch.
 
 At formal project completion, only `main` may remain, but that is a separate final lifecycle gate—not a reason to delete `develop`, `staging` or task branches prematurely.
 
@@ -360,3 +362,8 @@ The following are decisions requested, not presumed approvals:
 - No application code or physical database schema implemented.
 
 **Final status:** this roadmap is a proposed, evidence-linked project-control document. Owner review is required before it becomes the accepted master roadmap.
+
+
+### 7.5 Graphify tooling assessment update — 23 November 2026
+
+The Graphify assessment on this same PR #20 branch has been updated with a release/provenance recheck. Its current blob SHA is `89a8ccab652ec0a560bd1fcd1ec2c11a12f7359d`. The proposal now distinguishes the Graphify v8 branch head from the latest PyPI 0.9.115 attested source commit, records the package artifact checksum and exact-version security policy, and adds local query-log and semantic-backend controls. This remains a local-only tooling proposal; no CLI installation, extraction, MCP service, cloud connection or CI integration is claimed.
