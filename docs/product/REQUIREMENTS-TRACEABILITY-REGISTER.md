@@ -56,7 +56,7 @@ All requirement and capability status fields begin as **Not yet verified** unles
 | Scientific Data Model Review Pack | `review/scientific-data-model-review-pack` | `c11f4b58d0908742474d3e58b4ec0aa3739f7b99` | Review proposal; findings remain subject to validation |
 | Scientific Data Model Validation Matrix and Decision Register | `review/scientific-data-model-review-pack` | `3a33dfe47657a96456f56f2c12a0b7d355b6c6a5` | Proposed reviewer/test framework; ODR-01 authorized, validation unexecuted |
 | Workflow Lifecycle Specification v0.2 | `docs/requirements-traceability-register` | `498af08ec60e3626e8b60ab5047acae1a8861eb5` | Proposed state machines; `record_created`/`server_received` distinction proposed |
-| Workflow-to-Requirements Crosswalk v0.2 | `docs/requirements-traceability-register` | `02728b9f18a3672b9bc5ad3a950cb68dd3a15ec1` | Proposed WF/requirement and ODR-01/EVT-27–EVT-44 traceability |
+| Workflow-to-Requirements Crosswalk v0.2 | `docs/requirements-traceability-register` | `61d2111ace5c408eaf503bdf17b2ccb822f90978` | Proposed WF/requirement and ODR-01/EVT-27–EVT-44 traceability |
 | Offline and Field Synchronization Specification v0.2 | `docs/requirements-traceability-register` | `a46c7cc1de9d1ea5c5faed7574d23de1d1a48e13` | Proposed offline design and ODR-01 offline safeguards |
 | API Command and Idempotency Contract v0.2 | `docs/requirements-traceability-register` | `bc0f3e93ec6ef2d2c2039b56739db38296c03281` | Proposed API design; ODR-01 export-only constraints; IETF draft v09 |
 | Task 03–04 Cross-Document Readiness Audit v0.1 | `docs/requirements-traceability-register` | `98224ace0eca123212d49c42e1f009086a3fde43` | Proposed findings; follow-up reconciliation recorded separately |
