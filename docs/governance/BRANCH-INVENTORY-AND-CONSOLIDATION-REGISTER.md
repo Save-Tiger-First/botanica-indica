@@ -1239,3 +1239,61 @@ The current governing prompt contains owner-authorized clarification ODR-01 (21 
 PR #16 remains **NOT READY FOR MERGE** pending an independent maintainer review, resolution of findings and separate owner decisions on the proposed branch policy, licensing policy and ADR-011. The 23-branch inventory remains above the immediate seven-branch ceiling. Do not interpret the passing CI checks or GitHub's mergeable flag as satisfying these gates.
 
 No merge, PR state change, retarget, branch creation/deletion, ruleset/protection change, legal approval, policy adoption or scientific approval was performed.
+
+
+## 20.23 PR #16 technical pre-review and current-state verification — 23 November 2026
+
+This section records an AI-assisted technical pre-review by the project adviser. It is **not an independent maintainer review**, legal opinion, security certification or owner approval.
+
+### Exact source state
+
+- Governing prompt: `docs/governance/AI-PROJECT-OPERATING-PROMPT.md`, branch `docs/repository-audit-and-ai-operating-standard`, blob `53add3894d0502827e584614c70ad09cadaa637d`, 259 lines.
+- PR #16: open/draft; base `develop` at `f165ecb9b4d9de115c02327cf779982b7ef4bbd4`; head `b7a2bb2433e3f8a7c315d184a3efe6678176cfde); 140 commits, 26 changed files, 4,684 additions, 25 deletions; 140 ahead / 0 behind `develop`; GitHub reports mergeable.
+- Branch inventory: 23 (3 long-lived + 20 temporary); open PRs: 20.
+- PR #16 reviews, review threads and comments: zero submitted reviews, zero review threads, zero comments.
+- Exact-head CI: [run 44910705492](https://github.com/Save-Tiger-First/botanica-indica/actions/runs/44910705492), success. Job log confirms 27 tests passed, 23 Markdown files scanned, PR routing passed, 23 live branches retrieved, no errors, and the expected warning that 23 exceeds the seven-branch ceiling.
+
+### Technical pre-review findings
+
+| Severity | Finding | Evidence / disposition |
+|---|---|---|
+| Blocker to approval | No independent maintainer review; PR remains draft. | GitHub review API returned no submitted reviews, threads or comments. Requires a maintainer other than the change author. |
+| Major governance gap | Seven-branch ceiling is warning-only; branch creation is not prevented. | Checker deliberately emits a warning above seven. Workflow's `create` event is post-creation and the workflow is not on default branch `main`; even when activated it detects rather than prevents. Requires owner-approved enforcement/transition design and authorized repository controls. |
+| Moderate hardening | Workflow passes a read-only `GITHUB_TOKEN` to a script checked out from the PR. | Top-level workflow permission is `contents: read`, checkout has `persist-credentials: false`, and no write permission is granted. No token leakage was observed. For this public repository the branch-list API can be called anonymously; remove the token from the PR-controlled script step to minimize unnecessary credential exposure. |
+| Moderate test coverage | Unit tests do not exercise live-API helper behavior. | The 27 tests cover routing, allowlists, Markdown fences and link checks. Add mocked tests for pagination, HTTP errors, malformed API responses and fail-closed inventory retrieval before treating the helper as robustly validated. |
+| Minor/documented limitation | Markdown validation is intentionally partial. | The script documents that reference-style links, full CommonMark parsing and some link forms are outside scope. Keep claims limited to fenced-block checking and a subset of inline relative links; do not describe it as complete Markdown validation. |
+
+### Positive findings
+
+- Workflow permissions are explicitly limited to `contents: read`.
+- Checkout credential persistence is disabled.
+- Third-party Actions are pinned to full commit SHAs in the inspected workflow.
+- The workflow has a five-minute job timeout and uses Python 3.12.
+- PR routing uses exact legacy PR/head pairs and exact stacked PR/base/head pairs; PR-body text is not accepted as authorization.
+- The governance script fails closed when live branch inventory cannot be fetched.
+- The 27-test suite passed on the exact current PR #16 head.
+- ADR-011 and its companion ecosystem architecture document both explicitly remain Proposed. ADR-001 and ADR-002 remain Accepted; no accepted ADR was changed by the one-line Markdown fence corrections visible in their PR patches.
+
+### Cross-document and legal-source checks
+
+- The PR #16 operating prompt includes ODR-01 as a bounded owner-authorized export-only clarification. The scientific review branch's `docs/reviews/SCIENTIFIC-DATA-MODEL-VALIDATION-MATRIX-AND-DECISION-REGISTER.md` (blob `3a33dfe47657a96456f56f2c12a0b7d355b6c6a5`) records ODR-01, EVT-27–EVT-44 as proposed/unexecuted, DR-09 open, Task 05C unapproved and Task 05E not ready. This is consistent with the prompt's non-authorization of scientific implementation.
+- The licensing policy explicitly remains Proposed and calls for maintainer and qualified legal review.
+- Official-source desk verification on 23 November 2026 supports the cited commencement schedules in the licensing policy: DPDP Act G.S.R. 843(E) and DPDP Rules G.S.R. 846(E), both dated 13 November 2025; the one-year and eighteen-month commencement provisions are stated in those instruments. See https://www.meity.gov.in/static/uploads/2025/11/c56ceae6c383460ca69577428d36828b.pdf and https://www.meity.gov.in/static/uploads/2025/11/53450e6e5dc0bfa85ebd78686cadad39.pdf.
+- NBA's official pages list the Biological Diversity Rules 2024, Amendment Rules 2025 and ABS Regulations 2025: https://nbaindia.nic.in/index.php/acts-and-rules/rules and https://nbaindia.nic.in/public-information/notification-guidelines.
+- The official Copyright Act text supports the section 19 writing/signature, rights, duration, territorial extent and consideration requirements described in the policy: https://copyright.gov.in/Copyright_Act_1957/chapter_iv.html.
+- These checks confirm that the cited instruments/pages exist and support the high-level statements noted above. They are not a complete legal applicability analysis, consolidated-law review or legal opinion. Qualified Indian counsel remains required before contributor terms, data acquisition, ABS-relevant activities or external release.
+
+### Readiness conclusion
+
+**PR #16 remains NOT READY FOR MERGE.** Passing CI is positive, but does not close the independent review, owner policy decisions, seven-branch enforcement gap or qualified legal review. Keep the PR open and draft.
+
+### Recommended corrective sequence
+
+1. Obtain independent maintainer review of the exact PR #16 diff and record the formal GitHub review.
+2. Decide whether to retain the seven-branch excess as a time-bounded transition warning, and separately specify the actual preventive control for the no-new-branches directive.
+3. Remove unnecessary token exposure from the public branch inventory check, or document why authentication is required.
+4. Add mocked tests for GitHub API pagination and failure cases.
+5. Obtain qualified legal review of the licensing/contributor policy; keep it Proposed until then.
+6. Obtain separate owner decisions on the branch policy and ADR-011. Do not conflate document consolidation with adoption.
+
+No code or workflow was changed by this review record. No PR was merged, closed, marked ready or retargeted. No branch was created or deleted. No ruleset/protection changed. No legal, scientific or policy approval is claimed.
