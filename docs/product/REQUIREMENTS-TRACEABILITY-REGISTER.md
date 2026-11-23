@@ -55,6 +55,11 @@ All requirement and capability status fields begin as **Not yet verified** unles
 | Full Product Vision and Capability Blueprint v0.2 | `docs/full-product-vision-capability-blueprint` | `d3ec150524dda4928503f43556a97cd766b71312` | Proposed in PR #17; not accepted |
 | Scientific Data Model Review Pack | `review/scientific-data-model-review-pack` | `c11f4b58d0908742474d3e58b4ec0aa3739f7b99` | Review proposal; findings remain subject to validation |
 | Scientific Data Model Validation Matrix and Decision Register | `review/scientific-data-model-review-pack` | `3a33dfe47657a96456f56f2c12a0b7d355b6c6a5` | Proposed reviewer/test framework; ODR-01 authorized, validation unexecuted |
+| Workflow Lifecycle Specification v0.2 | `docs/requirements-traceability-register` | `498af08ec60e3626e8b60ab5047acae1a8861eb5` | Proposed state machines; `record_created`/`server_received` distinction proposed |
+| Workflow-to-Requirements Crosswalk v0.2 | `docs/requirements-traceability-register` | `f65b64ff7ad64772a8c73449dfe77983c89770b2` | Proposed WF/requirement and ODR-01/EVT-27–EVT-44 traceability |
+| Offline and Field Synchronization Specification v0.2 | `docs/requirements-traceability-register` | `fb64011722c32999c255a083be24adde73765207` | Proposed offline design and ODR-01 offline safeguards |
+| API Command and Idempotency Contract v0.2 | `docs/requirements-traceability-register` | `d65ca32a6ebb2939ac95d0dce5dd82811f27e0e7` | Proposed API design; ODR-01 export-only constraints; IETF draft v09 |
+| Task 03–04 Cross-Document Readiness Audit v0.1 | `docs/requirements-traceability-register` | `f3e9c6998104b5435c24b4b70d136ced763245f5` | Proposed findings; follow-up reconciliation recorded separately |
 
 Original source artifacts preserved in the Project Library:
 - `STF_Task_03_Product_Requirements_Document_v0.1.docx` — 16 pages / 677 extracted text lines.
@@ -64,7 +69,7 @@ The repository Markdown transcriptions preserve extracted substantive text; page
 
 ### 2.2 Source revision revalidation — 23 November 2026
 
-The source SHAs above were re-fetched from their named refs on 23 November 2026. Earlier SHAs in prior versions of this register are historical snapshots, not current identifiers. This revision records the current blob SHAs for the operating prompt, Blueprint and scientific review artifacts. The original Task 03/04 transcription SHAs remain unchanged. Re-fetch all sources before a later approval or implementation decision.
+The source SHAs above were re-fetched from their named refs on 23 November 2026. Earlier SHAs in prior versions of this register are historical snapshots, not current identifiers. This revision records the current blob SHAs for the operating prompt, Blueprint, scientific review artifacts, workflow, crosswalk, offline and API proposals. The original Task 03/04 transcription SHAs remain unchanged. Re-fetch all sources before a later approval or implementation decision.
 
 ### 2.1 Accepted ADR register inspected
 
