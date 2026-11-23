@@ -217,7 +217,7 @@ Default branch: `main`
 
 ### 7.2 Open pull requests
 
-Nineteen PRs are currently open: #1–#5, #8, #9, #11–#14 and #16–#23. All 19 are drafts. PR #15 was closed unmerged on 23 November 2026. PR #19 and PR #20 remain open drafts and non-mergeable at the latest check; their documentation changes are proposals, not approvals. PR #9's mergeability must be checked again before any lifecycle decision; mergeability is not approval.
+Nineteen PRs are currently open: #1–#5, #8, #9, #11–#14 and #16–#23. All 19 are drafts. PR #15 was closed unmerged on 23 November 2026. At the latest live check, PR #19 is reported mergeable and PR #20 is not mergeable; both remain open drafts and their documentation changes are proposals, not approvals. Mergeability is a GitHub state, not review approval, owner acceptance or scientific sign-off.
 
 The main consolidation routes recorded in the branch inventory are:
 
