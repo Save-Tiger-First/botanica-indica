@@ -1,8 +1,8 @@
 # Botanica Indica — Full System Architecture and Repository Engineering Plan
 
 **Document ID:** STF-BI-ARCH-PLAN-001  
-**Version:** 0.1 — Proposed target architecture and engineering plan  
-**Prepared:** 20 November 2026  
+**Version:** 0.2 — Proposed architecture and source-inventory reconciliation  
+**Prepared:** 23 November 2026  
 **Status:** Proposed for project-owner review; not an accepted architecture baseline or implementation authorization  
 **Decision authority:** Save Tiger First project owner  
 **Repository:** `Save-Tiger-First/botanica-indica`  
@@ -44,21 +44,21 @@ This follows accepted ADR-002 and avoids turning a scientifically complex produc
 
 Repository: `Save-Tiger-First/botanica-indica`  
 Default branch: `main`  
-Main commit inspected: `f165ecb9b4d9de115c02327cf779982b7ef4bbd4`  
-Main commit SHA: `f165ecb9b4d9de115c02327cf779982b7ef4bbd4`  
+Main commit inspected: `6f2f51da093caf8183fde386dbec707cc6046d27`  
+Main commit SHA: `6f2f51da093caf8183fde386dbec707cc6046d27`  
 Root Git tree SHA: `cc15676cd415057ed927af22fba57dc147ea1e8f`
 
 The complete `docs/governance/AI-PROJECT-OPERATING-PROMPT.md` was fetched from `docs/repository-audit-and-ai-operating-standard`; blob SHA:
 
-`65cb5ac58c79f2bf14a1e7df1d9b18ea608850ed`
+`53add3894d0502827e584614c70ad09cadaa637d`
 
 It is followed as the working operating standard until PR #16 is accepted and merged.
 
 At the inspection point:
 - `main`, `develop` and `staging` were identical at the SHA above.
-- At the time of the initial architecture-plan snapshot, the repository had 22 branches (3 designated long-lived and 19 topic branches) and 16 open PRs; this snapshot preceded the creation/opening of PR #20.
-- A fresh verification after PR #20 opened reports 23 branches (3 designated long-lived and 20 topic branches) and 17 open PRs. All 17 are currently open; no PR has been merged in the current inventory.
-- `main`, `develop` and `staging` remain identical at `f165ecb9b4d9de115c02327cf779982b7ef4bbd4`.
+- A live recheck on 23 November 2026 reports 23 branches and 19 open PRs. The branch ceiling is seven total; the repository remains 16 branches above that target. No branch retirement is claimed.
+- Current long-lived branch heads are: `main` `6f2f51da093caf8183fde386dbec707cc6046d27`; `develop` `f165ecb9b4d9de115c02327cf779982b7ef4bbd4`; `staging` `f165ecb9b4d9de115c02327cf779982b7ef4`. `main` is one commit ahead of `develop`/`staging`; they are not identical.
+- PRs #17–#20 remain open draft proposals; PR #19's current head is being updated as part of this traceability reconciliation. No PR was merged or closed during this work.
 - PRs #17, #18 and #19 remain proposals, not approved baselines.
 - The default-branch tree contained 18 entries and **no application source-code files**. The repository is currently documentation/governance-led; no application implementation was verified.
 - No branch was deleted, no PR merged, and no repository protection or setting changed during this work.
@@ -69,15 +69,26 @@ The branch count is not itself a violation: only three branches are designated l
 
 | Document | Ref | Blob SHA | Status |
 |---|---|---|---|
-| AI Project Operating Prompt | `docs/repository-audit-and-ai-operating-standard` | `65cb5ac58c79f2bf14a1e7df1d9b18ea608850ed` | Proposed standard; user instruction requires adherence |
+| AI Project Operating Prompt | `docs/repository-audit-and-ai-operating-standard` | `53add3894d0502827e584614c70ad09cadaa637d` | Proposed standard; user instruction requires adherence |
 | README | `main` | `366e856fdf28a26a4799c9f3ae7341d3d8ae1c2f` | Current repository overview |
 | Task 03 PRD v0.1 | `docs/canonical-task-03-04-baselines` | `8b1ca0be04b3f4ad3b543c2f9fc48d46eb37faf8` | Complete extracted source transcription; working baseline |
 | Task 04 architecture evaluation v0.1 | `docs/canonical-task-03-04-baselines` | `abc7b721fae8d4f4adede4dd0bf5d6a32098c5a3` | Complete extracted source transcription plus governance overlay; working baseline |
-| Full Product Vision and Capability Blueprint v0.1 | `docs/full-product-vision-capability-blueprint` | `ccfeb15d86bc832e61590028d57c08c4ce4fbbed` | Proposed in PR #17 |
-| Requirements Traceability Register v0.1 | `docs/requirements-traceability-register` | `1e65218f2b63aad9ea1f078d71594de53999990f` | Proposed in PR #19 |
-| Scientific Data Model Review Pack | `review/scientific-data-model-review-pack` | `f8ce8caab31d02a38e2f3deb957b67af77decad6` | Review proposal; not scientific sign-off |
+| Full Product Vision and Capability Blueprint v0.2 | `docs/full-product-vision-capability-blueprint` | `d3ec150524dda4928503f43556a97cd766b71312` | Proposed in PR #17; not accepted |
+| Requirements Traceability Register v0.3 | `docs/requirements-traceability-register` | `1c799a2ae2f4580e216f8b03be369f15d62e224c` | Proposed in PR #19; not accepted |
+| Scientific Data Model Review Pack | `review/scientific-data-model-review-pack` | `c11f4b58d0908742474d3e58b4ec0aa3739f7b99` | Review proposal; not scientific sign-off |
+| Workflow Lifecycle Specification v0.2 | `docs/requirements-traceability-register` | `498af08ec60e3626e8b60ab5047acae1a8861eb5` | Proposed workflow; record_created/receipt distinction remains under review |
+| Workflow-to-Requirements Crosswalk v0.2 | `docs/requirements-traceability-register` | `f65b64ff7ad64772a8c73449dfe77983c89770b2` | Proposed workflow/requirements and ODR-01 traceability |
+| Offline and Field Synchronization Specification v0.2 | `docs/requirements-traceability-register` | `fb64011722c32999c255a083be24adde73765207` | Proposed offline design; ODR-01 export-only safeguards |
+| API Command and Idempotency Contract v0.2 | `docs/requirements-traceability-register` | `d65ca32a6ebb2939ac95d0dce5dd82811f27e0e7` | Proposed API design; ODR-01 export-only constraints; IETF draft v09 |
+| Scientific Data Model Validation Matrix and Decision Register | `review/scientific-data-model-review-pack` | `3a33dfe47657a96456f56f2c12a0b7d355b6c6a5` | ODR-01 authorized; EVT-27–EVT-44 proposed and unexecuted |
 
 Accepted ADR-001 through ADR-010 were also fetched from `main`; all ten report Accepted. This plan does not amend them.
+
+### 2.4 Source and integration revalidation — 23 November 2026
+
+The inventory above was refreshed against the current named refs. Historical SHAs in the 20 November snapshot remain useful as a record of the sources originally inspected, but must not be used as current revision identifiers. The updated PR #19 workstream now carries identity/authentication as an STF shared-platform cross-cutting concern without assigning it a BI-CAP identifier, maps ODR-01 and EVT-27–EVT-44 into the RTM/workflow/API/offline proposals, and distinguishes the proposed Observation `record_created` state from API `server_received` command receipt. These are proposed documentation reconciliations, not accepted product/architecture decisions or implementation approvals.
+
+The source inventory does not establish that PR #17–#19 are approved. Their content remains proposed until owner and discipline review. Task 05C remains unapproved; Task 05E remains not ready; physical schema work remains gated.
 
 ### 2.3 Consistency audit — findings
 
@@ -89,7 +100,7 @@ Accepted ADR-001 through ADR-010 were also fetched from `main`; all ten report A
 
 **Finding D — candidate technologies are not approved vendor choices.** React/Next.js, OpenSearch, S3-compatible object storage, OIDC-compatible identity, containers and any cloud provider remain candidates unless separately accepted. PostgreSQL/PostGIS is the leading system-of-record direction, but physical schema and production topology are not authorized by this plan.
 
-**Finding E — STF shared-platform ownership remains partly open.** The README and Blueprint describe shared STF capabilities, but proposed ADR-011 / PR #2 has not been accepted. Keep logical boundaries visible, but do not assume separate repositories, teams, deployments or ownership arrangements before that decision.
+**Finding E — the operating prompt supplies a governing logical boundary, while deployment/organizational boundaries remain open.** STF shared platform provides genuinely reusable identity/access foundations and shared infrastructure; Botanica Indica owns botanical taxonomy, knowledge, evidence, observations, identification and scientific governance. This logical division is stated in the current operating prompt. Proposed ADR-011 may further elaborate ecosystem boundaries, but it remains unaccepted. Do not infer separate repositories, teams, deployments or ownership arrangements.
 
 **Finding F — scientific data architecture is a hard gate.** DR-01–DR-04 are blocking findings; DR-05–DR-07 and the remaining DR/LDM scenarios also require resolution and validation. Task 05E / physical database design is not ready. This plan describes architectural responsibilities and repository organization, not tables or production migrations.
 
@@ -926,4 +937,4 @@ External technical references checked on 20 November 2026. These support archite
 | Build/test/security pipeline for application code | Not assessed as implemented; no application code found |
 | Production deployment | Not present / not claimed |
 
-**End of proposed architecture plan — STF-BI-ARCH-PLAN-001, Version 0.1.**
+**End of proposed architecture plan — STF-BI-ARCH-PLAN-001, Version 0.2.**
