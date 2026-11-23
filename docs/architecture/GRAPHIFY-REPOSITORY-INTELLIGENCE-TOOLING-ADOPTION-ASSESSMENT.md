@@ -284,3 +284,39 @@ No Graphify installation, local extraction, MCP configuration, CI integration, h
 ---
 
 **Status summary:** This is a tooling adoption proposal. The local pilot is recommended but not yet executed. No product architecture, scientific decision, repository setting or branch lifecycle decision is changed.
+
+
+## 12. Connected Graphify workspace capability check — 23 November 2026
+
+This addendum distinguishes the hosted/connected Graphify workspace from the separately installed open-source Graphify CLI.
+
+### 12.1 Verified workspace constraints
+
+The connected Graphify workspace reports:
+
+- Repository: `Save-Tiger-First/botanica-indica`
+- Default branch: `main`
+- Workspace repository status: ready and queryable
+- Indexed nodes: **17**
+- Indexed source coverage: `README.md` only
+- Workspace plan note: on the Free plan, only `README.md` is indexed from a repository's documents; a documentation-only repository is therefore indexed from its README alone.
+
+This explains why querying the connected Graphify workspace cannot yet provide a meaningful graph of the ADRs, PRD, architecture, scientific-model review pack or requirements register. The limitation is workspace-plan coverage, not evidence that those repository documents are absent.
+
+### 12.2 Automated pull-request review status
+
+The Graphify review-status query returned no review record for PR #16 or PR #20. Therefore:
+
+- No Graphify automated review of either PR is verified.
+- Do not claim Graphify has reviewed, approved, rejected or commented on either PR.
+- The connected Graphify workspace's code-context tools and its optional automated PR-review feature are distinct capabilities; availability of the former does not prove the latter is enabled or active.
+
+### 12.3 Revised operational recommendation
+
+1. Continue to use the connected Graphify workspace only for limited README-level exploration while this plan limitation applies.
+2. If broader repository-document analysis is required, evaluate the open-source CLI locally against a precisely pinned PR #20 branch commit and an explicit exclusion policy.
+3. Keep local graph snapshots separate by branch and commit; do not merge graph data from divergent Task 05C/05D branches.
+4. Treat Graphify output as a navigation aid and candidate relationship map, not as source-of-truth, formal traceability, scientific review or approval evidence.
+5. Do not add Graphify to the product runtime, CI gates or hosted repository connections as part of this evaluation.
+
+This addendum does not represent that Graphify CLI has been installed or run on a project-owner device. No local extraction, MCP setup, hosted-service connection, CI integration or product dependency was created.
