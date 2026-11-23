@@ -1,8 +1,8 @@
 # Botanica Indica — Requirements Traceability Register
 
 **Document ID:** STF-BI-RTM-001  
-**Version:** 0.2 — proposed controlled capability and scope reconciliation  
-**Prepared:** 21 November 2026  
+**Version:** 0.3 — proposed controlled capability, source-provenance and ODR-01 traceability reconciliation  
+**Prepared:** 23 November 2026  
 **Status:** Proposed for owner review; not an approved requirements baseline  
 **Decision authority:** Save Tiger First project owner  
 **Scope:** Full Botanica Indica product; STF shared-platform dependencies are identified where relevant  
@@ -49,18 +49,22 @@ All requirement and capability status fields begin as **Not yet verified** unles
 
 | Source | Ref / branch | Blob SHA | Status at review |
 |---|---|---|---|
-| Permanent AI Project Operating Prompt, STF-AI-OPS-001 v1.0 | `docs/repository-audit-and-ai-operating-standard` | `61059c74d4d20309ff76e055059ab33f381ca4f2` | Proposed standard; user instruction requires adherence |
+| Permanent AI Project Operating Prompt, STF-AI-OPS-001 v1.0 | `docs/repository-audit-and-ai-operating-standard` | `53add3894d0502827e584614c70ad09cadaa637d` | Proposed standard; user instruction requires adherence |
 | Task 03 PRD v0.1 transcription | `docs/canonical-task-03-04-baselines` | `8b1ca0be04b3f4ad3b543c2f9fc48d46eb37faf8` | Working baseline; not accepted |
 | Task 04 architecture evaluation v0.1 transcription | `docs/canonical-task-03-04-baselines` | `abc7b721fae8d4f4adede4dd0bf5d6a32098c5a3` | Working baseline; not accepted |
-| Full Product Vision and Capability Blueprint v0.2 | `docs/full-product-vision-capability-blueprint` | `905455233d11fc750ba3a485d5c516e01f8426ee` | Proposed in PR #17; not accepted |
-| Scientific Data Model Review Pack | `review/scientific-data-model-review-pack` | `f8ce8caab31d02a38e2f3deb957b67af77decad6` | Review proposal; findings remain subject to validation |
-| Scientific Data Model Validation Matrix and Decision Register | `review/scientific-data-model-review-pack` | `f1d8c927b54c74fc33be9eedcdf2b8dfc533dda7` | Proposed reviewer/test framework |
+| Full Product Vision and Capability Blueprint v0.2 | `docs/full-product-vision-capability-blueprint` | `d3ec150524dda4928503f43556a97cd766b71312` | Proposed in PR #17; not accepted |
+| Scientific Data Model Review Pack | `review/scientific-data-model-review-pack` | `c11f4b58d0908742474d3e58b4ec0aa3739f7b99` | Review proposal; findings remain subject to validation |
+| Scientific Data Model Validation Matrix and Decision Register | `review/scientific-data-model-review-pack` | `3a33dfe47657a96456f56f2c12a0b7d355b6c6a5` | Proposed reviewer/test framework; ODR-01 authorized, validation unexecuted |
 
 Original source artifacts preserved in the Project Library:
 - `STF_Task_03_Product_Requirements_Document_v0.1.docx` — 16 pages / 677 extracted text lines.
 - `STF_Task_04_System_Architecture_and_Technology_Evaluation_v0.1.docx` — 11 pages / 431 extracted text lines.
 
 The repository Markdown transcriptions preserve extracted substantive text; page layout, embedded formatting, diagrams and table geometry may be simplified. The original DOCX files remain the source artifacts.
+
+### 2.2 Source revision revalidation — 23 November 2026
+
+The source SHAs above were re-fetched from their named refs on 23 November 2026. Earlier SHAs in prior versions of this register are historical snapshots, not current identifiers. This revision records the current blob SHAs for the operating prompt, Blueprint and scientific review artifacts. The original Task 03/04 transcription SHAs remain unchanged. Re-fetch all sources before a later approval or implementation decision.
 
 ### 2.1 Accepted ADR register inspected
 
@@ -261,7 +265,7 @@ Task 04 v0.1 proposes architecture domains and technologies. The mapping below r
 
 | Architecture responsibility in Task 04 | Capability mapping | Relevant requirements | Governing ADRs | Decision status / guardrail |
 |---|---|---|---|---|
-| Identity, authentication, roles and permissions | BI-CAP-09–BI-CAP-14 | SEC-001, PRIV-001, ADMIN-001 | ADR-002, 003 | Detailed identity provider and authorization model open |
+| Identity, authentication, roles and permissions | STF shared-platform cross-cutting capability; no BI-CAP identifier assigned | SEC-001, PRIV-001, ADMIN-001 | ADR-002, 003 | The operating prompt assigns reusable identity/access foundations to STF shared platform. Detailed identity provider, role model and authorization policy remain open; Botanica domain permissions remain Botanica-owned. |
 | Taxonomy and species knowledge | BI-CAP-01, BI-CAP-03 | ID-007, SCI-001, SCI-002, DER-SCI-001 | ADR-004, 005, 010 | Scientific model blockers remain |
 | Geography and spatial intelligence | BI-CAP-04, BI-CAP-05 | ID-006, SEC-002, GEO-001 | ADR-008, 009 | Sensitive location and historical boundary requirements |
 | Media storage and processing | BI-CAP-02, BI-CAP-04, BI-CAP-07, BI-CAP-10 | ID-001, SEC-002, RIGHTS-001 | ADR-004, 008, 010 | Rights per asset/purpose; original/derivative distinction |
@@ -335,6 +339,23 @@ A scenario is not closed because:
 
 Closure requires reproducible evidence, the appropriate discipline review, exact source/model revision, outcome, limitations and recorded disposition. A justified Not Applicable outcome must include rationale and approval.
 
+### 8.4 ODR-01 — controlled external-export traceability
+
+ODR-01 is an owner-authorized policy decision recorded in the Scientific Data Model Validation Matrix and Decision Register (ref `review/scientific-data-model-review-pack`, blob `3a33dfe47657a96456f56f2c12a0b7d355b6c6a5`). It authorizes Option B for controlled, profile-specific external exports only. It does not approve a final export profile, Task 05C/05D/05E, physical schema, API payload or implementation.
+
+| ODR-01 obligation / validation cases | Requirement and capability trace | Required treatment in this register |
+|---|---|---|
+| Internal missing Occurrence row; EVT-37 | OBS-001/OBS-002; BI-CAP-04 | Remains unknown/not assessed. No internal absence assertion or negative Occurrence may be created from an empty result set. |
+| Explicit internal survey result; EVT-36 | OBS-001/OBS-002; BI-CAP-04/05 | Requires explicit attributable evidence and defined Survey/Event, target, method, effort, time/place and agent. Keep separate from export interpretation. |
+| Eligible profile-specific implicit export; EVT-27, EVT-30 | SCI-001, GEO-001; BI-CAP-04/05/07/14 | Only an approved, pinned external profile and validated mapping may generate the bounded “not detected/reported within the stated survey scope under documented survey conditions” interpretation. |
+| Fail-closed completeness/method conditions; EVT-28, EVT-31, EVT-38 | SCI-001; BI-CAP-04/07/14 | Missing, incomplete, unreported, ambiguous or contradictory required evidence suppresses the interpretation. Reporting completeness, survey effort and detectability remain distinct. |
+| Hierarchy and explicit scope at each applicable level; EVT-29, EVT-32, EVT-39, EVT-43, EVT-44 | OBS-001/OBS-002, GEO-001; BI-CAP-04/05 | Preserve Event/Survey hierarchy, spatiotemporal containment and explicit scope. No silent inheritance, child-to-parent completeness derivation or unjustified relationship. |
+| A priori/post-facto target origin and bycatch; EVT-33, EVT-34, EVT-35, EVT-40 | OBS-001/OBS-002; BI-CAP-04/07 | Preserve target origin, author, method and timestamp. Bycatch and out-of-scope taxa do not satisfy target reporting completeness. |
+| Material/media and multiple-organism edge cases; EVT-41, EVT-42 | ID-001, OBS-001, SCI-001; BI-CAP-04/07 | Keep MaterialEntity, MediaAsset, Observation, Organism and Occurrence distinct; retain grouping uncertainty and provenance. |
+| Term/profile/version pins; EVT-30 and DR-09 | SCI-001, DATA-ING-001; BI-CAP-07/14 | Pin exact profile, mapping, term and controlled-value versions. DR-09 remains open pending exact versioned-resource comparison. |
+
+**Traceability rule:** an internal absence state is never inferred from missing data. The external interpretation is generated only in a controlled export transformation after every applicable ODR-01 condition has been verified. If any condition is missing or unresolved, omit the interpretation. EVT-27–EVT-44 are proposed validation obligations, not executed tests; the internal Survey/Occurrence model and export profile remain open scientific/architecture gates.
+
 ## 9. Acceptance criteria traceability
 
 Task 03 Section 33 includes twelve product-baseline acceptance criteria. These should be retained and converted into separately executable acceptance cases in the test plan.
@@ -371,7 +392,7 @@ These issues must be assigned an owner, evidence requirement and decision date b
 | AI production baseline | Task 03 §35; ADR-006 | ID-004, ID-009, AI-001–003 | Open | Comparative evaluation with rights-cleared data |
 | Performance, availability and cost objectives | Task 03 §35 | NFR-PERF, NFR-AVAIL, NFR-COST | Open | Workload and operating-cost model |
 | Sustainability model | Task 03 §35 | NFR-COST-001; operations | Open | Organizational/financial assessment; no commercial assumption |
-| STF shared vs Botanica-owned capabilities | Task 03 §35; Blueprint §3 | All capability mappings | Proposed boundaries in blueprint | Owner review; do not expand scope silently |
+| STF shared vs Botanica-owned capabilities | Operating Prompt §2; Task 03 §35; Blueprint §3 | All capability mappings | Governing logical boundary: STF provides reusable identity/access foundations; Botanica owns botanical taxonomy, knowledge, identification, observation, evidence and scientific governance | Do not infer separate repositories, teams, deployments or a final organizational operating model from logical boundaries; review remaining shared primitives as needed |
 | Identity provider and detailed authorization | Task 04 | SEC-001, API-CON-001 | Open | Threat model, role/policy model, vendor-neutral evaluation |
 | Web framework | Task 04 | UX-WEB-001 | React/Next.js candidate only | Evaluate after UX, accessibility and maintainability requirements |
 | Search engine | Task 04 | Discovery, multilingual, geographic requirements | Open; derived/rebuildable index | Benchmark representative exact-name, multilingual, semantic and geo workloads |
@@ -473,7 +494,7 @@ Before a requirement is accepted, confirm it is:
 
 ---
 
-**End of proposed register.**
+**End of proposed register — v0.3.**
 
 
 ### DR-09 source metadata update (20 November 2026)
