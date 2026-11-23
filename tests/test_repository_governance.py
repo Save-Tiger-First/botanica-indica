@@ -1,7 +1,11 @@
 """Regression tests for repository governance routing and Markdown checks."""
 from pathlib import Path
+import io
+import json
+import os
 import sys
 import unittest
+from unittest.mock import patch
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "scripts"))
@@ -17,6 +21,7 @@ from check_repository_governance import (  # noqa: E402
     check_fences,
     check_relative_links,
     check_routing,
+    fetch_repository_branches,
     is_grandfathered_main_pr,
 )
 
@@ -166,6 +171,60 @@ class RelativeLinkTests(unittest.TestCase):
         )
         self.assertEqual(len(warnings), 1)
         self.assertIn("folder name/file.md", warnings[0])
+
+
+class BranchApiTests(unittest.TestCase):
+    @patch("check_repository_governance.urlopen")
+    def test_fetch_branches_paginates_without_authorization_header(self, mocked_urlopen):
+        first_page = [{"name": f"branch-{i}"} for i in range(100)]
+        second_page = [{"name": "last-branch"}]
+        mocked_urlopen.side_effect = [
+            io.BytesIO(json.dumps(first_page).encode("utf-8")),
+            io.BytesIO(json.dumps(second_page).encode("utf-8")),
+        ]
+
+        result = fetch_repository_branches("owner/repo")
+
+        self.assertEqual(len(result), 101)
+        self.assertEqual(result[-1], "last-branch")
+        self.assertEqual(mocked_urlopen.call_count, 2)
+        first_request = mocked_urlopen.call_args_list[0].args[0]
+        second_request = mocked_urlopen.call_args_list[1].args[0]
+        self.assertIn("page=1", first_request.full_url)
+        self.assertIn("page=2", second_request.full_url)
+        self.assertIsNone(first_request.get_header("Authorization"))
+        self.assertIsNone(second_request.get_header("Authorization"))
+
+    @patch("check_repository_governance.urlopen")
+    def test_fetch_rejects_non_list_api_response(self, mocked_urlopen):
+        mocked_urlopen.return_value = io.BytesIO(
+            json.dumps({"message": "rate limited"}).encode("utf-8")
+        )
+        with self.assertRaisesRegex(RuntimeError, "unexpected response"):
+            fetch_repository_branches("owner/repo")
+
+    @patch("check_repository_governance.urlopen")
+    def test_fetch_rejects_malformed_branch_entry(self, mocked_urlopen):
+        mocked_urlopen.return_value = io.BytesIO(
+            json.dumps([{"name": "valid"}, {"name": 42}]).encode("utf-8")
+        )
+        with self.assertRaisesRegex(RuntimeError, "malformed branch entry"):
+            fetch_repository_branches("owner/repo")
+
+    @patch("check_repository_governance.urlopen", side_effect=OSError("network unavailable"))
+    def test_fetch_propagates_api_failure(self, mocked_urlopen):
+        with self.assertRaisesRegex(OSError, "network unavailable"):
+            fetch_repository_branches("owner/repo")
+
+    @patch.dict(os.environ, {"GITHUB_REPOSITORY": "owner/repo"}, clear=True)
+    @patch("check_repository_governance.tracked_markdown", return_value=[])
+    @patch("check_repository_governance.fetch_repository_branches", side_effect=OSError("network unavailable"))
+    @patch("sys.argv", ["check_repository_governance.py", "--check-branch-inventory"])
+    def test_main_fails_closed_when_live_inventory_cannot_be_fetched(
+        self, mocked_fetch, mocked_markdown
+    ):
+        import check_repository_governance
+        self.assertEqual(check_repository_governance.main(), 1)
 
 
 if __name__ == "__main__":
