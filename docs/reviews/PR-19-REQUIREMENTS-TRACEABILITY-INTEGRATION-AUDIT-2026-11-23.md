@@ -415,3 +415,46 @@ The next implementation of this audit should be a bounded documentation reconcil
 The project owner remains the decision authority. This report is an audit recommendation, not approval to change accepted ADRs, scientific models, product scope, merge PRs or retire branches.
 
 **End of audit — STF-BI-AUD-PR19-001 v0.1.**
+
+---
+
+## 10. Follow-up finding disposition — 23 November 2026
+
+**Status:** Dated follow-up to the original v0.1 audit. The original findings and their historical source snapshots are preserved. This addendum records later documentation changes and current residual gaps; it does not retroactively rewrite the original audit or confer approval.
+
+| Finding | Follow-up disposition |
+|---|---|
+| PR19-AUD-01 — identity/authentication mapping | **Addressed at documentation level.** The current RTM classifies identity/access foundations as an STF shared-platform cross-cutting concern without assigning an unrelated BI-CAP identifier. This is not final approval of the wider STF/Botanica ownership boundary or an architecture baseline. |
+| PR19-AUD-02 — stale source SHAs | **Partially addressed.** The RTM source snapshot and some linked proposals have been refreshed. Remaining stale references were found in the PR #20 architecture inventory and the Task 03–04 readiness audit; these are being corrected in the same documentation reconciliation. Historical SHAs remain historical evidence, not current identifiers. |
+| PR19-AUD-03 — ODR-01 / EVT traceability | **Addressed at proposal/documentation level.** RTM, workflow crosswalk v0.2, offline specification v0.2 and API contract v0.2 now record export-only safeguards and EVT-27–EVT-44 relationships. The validation cases remain Proposed / Not run; no final export profile or implementation is approved. |
+| PR19-AUD-04 — Observation “received” ambiguity | **Clarified as a proposal.** Workflow lifecycle v0.2 proposes `record_created` for the committed Observation domain record and keeps `server_received` as command-receipt terminology. Owner, product, scientific and API review remains outstanding; no lifecycle is approved or implemented. |
+| PR19-AUD-05 — STF/Botanica boundary | **Partially addressed.** The operating prompt and proposed documents distinguish reusable STF infrastructure from Botanica-owned botanical scientific capabilities. Further ownership of shared primitives, organizational boundaries and deployment topology remains open; ADR-011 remains Proposed. |
+| PR19-AUD-06 — Task 04 citation tokens | **Open.** The source-preserving Task 04 transcription retains its historical citation tokens. A future canonical revision or dated reference overlay must provide durable source references without silently rewriting the transcription. |
+| PR19-AUD-07 — acceptance/workflow tests | **Open validation gate.** The 66 acceptance cases and workflow scenarios remain proposed and unexecuted. No test result or release acceptance is claimed. |
+| PR19-AUD-08 — offline/API decisions | **Partially addressed.** Offline and API specifications exist at v0.2, but API-OD-01–20 and OFF-OD-01–16 remain open; specialist review and executable validation remain outstanding. |
+| PR19-AUD-09 — PR #20 architecture inventory | **Partially addressed.** The architecture plan has a refreshed inventory, but the current file still contains a stale RTM SHA, a duplicate workflow lifecycle row, contradictory branch-count wording and reversed §2.3/§2.4 ordering. The roadmap also contains stale PR #20 mergeability and comparison metadata. These are the subject of the companion PR #20 corrections. |
+
+### 10.1 Revalidated source revisions
+
+| Document | Ref | Current blob SHA | Status |
+|---|---|---|---|
+| Operating prompt v1.0 | `docs/repository-audit-and-ai-operating-standard` | `53add3894d0502827e584614c70ad09cadaa637d` | Governing working prompt under user instruction; PR #16 remains open draft |
+| RTM v0.3 | `docs/requirements-traceability-register` | `c4b4ef1a5adfd367edcf982c1f9b115fa5d8aad6` | Proposed; lifecycle and crosswalk sections require this follow-up correction |
+| Workflow lifecycle v0.2 | `docs/requirements-traceability-register` | `498af08ec60e3626e8b60ab5047acae1a8861eb5` | Proposed; `record_created` / `server_received` distinction not approved |
+| Workflow crosswalk v0.2 | `docs/requirements-traceability-register` | `61d2111ace5c408eaf503bdf17b2ccb822f90978` | Proposed; ODR-01 and EVT-27–EVT-44 mapped |
+| Offline specification v0.2 | `docs/requirements-traceability-register` | `a46c7cc1de9d1ea5c5faed7574d23de1d1a48e13` | Proposed; validation unexecuted |
+| API contract v0.2 | `docs/requirements-traceability-register` | `bc0f3e93ec6ef2d2c2039b56739db38296c03281` | Proposed; API-OD decisions remain open |
+| Task 03–04 readiness audit | `docs/requirements-traceability-register` | `d01ec7041ca2571ae8c11c4a0d95816c7d2daa7c` | Proposed; follow-up section numbering and RTM SHA being corrected |
+| PR #20 architecture plan v0.2 | `docs/full-system-architecture-and-repo-engineering-plan` | `33c42ead0d32f24530d28fdbcfd1024c2495a5eb` | Proposed; correction required |
+| PR #20 roadmap v0.2 | `docs/full-system-architecture-and-repo-engineering-plan` | `2ec317a01a2d295b073c95ee8427d4e2d865635c` | Proposed; correction required |
+
+### 10.2 Current repository and readiness boundary
+
+- PR #19 remains open, draft and mergeable at head `d40f9c4d2e97e68d6b55bd86b1cb0df046136f2a`; PR #20 remains open, draft and mergeable at head `d1b9fc38fdc4777d7c522f8959437cc2e9171018`.
+- The live repository has 23 branches against the seven-branch ceiling. No branch retirement is claimed in this addendum.
+- Accepted ADR-001 through ADR-010 remain unchanged. ADR-011 remains Proposed.
+- DR-01–DR-12 and LDM-01–LDM-16 remain scientific review/validation obligations. Task 05C remains unapproved; Task 05E remains not ready.
+- EVT-27–EVT-44, OFF-001–OFF-036 and API-SYNC-001–042 remain proposed and unexecuted. API-OD-01–20 and OFF-OD-01–16 remain open.
+- No physical schema, migration, production API, application implementation, legal opinion or independent specialist approval is established by these documents.
+
+**Updated recommendation:** keep PR #19 and PR #20 open and draft. Complete the scoped documentation corrections, re-fetch and verify the resulting files, then seek owner and discipline review. Do not merge or retire any source branch until preservation, dependency and approval gates are separately satisfied.
