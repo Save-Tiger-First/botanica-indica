@@ -459,3 +459,51 @@ The next review must be performed by a maintainer other than the author of the P
 A reviewer must distinguish blocking defects from recommendations, identify exact files/lines, and state whether the PR is approved, changes requested or merely commented on. A GitHub review is evidence of review, not a substitute for owner approval of policy/ADR decisions or qualified legal/scientific review.
 
 **No independent review has been performed or represented by this document.**
+
+
+## 21. AI-assisted technical pre-review — 23 November 2026
+
+**Review type:** Adviser technical pre-review. This is not an independent maintainer review, legal opinion, security certification or approval.
+
+### 21.1 Current source state
+
+- Operating prompt: 259 lines; blob `53add3894d0502827e584614c70ad09cadaa637d`.
+- PR #16: open/draft, base `develop), head `b7a2bb2433e3f8a7c315d184a3efe6678176cfde); 140 commits, 26 changed files, 4,684 additions, 25 deletions; 140 ahead / 0 behind.
+- 23 branches and 20 open PRs.
+- No submitted reviews, review threads or PR comments.
+- Exact-head workflow [44910705492](https://github.com/Save-Tiger-First/botanica-indica/actions/runs/44910705492) succeeded: 27 tests passed, 23 Markdown files scanned, routing passed, 23 branches retrieved, no errors; expected seven-branch warning remains.
+
+### 21.2 Findings
+
+| Severity | Finding | Assessment |
+|---|---|---|
+| Blocker to approval | No independent maintainer review; PR is draft. | Obtain a review from a maintainer other than the change author. |
+| Major | Seven-branch ceiling is warning-only; branch creation is not prevented. | The workflow's `create` event is post-creation and the workflow is not yet on default branch `main`. A repository ruleset/permission or other trusted preventive control needs a separate owner-approved plan. |
+| Moderate | A read-only `GITHUB_TOKEN` is passed to a script checked out from the PR. | Workflow grants only `contents: read`; checkout disables credential persistence; no write permission or token leak was observed. Since this is a public repository, anonymous branch-list API access is sufficient; remove unnecessary token exposure from PR-controlled code. |
+| Moderate | GitHub API helper lacks mocked tests. | Add tests for pagination, HTTP failure, malformed responses and fail-closed behavior. Existing 27 tests cover routing, branch allowlist, Markdown fences and inline links. |
+| Minor | Markdown checker is partial. | Its documented limitations are appropriate. Describe it as a lightweight fence and subset-of-inline-link check, not a complete CommonMark validator. |
+
+### 21.3 Positive findings
+
+The inspected workflow has `contents: read` only, pinned full-SHA Actions, `persist-credentials: false`, a five-minute timeout and Python 3.12. Exact PR/head allowlists are used for legacy and stacked routes; PR body text is not an authorization mechanism. Live-inventory retrieval fails closed.
+
+ADR-011 and the companion STF ecosystem architecture remain Proposed. ADR-001 and ADR-002 remain Accepted; the one-line PR patches to ADR-001–010 are Markdown fence corrections, not recorded decision changes.
+
+### 21.4 Scientific and legal cross-check
+
+The scientific review branch's decision register (blob `3a33dfe47657a96456f56f2c12a0b7d355b6c6a5`) contains ODR-01 and explicitly retains EVT-27–EVT-44 as proposed/unexecuted, DR-09 open, Task 05C unapproved and Task 05E not ready. This is consistent with the operating prompt's export-only authorization.
+
+Official Indian sources checked on 23 November 2026 support the licensing policy's high-level references:
+- DPDP Act commencement notification G.S.R. 843(E): https://www.meity.gov.in/static/uploads/2025/11/c56ceae6c383460ca69577428d36828b.pdf
+- DPDP Rules G.S.R. 846(E): https://www.meity.gov.in/static/uploads/2025/11/53450e6e5dc0bfa85ebd78686cadad39.pdf
+- NBA Biological Diversity Rules and 2025 amendment: https://nbaindia.nic.in/index.php/acts-and-rules/rules
+- NBA ABS Regulations 2025: https://nbaindia.nic.in/public-information/notification-guidelines
+- Copyright Act, 1957, Chapter IV: https://copyright.gov.in/Copyright_Act_1957/chapter_iv.html
+
+This desk check does not determine applicability to STF or replace qualified Indian legal review. The licensing policy correctly remains Proposed.
+
+### 21.5 Decision
+
+**NOT READY FOR MERGE.** Passing CI does not substitute for independent review, owner decisions, effective branch controls or qualified legal review.
+
+No PR lifecycle action, branch lifecycle action, repository protection change, code change, policy adoption or scientific approval was performed as part of this pre-review.
