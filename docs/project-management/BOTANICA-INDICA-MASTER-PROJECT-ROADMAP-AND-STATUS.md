@@ -391,3 +391,25 @@ The changed-file inventories also show that PR #20 currently contains its own ar
 5. Re-run commit comparisons and changed-file inventories immediately before any authorized integration or source-branch retirement.
 
 This check does not approve the PR #20 architecture, the PR #17 Blueprint, the PR #18 Task 03/04 baselines or the PR #19 RTM. It does not authorize any PR or branch lifecycle action.
+
+### 12.1 PR #19 / PR #20 integration revalidation — 23 November 2026
+
+This follow-up revalidates the current product/requirements/architecture documentation after the PR #19 traceability reconciliation and Graphify tooling assessment update. The source SHAs in Section 12's original table remain the historical revisions inspected when v0.1 was prepared; the following table records the newer revisions re-fetched for this follow-up.
+
+| Source | Ref | Blob SHA | Current status |
+|---|---|---|---|
+| Requirements Traceability Register v0.3 | `docs/requirements-traceability-register` | `c4b4ef1a5adfd367edcf982c1f9b115fa5d8aad6` | Proposed; identity mapping and ODR-01/EVT-27–EVT-44 traceability reconciled |
+| Workflow Lifecycle Specification v0.2 | `docs/requirements-traceability-register` | `498af08ec60e3626e8b60ab5047acae1a8861eb5` | Proposed; `record_created` versus `server_received` terminology clarification only |
+| Workflow-to-Requirements Crosswalk v0.2 | `docs/requirements-traceability-register` | `61d2111ace5c408eaf503bdf17b2ccb822f90978` | Proposed; ODR-01 and EVT-27–EVT-44 mapped |
+| Offline/Field Synchronization Specification v0.2 | `docs/requirements-traceability-register` | `a46c7cc1de9d1ea5c5faed7574d23de1d1a48e13` | Proposed; offline ODR-01 safeguards recorded |
+| API Command/Idempotency Contract v0.2 | `docs/requirements-traceability-register` | `bc0f3e93ec6ef2d2c2039b56739db38296c03281` | Proposed; export-only API constraints and IETF draft v09 reference |
+| Task 03–04 Cross-Document Readiness Audit with follow-up | `docs/requirements-traceability-register` | `d01ec7041ca2571ae8c11c4a0d95816c7d2daa7c` | Proposed audit/follow-up; no approval conferred |
+| Full System Architecture Plan v0.2 | `docs/full-system-architecture-and-repo-engineering-plan` | `33c42ead0d32f24530d28fdbcfd1024c2495a5eb` | Proposed; source inventory refreshed |
+| Graphify Repository Intelligence Tooling Assessment | `docs/full-system-architecture-and-repo-engineering-plan` | `3face0ee6ec84aa4b90ded193938eb65eea7590e` | Proposed local-only tooling pilot; not executed |
+| Scientific Data Model Validation Matrix | `review/scientific-data-model-review-pack` | `3a33dfe47657a96456f56f2c12a0b7d355b6c6a5` | ODR-01 authorized; EVT-27–EVT-44 proposed and unexecuted |
+
+**Integration interpretation:** PR #17–#20 remain parallel workstreams, not a safe linear stack. The live comparison shows PR #20 has 20 commits not present in each source branch; source-only commits are 9 for PR #17, 2 for PR #18 and 51 for PR #19. PR #19's larger divergence reflects its accumulated traceability and audit revisions. Preserve unique content and provenance; do not merge, retarget or close PRs based on commit counts alone.
+
+**Graphify interpretation:** the connected Graphify Free workspace currently indexes only README.md for this documentation-led repository (17 nodes, 29 edges) and has no automated review record for PR #19 or PR #20. A local CLI evaluation remains the recommended way to test document-rich graphing, but it is not yet approved or executed.
+
+**No implementation readiness change:** Task 05C remains unapproved; Task 05E remains not ready. EVT-27–EVT-44, OFF-001–OFF-036 and API-SYNC-001–042 remain proposed and unexecuted. No API schema, physical database design, application implementation or production release is authorized by this follow-up.
