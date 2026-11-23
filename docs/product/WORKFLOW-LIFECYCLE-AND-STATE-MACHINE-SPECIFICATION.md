@@ -5,7 +5,7 @@
 **Status:** Proposed for owner and discipline review; not an approved product requirement, scientific governance policy, data model or implementation authorization  
 **Prepared:** 23 November 2026  
 **Owner/decision authority:** Save Tiger First project owner  
-**Related documents:** Task 03 PRD working baseline; Full Product Vision and Capability Blueprint v0.2; Requirements Traceability Register v0.2; Task 04 architecture working baseline; accepted ADR-004, ADR-006, ADR-007 and ADR-009; Task 05 scientific data-model proposals.
+**Related documents:** Task 03 PRD working baseline; Full Product Vision and Capability Blueprint v0.2; Requirements Traceability Register v0.3; Workflow-to-Requirements Crosswalk v0.2; Offline and Field Synchronization Specification v0.2; API Command and Idempotency Contract v0.2; Task 04 architecture working baseline; accepted ADR-004, ADR-006, ADR-007 and ADR-009; Task 05 scientific data-model proposals.
 
 ---
 
