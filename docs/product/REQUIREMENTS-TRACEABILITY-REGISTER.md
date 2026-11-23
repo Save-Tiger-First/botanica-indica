@@ -56,10 +56,11 @@ All requirement and capability status fields begin as **Not yet verified** unles
 | Scientific Data Model Review Pack | `review/scientific-data-model-review-pack` | `c11f4b58d0908742474d3e58b4ec0aa3739f7b99` | Review proposal; findings remain subject to validation |
 | Scientific Data Model Validation Matrix and Decision Register | `review/scientific-data-model-review-pack` | `3a33dfe47657a96456f56f2c12a0b7d355b6c6a5` | Proposed reviewer/test framework; ODR-01 authorized, validation unexecuted |
 | Workflow Lifecycle Specification v0.2 | `docs/requirements-traceability-register` | `498af08ec60e3626e8b60ab5047acae1a8861eb5` | Proposed state machines; `record_created`/`server_received` distinction proposed |
-| Workflow-to-Requirements Crosswalk v0.2 | `docs/requirements-traceability-register` | `f65b64ff7ad64772a8c73449dfe77983c89770b2` | Proposed WF/requirement and ODR-01/EVT-27–EVT-44 traceability |
-| Offline and Field Synchronization Specification v0.2 | `docs/requirements-traceability-register` | `fb64011722c32999c255a083be24adde73765207` | Proposed offline design and ODR-01 offline safeguards |
+| Workflow-to-Requirements Crosswalk v0.2 | `docs/requirements-traceability-register` | `02728b9f18a3672b9bc5ad3a950cb68dd3a15ec1` | Proposed WF/requirement and ODR-01/EVT-27–EVT-44 traceability |
+| Offline and Field Synchronization Specification v0.2 | `docs/requirements-traceability-register` | `93d92851b5dcdc3235ed3b315a3a79ac6b309922` | Proposed offline design and ODR-01 offline safeguards |
 | API Command and Idempotency Contract v0.2 | `docs/requirements-traceability-register` | `d65ca32a6ebb2939ac95d0dce5dd82811f27e0e7` | Proposed API design; ODR-01 export-only constraints; IETF draft v09 |
-| Task 03–04 Cross-Document Readiness Audit v0.1 | `docs/requirements-traceability-register` | `f3e9c6998104b5435c24b4b70d136ced763245f5` | Proposed findings; follow-up reconciliation recorded separately |
+| Task 03–04 Cross-Document Readiness Audit v0.1 | `docs/requirements-traceability-register` | `98224ace0eca123212d49c42e1f009086a3fde43` | Proposed findings; follow-up reconciliation recorded separately |
+| Full System Architecture and Repository Engineering Plan v0.2 | `docs/full-system-architecture-and-repo-engineering-plan` | `e63536d799cb110b64c2b7da23955f9f90398b27` | Proposed target architecture and source inventory; not accepted |
 
 Original source artifacts preserved in the Project Library:
 - `STF_Task_03_Product_Requirements_Document_v0.1.docx` — 16 pages / 677 extracted text lines.
