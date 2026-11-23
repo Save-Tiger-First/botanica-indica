@@ -28,7 +28,7 @@ Task 03 remains authoritative for original requirement and acceptance-criterion 
 |---|---|---|---|
 | AI Project Operating Prompt v1.0 | `docs/repository-audit-and-ai-operating-standard` | `53add3894d0502827e584614c70ad09cadaa637d` | Operating and approval rules |
 | Task 03 PRD working baseline | `docs/canonical-task-03-04-baselines` | `8b1ca0be04b3f4ad3b543c2f9fc48d46eb37faf8` | Original requirements, acceptance criteria and non-goals |
-| Requirements Traceability Register v0.3 | `docs/requirements-traceability-register` | `6925f077352fa3547e4458fc876901ba5f66ec5b` | Requirement, capability, ADR, LDM and ODR-01 mappings |
+| Requirements Traceability Register v0.3 review snapshot | `docs/requirements-traceability-register` | `6925f077352fa3547e4458fc876901ba5f66ec5b` | Exact RTM content snapshot used when this crosswalk was prepared; subsequent RTM v0.3 source-inventory-only amendments are recorded in the current RTM |
 | Workflow Lifecycle Specification v0.2 | `docs/requirements-traceability-register` | `d100a988b50d128941d4823fc4a3243ca755eadd` | Sixteen proposed workflow scenarios and proposed record_created/receipt distinction |
 
 These are the source revisions revalidated for this crosswalk on 23 November 2026. Earlier SHAs in v0.1 are historical snapshots. Re-fetch before any later approval or implementation decision.
