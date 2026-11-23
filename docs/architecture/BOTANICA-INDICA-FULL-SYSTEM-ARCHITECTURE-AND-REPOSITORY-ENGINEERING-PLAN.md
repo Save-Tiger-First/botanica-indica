@@ -76,7 +76,6 @@ The repository currently has 23 branches against the operating prompt's maximum 
 | Full Product Vision and Capability Blueprint v0.2 | `docs/full-product-vision-capability-blueprint` | `d3ec150524dda4928503f43556a97cd766b71312` | Proposed in PR #17; not accepted |
 | Requirements Traceability Register v0.3 | `docs/requirements-traceability-register` | `95bcf2161f917b8ff824e8a075a908b090a880c7` | Proposed in PR #19; not accepted |
 | Scientific Data Model Review Pack | `review/scientific-data-model-review-pack` | `c11f4b58d0908742474d3e58b4ec0aa3739f7b99` | Review proposal; not scientific sign-off |
-| Workflow Lifecycle Specification v0.2 | `docs/requirements-traceability-register` | `498af08ec60e3626e8b60ab5047acae1a8861eb5` | Proposed workflow; record_created/receipt distinction remains under review |
 | Workflow-to-Requirements Crosswalk v0.2 | `docs/requirements-traceability-register` | `61d2111ace5c408eaf503bdf17b2ccb822f90978` | Proposed workflow/requirements and ODR-01 traceability |
 | Offline and Field Synchronization Specification v0.2 | `docs/requirements-traceability-register` | `a46c7cc1de9d1ea5c5faed7574d23de1d1a48e13` | Proposed offline design; ODR-01 export-only safeguards |
 | API Command and Idempotency Contract v0.2 | `docs/requirements-traceability-register` | `bc0f3e93ec6ef2d2c2039b56739db38296c03281` | Proposed API design; ODR-01 export-only constraints; IETF draft v09 |
