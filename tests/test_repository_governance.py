@@ -221,7 +221,7 @@ class BranchApiTests(unittest.TestCase):
     @patch("check_repository_governance.fetch_repository_branches", side_effect=OSError("network unavailable"))
     @patch("sys.argv", ["check_repository_governance.py", "--check-branch-inventory"])
     def test_main_fails_closed_when_live_inventory_cannot_be_fetched(
-        self, mocked_fetch, mocked_markdown
+        self, mocked_argv, mocked_fetch, mocked_markdown
     ):
         import check_repository_governance
         self.assertEqual(check_repository_governance.main(), 1)
