@@ -188,17 +188,19 @@ The following seven non-goals are transcribed from Task 03 v0.1, Section 34. The
 
 These guardrails are not a feature backlog. A proposed scope change must record its rationale, user/scientific need, affected capabilities and requirements, rights/privacy/safety implications, architecture/ADR impact, acceptance evidence and project-owner decision.
 
-### 4.3 Lifecycle-state traceability gap
+### 4.3 Lifecycle-state approval and validation gap
 
-The Blueprint and Task 03 describe several distinct contribution and review states, including submitted, AI-assisted, user-confirmed, community-supported, expert-reviewed and scientifically verified. They must not be collapsed into one undifferentiated confidence or status field.
+The Blueprint and Task 03 describe distinct contribution and review states, including submitted, AI-assisted, user-confirmed, community-supported, expert-reviewed and scientifically verified. They must not be collapsed into one undifferentiated confidence or status field.
 
-The current documents do not yet establish a complete, approved state machine. Before workflow implementation, specify allowed transitions, actors and authority, required evidence, correction and appeal paths, withdrawal/restriction behavior, publication consequences and audit history. This register records the gap; it does not invent or approve transition rules.
+The proposed companion [Workflow Lifecycle and State Machine Specification](WORKFLOW-LIFECYCLE-AND-STATE-MACHINE-SPECIFICATION.md) (STF-BI-WF-001 v0.2) now documents candidate state machines and transitions. It distinguishes the proposed Observation domain state `record_created` from the API/offline command-receipt state `server_received`. This means the remaining gap is not an absence of workflow design; it is owner and discipline approval, validation of transition authority and evidence, and agreement on correction, appeal, withdrawal/restriction, publication and audit behavior.
+
+The lifecycle specification remains Proposed. Its state names and transitions are not approved, implemented or validated. This register does not convert the proposal into an accepted product requirement or workflow policy.
 
 ### 4.4 Workflow-to-requirements traceability crosswalk
 
-The lifecycle gap is now elaborated in the proposed companion artifact [Workflow-to-Requirements Traceability Crosswalk](WORKFLOW-REQUIREMENTS-TRACEABILITY-CROSSWALK.md) (STF-BI-RTM-WF-001 v0.1). It maps all 16 proposed workflow scenarios to original Task 03 requirements, the 12 acceptance criteria, proposed capability IDs, accepted ADRs and relevant Task 05 dependencies.
+The lifecycle and requirement relationships are elaborated in the proposed companion [Workflow-to-Requirements Traceability Crosswalk](WORKFLOW-REQUIREMENTS-TRACEABILITY-CROSSWALK.md) (STF-BI-RTM-WF-001 v0.2). It maps the proposed workflow scenarios to original Task 03 requirements, the 12 acceptance criteria, proposed capability IDs, accepted ADRs and relevant Task 05 dependencies, including the ODR-01 / EVT-27–EVT-44 traceability additions.
 
-The crosswalk is a proposal, not an approval or test report. It explicitly identifies partial and absent coverage, including separate acceptance obligations for AC-011 (AI model replacement) and AC-012 (future STF biodiversity reuse). The original Task 03 requirements and acceptance criteria remain unchanged and authoritative pending owner approval.
+The crosswalk is a proposal, not an approval or test report. It identifies partial and absent coverage, including separate acceptance obligations for AC-011 (AI model replacement) and AC-012 (future STF biodiversity reuse). The original Task 03 requirements and acceptance criteria remain unchanged and authoritative pending owner approval.
 
 The twelve original Task 03 acceptance criteria have also been decomposed into 66 proposed test cases in [Task 03 Product-Baseline Acceptance Test Plan](TASK-03-ACCEPTANCE-TEST-PLAN.md) (STF-BI-ATP-001 v0.1). All cases are **Proposed / Not run**; the plan identifies prerequisite scientific, policy, architecture, rights and privacy decisions. It is a test-design artifact, not evidence of implementation, test execution, scientific validation or release acceptance.
 
