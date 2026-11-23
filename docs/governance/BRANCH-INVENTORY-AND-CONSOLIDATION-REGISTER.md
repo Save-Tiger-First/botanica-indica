@@ -1361,3 +1361,72 @@ The connected GitHub action set available for this session does not expose a bra
 **Required remaining action:** delete `governance/branch-lifecycle-policy` through GitHub's repository branch-management interface (or an authorized Git client) after confirming the branch SHA remains `633105210d3a6c4c8e36287ed2dc44dee23f61ef`. The owner has authorized this specific deletion, but it has not been completed by this assistant.
 
 Do not mark this branch `retired` until a fresh branch-list check confirms it is absent. The repository remains at 23 branches and therefore exceeds the immediate seven-branch ceiling.
+
+
+## 20.13 Current live repository and PR reconciliation — 23 November 2026 (latest check)
+
+**Status:** Current read-only snapshot; supersedes earlier live-count snapshots in Sections 20.11–20.12 for present-state reporting. Those earlier sections remain historical records of the checks made at their respective times.
+
+### Governing prompt and live refs
+
+- AI Project Operating Prompt blob: `53add3894d0502827e584614c70ad09cadaa637d` (full 23,179-character document retrieved).
+- `main`: `6f2f51da093caf8183fde386dbec707cc6046d27`.
+- `develop`: `f165ecb9b4d9de115c02327cf779982b7ef4bbd4`.
+- `staging`: `f165ecb9b4d9de115c02327cf779982b7ef4bbd4`.
+- Live branch count: **23**.
+- Open PR count: **19**; all 19 are drafts.
+- PR #15 is closed and unmerged; its source branch remains present at `633105210d3a6c4c8e36287ed2dc44dee23f61ef`. No branch deletion is claimed.
+
+### Current open PRs and head refs
+
+| PR | Workstream | Head branch | Head SHA | Base |
+|---:|---|---|---|---|
+| #1 | Licensing/IP | Existing governance source | See live PR | Existing target |
+| #2 | Proposed ADR-011 | Existing governance source | See live PR | Existing target |
+| #3 | Task 05 data architecture | `docs/task-05-data-architecture` | See live PR | Existing target |
+| #4 | Scientific dictionary/test cases | `docs/task-05-data-dictionary` | See live PR | Existing target |
+| #5 | Task 05C Candidate A | `docs/task-05c-logical-data-model` | See live PR | Existing target |
+| #8 | STF strategy | `strategy/naturetech-biodiversity-conservation-impact` | `9d76328df8112922df818f01c27e297b3ee1b76a` | `main` |
+| #9 | Scientific review pack | `review/scientific-data-model-review-pack` | `51b909accbf052426678969d0a28408356133e61` | `main` |
+| #11 | Task 05D validation v3 | `docs/task-05d-logical-model-validation-v3` | See live PR | Existing target |
+| #12 | STF organisational readiness | `governance/stf-organisational-readiness-review` | See live PR | Existing target |
+| #13 | Bengaluru feasibility proposal | `proposal/bengaluru-urban-biodiversity-feasibility-pilot` | See live PR | Existing target |
+| #14 | Bengaluru site selection | `research/bengaluru-pilot-site-selection` | See live PR | Existing target |
+| #16 | Governance and AI operating standard | `docs/repository-audit-and-ai-operating-standard` | `641ca3e97379121413dbbd96c8f6beba2d68dee5` | `develop` |
+| #17 | Full-product capability blueprint | `docs/full-product-vision-capability-blueprint` | `b66c16355d0ded4f20f1a84172eab8b47d133277` | `develop` |
+| #18 | Task 03/04 canonical baselines | `docs/canonical-task-03-04-baselines` | `0f908f8221ad3434cc84fe2cd41b735aad0a752a` | `develop` |
+| #19 | Requirements traceability | `docs/requirements-traceability-register` | `b2e8728e5e725b844a41438260e3a40f77ca65db` | `develop` |
+| #20 | System architecture and repository engineering | `docs/full-system-architecture-and-repo-engineering-plan` | `18a9bb9a9a0ab16d6240465000a4e75323e84627` | `develop` |
+| #21 | Alternate Task 05C model | `docs/task-05c-logical-database-model` | See live PR | Existing target |
+| #22 | Earlier Task 05D validation | `docs/task-05d-logical-model-validation` | See live PR | Existing target |
+| #23 | Task 05D validation v2 | `docs/task-05d-logical-model-validation-v2` | See live PR | Existing target |
+
+**Note:** The search result used to enumerate all 19 open PRs returned titles and branch-independent summary fields but not complete head SHAs for every PR. Exact values not directly returned are intentionally not reconstructed or guessed; fetch the individual PR before any action involving those refs.
+
+### PR #17–#20 current dependency comparison
+
+All four PRs target `develop`. Their common base is `f165ecb9b4d9de115c02327cf779982b7ef4bbd4`.
+
+| PR | Head SHA | Commits ahead of develop | Unique changed files |
+|---:|---|---:|---|
+| #17 | `b66c16355d0ded4f20f1a84172eab8b47d133277` | 9 | 1 |
+| #18 | `0f908f8221ad3434cc84fe2cd41b735aad0a752a` | 2 | 2 |
+| #19 | `b2e8728e5e725b844a41438260e3a40f77ca65db` | 27 | 7 |
+| #20 | `18a9bb9a9a0ab16d6240465000a4e75323e84627` | 17 | 4 |
+
+The exact file sets are:
+
+- PR #17: `docs/product/BOTANICA-INDICA-FULL-PRODUCT-VISION-AND-CAPABILITY-BLUEPRINT.md`.
+- PR #18: `docs/architecture/TASK-04-SYSTEM-ARCHITECTURE-AND-TECHNOLOGY-EVALUATION.md`; `docs/product/TASK-03-PRODUCT-REQUIREMENTS-DOCUMENT.md`.
+- PR #19: `docs/architecture/API-COMMAND-IDEMPOTENCY-AND-CONFLICT-RESOLUTION-CONTRACT-DESIGN.md`; `docs/architecture/OFFLINE-FIELD-SYNCHRONIZATION-ARCHITECTURE-AND-VALIDATION-SPECIFICATION.md`; `docs/architecture/TASK-03-04-CROSS-DOCUMENT-READINESS-AUDIT.md`; `docs/product/REQUIREMENTS-TRACEABILITY-REGISTER.md`; `docs/product/TASK-03-ACCEPTANCE-TEST-PLAN.md`; `docs/product/WORKFLOW-LIFECYCLE-AND-STATE-MACHINE-SPECIFICATION.md`; `docs/product/WORKFLOW-REQUIREMENTS-TRACEABILITY-CROSSWALK.md`.
+- PR #20: `docs/architecture/BOTANICA-INDICA-FULL-SYSTEM-ARCHITECTURE-AND-REPOSITORY-ENGINEERING-PLAN.md`; `docs/architecture/GRAPHIFY-REPOSITORY-INTELLIGENCE-TOOLING-ADOPTION-ASSESSMENT.md`; `docs/project-management/BOTANICA-INDICA-MASTER-PROJECT-ROADMAP-AND-STATUS.md`; `docs/reviews/PRODUCT-AND-ARCHITECTURE-BASELINE-AUDIT-2026-11-21.md`.
+
+Comparisons of PR #17, #18 and #19 against PR #20 all report divergence from the common base. Relative to PR #20, source-only commit counts are respectively 9, 2 and 27. Therefore the previous 23 November comparison against PR #20 head `4477bfa46184725c7f086b2fcaf0e198dee75e83` is now a historical comparison, superseded by this section.
+
+**Recommendation:** do not retarget, merge, close or delete any of PR #17–#19 yet. Preserve their unique documents and commit provenance. Conduct a content-level crosswalk against PR #20, especially the 27-commit PR #19 workstream, and produce a source-to-destination integration plan before requesting owner authorization for lifecycle actions.
+
+### PR #15 branch retirement status
+
+The owner-authorized closure of PR #15 remains complete and verified. The source branch deletion is still outstanding because the available connected GitHub tool set exposes no branch-ref deletion action. Do not use `update_ref` as a substitute: it moves a branch to a commit and is not a branch deletion operation. The owner may delete the branch through GitHub's branch-management interface after verifying the expected SHA and no open PR references.
+
+**Current control status:** 23 branches, 19 open PRs, seven-branch ceiling unmet. No merge, branch deletion, protection change or new branch creation was performed in this reconciliation.
