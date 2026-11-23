@@ -1,9 +1,9 @@
 # Botanica Indica — Workflow-to-Requirements Traceability Crosswalk
 
 **Document ID:** STF-BI-RTM-WF-001  
-**Version:** 0.1 — Proposed traceability artifact  
+**Version:** 0.2 — Proposed source-provenance and ODR-01 traceability reconciliation  
 **Status:** Proposed for owner and discipline review; not an approved requirement, acceptance plan, scientific policy or implementation authorization  
-**Prepared:** 21 November 2026  
+**Prepared:** 23 November 2026  
 **Decision authority:** Save Tiger First project owner  
 **Repository:** `Save-Tiger-First/botanica-indica`  
 **Working branch:** `docs/requirements-traceability-register`
@@ -26,12 +26,12 @@ Task 03 remains authoritative for original requirement and acceptance-criterion 
 
 | Source | Branch/ref | File blob SHA | Use |
 |---|---|---|---|
-| AI Project Operating Prompt v1.0 | `docs/repository-audit-and-ai-operating-standard` | `61059c74d4d20309ff76e055059ab33f381ca4f2` | Operating and approval rules |
+| AI Project Operating Prompt v1.0 | `docs/repository-audit-and-ai-operating-standard` | `53add3894d0502827e584614c70ad09cadaa637d` | Operating and approval rules |
 | Task 03 PRD working baseline | `docs/canonical-task-03-04-baselines` | `8b1ca0be04b3f4ad3b543c2f9fc48d46eb37faf8` | Original requirements, acceptance criteria and non-goals |
-| Requirements Traceability Register v0.2 | `docs/requirements-traceability-register` | `5f6862d6ece8d428714588daff54992ccaabfdf2` | Requirement, capability, ADR and LDM mappings |
+| Requirements Traceability Register v0.3 | `docs/requirements-traceability-register` | `1c799a2ae2f4580e216f8b03be369f15d62e224c` | Requirement, capability, ADR, LDM and ODR-01 mappings |
 | Workflow Lifecycle Specification v0.1 | `docs/requirements-traceability-register` | `03ca940095a9e39c5608548bdeec1ce0166bf76d` | Sixteen proposed workflow scenarios |
 
-These are source revisions inspected for this crosswalk. Re-fetch before any later approval or implementation decision.
+These are the source revisions revalidated for this crosswalk on 23 November 2026. Earlier SHAs in v0.1 are historical snapshots. Re-fetch before any later approval or implementation decision.
 
 ## 3. Mapping conventions
 
@@ -111,6 +111,21 @@ Mandatory safeguards:
 - LDM-01–LDM-16 remain validation obligations; references here do not mean tests passed.
 - Physical schema design remains gated by the Task 05 scientific-model reconciliation and independent review.
 
+### 7.1 ODR-01 controlled external-export traceability
+
+ODR-01 is owner-authorized for controlled, profile-specific external exports only. The internal rule remains unchanged: a missing Occurrence row alone is unknown/not assessed and never creates an internal absence assertion. ODR-01 does not approve Task 05C/05D/05E, a final export profile, physical schema, API payload or implementation.
+
+| Validation cases | Workflow / requirement relationship | Required workflow behavior |
+|---|---|---|
+| EVT-27, EVT-30 | Survey/non-detection and export-specific acceptance obligations; BI-CAP-04/05/07/14 | Apply only inside a separately approved, version-pinned external export profile; do not add an export interpretation to the internal Observation lifecycle. |
+| EVT-28, EVT-31, EVT-38 | WF-007, WF-011; OBS-001/OBS-002, SCI-001 | Missing, incomplete, unreported, ambiguous or contradictory completeness/method evidence fails closed; no interpretation is emitted. |
+| EVT-29, EVT-32, EVT-39, EVT-43, EVT-44 | WF-007 and relevant event/survey workflows; OBS-001/OBS-002, GEO-001 | Explicit scope at every applicable level; parent/child spatiotemporal containment; no silent inheritance or child-derived parent completeness. |
+| EVT-33, EVT-34, EVT-35, EVT-40 | Survey target workflow; OBS-001/OBS-002 | Preserve a priori/post-facto origin, author, method and timestamp. Bycatch/out-of-scope taxa do not satisfy target reporting completeness. |
+| EVT-36, EVT-37 | WF-007; OBS-001/OBS-002 | Explicit internal result must be attributable and survey-bounded; no Occurrence row without an explicit result remains unknown/not assessed. |
+| EVT-41, EVT-42 | WF-007 and media/observation workflows; ID-001, OBS-001, SCI-001 | Keep MaterialEntity, MediaAsset, Observation, Organism and Occurrence distinct; retain grouping uncertainty. |
+
+These are proposed validation obligations, not executed tests. Reporting completeness, sampling effort and detectability remain separate. The export wording is “not detected/reported within the stated survey scope under documented survey conditions”, not biological absence. DR-09 remains open for exact versioned-resource reconciliation.
+
 ## 8. Proposed test-case decomposition
 
 Before implementation, decompose each WF scenario into:
@@ -173,4 +188,4 @@ No reviewer is named or assumed. No approval is implied by this document's creat
 
 After owner and discipline review, incorporate accepted mappings into the canonical RTM and create a separate acceptance-test plan covering all twelve ACs, including AC-011 and AC-012. Keep the original Task 03 source unchanged until an explicitly approved PRD revision is prepared.
 
-**End of proposed crosswalk — STF-BI-RTM-WF-001 v0.1.**
+**End of proposed crosswalk — STF-BI-RTM-WF-001 v0.2.**
