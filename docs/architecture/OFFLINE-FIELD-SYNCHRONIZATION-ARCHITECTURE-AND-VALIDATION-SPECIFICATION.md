@@ -55,8 +55,8 @@ This is a proposed design, not a final physical data model. It deliberately avoi
 | AI Project Operating Prompt STF-AI-OPS-001 v1.0 | `docs/repository-audit-and-ai-operating-standard` | `53add3894d0502827e584614c70ad09cadaa637d` | Architecture, rights, scientific and branch guardrails |
 | Task 03 PRD v0.1 | `docs/canonical-task-03-04-baselines` | `8b1ca0be04b3f4ad3b543c2f9fc48d46eb37faf8` | §§17, 20, 28; mobile, offline, reliability and privacy requirements |
 | Task 04 Architecture v0.1 | `docs/canonical-task-03-04-baselines` | `abc7b721fae8d4f4adede4dd0bf5d6a32098c5a3` | Asynchronous work, idempotency, offline inference boundary and durable queues |
-| Workflow Lifecycle Specification v0.2 | `docs/requirements-traceability-register` | `d100a988b50d128941d4823fc4a3243ca755eadd` | §§6.3 and related lifecycle sections; distinct Observation creation and command receipt semantics |
-| Workflow-to-Requirements Crosswalk v0.2 | `docs/requirements-traceability-register` | `75a10b27648b0184c3956203ba49f54715bdeaf2` | WF-007, WF-008, WF-011, WF-013, WF-015, WF-OD-10 and ODR-01/EVT-27–EVT-44 export traceability |
+| Workflow Lifecycle Specification v0.2 | `docs/requirements-traceability-register` | `498af08ec60e3626e8b60ab5047acae1a8861eb5` | §§6.3 and related lifecycle sections; distinct Observation creation and command receipt semantics |
+| Workflow-to-Requirements Crosswalk v0.2 | `docs/requirements-traceability-register` | `f65b64ff7ad64772a8c73449dfe77983c89770b2` | WF-007, WF-008, WF-011, WF-013, WF-015, WF-OD-10 and ODR-01/EVT-27–EVT-44 export traceability |
 | Acceptance Test Plan STF-BI-ATP-001 v0.1 | `docs/requirements-traceability-register` | `0e7a1d1851492bb4470b2e0fea6991e59db67f2a` | AC-004, AC-009, AC-010 and operational/security test strategy |
 | ADR-006 Identification Architecture | `main` | `f35345c356725d7dc4b1b64971c0ff59758c8a30` | Identification and sensitive-input constraints |
 | ADR-008 Geospatial and Sensitive Location Data | `main` | `74cc3774799a29b28edab75fc63d129f8841b497` | Precision, privacy, access and disclosure controls |
