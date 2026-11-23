@@ -243,6 +243,7 @@ Expert Review → Identification
 Data Ingestion → Taxonomy
 Data Ingestion → Evidence
 Search → Multiple domain modules
+```
 
 These relationships represent logical dependencies and do not necessarily imply separate network services.
 

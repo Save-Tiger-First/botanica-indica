@@ -1,0 +1,559 @@
+# PR #16 — Governance Readiness Review
+
+- **Document ID:** STF-REV-PR16-001
+- **Review date:** 21 November 2026
+- **Status:** Completed desk review; remediation proposed; not approval to mark ready or merge
+- **Repository:** `Save-Tiger-First/botanica-indica`
+- **Reviewed branch:** `docs/repository-audit-and-ai-operating-standard`
+- **Reviewed PR:** [#16](https://github.com/Save-Tiger-First/botanica-indica/pull/16)
+- **Governing instruction:** `docs/governance/AI-PROJECT-OPERATING-PROMPT.md`, version 1.0, blob `53add3894d0502827e584614c70ad09cadaa637d`
+
+## 1. Executive conclusion
+
+PR #16 contains valuable governance work and its current PR-triggered CI run passed. The workflow uses read-only repository permissions and immutable, full-length action commit references. The reviewed changes preserve the accepted mobile technology direction and modular architecture; ADR-011 and the companion ecosystem-boundary document remain explicitly proposed.
+
+**Recommendation: keep PR #16 open and draft. Do not mark it ready for review or merge yet.** The successful workflow is a useful narrow validation, not a complete governance assurance. The branch-routing checker has bypasses and does not enforce the owner-directed no-new-branches/seven-branch rules. Markdown validation has untested logic and a runtime warning. Several supporting governance records retain older PR #16 head snapshots. No independent review has been recorded.
+
+This review is a desk review of repository material and official public sources. It is not independent legal advice, scientific peer review, security certification or project-owner approval.
+
+## 2. Exact live state inspected
+
+### 2.1 Operating prompt
+
+Fetched in full from the required branch:
+
+- Path: `docs/governance/AI-PROJECT-OPERATING-PROMPT.md`
+- Version: 1.0, proposed project operating standard
+- Blob SHA: `53add3894d0502827e584614c70ad09cadaa637d`
+- Length: 258 lines
+
+The owner instruction requires following it as the working standard even though the document itself remains proposed for adoption. The current no-new-branches directive and immediate seven-branch ceiling remain in force.
+
+### 2.2 PR #16
+
+| Field | Verified value |
+|---|---|
+| PR | #16 |
+| State | Open |
+| Draft | Yes |
+| Merged | No |
+| GitHub mergeable flag | True |
+| Base | `develop` |
+| Base SHA | `f165ecb9b4d9de115c02327cf779982b7ef4bbd4` |
+| Head branch | `docs/repository-audit-and-ai-operating-standard` |
+| Head SHA | `05bf12ec34c724ada2aec3f2631323a12878673f` |
+| Commits | 106 |
+| Changed files | 25 |
+| Additions / deletions | 3,493 / 19 |
+| Submitted reviews | 0 |
+| Inline review threads | 0 |
+| Requested reviewers | None reported |
+
+A fresh comparison against `develop` returned 106 commits ahead and 0 behind. GitHub's mergeable flag is metadata only; it is not review, approval or a readiness decision.
+
+### 2.3 Repository lifecycle state
+
+- Live branch search: **23 branches** — 3 long-lived and 20 temporary.
+- Live open-PR search: **20 open PRs** — #1–#5, #8, #9 and #11–#23.
+- The seven-branch ceiling is exceeded by 16 branches.
+- PR #15 remains open, non-draft and unmerged.
+- Comparing PR #15's head `633105210d3a6c4c8e36287ed2dc44dee23f61ef` with PR #16's current head returns **88 ahead / 0 behind**. PR #15's head remains the merge base and is therefore an ancestor of PR #16.
+- `main` is 1 commit ahead of `develop`; the only main-side addition is `docs/reviews/HORTUS-MALABARICUS-VALIDATION-CROSSWALK.md` (187 additions). The merge base is `f165ecb9b4d9de115c02327cf779982b7ef4bbd4`.
+
+No PR or branch lifecycle action was taken.
+
+## 3. CI and technical verification
+
+### 3.1 Latest workflow run
+
+The PR-triggered GitHub Actions run associated with the reviewed head completed successfully:
+
+- Workflow: `Repository governance`
+- Run ID: `44901677252`
+- Job: `Markdown integrity and branch routing`
+- Job conclusion: `success`
+- Synthetic PR merge commit checked out by the runner: `5d6c87a76b6a8251b4de44ee94a2109148481b9d`
+- Python: 3.12.16
+- Unit tests: **7 passed**
+- Markdown files scanned: **22**
+- Markdown-fence and PR-routing command: passed
+
+The combined commit-status endpoint returned no status records. The workflow run is verified, but this review did not verify that it is configured as a required status check in repository rules or branch protection.
+
+### 3.2 Action pin verification
+
+The workflow pins actions by full commit SHA:
+
+- `actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1`, corresponding to the official v7.0.1 release.
+- `actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0`, corresponding to the official v7.1.0 release.
+
+The official release pages identify these release commits as GitHub-verified signed commits:
+- https://github.com/actions/checkout/releases
+- https://github.com/actions/setup-python/releases
+
+The workflow declares `permissions: contents: read`, which is appropriately restrictive for its current purpose. It does not use `pull_request_target`, `workflow_run`, write permissions or deployment permissions.
+
+**Hardening recommendation:** set `persist-credentials: false` on the checkout step because subsequent steps do not need authenticated Git operations. This reduces unnecessary exposure of the read-only checkout credential to code executed from the pull request.
+
+### 3.3 Confirmed limitations in the governance checker
+
+The current `scripts/check_repository_governance.py` has several gaps:
+
+1. **Unknown target branches bypass routing validation.** `check_routing` has explicit branches for `develop`, `staging` and `main`, but no rejection path for other base branches. A PR targeting an arbitrary temporary branch can therefore pass the routing function without an error.
+2. **Stacked PR routing is not explicitly governed.** Existing PRs #11, #12 and #21–#23 use temporary base branches. They need explicit, narrow, documented exceptions with dependency checks; the current checker silently bypasses them along with any other unknown base.
+3. **The seven-branch ceiling is not enforced.** The script does not query or validate the live repository branch count.
+4. **The no-new-branches directive is not enforced.** A valid prefix is accepted for a PR into `develop`, even though the current owner directive prohibits creating new branches.
+5. **Emergency hotfix text is not owner authorization.** The checker accepts a `fix/*` PR into `main` when the body contains the phrase `Emergency hotfix exception:`. A text string cannot prove who authorized the exception.
+6. **Markdown checks lack direct regression tests.** All seven tests cover routing. There are no tests for `check_fences` or `check_relative_links`.
+7. **Link checking is advisory and incomplete.** Unresolved relative links are warnings, not failures; heading anchors and several Markdown link forms are not validated.
+8. **The fence parser is simplistic.** Its closing-fence recognition does not fully implement CommonMark fence rules and needs targeted tests before being relied on as an integrity gate.
+9. **A Python runtime warning occurs.** The workflow log reports a `FutureWarning: Possible nested set` from the regular expression in `check_relative_links`. It did not fail this run, but should be corrected.
+
+The successful run therefore demonstrates only that the current seven routing tests pass and the current tracked Markdown files did not trigger the implemented fence/routing errors. It does not demonstrate comprehensive Markdown correctness or full branch-policy enforcement.
+
+## 4. Cross-document consistency review
+
+### 4.1 Accepted ADRs and proposed ADR-011
+
+The reviewed accepted ADRs confirm:
+
+- ADR-001: technology-independent, modular, contract-driven architecture; Dart/Flutter mobile direction; modular monolith initially; no premature microservices.
+- ADR-002: modular architecture and modular monolith initially.
+- ADR-003: API-first platform architecture.
+
+The proposed ADR-011 and companion ecosystem-boundary document retain modular implementation, domain ownership and contract-based reuse. No contradiction with the reviewed accepted direction was identified. ADR-011 remains **Proposed**, not Accepted; the companion architecture document also remains Proposed.
+
+**Minor consistency correction:** the companion architecture document's header lists related decisions ADR-001 through ADR-010 but does not list ADR-011, despite being the companion document to ADR-011. Update the relationship metadata when the document is next revised.
+
+### 4.2 README and contributor guidance
+
+The README correctly labels ADR-011, the operating prompt, branch policy and licensing policy as proposed review materials and says they are not merged into `main`. It also retains Dart/Flutter and the modular-monolith direction.
+
+The contributor guide correctly states that formal contributor terms have not yet been adopted and that Apache-2.0 does not license third-party material. However, its generic instruction to create a feature/fix branch should be reconciled with the current owner directive prohibiting new branch creation. It should direct contributors to use an approved existing branch or obtain owner authorization while that directive remains active.
+
+### 4.3 Governance snapshot freshness
+
+The current Branch Inventory and Consolidation Register has Section 20.10, which records the 23-branch inventory, 20 open PRs and updated PR #15/#16 ancestry.
+
+Two related documents still contain earlier PR #16 head snapshots and older ancestry counts:
+- `docs/governance/BRANCH-CONSOLIDATION-PROVENANCE.md`
+- `docs/governance/PR-15-PR-16-GOVERNANCE-CONTENT-RECONCILIATION.md`
+
+Those entries are valid as dated historical snapshots, but the documents should explicitly label them historical and point to the latest register/readiness review for current state. Do not silently overwrite historical SHAs or counts.
+
+### 4.4 Scope and reviewability
+
+The 25-file PR combines repository audit, operating prompt, branch lifecycle policy, licensing/IP policy, proposed ADR-011, README/contributor changes, Markdown repairs and automation. Consolidation into one governance vehicle is understandable under the no-new-branch and seven-branch directives, but the package is broad.
+
+Review should be divided into explicit approval tracks:
+- Repository/Markdown audit and automation
+- Branch lifecycle policy
+- Asset licensing and contributor terms
+- STF ecosystem boundaries / ADR-011
+
+A positive review of the workflow must not be treated as approval of the legal policy or architecture proposal.
+
+## 5. Legal-source spot check — not legal advice
+
+The licensing/IP policy remains Proposed and correctly calls for qualified legal review. A limited spot check of its India-specific commencement references found:
+
+- MeitY's G.S.R. 843(E), 13 November 2025, sets the staged commencement of the DPDP Act: specified provisions on publication, sections 6(9) and 27(1)(d) after one year, and the listed remaining provisions after eighteen months.
+- MeitY's G.S.R. 846(E), 13 November 2025, sets the staged commencement of the DPDP Rules, including Rule 4 after one year and Rules 3, 5–16, 22 and 23 after eighteen months.
+- The National Biodiversity Authority's official site lists the Biological Diversity Rules 2024, Amendment Rules 2025 and the 2025 Access and Benefit Sharing Regulations.
+
+Official sources checked:
+- DPDP Act commencement notification, G.S.R. 843(E): https://www.meity.gov.in/static/uploads/2025/11/c56ceae6c383460ca69577428d36828b.pdf
+- DPDP Rules, G.S.R. 846(E): https://www.meity.gov.in/static/uploads/2025/11/53450e6e5dc0bfa85ebd78686cadad39.pdf
+- MeitY DPDP Rules and corrigendum listing: https://www.meity.gov.in/documents/act-and-policies/digital-personal-data-protection-rules-2025-gDOxUjMtQWa
+- NBA Rules: https://nbaindia.nic.in/index.php/acts-and-rules/rules
+- NBA notifications and ABS Regulations: https://www.nbaindia.nic.in/public-information/notification-guidelines
+
+This spot check supports the policy's staged-commencement framing and the existence of the cited biodiversity instruments. It does not establish legal applicability to any particular STF activity, resolve the effect of every corrigendum or amendment, or constitute a legal opinion. The policy must remain Proposed pending qualified legal review and activity-specific assessment.
+
+## 6. Findings ranked by severity
+
+### Blocker — before PR #16 can be considered governance-complete
+
+1. The live repository violates the owner-directed seven-branch ceiling: 23 branches remain. A preservation-first retirement plan exists, but the target is not achieved.
+2. The routing checker does not enforce the seven-branch/no-new-branches directives and permits unrecognized target branches to bypass validation.
+3. The PR has no submitted review, no inline review threads and no requested reviewers. Independent review and explicit owner disposition remain outstanding.
+
+### Major — remediate before marking PR #16 ready
+
+4. Add a default-deny rule for unsupported PR base branches and an explicit allowlist for legitimate stacked PR dependencies.
+5. Do not treat a PR-body hotfix phrase as proof of owner approval.
+6. Add regression tests for fence parsing, link handling, unsupported targets, stacked PR exceptions and hotfix authorization evidence.
+7. Correct the regex FutureWarning and define whether broken relative links are warnings or merge-blocking errors.
+8. Reconcile historical PR-head snapshots across the provenance and PR reconciliation documents, preserving old values as history.
+9. Align contributor branch instructions with the current no-new-branches directive.
+10. Keep legal/IP policy and ADR-011 as separate review decisions; neither is approved by inclusion in PR #16.
+
+### Minor
+
+11. Set checkout `persist-credentials: false` where feasible.
+12. Add ADR-011 to the companion architecture document's related-decision metadata.
+13. Verify the workflow is configured as a required status check only after testing it on representative PR types and resolving its routing exceptions.
+
+## 7. Recommended remediation sequence
+
+1. **Automation correctness:** fix the unknown-base bypass, explicitly model stacked PR exceptions, and clarify the hotfix approval evidence requirement.
+2. **Test coverage:** test Markdown fence and link functions, plus positive and negative routing cases. Eliminate the runtime warning.
+3. **Policy enforcement design:** decide how to report and enforce the seven-branch ceiling and no-new-branches directive without accidentally treating a temporary exception as authorization.
+4. **Documentation alignment:** refresh the provenance and reconciliation documents with a dated addendum; align CONTRIBUTING and the companion architecture metadata.
+5. **Separate policy reviews:** obtain maintainer review of branch governance, qualified legal review of licensing/contributor terms, and architecture review of ADR-011.
+6. **Fresh verification:** rerun CI on the new head, inspect the exact logs, verify all files and SHAs, then request the appropriate review and only later consider marking PR #16 ready.
+7. **Owner decision:** decide the disposition of PR #15 separately. Its head is preserved in PR #16 history, but do not close it or delete its branch without explicit authorization.
+
+## 8. Work completed and not completed
+
+**Completed in this review:**
+- Re-fetched the full operating prompt and verified its blob SHA.
+- Re-fetched PR #16 and PR #15 metadata, branch inventory and open PR inventory.
+- Compared PR #16 against `develop`, PR #15 against PR #16, and `main` against `develop`.
+- Inspected the workflow, checker, tests, README, contributor guide, accepted ADRs 001–003, proposed ADR-011, companion architecture document and key governance records.
+- Inspected the latest PR-triggered workflow job steps and logs.
+- Spot-checked official MeitY and NBA source references.
+
+**Not done:**
+- No PR was merged, closed, marked ready or retargeted.
+- No branch was created, deleted, renamed or force-pushed.
+- No repository protection, ruleset, permission or setting was changed.
+- No code or policy remediation was committed as part of this review.
+- No legal adviser, scientific specialist, institution or external party was contacted.
+- No legal opinion, scientific sign-off or production-readiness determination was obtained.
+
+## 9. Final recommendation
+
+Keep PR #16 open and draft. The current implementation is a good foundation, but the routing bypasses, missing branch-cap enforcement, insufficient Markdown tests, historical snapshot drift and absence of independent review prevent a responsible readiness recommendation.
+
+The next implementation task should be a **narrow automation-hardening pass on this same existing branch**, followed by a documentation-freshness pass. Do not create another branch. Do not merge PR #16 or close PR #15 until the owner-authorized review and branch-retirement gates are satisfied.
+
+
+
+## 10. Automation-hardening implementation addendum — 21 November 2026
+
+Following the review recommendation, a bounded automation-hardening pass was committed to the same existing PR #16 branch. No new branch was created.
+
+### 10.1 Changes made
+
+- Default-deny unsupported PR base branches.
+- Replace generic stacked-PR bypasses with exact PR number/base/head allowlist entries for existing PRs #11, #12 and #21–#23.
+- Remove PR-body text as hotfix authorization. The owner-approved hotfix allowlist is empty by default; any future exception requires explicit owner authorization recorded in repository state.
+- Add a dated 23-branch baseline, reject unregistered branch names, verify the three required long-lived branches, and warn when the live branch count exceeds seven. The seven-branch excess remains a warning so preservation/retirement work can proceed; this is detection, not prevention of branch creation.
+- Expand Markdown fence and relative-link regression coverage.
+- Set checkout `persist-credentials: false`; retain `contents: read`; add a live branch-inventory workflow step.
+
+### 10.2 Exact commits
+
+| File | Commit SHA | Blob SHA |
+|---|---|---|
+| `scripts/check_repository_governance.py` | `193835b921bc4beaafd80da8de5563373fca23b8` | `7036f21a749326f27a3952504bde42b870e0b8c5` |
+| `tests/test_repository_governance.py` | `326dc559c7266025c34021de384193ea1c5a29f7` | `cc96e2b4e2bb3eae7f9b8837cea2254ad5a78dc2` |
+| `.github/workflows/repository-governance.yml` | `6f27e14668b4749fa1210f78c00b0d78f2b99e74` | `c977c8209791238da3a213caa9c8b4acf438ae01` |
+
+### 10.3 Current state and verification caveat
+
+- PR #16 remains open and draft; current head `6f27e14668b4749fa1210f78c00b0d78f2b99e74`, 110 commits, 26 changed files, 4,019 additions and 19 deletions.
+- The branch comparison against `develop` is 110 ahead / 0 behind.
+- Live inventory remains 23 branches and 20 open PRs.
+- PR #15 remains open; fresh ancestry comparison is 92 ahead / 0 behind, with PR #15 head as merge base.
+- `main` remains one commit ahead of `develop` due to the Hortus Malabaricus crosswalk.
+- The workflow-run lookup for the current head returned no PR-triggered run. The previously successful run 44901677252 was on the preceding commit `05bf12ec34c724ada2aec3f2631323a12878673f`; it does **not** validate this new head.
+- The three files were fetched after writing and their blob SHAs verified. Runtime execution of the new test suite and live branch API step remains **pending**.
+
+### 10.4 Updated recommendation
+
+Keep PR #16 open and draft. Do not mark it ready or merge it. First obtain a current-head workflow run, inspect the test output and branch API step, correct any failures, and then obtain independent maintainer review. The seven-branch ceiling remains unmet; the checker reports the excess but does not itself enforce branch-creation permissions. No repository settings were changed.
+
+
+## 11. Automation-hardening verification addendum — 21 November 2026
+
+<badge> </badge>
+
+The updated governance workflow completed successfully on PR #16 head `c037c66865a5b576ef3a74717d803b941fb0a878`.
+
+- Run: [44906508756](https://github.com/Save-Tiger-First/botanica-indica/actions/runs/44906508756)
+- Result: success
+- Unit tests: **27 passed**
+- Markdown scan: **23 tracked Markdown files**
+- PR #16 routing validation: passed
+- Live GitHub branch API: returned 23 branches
+- Seven-branch ceiling: correctly emitted a warning; it remains unmet.
+
+The previous statement that current-head CI was pending applied to the earlier snapshot. This run closes that verification gap for commit `c037c66865a5b576ef3a74717d803b941fb0a878`.
+
+**Important limits:** the successful run does not prove that branch creation is prevented, that the workflow is configured as a required check, or that repository rulesets are adequate. It also does not replace independent maintainer review. The seven-branch target is still unmet.
+
+Recommendation remains: keep PR #16 open and draft until independent review and owner disposition. No PR was merged/closed or branch deleted.
+
+
+## 12. Workflow activation limitation — 21 November 2026
+
+The repository governance workflow is present on the PR #16 branch, not on `main`. Its pull-request run successfully executed the live branch inventory check on code-bearing commit `c037c66865a5b576ef3a74717d803b941fb0a878` (run 44906508756; 27 tests passed). However, the workflow's `create` event must not be represented as an active pre-merge branch-creation control while the workflow is absent from the default branch.
+
+The current implementation:
+- validates the PR's base/head routing;
+- fetches and checks the live branch inventory during PR workflow runs;
+- rejects branch names outside the dated known-branch allowlist;
+- warns, rather than blocks, while branch count exceeds seven.
+
+It does **not** prevent a repository user from creating a branch. The `create` trigger becomes useful only after the workflow is present on the default branch, and even then it is detection after creation, not prevention. Prevention would require appropriately configured repository permissions/rulesets or another trusted control. Those settings have not been inspected or changed here.
+
+Keep PR #16 open and draft. Do not merge it solely to activate the workflow. Obtain independent review and owner authorization for any repository protection changes.
+
+
+## 13. Latest workflow evidence — 21 November 2026
+
+A subsequent run completed successfully on commit `63bc943ccdce3cdfde5a2af48e549ac374f3873c`:
+
+- [GitHub Actions run 44906587030](https://github.com/Save-Tiger-First/botanica-indica/actions/runs/44906587030)
+- 27 unit tests passed.
+- 23 tracked Markdown files scanned.
+- PR #16 routing validation passed.
+- Live branch inventory retrieved 23 branches and emitted the expected warning that the seven-branch ceiling is exceeded.
+- No Python `FutureWarning` appeared in the inspected job log.
+
+The workflow's `create` trigger remains inactive as a pre-merge branch-creation control while the workflow is absent from the default branch. The current automation detects unregistered branches when its PR inventory step runs; it does not prevent branch creation. The seven-branch ceiling remains unmet.
+
+
+## 14. Final verification of documentation head — 21 November 2026
+
+The PR #16 documentation head `8771925b6b1e8a8b590a775d36bec537da43e37b` completed [workflow run 44906629254](https://github.com/Save-Tiger-First/botanica-indica/actions/runs/44906629254) successfully. The job passed all **27 unit tests**, scanned **23 tracked Markdown files**, passed PR #16 routing validation, and fetched the live 23-branch inventory. It emitted the expected warning that 23 exceeds the seven-branch ceiling. No Python `FutureWarning` appeared.
+
+This is a successful CI result for the reviewed code and the PR head before this append-only note. It does not change the readiness conclusion: independent maintainer review is still absent, the seven-branch target remains unmet, and repository-level branch-creation prevention has not been configured or verified.
+
+## 15. Expanded repository and consolidation review — 21 November 2026
+
+### 15.1 Live state re-verification
+
+The complete operating prompt was re-fetched from the required branch (259 lines; blob SHA 53add3894d0502827e584614c70ad09cadaa637d). PR #16 remains open/draft, targeting develop; its head after the two documentation corrections is f6f661b97376323aba36b91725aca483af9e7d35 (125 commits, 26 changed files, 4,291 additions, 25 deletions; 125 ahead / 0 behind develop). The live repository still has 23 branches and 20 open PRs.
+
+The source heads of PRs #15, #1 and #2 are already ancestors of PR #16. This preserves history; it does not mean those PRs have been reviewed, accepted, merged or closed.
+
+### 15.2 Newly verified governance findings
+
+- CONTRIBUTING.md previously said “Create a feature or fix branch”, contradicting the active owner directive. It has now been corrected on PR #16: no new branch, use an existing approved workstream, or stop and request authorization. The ordinary task-branch workflow is conditional on the owner lifting the restriction.
+- STF-ECOSYSTEM-BOUNDARIES.md listed ADR-001 through ADR-010 but omitted companion proposal ADR-011. Metadata now lists ADR-011 explicitly as Proposed, not Accepted.
+- The active repository ruleset returned by GitHub is ID 23822734, “Protect main branch”, targeting the default branch and containing only deletion and non-fast-forward rules. No required review or status-check rule is visible. The branch-protection endpoint for develop returned 403 to this integration; effective protection settings for all branches are not certified.
+- The workflow on PR #16 is not yet on main. Its create trigger must not be relied upon as a branch-creation control before the workflow exists on the default branch; even then it is post-creation detection, not prevention. The workflow's current branch ceiling is a warning, not a failing condition.
+- The 23-branch inventory remains 16 over the immediate seven-branch ceiling.
+
+### 15.3 Consolidation destination assessment
+
+Four existing workstream destinations remain the most practical way to meet the seven-branch ceiling without creating branches:
+
+1. Governance: docs/repository-audit-and-ai-operating-standard
+2. Product/architecture: docs/full-system-architecture-and-repo-engineering-plan
+3. Scientific review: review/scientific-data-model-review-pack
+4. STF strategy and feasibility: strategy/naturetech-biodiversity-conservation-impact
+
+The 16 other temporary branches have a proposed mapping in Branch Inventory and Consolidation Register Section 20.17. The mapping is provisional. PR #15, #1 and #2 are already ancestry-contained in the governance destination. The remaining 13 source branches have source-only commits relative to their destination ranging from 1 to 27; their history must be preserved and their files reconciled before any retirement.
+
+### 15.4 Critical source conflicts
+
+- Candidate A and Candidate B Task 05C are different scientific models; preserve both and compare invariants/relationships rather than selecting by date or length.
+- Task 05D v1, v2 and v3 are different revisions; preserve distinct validation findings and embedded Task 05C versions.
+- PR #12 and the strategy destination both edit two common strategy files; line-by-line reconciliation is required.
+- The Hortus crosswalk on main and PR #9 differ by 83 lines. Preserve the main copy and reconcile before scientific review or merge.
+- PRs #17–#19 and the product/architecture destination have diverged histories; preserve the full-product vision, original Task 03/04 source baselines, requirements traceability, acceptance, idempotency and offline synchronization content.
+
+### 15.5 Recommendation and readiness status
+
+Keep PR #16 open and draft. The automation changes passed CI on earlier code-bearing heads, but the latest contribution/architecture metadata corrections changed the PR head. A new workflow run must be inspected before reporting the latest head as CI-verified. Obtain independent maintainer review; separate the branch-policy, licensing and ADR-011 approval tracks. Do not change repository protection settings without explicit authorization.
+
+No PR was merged or closed, no branch was deleted or created, no ruleset changed, and no scientific or policy proposal was approved.
+
+## 16. Latest-head CI verification — 21 November 2026
+
+After the contribution, architecture metadata, branch inventory, readiness review, provenance and reconciliation records were updated, PR #16 head is 0e5d3ac070932bdbe0a98c7cc824a71d15dc1745. It remains open/draft, targeting develop; 129 commits, 26 changed files, 4,428 additions and 25 deletions; 129 ahead / 0 behind develop.
+
+[Workflow run 44908219565](https://github.com/Save-Tiger-First/botanica-indica/actions/runs/44908219565) completed successfully on this exact head:
+- 27 unit tests passed.
+- 23 tracked Markdown files scanned.
+- PR #16 routing validation passed.
+- Live branch inventory returned 23 branches and emitted the expected warning that the seven-branch ceiling is exceeded.
+- No Python FutureWarning appeared in the inspected job log.
+
+This closes the CI verification gap for this recorded head. It does not close the governance readiness blockers: the seven-branch ceiling is unmet, independent maintainer review is absent, and effective protections for develop/staging and branch creation are not verified. Keep PR #16 open and draft.
+
+## 17. Final current-head CI confirmation — 21 November 2026
+
+The documentation head 32b5fa0f5f192fa3d3948038a79a10ae41b5c630 completed [workflow run 44908268217](https://github.com/Save-Tiger-First/botanica-indica/actions/runs/44908268217) successfully. It passed all 27 unit tests, scanned 23 tracked Markdown files, passed PR #16 routing validation, retrieved 23 live branches and emitted the expected seven-branch-ceiling warning. No Python FutureWarning appeared in the inspected job log.
+
+The seven-branch ceiling remains unmet, and independent maintainer review remains outstanding. This CI run does not approve branch governance, ADR-011, licensing policy or any scientific model.
+
+
+## 18. Branch-to-main consolidation route — current-state review, 21 November 2026
+
+The live state and source/destination comparisons are recorded in Branch Inventory and Consolidation Register Section 20.20. The key verified facts are:
+
+- 23 branches remain (3 long-lived + 20 temporary); the immediate ceiling is 7.
+- 20 PRs remain open; PR #16 is open/draft to develop.
+- PR #16 head is `5797330bac2735b5f35054d39a7ade4243de84ec`; workflow run 44908360788 passed on that exact head (27 tests, 23 Markdown files, routing checks and branch inventory).
+- PR routing is inconsistent: nine PRs target main directly, six target develop, and five are stacked on workstream branches.
+- PRs #17–#19, #3–#5, #11, #21–#23 and #12–#14 have source-only commits relative to their proposed destinations; these are not safe to retire without history-preserving integration and content reconciliation.
+- Main is one commit ahead of develop because of the Hortus crosswalk; staging currently equals develop. The main-only crosswalk must be reconciled with the different scientific-review copy before promotion.
+- The active main ruleset only protects against deletion and non-fast-forward updates; branch-protection reads for develop/staging were not available to this integration. Do not assume required reviews or status checks are configured.
+
+Recommendation: do not merge all 23 branch heads directly into main. Consolidate into the four existing workstream branches, integrate accepted work into develop, validate through staging, then promote to main. Keep the seven-branch interim ceiling and one-branch final requirement distinct.
+
+No merge, retarget, PR closure, branch deletion, protection change or scientific/policy approval was performed.
+
+
+## 19. Latest live pre-integration review — 21 November 2026
+
+### 19.1 Exact state inspected
+
+- Governing prompt: branch `docs/repository-audit-and-ai-operating-standard`, blob `53add3894d0502827e584614c70ad09cadaa637d`, 259 lines.
+- PR #16 head: `053e82c0fe4fc9a2bb5f03d94f464d76322433b8`; open/draft; base `develop); 136 commits, 26 changed files, 4,559 additions, 25 deletions; 136 ahead / 0 behind `develop`.
+- Branch inventory: 23 branches; 20 open PRs.
+- PR #16 has zero submitted reviews, zero review threads and zero comments. GitHub reports it mergeable, but that does not constitute review approval.
+- Exact-head check [44909118926](https://github.com/Save-Tiger-First/botanica-indica/actions/runs/44909118926) passed: 27 tests, 23 tracked Markdown files, routing validation and live branch inventory retrieval. The expected warning that the seven-branch ceiling is exceeded was emitted.
+
+### 19.2 Governance and workflow findings
+
+- The active `Protect main branch` ruleset applies only to the default branch and protects against deletion and non-fast-forward updates. It does not require pull requests, reviews or status checks, and does not cover `develop` or `staging`.
+- The branch-protection API returned 403 for `develop` and `staging`; effective classic protection settings therefore remain unverified.
+- The repository governance script rejects unknown branch names against a dated allowlist, but the seven-branch excess is a warning, not a failing gate. The `create` event runs after branch creation, so this workflow does not prevent creation. Effective prevention through repository permissions or rulesets is not verified.
+- The workflow uses read-only repository contents permission and disables checkout credential persistence. The inspected configuration does not grant write permissions to the job token.
+- The workflow validates Markdown fences and a limited class of inline relative links; its own documentation correctly describes this as a lightweight check, not a complete CommonMark parser.
+- The PR's 26-file scope includes proposed governance and licensing material, ADR-011 (Proposed), historical branch provenance, the AI operating prompt, a repository audit and automation. Their inclusion in the PR does not adopt the proposals.
+- The current branch register's Section 20.20 and this review's earlier Section 18 are historical snapshots and are superseded by register Section 20.21 and this Section 19.
+
+### 19.3 Readiness decision
+
+<text>**NOT READY FOR MERGE.**</text>
+
+Reasons:
+1. No independent maintainer review has been submitted.
+2. PR #16 remains draft.
+3. The branch ceiling remains unmet (23 versus 7), and branch-creation prevention is not verified.
+4. The main-only Hortus crosswalk still needs scientific content reconciliation before later integration into develop.
+5. Governance policy, licensing policy and ADR-011 remain proposals requiring separate owner decisions; qualified legal review remains outstanding for the licensing/contributor matters.
+
+The passing workflow is positive evidence of automation integrity, not a substitute for the above review and approval gates.
+
+### 19.4 Recommended next step
+
+Complete an independent maintainer review of the full PR #16 diff. Keep the PR open and draft until findings are resolved and the owner separately decides whether to adopt the proposed governance, licensing and ecosystem-boundary documents. Do not merge PR #16 merely because GitHub reports it mergeable.
+
+No PR was merged, closed, marked ready or retargeted. No branch was created or deleted. No protection/ruleset changed. No policy, ADR or scientific model was approved.
+
+
+## 20. Live-state correction and ODR-01 continuity — 21 November 2026
+
+This section supersedes the earlier PR #16 head/count metadata in Sections 18 and 19. Earlier values are retained as historical snapshots.
+
+- Governing prompt: 259 lines, blob SHA `53add3894d0502827e584614c70ad09cadaa637d`.
+- Current PR #16 head: `146ddeb6daba83f679cedb03a512c82279d21666`.
+- PR #16 remains open/draft, targets `develop`, has 138 commits, 26 changed files, 4,637 additions and 25 deletions; comparison is 138 ahead / 0 behind.
+- Repository inventory remains 23 branches and 20 open PRs.
+- GitHub reports PR #16 mergeable, but independent review is still absent. Keep **NOT READY FOR MERGE**.
+- The current prompt records ODR-01, owner-authorized on 21 November 2026. It is limited to controlled, profile-specific external exports and does not approve the scientific model, final export profile, physical schema or implementation. Missing scope/completeness/provenance/mapping evidence must fail closed; EVT-27–EVT-30 and independent specialist review remain outstanding.
+- No PR lifecycle action, branch retirement, ruleset change, policy adoption or scientific approval was performed.
+
+### Maintainer review brief
+
+The next review must be performed by a maintainer other than the author of the PR changes. The reviewer should inspect the exact current 26-file diff and record a GitHub review. At minimum, the review should cover: (1) policy and prompt consistency, including the immediate seven-branch/no-new-branches directives and final one-branch requirement; (2) least-privilege workflow permissions, event timing and whether branch controls actually prevent prohibited actions; (3) governance script/test correctness, false positives/negatives and failure modes; (4) branch register provenance and ancestry accuracy; (5) compatibility of proposed ADR-011 with accepted ADR-001–010; (6) licensing/IP claims and need for qualified legal review; (7) ODR-01 wording and explicit non-authorization of scientific implementation; (8) sensitive data/secrets and public-disclosure risks; and (9) document status labels, links, dates and cross-references.
+
+A reviewer must distinguish blocking defects from recommendations, identify exact files/lines, and state whether the PR is approved, changes requested or merely commented on. A GitHub review is evidence of review, not a substitute for owner approval of policy/ADR decisions or qualified legal/scientific review.
+
+**No independent review has been performed or represented by this document.**
+
+
+## 21. AI-assisted technical pre-review — 23 November 2026
+
+**Review type:** Adviser technical pre-review. This is not an independent maintainer review, legal opinion, security certification or approval.
+
+### 21.1 Current source state
+
+- Operating prompt: 259 lines; blob `53add3894d0502827e584614c70ad09cadaa637d`.
+- PR #16: open/draft, base `develop), head `b7a2bb2433e3f8a7c315d184a3efe6678176cfde); 140 commits, 26 changed files, 4,684 additions, 25 deletions; 140 ahead / 0 behind.
+- 23 branches and 20 open PRs.
+- No submitted reviews, review threads or PR comments.
+- Exact-head workflow [44910705492](https://github.com/Save-Tiger-First/botanica-indica/actions/runs/44910705492) succeeded: 27 tests passed, 23 Markdown files scanned, routing passed, 23 branches retrieved, no errors; expected seven-branch warning remains.
+
+### 21.2 Findings
+
+| Severity | Finding | Assessment |
+|---|---|---|
+| Blocker to approval | No independent maintainer review; PR is draft. | Obtain a review from a maintainer other than the change author. |
+| Major | Seven-branch ceiling is warning-only; branch creation is not prevented. | The workflow's `create` event is post-creation and the workflow is not yet on default branch `main`. A repository ruleset/permission or other trusted preventive control needs a separate owner-approved plan. |
+| Moderate | A read-only `GITHUB_TOKEN` is passed to a script checked out from the PR. | Workflow grants only `contents: read`; checkout disables credential persistence; no write permission or token leak was observed. Since this is a public repository, anonymous branch-list API access is sufficient; remove unnecessary token exposure from PR-controlled code. |
+| Moderate | GitHub API helper lacks mocked tests. | Add tests for pagination, HTTP failure, malformed responses and fail-closed behavior. Existing 27 tests cover routing, branch allowlist, Markdown fences and inline links. |
+| Minor | Markdown checker is partial. | Its documented limitations are appropriate. Describe it as a lightweight fence and subset-of-inline-link check, not a complete CommonMark validator. |
+
+### 21.3 Positive findings
+
+The inspected workflow has `contents: read` only, pinned full-SHA Actions, `persist-credentials: false`, a five-minute timeout and Python 3.12. Exact PR/head allowlists are used for legacy and stacked routes; PR body text is not an authorization mechanism. Live-inventory retrieval fails closed.
+
+ADR-011 and the companion STF ecosystem architecture remain Proposed. ADR-001 and ADR-002 remain Accepted; the one-line PR patches to ADR-001–010 are Markdown fence corrections, not recorded decision changes.
+
+### 21.4 Scientific and legal cross-check
+
+The scientific review branch's decision register (blob `3a33dfe47657a96456f56f2c12a0b7d355b6c6a5`) contains ODR-01 and explicitly retains EVT-27–EVT-44 as proposed/unexecuted, DR-09 open, Task 05C unapproved and Task 05E not ready. This is consistent with the operating prompt's export-only authorization.
+
+Official Indian sources checked on 23 November 2026 support the licensing policy's high-level references:
+- DPDP Act commencement notification G.S.R. 843(E): https://www.meity.gov.in/static/uploads/2025/11/c56ceae6c383460ca69577428d36828b.pdf
+- DPDP Rules G.S.R. 846(E): https://www.meity.gov.in/static/uploads/2025/11/53450e6e5dc0bfa85ebd78686cadad39.pdf
+- NBA Biological Diversity Rules and 2025 amendment: https://nbaindia.nic.in/index.php/acts-and-rules/rules
+- NBA ABS Regulations 2025: https://nbaindia.nic.in/public-information/notification-guidelines
+- Copyright Act, 1957, Chapter IV: https://copyright.gov.in/Copyright_Act_1957/chapter_iv.html
+
+This desk check does not determine applicability to STF or replace qualified Indian legal review. The licensing policy correctly remains Proposed.
+
+### 21.5 Decision
+
+**NOT READY FOR MERGE.** Passing CI does not substitute for independent review, owner decisions, effective branch controls or qualified legal review.
+
+No PR lifecycle action, branch lifecycle action, repository protection change, code change, policy adoption or scientific approval was performed as part of this pre-review.
+
+
+## 22. API credential minimisation and current-head verification — 23 November 2026
+
+**Status:** Implemented on the existing PR #16 branch and verified by a successful current-head GitHub Actions run. This remains an adviser-led remediation, not independent maintainer approval.
+
+### 22.1 Changes made
+
+The branch-inventory check queries the public GitHub branches endpoint. Authentication was unnecessary for this public repository, so the checker no longer accepts or sends a GitHub token. The workflow no longer passes `secrets.GITHUB_TOKEN` into PR-controlled Python code.
+
+Additional regression tests cover:
+- branch API pagination across multiple pages;
+- absence of an Authorization header;
+- rejection of non-list API responses;
+- rejection of malformed branch entries;
+- propagation of API/network failures; and
+- fail-closed behaviour when live branch inventory cannot be retrieved.
+
+### 22.2 Exact file content and commit verification
+
+| File | Latest commit | Verified blob SHA |
+|---|---|---|
+| `scripts/check_repository_governance.py` | `b3af9c17c0f2f889f2d8139c5d83e40e8069e3ac` | `d06d88a2cfd3c49913d4eb2ed24559331f069907` |
+| `tests/test_repository_governance.py` | `1da1edc4b970acf2c4b6f200e80c6cb0541ea1d3` | `c1332f04b5e3f23e64bc9907457a9fabc603075e` |
+| `.github/workflows/repository-governance.yml` | `7016138ec46da96f70e760a28c648c7c921f711a` | `415d79202c1ea76e91bd09f0390763763b71340c` |
+
+### 22.3 Current-head CI evidence
+
+The workflow run associated with PR #16 head `1da1edc4b970acf2c4b6f200e80c6cb0541ea1d3` completed successfully:
+
+- Run: [45123034416](https://github.com/Save-Tiger-First/botanica-indica/actions/runs/45123034416)
+- Conclusion: `success`
+- Unit tests: **32 passed**
+- Markdown files scanned: **23**
+- PR routing validation: passed
+- Live GitHub branch inventory: **23 branches retrieved**
+- Seven-branch ceiling: reported as a warning because the repository remains above the owner-directed ceiling.
+
+The test suite deliberately exercises an unavailable-network case; that test emits an expected error message while asserting that the checker exits non-zero. The workflow itself then successfully performed the real public branch inventory request and passed. Do not mistake that test's expected diagnostic output for a failed CI step.
+
+### 22.4 Remaining limitations
+
+- The seven-branch ceiling remains warning-only. The check detects but does not prevent branch creation or reduce the branch count.
+- The workflow is present on PR #16, not yet on `main`; it is not a trusted repository-wide preventive control.
+- The current 23-branch inventory remains 16 above the immediate ceiling.
+- No independent maintainer review has been recorded.
+- PR #16 remains open and draft; this successful run does not approve or merge the PR.
+- No branch, PR, protection rule, permission or repository setting was changed.
+
+**Disposition:** the credential-minimisation and regression-test remediation is implemented and current-head CI verified. Retain the existing NOT READY FOR MERGE recommendation until independent review, owner decisions and branch-lifecycle remediation are complete.

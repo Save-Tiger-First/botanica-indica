@@ -86,6 +86,7 @@ Platform APIs
    │
    ▼
 Botanica Indica Domain Modules
+```
 API as a Product Boundary
 
 The API is not merely an implementation detail of the backend.

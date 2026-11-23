@@ -75,6 +75,7 @@ Taxonomic Entity
       ├── Historical Name
       ├── Source-specific Name
       └── Alternative Treatment
+```
 
 This separation is important because the same biological concept may be represented by different names across sources or through time.
 

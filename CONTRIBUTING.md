@@ -239,19 +239,30 @@ Technology choices should be justified by requirements rather than preference al
 
 ## 11. Development Workflow
 
-For code contributions:
+**Current project-owner directive:** no new branches may be created during the current development period, and the repository must be reduced to no more than seven branches in total. Until the project owner explicitly lifts this directive:
 
-1. Create a feature or fix branch.
+1. Do not create a feature, fix, research, review or other new branch.
+2. Use an existing workstream branch only when the work genuinely belongs to that workstream and the project owner has directed or approved its use.
+3. Do not place unrelated work on a shared branch merely to avoid creating a branch.
+4. If no existing branch is suitable, stop and request explicit project-owner authorization before creating one.
+5. Preserve the source branch, PR and commit provenance for any consolidation work.
+
+This current directive takes precedence over the general workflow below. The live branch inventory and approved consolidation destinations are recorded in `docs/governance/BRANCH-INVENTORY-AND-CONSOLIDATION-REGISTER.md`. The project operating instructions are in `docs/governance/AI-PROJECT-OPERATING-PROMPT.md`.
+
+Once the project owner formally lifts the no-new-branches directive, the normal code-contribution workflow is:
+
+1. Create a temporary task branch from `develop`, using an approved prefix and the repository's current branch policy.
 2. Make the smallest coherent change possible.
 3. Add or update tests where appropriate.
 4. Update relevant documentation.
 5. Review your own changes.
-6. Open a pull request.
-7. Describe the purpose and impact of the change.
+6. Open a pull request to the approved target branch.
+7. Describe the purpose and impact of the change, evidence, tests and known limitations.
 8. Address review feedback.
 9. Merge only after the required checks and reviews have been completed.
+10. Retire the temporary branch safely after verifying that required content and history are preserved.
 
-The exact branching, review, CI/CD, and release policies will evolve as the project develops.
+The branch policy document remains proposed for adoption; this current no-new-branches instruction is an explicit project-owner directive and is already binding for this work.
 
 ---
 
@@ -388,13 +399,17 @@ A separate Code of Conduct may be introduced as the community grows.
 
 ---
 
-## 20. License
+## 20. License and contributor terms
 
-By contributing to this repository, you agree that your contribution will be made available under the applicable project licensing terms.
+The repository currently contains an Apache License 2.0 file for the repository's software. Its presence must not be interpreted as licensing third-party datasets, photographs, publications, user media, trademarks or other material that STF does not own or have authority to license.
 
-Please do not contribute material that you do not have the legal right to contribute.
+**Formal contributor terms have not yet been adopted.** STF has not selected a Developer Certificate of Origin (DCO), Contributor License Agreement (CLA), or another complete contributor agreement. This guide is informational; it is not itself a copyright assignment, a complete contributor agreement, or a blanket permission for redistribution, commercial use, research use or AI/ML training.
 
-The project may use different licensing arrangements for source code, documentation, datasets, photographs, and other content. Always check the applicable licensing information before contributing external material.
+Before submitting material, ensure that you are its creator or are otherwise authorised to submit it, and identify any third-party license, permission, attribution or restriction that applies. A pull request or upload must not be treated as proof that the submitter owns all included rights.
+
+Code, documentation, datasets, photographs, scientific content and other assets may require different terms. Any permission for AI/ML training, fine-tuning or embedding use must be assessed separately and must not be inferred from a general contribution or display permission.
+
+Until formal contributor terms are approved and published, STF may request evidence of rights or defer inclusion of a contribution where the rights basis is unclear. Broad external contribution solicitation should wait for reviewed contributor terms.
 
 ---
 

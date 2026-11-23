@@ -162,6 +162,7 @@ Attribution
 Validation Status
 Reviewer
 Reviewed At
+```
 
 The exact schema will be defined in a future data-model decision.
 
