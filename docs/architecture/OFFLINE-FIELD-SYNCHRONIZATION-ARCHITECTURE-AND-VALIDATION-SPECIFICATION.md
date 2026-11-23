@@ -1,9 +1,9 @@
 # Botanica Indica — Offline and Field Synchronization Architecture & Validation Specification
 
 **Document ID:** STF-BI-ARCH-OFF-001  
-**Version:** 0.1 — Proposed architecture and validation specification  
+**Version:** 0.2 — Proposed source-provenance and ODR-01 offline safeguards reconciliation  
 **Status:** Proposed for project-owner and specialist review; not an accepted ADR or implementation authorization  
-**Date:** 21 November 2026  
+**Date:** 23 November 2026  
 **Repository:** `Save-Tiger-First/botanica-indica`  
 **Working branch:** `docs/requirements-traceability-register`  
 **Decision authority:** Save Tiger First project owner
@@ -52,18 +52,18 @@ This is a proposed design, not a final physical data model. It deliberately avoi
 
 | Source | Ref | Blob SHA | Relevant scope |
 |---|---|---|---|
-| AI Project Operating Prompt STF-AI-OPS-001 v1.0 | `docs/repository-audit-and-ai-operating-standard` | `61059c74d4d20309ff76e055059ab33f381ca4f2` | Architecture, rights, scientific and branch guardrails |
+| AI Project Operating Prompt STF-AI-OPS-001 v1.0 | `docs/repository-audit-and-ai-operating-standard` | `53add3894d0502827e584614c70ad09cadaa637d` | Architecture, rights, scientific and branch guardrails |
 | Task 03 PRD v0.1 | `docs/canonical-task-03-04-baselines` | `8b1ca0be04b3f4ad3b543c2f9fc48d46eb37faf8` | §§17, 20, 28; mobile, offline, reliability and privacy requirements |
 | Task 04 Architecture v0.1 | `docs/canonical-task-03-04-baselines` | `abc7b721fae8d4f4adede4dd0bf5d6a32098c5a3` | Asynchronous work, idempotency, offline inference boundary and durable queues |
 | Workflow Lifecycle Specification v0.1 | `docs/requirements-traceability-register` | `03ca940095a9e39c5608548bdeec1ce0166bf76d` | §§11–15; independent rights, observation and identification lifecycles |
-| Workflow-to-Requirements Crosswalk v0.1 | `docs/requirements-traceability-register` | `87dc1ba325238289a030e9e8ef07a8fc903f51a9` | WF-007, WF-008, WF-011, WF-013, WF-015 and WF-OD-10 |
+| Workflow-to-Requirements Crosswalk v0.2 | `docs/requirements-traceability-register` | `75a10b27648b0184c3956203ba49f54715bdeaf2` | WF-007, WF-008, WF-011, WF-013, WF-015, WF-OD-10 and ODR-01/EVT-27–EVT-44 export traceability |
 | Acceptance Test Plan STF-BI-ATP-001 v0.1 | `docs/requirements-traceability-register` | `0e7a1d1851492bb4470b2e0fea6991e59db67f2a` | AC-004, AC-009, AC-010 and operational/security test strategy |
 | ADR-006 Identification Architecture | `main` | `f35345c356725d7dc4b1b64971c0ff59758c8a30` | Identification and sensitive-input constraints |
 | ADR-008 Geospatial and Sensitive Location Data | `main` | `74cc3774799a29b28edab75fc63d129f8841b497` | Precision, privacy, access and disclosure controls |
 | ADR-009 Observation and Contribution Model | `main` | `c096da58dfe0f1eb46812db46e6555ccf01b8718` | Observation as a distinct, versioned scientific record |
 | Task 05C Logical Database Model v0.1 | `docs/task-05d-logical-model-validation-v3` | `e6131e867d4bc3dbc58aa1188d0fabc895429347` | Logical entities and relationships; not physical design |
 | Task 05D Validation & Physical Design Readiness v0.1 | `docs/task-05d-logical-model-validation-v3` | `cf0b9c10bcb2da7b102e52688f22bd8e8b69bb91` | Open scientific/data-model validation and implementation gates |
-| Task 03–04 Readiness Audit STF-BI-AUD-034 v0.1 | `docs/requirements-traceability-register` | `25084a9f4146aecb76b6cc1d4fc658b665a017f9` | Offline synchronization identified as a major architecture gap |
+| Task 03–04 Readiness Audit STF-BI-AUD-034 v0.1 | `docs/requirements-traceability-register` | `f3e9c6998104b5435c24b4b70d136ced763245f5` | Offline synchronization identified as a major architecture gap |
 
 Source interpretation: Task 03 requires offline-capable field workflows where feasible, selective caching, defined online/offline identification behavior, safe queued observation synchronization, visible sync status/failures and storage/privacy controls. Task 04 calls for idempotent operations and durable queues for asynchronous processing, while explicitly separating offline/on-device inference for evaluation. The workflow specification keeps observation, identification, rights, publication, restriction and deletion lifecycles distinct.
 
@@ -555,6 +555,14 @@ These cases are proposals. They have not been executed. Numeric thresholds, devi
 | WF-013 — publication suspension | §§8, 10 | OFF-016–OFF-018, OFF-029 |
 | WF-015 — retry after transient failure | §§5–7, 13 | OFF-004–OFF-007, OFF-014–OFF-015 |
 | WF-OD-10 — offline synchronization/concurrent transitions | Entire specification | OFF-001–OFF-036 |
+
+## 15.1 ODR-01 offline and field-capture safeguard
+
+ODR-01 authorizes only a controlled, profile-specific external export interpretation. It does not authorize the offline client to create or infer a non-detection result. A missing local or server Occurrence row remains unknown/not assessed. An offline draft, queued command, durable `server_received` receipt or applied observation command must not be presented as an explicit survey non-detection, an expert determination or a scientifically verified result.
+
+If a future approved workflow captures an explicit survey result while offline, it must retain the actual actor, Survey/Event identity or unresolved reference, target scope and its a priori/post-facto origin, method/protocol, effort, time/place, applicable hierarchy, evidence and provenance. The server must revalidate the record and all applicable rights, authorization and scientific invariants on synchronization. No export-only interpretation is generated on-device. Export eligibility is evaluated later by the controlled server-side export process against a separately approved and pinned profile. Missing, ambiguous, contradictory or incomplete evidence suppresses the export interpretation. EVT-27–EVT-44 remain proposed and unexecuted.
+
+This clarification does not resolve the internal Survey/Occurrence model, authorize a physical schema, or approve the offline feature boundary.
 
 ## 16. Open decisions and approval gates
 
