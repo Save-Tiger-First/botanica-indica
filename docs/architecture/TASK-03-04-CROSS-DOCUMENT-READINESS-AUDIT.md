@@ -408,3 +408,47 @@ A consistency pass also clarified the distinction between client synchronization
 
 No accepted ADR, original Task 03/04 baseline, scientific model or product requirement was amended. No API schema, code, physical database design or implementation was created. No tests or external reviews were performed.
 
+
+---
+
+## 10. Follow-up reconciliation — 23 November 2026
+
+**Status:** Proposed follow-up record; this addendum does not approve the Task 03/04 baselines, workflow, API, offline architecture or scientific model.
+
+### 10.1 Changes made on existing PR #19 branch
+
+1. RTM v0.3 corrects the identity/authentication mapping: identity and access foundations are recorded as an STF shared-platform cross-cutting capability without assigning an unrelated BI-CAP identifier. Botanica domain permissions and scientific authority remain within their respective domain governance. No new capability ID was invented.
+2. RTM v0.3 adds a controlled ODR-01 traceability table linking owner-authorized export-only behavior to requirements/capabilities and EVT-27–EVT-44. The missing-row rule, explicit internal non-detection distinction, bycatch exclusion, hierarchy/scope, fail-closed conditions and term/profile pinning are preserved.
+3. Workflow crosswalk v0.2 adds ODR-01 and EVT-27–EVT-44 mappings without treating them as executed tests or expanding Task 03 requirements.
+4. Offline specification v0.2 states that an offline client must not infer or create non-detection from a missing record, must not generate export-only interpretations on-device, and must defer profile-specific export evaluation to a controlled server-side process after revalidation.
+5. API contract v0.2 adds export-only API safeguards and refreshes the IETF Idempotency-Key reference from draft version 08 to version 09. Version 09 is an active Internet-Draft, not an RFC. It must not be treated as a final standard.
+6. Workflow lifecycle v0.2 proposes `record_created` for the committed Observation domain state, to distinguish it from API/offline `server_received` command receipt. This is a proposed terminology change only; it is not approved or implemented.
+7. PR #20 architecture plan v0.2 refreshes its source inventory and repository status snapshot, including the current PR #19 proposals and main/develop/staging divergence.
+
+### 10.2 Current affected source revisions
+
+| Document | Ref | Current blob SHA | Status |
+|---|---|---|---|
+| RTM v0.3 | `docs/requirements-traceability-register` | `6925f077352fa3547e4458fc876901ba5f66ec5b` | Proposed |
+| Workflow crosswalk v0.2 | `docs/requirements-traceability-register` | `02728b9f18a3672b9bc5ad3a950cb68dd3a15ec1` | Proposed |
+| Workflow lifecycle v0.2 | `docs/requirements-traceability-register` | `498af08ec60e3626e8b60ab5047acae1a8861eb5` | Proposed |
+| Offline specification v0.2 | `docs/requirements-traceability-register` | `93d92851b5dcdc3235ed3b315a3a79ac6b309922` | Proposed |
+| API contract v0.2 | `docs/requirements-traceability-register` | `d65ca32a6ebb2939ac95d0dce5dd82811f27e0e7` | Proposed |
+| PR #20 architecture plan v0.2 | `docs/full-system-architecture-and-repo-engineering-plan` | `e63536d799cb110b64c2b7da23955f9f90398b27` | Proposed |
+| Operating prompt v1.0 | `docs/repository-audit-and-ai-operating-standard` | `53add3894d0502827e584614c70ad09cadaa637d` | Governing working prompt under user instruction |
+
+### 10.3 Remaining issues and readiness
+
+- The STF shared-platform versus Botanica domain logical boundary is now explicitly stated in the operating prompt and reflected in the RTM. Further ownership of other shared primitives and any organizational/deployment separation remain open; proposed ADR-011 is not accepted.
+- The Observation `record_created` label remains a proposal requiring owner/product/scientific/API review. Do not treat it as a settled state machine.
+- The selected export profile, exact term/mapping versions and executable round-trip behavior remain unapproved. DR-09 remains open pending exact versioned-resource comparison.
+- EVT-27–EVT-44, OFF-001–OFF-036 and API-SYNC-001–042 remain proposed and unexecuted. API-OD and OFF-OD decisions remain open.
+- Task 05C remains unapproved; Task 05E remains not ready. No physical schema, migration, production API or implementation is authorized by this addendum.
+- The repository still has 23 branches against the seven-branch ceiling. No branch has been retired in this follow-up.
+- PR #19 and PR #20 remain open drafts. No PR was merged or closed.
+
+### 10.4 Updated recommendation
+
+Keep PR #19 and PR #20 open and draft. Conduct a focused owner and discipline review of the updated RTM, workflow terminology, ODR-01 export traceability and API/offline safeguards. Do not accept the package until source SHAs are rechecked, the cross-document mappings are verified and the scientific/API review gates are satisfied.
+
+**End of follow-up reconciliation — 23 November 2026.**
