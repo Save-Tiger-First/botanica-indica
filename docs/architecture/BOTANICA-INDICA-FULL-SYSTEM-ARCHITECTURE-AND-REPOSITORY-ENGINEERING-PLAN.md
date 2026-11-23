@@ -55,7 +55,7 @@ The complete `docs/governance/AI-PROJECT-OPERATING-PROMPT.md` was fetched from `
 It is followed as the working operating standard until PR #16 is accepted and merged.
 
 At the inspection point:
-- `main`, `develop` and `staging` were identical at the SHA above.
+- The long-lived branch heads are not identical: `main` is `6f2f51da093caf8183fde386dbec707cc6046d27`; `develop` and `staging` are both `f165ecb9b4d9de115c02327cf779982b7ef4bbd4`. `main` is one commit ahead.
 - A live recheck on 23 November 2026 reports 23 branches and 19 open PRs. The branch ceiling is seven total; the repository remains 16 branches above that target. No branch retirement is claimed.
 - Current long-lived branch heads are: `main` `6f2f51da093caf8183fde386dbec707cc6046d27`; `develop` `f165ecb9b4d9de115c02327cf779982b7ef4bbd4`; `staging` `f165ecb9b4d9de115c02327cf779982b7ef4`. `main` is one commit ahead of `develop`/`staging`; they are not identical.
 - PRs #17–#20 remain open draft proposals; PR #19's current head is being updated as part of this traceability reconciliation. No PR was merged or closed during this work.
@@ -63,7 +63,7 @@ At the inspection point:
 - The default-branch tree contained 18 entries and **no application source-code files**. The repository is currently documentation/governance-led; no application implementation was verified.
 - No branch was deleted, no PR merged, and no repository protection or setting changed during this work.
 
-The branch count is not itself a violation: only three branches are designated long-lived. The growing topic-branch inventory does, however, need a dependency and preservation register before any cleanup.
+The repository currently has 23 branches against the operating prompt's maximum of seven total. The ceiling is exceeded by 16 branches. Exactly three are long-lived (`main`, `develop` and `staging`); no more than four temporary branches may remain. This is an active governance non-conformance requiring preservation-first reconciliation and authorized retirement. Do not create branches or claim the ceiling is met until the live branch list confirms seven or fewer.
 
 ### 2.2 Exact project documents inspected
 
@@ -74,7 +74,7 @@ The branch count is not itself a violation: only three branches are designated l
 | Task 03 PRD v0.1 | `docs/canonical-task-03-04-baselines` | `8b1ca0be04b3f4ad3b543c2f9fc48d46eb37faf8` | Complete extracted source transcription; working baseline |
 | Task 04 architecture evaluation v0.1 | `docs/canonical-task-03-04-baselines` | `abc7b721fae8d4f4adede4dd0bf5d6a32098c5a3` | Complete extracted source transcription plus governance overlay; working baseline |
 | Full Product Vision and Capability Blueprint v0.2 | `docs/full-product-vision-capability-blueprint` | `d3ec150524dda4928503f43556a97cd766b71312` | Proposed in PR #17; not accepted |
-| Requirements Traceability Register v0.3 | `docs/requirements-traceability-register` | `079667d16b51499c81e343c990eecfddeaa82fb0` | Proposed in PR #19; not accepted |
+| Requirements Traceability Register v0.3 | `docs/requirements-traceability-register` | `95bcf2161f917b8ff824e8a075a908b090a880c7` | Proposed in PR #19; not accepted |
 | Scientific Data Model Review Pack | `review/scientific-data-model-review-pack` | `c11f4b58d0908742474d3e58b4ec0aa3739f7b99` | Review proposal; not scientific sign-off |
 | Workflow Lifecycle Specification v0.2 | `docs/requirements-traceability-register` | `498af08ec60e3626e8b60ab5047acae1a8861eb5` | Proposed workflow; record_created/receipt distinction remains under review |
 | Workflow-to-Requirements Crosswalk v0.2 | `docs/requirements-traceability-register` | `61d2111ace5c408eaf503bdf17b2ccb822f90978` | Proposed workflow/requirements and ODR-01 traceability |
@@ -84,12 +84,6 @@ The branch count is not itself a violation: only three branches are designated l
 | Workflow Lifecycle Specification v0.2 | `docs/requirements-traceability-register` | `498af08ec60e3626e8b60ab5047acae1a8861eb5` | Proposed state machines; Observation creation is distinct from `server_received` command receipt |
 
 Accepted ADR-001 through ADR-010 were also fetched from `main`; all ten report Accepted. This plan does not amend them.
-
-### 2.4 Source and integration revalidation — 23 November 2026
-
-The inventory above was refreshed against the current named refs. Historical SHAs in the 20 November snapshot remain useful as a record of the sources originally inspected, but must not be used as current revision identifiers. The updated PR #19 workstream now carries identity/authentication as an STF shared-platform cross-cutting concern without assigning it a BI-CAP identifier, maps ODR-01 and EVT-27–EVT-44 into the RTM/workflow/API/offline proposals, and distinguishes the proposed Observation `record_created` state from API `server_received` command receipt. These are proposed documentation reconciliations, not accepted product/architecture decisions or implementation approvals.
-
-The source inventory does not establish that PR #17–#19 are approved. Their content remains proposed until owner and discipline review. The RTM, workflow crosswalk, workflow lifecycle, offline and API SHAs above are the exact revisions re-fetched for this architecture update on 23 November 2026. The crosswalk's RTM source row deliberately identifies the historical snapshot it used, not a later RTM metadata-only update. Task 05C remains unapproved; Task 05E remains not ready; physical schema work remains gated.
 
 ### 2.3 Consistency audit — findings
 
@@ -108,6 +102,12 @@ The source inventory does not establish that PR #17–#19 are approved. Their co
 **Finding G — no codebase exists on main yet.** The current main tree has no TypeScript, Dart, Python, SQL or application build files. The directory structure below is a target proposal, not a description of existing implementation.
 
 **Finding H — document status must remain explicit.** PR #17, #18 and #19 are open proposals. Their contents may inform this plan, but they do not constitute accepted product, architecture or scientific baselines.
+
+### 2.4 Source and integration revalidation — 23 November 2026
+
+The inventory above was refreshed against the current named refs. Historical SHAs in the 20 November snapshot remain useful as a record of the sources originally inspected, but must not be used as current revision identifiers. The updated PR #19 workstream now carries identity/authentication as an STF shared-platform cross-cutting concern without assigning it a BI-CAP identifier, maps ODR-01 and EVT-27–EVT-44 into the RTM/workflow/API/offline proposals, and distinguishes the proposed Observation `record_created` state from API `server_received` command receipt. These are proposed documentation reconciliations, not accepted product/architecture decisions or implementation approvals.
+
+The source inventory does not establish that PR #17–#19 are approved. Their content remains proposed until owner and discipline review. The RTM, workflow crosswalk, workflow lifecycle, offline and API SHAs above are the exact revisions re-fetched for this architecture update on 23 November 2026. The crosswalk's RTM source row deliberately identifies the historical snapshot it used, not a later RTM metadata-only update. Task 05C remains unapproved; Task 05E remains not ready; physical schema work remains gated.
 
 ## 3. Architecture principles and module boundaries
 
