@@ -1,9 +1,9 @@
 # Botanica Indica — API Command, Idempotency and Conflict-Resolution Contract Design
 
 **Document ID:** STF-BI-API-SYNC-001  
-**Version:** 0.1 — Proposed contract design  
+**Version:** 0.2 — Proposed source-provenance, ODR-01 and standards-version reconciliation  
 **Status:** Proposed for project-owner, architecture, mobile, security and scientific-data review; not an accepted ADR, approved API baseline or implementation authorization  
-**Prepared:** 21 November 2026  
+**Prepared:** 23 November 2026  
 **Repository:** `Save-Tiger-First/botanica-indica`  
 **Working branch:** `docs/requirements-traceability-register`  
 **Decision authority:** Save Tiger First project owner  
@@ -737,7 +737,7 @@ Do not attempt to close all 20 decisions in one workshop. Resolve them in depend
 6. **Contract publication:** API-OD-01 and API-OD-19, followed by version-pinned OpenAPI and executable contract tests.
 7. **Privileged offline scope:** API-OD-20 remains closed to ordinary field synchronization unless a separate proposal passes all required reviews.
 
-**Standards checked 21 November 2026:** OpenAPI Specification 3.2.1 (10 September 2026); RFC 9110; RFC 9457; RFC 9700 (OAuth 2.0 Security BCP); OWASP API Security Top 10:2023; and `draft-ietf-httpapi-idempotency-key-header-08` (active Internet-Draft dated 22 October 2026, not an RFC). The IETF draft must be rechecked before contract freeze.
+**Standards rechecked 23 November 2026:** OpenAPI Specification 3.2.1 (10 September 2026); RFC 9110; RFC 9457; RFC 9700 (OAuth 2.0 Security BCP); OWASP API Security Top 10:2023; and `draft-ietf-httpapi-idempotency-key-header-09` (active Internet-Draft published 21 November 2026, expires 25 May 2027; not an RFC). Version 09 supersedes version 08. It specifies `Idempotency-Key` as an RFC 9651 Structured Field String; key uniqueness/reuse, optional payload fingerprinting, documented expiry, 400 for a required missing key, 422 for reuse with a different payload and 409 for a concurrent outstanding request. Botanica's own scope, authenticated-principal binding, fingerprint, retention and replay semantics still require an explicit contract decision; do not blindly copy draft behavior. Recheck the draft before contract freeze.
 
 No numeric timeout, retention period, request size, retry count, cache duration, precision threshold or service-level objective is invented here.
 
@@ -807,6 +807,21 @@ Before API contract acceptance, add or map executable scenarios for at least:
 
 These are acceptance scenarios to implement and execute later, not test results. The Task 05D validation matrix and review pack remain the controlling scientific review artifacts; this API crosswalk does not duplicate or supersede them.
 
+### 19.3.1 ODR-01 export-only API constraints
+
+ODR-01 is authorized only for controlled, profile-specific external exports. It does not authorize an internal absence assertion, an ordinary Observation command to carry an inferred non-detection, or a production survey/non-detection command. The command list remains constrained by DR-07 and the Task 05 model gate.
+
+API requirements for any future approved export process:
+1. Do not infer non-detection from a missing Occurrence row, absent command or empty query result.
+2. Preserve explicit internal SurveyTargetResult / non-detection evidence separately from an export-only interpretation.
+3. Do not derive the export interpretation from client-provided status flags. The server-side export process must evaluate evidence, applicable scope at every required Event/Survey level, reporting-completeness and method evidence, target origin, bycatch exclusion, hierarchy, provenance and pinned profile/term/mapping versions.
+4. Keep reporting completeness, survey effort and detectability distinct. Do not equate `eco:isSurveyTargetFullyReported` with `eco:isTaxonomicScopeFullyReported`.
+5. Fail closed and omit the interpretation when any required evidence is missing, incomplete, unreported, ambiguous, contradictory or unvalidated.
+6. Preserve the approved wording “not detected/reported within the stated survey scope under documented survey conditions”; do not encode biological absence.
+7. Require profile-specific negative tests for EVT-27–EVT-44, including EVT-37 (missing Occurrence remains unknown/not assessed), EVT-38 (incomplete evidence suppresses interpretation), EVT-35 (bycatch excluded from target completeness), and EVT-39/EVT-44 (hierarchy and relationship rules).
+8. Do not freeze an export payload, endpoint or OpenAPI schema until the profile, mapping, term versions and scientific review are approved.
+
+These are proposed contract constraints. EVT-27–EVT-44 are not executed; ODR-01 does not approve Task 05C/05D/05E, a final export profile, API payload, physical schema or implementation.
 ### 19.4 Current standards verification relevant to this crosswalk
 
 Checked 21 November 2026 against official sources:
@@ -863,8 +878,8 @@ The following primary sources were checked on 21 November 2026. Standards and dr
    https://www.rfc-editor.org/rfc/rfc9457.html
 4. **IETF RFC 9700 / BCP 240**, Best Current Practice for OAuth 2.0 Security (January 2025). Apply current OAuth security recommendations if OAuth is selected.  
    https://www.rfc-editor.org/rfc/rfc9700.html
-5. **IETF HTTPAPI Working Group**, The Idempotency-Key HTTP Header Field, active Internet-Draft version 08 (22 October 2026; work in progress, not an RFC). Recheck the current version, status and syntax before adoption.  
-   https://datatracker.ietf.org/doc/draft-ietf-httpapi-idempotency-key-header/
+5. **IETF HTTPAPI Working Group**, The Idempotency-Key HTTP Header Field, active Internet-Draft version 09 (21 November 2026; work in progress, not an RFC; expires 25 May 2027). It defines the field as an RFC 9651 Structured Field String and discusses uniqueness, optional request fingerprints, expiry policy, duplicate replay and error handling. It remains non-normative work in progress for Botanica until an approved contract adopts its requirements.  
+   https://datatracker.ietf.org/doc/draft-ietf-httpapi-idempotency-key-header-09/
 6. **Flutter**, Offline-first architecture guidance.  
    https://docs.flutter.dev/app-architecture/design-patterns/offline-first
 7. **Android Developers**, Persistent background work / WorkManager.  
@@ -878,4 +893,4 @@ The following primary sources were checked on 21 November 2026. Standards and dr
 
 ---
 
-**End of proposed contract design — STF-BI-API-SYNC-001 v0.1.**
+**End of proposed contract design — STF-BI-API-SYNC-001 v0.2.**
