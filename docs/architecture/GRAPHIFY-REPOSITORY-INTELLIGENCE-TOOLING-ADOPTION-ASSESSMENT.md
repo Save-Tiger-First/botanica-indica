@@ -320,3 +320,80 @@ The Graphify review-status query returned no review record for PR #16 or PR #20.
 5. Do not add Graphify to the product runtime, CI gates or hosted repository connections as part of this evaluation.
 
 This addendum does not represent that Graphify CLI has been installed or run on a project-owner device. No local extraction, MCP setup, hosted-service connection, CI integration or product dependency was created.
+
+
+## 13. Graphify release, security-policy and source-provenance recheck — 23 November 2026
+
+**Status:** External-source recheck and proposal refinement only. No Graphify installation or execution is claimed.
+
+### 13.1 Pin the published package to its source provenance
+
+The latest PyPI release page checked on 23 November 2026 reports:
+
+- Package: `graphifyy` (the CLI command is `graphify`)
+- Latest release shown: **0.9.115**, uploaded 21 November 2026
+- License expression: Apache-2.0
+- Python requirement shown by PyPI: `>=3.11.5, <3.15`
+- PyPI publishing attestation identifies source repository `Graphify-Labs/graphify` and source commit `3671f31124fdb1de4ec4e485b1bcd7059726a5f3`.
+- Source distribution SHA-256 reported by PyPI: `1b8f1f8ffd246792ce5d8e9097611fa42c1f55a39e1283e799d37e26667d09a7`.
+
+The repository default branch is `v8`, whose head was independently fetched as `a3db62f680cde2cf516642bbfef1e3ab33fd30d8`. A Git comparison showed that the PyPI-attested source commit `3671f31124fdb1de4ec4e485b1bcd7059726a5f3` is four commits ahead of that fetched branch head. Consequently, the previous statement that the inspected v8 branch head and latest package source were the same revision would be inaccurate. For a reproducible pilot, pin the package version and record the PyPI attested source commit and artifact checksum; do not rely on the moving branch name alone.
+
+### 13.2 Security-policy version discrepancy resolved by source pinning
+
+The `SECURITY.md` at the fetched v8 branch head `a3db62f680cde2cf516642bbfef1e3ab33fd30d8` still lists `0.3.x` as supported. This is stale relative to the latest package line.
+
+The `SECURITY.md` fetched at the PyPI-attested 0.9.115 source commit `3671f31124fdb1de4ec4e485b1bcd7059726a5f3` lists **Latest 0.9.x** as supported and versions below 0.9 as unsupported. Its threat model also documents additional controls, including source-content prompt-injection handling, credential-shaped text redaction before graph persistence, symlink-safe ingestion and guarded destructive uninstall.
+
+The source discrepancy is material. For the proposed pilot:
+- use only the exact PyPI release whose provenance was checked;
+- retain the artifact checksum and source commit in the local experiment record;
+- review the security policy at that exact source commit, not a stale branch snapshot;
+- recheck the package, provenance and security policy before any later upgrade.
+
+These are upstream maintainer/project statements, not an independent security audit or guarantee that all attacks are prevented.
+
+### 13.3 Processing and logging implications for Botanica Indica
+
+The current v8 README and the attested 0.9.115 source documentation describe distinct processing paths:
+
+- Tree-sitter source-code extraction is local and does not require a model API.
+- Semantic extraction of Markdown, PDFs and images uses the configured assistant/model backend. A local Ollama backend is available when deliberately configured.
+- Graphify query/path/explain and MCP graph-query calls write query metadata to a local JSONL log by default. The documented log includes timestamps, questions, corpus, returned-node counts and duration; full subgraph responses are not stored by default.
+- `GRAPHIFY_QUERY_LOG_DISABLE=1` opts out of query logging, or `GRAPHIFY_QUERY_LOG=/dev/null` silences the log path.
+
+For this project, local-only processing remains preferred. Before any scan, explicitly set the backend, verify that no hosted provider is selected by automatic environment detection, and decide whether query logging should be disabled. The graph, reports, cache, logs and any exported graph must all be treated as derived project artifacts and inspected for secrets, personal data, sensitive biodiversity locations and restricted knowledge.
+
+### 13.4 Current status of the three supplied repositories
+
+| Repository | Freshly verified revision | Finding |
+|---|---|---|
+| `Graphify-Labs/graphify` | Default branch `v8`: `a3db62f680cde2cf516642bbfef1e3ab33fd30d8`; PyPI 0.9.115 source commit: `3671f31124fdb1de4ec4e485b1bcd7059726a5f3` | CLI/tooling source; use the versioned package and attested source, not a moving branch |
+| `Graphify-Labs/docs` | `main`: `1b5c264c6447d6b0d20199221e8e13391650401a` | Documentation source; useful reference, not a Botanica runtime dependency |
+| `Graphify-Labs/.github` | `main`: `c5e95a8edd645d44f44be7421fa433db8e05b08a` | Inspected tree contains profile README and image assets only; no reusable workflow or project tooling was found |
+
+### 13.5 Revised recommendation and pilot gate
+
+Retain the local CLI pilot proposal, but make reproducibility and source-provenance checks explicit acceptance conditions:
+
+1. Pin `graphifyy==0.9.115` for the first experiment, subject to confirming Python compatibility on the machine that will run it.
+2. Record the PyPI provenance commit and SHA-256 checksum above.
+3. Use an isolated local clone/worktree at the exact PR #20 commit; do not scan a moving branch.
+4. Keep a local `.graphifyignore` that excludes secrets, personal information, sensitive species coordinates, restricted community-held knowledge, unlicensed media, local caches and generated outputs.
+5. Explicitly select local Ollama for semantic extraction if available; otherwise use code-only extraction and acknowledge that the documentation graph will be incomplete. Do not let ambient API keys silently select a hosted provider.
+6. Disable or explicitly govern query logging and inspect generated graph/report/cache/log artifacts before retention or sharing.
+7. Keep the graph local and uncommitted for the first pilot. The upstream recommendation to commit `graphify-out/` is not adopted automatically because Botanica Indica has stricter source-version and sensitive-data controls.
+8. Evaluate graph usefulness against a small human-labelled set of known relationships across ADRs, PRD, architecture, traceability and scientific decision records. Measure both false links and missed links; do not treat graph coverage or edge confidence as truth.
+9. Do not combine branch snapshots or use Graphify's inferred links to close requirements, approve an ADR, resolve a scientific dispute or authorize a merge.
+10. Stop the pilot if excluded material appears in any generated artifact or if the backend, version, provenance or processing path cannot be established.
+
+**Decision status:** local Graphify evaluation remains a proposal and has not been executed. No Graphify software has been installed on the project owner's device; no repository graph, MCP server, CI integration, cloud connection or production dependency has been created.
+
+### 13.6 External sources checked
+
+- PyPI `graphifyy` 0.9.115, release/provenance details (uploaded 21 November 2026): https://pypi.org/project/graphifyy/
+- Attested source commit: https://github.com/Graphify-Labs/graphify/tree/3671f31124fdb1de4ec4e485b1bcd7059726a5f3
+- Security policy at attested source commit: https://github.com/Graphify-Labs/graphify/blob/3671f31124fdb1de4ec4e485b1bcd7059726a5f3/SECURITY.md
+- README at v8 branch: https://github.com/Graphify-Labs/graphify/blob/v8/README.md
+- Graphify documentation repository: https://github.com/Graphify-Labs/docs/tree/main
+- Graphify Labs profile repository: https://github.com/Graphify-Labs/.github/tree/main
