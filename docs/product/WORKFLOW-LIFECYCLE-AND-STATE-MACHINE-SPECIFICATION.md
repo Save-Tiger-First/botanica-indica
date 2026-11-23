@@ -1,9 +1,9 @@
 # Botanica Indica — Workflow Lifecycle and State-Machine Specification
 
 **Document ID:** STF-BI-WF-001  
-**Version:** 0.1 — Proposed design specification  
+**Version:** 0.2 — Proposed synchronization-state terminology clarification  
 **Status:** Proposed for owner and discipline review; not an approved product requirement, scientific governance policy, data model or implementation authorization  
-**Prepared:** 21 November 2026  
+**Prepared:** 23 November 2026  
 **Owner/decision authority:** Save Tiger First project owner  
 **Related documents:** Task 03 PRD working baseline; Full Product Vision and Capability Blueprint v0.2; Requirements Traceability Register v0.2; Task 04 architecture working baseline; accepted ADR-004, ADR-006, ADR-007 and ADR-009; Task 05 scientific data-model proposals.
 
@@ -112,7 +112,7 @@ Community assessments should be separate records with participant eligibility, s
 |---|---|
 | draft | Locally or remotely created but not submitted |
 | submitted | Submitted for platform processing or review |
-| received | Server acknowledged and assigned a durable identifier |
+| record_created (proposed replacement for the ambiguous prior label `received`) | A canonical Observation resource has actually been created and committed, with its durable domain identifier |
 | needs_information | Required contextual information missing or clarification requested |
 | under_review | A defined review process is active |
 | accepted_for_record | Accepted for the stated internal record purpose; not necessarily public |
@@ -130,6 +130,19 @@ Community assessments should be separate records with participant eligibility, s
 - withdrawn_by_contributor does not itself mean immediate physical deletion from all systems.
 - The observation lifecycle must support correction and supersession without erasing prior versions.
 - Non-detection must be represented only in an appropriately bounded survey/event context with protocol, effort, time, place and reporting completeness.
+
+### 6.3 Separation from synchronization receipt state — proposed clarification
+
+The former label `received` was ambiguous because the API/offline contract separately uses `server_received` for a durable command receipt that may exist before domain processing commits. These are different state domains.
+
+For this proposed revision:
+- `server_received` belongs only to the client/API command receipt lifecycle. It means the command envelope/receipt is durably recorded; it does not prove an Observation resource exists.
+- `record_created` is the proposed Observation lifecycle label for the point at which a canonical Observation resource has actually been created and committed.
+- A command receipt, HTTP response, upload completion or local draft must not set the Observation state to `record_created`.
+- If processing fails after durable receipt, the Observation lifecycle must not be advanced to `record_created`.
+- The exact event/transaction that creates the Observation identifier remains subject to the final API and Task 05 model decisions.
+
+This is a proposed terminology clarification, not an approved state-machine decision or implementation instruction. The project owner and product/scientific/API reviewers must review it before workflow or API freeze.
 
 ## 7. Contribution and moderation lifecycle — proposed
 
@@ -336,4 +349,4 @@ Physical schema design remains gated by scientific-model review and other projec
 
 ---
 
-**End of proposed specification — STF-BI-WF-001 v0.1.**
+**End of proposed specification — STF-BI-WF-001 v0.2.**
