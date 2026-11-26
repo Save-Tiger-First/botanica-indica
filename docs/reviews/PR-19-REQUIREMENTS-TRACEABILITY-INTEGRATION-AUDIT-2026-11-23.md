@@ -542,8 +542,8 @@ This append-only update records the follow-up edits made after the 11.4–11.5 r
 
 | Item | Verified revision / disposition |
 |---|---|
-| PR #19 head after this update | `60274fb5f9c96d7884591d9a37edde8b897235da` (62 commits; 8 changed files; open/draft) |
-| Task 03 Acceptance Test Plan | v0.2; blob `21cb80e59656db1519d89dae7f10f7985b11568b`; eight proposed ATP-ODR-01–08 export-validation cases added; all remain Proposed / Not run |
+| PR #19 status after this update | Open/draft; 8 changed files. Exact live head is intentionally verified from GitHub rather than self-referenced in this document. |
+| Task 03 Acceptance Test Plan | v0.2; blob `76f3fa8d24baa022fa3056c0694c2462876f5f2a`; eight proposed ATP-ODR-01–08 export-validation cases added and RTM source SHA refreshed; all remain Proposed / Not run |
 | Offline/Field Synchronization Specification | v0.2; blob `6a25055c51cd5d16e8a9da8964f5f5e2c9bfbc0a`; end marker corrected from v0.1 to v0.2; technical content otherwise unchanged |
 | Requirements Traceability Register | v0.3; blob `fbf938235f686c7e2a9959a179a3a1a57ca6c632`; 23 November readiness-audit SHA explicitly labelled a historical source snapshot, not the current audit revision |
 
