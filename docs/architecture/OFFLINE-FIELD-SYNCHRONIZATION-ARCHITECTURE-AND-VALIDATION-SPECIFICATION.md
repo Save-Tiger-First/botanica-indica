@@ -705,4 +705,4 @@ This specification does **not**:
 7. Only after these gates, authorize implementation planning.
 
 **Specification status:** Proposed; owner and specialist review required.  
-**End of document — STF-BI-ARCH-OFF-001 v0.1.**
+**End of document — STF-BI-ARCH-OFF-001 v0.2.**
