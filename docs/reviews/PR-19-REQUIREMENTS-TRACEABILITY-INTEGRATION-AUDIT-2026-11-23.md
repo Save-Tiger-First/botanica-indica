@@ -482,7 +482,7 @@ Direct GitHub reads on 26 November 2026 returned:
 | `develop` | `f165ecb9b4d9de115c02327cf779982b7ef4bbd4` |
 | `staging` | `f165ecb9b4d9de115c02327cf779982b7ef4bbd4` |
 
-Mergeability is a transient GitHub calculation, not approval, scientific sign-off or permission to merge. No PR or branch lifecycle action was performed.
+The first live metadata read in this review reported both PRs mergeable. After the documentation commits, GitHub's calculation changed: the latest post-update read reports PR #19 non-mergeable and PR #20 mergeable. This fluctuation is recorded rather than silently overwriting the earlier observation. Re-fetch live status immediately before any authorized integration. Mergeability is a transient GitHub calculation, not approval, scientific sign-off or permission to merge. No PR or branch lifecycle action was performed.
 
 ### 11.2 Current document revisions re-fetched
 
