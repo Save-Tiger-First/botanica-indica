@@ -361,3 +361,11 @@ This correction supersedes the older List/term-version descriptions in Sections 
 This correction changes standards evidence only. It does not change the recommended dispositions, close EVT-D01–D04, approve Candidate A, pass Task 05D or authorize Task 05E.
 
 Source: [EVT-D01–D04 Standards Version Verification Addendum](EVT-D01-D04-STANDARDS-VERSION-VERIFICATION-ADDENDUM-2026-11-26.md).
+
+## 13. Further qualification — direct List retrieval conflict
+
+Official indexed metadata reports the Darwin Core List issue version as 2026-10-13, but direct retrieval of the current List landing page in this review still renders the 2026-05-26 header and vocabulary version. Treat the document-level version discrepancy as unresolved; do not claim the full 2026-10-13 List content has been inspected.
+
+The current core Darwin Core namespace term page independently verifies `dwc:samplingEffort-2026-10-13` and `dwc:samplingProtocol-2026-10-13`. The directly rendered List verifies `dwc:occurrenceStatus-2026-05-26`. The directly rendered Humboldt term list remains 2026-05-26; its metadata marks some older terms superseded by 2026-10-13 replacements, but the full replacement snapshot and definitions still need retrieval.
+
+This qualification supersedes any wording above that states the complete 2026-10-13 List or Humboldt snapshot has been directly verified. See the corrected [Standards Version Verification Addendum](EVT-D01-D04-STANDARDS-VERSION-VERIFICATION-ADDENDUM-2026-11-26.md). DR-09 remains OPEN.
