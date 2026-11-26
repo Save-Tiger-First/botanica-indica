@@ -442,11 +442,16 @@ The live repository was rechecked after the ODR-02/ODR-03 and Task 03/04 documen
 | PR #22 Task 05D logical-model validation | \`3efd80e5e28b2a916e63c85808ef3aba9d35e4ac\` | Open / draft |
 | PR #23 Task 05D logical-model validation v2 | \`76bd88980bb2536db63bbde76e3fa687503bdda1\` | Open / draft |
 
-The repository has **23 branches and 20 open pull requests**. This remains above the operating prompt's immediate seven-branch ceiling. The long-lived branches remain:
+The repository has **23 branches and 19 open pull requests**. This remains above the operating prompt's immediate seven-branch ceiling. The long-lived branches remain:
 - \`main\`: \`6f2f51da093caf8183fde386dbec707cc6046d27\`
 - \`develop\`: \`f165ecb9b4d9de115c02327cf779982b7ef4bbd4\`
 - \`staging\`: \`f165ecb9b4d9de115c02327cf779982b7ef4bbd4\`
 
 PRs #21–#23 add active scientific-model workstreams and make the branch/PR dependency graph more complex. They must be audited as a dependency chain before any consolidation or branch retirement. Do not assume that their existence means Task 05C/05D is approved or validated.
 
-The PR #18/PR #20 compare remains divergent: PR #20 is 39 commits ahead and 3 behind PR #18. No merge, rebase, retarget or branch deletion was performed.
+The PR #18/PR #20 compare remains divergent: PR #20 is 40 commits ahead and 3 behind PR #18. No merge, rebase, retarget or branch deletion was performed.
+
+
+### 9.1 Final snapshot correction — 26 November 2026
+
+A second live query immediately after the prior refresh confirmed **19 open PRs** (all draft) and **23 branches**. PR #18 and PR #20 remain diverged; the current compare is PR #20 **40 commits ahead and 3 commits behind** PR #18. This replaces the earlier 39/3 comparison in this report. The repository count and comparison are snapshots and must be re-fetched before any integration action.

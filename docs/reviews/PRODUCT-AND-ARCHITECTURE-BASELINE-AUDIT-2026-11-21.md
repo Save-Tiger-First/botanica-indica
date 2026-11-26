@@ -723,11 +723,16 @@ These owner decisions do not amend accepted ADR-001–ADR-010, accept ADR-011, a
 
 ## 26. Repository status refresh — 26 November 2026
 
-After the owner decisions and Task 03/04 overlays, the live repository contains 23 branches and 20 open draft PRs. PRs #21–#23 now represent additional Task 05C/05D logical-model and validation workstreams. Their existence does not approve the scientific model or close its validation gates.
+After the owner decisions and Task 03/04 overlays, the live repository contains 23 branches and 19 open draft PRs. PRs #21–#23 now represent additional Task 05C/05D logical-model and validation workstreams. Their existence does not approve the scientific model or close its validation gates.
 
 Current relevant heads:
 - PR #18: \`b28d1308ed7d9850d737e822fafddfb26bcbe3d1\` — Task 03/04 ODR-02 overlays.
 - PR #19: \`43d1c909055bbe321f8d9c6b163ae454ec6ac914\` — RTM, corrected ATP footer and audit addendum.
 - PR #20: \`1d2d5a74a7c8c495072e5c4bb0ac3732a6b1b1b0\` — ODR-02/03 and Task 01/architecture reconciliation.
 
-The PR #18 and PR #20 branches remain divergent (PR #20 is 39 commits ahead and 3 behind PR #18). Preserve both workstream histories and unique content; no blind merge/rebase is recommended. The repository still exceeds the seven-branch ceiling. No PR was merged or closed, no branch was created/deleted, and no protection setting was changed.
+The PR #18 and PR #20 branches remain divergent (PR #20 is 40 commits ahead and 3 behind PR #18). Preserve both workstream histories and unique content; no blind merge/rebase is recommended. The repository still exceeds the seven-branch ceiling. No PR was merged or closed, no branch was created/deleted, and no protection setting was changed.
+
+
+### 26.1 Snapshot correction — 26 November 2026
+
+The latest live PR query confirms **19 open PRs**, all draft, and **23 branches**. The latest PR #18/PR #20 comparison is diverged: PR #20 is 40 commits ahead and 3 behind PR #18. Re-fetch both before any integration or retirement decision.
