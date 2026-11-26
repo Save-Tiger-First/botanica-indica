@@ -534,3 +534,23 @@ The historical source-revision tables in the 23 November audit and related cross
 **No accepted ADR-001 through ADR-010 was changed. No test was executed. No independent scientific, legal, privacy, rights or security sign-off is claimed. No PR was merged/closed, no branch was created/deleted, and no repository protection or permission was changed.**
 
 **End of follow-up review — 26 November 2026.**
+
+
+### 11.6 Documentation-only reconciliation — 26 November 2026
+
+This append-only update records the follow-up edits made after the 11.4–11.5 review. It does not replace earlier snapshots or approve any proposal.
+
+| Item | Verified revision / disposition |
+|---|---|
+| PR #19 head after this update | `60274fb5f9c96d7884591d9a37edde8b897235da` (62 commits; 8 changed files; open/draft) |
+| Task 03 Acceptance Test Plan | v0.2; blob `21cb80e59656db1519d89dae7f10f7985b11568b`; eight proposed ATP-ODR-01–08 export-validation cases added; all remain Proposed / Not run |
+| Offline/Field Synchronization Specification | v0.2; blob `6a25055c51cd5d16e8a9da8964f5f5e2c9bfbc0a`; end marker corrected from v0.1 to v0.2; technical content otherwise unchanged |
+| Requirements Traceability Register | v0.3; blob `fbf938235f686c7e2a9959a179a3a1a57ca6c632`; 23 November readiness-audit SHA explicitly labelled a historical source snapshot, not the current audit revision |
+
+**ODR-01 test-design boundary:** ATP-ODR-01–08 are cross-cutting export/scientific validation cases, not a thirteenth Task 03 acceptance criterion. They link ODR-01 and EVT-27–EVT-44 to the relevant existing ACs and scientific requirements. The tests preserve the non-negotiable distinction between internal unknown/not-assessed state and a narrowly bounded external export interpretation. They do not create an internal absence assertion or negative Occurrence. The export profile, term pins, mapping, Event/Survey/Occurrence semantics, test oracles and specialist validation remain open prerequisites.
+
+**Standards research update (26 November 2026):** PostgreSQL 19.0 was released on 19 November 2026 and is supported; PostgreSQL 18.7 also remains supported. PostGIS 3.7.0, released 30 October 2026, lists PostgreSQL 14–19 compatibility. This corrects the prior architecture research snapshot that described PostgreSQL 18.7 as the current release. Compatibility is not a production selection: hosting support, extension packaging, drivers, operations, migration behavior and workload benchmarks remain open. Sources: PostgreSQL Versioning Policy (https://www.postgresql.org/support/versioning/); PostgreSQL 19 Release Notes (https://www.postgresql.org/docs/19/release.html); PostGIS 3.7.0 (https://www.postgis.net/2026/10/PostGIS-3.7.0/).
+
+**Live repository recheck:** 23 branches and 19 open PRs remain; the seven-branch ceiling is unmet. PR #19 is open/draft. The latest metadata read returned `mergeable=null` / `mergeable_state=unknown`; this is not evidence of a conflict or approval. PR #19 and PR #20 have no submitted reviews and no PR-triggered workflow runs at their currently inspected heads. Their proposals remain unapproved.
+
+**No decision or implementation change:** ODR-01 remains export-only. Accepted ADR-001–ADR-010 are unchanged; ADR-011 remains proposed. DR-01–DR-12 and LDM-01–LDM-16 remain review/validation obligations; DR-09 remains open. Task 05C remains unapproved and Task 05E/physical schema design remains not ready. No test was run, no scientific/legal/rights/privacy/security sign-off was obtained, and no API, application code, migration or physical schema was implemented.
