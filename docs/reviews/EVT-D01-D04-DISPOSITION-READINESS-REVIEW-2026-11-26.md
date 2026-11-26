@@ -347,3 +347,17 @@ All four decisions remain OPEN. B01, B02, B16, DR-07 and DR-09 remain open. EVT-
 - No physical schema, DDL, migration, API payload freeze or application code was created.
 
 **End of document — STF-BI-REV-EVT-003 v0.1.**
+
+## 12. Standards evidence correction — 26 November 2026
+
+This correction supersedes the older List/term-version descriptions in Sections 8.1–8.3 where they conflict with the current official TDWG List metadata checked in the Standards Version Verification Addendum (blob `85bf0e6e85025a6a8d19f463f743a728a0b6857a`).
+
+- Current official Darwin Core Conceptual Model and List metadata identify 2026-10-13 as the current issue version. The Conceptual Model is non-normative semantic guidance and does not mandate a database inheritance strategy.
+- Current List term metadata identifies `dwc:samplingEffort-2026-10-13` and `dwc:samplingProtocol-2026-10-13`, both Survey-scoped. The older 2023-06-28 and 2026-05-26 pins must not be used as the current terms.
+- `dwc:occurrenceStatus-2026-05-26` remains the relevant term version and recommends `detected` / `notDetected`; GBIF v1.0.2 examples use `present` / `absent`, so any mapping remains profile-specific and must be tested.
+- Humboldt term versions vary independently: notably `eco:Survey` and `eco:isTaxonomicScopeFullyReported` have 2026-10-13 term versions, while `eco:SurveyTarget` and `eco:isSurveyTargetFullyReported` remain 2026-05-26. The complete 2026-10-13 Humboldt snapshot still requires archival.
+- GBIF v1.0.2 §7.3 explicitly uses taxonomic-scope reporting completeness and declared target/excluded scope for its implicit-absence recipe. It does not state that `eco:taxonCompletenessReported=reportedComplete` is a universal additional prerequisite. Any stricter Botanica Indica requirement must be labelled as project policy.
+
+This correction changes standards evidence only. It does not change the recommended dispositions, close EVT-D01–D04, approve Candidate A, pass Task 05D or authorize Task 05E.
+
+Source: [EVT-D01–D04 Standards Version Verification Addendum](EVT-D01-D04-STANDARDS-VERSION-VERIFICATION-ADDENDUM-2026-11-26.md).
