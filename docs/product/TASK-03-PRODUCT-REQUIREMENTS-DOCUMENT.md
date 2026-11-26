@@ -709,3 +709,43 @@ The original DOCX remains the preserved source artifact. This Markdown transcrip
 
 **Status:** Working baseline / transcription for owner review. Not an accepted PRD and not implementation authorization.
 
+
+
+---
+
+# Owner decision alignment overlay — ODR-02 (26 November 2026)
+
+**Overlay status:** Owner-authorized logical boundary clarification; source v0.1 wording preserved  
+**Decision record:** `docs/decisions/ODR-02-STF-BOTANICA-LOGICAL-DOMAIN-BOUNDARY.md` on the PR #20 architecture workstream  
+**Governing prompt:** STF-AI-OPS-001 v1.0 on `docs/repository-audit-and-ai-operating-standard`
+
+## 1. Owner-confirmed interpretation of Section 6.2
+
+The project owner confirmed that STF owns genuinely reusable platform infrastructure and Botanica Indica owns botanical scientific semantics, domain records, workflows and scientific authority.
+
+Accordingly, the original Section 6.2 entries “Taxonomy service”, “Geography service”, “Evidence service” and “Observation service” are preserved as source wording and must not be read as transferring botanical domain ownership to STF.
+
+Interpret the boundary as follows:
+
+| Concern | STF shared-platform responsibility | Botanica Indica responsibility |
+|---|---|---|
+| Taxonomy | No botanical taxonomy authority or canonical botanical model | Taxon names, concepts, treatments, reconciliation and botanical source assertions |
+| Geography | Coordinate/geometry primitives, CRS conventions, spatial infrastructure and generic location mechanisms | Botanical distribution assertions, occurrence interpretation, habitat/biogeographic meaning and sensitive botanical location policy |
+| Evidence | Generic media/file storage, provenance metadata infrastructure and audit mechanisms | Botanical evidence model, evidence evaluation, identification support and scientific interpretation |
+| Observation | Generic contribution infrastructure only where truly reusable | Botanical observations, events, surveys, occurrences, field workflows and scientific governance |
+
+The original product requirements remain in force: taxonomy, geography, evidence and observation are essential Botanica Indica product capabilities. Their classification as domain responsibilities does not remove them from scope or defer them to a future STF platform.
+
+## 2. Important distinction
+
+A shared STF service may provide infrastructure consumed by a Botanica Indica module. That does not make the service the owner of botanical concepts, assertions, data quality, scientific workflows or determinations.
+
+A shared geographic primitive is not a botanical distribution model. A generic media service is not a botanical evidence engine. A common account system does not confer scientific-review authority.
+
+## 3. Status and limits
+
+This overlay records the owner's logical boundary decision only. It does not accept the PRD, change its 19 original functional requirement identifiers, 12 acceptance criteria or 7 non-goals, amend ADR-001 through ADR-010, accept ADR-011, approve a physical schema, or authorize implementation.
+
+The original Task 03 v0.1 source text and its requirement IDs remain preserved. Future canonical PRD revisions must reconcile Section 6.2 and any related service-boundary language against ODR-02 without deleting requirements or silently changing scope.
+
+**Status:** PRD remains a working baseline / transcription for owner review, not an accepted requirements baseline.

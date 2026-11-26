@@ -495,3 +495,48 @@ The Full Product Vision and Capability Blueprint in PR #17 is a higher-level pro
 
 **Status:** Working baseline / transcription for owner review. Not an accepted architecture baseline, vendor selection, procurement approval or implementation authorization.
 
+
+
+---
+
+# Owner decision alignment overlay — ODR-02 (26 November 2026)
+
+**Overlay status:** Owner-authorized logical boundary clarification; source v0.1 wording preserved  
+**Decision record:** `docs/decisions/ODR-02-STF-BOTANICA-LOGICAL-DOMAIN-BOUNDARY.md` on the PR #20 architecture workstream  
+**Governing prompt:** STF-AI-OPS-001 v1.0 on `docs/repository-audit-and-ai-operating-standard`
+
+## 1. Owner-confirmed interpretation of the decision summary and Section 3
+
+The project owner confirmed that STF owns genuinely reusable platform infrastructure and Botanica Indica owns botanical scientific semantics, domain records, workflows and scientific authority.
+
+The original Task 04 decision summary and Section 3 are preserved as source text. Where the summary places taxonomy in the shared STF layer, read that as a historical source inconsistency, not as a current domain-ownership decision.
+
+| Concern | STF shared-platform responsibility | Botanica Indica responsibility |
+|---|---|---|
+| Identity/access | Authentication, authorization mechanisms, account and organization foundations | Domain-specific roles, scientific qualifications and workflow permissions |
+| Media | Secure upload, object storage, processing and delivery infrastructure | Botanical evidence interpretation, contribution context and scientific records |
+| Taxonomy | No botanical taxonomy authority or canonical botanical model | Taxon names, concepts, treatments, source reconciliation and botanical knowledge |
+| Geography | Common coordinate/geometry handling, CRS conventions and generic spatial primitives | Botanical distribution, habitat interpretation, occurrence evidence and sensitive botanical locations |
+| Search | Generic search infrastructure, indexing lifecycle and shared query mechanisms | Taxonomic matching, scientific-name resolution, botanical retrieval and candidate ranking |
+| Audit/observability | Platform security events, infrastructure telemetry and operational audit mechanisms | Scientific determination history, expert review, taxonomy changes and domain audit meaning |
+
+## 2. Decision-status correction
+
+Task 04's technology matrix and concluding “Adopt” wording remain preserved historical source material. They do not constitute a new owner-approved technology selection, vendor procurement decision, deployment topology or architecture freeze.
+
+The current governing status remains:
+
+- ADR-001 through ADR-010 are the accepted architecture decisions and remain unchanged.
+- ADR-011 remains a proposal and is not accepted by ODR-02.
+- PostgreSQL/PostGIS remains a leading relational/spatial candidate; physical schema design remains blocked by scientific-model gates.
+- Search engine, cloud/provider, object storage provider, queue/event infrastructure, identity provider, orchestration and web framework remain subject to evidence-based evaluation and explicit decisions.
+- Logical domain boundaries do not mandate separate microservices, repositories, databases, teams or legal entities; ADR-002 and the modular-monolith guardrail remain in force.
+- The proposed offline/field synchronization specification must be linked and validated as a companion architecture; it is not an accepted implementation specification.
+
+## 3. Status and limits
+
+This overlay records the owner's logical boundary decision only. It does not accept Task 04 as a canonical architecture baseline, amend ADR-001 through ADR-010, accept ADR-011, resolve DR-01–DR-12 or LDM-01–LDM-16, approve Task 05C/05D/05E, authorize physical schema design or authorize implementation.
+
+The original Task 04 v0.1 source wording remains preserved. Future canonical architecture revisions must reconcile the shared/domain table and opening decision summary against ODR-02 while preserving historical candidate analysis and explicit decision status.
+
+**Status:** Task 04 remains a working baseline / transcription for owner review, not an accepted architecture baseline or implementation authorization.
