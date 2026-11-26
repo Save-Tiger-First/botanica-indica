@@ -1,8 +1,8 @@
 # Botanica Indica — Full System Architecture and Repository Engineering Plan
 
 **Document ID:** STF-BI-ARCH-PLAN-001  
-**Version:** 0.2 — Proposed architecture and source-inventory reconciliation  
-**Prepared:** 23 November 2026  
+**Version:** 0.3 — Proposed architecture, source and standards revalidation  
+**Prepared:** 23 November 2026; revalidated 26 November 2026  
 **Status:** Proposed for project-owner review; not an accepted architecture baseline or implementation authorization  
 **Decision authority:** Save Tiger First project owner  
 **Repository:** `Save-Tiger-First/botanica-indica`  
@@ -938,3 +938,44 @@ External technical references checked on 20 November 2026. These support archite
 | Production deployment | Not present / not claimed |
 
 **End of proposed architecture plan — STF-BI-ARCH-PLAN-001, Version 0.2.**
+
+
+### 2.5 Live source, branch and standards revalidation — 26 November 2026
+
+This section supersedes the 23 November branch/PR counts and current-head claims in §§2.1–2.4 where they differ. Earlier snapshots remain historical records.
+
+**Repository state re-fetched from GitHub:**
+
+| Item | Verified current state |
+|---|---|
+| Repository | `Save-Tiger-First/botanica-indica` |
+| Branches | 23 total; seven-branch ceiling exceeded by 16 |
+| Open PRs | 19; all open PRs in the live list are drafts |
+| `main` | `6f2f51da093caf8183fde386dbec707cc6046d27` |
+| `develop` | `f165ecb9b4d9de115c02327cf779982b7ef4bbd4` |
+| `staging` | `f165ecb9b4d9de115c02327cf779982b7ef4bbd4` |
+| PR #19 | Open/draft; head `b6cf5e08a87763c52a22a336f99d68ca3a4b9ee9` after documentation reconciliation; base `develop` |
+| PR #20 | Open/draft; head remains `41883521b1d48a13c12bd63b6806162e3c927399`; base `develop` |
+| PR #16 | Open/draft; governing prompt branch remains `16fd00e0e6719026a9c937c19c7409b13eb35f98` |
+
+PR #19 and PR #20 remain independent, diverged workstreams. The comparison of PR #19 and PR #20 has `develop` as the merge base, with PR #20 32 commits ahead and 59 commits behind PR #19 at the pre-update comparison. No file paths overlap among PR #17–#20, but that does not establish semantic compatibility or safe integration. No merge rehearsal was run. GitHub's PR #19 mergeability value was null/unknown after the latest documentation update; PR #20's mergeability is a transient metadata field, not acceptance. Both PR #19 and PR #20 have no submitted reviews and no PR-triggered workflow runs at the inspected heads.
+
+**Current PR #19 document revisions relevant to this plan:**
+
+| Source | Ref | Blob SHA | Status |
+|---|---|---|---|
+| Requirements Traceability Register v0.3 | `docs/requirements-traceability-register` | `fbf938235f686c7e2a9959a179a3a1a57ca6c632` | Proposed; historical audit snapshot labelled; ODR-01 test link recorded |
+| Task 03 Acceptance Test Plan v0.2 | `docs/requirements-traceability-register` | `21cb80e59656db1519d89dae7f10f7985b11568b` | Proposed; 66 original AC test cases plus 8 cross-cutting ODR-01 cases; all not run |
+| Offline/Field Synchronization Specification v0.2 | `docs/requirements-traceability-register` | `6a25055c51cd5d16e8a9da8964f5f5e2c9bfbc0a` | Proposed; version footer corrected |
+| PR #19 Integration Audit | `docs/requirements-traceability-register` | `fb872bba5555e9bf9aef7b350835d1ede4bd28dc` | Proposed audit; follow-up appended |
+
+**PostgreSQL/PostGIS research correction:** The 21 November baseline audit's statement that PostgreSQL 18.7 was the current release is now stale. PostgreSQL 19.0 was released 19 November 2026 and is supported; PostgreSQL 18.7 remains supported. PostGIS 3.7.0 (released 30 October 2026) lists compatibility with PostgreSQL 14–19. Therefore PostgreSQL 19 + PostGIS 3.7 is a technically compatible candidate combination at the upstream release level. It is not yet a technology decision or deployment recommendation: verify managed-service availability, extension packaging, driver/ORM compatibility, backup/restore, migration behavior, operational support, security patch cadence and workload performance before selection. A conservative production choice may still be PostgreSQL 18.7 if provider maturity or ecosystem compatibility warrants it; compare supported versions rather than automatically choosing the newest major.
+
+Sources checked 26 November 2026:
+- PostgreSQL Versioning Policy: https://www.postgresql.org/support/versioning/ — PostgreSQL 19.0 and 18.7 are both supported.
+- PostgreSQL 19 Release Notes: https://www.postgresql.org/docs/19/release.html — release date 19 November 2026.
+- PostGIS 3.7.0 release: https://www.postgis.net/2026/10/PostGIS-3.7.0/ — PostgreSQL 14–19 compatibility; check GEOS/PROJ dependencies and breaking changes.
+
+**Architecture recommendation remains unchanged:** preserve PostgreSQL/PostGIS as leading candidates; do not select a production version or provider in this document. Keep the domain-oriented modular monolith, API-first contracts, Flutter under ADR-001, TypeScript/Python role separation, derived/rebuildable search and AI artifacts, and no premature microservices/Kubernetes. Physical schema design remains blocked by scientific-model validation.
+
+**Branch governance:** the 23-branch inventory remains non-conformant. No new branch is authorized. The four existing workstream destinations remain the only approved consolidation destinations. Preserve all unique content, including PRs #21–#23 Task 05C/05D alternatives, before any branch retirement; do not delete or close them on the basis of age or apparent supersession.
