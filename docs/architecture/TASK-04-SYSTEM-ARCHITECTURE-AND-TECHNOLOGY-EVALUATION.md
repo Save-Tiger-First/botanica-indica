@@ -502,7 +502,7 @@ The Full Product Vision and Capability Blueprint in PR #17 is a higher-level pro
 # Owner decision alignment overlay — ODR-02 (26 November 2026)
 
 **Overlay status:** Owner-authorized logical boundary clarification; source v0.1 wording preserved  
-**Decision record:** `docs/decisions/ODR-02-STF-BOTANICA-LOGICAL-DOMAIN-BOUNDARY.md` on the PR #20 architecture workstream  
+**Decision record:** [ODR-02 — STF / Botanica Indica Logical Domain Boundary](https://github.com/Save-Tiger-First/botanica-indica/blob/64664c398dcb74c99cdbb9252d3e41d68d36b17f/docs/decisions/ODR-02-STF-BOTANICA-LOGICAL-DOMAIN-BOUNDARY.md) (PR #20 architecture workstream; pinned to commit `64664c398dcb74c99cdbb9252d3e41d68d36b17f`)  
 **Governing prompt:** STF-AI-OPS-001 v1.0 on `docs/repository-audit-and-ai-operating-standard`
 
 ## 1. Owner-confirmed interpretation of the decision summary and Section 3
