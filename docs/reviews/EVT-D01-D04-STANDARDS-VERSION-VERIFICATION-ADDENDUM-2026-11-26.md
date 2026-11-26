@@ -61,13 +61,13 @@ The directly opened official page `https://dwc.tdwg.org/cm/` rendered:
 
 Its content states that the Conceptual Model is a high-level semantic framework, does not prescribe formal predicates, does not mandate a particular implementation technology, and is not a strict system blueprint. All sections other than the document-status section are non-normative.
 
-The page's currently indexed metadata, however, reports:
+The current official TDWG search result for the latest Conceptual Model reports:
 
 - Date version issued: 2026-10-13
 - This version: `http://rs.tdwg.org/dwc/doc/cm/2026-10-13`
 - Previous version: 2026-05-26.
 
-The exact versioned 2026-10-13 URI could not be opened in this retrieval session. Therefore the latest issue metadata is verified as a source-reported metadata result, but a full content-level comparison of 2026-05-26 and 2026-10-13 is not completed.
+However, the opened current landing page rendered the 2026-05-26 document. The separately indexed exact 2026-05-26 version page reports that it was replaced by a 2026-09-17 version, creating a further discrepancy with the current landing-page metadata that identifies 2026-10-13 as latest and 2026-05-26 as previous. The exact 2026-10-13 versioned URI could not be opened in this retrieval session. Therefore, **2026-10-13 is the latest version reported by current official search metadata, but its complete content has not been directly inspected**. The 2026-05-26 content is the version whose semantic text was directly inspected. Do not collapse these two evidence types.
 
 ### 3.2 Semantic content available from the directly opened model
 
@@ -93,8 +93,10 @@ The accessible Conceptual Model content says:
 
 Sources:
 - https://dwc.tdwg.org/cm/
-- https://rs.tdwg.org/dwc/doc/cm/2026-05-26
+- https://dwc.tdwg.org/cm/2026-05-26.html
 - https://rs.tdwg.org/dwc/doc/cm/2026-10-13
+- https://dwc.tdwg.org/list/ (current indexed version metadata: 2026-10-13)
+- https://dwc.tdwg.org/terms/ (current Quick Reference Guide; not itself part of the standard)
 
 ## 4. Humboldt hierarchical-event guidance — exact 2026-10-13 version located
 
@@ -128,12 +130,7 @@ Source:
 
 ## 5. Darwin Core List and term-level version pins
 
-The directly opened List of Terms page currently renders:
-
-- Date version issued: 2026-05-26
-- This version: `http://rs.tdwg.org/dwc/doc/list/2026-05-26`
-
-The official page's latest-version link points to the abstract latest resource, but opening it returned a cache miss. Current official term search results nevertheless show multiple individual term versions issued 2026-10-13. This means the page header, the latest-version metadata and individual term version dates must be tracked separately.
+Current official TDWG search results identify the Darwin Core List of Terms version issued 2026-10-13, with version IRI `http://rs.tdwg.org/dwc/doc/list/2026-10-13` and previous version 2026-05-26. The opened HTML page and core-namespace terms page still rendered 2026-05-26 headers/snapshots during this session. The exact 2026-10-13 List resource was not successfully opened. Thus the latest issue/version metadata is verified as current official indexed metadata, while the full 2026-10-13 list content was not directly inspected. Current official term results do expose individual 2026-10-13 term-version IRIs and definitions. Keep the document issue date, namespace snapshot date and each term-version date separate.
 
 ### 5.1 Verified term-level pin
 
@@ -164,7 +161,7 @@ Source:
 
 The directly opened current Humboldt terms page renders a 2026-05-26 list header. The versioned 2026-05-26 snapshot is explicitly marked superseded and says it was replaced by the 2026-10-13 snapshot. The exact 2026-10-13 full list URI could not be opened.
 
-The following term-level facts are supported by current official term results and/or the 2026-05-26 snapshot's explicit replacement metadata:
+The following term-level facts are supported by the current official Quick Reference Guide, current indexed List results, and/or the 2026-05-26 snapshot's explicit replacement metadata:
 
 | Term | Verified term-version position | Design relevance |
 |---|---|---|
@@ -175,9 +172,9 @@ The following term-level facts are supported by current official term results an
 | `eco:isSamplingEffortReported` | 2024-02-28 version is superseded by 2026-10-13 | Verify how current reporting semantics interact with the new `dwc:samplingEffort` term |
 | `eco:isAbsenceReported` | 2026-10-13 term version appears in the current official List result | Export completeness/absence declaration needs a pinned version |
 
-The current quick reference exposes an updated `eco:Survey` definition: a Survey is an Event intentionally designed to characterize a defined biotic target or domain so resulting Occurrences can be interpreted collectively for ecological/monitoring inference, rather than merely documenting individual observations or gathered material. This is materially richer than the older short definition “a biotic survey or inventory.”
+The current Darwin Core Quick Reference Guide (a current recommended-terms aid, explicitly not itself part of the standard) defines `eco:Survey` as a `dwc:Event` intentionally designed to characterize a defined biotic target or domain so resulting `dwc:Occurrences` can be interpreted collectively to support ecological and monitoring inference, rather than merely documenting individual observations or gathered material. This is materially richer than the older `eco:Survey-2026-05-26` definition “A biotic survey or inventory.” The 2026-05-26 Humboldt snapshot marks that Survey term version superseded and points to `Survey-2026-10-13`.
 
-The updated definition reinforces that Botanica Indica should not label every casual observation or uploaded photograph a Survey. A Survey is a deliberately designed activity with an inferential purpose. Individual observations can still exist without belonging to a Survey.
+The Quick Reference definition is current guidance for use, but the exact `Survey-2026-10-13` term-version record was not separately opened in this session. Pin that exact term-version IRI in the evidence bundle. The design implication is nevertheless clear enough for a requirement review: Botanica Indica should not label every casual observation or uploaded photograph a Survey. A Survey is an intentionally designed activity with an inferential purpose. Individual observations can exist without belonging to a Survey.
 
 ### Disposition
 
@@ -188,9 +185,9 @@ The updated definition reinforces that Botanica Indica should not label every ca
 
 Sources:
 - https://rs.tdwg.org/eco/terms.htm
-- https://rs.tdwg.org/eco/version/terms/2026-05-26.htm
-- https://eco.tdwg.org/terms/
-- https://eco.tdwg.org/list/
+- https://rs.tdwg.org/eco/version/terms/2026-05-26.htm (explicitly superseded by 2026-10-13 snapshot)
+- https://rs.tdwg.org/eco/version/terms/2026-10-13 (exact full snapshot could not be opened)
+- https://dwc.tdwg.org/terms/ (current Quick Reference Guide, including current Survey and SurveyTarget guidance)
 
 ## 7. GBIF survey guide — confirmed export semantics
 
@@ -249,21 +246,22 @@ EVT-D01–D04 remain open. The standards findings support the preferred working 
 
 | ID | Severity | Finding | Disposition |
 |---|---|---|---|
-| STD-01 | Major | Darwin Core Conceptual Model latest metadata (2026-10-13) conflicts with directly rendered page content (2026-05-26); exact 2026-10-13 content not compared | Open; archive exact version and compare |
+| STD-01 | Major | Current indexed metadata identifies the Conceptual Model as 2026-10-13, but the rendered page exposes 2026-05-26 and the old version page reports replacement by 2026-09-17 | Open; retrieve and compare exact versioned resources |
 | STD-02 | Resolved at metadata level | Hierarchical-event guide current version is 2026-10-13; Section 3 is normative | Version/date resolved; preserve full source evidence before final compliance claim |
-| STD-03 | Major | Humboldt term-list rendered snapshot is 2026-05-26 but explicitly superseded by 2026-10-13; exact 2026-10-13 list not retrieved | Open; capture exact snapshot |
-| STD-04 | Major | New core `dwc:samplingEffort` and `dwc:samplingProtocol` term versions dated 2026-10-13 need crosswalk against current dictionary and Humboldt fields | Open; term-by-term crosswalk |
-| STD-05 | Major | Updated `eco:Survey` definition changes the level of intentionality/inferential purpose implied by Survey | Open; review product/domain boundary |
-| STD-06 | Resolved at term level | `dwc:occurrenceStatus-2026-05-26` recommends `detected/notDetected`; GBIF examples use `present/absent` | Keep explicit profile mapping requirement |
-| STD-07 | Open | `SurveyTargetResult` vs `SurveyTargetAssessment` and authoritative non-detection state remain unresolved | EVT-D04/B16 specialist decision |
-| STD-08 | Open | Internal multiple-Survey reporting vs one Event per DwC-A Occurrence row | Decide internal identity and loss-aware export mapping |
-| STD-09 | Open | Candidate A still has incompatible Event representations | Canonical ERD and cardinality reconciliation after owner approval |
+| STD-03 | Major | Current indexed Darwin Core List is 2026-10-13, while rendered core term page exposes 2026-05-26 | Open; capture exact 2026-10-13 List snapshot |
+| STD-04 | Major | Humboldt 2026-05-26 term snapshot is explicitly superseded by 2026-10-13; current Quick Reference exposes updated Survey definition and current terms | Open; capture exact 2026-10-13 snapshot and pin terms |
+| STD-05 | Major | Current Survey definition requires intentional design for ecological/monitoring inference, unlike the older short definition | Review product/domain boundary; do not classify casual observation as Survey |
+| STD-06 | Major | New core `dwc:samplingEffort` and `dwc:samplingProtocol` term versions dated 2026-10-13 need crosswalk against Humboldt effort fields | Open; term-by-term crosswalk |
+| STD-07 | Resolved at term level | `dwc:occurrenceStatus-2026-05-26` recommends `detected/notDetected`; GBIF examples use `present/absent` | Keep explicit profile mapping requirement |
+| STD-08 | Open | `SurveyTargetResult` vs `SurveyTargetAssessment` and authoritative non-detection state remain unresolved | EVT-D04/B16 specialist decision |
+| STD-09 | Open | Internal multiple-Survey reporting vs one Event per DwC-A Occurrence row | Decide internal identity and loss-aware export mapping |
+| STD-10 | Open | Candidate A still has incompatible Event representations | Canonical ERD and cardinality reconciliation after owner approval |
 
 ## 10. Recommendations
 
 1. Keep EVT-D01–D04 as the preferred working hypotheses for specialist validation.
 2. Do not rewrite Candidate A or Task 05B yet.
-3. Build a compact, pinned standards evidence bundle containing the exact 2026-10-13 Conceptual Model, hierarchical-event guide, Darwin Core List, Humboldt term list, and individual relevant term metadata.
+3. Build a compact, pinned standards evidence bundle containing the exact 2026-10-13 Conceptual Model, hierarchical-event guide, Darwin Core List, Humboldt term list, and individual relevant term metadata. Current indexed metadata is useful but is not a substitute for preserving the exact versioned resource content.
 4. Produce a term-level crosswalk for `eco:Survey`, `eco:SurveyTarget`, all relevant target-scope terms, `eco:isSurveyTargetFullyReported`, `eco:isTaxonomicScopeFullyReported`, `eco:isAbsenceReported`, `eco:isSamplingEffortReported`, `dwc:samplingEffort`, `dwc:samplingProtocol`, and `dwc:occurrenceStatus`.
 5. Review the internal definition of Survey against the updated 2026-10-13 definition. Casual observations must not be forced into Survey entities.
 6. Keep the distinction between target-level completeness and taxonomic-scope completeness. They are not interchangeable.
@@ -273,7 +271,7 @@ EVT-D01–D04 remain open. The standards findings support the preferred working 
 
 ## 11. Current status and non-actions
 
-- DR-09: partially resolved, remains OPEN.
+- DR-09: partially resolved, remains OPEN. Current indexed metadata identifies 2026-10-13 versions for the Conceptual Model and Darwin Core List; direct rendered content and exact version resources remain inconsistent or inaccessible.
 - EVT-D01–D04: OPEN; preferred working direction only.
 - Candidate A: NOT APPROVED.
 - Candidate B: preserved alternative.
