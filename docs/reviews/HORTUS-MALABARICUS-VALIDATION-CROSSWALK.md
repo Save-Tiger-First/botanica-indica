@@ -2,12 +2,13 @@
 
 - **Project:** Botanica Indica — Save Tiger First
 - **Document type:** Cross-document validation crosswalk
-- **Version:** 0.1
+- **Version:** 0.2
 - **Status:** Proposed review aid; no model approval or test execution
-- **Prepared:** 21 November 2026
+- **Prepared:** 23 November 2026
 - **Branch:** `review/scientific-data-model-review-pack`
 - **Related PR:** [PR #9](https://github.com/Save-Tiger-First/botanica-indica/pull/9)
 - **Related case study:** [Hortus Malabaricus — Historical Knowledge and Provenance Case Study](HORTUS-MALABARICUS-HISTORICAL-KNOWLEDGE-PROVENANCE-CASE-STUDY.md)
+- **Related fixture design:** [Hortus Malabaricus — Synthetic Validation Fixture Design](HORTUS-MALABARICUS-SYNTHETIC-VALIDATION-FIXTURE-DESIGN.md)
 
 > **Decision boundary:** This crosswalk maps the Hortus case-study questions to the existing Task 05B/05C/05D and scientific-review material. It does not create new domain entities, change an accepted ADR, approve Task 05C, close a blocker, authorize Task 05E, approve source ingestion or authorize use of traditional/community-held knowledge.
 
@@ -40,6 +41,8 @@ The following source revisions were fetched for this crosswalk. Reviewers must r
 | Task 05B Scientific Data Dictionary | `docs/task-05-data-dictionary` / PR #4 | `ddaa379d993fdf1f45684962930d16f06830ae43` | Field-level language, attribution, rights and source definitions |
 | Scientific Data Model Validation Matrix and Decision Register | PR #9 | `3a33dfe47657a96456f56c2f12a0b7d355b6c6a5` | Existing LDM and blocking-decision tests |
 | Event–Survey–Occurrence Decision and Validation Pack | PR #9 | `4a317c4c83317e10663ba374e9e6be3100a53431` | Historical collection/material and evidence context |
+| Hortus Malabaricus — Historical Knowledge and Provenance Case Study | PR #9 | `fb51670cab36eb9cbe22ab50b48294fb31f9b35b` | Historical contributors, language/script, rights and community-governance context |
+| Hortus Malabaricus — Synthetic Validation Fixture Design | PR #9 | `33b36cc31399a0407bb1bd9bb659edc4e2e05055` | HMF-01–HMF-08 fixture specifications and acceptance evidence |
 | Scientific Data Model Review Pack | PR #9 | `c11f4b58d0908742474d3e58b4ec0aa3739f7b99` | Existing model review findings |
 | ADR-004 — Data and Scientific Provenance | `main` | `75148aff6f8dfddfa8aa794b0cb064c62d6418a7` | Accepted provenance principles |
 | ADR-005 — Taxonomy Reconciliation | `main` | `b61dcf0b9ba58fc35da5cc7ba5edfbdd5f2909e4` | Accepted source-aware taxonomy principles |
@@ -57,7 +60,7 @@ The following source revisions were fetched for this crosswalk. Reviewers must r
 | HM-03 Same/related vernacular string in different contexts | Candidate A `TaxonName`, `TaxonNameUsage`, `TaxonConcept`; ADR-005; LDM-01–LDM-03 | **Strong conceptual coverage** | Test context-specific name usages and competing mappings; ensure matching strings never auto-merge usages or concepts |
 | HM-04 Historical name mapped to modern taxon | Candidate A `TaxonNameUsage`, `TaxonConceptMapping`, `ScientificAssertion`; ADR-005; B03/B04; LDM-01–LDM-03 | **Strong conceptual coverage** | Historical and modern treatments, mapping relation, source, evidence, asserted-by agent, date, confidence/uncertainty and reviewer outcome |
 | HM-05 Named and anonymous contributors | Candidate A `Agent`, `EvidenceItem`, `ProvenanceRecord`; Observation and assertion attribution; ADR-004/007 | **Partially covered; governance detail unclear** | Test named contributor, collective contributor, unknown contributor and source-anonymized contributor; separate public credit from internal identity; do not infer authority or consent |
-| HM-06 Historical medicinal-use statement | Candidate A `ScientificAssertion`, `EvidenceItem`, `EvidenceRelationship`; ADR-004/007 | **Generic assertion support; domain semantics unproven** | Test source-reported historical use with exact quotation/paraphrase locator, source date, language/translation, claim status and explicit non-equivalence to contemporary clinical efficacy |
+| HM-06 Historical medicinal-use statement | Candidate A `ScientificAssertion`, `EvidenceItem`, `EvidenceRelationship`; ADR-004/007 | **Generic assertion support; domain semantics unproven** | Test source-reported historical use with exact quotation/paraphrase locator, source date, language/translation and claim status; distinguish it from contemporary ethnobotanical reporting, pharmacological findings, clinical evidence, safety assessment and medical recommendation |
 | HM-07 Historical work vs modern scan/translation/plate rights | Candidate A `RightsRecord`, `MediaAsset`, `MediaDerivative`, `Source`; B08/B18; LDM-12/LDM-15; ADR-004/010 | **Strong policy coverage; asset-level fixture required** | Separate rights decisions for underlying work, physical copy, scan, modern translation, annotations, plate photograph, derivative, video and model-training purpose |
 | HM-08 Community governance / cultural interests | Candidate A `Agent`, `RightsRecord`, `ProvenanceRecord`; community-designated reviewer; B08/B13/B18; ADR-007 | **Principles present; operational representation unclear** | Qualified legal/community review of authority, permissions, customary protocols, access restrictions, attribution preferences, benefit-sharing, withdrawal and grievance workflows where applicable |
 | HM-09 Conflicting expert interpretations | Candidate A `ScientificAssertion`, `EvidenceRelationship`, `ExpertAssessment`, `TaxonConceptMapping`; LDM-01–LDM-03 and LDM-07; ADR-005/007 | **Strong conceptual coverage** | Two competing, attributable determinations with source/treatment versions, evidence and preserved dissent; no destructive overwrite |
@@ -157,11 +160,16 @@ Do not assume every historical plant name or every seventeenth-century publicati
 
 India-specific applicability requires qualified legal review of the actual resource, knowledge, parties, purpose, access, utilization, transfer and current law. This crosswalk is not legal advice and does not establish that any permission, exemption, community mandate or benefit-sharing arrangement exists.
 
+**Current-law currency note checked 23 November 2026:** the National Biodiversity Authority's official FAQ reports that the Biological Diversity (Amendment) Act, 2023 came into force on 1 April 2024; the Biological Diversity Rules, 2024 superseded the 2004 Rules; and the Biological Diversity (Amendment) Rules, 2025 were notified on 6 May 2025 and came into force on 1 November 2025. These dates are a currency pointer, not an assessment of whether any provision applies to a particular historical source, knowledge item, person, organization or proposed use. Re-check the Act, current Rules, notifications and applicable exemptions against the facts at the time of any proposed activity, with qualified Indian legal advice.
+
 Official references:
 - Nagoya Protocol Article 7: https://www.cbd.int/abs/text/articles?sec=abs-07
 - Nagoya Protocol Article 12: https://www.cbd.int/abs/text/articles?sec=abs-12
 - TCS List of Terms: https://tcs.tdwg.org/terms/
 - CARE Principles for Indigenous Data Governance: https://doi.org/10.5334/dsj-2020-043
+- National Biodiversity Authority — Biological Diversity Act/Rules FAQs (including 2024 Rules and 2025 amendment status): https://nbaindia.nic.in/about-us/faqs?page=0
+- India Code — Biological Diversity Act, 2002: https://www.indiacode.nic.in/indiacode/handle/123456789/2046?view_type=browse
+- Gazette of India — Biological Diversity (Amendment) Act, 2023: https://egazette.gov.in/WritereadData/2023/247815.pdf
 
 ## 8. Recommended reviewer decisions
 
@@ -185,3 +193,62 @@ Official references:
 - No community consent, rights clearance or legal determination is claimed.
 
 **Final disposition:** this crosswalk is a proposed validation aid. It identifies where the existing model appears capable, where capability is unproven, and what evidence would be needed before proposing a model change.
+
+
+## 10. Reconciliation record — 23 November 2026
+
+**Status:** Content reconciliation completed on the existing PR #9 branch. This is a documentation consolidation only; it does not approve the scientific model, accept a legal interpretation, execute a fixture or authorize Task 05E.
+
+### 10.1 Exact source copies compared
+
+| Copy | Ref | Blob SHA | Lines |
+|---|---|---|---:|
+| Main-branch crosswalk | `main` | `a3758743e090121a31cda9e6876f43ceb3caa3a0` | 188 |
+| PR #9 review-branch crosswalk | `review/scientific-data-model-review-pack` | `6b7fd454795607b3e93cc590e7ffa562884c0a9e` | 188 |
+
+A complete line-level comparison found that the two copies contain the same nine sections and the same HMF-01–HMF-08 fixture set. The differences are editorial wording, a more compact source table in the review-branch copy, and small variations in test descriptions. No separate model decision, additional fixture, new gap, reviewer outcome or legal permission was found exclusively in the review-branch copy.
+
+The main-branch copy was selected as the reconciliation base because it provides more explicit model boundaries, richer test descriptions, a source-purpose column, stronger provenance cautions and fuller India-specific legal qualification. The HM-06 test description was strengthened to include the more explicit distinction between historical-use claims and contemporary ethnobotanical reporting, pharmacological findings, clinical evidence, safety assessment and medical recommendations. The review-branch wording was not treated as a competing scientific decision.
+
+### 10.2 Source revisions re-fetched for this reconciliation
+
+| Source | Branch / PR | Current file blob SHA |
+|---|---|---|
+| AI Project Operating Prompt | `docs/repository-audit-and-ai-operating-standard` / PR #16 | `53add3894d0502827e584614c70ad09cadaa637d` |
+| Candidate A — Task 05C | `docs/task-05c-logical-data-model` / PR #5 | `b447796e7da0d08d96400812667a8e67e0696144` |
+| Candidate B — Task 05C alternative | `docs/task-05c-logical-database-model` / PR #21 | `239d7e9974bcb81b1154b54845a7b2d69c3775d6` |
+| Task 05B Scientific Data Dictionary | `docs/task-05-data-dictionary` / PR #4 | `ddaa379d993fdf1f45684962930d16f06830ae43` |
+| Scientific Data Model Validation Matrix | PR #9 | `3a33dfe47657a96456f56c2f12a0b7d355b6c6a5` |
+| Event–Survey–Occurrence Decision and Validation Pack | PR #9 | `4a317c4c83317e10663ba374e9e6be3100a53431` |
+| Scientific Data Model Review Pack | PR #9 | `c11f4b58d0908742474d3e58b4ec0aa3739f7b99` |
+| Historical Knowledge and Provenance Case Study | PR #9 | `fb51670cab36eb9cbe22ab50b48294fb31f9b35b` |
+| Synthetic Validation Fixture Design | PR #9 | `33b36cc31399a0407bb1bd9bb659edc4e2e05055` |
+| ADR-004 — Data and Scientific Provenance | `main` | `75148aff6f8dfddfa8aa794b0cb064c62d6418a7` |
+| ADR-005 — Taxonomy Reconciliation | `main` | `b61dcf0b9ba58fc35da5cc7ba5edfbdd5f2909e4` |
+| ADR-007 — Evidence and Expert Validation | `main` | `7ba4874b4175707b69dc3052822f8cbeb5384b0a` |
+| ADR-010 — Data Ingestion and Source Integration | `main` | `088e379513fe2c4b9471d857737f75dcdc3990cd` |
+
+These are file blob SHAs, not branch-head commit SHAs. Reviewers must re-fetch the exact source versions they eventually assess.
+
+### 10.3 Legal-source currency safeguard
+
+The existing Nagoya Protocol discussion was retained as a conditional scope caution, not converted into a legal conclusion. The Protocol's Article 7 and Article 12 wording was checked against the Convention on Biological Diversity Secretariat's official text. The Indian-law currency note records the National Biodiversity Authority's published status of the 2023 Act amendment, 2024 Rules and 2025 Rules amendment. Neither source check determines whether a particular historical work, knowledge item, access event or intended use falls within a legal regime.
+
+Official sources checked 23 November 2026:
+- Nagoya Protocol, Article 7: https://www.cbd.int/abs/text/articles?sec=abs-07
+- Nagoya Protocol, Article 12: https://www.cbd.int/abs/text/articles?sec=abs-12
+- National Biodiversity Authority — current legislation/rules FAQ: https://nbaindia.nic.in/about-us/faqs?page=0
+- India Code — Biological Diversity Act, 2002: https://www.indiacode.nic.in/indiacode/handle/123456789/2046?view_type=browse
+- Gazette of India — Biological Diversity (Amendment) Act, 2023: https://egazette.gov.in/WritereadData/2023/247815.pdf
+
+### 10.4 Decision and validation boundary
+
+- This reconciliation does not create or approve a new domain entity.
+- ADR-004, ADR-005, ADR-007 and ADR-010 remain accepted and unchanged.
+- Candidate A remains a proposed review candidate; Candidate B remains preserved as an alternative.
+- G-01–G-04 remain potential gaps requiring reviewer determination, not approved requirements.
+- HMF-01–HMF-08 remain proposed synthetic fixtures; none is claimed executed.
+- No historical source asset, scan, translation, illustration, audio/video or community-held knowledge was ingested.
+- No rights clearance, community authorization, benefit-sharing arrangement or legal determination is claimed.
+- Task 05C remains NOT APPROVED; Task 05E remains NOT READY.
+- PR #9 remains open/draft. This edit does not merge, retarget, close or mark the PR ready.
