@@ -995,3 +995,16 @@ The original full-detail Task 01 and Task 02 Project Library sources have now be
 **Cross-task continuity:** Task 03 and Task 04 source-preserving transcriptions remain on the existing PR #18 branch, docs/canonical-task-03-04-baselines. They have not been merged or copied into this PR #20 branch by this update. The four foundational tasks therefore have source-preserving repository records across PR #18 and PR #20, but are not yet consolidated into one reviewed baseline package.
 
 **Decision boundary:** Task 01's early shared-infrastructure list and Task 02's market/moat statements are interpreted through their separate proposed overlays. No source v0.1 wording was retroactively edited. No accepted ADR, product requirement, scientific model, technology selection, budget, partner commitment or implementation authorization is changed.
+
+
+## 2.7 Task 01–04 foundation reconciliation — 26 November 2026
+
+A source-based cross-document reconciliation is recorded in [Task 01–04 Foundation Baseline Reconciliation](../reviews/TASK-01-04-FOUNDATION-BASELINE-RECONCILIATION-2026-11-26.md), STF-BI-FND-001 v0.1.
+
+**Conclusion:** the four foundational tasks have a coherent strategic spine but are not yet an accepted or implementation-ready baseline. The critical unresolved issue is the shared STF versus Botanica Indica domain boundary: Task 01 §10, Task 03 §6.2 and Task 04's opening summary classify botanical taxonomy and other botanical services as shared, while the governing operating prompt and proposed Blueprint assign botanical semantics and scientific authority to Botanica Indica. Task 04 also contains decision-status ambiguity and requires an explicit link to the separate proposed offline/field synchronization specification.
+
+The current RTM has corrected the earlier identity/authentication capability mapping defect: identity is represented as an STF shared-platform cross-cutting capability without a BI-CAP identifier. The original 19 Task 03 requirement IDs, 12 acceptance criteria and 7 non-goals remain preserved; the 16 BI-CAP identifiers remain proposed.
+
+The report recommends preserving all source v0.1 documents, preparing controlled boundary/decision-status overlays after owner review, refreshing Task 02 market evidence separately, retaining scientific/rights/privacy gates and keeping Task 05E/physical schema design blocked. No accepted ADR, product requirement or scientific model was changed by the review.
+
+**Repository snapshot:** PRs #17–#20 remain open/draft; PR #18 and PR #20 have diverged from their common develop base. The repository has 23 branches against the seven-branch ceiling. No merge, branch retirement or repository setting change was performed.

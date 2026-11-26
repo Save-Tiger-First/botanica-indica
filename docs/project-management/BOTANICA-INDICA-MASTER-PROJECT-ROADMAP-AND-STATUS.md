@@ -525,3 +525,27 @@ The four foundational tasks are not yet in one consolidated branch. PR #18 remai
 - The next product-baseline task should reconcile all four original tasks as one connected package while preserving source text, overlays, provenance and accepted ADR boundaries.
 
 **No source v0.1 text was substantively rewritten. No accepted ADR or product requirement was changed. No market claims were re-certified. No independent review was obtained. No PR was merged, closed or retargeted, and no branch was created or deleted.**
+
+
+## 15. Task 01–04 foundation reconciliation — 26 November 2026
+
+**Review record:** [Task 01–04 Foundation Baseline Reconciliation](../reviews/TASK-01-04-FOUNDATION-BASELINE-RECONCILIATION-2026-11-26.md), STF-BI-FND-001 v0.1.
+
+### Current assessment
+
+The four foundational tasks have a coherent strategic direction but are not yet an accepted product/architecture baseline. The highest-priority issue is the shared STF versus Botanica Indica boundary: the original charter, PRD and Task 04 opening summary place botanical services such as taxonomy under STF shared infrastructure, while the governing operating prompt and proposed Blueprint assign botanical semantics, evidence, observations and scientific authority to Botanica Indica. The Task 04 source also needs an unambiguous decision-status overlay and an explicit link to the proposed offline synchronization specification.
+
+The current RTM has corrected the identity/authentication mapping defect by treating identity as an STF shared-platform cross-cutting capability without assigning a BI-CAP identifier. The original Task 03 19 functional IDs, 12 acceptance criteria and 7 non-goals remain preserved. The 16 BI-CAP identifiers are proposed, not approved.
+
+### Next gates
+
+1. Owner review of the STF/BI logical boundary and controlled Task 01/03/04 reconciliation.
+2. Reconcile Task 04 decision status and cross-reference the proposed offline/field synchronization specification.
+3. Correct the Task 03 Acceptance Test Plan v0.2 footer on the existing PR #19 branch; 74 cases remain proposed/not run.
+4. Refresh Task 02's market comparison and moat hypothesis with current, claim-level evidence before public or investment claims.
+5. Obtain qualified scientific, data-rights, privacy and security review; resolve the relevant Task 05C/05D blockers.
+6. Keep Task 05E, physical schema design and production implementation blocked until the required scientific-model evidence and approvals exist.
+
+### Repository governance
+
+PRs #17–#20 remain open/draft. PR #18 and PR #20 have diverged from their common \`develop\` base. The repository has 23 branches against the seven-branch ceiling. Preserve source histories and unique content; no blind rebase, merge or branch deletion is recommended.

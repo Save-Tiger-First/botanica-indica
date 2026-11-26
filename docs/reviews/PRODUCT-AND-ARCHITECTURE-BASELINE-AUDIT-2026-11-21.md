@@ -683,3 +683,25 @@ The source v0.1 wording remains separate from the proposed governance/alignment 
 - Do not interpret preliminary effort estimates as commitments.
 - Preserve PR #18 and its source material until an explicit integration and retirement decision.
 - No PR was merged/closed/retargeted, no branch was created/deleted, and no accepted ADR or product requirement was changed.
+
+
+## 24. Task 01–04 foundation baseline reconciliation — 26 November 2026
+
+The full source-based review is recorded in [Task 01–04 Foundation Baseline Reconciliation](TASK-01-04-FOUNDATION-BASELINE-RECONCILIATION-2026-11-26.md), STF-BI-FND-001 v0.1.
+
+**Overall status: NOT READY for formal baseline acceptance, architecture freeze or implementation authorization.**
+
+Key findings:
+- **Critical:** Task 01 §10, Task 03 §6.2 and Task 04's opening summary classify botanical taxonomy and related domain services as shared STF platform services. The governing operating prompt and proposed Blueprint place botanical taxonomy, evidence, observations, identification and scientific governance in Botanica Indica. Task 04 also contradicts itself by placing taxonomy/botanical geography in its Botanical Intelligence domain table.
+- **Major:** Task 04's concluding “Adopt” language is not aligned with its working-baseline status; it needs a clearer accepted/preferred/candidate/open/blocked decision summary.
+- **Major:** Task 03 observation wording and Task 04's historical model assumptions require alignment with the Task 05 distinction among Observation, Event, Survey, Occurrence, Organism, MaterialEntity and MediaAsset.
+- **Major:** offline synchronization is not fully specified in Task 04. A separate proposed Offline/Field Synchronization Specification v0.2 now exists with 36 proposed scenarios, but it remains unaccepted and untested.
+- **Major:** Task 02's competitive landscape and moat are historical hypotheses, not current verified market findings.
+- **Major:** rights, privacy, scientific-model and standards validation remain open.
+- **Minor:** Task 03 Acceptance Test Plan v0.2 has a stale v0.1 footer; it lists 74 proposed, unrun cases.
+
+The current RTM has corrected the previously reported identity/authentication mapping defect: identity is now represented as an STF shared-platform cross-cutting capability with no BI-CAP identifier. The original 19 Task 03 functional IDs, 12 acceptance criteria and 7 non-goals remain preserved; BI-CAP-01–BI-CAP-16 remain proposed.
+
+**Recommendation:** preserve the original v0.1 source transcriptions; obtain owner review of the logical domain boundary; prepare controlled Task 01/03/04 overlays or canonical revisions; explicitly link the offline companion specification; refresh market evidence separately; retain all scientific/rights/privacy gates. Do not proceed to architecture freeze, physical schema design or implementation based on this audit alone.
+
+Repository state reverified: 23 branches; PRs #17–#20 open/draft; PR #18 and #20 diverged from their common \`develop\` base; no submitted reviews or check runs on the inspected PR #18–#20 heads. No merge, closure, retargeting, branch creation/deletion, protection change, accepted ADR change, scientific-model change or implementation was performed.
