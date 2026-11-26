@@ -757,3 +757,18 @@ It must not be treated as an approved technical baseline:
 - No independent specialist review has been obtained.
 
 **Next gate:** agree the assessment/result ownership and Event identity pattern, then reconcile one canonical Candidate A ERD and update the fixture suite. Do not start physical database design before this gate is passed.
+
+
+## 20. Source-by-source reconciliation update — 26 November 2026
+
+**Status:** Proposed adviser synthesis; no scientific model or test outcome approved. The complete source-by-source assessment is [Task 05C / Task 05D — Source-by-Source Scientific Model Reconciliation](TASK-05C-TASK-05D-SOURCE-BY-SOURCE-RECONCILIATION-2026-11-26.md), STF-BI-REV-SM-003 v0.1.
+
+The current source files were re-fetched at exact refs. Candidate A blob: b447796e7da0d08d96400812667a8e67e0696144. Candidate B blob: 239d7e9974bcb81b1154b54845a7b2d69c3775d6. Task 05B conceptual architecture blob: a3255dcf2d1bd4dfa982b381b061051b6c2c8b0b. Task 05B dictionary blob: ddaa379d993fdf1f45684962930d16f06830ae43. Task 05D v3 blob: 0b9a009b1c543b2450758f659c97cae3802a2f94.
+
+**Consolidated finding:** Candidate A remains the stronger canonical review starting point, but it is not internally reconciled. Its original Event-to-Occurrence 1:M ERD/cardinality still conflicts with §18's Event identity / Occurrence specialization proposal. Candidate B remains useful for workflow and cardinality examples, but its Event-to-Occurrence 1:M model, generic Identification subject description and loose TCS mapping examples must not be imported wholesale.
+
+**Target/outcome finding:** Task 05B §16 and Candidate A §18 still describe SurveyTargetResult as an outcome-bearing record. Their later review sections and the 26 November focused recommendation propose SurveyTargetAssessment for assessment lifecycle and Occurrence for the taxon/organism-level outcome. Task 05D v3 EVT-36/EVT-37 still use SurveyTargetResult. The preferred review hypothesis is to keep assessment completeness and detection outcome distinct, with a typed non-taxonomic target outcome path still open.
+
+**Task 05D remains NOT PASSED.** EVT/LDM/FLD tests remain proposed and unexecuted. PR #11 remains diverged from Candidate A. DR-09, B01/B02/B16 and EVT-D01–D10 remain open. Task 05E remains NOT READY.
+
+No source model was edited, no tests were run, no PR lifecycle action was performed and no branch was created or deleted.

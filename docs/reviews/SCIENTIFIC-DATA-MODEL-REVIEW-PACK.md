@@ -707,3 +707,12 @@ The later re-check described above supersedes this earlier conclusion: latest in
 Latest indexed metadata from the official TDWG pages reports 2026-10-13 as the issued version of both the Darwin Core List of Terms and the Darwin Core Conceptual Model, with 2026-05-26 as the previous version. Direct HTML retrieval of the List page returned a header showing 2026-05-26 and previous version 2025-07-10; the core namespace term list at https://rs.tdwg.org/dwc/terms.htm reports a 2026-05-26 snapshot. Search-indexed content for the 2026-10-13 List includes individual term records modified on that date, but this does not mean every term changed then.
 
 The exact versioned documents and current term IRIs have not yet been retrieved and compared. DR-09 remains open and must not be closed by a date-only correction. Verify the exact versioned List, Conceptual Model, core-term list and relevant occurrenceStatus term resources. Distinguish document version date, namespace snapshot date, and individual term Modified / term-version IRI. Sources: https://dwc.tdwg.org/list/ ; https://dwc.tdwg.org/cm/ ; https://rs.tdwg.org/dwc/terms.htm .
+
+
+## 4.10 Source-by-source Task 05C / Task 05D reconciliation — 26 November 2026
+
+A fresh source-by-source review has been recorded in [STF-BI-REV-SM-003 — Task 05C / Task 05D Source-by-Source Scientific Model Reconciliation](TASK-05C-TASK-05D-SOURCE-BY-SOURCE-RECONCILIATION-2026-11-26.md).
+
+The current review confirms Candidate A is the stronger review starting document, not an approved model. Candidate B remains a preserved source for selected workflow and cardinality examples. Candidate A's original Event-to-Occurrence 1:M representation still conflicts with its later Event identity / Occurrence specialization proposal. Task 05B §16 and Candidate A §18 still use outcome-bearing SurveyTargetResult, while later review recommendations propose SurveyTargetAssessment for lifecycle/completeness and Occurrence for organismal/taxonomic outcome. Task 05D v3 EVT-36/EVT-37 still need alignment after owner/specialist disposition.
+
+The review adds a required test for an Occurrence reported by multiple Surveys because the internal SurveyOccurrenceReport relationship and GBIF's single-survey-Event export mapping may not be equivalent. DR-09, B01/B02/B16 and EVT-D01–D10 remain open. Task 05D remains NOT PASSED; Task 05E remains NOT READY. No model source document was edited and no tests were executed.

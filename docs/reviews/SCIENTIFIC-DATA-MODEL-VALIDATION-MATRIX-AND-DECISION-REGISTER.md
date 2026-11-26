@@ -538,3 +538,24 @@ ODR-01 remains an owner-authorized, export-only policy. Its conditions must be r
 6. **Standards correction:** the directly retrieved Darwin Core Conceptual Model is version 2026-05-26; search-indexed metadata suggesting 2026-10-13 remains unverified at the exact resource level. The hierarchical-event guidance is listed as 2026-10-13. Individual term versions must be pinned separately; `dwc:occurrenceStatus-2026-05-26` recommends `detected/notDetected`.
 
 **Disposition:** B01, B02, B16 and DR-09 remain open. Candidate A and Candidate B remain unapproved. EVT/LDM/FLD cases remain unexecuted unless run evidence is recorded. Task 05E remains NOT READY.
+
+
+## 11. Source-by-source Task 05C / Task 05D reconciliation — 26 November 2026
+
+**Review record:** [STF-BI-REV-SM-003 — Task 05C / Task 05D Source-by-Source Scientific Model Reconciliation](TASK-05C-TASK-05D-SOURCE-BY-SOURCE-RECONCILIATION-2026-11-26.md).
+
+Current source blobs:
+- Task 05 conceptual architecture: a3255dcf2d1bd4dfa982b381b061051b6c2c8b0b.
+- Task 05B dictionary: ddaa379d993fdf1f45684962930d16f06830ae43.
+- Candidate A: b447796e7da0d08d96400812667a8e67e0696144.
+- Candidate B: 239d7e9974bcb81b1154b54845a7b2d69c3775d6.
+- Task 05D v3: 0b9a009b1c543b2450758f659c97cae3802a2f94.
+
+**Current recommendation, not decision:**
+1. Retain Candidate A as the canonical review starting document; preserve Candidate B as a selective source for compatible workflows/cardinality examples.
+2. Reconcile Candidate A's original Event-to-Occurrence 1:M ERD/cardinality with its later Event identity / Occurrence specialization proposal.
+3. Resolve SurveyTargetResult versus SurveyTargetAssessment. Preferred review direction: assessment lifecycle/completeness in SurveyTargetAssessment; organismal/taxonomic detection result in Occurrence; SurveyOccurrenceReport links Survey to Occurrence; non-taxonomic targets require a typed assertion/measurement result path.
+4. Correct Task 05D EVT-36/EVT-37 expected outcomes only after owner/specialist disposition.
+5. Keep TCS mappings, IdentificationSubject total participation, GBIF multi-Survey export mapping, DR-09 term/profile pinning and all synthetic test execution as open validation obligations.
+
+**Status:** Candidate A and B remain unapproved. Task 05D remains NOT PASSED. EVT-D01–D10, B01/B02/B16, DR-02/DR-07/DR-09 and LDM/FLD fixtures remain open or unexecuted. Task 05E remains NOT READY. No test execution or independent specialist sign-off is claimed.
