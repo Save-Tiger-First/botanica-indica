@@ -449,8 +449,8 @@ This section is the current status snapshot and supersedes earlier 23 November s
 | `develop` | `f165ecb9b4d9de115c02327cf779982b7ef4bbd4` |
 | `staging` | `f165ecb9b4d9de115c02327cf779982b7ef4bbd4` |
 | PR #16 | Open/draft; head `16fd00e0e6719026a9c937c19c7409b13eb35f98` |
-| PR #19 | Open/draft; head `b6cf5e08a87763c52a22a336f99d68ca3a4b9ee9`; 63 commits; 8 changed files |
-| PR #20 | Open/draft; head `3fcc2b5667cdf6e993b1f05917f24c927aa6f68e`; 34 commits; 4 changed files |
+| PR #19 | Open/draft; head `a068bd2be88c2b9a685b274318b7c9de9e6b6eda`; 65 commits; 8 changed files at the pre-roadmap-write check |
+| PR #20 | Open/draft; head `42ac21f9a3f09d03966d80969465c0c5aa1c676f`; 35 commits; 4 changed files at the pre-roadmap-write check |
 
 The PR #20 head above is the commit created by the audit update immediately preceding this roadmap update; re-fetch live metadata after this commit to obtain the final PR head. GitHub returned mergeability unknown/null for PR #19 and PR #20 at the last status check. This is neither evidence of conflict nor approval. No submitted reviews or PR-triggered workflow runs were found for PR #19 or PR #20 at the inspected heads.
 
@@ -464,9 +464,9 @@ The branch list contains 23 branches, including PRs #21–#23 preserving alterna
 
 | Document | Branch | Blob SHA | Status |
 |---|---|---|---|
-| Task 03 Acceptance Test Plan v0.2 | `docs/requirements-traceability-register` | `21cb80e59656db1519d89dae7f10f7985b11568b` | 66 original AC cases plus 8 proposed cross-cutting ODR-01 cases; all 74 not run |
+| Task 03 Acceptance Test Plan v0.2 | `docs/requirements-traceability-register` | `76f3fa8d24baa022fa3056c0694c2462876f5f2a` | 66 original AC cases plus 8 proposed cross-cutting ODR-01 cases; RTM source SHA refreshed; all 74 not run |
 | Offline/Field Synchronization Specification v0.2 | same | `6a25055c51cd5d16e8a9da8964f5f5e2c9bfbc0a` | Footer corrected to v0.2; no semantic change |
-| Requirements Traceability Register v0.3 | same | `fbf938235f686c7e2a9959a179a3a1a57ca6c632` | Historical audit snapshot labelled; proposed, not accepted |
+| Requirements Traceability Register v0.3 | same | `fbf938235f686c7e2a9959a179a3a1a57ca6c632` | Historical audit snapshot labelled; proposed, not accepted |\n| PR #19 Integration Audit | same | `65cf8228da73fc0da468f19f020390dc0de6f999` | Follow-up updated with latest acceptance-plan source revision |
 | PR #19 Integration Audit | same | `fb872bba5555e9bf9aef7b350835d1ede4bd28dc` | Follow-up appended; proposed audit record |
 
 The ODR-01 supplement is not a thirteenth Task 03 acceptance criterion. It explicitly tests controlled external-export conditions while preserving internal unknown/not-assessed semantics. It does not approve an export profile, model, API or physical schema.
