@@ -461,3 +461,76 @@ The project owner remains the decision authority. This report is an audit recomm
 - No physical schema, migration, production API, application implementation, legal opinion or independent specialist approval is established by these documents.
 
 **Updated recommendation:** keep PR #19 and PR #20 open and draft. Complete the scoped documentation corrections, re-fetch and verify the resulting files, then seek owner and discipline review. Do not merge or retire any source branch until preservation, dependency and approval gates are separately satisfied.
+
+## 11. Follow-up review — 26 November 2026
+
+**Status:** Append-only internal desk-review update. This section records current repository and source snapshots, residual documentation defects and an external standards recheck. It does not replace the dated 23 November findings, approve requirements, close scientific decisions or authorize implementation.
+
+### 11.1 Live repository and PR snapshot
+
+Direct GitHub reads on 26 November 2026 returned:
+
+| Item | Verified state |
+|---|---|
+| Repository | `Save-Tiger-First/botanica-indica` |
+| Branch count | 23; the owner-authorized maximum of 7 remains unmet |
+| Open PR count | 19 |
+| PR #16 | Open, draft; governing operating-prompt branch remains authoritative under user instruction |
+| PR #19 | Open, draft; head `58f31a510029685d9c3447d22ec5e2a499aa13c6`; GitHub reported mergeable at this check |
+| PR #20 | Open, draft; head `41883521b1d48a13c12bd63b6806162e3c927399`; GitHub reported mergeable at this check |
+| `main` | `6f2f51da093caf8183fde386dbec707cc6046d27` |
+| `develop` | `f165ecb9b4d9de115c02327cf779982b7ef4bbd4` |
+| `staging` | `f165ecb9b4d9de115c02327cf779982b7ef4bbd4` |
+
+Mergeability is a transient GitHub calculation, not approval, scientific sign-off or permission to merge. No PR or branch lifecycle action was performed.
+
+### 11.2 Current document revisions re-fetched
+
+| Document | Ref | Blob SHA | Review status |
+|---|---|---|---|
+| RTM v0.3 | `docs/requirements-traceability-register` | `95bcf2161f917b8ff824e8a075a908b090a880c7` | Proposed |
+| This PR #19 audit | `docs/requirements-traceability-register` | `fcdb6926253248f31bd696d94e0883f27dc2017d` | Proposed audit record |
+| Task 03 Acceptance Test Plan v0.1 | `docs/requirements-traceability-register` | `0e7a1d1851492bb4470b2e0fea6991e59db67f2a` | Proposed; 66 cases reported in the audit, all not run |
+| Workflow Lifecycle v0.2 | `docs/requirements-traceability-register` | `498af08ec60e3626e8b60ab5047acae1a8861eb5` | Proposed |
+| Workflow-to-Requirements Crosswalk v0.2 | `docs/requirements-traceability-register` | `61d2111ace5c408eaf503bdf17b2ccb822f90978` | Proposed |
+| Offline/Field Synchronization v0.2 | `docs/requirements-traceability-register` | `a46c7cc1de9d1ea5c5faed7574d23de1d1a48e13` | Proposed |
+| API Command/Idempotency Contract v0.2 | `docs/requirements-traceability-register` | `bc0f3e93ec6ef2d2c2039b56739db38296c03281` | Proposed |
+| Scientific Data Model Validation Matrix | `review/scientific-data-model-review-pack` | `3a33dfe47657a96456f56f2c12a0b7d355b6c6a5` | Proposed; no external review/sign-off |
+| EVT Decision and Validation Pack | `review/scientific-data-model-review-pack` | `4a317c4c83317e10663ba374e9e6be3100a53431` | Proposed; EVT decisions remain open |
+| Architecture Plan v0.2 | `docs/full-system-architecture-and-repo-engineering-plan` | `bcba1d052a27d7f56cc46f74f9ba87b41025bdce` | Proposed |
+| Master Roadmap v0.2 | `docs/full-system-architecture-and-repo-engineering-plan` | `8a91a44b653059aa06bfaa21c435b8b928dde742` | Proposed |
+| Graphify Adoption Assessment | `docs/full-system-architecture-and-repo-engineering-plan` | `3face0ee6ec84aa4b90ded193938eb65eea7590e` | Proposed; local pilot not executed |
+
+### 11.3 Residual documentation findings
+
+| ID | Severity | Finding | Required disposition |
+|---|---|---|---|
+| PR19-AUD-10 | Major | Task 03 Acceptance Test Plan v0.1 still records an older operating-prompt SHA, RTM v0.2, Workflow v0.1 and Crosswalk v0.1 as its source baseline. It explicitly instructs re-fetch before formal approval or implementation. It does not provide an explicit ODR-01 / EVT-27–EVT-44 export-specific acceptance-test mapping. | Before approving the test plan, refresh its source inventory to the current revisions and decide whether export-only ODR-01 tests belong in a separate scientific/export validation suite or a clearly linked acceptance-test supplement. Keep all unexecuted tests marked Proposed / Not run. |
+| PR19-AUD-11 | Minor | Offline/Field Synchronization Specification header identifies v0.2, but its final document marker still says v0.1. | Correct the final version marker in a controlled documentation edit; do not alter technical semantics. |
+| PR19-AUD-12 | Minor | RTM v0.3's source-baseline table identifies the 23 November cross-document audit blob `d01ec7041ca2571ae8c11c4a0d95816c7d2daa7c`, while the audit has since advanced to blob `fcdb6926253248f31bd696d94e0883f27dc2017d`. The former remains a valid historical snapshot, but must not be presented as the current audit revision. | Label the earlier audit SHA explicitly as the historical snapshot used by the RTM, or reference the audit by document ID/version without creating a circular current-SHA dependency. |
+| PR19-AUD-13 | Major | Scientific and API proposals remain review artifacts, not executable evidence. EVT-27–EVT-44, OFF-001–OFF-036 and API-SYNC-001–042 remain proposed/unexecuted; API-OD-01–20 and OFF-OD-01–16 remain open. | Obtain attributable discipline review, approve fixtures/oracles, then execute controlled validation. Do not authorize Task 05E or physical schema design before scientific gates close. |
+
+The historical source-revision tables in the 23 November audit and related crosswalk are retained as historical evidence. A historical SHA is not itself an error if it is clearly identified as the exact snapshot originally reviewed.
+
+### 11.4 External standards recheck — 26 November 2026
+
+**IETF Idempotency-Key:** IETF Datatracker lists `draft-ietf-httpapi-idempotency-key-header-09` as an active HTTPAPI Working Group Internet-Draft, published 21 November 2026 and expiring 25 May 2027. It is not an RFC. Version 09 defines the header as an RFC 9651 Item Structured Header whose value is a String; it discusses key uniqueness, optional request fingerprints, duplicate retries and concurrent requests. Botanica's operation scope, identity binding, fingerprint, retention and replay behavior remain project decisions; the draft must not be treated as an adopted API policy. Sources: https://datatracker.ietf.org/doc/draft-ietf-httpapi-idempotency-key-header/ ; https://datatracker.ietf.org/doc/html/draft-ietf-httpapi-idempotency-key-header-09 .
+
+**Darwin Core Conceptual Model and core terms:** Current TDWG search metadata identifies the latest Darwin Core Conceptual Model and core List of Terms as version 2026-10-13. However, the rendered Conceptual Model page retrieved during this review still displayed 2026-05-26 in its page metadata. This retrieval discrepancy is not fully resolved at the exact versioned-document level. The current core term-list metadata identifies the 2026-10-13 snapshot, while `dwc:occurrenceStatus` itself retains term version `occurrenceStatus-2026-05-26`. Do not assume a vocabulary snapshot date is the version date of every term. Sources: https://dwc.tdwg.org/cm/ ; https://rs.tdwg.org/dwc/terms.htm .
+
+**Humboldt Extension:** The retrieved 2026-05-26 vocabulary identifies `eco:isSurveyTargetFullyReported` as term version 2026-05-26, while `eco:isTaxonomicScopeFullyReported` remains term version 2024-02-28. Their definitions and scopes differ; they must not be treated as interchangeable completeness flags. The SurveyTarget term concerns full reporting of detected Occurrences matching a SurveyTarget; the taxonomic-scope term concerns reporting detected Organisms included within the taxonomic scope. The exact version of each term must be pinned independently. Source: https://eco.tdwg.org/list/ .
+
+**DR-09 disposition:** The newer metadata materially narrows the version discrepancy but does not yet close DR-09. Exact versioned Conceptual Model retrieval and term-by-term comparison against the selected export profile remain required. No standards mapping or scientific decision is approved by this research update.
+
+### 11.5 Updated review conclusion and next gates
+
+1. PR #19 has materially improved traceability and ODR-01 documentation, but its package is not ready for acceptance until the Task 03 acceptance-test source baseline and ODR-01 test coverage are explicitly reconciled.
+2. Correct the Offline v0.2 footer and clarify historical versus current audit references without rewriting historical source records.
+3. Keep DR-09 open until the exact versioned Conceptual Model and relevant term/profile resources are pinned and compared.
+4. Keep PR #19 and PR #20 open and draft pending owner and discipline review.
+5. Keep Task 05C unapproved and Task 05E not ready. No physical schema, production API, migration or application implementation is authorized.
+6. Continue preservation-first branch consolidation on the existing four workstream destinations. The 23-branch count remains above the seven-branch ceiling.
+
+**No accepted ADR-001 through ADR-010 was changed. No test was executed. No independent scientific, legal, privacy, rights or security sign-off is claimed. No PR was merged/closed, no branch was created/deleted, and no repository protection or permission was changed.**
+
+**End of follow-up review — 26 November 2026.**
