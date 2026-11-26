@@ -67,7 +67,7 @@ The \`main\` branch remains one commit ahead of \`develop\` and \`staging\`. Pre
 
 PRs #18, #19 and #20 had no submitted reviews and no check runs on the inspected heads. GitHub mergeability is not approval. PR #16 remains open/draft and unchanged.
 
-PR #18 and PR #20 have diverged from their common \`develop\` base. The compare API reported PR #20 as 37 commits ahead and 2 commits behind PR #18. Do not blindly retarget, rebase or merge these workstreams. PR #18 contains the Task 03 and Task 04 source files; PR #20 contains Task 01/02 and the current architecture plan. Preserve both histories until an explicit integration plan is approved.
+PR #18 and PR #20 remain diverged from their common \`develop\` base. The latest compare (26 November 2026, after ODR-02 overlays) reports PR #20 as 39 commits ahead and 3 commits behind PR #18. The changed-file comparison includes common ecosystem/architecture material; do not blindly retarget, rebase or merge these workstreams. PR #18 contains the Task 03 and Task 04 source files; PR #20 contains Task 01/02, the architecture plan and the owner decision records. Preserve both histories until a preservation-first integration plan is reviewed.
 
 ### 2.3 Exact documents inspected
 
@@ -403,7 +403,7 @@ The project owner instructed the adviser to proceed with the recommended STF / B
 
 **Decision:** STF owns genuinely reusable platform infrastructure; Botanica Indica owns botanical scientific semantics, domain records, workflows and scientific authority.
 
-This resolves the policy-level ambiguity identified in FND-01. It does **not** mean that every source document is already reconciled: Task 03 and Task 04 still contain historical wording that requires source-preserving overlays. Task 01's governance overlay and the STF Ecosystem Boundaries document now record the owner-confirmed interpretation. Task 03/04 overlays are being aligned on the existing PR #18 branch. The original Task 01–04 source text is not rewritten. The broader PRD and architecture documents remain working baselines, not accepted product or architecture baselines.
+This resolves the policy-level ambiguity identified in FND-01. It does **not** mean that every source document is already reconciled: Task 03 and Task 04 still contain historical wording that requires source-preserving overlays. Task 01's governance overlay and the STF Ecosystem Boundaries document now record the owner-confirmed interpretation. Task 03/04 source-preserving overlays were aligned with ODR-02 on the existing PR #18 branch at commit \`b28d1308ed7d9850d737e822fafddfb26bcbe3d1\`. The original Task 01–04 source text is not rewritten. The broader PRD and architecture documents remain working baselines, not accepted product or architecture baselines.
 
 ODR-02 does not decide organizational/legal structure, deployment topology, repository/database separation, physical schema, vendor selections, rights ownership or scientific model details. It does not accept ADR-011 or amend ADR-001–ADR-010.
 
@@ -423,3 +423,30 @@ Official references:
 ### 8.3 Repository and implementation status
 
 PR #20 remains open/draft. The 23-branch inventory remains above the seven-branch ceiling. No branch was created or deleted; no PR was merged or closed; no protection or billing setting was changed; no code, schema, migration or deployment was produced. The ODRs are owner-authorized project decisions, not independent legal, scientific or technical sign-offs.
+
+
+---
+
+## 9. Repository status refresh — 26 November 2026
+
+The live repository was rechecked after the ODR-02/ODR-03 and Task 03/04 documentation commits.
+
+| Workstream | Current head | State |
+|---|---|---|
+| PR #16 operating standard | \`16fd00e0e6719026a9c937c19c7409b13eb35f98\` | Open / draft; unchanged |
+| PR #17 full-product blueprint | \`b66c16355d0ded4f20f1a84172eab8b47d133277\` | Open / draft |
+| PR #18 Task 03/04 source overlays | \`b28d1308ed7d9850d737e822fafddfb26bcbe3d1\` | Open / draft |
+| PR #19 RTM / test-plan package | \`43d1c909055bbe321f8d9c6b163ae454ec6ac914\` | Open / draft |
+| PR #20 architecture / ODR package | \`1d2d5a74a7c8c495072e5c4bb0ac3732a6b1b1b0\` | Open / draft |
+| PR #21 Task 05C logical database model | \`8d4fef2d726aac79dd684856d924b171e44d0b93\` | Open / draft; review gate remains |
+| PR #22 Task 05D logical-model validation | \`3efd80e5e28b2a916e63c85808ef3aba9d35e4ac\` | Open / draft |
+| PR #23 Task 05D logical-model validation v2 | \`76bd88980bb2536db63bbde76e3fa687503bdda1\` | Open / draft |
+
+The repository has **23 branches and 20 open pull requests**. This remains above the operating prompt's immediate seven-branch ceiling. The long-lived branches remain:
+- \`main\`: \`6f2f51da093caf8183fde386dbec707cc6046d27\`
+- \`develop\`: \`f165ecb9b4d9de115c02327cf779982b7ef4bbd4\`
+- \`staging\`: \`f165ecb9b4d9de115c02327cf779982b7ef4bbd4\`
+
+PRs #21–#23 add active scientific-model workstreams and make the branch/PR dependency graph more complex. They must be audited as a dependency chain before any consolidation or branch retirement. Do not assume that their existence means Task 05C/05D is approved or validated.
+
+The PR #18/PR #20 compare remains divergent: PR #20 is 39 commits ahead and 3 behind PR #18. No merge, rebase, retarget or branch deletion was performed.

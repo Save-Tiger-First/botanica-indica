@@ -564,3 +564,12 @@ Project Copilot usage is restricted to the Free plan only. No paid plan, seat, A
 The active repository ruleset was checked and does not enable automatic Copilot code review. Personal or organization billing could not be inspected or changed through the repository connection; account-holder verification remains outstanding. See docs/decisions/ODR-03-GITHUB-COPILOT-FREE-ONLY.md.
 
 **No implementation authorization follows from these owner decisions.**
+
+
+## 17. Repository status refresh — 26 November 2026
+
+The current GitHub snapshot is 23 branches and 20 open draft pull requests. PRs #21–#23 contain additional Task 05C/05D model and validation workstreams. These are proposals/work-in-progress, not proof of scientific-model approval.
+
+PR #18 now carries the Task 03/04 ODR-02 overlays; PR #19 carries the corrected Acceptance Test Plan v0.2 footer and cross-document audit update; PR #20 carries ODR-02 and ODR-03 plus the Task 01 and architecture/roadmap updates.
+
+PR #18 and PR #20 remain diverged (PR #20 is 39 commits ahead and 3 behind PR #18). Do not blindly merge, rebase or retarget. The repository remains above the seven-branch ceiling; preserve scientific-model workstreams and unique content before any authorized retirement.
