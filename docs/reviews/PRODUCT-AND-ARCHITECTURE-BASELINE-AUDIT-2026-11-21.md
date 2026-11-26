@@ -574,3 +574,59 @@ At the latest check, PR #9 still had zero submitted reviews, zero inline review 
 - No physical schema, application code or production implementation was started.
 
 **Next gate:** conduct the required independent review of the scientific review pack and execute the proposed synthetic validation fixtures in a controlled, rights-safe test environment. Keep Task 05C NOT APPROVED and Task 05E NOT READY until their evidence and approval gates are satisfied.
+
+
+## 22. Current-state and standards revalidation — 26 November 2026
+
+This append-only update supersedes earlier branch/PR status and current-technology claims where they differ. Sections dated 21–23 November remain historical snapshots.
+
+### 22.1 Live repository snapshot
+
+| Item | Verified state on 26 November 2026 |
+|---|---|
+| Branches | 23 total; exceeds seven-branch ceiling by 16 |
+| Open PRs | 19; all listed as drafts |
+| `main` | `6f2f51da093caf8183fde386dbec707cc6046d27` |
+| `develop` | `f165ecb9b4d9de115c02327cf779982b7ef4bbd4` |
+| `staging` | `f165ecb9b4d9de115c02327cf779982b7ef4bbd4` |
+| PR #16 | Open/draft; operating prompt head `16fd00e0e6719026a9c937c19c7409b13eb35f98` |
+| PR #19 | Open/draft; head `b6cf5e08a87763c52a22a336f99d68ca3a4b9ee9`, 63 commits, 8 changed files |
+| PR #20 | Open/draft; head `e4053c8caac9eed98f35a55dc57a9f9b01481de4`, 33 commits, 4 changed files |
+
+PR #19 and PR #20 remain diverged from one another with `develop` as common ancestor. At the current static comparison before the latest documentation append, PR #20 was 32 commits ahead and 59 behind PR #19. The branch file inventories have no path overlap among PRs #17–#20, but no branch-to-branch merge rehearsal was performed and semantic integration is not established. GitHub currently reports mergeability as unknown/null for PR #19 and PR #20; do not infer either conflict or approval. Neither PR has submitted reviews or PR-triggered workflow runs at the inspected heads.
+
+The current open PR list includes PRs #21–#23 preserving alternate Task 05C/05D material. Their unique scientific content must be preserved and compared before any consolidation. No branch deletion, PR closure or merge is authorized by this audit.
+
+### 22.2 PR #19 documentation reconciliation verified
+
+The following source files were re-fetched after the PR #19 documentation edits:
+
+| File | Ref | Blob SHA | Disposition |
+|---|---|---|---|
+| Task 03 Acceptance Test Plan v0.2 | `docs/requirements-traceability-register` | `21cb80e59656db1519d89dae7f10f7985b11568b` | Eight proposed ODR-01 export-validation cases added; not run |
+| Offline/Field Synchronization Specification v0.2 | `docs/requirements-traceability-register` | `6a25055c51cd5d16e8a9da8964f5f5e2c9bfbc0a` | Footer corrected to v0.2; technical semantics unchanged |
+| Requirements Traceability Register v0.3 | `docs/requirements-traceability-register` | `fbf938235f686c7e2a9959a179a3a1a57ca6c632` | Historical 23 November audit SHA explicitly labelled historical |
+| PR #19 Integration Audit | `docs/requirements-traceability-register` | `fb872bba5555e9bf9aef7b350835d1ede4bd28dc` | Follow-up appended; no approvals conferred |
+
+The eight ATP-ODR cases are a cross-cutting supplement, not a thirteenth Task 03 acceptance criterion. They preserve ODR-01's export-only interpretation and the internal unknown/not-assessed rule. All 74 proposed test cases (66 original + 8 supplement) remain Proposed / Not run. No fixtures or tests were executed. The export profile, version pins, mappings, scientific oracles and qualified review remain open prerequisites.
+
+### 22.3 PostgreSQL/PostGIS currentness correction
+
+The 21 November paragraph in §13 stating PostgreSQL 18.7 was the current release is a historically accurate snapshot for that date, but is no longer current. PostgreSQL 19.0 was released on 19 November 2026 and is supported; PostgreSQL 18.7 also remains supported. PostGIS 3.7.0, released 30 October 2026, lists PostgreSQL 14–19 compatibility. PostgreSQL 19 + PostGIS 3.7 is therefore an upstream-compatible candidate combination, not an approved production selection. Managed hosting, packaging, driver/ORM support, operations, upgrade/rollback, backup/restore, security cadence and workload benchmarks remain to be evaluated. PostgreSQL 18.7 may remain a rational candidate where provider maturity or ecosystem compatibility favors it.
+
+Sources checked 26 November 2026:
+- PostgreSQL Versioning Policy: https://www.postgresql.org/support/versioning/
+- PostgreSQL 19 Release Notes: https://www.postgresql.org/docs/19/release.html
+- PostGIS 3.7.0 release: https://www.postgis.net/2026/10/PostGIS-3.7.0/
+
+### 22.4 Updated assessment and decision boundary
+
+1. PR #20 remains a useful proposed architecture and repository-engineering plan, not an accepted baseline or implementation authorization.
+2. Keep the modular-monolith/API-first direction as the recommended target, with Flutter governed by accepted ADR-001 and TypeScript/Python roles remaining candidates subject to approved architecture.
+3. Do not select PostgreSQL major/provider solely because PostgreSQL 19 is newest; perform a documented provider and operational comparison.
+4. Keep Task 05C unapproved, DR/LDM validation open, DR-09 open, and Task 05E/physical schema design not ready.
+5. Preserve the original Task 01 and Task 02 full-detail sources and provenance; the files remain to be established as canonical repository baselines.
+6. Keep PRs #16, #19 and #20 open/draft. Obtain independent product, architecture, taxonomy, biodiversity-informatics, field-ecology, rights, privacy/security and accessibility review as applicable.
+7. Continue branch cleanup only through the existing four approved consolidation destinations and preservation-first review; do not create new branches or retire source branches without explicit authorization.
+
+**No accepted ADR or product requirement was changed. No scientific model was approved. No code, physical schema, migration or API was implemented. No tests were run. No independent sign-off was obtained. No PR was merged/closed, no branch created/deleted, and no repository protection or permission changed.**
