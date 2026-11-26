@@ -71,10 +71,10 @@ The repository currently has 23 branches against the operating prompt's maximum 
 |---|---|---|---|
 | AI Project Operating Prompt | `docs/repository-audit-and-ai-operating-standard` | `53add3894d0502827e584614c70ad09cadaa637d` | Proposed standard; user instruction requires adherence |
 | README | `main` | `366e856fdf28a26a4799c9f3ae7341d3d8ae1c2f` | Current repository overview |
-| Task 03 PRD v0.1 | `docs/canonical-task-03-04-baselines` | `8b1ca0be04b3f4ad3b543c2f9fc48d46eb37faf8` | Complete extracted source transcription; working baseline |
-| Task 04 architecture evaluation v0.1 | `docs/canonical-task-03-04-baselines` | `abc7b721fae8d4f4adede4dd0bf5d6a32098c5a3` | Complete extracted source transcription plus governance overlay; working baseline |
+| Task 03 PRD v0.1 | `docs/canonical-task-03-04-baselines` | `b92b0b74db7a02081da05713b88b9a9062a1964c` | Complete extracted source transcription with ODR-02 reference link; working baseline |
+| Task 04 architecture evaluation v0.1 | `docs/canonical-task-03-04-baselines` | `d3ac9c9eecc818b53ca85a667adc7898c2b47c7a` | Complete extracted source transcription plus governance overlay and pinned ODR-02 reference; working baseline |
 | Full Product Vision and Capability Blueprint v0.2 | `docs/full-product-vision-capability-blueprint` | `d3ec150524dda4928503f43556a97cd766b71312` | Proposed in PR #17; not accepted |
-| Requirements Traceability Register v0.3 | `docs/requirements-traceability-register` | `95bcf2161f917b8ff824e8a075a908b090a880c7` | Proposed in PR #19; not accepted |
+| Requirements Traceability Register v0.3 | `docs/requirements-traceability-register` | `fbf938235f686c7e2a9959a179a3a1a57ca6c632` | Proposed in PR #19; not accepted |
 | Scientific Data Model Review Pack | `review/scientific-data-model-review-pack` | `c11f4b58d0908742474d3e58b4ec0aa3739f7b99` | Review proposal; not scientific sign-off |
 | Workflow-to-Requirements Crosswalk v0.2 | `docs/requirements-traceability-register` | `61d2111ace5c408eaf503bdf17b2ccb822f90978` | Proposed workflow/requirements and ODR-01 traceability |
 | Offline and Field Synchronization Specification v0.2 | `docs/requirements-traceability-register` | `a46c7cc1de9d1ea5c5faed7574d23de1d1a48e13` | Proposed offline design; ODR-01 export-only safeguards |
@@ -1020,3 +1020,27 @@ Two owner decisions were recorded on the existing PR #20 workstream:
 The repository ruleset inspection found no automatic Copilot code-review rule. Account-level Copilot billing was not accessible through the repository connection and has not been changed. See ODR-03 for account-holder verification steps.
 
 These records do not accept the full architecture plan, amend ADR-001–ADR-010, accept ADR-011 or authorize physical schema design or implementation.
+
+
+### 2.5 Integration-readiness revalidation — 26 November 2026
+
+The connected product/architecture/scientific workstreams were re-fetched and compared. The full review is recorded in [PR #17–#23 Integration Readiness Review](../reviews/PR-17-23-INTEGRATION-READINESS-REVIEW-2026-11-26.md), STF-BI-INT-REV-001 v0.1.
+
+The live repository remains at 23 branches and 19 open draft PRs. PR #18 and PR #20 are diverged (PR #20 42 commits ahead and 4 behind PR #18); PR #5 and PR #11 are diverged (Task 05D v3 7 ahead and 4 behind Candidate A). PR #21–#23 preserve unique alternate Task 05C/05D material. No blind merge, rebase, retarget or retirement is recommended.
+
+The current Task 03 PRD and Task 04 source transcriptions were updated only to pin the ODR-02 cross-branch link; their original v0.1 source wording and requirements remain preserved. Current file blobs are Task 03 `b92b0b74db7a02081da05713b88b9a9062a1964c` and Task 04 `d3ac9c9eecc818b53ca85a667adc7898c2b47c7a`.
+
+The Acceptance Test Plan contains 66 core cases plus 8 ODR-01 supplement cases (74 total), all Proposed / Not run. Clarify older RTM/audit wording that refers to 66 cases without describing the supplement. AC-011 and AC-012 still need separate acceptance coverage; AC-006/008/009/010 have partial coverage.
+
+Task 05C remains unapproved, Task 05D remains not passed, and Task 05E/physical design remain not ready. No application code or physical schema was inspected as implemented on main. No independent scientific/legal/security sign-off or test execution was found in this review.
+
+
+## 27. PR #17–#23 integration-readiness review — 26 November 2026
+
+The detailed review is recorded in [PR #17–#23 Integration Readiness Review](PR-17-23-INTEGRATION-READINESS-REVIEW-2026-11-26.md), STF-BI-INT-REV-001 v0.1.
+
+The current PR #18/PR #20 comparison is diverged: PR #20 is 42 commits ahead and 4 behind PR #18. This replaces earlier 39/3, 40/3 and 41/3 snapshots in this report as the latest check at the time of review. PR #5/PR #11 are also diverged (Task 05D v3 is 7 ahead and 4 behind Candidate A). PR #21–#23 contain unique alternate model/validation documents; preserve them until section-by-section content reconciliation is complete.
+
+The current ATP has 66 core test cases plus 8 ODR-01 export-validation supplement cases (74 total), all Proposed / Not run. Older RTM and audit wording that says “66 test cases” should explicitly distinguish the 66 core cases from the eight supplements.
+
+The scientific gate remains closed: Candidate A is unapproved; Task 05D is not passed; Task 05E and physical schema design are not ready. The principal blockers and exact source SHAs are recorded in the linked integration review. No PR was merged/closed/retargeted, no branch created/deleted, no accepted ADR changed, no scientific model approved and no tests executed.

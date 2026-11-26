@@ -583,3 +583,26 @@ Latest live query: 19 open draft PRs and 23 branches. PR #20 is 41 commits ahead
 ### 17.2 Compare correction — 26 November 2026
 
 Latest compare after the PR #20 documentation update: PR #20 is 41 commits ahead and 3 behind PR #18. This is a snapshot only; preserve both branches until a reviewed integration plan exists.
+
+
+## 18. Integration readiness review — 26 November 2026
+
+The adviser-led review is recorded in [PR #17–#23 Integration Readiness Review](../reviews/PR-17-23-INTEGRATION-READINESS-REVIEW-2026-11-26.md), STF-BI-INT-REV-001 v0.1.
+
+**Overall status: NOT READY for integration, baseline acceptance, Task 05D pass, physical database design or implementation authorization.**
+
+Current verified snapshot:
+- 23 branches; 19 open PRs, all draft.
+- Long-lived branches: `main`, `develop`, `staging`; main remains one commit ahead of develop/staging because of the main-only Hortus validation crosswalk.
+- PR #18 head: `4d57b2c390f8c342459fb4310e30ed8d382790b6`.
+- PR #19 head: `43d1c909055bbe321f8d9c6b163ae454ec6ac914`.
+- PR #20 head before this review update: `64664c398dcb74c99cdbb9252d3e41d68d36b17f`.
+- PR #18 and PR #20 are diverged: PR #20 is 42 commits ahead and 4 behind PR #18. Preserve both histories; do not blindly merge/rebase/retarget.
+- PR #5 / PR #11 are diverged: Task 05D v3 is 7 commits ahead and 4 behind Candidate A.
+- PR #21–#23 contain unique Task 05C/05D source material and are substantially behind the current PR #9 review branch. Preserve and compare section by section.
+
+Product review confirms the proposed 16 capability domains complement rather than replace the 19 original Task 03 functional requirement IDs, 12 acceptance criteria and 7 non-goals. The current Acceptance Test Plan contains 66 core plus 8 ODR-01 supplement cases (74 total), all Proposed / Not run. RTM wording that still says 66 tests needs clarification.
+
+Scientific review confirms Task 05C remains unapproved, Task 05D remains NOT PASSED and Task 05E/physical schema remain NOT READY. Principal blockers are Event/Survey/Occurrence representation, target-assessment versus outcome ownership, IdentificationSubject total participation, DR-09 exact standards pinning, and absence of executable tests and qualified specialist review.
+
+No PR lifecycle action, branch creation/deletion, protection change, accepted ADR amendment, product requirement change, scientific-model approval, test execution or physical implementation was performed. The ODR-02 reference link correction on PR #18 is a documentation-only change.
