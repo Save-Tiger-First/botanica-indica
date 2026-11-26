@@ -444,4 +444,4 @@ Review this proposed test plan with the project owner and relevant product, arch
 
 Keep Task 03 v0.1 unchanged until an explicitly approved PRD revision is prepared.
 
-**End of proposed test plan — STF-BI-ATP-001 v0.1.**
+**End of proposed test plan — STF-BI-ATP-001 v0.2.**

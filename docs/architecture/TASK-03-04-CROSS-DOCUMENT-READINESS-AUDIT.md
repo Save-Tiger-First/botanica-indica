@@ -452,3 +452,26 @@ No accepted ADR, original Task 03/04 baseline, scientific model or product requi
 Keep PR #19 and PR #20 open and draft. Conduct a focused owner and discipline review of the updated RTM, workflow terminology, ODR-01 export traceability and API/offline safeguards. Do not accept the package until source SHAs are rechecked, the cross-document mappings are verified and the scientific/API review gates are satisfied.
 
 **End of follow-up reconciliation — 23 November 2026.**
+
+---
+
+## 13. Owner boundary decision reconciliation — 26 November 2026
+
+The project owner has confirmed the logical STF / Botanica Indica ownership boundary in ODR-02, recorded on the PR #20 workstream:
+
+**STF owns genuinely reusable platform infrastructure; Botanica Indica owns botanical scientific semantics, domain records, workflows and scientific authority.**
+
+This confirms the logical allocation already reflected in the governing operating prompt and the RTM's current identity/shared-platform versus botanical-domain capability mapping. It does not mean the RTM or its full requirements baseline is accepted.
+
+The Task 03 and Task 04 source-preserving overlays on PR #18 now explicitly reconcile their historical shared-service wording against ODR-02. Their original v0.1 source text, all 19 Task 03 functional requirement identifiers, 12 acceptance criteria and 7 non-goals remain preserved. The PRD and architecture documents remain working baselines, not accepted requirements/architecture baselines.
+
+**Current reviewed heads:**
+- PR #18: \`b28d1308ed7d9850d737e822fafddfb26bcbe3d1\` — Task 03/04 ODR-02 overlays.
+- PR #19: \`a068bd2be88c2b9a685b274318b7c9de9e6b6eda\` — this cross-document audit and RTM package before this update.
+- PR #20: \`1d2d5a74a7c8c495072e5c4bb0ac3732a6b1b1b0\` — ODR-02 and ODR-03, Task 01 and architecture/roadmap reconciliation.
+
+The test-plan footer version inconsistency is corrected in this commit only. All 74 test cases remain proposed/not run. This correction does not approve or execute the plan.
+
+ODR-03 restricts project Copilot use to Free only. The repository ruleset check found no automatic Copilot code-review rule. Account-level Copilot billing remains unverified and unchanged.
+
+No PR was merged or closed, no branch was created or deleted, no protection or billing setting was changed, and no scientific model, accepted ADR, physical schema or production implementation was altered.
