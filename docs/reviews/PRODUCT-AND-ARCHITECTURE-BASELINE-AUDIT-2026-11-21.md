@@ -630,3 +630,56 @@ Sources checked 26 November 2026:
 7. Continue branch cleanup only through the existing four approved consolidation destinations and preservation-first review; do not create new branches or retire source branches without explicit authorization.
 
 **No accepted ADR or product requirement was changed. No scientific model was approved. No code, physical schema, migration or API was implemented. No tests were run. No independent sign-off was obtained. No PR was merged/closed, no branch created/deleted, and no repository protection or permission changed.**
+
+
+## 23. Task 01 and Task 02 source-preservation and baseline review — 26 November 2026
+
+### 23.1 Original sources verified
+
+The original full-detail source documents were located in the Project Library and read in full:
+
+| Task | Original filename | Library ID | Library path | Extent | Size | Created |
+|---|---|---|---|---:|---:|---|
+| 01 — Project Charter | STF_Task_01_Project_Charter_v0.1.docx | libfile_20376f1353588191ae8048e3943f5a52 | /STF app/ | 5 pages; 143 extracted lines | 40,239 bytes | 22 Sep 2026 17:23:17 UTC |
+| 02 — Problem & Opportunity Analysis | STF_Task_02_Problem_and_Opportunity_Analysis_v0.1.docx | libfile_80b3016cb76881919e137bf021347c93 | /STF app/ | 4 pages; 159 extracted lines | 40,848 bytes | 22 Sep 2026 17:23:23 UTC |
+
+The original DOCX bytes could not be materialized because the Project file service did not authorize a raw-byte export path. The complete extracted substantive text was available and transcribed. The original DOCX artifacts remain in the Project Library. No binary checksum is claimed.
+
+### 23.2 Repository records created
+
+| Task | Repository path | Blob SHA | Status |
+|---|---|---|---|
+| Task 01 — Project Charter v0.1 | docs/product/TASK-01-PROJECT-CHARTER.md | f79abc985efa4e4f17b6cc0db36cdc56788ba693 | Working baseline / source-preserving transcription; proposed alignment overlay |
+| Task 02 — Problem & Opportunity Analysis v0.1 | docs/product/TASK-02-PROBLEM-AND-OPPORTUNITY-ANALYSIS.md | 55959e1a324262f3c21f9173e9109556b97652fb | Working baseline / source-preserving transcription; proposed alignment overlay |
+
+The source v0.1 wording remains separate from the proposed governance/alignment overlay in each file. The overlay is not a retroactive change to the original charter or opportunity analysis.
+
+### 23.3 Critical findings from the source-to-current alignment review
+
+1. **Task 01 domain boundary:** the original charter lists taxonomy, geography and broad data/search services as shared STF infrastructure. The current operating prompt distinguishes shared platform primitives from Botanica Indica's botanical scientific ownership. The early charter list is preserved as historical source content and must not be interpreted as an approved service/domain allocation.
+2. **Task 01 planning figures:** the 4,250–5,850 person-hour range and 9–15 month team estimate are preliminary. They are not an approved budget, staffing plan or delivery commitment.
+3. **Task 02 competitive claims:** the market/capability table has no per-claim direct URLs, publication dates or retrieval dates. It is a historical source snapshot, not a current competitive audit. A fresh market study is required before commercial, partnership or launch decisions.
+4. **Task 02 moat hypothesis:** India-specific knowledge + field data + validation + geography + provenance is plausible as a differentiation hypothesis, but it has not been demonstrated. It requires rights-cleared data, measurable coverage/quality, user value, expert capacity and sustainable economics.
+5. **Task 02 Evidence Score:** this concept remains undefined. It must not be conflated with AI confidence, calibrated probability, evidence completeness or expert determination.
+6. **Rights and privacy:** image/dataset access does not itself establish permission for ingestion, redistribution, derivative use or AI training. Geographic intelligence must be balanced with sensitive-species and personal-location protection.
+
+### 23.4 Four-task baseline status
+
+| Task | Source-preserving repository location | Current status |
+|---|---|---|
+| 01 — Project Charter | This PR #20 branch: docs/product/TASK-01-PROJECT-CHARTER.md | Transcribed; owner review pending |
+| 02 — Problem & Opportunity Analysis | This PR #20 branch: docs/product/TASK-02-PROBLEM-AND-OPPORTUNITY-ANALYSIS.md | Transcribed; current market refresh remains separate |
+| 03 — Product Requirements Document | PR #18 branch docs/canonical-task-03-04-baselines: docs/product/TASK-03-PRODUCT-REQUIREMENTS-DOCUMENT.md | Existing source-preserving transcription; not yet consolidated into PR #20 |
+| 04 — System Architecture & Technology Evaluation | PR #18 branch docs/canonical-task-03-04-baselines: docs/architecture/TASK-04-SYSTEM-ARCHITECTURE-AND-TECHNOLOGY-EVALUATION.md | Existing source-preserving transcription with governance overlay; not yet consolidated into PR #20 |
+
+**Assessment:** Tasks 01–04 now have located original sources and repository transcriptions, but the four-task baseline package is still distributed across two existing workstream branches. PR #18 remains a source branch and PR #20 remains the approved product/architecture consolidation destination. A later preservation-first integration must compare the full PR #18 commit history and both complete transcriptions, retain provenance/overlays, and verify all four documents in PR #20 before PR #18 can be considered resolved.
+
+### 23.5 Review disposition
+
+- Keep Task 01 and Task 02 v0.1 source content intact.
+- Treat the overlays as proposals for owner/reviewer discussion, not approved amendments.
+- Do not adopt Task 02's market claims or moat hypothesis as current fact without refreshed evidence.
+- Do not adopt Task 01's early infrastructure grouping as a final STF/BI boundary.
+- Do not interpret preliminary effort estimates as commitments.
+- Preserve PR #18 and its source material until an explicit integration and retirement decision.
+- No PR was merged/closed/retargeted, no branch was created/deleted, and no accepted ADR or product requirement was changed.

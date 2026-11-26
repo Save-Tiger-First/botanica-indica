@@ -491,3 +491,37 @@ Sources checked 26 November 2026:
 7. Conduct preservation-first consolidation on existing branches; do not merge, close, retarget or delete without explicit authorization and a verified content-preservation plan.
 
 **No accepted ADR-001–ADR-010 or product requirement was changed. ADR-011 remains proposed. ODR-01 remains export-only. Task 05C remains unapproved; Task 05E remains not ready. No tests were executed, no external specialist sign-off was obtained, no physical schema/application implementation was started, and no PR/branch lifecycle or repository protection action was taken.**
+
+
+## 14. Task 01 and Task 02 source preservation — 26 November 2026
+
+### 14.1 Verified original sources
+
+| Task | Original source | Project Library identity | Repository transcription | Blob SHA |
+|---|---|---|---|---|
+| 01 — Project Charter v0.1 | STF_Task_01_Project_Charter_v0.1.docx | libfile_20376f1353588191ae8048e3943f5a52; /STF app/; 5 pages; 40,239 bytes | docs/product/TASK-01-PROJECT-CHARTER.md | f79abc985efa4e4f17b6cc0db36cdc56788ba693 |
+| 02 — Problem & Opportunity Analysis v0.1 | STF_Task_02_Problem_and_Opportunity_Analysis_v0.1.docx | libfile_80b3016cb76881919e137bf021347c93; /STF app/; 4 pages; 40,848 bytes | docs/product/TASK-02-PROBLEM-AND-OPPORTUNITY-ANALYSIS.md | 55959e1a324262f3c21f9173e9109556b97652fb |
+
+The original DOCX files remain in the Project Library. The Project file service allowed complete extracted-text reading but did not authorize raw-byte materialization; therefore the repository contains source-preserving text transcriptions, not the original DOCX binaries. No binary checksum is asserted.
+
+### 14.2 Four foundational tasks — repository distribution
+
+| Task | Current branch | Repository path | Status |
+|---|---|---|---|
+| 01 — Project Charter | docs/full-system-architecture-and-repo-engineering-plan (PR #20) | docs/product/TASK-01-PROJECT-CHARTER.md | Transcribed; proposed alignment overlay; owner review pending |
+| 02 — Problem & Opportunity Analysis | docs/full-system-architecture-and-repo-engineering-plan (PR #20) | docs/product/TASK-02-PROBLEM-AND-OPPORTUNITY-ANALYSIS.md | Transcribed; proposed alignment overlay; market claims not refreshed |
+| 03 — Product Requirements Document | docs/canonical-task-03-04-baselines (PR #18) | docs/product/TASK-03-PRODUCT-REQUIREMENTS-DOCUMENT.md | Existing source-preserving transcription; integration pending |
+| 04 — System Architecture & Technology Evaluation | docs/canonical-task-03-04-baselines (PR #18) | docs/architecture/TASK-04-SYSTEM-ARCHITECTURE-AND-TECHNOLOGY-EVALUATION.md | Existing source-preserving transcription and governance overlay; integration pending |
+
+The four foundational tasks are not yet in one consolidated branch. PR #18 remains open and must be preserved until its two full source transcriptions and commit history are integrated and verified in the existing PR #20 destination. This update does not merge or retarget PR #18.
+
+### 14.3 Expert assessment and next gates
+
+- Task 01's original “shared STF infrastructure” list is an early charter concept. Current domain ownership rules distinguish shared platform primitives from Botanica Indica's botanical scientific responsibilities. Preserve the source; resolve the boundary through the approved governance process.
+- Task 01's effort figures are preliminary planning estimates, not approved budgets, staffing commitments or delivery schedules.
+- Task 02's competitive landscape lacks claim-level URLs and research dates. Treat it as historical source material, not a current market audit.
+- Task 02's proposed moat is a hypothesis requiring evidence of lawful data rights, India-wide coverage, expert capacity, user value and sustainable operating economics.
+- Task 02's “Evidence Score” needs a formal definition and must remain distinct from AI confidence, calibrated probability and expert determination.
+- The next product-baseline task should reconcile all four original tasks as one connected package while preserving source text, overlays, provenance and accepted ADR boundaries.
+
+**No source v0.1 text was substantively rewritten. No accepted ADR or product requirement was changed. No market claims were re-certified. No independent review was obtained. No PR was merged, closed or retargeted, and no branch was created or deleted.**

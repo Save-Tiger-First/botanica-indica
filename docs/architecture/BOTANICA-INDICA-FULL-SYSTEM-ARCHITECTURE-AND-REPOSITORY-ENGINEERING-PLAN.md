@@ -979,3 +979,19 @@ Sources checked 26 November 2026:
 **Architecture recommendation remains unchanged:** preserve PostgreSQL/PostGIS as leading candidates; do not select a production version or provider in this document. Keep the domain-oriented modular monolith, API-first contracts, Flutter under ADR-001, TypeScript/Python role separation, derived/rebuildable search and AI artifacts, and no premature microservices/Kubernetes. Physical schema design remains blocked by scientific-model validation.
 
 **Branch governance:** the 23-branch inventory remains non-conformant. No new branch is authorized. The four existing workstream destinations remain the only approved consolidation destinations. Preserve all unique content, including PRs #21–#23 Task 05C/05D alternatives, before any branch retirement; do not delete or close them on the basis of age or apparent supersession.
+
+
+## 2.6 Task 01 and Task 02 source-preservation record — 26 November 2026
+
+The original full-detail Task 01 and Task 02 Project Library sources have now been transcribed into this existing architecture/product workstream. The source content is preserved in separate documents; proposed current-alignment notes are clearly separated from the v0.1 source text.
+
+| Task | Repository transcription | Original Project Library source | Repository blob SHA |
+|---|---|---|---|
+| Task 01 — Project Charter v0.1 | docs/product/TASK-01-PROJECT-CHARTER.md | STF_Task_01_Project_Charter_v0.1.docx; /STF app/; Library ID libfile_20376f1353588191ae8048e3943f5a52 | f79abc985efa4e4f17b6cc0db36cdc56788ba693 |
+| Task 02 — Problem & Opportunity Analysis v0.1 | docs/product/TASK-02-PROBLEM-AND-OPPORTUNITY-ANALYSIS.md | STF_Task_02_Problem_and_Opportunity_Analysis_v0.1.docx; /STF app/; Library ID libfile_80b3016cb76881919e137bf021347c93 | 55959e1a324262f3c21f9173e9109556b97652fb |
+
+**Source limitation:** the Project Library provided complete extracted text and source metadata, but did not authorize raw-byte materialization of the DOCX files. The original DOCX artifacts remain in the Library; these repository files are text transcriptions. No DOCX binary was added to GitHub and no source-binary checksum is claimed.
+
+**Cross-task continuity:** Task 03 and Task 04 source-preserving transcriptions remain on the existing PR #18 branch, docs/canonical-task-03-04-baselines. They have not been merged or copied into this PR #20 branch by this update. The four foundational tasks therefore have source-preserving repository records across PR #18 and PR #20, but are not yet consolidated into one reviewed baseline package.
+
+**Decision boundary:** Task 01's early shared-infrastructure list and Task 02's market/moat statements are interpreted through their separate proposed overlays. No source v0.1 wording was retroactively edited. No accepted ADR, product requirement, scientific model, technology selection, budget, partner commitment or implementation authorization is changed.
