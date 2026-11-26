@@ -1,9 +1,9 @@
 # Botanica Indica — Task 03 Product-Baseline Acceptance Test Plan
 
 **Document ID:** STF-BI-ATP-001  
-**Version:** 0.1 — Proposed test plan  
+**Version:** 0.2 — Proposed ODR-01 export-validation supplement and source revalidation  
 **Status:** Proposed for owner and discipline review; not approved as a release gate  
-**Prepared:** 21 November 2026  
+**Prepared:** 21 November 2026; updated 26 November 2026  
 **Decision authority:** Save Tiger First project owner  
 **Repository:** `Save-Tiger-First/botanica-indica`  
 **Working branch:** `docs/requirements-traceability-register`
@@ -25,13 +25,22 @@ This is a test-design document only. All test cases have status **Proposed / Not
 
 | Source | Branch/ref | File blob SHA | Role |
 |---|---|---|---|
-| AI Project Operating Prompt v1.0 | `docs/repository-audit-and-ai-operating-standard` | `61059c74d4d20309ff76e055059ab33f381ca4f2` | Governance and authorization |
+| AI Project Operating Prompt v1.0 | `docs/repository-audit-and-ai-operating-standard` | `53add3894d0502827e584614c70ad09cadaa637d` | Governing working prompt; PR #16 remains open/draft |
 | Task 03 PRD v0.1 | `docs/canonical-task-03-04-baselines` | `8b1ca0be04b3f4ad3b543c2f9fc48d46eb37faf8` | Original acceptance criteria |
-| Requirements Traceability Register v0.2 | `docs/requirements-traceability-register` | `d2ce4a39b80a6d06fb631654e0d6eae61d4f17fd` | Requirement and acceptance mappings |
-| Workflow Lifecycle Specification v0.1 | `docs/requirements-traceability-register` | `03ca940095a9e39c5608548bdeec1ce0166bf76d` | Workflow rules and 16 proposed scenarios |
-| Workflow Requirements Crosswalk v0.1 | `docs/requirements-traceability-register` | `87dc1ba325238289a030e9e8ef07a8fc903f51a9` | Scenario-to-AC coverage |
+| Requirements Traceability Register v0.3 | `docs/requirements-traceability-register` | `95bcf2161f917b8ff824e8a075a908b090a880c7` | Proposed requirement, capability and ODR-01 mappings |
+| Workflow Lifecycle Specification v0.2 | `docs/requirements-traceability-register` | `498af08ec60e3626e8b60ab5047acae1a8861eb5` | Proposed workflow rules; `record_created` / `server_received` distinction |
+| Workflow-to-Requirements Crosswalk v0.2 | `docs/requirements-traceability-register` | `61d2111ace5c408eaf503bdf17b2ccb822f90978` | Proposed scenario-to-requirement and ODR-01/EVT coverage |
 
-Re-fetch all sources before formal approval or implementation. The RTM has changed since the crosswalk was authored; the current RTM SHA above is the version inspected for this plan.
+The table above is the source snapshot re-fetched on 26 November 2026. The Task 03 PRD remains the original source for the twelve acceptance-criterion wordings. The RTM, workflow and crosswalk are proposals; their updated SHAs do not imply approval.
+
+Additional scientific/export validation inputs:
+
+| Source | Branch/ref | File blob SHA | Role |
+|---|---|---|---|
+| Offline and Field Synchronization Specification v0.2 | `docs/requirements-traceability-register` | `a46c7cc1de9d1ea5c5faed7574d23de1d1a48e13` | Proposed offline safeguards and export-boundary handling |
+| Scientific Data Model Validation Matrix and Decision Register | `review/scientific-data-model-review-pack` | `3a33dfe47657a96456f56f2c12a0b7d355b6c6a5` | ODR-01 decision record and proposed EVT-27–EVT-44 validation obligations |
+
+The source revision table is a review snapshot, not a claim that the referenced documents are accepted. Re-fetch all sources before formal approval or implementation.
 
 ## 3. Test governance and status
 
@@ -319,6 +328,29 @@ Every execution record must include:
 
 **Open prerequisites:** STF ecosystem boundary decision, ADR-011 status/review, Task 04 architecture reconciliation, rights/privacy model and a credible second-domain use case. This criterion does not authorize broad STF platform expansion by assumption.
 
+## 4.13 ODR-01 — Controlled external-export validation supplement
+
+**Status:** Proposed / Not run. This is a cross-cutting scientific/export validation supplement linked to the existing Task 03 acceptance criteria; it is **not** a thirteenth Task 03 acceptance criterion and does not approve an export profile, scientific model, API or implementation.
+
+**Policy boundary:** ODR-01 is owner-authorized for controlled, profile-specific external exports only. Missing internal records must remain unknown/not assessed; they must never create an internal absence assertion or negative Occurrence. A bounded “not detected/reported within the stated survey scope under documented survey conditions” interpretation may appear only in an eligible external export after all required scope, reporting-completeness, method, provenance, version and mapping conditions have been verified. Otherwise, fail closed and omit the interpretation.
+
+**Traceability:** AC-004, AC-006, AC-009 and AC-010 as applicable; OBS-001/OBS-002, SCI-001 and GEO-001; ODR-01; EVT-27–EVT-44; DR-01, DR-07 and DR-09; BI-CAP-04, BI-CAP-05, BI-CAP-07 and BI-CAP-14. EVT scenarios remain proposed validation obligations, not executed tests.
+
+| Test ID | Scenario and steps | Expected result | EVT mapping |
+|---|---|---|---|
+| ATP-ODR-01 | Prepare an export where an approved target profile, explicit Survey/Event scope, reporting completeness, method, effort, time/place, provenance and pinned mapping are all present and validated. | Only the controlled external export may carry the bounded not-detected/reported interpretation. The source survey evidence and export transformation are attributable and auditable. No internal negative Occurrence is created. | EVT-27, EVT-30 |
+| ATP-ODR-02 | Repeat the export with required scope, completeness, method, effort or provenance missing, unreported, ambiguous or contradictory. | Export fails closed for the implicit interpretation; the interpretation is omitted. Internal state remains unknown/not assessed. | EVT-28, EVT-31, EVT-38 |
+| ATP-ODR-03 | Exercise nested Event/Survey records with scope specified at each applicable level; include missing child scope, mismatched time/place and attempts to infer completeness from a parent or child. | Scope and hierarchy are explicit and valid at each applicable level. No silent inheritance, child-to-parent completeness derivation or unsupported spatiotemporal relationship is accepted. | EVT-29, EVT-32, EVT-39, EVT-43, EVT-44 |
+| ATP-ODR-04 | Compare a priori and post-facto target declarations; include taxa recorded as bycatch or outside the declared target scope. | Target origin, author, method and timestamp remain attributable. Bycatch and out-of-scope taxa do not satisfy target reporting completeness. | EVT-33, EVT-34, EVT-35, EVT-40 |
+| ATP-ODR-05 | Query an internal Event/Survey scope for which no Occurrence row exists, without an explicit qualifying survey result. | No internal absence assertion and no negative Occurrence are inferred from the missing row. State remains unknown/not assessed. | EVT-37 |
+| ATP-ODR-06 | Record an explicit, attributable survey result and compare it with the controlled export interpretation. | Explicit survey evidence remains distinct from an implicit export transformation; the export does not rewrite or back-propagate an internal scientific assertion. | EVT-36 |
+| ATP-ODR-07 | Exercise MaterialEntity, MediaAsset, Observation, Organism and Occurrence combinations, including one media asset depicting multiple organisms and uncertain grouping. | Each entity/evidence type remains distinct; grouping uncertainty, attribution and provenance are retained. Media is not treated as a specimen or proof of an occurrence by itself. | EVT-41, EVT-42 |
+| ATP-ODR-08 | Generate the export using pinned Conceptual Model, term, profile and mapping versions; deliberately substitute an unpinned or incompatible version. | Export records exact version identifiers and uses only validated mappings. Unpinned, incompatible or unresolved terms cause the relevant interpretation to be omitted or export to fail closed. DR-09 remains open until exact versioned resources and term semantics are verified. | EVT-30; DR-09 |
+
+**Required evidence before any case can be finalized:** approved target export profile and version; approved mapping and term pins; validated Event/Survey/Occurrence semantics; reproducible synthetic fixtures; expected-result oracle reviewed by qualified biodiversity-informatics and field-ecology specialists; and auditable execution records. The tests must use synthetic or rights-cleared data and must not expose sensitive species locations or personal information.
+
+**Open prerequisites:** ODR-01 conditions are authorized as policy interpretation only; the export profile, Task 05C/05D model, DR/LDM findings, DR-09 term-version comparison, API contract and validation oracles remain open. These test designs do not authorize Task 05E or physical schema design.
+
 ## 5. Coverage and dependency summary
 
 | AC | Test cases | Principal dependencies | Proposed readiness |
@@ -335,7 +367,8 @@ Every execution record must include:
 | AC-010 | 8 | Privacy, rights, location, retention and legal review | Blocked pending policy/legal review |
 | AC-011 | 6 | Model interface, registry, evaluation and rights policy | Blocked pending AI architecture and evaluation |
 | AC-012 | 5 | STF/BI domain boundary, shared contracts, second-domain scenario | Blocked pending architecture and boundary review |
-| **Total** | **66** |  | **All proposed / not run** |
+| ODR-01 export-validation supplement (cross-cutting; not a new AC) | 8 | Approved profile, survey scope/completeness, method, hierarchy, bycatch, version pins and scientific validation | Blocked pending profile, scientific and specialist review |
+| **Total** | **74** |  | **All proposed / not run** |
 
 “Blocked” here means the test cannot yet be finalized as an executable acceptance gate. It does not imply that the eventual product cannot meet the criterion.
 
