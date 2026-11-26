@@ -246,3 +246,17 @@ Repository state rechecked on 26 November 2026:
 - No DDL, migration, physical schema, API contract or implementation was authorized.
 
 **End of document — STF-BI-REV-EVT-005 v0.1.**
+
+## 10. Standards evidence correction — 26 November 2026
+
+This correction supersedes older List/term-version statements in Section 5 where inconsistent with the current official TDWG metadata checked in the Standards Version Verification Addendum (blob `85bf0e6e85025a6a8d19f463f743a728a0b6857a`).
+
+- The current official Darwin Core Conceptual Model and List identify 2026-10-13 as the current issue version. The Conceptual Model remains non-normative semantic guidance; it does not prescribe a relational schema or inheritance implementation.
+- `dwc:samplingEffort` and `dwc:samplingProtocol` have 2026-10-13 term versions and Survey-scoped definitions.
+- `dwc:occurrenceStatus-2026-05-26` recommends `detected` / `notDetected`. GBIF guide examples `present` / `absent` require an explicit export-profile mapping.
+- Relevant Humboldt term versions are not uniform: `eco:Survey` and `eco:isTaxonomicScopeFullyReported` are 2026-10-13; `eco:SurveyTarget` and `eco:isSurveyTargetFullyReported` are 2026-05-26. Archive the complete current Humboldt snapshot before closing DR-09.
+- GBIF v1.0.2 §7.3 does not make `eco:taxonCompletenessReported=reportedComplete` a universal additional prerequisite to its taxonomic-scope implicit-absence recipe. A stricter rule is a Botanica Indica policy choice, not a GBIF requirement.
+
+The decision recommendations in this desk review remain proposals. EVT-D01–D04 remain open; no canonical model is approved and Task 05E remains not ready.
+
+Source: [EVT-D01–D04 Standards Version Verification Addendum](EVT-D01-D04-STANDARDS-VERSION-VERIFICATION-ADDENDUM-2026-11-26.md).
