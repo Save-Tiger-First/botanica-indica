@@ -1008,3 +1008,15 @@ The current RTM has corrected the earlier identity/authentication capability map
 The report recommends preserving all source v0.1 documents, preparing controlled boundary/decision-status overlays after owner review, refreshing Task 02 market evidence separately, retaining scientific/rights/privacy gates and keeping Task 05E/physical schema design blocked. No accepted ADR, product requirement or scientific model was changed by the review.
 
 **Repository snapshot:** PRs #17–#20 remain open/draft; PR #18 and PR #20 have diverged from their common develop base. The repository has 23 branches against the seven-branch ceiling. No merge, branch retirement or repository setting change was performed.
+
+
+## 2.8 Owner decisions: domain boundary and Copilot cost constraint — 26 November 2026
+
+Two owner decisions were recorded on the existing PR #20 workstream:
+
+- [ODR-02 — STF / Botanica Indica Logical Domain Boundary](../decisions/ODR-02-STF-BOTANICA-LOGICAL-DOMAIN-BOUNDARY.md): STF owns reusable platform infrastructure; Botanica Indica owns botanical scientific semantics, records, workflows and scientific authority. This is a logical boundary, not a mandated organizational, repository, database or deployment split.
+- [ODR-03 — GitHub Copilot Free-Only Project Usage](../decisions/ODR-03-GITHUB-COPILOT-FREE-ONLY.md): project Copilot use is restricted to Free only; no paid usage or automatic code-review workflows without a new owner decision.
+
+The repository ruleset inspection found no automatic Copilot code-review rule. Account-level Copilot billing was not accessible through the repository connection and has not been changed. See ODR-03 for account-holder verification steps.
+
+These records do not accept the full architecture plan, amend ADR-001–ADR-010, accept ADR-011 or authorize physical schema design or implementation.

@@ -549,3 +549,18 @@ The current RTM has corrected the identity/authentication mapping defect by trea
 ### Repository governance
 
 PRs #17–#20 remain open/draft. PR #18 and PR #20 have diverged from their common \`develop\` base. The repository has 23 branches against the seven-branch ceiling. Preserve source histories and unique content; no blind rebase, merge or branch deletion is recommended.
+
+
+## 16. Owner decisions — 26 November 2026
+
+### ODR-02 — STF / Botanica Indica logical domain boundary
+
+The project owner confirmed that STF owns genuinely reusable platform infrastructure while Botanica Indica owns botanical scientific semantics, domain records, workflows and scientific authority. This resolves the policy-level boundary question. It does not mandate separate legal entities, teams, repositories, databases, deployments or microservices. Historical Task 03/04 wording still requires controlled overlays; PRD and architecture acceptance remain open.
+
+### ODR-03 — GitHub Copilot Free-only project usage
+
+Project Copilot usage is restricted to the Free plan only. No paid plan, seat, AI-credit budget, additional usage budget, automatic Copilot code review or paid agent workflow is authorized without a new explicit owner decision.
+
+The active repository ruleset was checked and does not enable automatic Copilot code review. Personal or organization billing could not be inspected or changed through the repository connection; account-holder verification remains outstanding. See docs/decisions/ODR-03-GITHUB-COPILOT-FREE-ONLY.md.
+
+**No implementation authorization follows from these owner decisions.**

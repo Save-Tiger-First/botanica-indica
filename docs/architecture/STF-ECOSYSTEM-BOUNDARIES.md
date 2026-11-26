@@ -788,3 +788,20 @@ Reuse should be achieved through clear contracts, responsible data governance an
 The architecture should remain modular, technology-independent and evolutionary.
 
 **The goal is not to centralize everything. The goal is to share what should be shared, preserve what should remain domain-specific, and make the entire ecosystem easier to build, operate and extend.**
+
+
+---
+
+## 20. Owner-confirmed logical domain boundary — ODR-02 (26 November 2026)
+
+The project owner confirmed the logical ownership boundary recorded in [ODR-02 — STF / Botanica Indica Logical Domain Boundary](../decisions/ODR-02-STF-BOTANICA-LOGICAL-DOMAIN-BOUNDARY.md).
+
+**Decision:** STF owns genuinely reusable platform infrastructure. Botanica Indica owns botanical scientific semantics, botanical domain records, workflows and scientific authority.
+
+This confirms the boundary already expressed in the core principles of this document:
+- common identity, media, geographic primitives, generic search, notification delivery, audit and observability mechanisms may be shared;
+- botanical taxonomy and taxon concepts, botanical knowledge, identification, evidence, observations, occurrences, botanical distribution interpretation, source reconciliation and expert scientific governance remain Botanica Indica responsibilities.
+
+The decision does not mandate separate organizations, teams, repositories, databases, deployments or microservices. It does not determine legal title or reuse rights for external or contributed data. Those are separate decisions and reviews.
+
+**Document status remains Proposed — architecture baseline for review.** ODR-02 confirms the logical domain boundary only; it does not accept this entire architecture document or amend ADR-001 through ADR-010. ADR-011 remains a separate proposal and is not accepted by this record.

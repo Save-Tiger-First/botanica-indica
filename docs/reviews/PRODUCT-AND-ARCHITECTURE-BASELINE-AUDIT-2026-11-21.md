@@ -705,3 +705,15 @@ The current RTM has corrected the previously reported identity/authentication ma
 **Recommendation:** preserve the original v0.1 source transcriptions; obtain owner review of the logical domain boundary; prepare controlled Task 01/03/04 overlays or canonical revisions; explicitly link the offline companion specification; refresh market evidence separately; retain all scientific/rights/privacy gates. Do not proceed to architecture freeze, physical schema design or implementation based on this audit alone.
 
 Repository state reverified: 23 branches; PRs #17–#20 open/draft; PR #18 and #20 diverged from their common \`develop\` base; no submitted reviews or check runs on the inspected PR #18–#20 heads. No merge, closure, retargeting, branch creation/deletion, protection change, accepted ADR change, scientific-model change or implementation was performed.
+
+
+## 25. Owner decisions recorded 26 November 2026
+
+- **ODR-02:** the project owner confirmed the logical boundary: STF owns genuinely reusable platform infrastructure; Botanica Indica owns botanical scientific semantics, records, workflows and scientific authority. This resolves the policy-level ambiguity in FND-01. Historical source wording in Task 03/04 still requires controlled overlays; the PRD and architecture baselines remain unaccepted.
+- **ODR-03:** project use of GitHub Copilot is restricted to Copilot Free only. The active repository ruleset ID 23822734 contains only deletion and non-fast-forward protections; it does not configure automatic Copilot code review. No repository setting was changed. Personal/organization billing could not be inspected through the repository connection, and no account downgrade/cancellation was performed.
+
+See:
+- docs/decisions/ODR-02-STF-BOTANICA-LOGICAL-DOMAIN-BOUNDARY.md
+- docs/decisions/ODR-03-GITHUB-COPILOT-FREE-ONLY.md
+
+These owner decisions do not amend accepted ADR-001–ADR-010, accept ADR-011, approve the PRD/architecture baseline, resolve scientific-model blockers or authorize implementation.

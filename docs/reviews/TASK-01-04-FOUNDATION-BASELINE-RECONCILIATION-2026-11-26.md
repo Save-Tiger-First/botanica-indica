@@ -391,3 +391,35 @@ This review was read-only with respect to PRs #17–#19 and accepted ADRs. The a
 No PR was merged, closed, retargeted or marked ready. No branch was created, deleted, renamed or force-pushed. No repository protection, permission or setting was changed. No accepted ADR, product requirement or scientific model was modified. No external party was contacted. No application code, physical schema, migration or production API was created. No test was executed. No independent specialist review, legal opinion, market validation or scientific sign-off was obtained.
 
 **Final disposition:** retain all four original task documents as working source baselines; keep PRs #17–#20 open and draft; do not authorize architecture freeze, physical database design or implementation from this audit alone.
+
+
+---
+
+## 8. Owner decision addendum — ODR-02 and ODR-03 (26 November 2026)
+
+The project owner instructed the adviser to proceed with the recommended STF / Botanica Indica boundary and to check Copilot and restrict project use to the Free plan. The following decisions and checks were recorded after that instruction.
+
+### 8.1 ODR-02 — logical domain boundary confirmed
+
+**Decision:** STF owns genuinely reusable platform infrastructure; Botanica Indica owns botanical scientific semantics, domain records, workflows and scientific authority.
+
+This resolves the policy-level ambiguity identified in FND-01. It does **not** mean that every source document is already reconciled: Task 03 and Task 04 still contain historical wording that requires source-preserving overlays. Task 01's governance overlay and the STF Ecosystem Boundaries document now record the owner-confirmed interpretation. Task 03/04 overlays are being aligned on the existing PR #18 branch. The original Task 01–04 source text is not rewritten. The broader PRD and architecture documents remain working baselines, not accepted product or architecture baselines.
+
+ODR-02 does not decide organizational/legal structure, deployment topology, repository/database separation, physical schema, vendor selections, rights ownership or scientific model details. It does not accept ADR-011 or amend ADR-001–ADR-010.
+
+### 8.2 ODR-03 — Copilot Free-only project constraint
+
+The owner authorized project use of GitHub Copilot only under the Copilot Free plan, with no paid seats, paid plans, additional usage budgets or paid code-review/agent workflows absent a new explicit decision.
+
+The active repository ruleset Protect main branch (ID 23822734) was inspected. Its only rules are deletion protection and non-fast-forward protection. It does not enable automatic Copilot code review. No ruleset or repository protection setting was changed.
+
+GitHub's official plan page checked 26 November 2026 lists Copilot Free at USD $0, with 2,000 completions per month and no credit card required; Copilot code review is listed under Pro. The personal/organization Copilot billing settings were not accessible through the connected repository tools. Consequently, no claim is made that an account-level paid plan or organization seat has been cancelled or downgraded. ODR-03 records the project policy and the account-holder verification steps; account status remains unverified.
+
+Official references:
+- https://github.com/features/copilot/plans
+- https://docs.github.com/en/copilot/how-tos/manage-your-account/view-and-change-your-copilot-plan
+- https://docs.github.com/en/copilot/how-tos/copilot-on-github/set-up-copilot/configure-code-review
+
+### 8.3 Repository and implementation status
+
+PR #20 remains open/draft. The 23-branch inventory remains above the seven-branch ceiling. No branch was created or deleted; no PR was merged or closed; no protection or billing setting was changed; no code, schema, migration or deployment was produced. The ODRs are owner-authorized project decisions, not independent legal, scientific or technical sign-offs.
