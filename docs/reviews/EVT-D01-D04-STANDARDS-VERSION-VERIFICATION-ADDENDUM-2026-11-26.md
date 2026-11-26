@@ -130,7 +130,14 @@ Source:
 
 ## 5. Darwin Core List and term-level version pins
 
-Current official TDWG search results identify the Darwin Core List of Terms version issued 2026-10-13, with version IRI `http://rs.tdwg.org/dwc/doc/list/2026-10-13` and previous version 2026-05-26. The opened HTML page and core-namespace terms page still rendered 2026-05-26 headers/snapshots during this session. The exact 2026-10-13 List resource was not successfully opened. Thus the latest issue/version metadata is verified as current official indexed metadata, while the full 2026-10-13 list content was not directly inspected. Current official term results do expose individual 2026-10-13 term-version IRIs and definitions. Keep the document issue date, namespace snapshot date and each term-version date separate.
+The directly opened official Darwin Core List of Terms identifies:
+- Date version issued: **2026-05-26**
+- This version: `http://rs.tdwg.org/dwc/doc/list/2026-05-26`
+- Underlying vocabulary version: `http://rs.tdwg.org/version/dwc/2026-05-26`
+
+The page states that Section 4's Term IRI and Definition values are normative. It also distinguishes the document's issue date and vocabulary version from each individual term's `Modified` date and term-version IRI. Some current Quick Reference entries and indexed term results show Survey-oriented usage or later term metadata; those do not establish that the complete List document has been reissued as 2026-10-13. The exact 2026-10-13 List URI did not yield a directly inspectable versioned document during this review. Therefore, **do not describe the current List as a verified 2026-10-13 edition**. Preserve the 2026-05-26 List as the directly inspected document and record later individual term metadata separately.
+
+The current Quick Reference Guide is maintained by the Darwin Core Maintenance Group as an easy-to-read reference to currently recommended terms. TDWG explicitly states that it is not itself part of the standard. Its definitions, notes and examples are useful usage guidance but must not be used to overwrite normative term metadata without a documented versioned decision.
 
 ### 5.1 Verified term-level pin
 
@@ -143,41 +150,36 @@ Current official TDWG search results identify the Darwin Core List of Terms vers
 
 The GBIF survey guide v1.0.2 examples use `present` and `absent`. These are not interchangeable by assumption. A specific export profile must define and test any mapping.
 
-### 5.2 New 2026-10-13 core terms relevant to survey design
+The directly inspected 2026-05-26 List gives these normative term-level pins:
 
-Current official term results identify:
+- `dwc:samplingEffort`: term version `2023-06-28`; definition: amount of effort expended during a `dwc:Event`.
+- `dwc:samplingProtocol`: term version `2026-05-26`; definition: names of, references to, or descriptions of methods/protocols used during a `dwc:Event`.
 
-- `dwc:samplingEffort` — term version 2026-10-13; amount of effort expended during an `eco:Survey`.
-- `dwc:samplingProtocol` — term version 2026-10-13; names, references or descriptions of methods/protocols used during an `eco:Survey`.
+The current Darwin Core Quick Reference Guide renders these terms in a Survey-oriented context and gives an updated `eco:Survey` definition. However, TDWG explicitly says that the Quick Reference Guide is not part of the standard, while the List's term definitions are normative. This is a source-level discrepancy to resolve through exact versioned term records and documented TDWG evidence; do not claim that the normative `dwc:samplingEffort` or `dwc:samplingProtocol` term versions were changed to 2026-10-13 on the evidence inspected here.
 
-The GBIF survey guide v1.0.2 §5.7 says `dwc:samplingEffort` is an unstructured field, while the Humboldt extension's structured fields are the recommended best practice: `eco:isSamplingEffortReported`, paired `eco:samplingEffortValue`/`eco:samplingEffortUnit`, `eco:samplingEffortProtocol`, and `eco:samplingPerformedBy`. It does not recommend replacing the structured Humboldt representation with only the free-text core term. For Botanica Indica, preserve numeric value, unit, method, responsible agent and reporting status as distinct internal facts; the external profile may serialize both structured and unstructured forms where its mapping calls for them. Do not double-count the same effort as two separate scientific facts.
+The GBIF survey guide v1.0.2 §5.7 recommends structured Humboldt sampling-effort fields rather than relying solely on the unstructured core field: `eco:isSamplingEffortReported`, paired `eco:samplingEffortValue`/`eco:samplingEffortUnit`, `eco:samplingEffortProtocol`, and `eco:samplingPerformedBy`. Preserve these distinct effort facts internally and map them to the selected export profile. Do not duplicate one effort as multiple independent facts.
 
-The 2026-10-13 term definitions now scope both core `dwc:samplingEffort` and `dwc:samplingProtocol` specifically to an `eco:Survey`; the older cached 2026-05-26 HTML page still displays the previous Event-scoped definition for `dwc:samplingProtocol`. This is another reason to pin term-version IRIs rather than relying on cached landing-page rendering.
-
-Source:
-- https://dwc.tdwg.org/list/
-- https://rs.tdwg.org/dwc/terms/version/occurrenceStatus-2026-05-26
-- https://rs.tdwg.org/dwc/terms.htm
+Sources:
+- https://dwc.tdwg.org/list/ (directly inspected List version 2026-05-26)
+- https://dwc.tdwg.org/terms/ (current Quick Reference; explicitly not itself part of the standard)
+- https://docs.gbif.org/guide-publishing-survey-data/en/ (v1.0.2, 2025-09-24, §5.7)
 
 ## 6. Humboldt Extension — term-level evidence and remaining snapshot gap
 
-The official 2026-05-26 Humboldt snapshot is explicitly superseded and identifies 2026-10-13 as its replacement. The live current terms page and historical snapshot renderer still expose 2026-05-26 material; the exact full 2026-10-13 snapshot could not be opened directly. However, current official TDWG List/Quick Reference search results and the 2026-05-26 snapshot's term-replacement metadata provide term-level evidence for this provisional crosswalk. Exact current term-version pages and the complete snapshot should still be preserved in a reproducible evidence bundle before DR-09 is closed.
+The official 2026-05-26 Humboldt snapshot is explicitly superseded and identifies 2026-10-13 as its replacement. The live current terms page and historical snapshot renderer still expose 2026-05-26 material; the exact full 2026-10-13 snapshot could not be opened directly. Some individual term search results and replacement metadata expose 2026-10-13 versions, but these must be treated as term-level evidence, not as proof that the complete 2026-10-13 snapshot has been inspected.
 
-| Term | Current/relevant term-version evidence | Semantics and design consequence |
+| Term | Evidence level / term-version position | Semantics and design consequence |
 |---|---|---|
-| `eco:Survey` | `Survey-2026-10-13` replaces `Survey-2026-05-26` | Current Quick Reference definition requires an intentionally designed Event to characterize a defined biotic target/domain for collective ecological or monitoring inference; not every observation is a Survey |
-| `eco:SurveyTarget` | `SurveyTarget-2026-05-26`, recommended in retrieved snapshot | One or more scopes describing targets for Occurrences in a Survey; preserve scope type, inclusion/exclusion, hierarchy and a priori/post-facto origin |
-| `eco:isSurveyTargetFullyReported` | `isSurveyTargetFullyReported-2026-05-26`, recommended | Target-specific: all detected Occurrences matching that SurveyTarget were fully reported; enables target-specific non-detection inference; not interchangeable with taxonomic-scope completeness |
-| `eco:isTaxonomicScopeFullyReported` | `isTaxonomicScopeFullyReported-2026-10-13` replaces 2024-02-28 | Every detected Occurrence within the declared taxonomic scope was reported; scope is based on target and excluded taxonomic scope; reporting completeness, not proof of detectability or biological absence |
-| `eco:taxonCompletenessReported` | `taxonCompletenessReported-2026-10-13` replaces 2025-07-10 | Whether taxonomic completeness was assessed; controlled values are `notReported`, `reportedComplete`, `reportedIncomplete` under the separate 2026-10-13 ecotcr vocabulary |
-| `eco:taxonCompletenessProtocols` | `taxonCompletenessProtocols-2026-10-13` replaces 2025-07-10 | Method or reference used to assess taxonomic completeness; preserve independently from reporting completeness and sampling effort |
-| `eco:isAbsenceReported` | `isAbsenceReported-2026-10-13` replaces 2024-02-28 | Indicates whether taxonomic absences are explicitly reported; GBIF's implicit pattern sets this false because no explicit absence Occurrence rows are created |
-| `eco:isSamplingEffortReported` | `isSamplingEffortReported-2026-10-13` replaces 2024-02-28 | Whether Survey sampling effort is reported; pair with structured effort fields where applicable |
-| `eco:samplingEffortValue` / `eco:samplingEffortUnit` | Current 2026-10-13 term versions replace earlier versions | Numeric amount and unit are a pair; do not infer effort for compiled data |
-| `eco:samplingEffortProtocol` | Retrieved 2025-07-10 version; current status/version must be confirmed in the inaccessible 2026-10-13 snapshot | Method used to determine effort; distinct from the survey protocol |
-| `eco:areNonTargetTaxaFullyReported` | Current 2026-10-13 term result | Completeness of reported non-target detections; bycatch remains outside absence inference |
-| `dwc:samplingEffort` | `samplingEffort-2026-10-13` | Unstructured amount of effort expended during an eco:Survey |
-| `dwc:samplingProtocol` | `samplingProtocol-2026-10-13` | Names, references or descriptions of methods/protocols used during an eco:Survey |
+| `eco:Survey` | Quick Reference gives an intentionally designed Survey definition; 2026-05-26 Humboldt snapshot marks older Survey term superseded and reports a 2026-10-13 replacement | Use updated definition as current recommended usage; casual observation is not automatically a Survey |
+| `eco:SurveyTarget` | `SurveyTarget-2026-05-26` in directly inspected snapshot | One or more scopes describing targets for Occurrences in a Survey; preserve scope type, inclusion/exclusion, hierarchy and a priori/post-facto origin |
+| `eco:isSurveyTargetFullyReported` | `isSurveyTargetFullyReported-2026-05-26` in directly inspected snapshot | Target-specific reporting completeness; not interchangeable with taxonomic-scope completeness |
+| `eco:isTaxonomicScopeFullyReported` | Official indexed term metadata identifies `isTaxonomicScopeFullyReported-2026-10-13` as replacement for 2024-02-28; exact term record not directly opened | Every detected Occurrence within declared taxonomic scope was reported; pin exact definition/status before export implementation |
+| `eco:taxonCompletenessReported` / `eco:taxonCompletenessProtocols` | GBIF v1.0.2 guide gives their semantics and controlled values; exact current term-version pages not directly opened | Whether taxonomic completeness was assessed and which method was used; distinct from report completeness and sampling effort |
+| `eco:isAbsenceReported` | Official indexed result identifies a 2026-10-13 term version; exact term record not directly opened | Whether taxonomic absences are explicitly reported; GBIF implicit pattern sets false where no explicit absence Occurrence rows are created |
+| `eco:isSamplingEffortReported`, `eco:samplingEffortValue`, `eco:samplingEffortUnit`, `eco:samplingEffortProtocol` | Directly inspected 2026-05-26 snapshot and GBIF recommended-practice guide; individual current term pins still need retrieval | Preserve reported status, paired numeric value/unit, method and agent separately; do not infer effort for compilations |
+| `eco:areNonTargetTaxaFullyReported` | Current Quick Reference / GBIF guidance | Completeness of reported non-target detections; bycatch remains outside absence inference |
+| `dwc:samplingEffort` | List term version `2023-06-28`, Event-scoped definition | Do not claim 2026-10-13 term version; Quick Reference uses Survey context but is non-normative guidance |
+| `dwc:samplingProtocol` | List term version `2026-05-26`, Event-scoped definition | Do not claim 2026-10-13 term version; Quick Reference uses Survey context but is non-normative guidance |
 | `dwc:occurrenceStatus` | `occurrenceStatus-2026-05-26` | Recommended values `detected` and `notDetected`; GBIF guide examples use `present` and `absent`, requiring explicit profile mapping |
 
 The current Darwin Core Quick Reference Guide (a current recommended-terms aid, explicitly not itself part of the standard) gives the updated `eco:Survey` definition: an Event intentionally designed to characterize a defined biotic target/domain so resulting Occurrences can be interpreted collectively for ecological and monitoring inference. The official 2026-05-26 Humboldt snapshot marks `Survey-2026-05-26` superseded and identifies `Survey-2026-10-13` as its replacement. The exact term-version page was not opened directly, but the current Quick Reference and supersession metadata agree on the substantive change.
@@ -191,12 +193,7 @@ The design implication is important: Botanica Indica should not label every casu
 - Retrieve and archive the exact current list snapshot and individual term metadata when the official resource is accessible.
 - Reconcile the 2026-10-13 Survey definition, the new taxonomic-completeness vocabulary, sampling-effort/protocol terms and the distinct target/scope completeness flags against Task 05B, Candidate A, Task 05D and ODR-01 before modifying the canonical dictionary.
 
-### Disposition
 
-- Do not claim the full 2026-10-13 Humboldt term list has been directly inspected.
-- Preserve term-level version pins independently.
-- Retrieve the exact current list snapshot and archive it in the standards evidence bundle.
-- Review the 2026-10-13 Survey definition and new sampling terms against Task 05B, Candidate A, Task 05D and ODR-01 before modifying the canonical dictionary.
 
 Sources:
 - https://rs.tdwg.org/eco/terms.htm
@@ -320,12 +317,12 @@ EVT-D01–D04 remain open. The standards findings support the preferred working 
 
 | ID | Severity | Finding | Disposition |
 |---|---|---|---|
-| STD-01 | Major | Current indexed metadata identifies the Conceptual Model as 2026-10-13, but the rendered page exposes 2026-05-26 and the old version page reports replacement by 2026-09-17 | Open; retrieve and compare exact versioned resources |
+| STD-01 | Major | Current indexed metadata reports a 2026-10-13 Conceptual Model issue, but the opened content renders 2026-05-26; directly opened List confirms 2026-05-26 and underlying vocabulary version | Open; retrieve and compare exact versioned resources |
 | STD-02 | Resolved at metadata level | Hierarchical-event guide current version is 2026-10-13; Section 3 is normative | Version/date resolved; preserve full source evidence before final compliance claim |
-| STD-03 | Major | Current indexed Darwin Core List is 2026-10-13, while rendered core term page exposes 2026-05-26 | Open; capture exact 2026-10-13 List snapshot |
+| STD-03 | Major | Directly opened Darwin Core List issue/vocabulary version is 2026-05-26; individual term Modified dates vary | Open; capture exact 2026-10-13 List snapshot |
 | STD-04 | Major | Humboldt 2026-05-26 term snapshot is explicitly superseded by 2026-10-13; current Quick Reference exposes updated Survey definition and current terms | Open; capture exact 2026-10-13 snapshot and pin terms |
 | STD-05 | Major | Current Survey definition requires intentional design for ecological/monitoring inference, unlike the older short definition | Review product/domain boundary; do not classify casual observation as Survey |
-| STD-06 | Major | New core `dwc:samplingEffort` and `dwc:samplingProtocol` term versions dated 2026-10-13 need crosswalk against Humboldt effort fields | Open; term-by-term crosswalk |
+| STD-06 | Major | Normative List term versions for `dwc:samplingEffort` (2023-06-28) and `dwc:samplingProtocol` (2026-05-26) need crosswalk against current Quick Reference and Humboldt effort fields | Open; term-by-term crosswalk |
 | STD-07 | Resolved at term level | `dwc:occurrenceStatus-2026-05-26` recommends `detected/notDetected`; GBIF examples use `present/absent` | Keep explicit profile mapping requirement |
 | STD-08 | Open | `SurveyTargetResult` vs `SurveyTargetAssessment` and authoritative non-detection state remain unresolved | EVT-D04/B16 specialist decision |
 | STD-09 | Open | Internal multiple-Survey reporting vs one Event per DwC-A Occurrence row | Decide internal identity and loss-aware export mapping |
@@ -346,7 +343,7 @@ EVT-D01–D04 remain open. The standards findings support the preferred working 
 
 ## 13. Current status and non-actions
 
-- DR-09: partially resolved, remains OPEN. Current indexed metadata identifies 2026-10-13 versions for the Conceptual Model and Darwin Core List; direct rendered content and exact version resources remain inconsistent or inaccessible.
+- DR-09: partially resolved, remains OPEN. Current indexed metadata reports a 2026-10-13 Conceptual Model issue; directly opened List is 2026-05-26. Individual term metadata and Quick Reference semantics must be pinned separately.
 - EVT-D01–D04: OPEN; preferred working direction only.
 - Candidate A: NOT APPROVED.
 - Candidate B: preserved alternative.
