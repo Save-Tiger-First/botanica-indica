@@ -449,9 +449,14 @@ The repository has **23 branches and 19 open pull requests**. This remains above
 
 PRs #21–#23 add active scientific-model workstreams and make the branch/PR dependency graph more complex. They must be audited as a dependency chain before any consolidation or branch retirement. Do not assume that their existence means Task 05C/05D is approved or validated.
 
-The PR #18/PR #20 compare remains divergent: PR #20 is 40 commits ahead and 3 behind PR #18. No merge, rebase, retarget or branch deletion was performed.
+The PR #18/PR #20 compare remains divergent: PR #20 is 41 commits ahead and 3 behind PR #18. No merge, rebase, retarget or branch deletion was performed.
 
 
 ### 9.1 Final snapshot correction — 26 November 2026
 
 A second live query immediately after the prior refresh confirmed **19 open PRs** (all draft) and **23 branches**. PR #18 and PR #20 remain diverged; the current compare is PR #20 **40 commits ahead and 3 commits behind** PR #18. This replaces the earlier 39/3 comparison in this report. The repository count and comparison are snapshots and must be re-fetched before any integration action.
+
+
+### 9.2 Compare correction — 26 November 2026
+
+After the preceding documentation commit, the latest GitHub compare of PR #18 head \`b28d1308ed7d9850d737e822fafddfb26bcbe3d1\` with PR #20 head \`7fd6f3cd1a6c866fd28cb7b73d6b0cd019a47a59\` reports **PR #20 41 commits ahead and 3 commits behind**. This supersedes the 40/3 snapshot above. The branches remain diverged; do not blindly merge, rebase or retarget.

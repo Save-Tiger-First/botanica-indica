@@ -572,9 +572,14 @@ The current GitHub snapshot is 23 branches and 20 open draft pull requests. PRs 
 
 PR #18 now carries the Task 03/04 ODR-02 overlays; PR #19 carries the corrected Acceptance Test Plan v0.2 footer and cross-document audit update; PR #20 carries ODR-02 and ODR-03 plus the Task 01 and architecture/roadmap updates.
 
-PR #18 and PR #20 remain diverged (PR #20 is 40 commits ahead and 3 behind PR #18). Do not blindly merge, rebase or retarget. The repository remains above the seven-branch ceiling; preserve scientific-model workstreams and unique content before any authorized retirement.
+PR #18 and PR #20 remain diverged (PR #20 is 41 commits ahead and 3 behind PR #18). Do not blindly merge, rebase or retarget. The repository remains above the seven-branch ceiling; preserve scientific-model workstreams and unique content before any authorized retirement.
 
 
 ### 17.1 Snapshot correction — 26 November 2026
 
-Latest live query: 19 open draft PRs and 23 branches. PR #20 is 40 commits ahead and 3 behind PR #18. This is a live snapshot, not a merge recommendation.
+Latest live query: 19 open draft PRs and 23 branches. PR #20 is 41 commits ahead and 3 behind PR #18. This is a live snapshot, not a merge recommendation.
+
+
+### 17.2 Compare correction — 26 November 2026
+
+Latest compare after the PR #20 documentation update: PR #20 is 41 commits ahead and 3 behind PR #18. This is a snapshot only; preserve both branches until a reviewed integration plan exists.
