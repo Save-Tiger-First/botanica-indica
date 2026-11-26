@@ -257,3 +257,13 @@ No reviewer name, affiliation, approval or external sign-off may be invented. No
 - No physical schema, DDL, migration or API contract was created or frozen.
 
 **End of document — STF-BI-REV-EVT-004 v0.1.**
+
+## 10. Standards evidence correction — 26 November 2026
+
+The standards assumptions in this specialist brief must be read with the current [Standards Version Verification Addendum](EVT-D01-D04-STANDARDS-VERSION-VERIFICATION-ADDENDUM-2026-11-26.md), blob `85bf0e6e85025a6a8d19f463f743a728a0b6857a`.
+
+Current evidence identifies the Darwin Core Conceptual Model and List issue version as 2026-10-13. The current List identifies `dwc:samplingEffort-2026-10-13` and `dwc:samplingProtocol-2026-10-13`; `dwc:occurrenceStatus-2026-05-26` continues to recommend `detected` / `notDetected`. Humboldt terms must be pinned individually: `eco:Survey` and `eco:isTaxonomicScopeFullyReported` are 2026-10-13, whereas `eco:SurveyTarget` and `eco:isSurveyTargetFullyReported` are 2026-05-26. The full 2026-10-13 Humboldt snapshot remains to be archived.
+
+The GBIF v1.0.2 implicit-absence recipe must not be misrepresented as requiring `eco:taxonCompletenessReported=reportedComplete` universally. Specialists should advise whether Botanica Indica should impose that additional, stricter policy safeguard.
+
+This correction updates the evidence baseline only. It does not approve EVT-D01–D04, Candidate A, Task 05D or Task 05E.
