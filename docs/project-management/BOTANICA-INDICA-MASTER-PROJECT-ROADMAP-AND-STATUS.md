@@ -1,7 +1,7 @@
 # Botanica Indica — Master Project Roadmap and Status
 
 - **Document ID:** STF-BI-PMO-001
-- **Version:** 0.2 — Reconciled master roadmap and 23 November source/status update
+- **Version:** 0.3 — Reconciled master roadmap and 26 November repository/source update
 - **Status:** Proposed project-control document; owner review required
 - **Prepared:** 21 November 2026
 - **Decision authority:** Save Tiger First project owner
@@ -432,3 +432,62 @@ This follow-up revalidates the current product/requirements/architecture documen
 **Graphify interpretation:** the connected Graphify Free workspace currently indexes only README.md for this documentation-led repository (17 nodes, 29 edges) and has no automated review record for PR #19 or PR #20. A local CLI evaluation remains the recommended way to test document-rich graphing, but it is not yet approved or executed.
 
 **No implementation readiness change:** Task 05C remains unapproved; Task 05E remains not ready. EVT-27–EVT-44, OFF-001–OFF-036 and API-SYNC-001–042 remain proposed and unexecuted. No API schema, physical database design, application implementation or production release is authorized by this follow-up.
+
+
+## 13. Current repository, integration and project-gate update — 26 November 2026
+
+This section is the current status snapshot and supersedes earlier 23 November statements about branch counts, PR heads, mergeability, current PostgreSQL version and source revisions. Earlier sections remain as historical audit records.
+
+### 13.1 Verified live repository state
+
+| Item | Live state |
+|---|---|
+| Repository | `Save-Tiger-First/botanica-indica` |
+| Branch count | 23; seven-branch ceiling exceeded by 16 |
+| Open PRs | 19; all 19 are drafts |
+| `main` | `6f2f51da093caf8183fde386dbec707cc6046d27` |
+| `develop` | `f165ecb9b4d9de115c02327cf779982b7ef4bbd4` |
+| `staging` | `f165ecb9b4d9de115c02327cf779982b7ef4bbd4` |
+| PR #16 | Open/draft; head `16fd00e0e6719026a9c937c19c7409b13eb35f98` |
+| PR #19 | Open/draft; head `b6cf5e08a87763c52a22a336f99d68ca3a4b9ee9`; 63 commits; 8 changed files |
+| PR #20 | Open/draft; head `3fcc2b5667cdf6e993b1f05917f24c927aa6f68e`; 34 commits; 4 changed files |
+
+The PR #20 head above is the commit created by the audit update immediately preceding this roadmap update; re-fetch live metadata after this commit to obtain the final PR head. GitHub returned mergeability unknown/null for PR #19 and PR #20 at the last status check. This is neither evidence of conflict nor approval. No submitted reviews or PR-triggered workflow runs were found for PR #19 or PR #20 at the inspected heads.
+
+### 13.2 Integration and branch management
+
+PR #19 and PR #20 are parallel, diverged documentation workstreams with `develop` as their common ancestor. PR #20 is 32 commits ahead and 59 behind PR #19 at the last comparison. No changed file paths overlap among PRs #17–#20, but this does not prove semantic compatibility. No actual branch-to-branch merge rehearsal was performed. Do not treat GitHub's individual-PR mergeability field as a cross-PR integration test.
+
+The branch list contains 23 branches, including PRs #21–#23 preserving alternate Task 05C/05D material. The seven-branch ceiling is not met. No new branches are permitted. Preserve unique content and provenance on all scientific alternatives before any branch retirement; do not delete a branch or close a PR merely because another version appears newer. The four existing consolidation destinations remain the only permitted workstream destinations. PR #16 remains frozen for independent maintainer review.
+
+### 13.3 PR #19 reconciliation outputs
+
+| Document | Branch | Blob SHA | Status |
+|---|---|---|---|
+| Task 03 Acceptance Test Plan v0.2 | `docs/requirements-traceability-register` | `21cb80e59656db1519d89dae7f10f7985b11568b` | 66 original AC cases plus 8 proposed cross-cutting ODR-01 cases; all 74 not run |
+| Offline/Field Synchronization Specification v0.2 | same | `6a25055c51cd5d16e8a9da8964f5f5e2c9bfbc0a` | Footer corrected to v0.2; no semantic change |
+| Requirements Traceability Register v0.3 | same | `fbf938235f686c7e2a9959a179a3a1a57ca6c632` | Historical audit snapshot labelled; proposed, not accepted |
+| PR #19 Integration Audit | same | `fb872bba5555e9bf9aef7b350835d1ede4bd28dc` | Follow-up appended; proposed audit record |
+
+The ODR-01 supplement is not a thirteenth Task 03 acceptance criterion. It explicitly tests controlled external-export conditions while preserving internal unknown/not-assessed semantics. It does not approve an export profile, model, API or physical schema.
+
+### 13.4 Technology research correction
+
+PostgreSQL 19.0 was released 19 November 2026 and is supported; PostgreSQL 18.7 also remains supported. PostGIS 3.7.0, released 30 October 2026, lists compatibility with PostgreSQL 14–19. This makes PostgreSQL 19/PostGIS 3.7 technically compatible at the upstream release level, but not a selected production stack. Compare managed-host support, extension packaging, drivers, operational maturity, migration/rollback, backup/restore, security patch cadence and workload benchmarks before selecting a major version/provider. PostgreSQL 18 remains a valid alternative where operational maturity is preferable.
+
+Sources checked 26 November 2026:
+- https://www.postgresql.org/support/versioning/
+- https://www.postgresql.org/docs/19/release.html
+- https://www.postgis.net/2026/10/PostGIS-3.7.0/
+
+### 13.5 Current recommended work sequence
+
+1. Complete source-preserving reconciliation of Task 01 and Task 02 originals into canonical repository baselines; preserve the full detail and exact provenance. Do not reconstruct them from secondary summaries.
+2. Obtain owner and discipline review of Task 03, Task 04, Blueprint, RTM, workflow, API/offline specifications and architecture as one connected baseline package.
+3. Reconcile Task 05C Candidate A/B and all PR #21–#23 historical alternatives; obtain qualified taxonomy, nomenclature, biodiversity-informatics and field-ecology review.
+4. Close DR/LDM/EVT/FLD findings with reproducible, synthetic or rights-cleared validation. Keep DR-09 open until exact versioned Darwin Core and Humboldt resources/term semantics are pinned and compared.
+5. Keep Task 05E and physical schema implementation blocked until the scientific model and review gates are satisfied.
+6. Only after requirements and architecture are approved, establish engineering foundations and validate key workflows with controlled prototypes. The full product vision remains intact; pilots are validation mechanisms, not a reduction of scope.
+7. Conduct preservation-first consolidation on existing branches; do not merge, close, retarget or delete without explicit authorization and a verified content-preservation plan.
+
+**No accepted ADR-001–ADR-010 or product requirement was changed. ADR-011 remains proposed. ODR-01 remains export-only. Task 05C remains unapproved; Task 05E remains not ready. No tests were executed, no external specialist sign-off was obtained, no physical schema/application implementation was started, and no PR/branch lifecycle or repository protection action was taken.**
