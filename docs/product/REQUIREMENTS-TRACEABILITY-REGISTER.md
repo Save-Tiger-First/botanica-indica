@@ -59,7 +59,7 @@ All requirement and capability status fields begin as **Not yet verified** unles
 | Workflow-to-Requirements Crosswalk v0.2 | `docs/requirements-traceability-register` | `61d2111ace5c408eaf503bdf17b2ccb822f90978` | Proposed WF/requirement and ODR-01/EVT-27–EVT-44 traceability |
 | Offline and Field Synchronization Specification v0.2 | `docs/requirements-traceability-register` | `a46c7cc1de9d1ea5c5faed7574d23de1d1a48e13` | Proposed offline design and ODR-01 offline safeguards |
 | API Command and Idempotency Contract v0.2 | `docs/requirements-traceability-register` | `bc0f3e93ec6ef2d2c2039b56739db38296c03281` | Proposed API design; ODR-01 export-only constraints; IETF draft v09 |
-| Task 03–04 Cross-Document Readiness Audit v0.1 with 23 November follow-up | `docs/requirements-traceability-register` | `d01ec7041ca2571ae8c11c4a0d95816c7d2daa7c` | Proposed findings; follow-up reconciliation recorded separately |
+| Task 03–04 Cross-Document Readiness Audit v0.1 — historical source snapshot | `docs/requirements-traceability-register` | `d01ec7041ca2571ae8c11c4a0d95816c7d2daa7c` | Exact historical audit revision used when this RTM snapshot was prepared; not the current audit revision |
 
 Original source artifacts preserved in the Project Library:
 - `STF_Task_03_Product_Requirements_Document_v0.1.docx` — 16 pages / 677 extracted text lines.
@@ -535,3 +535,14 @@ The proposed “Evidence Score” must not become one universal scalar. Preserve
 - For ODR-01, incomplete or unreported completeness and absent method evidence must fail closed under the project policy; scope, reporting completeness, sampling effort and detectability remain distinct.
 
 DR-09 remains OPEN pending exact versioned-resource retrieval and term-by-term comparison. No requirements are approved or tests executed by this research review.
+
+
+### 15.1 Test-plan and source-revision follow-up — 26 November 2026
+
+The Task 03 Acceptance Test Plan was advanced to v0.2 on the same workstream to add an explicitly linked ODR-01 export-validation supplement (eight proposed cases, ATP-ODR-01–08). These are cross-cutting test designs, not a thirteenth Task 03 acceptance criterion. They map the ODR-01 obligations to EVT-27–EVT-44 while preserving the rule that internal missing records remain unknown/not assessed and only a controlled, validated external export may carry the bounded interpretation. The revised plan remains Proposed / Not run; no fixtures or tests were executed.
+
+The Offline/Field Synchronization Specification final marker was corrected to v0.2; no technical semantics were changed. The source row above for the 23 November readiness-audit SHA is explicitly historical. The audit's later 26 November addendum is a subsequent snapshot and should be consulted for current findings; avoid a circular current-SHA reference from this RTM to the audit file that may itself refer to the RTM.
+
+PostgreSQL/PostGIS research update for architecture cross-reference: PostgreSQL 19.0 was released on 19 November 2026 and is supported; PostgreSQL 18.7 also remains supported. PostGIS 3.7.0 (30 October 2026) lists PostgreSQL 14–19 compatibility. This confirms compatibility at the PostGIS release level, not production readiness or a database selection. Managed-service availability, extension packaging, drivers, operational support, migration behavior and benchmark evidence remain to be evaluated. Sources checked 26 November 2026: PostgreSQL Versioning Policy (https://www.postgresql.org/support/versioning/); PostgreSQL 19 Release Notes (https://www.postgresql.org/docs/19/release.html); PostGIS 3.7.0 release notes (https://www.postgis.net/2026/10/PostGIS-3.7.0/).
+
+**Status boundary:** BI-CAP identifiers, derived requirements, workflow states, test cases and export mappings remain proposed. Accepted ADR-001–ADR-010 are unchanged; ADR-011 remains proposed. ODR-01 retains its exact export-only scope. DR-09, DR/LDM validation and Task 05C/05D review remain open; Task 05E and physical schema design remain not ready.
