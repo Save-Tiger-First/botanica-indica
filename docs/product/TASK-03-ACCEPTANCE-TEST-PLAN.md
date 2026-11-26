@@ -27,7 +27,7 @@ This is a test-design document only. All test cases have status **Proposed / Not
 |---|---|---|---|
 | AI Project Operating Prompt v1.0 | `docs/repository-audit-and-ai-operating-standard` | `53add3894d0502827e584614c70ad09cadaa637d` | Governing working prompt; PR #16 remains open/draft |
 | Task 03 PRD v0.1 | `docs/canonical-task-03-04-baselines` | `8b1ca0be04b3f4ad3b543c2f9fc48d46eb37faf8` | Original acceptance criteria |
-| Requirements Traceability Register v0.3 | `docs/requirements-traceability-register` | `95bcf2161f917b8ff824e8a075a908b090a880c7` | Proposed requirement, capability and ODR-01 mappings |
+| Requirements Traceability Register v0.3 | `docs/requirements-traceability-register` | `fbf938235f686c7e2a9959a179a3a1a57ca6c632` | Proposed requirement, capability and ODR-01 mappings; 26 November source update |
 | Workflow Lifecycle Specification v0.2 | `docs/requirements-traceability-register` | `498af08ec60e3626e8b60ab5047acae1a8861eb5` | Proposed workflow rules; `record_created` / `server_received` distinction |
 | Workflow-to-Requirements Crosswalk v0.2 | `docs/requirements-traceability-register` | `61d2111ace5c408eaf503bdf17b2ccb822f90978` | Proposed scenario-to-requirement and ODR-01/EVT coverage |
 
