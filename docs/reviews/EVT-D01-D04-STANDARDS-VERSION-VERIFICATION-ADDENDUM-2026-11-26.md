@@ -189,7 +189,30 @@ Sources:
 - https://rs.tdwg.org/eco/version/terms/2026-10-13 (exact full snapshot could not be opened)
 - https://dwc.tdwg.org/terms/ (current Quick Reference Guide, including current Survey and SurveyTarget guidance)
 
-## 7. GBIF survey guide — confirmed export semantics
+## 7. Humboldt implicit non-detection inference — critical ODR-01 qualification
+
+The current official TDWG hierarchical-event guidance search result (2026-10-13) explicitly describes implicit inference of undetected taxonomic and other organismal targets. It explains that a zero count for a target need not be supplied as a separate Occurrence row when the Survey has declared an encompassing scope, all detected taxa/targets within the scope are fully reported, and the target was within the a priori scope. Data users can reconstruct zero quantities for scoped taxa/targets not reported among Occurrences.
+
+The current Quick Reference Guide also explains that `eco:isSurveyTargetFullyReported` enables absence-of-detection inference for included SurveyTarget elements that do not appear in the reported counts, provided all matching detected Occurrences were fully reported. The term version visible in the current term metadata remains `isSurveyTargetFullyReported-2026-05-26`; do not silently upgrade its version merely because other Humboldt terms have 2026-10-13 versions.
+
+This has a direct consequence for ODR-01:
+
+- The external inference mechanism is a standards-defined interpretation of a sufficiently complete survey dataset; it is not evidence that the organism is biologically absent.
+- It must be scoped to the exact Survey, hierarchy level, declared target/exclusion scope and term/profile versions.
+- A priori scope, applicable completeness declarations, protocol/search method, reporting of detected target Occurrences and the treatment of bycatch must be validated.
+- A post-facto filter must not be treated as original field intent.
+- Scope/completeness must not be inherited or inferred from a parent/child Event unless the selected, pinned standard/profile explicitly defines that behavior.
+- If any precondition is missing, ambiguous, contradictory or unvalidated, Botanica Indica's owner-authorized ODR-01 policy requires the export to fail closed.
+- This must never create or mutate an internal negative Occurrence merely because a target has no matching Occurrence row.
+
+**Important design distinction:** Humboldt's inference mechanism and the owner's ODR-01 policy are compatible only as a constrained, profile-specific export interpretation. The project must not generalize this into a universal internal inference engine or a blanket claim that missing observations mean absence.
+
+Sources:
+- https://dwc.tdwg.org/hierarchy/ (current indexed 2026-10-13 guidance; implicit inference discussion)
+- https://dwc.tdwg.org/terms/ (current Quick Reference Guide; `eco:isSurveyTargetFullyReported` semantics)
+- https://rs.tdwg.org/eco/version/terms/2026-05-26.htm (term version and supersession context)
+
+## 8. GBIF survey guide — confirmed export semantics
 
 GBIF Guide for publishing biological survey and monitoring data to GBIF, v1.0.2, 2025-09-24, remains the inspected publishing guide.
 
@@ -216,7 +239,7 @@ Source:
 - https://docs.gbif.org/guide-publishing-survey-data/en/
 - Persistent citation: https://doi.org/10.35035/doc-ynvs-eh84
 
-## 8. Cross-document implications
+## 9. Cross-document implications
 
 ### 8.1 Candidate A — Task 05C
 
@@ -242,7 +265,7 @@ The proposed test fixtures remain unexecuted. This standards addendum does not c
 
 EVT-D01–D04 remain open. The standards findings support the preferred working direction but do not select the internal relational model. The current Survey definition reinforces the need to distinguish a designed Survey from a casual observation.
 
-## 9. Revised finding severity and disposition
+## 10. Revised finding severity and disposition
 
 | ID | Severity | Finding | Disposition |
 |---|---|---|---|
@@ -257,7 +280,7 @@ EVT-D01–D04 remain open. The standards findings support the preferred working 
 | STD-09 | Open | Internal multiple-Survey reporting vs one Event per DwC-A Occurrence row | Decide internal identity and loss-aware export mapping |
 | STD-10 | Open | Candidate A still has incompatible Event representations | Canonical ERD and cardinality reconciliation after owner approval |
 
-## 10. Recommendations
+## 11. Recommendations
 
 1. Keep EVT-D01–D04 as the preferred working hypotheses for specialist validation.
 2. Do not rewrite Candidate A or Task 05B yet.
@@ -268,8 +291,9 @@ EVT-D01–D04 remain open. The standards findings support the preferred working 
 7. Preserve ODR-01 as owner-authorized export-only policy; do not infer internal absence from missing records.
 8. After the source baseline is pinned, send the specialist review brief with exact source versions and the unresolved questions.
 9. Only after specialist review and explicit owner authorization should Candidate A be reconciled and Task 05B/05D synchronized.
+10. Add negative tests proving that implicit export inference is suppressed for post-facto scope, incomplete target reporting, bycatch-only records, missing protocol/scope, ambiguous hierarchy, and unpinned term/profile versions.
 
-## 11. Current status and non-actions
+## 12. Current status and non-actions
 
 - DR-09: partially resolved, remains OPEN. Current indexed metadata identifies 2026-10-13 versions for the Conceptual Model and Darwin Core List; direct rendered content and exact version resources remain inconsistent or inaccessible.
 - EVT-D01–D04: OPEN; preferred working direction only.
